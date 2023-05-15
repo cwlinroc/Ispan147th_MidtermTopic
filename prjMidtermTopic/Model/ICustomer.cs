@@ -6,7 +6,15 @@ using System.Threading.Tasks;
 
 namespace prjMidtermTopic.Model
 {
-    interface IMember
+    interface ICustomer
     {
+        string id { get; set; }
+        string acount { get; set; }
+        string password { get; set; }
+        string name { get; set; }
+        string email { get; set; }
+        string phone { get; set; }
+        string address { get; set; }
+        
     }
 }

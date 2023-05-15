@@ -88,7 +88,7 @@
     <Compile Include="form_Main.Designer.cs">
       <DependentUpon>form_Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\IMember.cs" />
+    <Compile Include="Model\ICustomer.cs" />
     <Compile Include="Model\IMerchandise.cs" />
     <Compile Include="Model\IPet.cs" />
     <Compile Include="Program.cs" />
