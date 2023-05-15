@@ -88,6 +88,8 @@
     <Compile Include="form_Main.Designer.cs">
       <DependentUpon>form_Main.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\CMerchandiseOrderManager.cs" />
+    <Compile Include="Model\CMerchandiseOrder.cs" />
     <Compile Include="Model\ICustomer.cs" />
     <Compile Include="Model\IMerchandise.cs" />
     <Compile Include="Model\IPet.cs" />
@@ -95,6 +97,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="form_Main.resx">
       <DependentUpon>form_Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form_Order.resx">
+      <DependentUpon>form_Order.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

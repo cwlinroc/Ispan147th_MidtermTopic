@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace prjMidtermTopic
 {
-    public partial class form_Order : Form
+    public partial class form_MerchandiseOrder : Form
     {
-        public form_Order()
+        public form_MerchandiseOrder()
         {
             InitializeComponent();
         }

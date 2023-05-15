@@ -1,6 +1,6 @@
 ﻿namespace prjMidtermTopic
 {
-    partial class form_Order
+    partial class form_MerchandiseOrder
     {
         /// <summary>
         /// Required designer variable.
@@ -28,12 +28,80 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.listView_Main = new System.Windows.Forms.ListView();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.SuspendLayout();
+            // 
+            // listView_Main
+            // 
+            this.listView_Main.HideSelection = false;
+            this.listView_Main.Location = new System.Drawing.Point(91, 67);
+            this.listView_Main.Name = "listView_Main";
+            this.listView_Main.Size = new System.Drawing.Size(784, 407);
+            this.listView_Main.TabIndex = 0;
+            this.listView_Main.UseCompatibleStateImageBehavior = false;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(45, 504);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(134, 57);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(237, 504);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(134, 57);
+            this.button2.TabIndex = 2;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(425, 504);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(134, 57);
+            this.button3.TabIndex = 3;
+            this.button3.Text = "button3";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(615, 504);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(134, 57);
+            this.button4.TabIndex = 4;
+            this.button4.Text = "button4";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // form_MerchandiseOrder
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form6";
+            this.ClientSize = new System.Drawing.Size(997, 589);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.listView_Main);
+            this.Name = "form_MerchandiseOrder";
+            this.Text = "訂單管理";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.ListView listView_Main;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
     }
 }
