@@ -28,80 +28,168 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.listView_Main = new System.Windows.Forms.ListView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.SuspendLayout();
-            // 
-            // listView_Main
-            // 
-            this.listView_Main.HideSelection = false;
-            this.listView_Main.Location = new System.Drawing.Point(91, 67);
-            this.listView_Main.Name = "listView_Main";
-            this.listView_Main.Size = new System.Drawing.Size(784, 407);
-            this.listView_Main.TabIndex = 0;
-            this.listView_Main.UseCompatibleStateImageBehavior = false;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(45, 504);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(134, 57);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(237, 504);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(134, 57);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(425, 504);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(134, 57);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(615, 504);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(134, 57);
-            this.button4.TabIndex = 4;
-            this.button4.Text = "button4";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // form_MerchandiseOrder
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(997, 589);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.listView_Main);
-            this.Name = "form_MerchandiseOrder";
-            this.Text = "訂單管理";
-            this.ResumeLayout(false);
+			this.listView_Main = new System.Windows.Forms.ListView();
+			this.btn_Search = new System.Windows.Forms.Button();
+			this.btn_ShowList = new System.Windows.Forms.Button();
+			this.btn_Delete = new System.Windows.Forms.Button();
+			this.btn_Add = new System.Windows.Forms.Button();
+			this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.txt_OrderID = new System.Windows.Forms.TextBox();
+			this.txt_CustomerID = new System.Windows.Forms.TextBox();
+			this.label1 = new System.Windows.Forms.Label();
+			this.label2 = new System.Windows.Forms.Label();
+			this.SuspendLayout();
+			// 
+			// listView_Main
+			// 
+			this.listView_Main.BackgroundImageTiled = true;
+			this.listView_Main.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader4});
+			this.listView_Main.GridLines = true;
+			this.listView_Main.HideSelection = false;
+			this.listView_Main.Location = new System.Drawing.Point(91, 104);
+			this.listView_Main.MultiSelect = false;
+			this.listView_Main.Name = "listView_Main";
+			this.listView_Main.ShowItemToolTips = true;
+			this.listView_Main.Size = new System.Drawing.Size(824, 394);
+			this.listView_Main.TabIndex = 0;
+			this.listView_Main.UseCompatibleStateImageBehavior = false;
+			this.listView_Main.View = System.Windows.Forms.View.Details;
+			// 
+			// btn_Search
+			// 
+			this.btn_Search.Location = new System.Drawing.Point(833, 26);
+			this.btn_Search.Name = "btn_Search";
+			this.btn_Search.Size = new System.Drawing.Size(134, 57);
+			this.btn_Search.TabIndex = 1;
+			this.btn_Search.Text = "搜尋";
+			this.btn_Search.UseVisualStyleBackColor = true;
+			this.btn_Search.Click += new System.EventHandler(this.btn_Search_Click);
+			// 
+			// btn_ShowList
+			// 
+			this.btn_ShowList.Location = new System.Drawing.Point(91, 520);
+			this.btn_ShowList.Name = "btn_ShowList";
+			this.btn_ShowList.Size = new System.Drawing.Size(134, 57);
+			this.btn_ShowList.TabIndex = 2;
+			this.btn_ShowList.Text = "顯示訂單詳情";
+			this.btn_ShowList.UseVisualStyleBackColor = true;
+			this.btn_ShowList.Click += new System.EventHandler(this.btn_ShowList_Click);
+			// 
+			// btn_Delete
+			// 
+			this.btn_Delete.Location = new System.Drawing.Point(767, 520);
+			this.btn_Delete.Name = "btn_Delete";
+			this.btn_Delete.Size = new System.Drawing.Size(134, 57);
+			this.btn_Delete.TabIndex = 3;
+			this.btn_Delete.Text = "刪除訂單";
+			this.btn_Delete.UseVisualStyleBackColor = true;
+			this.btn_Delete.Click += new System.EventHandler(this.btn_Delete_Click);
+			// 
+			// btn_Add
+			// 
+			this.btn_Add.Location = new System.Drawing.Point(434, 520);
+			this.btn_Add.Name = "btn_Add";
+			this.btn_Add.Size = new System.Drawing.Size(134, 57);
+			this.btn_Add.TabIndex = 4;
+			this.btn_Add.Text = "新增訂單";
+			this.btn_Add.UseVisualStyleBackColor = true;
+			this.btn_Add.Click += new System.EventHandler(this.btn_Add_Click);
+			// 
+			// columnHeader1
+			// 
+			this.columnHeader1.Text = "訂單編號";
+			this.columnHeader1.Width = 120;
+			// 
+			// columnHeader2
+			// 
+			this.columnHeader2.Text = "顧客ID";
+			this.columnHeader2.Width = 120;
+			// 
+			// columnHeader3
+			// 
+			this.columnHeader3.Text = "付款方式";
+			this.columnHeader3.Width = 120;
+			// 
+			// columnHeader4
+			// 
+			this.columnHeader4.Text = "成功付款";
+			this.columnHeader4.Width = 120;
+			// 
+			// txt_OrderID
+			// 
+			this.txt_OrderID.Location = new System.Drawing.Point(231, 44);
+			this.txt_OrderID.Name = "txt_OrderID";
+			this.txt_OrderID.Size = new System.Drawing.Size(100, 25);
+			this.txt_OrderID.TabIndex = 5;
+			// 
+			// txt_CustomerID
+			// 
+			this.txt_CustomerID.Location = new System.Drawing.Point(515, 44);
+			this.txt_CustomerID.Name = "txt_CustomerID";
+			this.txt_CustomerID.Size = new System.Drawing.Size(100, 25);
+			this.txt_CustomerID.TabIndex = 6;
+			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.Location = new System.Drawing.Point(97, 47);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(67, 15);
+			this.label1.TabIndex = 7;
+			this.label1.Text = "訂單編號";
+			// 
+			// label2
+			// 
+			this.label2.AutoSize = true;
+			this.label2.Location = new System.Drawing.Point(394, 47);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(52, 15);
+			this.label2.TabIndex = 8;
+			this.label2.Text = "顧客ID";
+			// 
+			// form_MerchandiseOrder
+			// 
+			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.ClientSize = new System.Drawing.Size(997, 589);
+			this.Controls.Add(this.label2);
+			this.Controls.Add(this.label1);
+			this.Controls.Add(this.txt_CustomerID);
+			this.Controls.Add(this.txt_OrderID);
+			this.Controls.Add(this.btn_Add);
+			this.Controls.Add(this.btn_Delete);
+			this.Controls.Add(this.btn_ShowList);
+			this.Controls.Add(this.btn_Search);
+			this.Controls.Add(this.listView_Main);
+			this.Name = "form_MerchandiseOrder";
+			this.Text = "訂單管理";
+			this.Load += new System.EventHandler(this.form_MerchandiseOrder_Load);
+			this.ResumeLayout(false);
+			this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.ListView listView_Main;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-    }
+        private System.Windows.Forms.Button btn_Search;
+        private System.Windows.Forms.Button btn_ShowList;
+        private System.Windows.Forms.Button btn_Delete;
+        private System.Windows.Forms.Button btn_Add;
+		private System.Windows.Forms.ColumnHeader columnHeader1;
+		private System.Windows.Forms.ColumnHeader columnHeader2;
+		private System.Windows.Forms.ColumnHeader columnHeader3;
+		private System.Windows.Forms.ColumnHeader columnHeader4;
+		private System.Windows.Forms.TextBox txt_OrderID;
+		private System.Windows.Forms.TextBox txt_CustomerID;
+		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.Label label2;
+	}
 }
