@@ -36,6 +36,7 @@ namespace prjMidtermTopic
 					paymentMethod = payMethod,
 					payed = payed == 0
 				});
+				DisplayGrim.DisplayAll(this, new MessageArgs());
 				this.Close();
 			}
 			else

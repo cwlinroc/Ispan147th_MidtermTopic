@@ -121,6 +121,7 @@
 			this.Controls.Add(this.btn_Search);
 			this.Name = "form_MerchandiseOrder";
 			this.Text = "訂單管理";
+			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.form_MerchandiseOrder_FormClosed);
 			this.Load += new System.EventHandler(this.form_MerchandiseOrder_Load);
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView_Main)).EndInit();
 			this.ResumeLayout(false);

@@ -100,6 +100,7 @@
     <Compile Include="form_Main.Designer.cs">
       <DependentUpon>form_Main.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\DisplayGrim.cs" />
     <Compile Include="Model\MerchandiseOrderListManager.cs" />
     <Compile Include="Model\MerchandiseOrderManager.cs" />
     <Compile Include="Model\ICustomer.cs" />
