@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace prjMidtermTopic.Model
 {
-    interface IPet
+    interface IPet 
     {
         string id { get; set; }
         string name { get; set; }
