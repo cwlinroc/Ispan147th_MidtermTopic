@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace prjMidtermTopic.Model
 {
-	public class MerchandisOrderPto
+	public class MerchandiseOrderDto
 	{
 		public int orderID { get; set; }
         public string customerID { get; set; }

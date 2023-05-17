@@ -1,4 +1,5 @@
-﻿using System;
+﻿using prjMidtermTopic.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,8 +13,8 @@ namespace prjMidtermTopic
 {
 	public partial class form_OrderAddOrder : Form
 	{
-		private Action<int, string, int, bool> func;
-		public form_OrderAddOrder(Action<int, string, int, bool> func)
+		private Action<MerchandiseOrderDto> func;
+		public form_OrderAddOrder(Action<MerchandiseOrderDto> func)
 		{
 			InitializeComponent();
 			this.func = func;
@@ -28,7 +29,13 @@ namespace prjMidtermTopic
 			if (int.TryParse(orderIDstr, out int orderID) && customerID != ""
 				&& payMethod != -1 && payed != -1)
 			{
-				func(orderID, customerID, payMethod, payed == 0);
+				func(new MerchandiseOrderDto()
+				{
+					orderID = orderID,
+					customerID = customerID,
+					paymentMethod = payMethod,
+					payed = payed == 0
+				});
 				this.Close();
 			}
 			else

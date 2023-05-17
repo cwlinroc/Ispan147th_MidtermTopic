@@ -8,21 +8,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace prjMidtermTopic
 {
 	public partial class form_MerchandiseOrder : Form
 	{
-		private CMerchandiseOrderManager manager;
+		private MerchandiseOrderManager _manager= new MerchandiseOrderManager();
+		private MerchandiseOrderListManager _listManager = new MerchandiseOrderListManager();
+		private List<MerchandiseOrderDto> _data;
 		private readonly string[] _payment = new string[] { "會員點數", "信用卡", "LinePay", "Bitcoin" };
 		public form_MerchandiseOrder()
 		{
 			InitializeComponent();
-			manager = new CMerchandiseOrderManager();
 		}
 		private void form_MerchandiseOrder_Load(object sender, EventArgs e)
 		{
-			manager.load();
+			_manager.load();
+			_listManager.load();
+			displayOrders(_manager.search());
 		}
 
 		private void btn_Search_Click(object sender, EventArgs e)
@@ -33,38 +37,44 @@ namespace prjMidtermTopic
 			{
 				orderID = result;
 			}
-			List<MerchandisOrderPto> ptoList = manager
+			List<MerchandiseOrderDto> dtoList = _manager
 				.search(orderID, txt_CustomerID.Text.Trim());
-			ShowOrders(ptoList);
+			displayOrders(dtoList);
 		}
 
-		private void btn_ShowList_Click(object sender, EventArgs e)
-		{
+		
 
+		private void dataGridView_Main_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+		{
+			int row = e.RowIndex; 
+			if (row < 0) return;
+			var frm = new form_OrderList(_listManager, _data[row].orderID);
+			frm.Owner = this;
+			frm.ShowDialog();
 		}
 
 		private void btn_Add_Click(object sender, EventArgs e)
 		{
-			new form_OrderAddOrder(manager.add).ShowDialog();
+			new form_OrderAddOrder(_manager.add).ShowDialog();
 		}
 
-		private void btn_Delete_Click(object sender, EventArgs e)
+		
+
+		private void displayOrders(List<MerchandiseOrderDto> dtoList)
 		{
-
+			_data = dtoList;
+			var converteddata = dtoList
+				.Select(o => new
+				{
+					OrderId = o.orderID,
+					CustomerID = o.customerID,
+					Paymethod = _payment[o.paymentMethod],
+					Payed = o.payed
+				})
+				.ToList();
+			dataGridView_Main.DataSource = converteddata;
 		}
 
-		private void ShowOrders(List<MerchandisOrderPto> ptoList)
-		{
-			listView_Main.Items.Clear();
-			foreach (var pto in ptoList)
-			{
-				var item = new ListViewItem(pto.orderID.ToString());
-				item.SubItems.Add(pto.customerID);
-				item.SubItems.Add(_payment[pto.paymentMethod]);
-				item.SubItems.Add(pto.payed ? "已付款" : "未付款");
-				listView_Main.Items.Add(item);
-			}
-		}
-
+		
 	}
 }
