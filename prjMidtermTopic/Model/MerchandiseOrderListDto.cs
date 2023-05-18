@@ -8,7 +8,8 @@ namespace prjMidtermTopic.Model
 {
 	public class MerchandiseOrderListDto
 	{
-        public int orderID { get; set; }
+        public int orderListID { get; set; }
+		public int orderID { get; set; }
 		public string merchadiseID { get; set; }
 		public int quantity { get; set; }
 

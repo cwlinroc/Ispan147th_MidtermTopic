@@ -17,6 +17,7 @@ namespace prjMidtermTopic
 		private MerchandiseOrderManager _manager = new MerchandiseOrderManager();
 		private MerchandiseOrderListManager _listManager = new MerchandiseOrderListManager();
 		private List<MerchandiseOrderDto> _data;
+		private int _row = 0;
 		private readonly string[] _payment = new string[] { "會員點數", "信用卡", "LinePay", "Bitcoin" };
 		public form_MerchandiseOrder()
 		{
@@ -40,13 +41,19 @@ namespace prjMidtermTopic
 			display();
 		}
 
+
 		private void dataGridView_Main_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
 		{
-			int row = e.RowIndex;
-			if (row < 0) return;
-			var frm = new form_OrderList(_listManager, _data[row].orderID);
+			_row = e.RowIndex;
+			if (_row < 0) return;
+			var frm = new form_OrderList(_listManager, _data[_row].orderID, _manager);
 			frm.Owner = this;
 			frm.ShowDialog();
+		}
+		private void btn_Edit_Click(object sender, EventArgs e)
+		{
+			if (_row < 0) return;
+			new form_OrderEditOrder(_manager.update, _data[_row]).ShowDialog();
 		}
 
 		private void btn_Add_Click(object sender, EventArgs e)
@@ -54,7 +61,10 @@ namespace prjMidtermTopic
 			new form_OrderAddOrder(_manager.add).ShowDialog();
 		}
 
-
+		private void dataGridView_Main_SelectionChanged(object sender, EventArgs e)
+		{
+			_row = dataGridView_Main.CurrentCell.RowIndex;
+		}
 
 		private void display()
 		{
@@ -81,9 +91,11 @@ namespace prjMidtermTopic
 		private void autoDisplay(object sender, EventArgs e)
 		{
 			string message = (e as MessageArgs).Message;
-			if(!string.IsNullOrEmpty(message))MessageBox.Show(message);
+			if (!string.IsNullOrEmpty(message)) MessageBox.Show(message);
 
 			display();
 		}
+
+		
 	}
 }

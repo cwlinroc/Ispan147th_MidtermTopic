@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="form_OrderEditOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form_OrderEditOrder.Designer.cs">
+      <DependentUpon>form_OrderEditOrder.cs</DependentUpon>
+    </Compile>
     <Compile Include="form_OrderList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -116,6 +122,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="form_Order.resx">
       <DependentUpon>form_Order.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form_OrderEditOrder.resx">
+      <DependentUpon>form_OrderEditOrder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="form_OrderAddOrder.resx">
       <DependentUpon>form_OrderAddOrder.cs</DependentUpon>

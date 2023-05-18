@@ -29,69 +29,83 @@
 		private void InitializeComponent()
 		{
 			this.dataGridView_Main = new System.Windows.Forms.DataGridView();
-			this.button1 = new System.Windows.Forms.Button();
-			this.button2 = new System.Windows.Forms.Button();
-			this.button3 = new System.Windows.Forms.Button();
-			this.button4 = new System.Windows.Forms.Button();
+			this.btn_EditListItem = new System.Windows.Forms.Button();
+			this.btn_AddListItem = new System.Windows.Forms.Button();
+			this.btn_DelteListItem = new System.Windows.Forms.Button();
+			this.btn_DeleteOrder = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView_Main)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// dataGridView_Main
 			// 
+			this.dataGridView_Main.AllowUserToAddRows = false;
+			this.dataGridView_Main.AllowUserToDeleteRows = false;
 			this.dataGridView_Main.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dataGridView_Main.Location = new System.Drawing.Point(57, 95);
+			this.dataGridView_Main.Location = new System.Drawing.Point(43, 76);
+			this.dataGridView_Main.Margin = new System.Windows.Forms.Padding(2);
 			this.dataGridView_Main.Name = "dataGridView_Main";
 			this.dataGridView_Main.RowHeadersWidth = 51;
 			this.dataGridView_Main.RowTemplate.Height = 27;
-			this.dataGridView_Main.Size = new System.Drawing.Size(463, 357);
+			this.dataGridView_Main.Size = new System.Drawing.Size(347, 286);
 			this.dataGridView_Main.TabIndex = 0;
+			this.dataGridView_Main.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_Main_CellValueChanged);
+			this.dataGridView_Main.SelectionChanged += new System.EventHandler(this.dataGridView_Main_SelectionChanged);
 			// 
-			// button1
+			// btn_EditListItem
 			// 
-			this.button1.Location = new System.Drawing.Point(57, 30);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(142, 37);
-			this.button1.TabIndex = 1;
-			this.button1.Text = "編輯項目";
-			this.button1.UseVisualStyleBackColor = true;
+			this.btn_EditListItem.Location = new System.Drawing.Point(43, 24);
+			this.btn_EditListItem.Margin = new System.Windows.Forms.Padding(2);
+			this.btn_EditListItem.Name = "btn_EditListItem";
+			this.btn_EditListItem.Size = new System.Drawing.Size(106, 30);
+			this.btn_EditListItem.TabIndex = 1;
+			this.btn_EditListItem.Text = "編輯項目";
+			this.btn_EditListItem.UseVisualStyleBackColor = true;
+			this.btn_EditListItem.Click += new System.EventHandler(this.btn_EditListItem_Click);
 			// 
-			// button2
+			// btn_AddListItem
 			// 
-			this.button2.Location = new System.Drawing.Point(214, 30);
-			this.button2.Name = "button2";
-			this.button2.Size = new System.Drawing.Size(142, 37);
-			this.button2.TabIndex = 1;
-			this.button2.Text = "添加項目";
-			this.button2.UseVisualStyleBackColor = true;
+			this.btn_AddListItem.Location = new System.Drawing.Point(160, 24);
+			this.btn_AddListItem.Margin = new System.Windows.Forms.Padding(2);
+			this.btn_AddListItem.Name = "btn_AddListItem";
+			this.btn_AddListItem.Size = new System.Drawing.Size(106, 30);
+			this.btn_AddListItem.TabIndex = 1;
+			this.btn_AddListItem.Text = "添加項目";
+			this.btn_AddListItem.UseVisualStyleBackColor = true;
+			this.btn_AddListItem.Click += new System.EventHandler(this.btn_AddListItem_Click);
 			// 
-			// button3
+			// btn_DelteListItem
 			// 
-			this.button3.Location = new System.Drawing.Point(378, 30);
-			this.button3.Name = "button3";
-			this.button3.Size = new System.Drawing.Size(142, 37);
-			this.button3.TabIndex = 1;
-			this.button3.Text = "刪除項目";
-			this.button3.UseVisualStyleBackColor = true;
+			this.btn_DelteListItem.Location = new System.Drawing.Point(284, 24);
+			this.btn_DelteListItem.Margin = new System.Windows.Forms.Padding(2);
+			this.btn_DelteListItem.Name = "btn_DelteListItem";
+			this.btn_DelteListItem.Size = new System.Drawing.Size(106, 30);
+			this.btn_DelteListItem.TabIndex = 1;
+			this.btn_DelteListItem.Text = "刪除項目";
+			this.btn_DelteListItem.UseVisualStyleBackColor = true;
+			this.btn_DelteListItem.Click += new System.EventHandler(this.btn_DelteListItem_Click);
 			// 
-			// button4
+			// btn_DeleteOrder
 			// 
-			this.button4.Location = new System.Drawing.Point(378, 484);
-			this.button4.Name = "button4";
-			this.button4.Size = new System.Drawing.Size(142, 37);
-			this.button4.TabIndex = 1;
-			this.button4.Text = "刪除此清單";
-			this.button4.UseVisualStyleBackColor = true;
+			this.btn_DeleteOrder.Location = new System.Drawing.Point(284, 387);
+			this.btn_DeleteOrder.Margin = new System.Windows.Forms.Padding(2);
+			this.btn_DeleteOrder.Name = "btn_DeleteOrder";
+			this.btn_DeleteOrder.Size = new System.Drawing.Size(106, 30);
+			this.btn_DeleteOrder.TabIndex = 1;
+			this.btn_DeleteOrder.Text = "刪除此清單";
+			this.btn_DeleteOrder.UseVisualStyleBackColor = true;
+			this.btn_DeleteOrder.Click += new System.EventHandler(this.btn_DeleteOrder_Click);
 			// 
 			// form_OrderList
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(563, 553);
-			this.Controls.Add(this.button4);
-			this.Controls.Add(this.button3);
-			this.Controls.Add(this.button2);
-			this.Controls.Add(this.button1);
+			this.ClientSize = new System.Drawing.Size(422, 442);
+			this.Controls.Add(this.btn_DeleteOrder);
+			this.Controls.Add(this.btn_DelteListItem);
+			this.Controls.Add(this.btn_AddListItem);
+			this.Controls.Add(this.btn_EditListItem);
 			this.Controls.Add(this.dataGridView_Main);
+			this.Margin = new System.Windows.Forms.Padding(2);
 			this.Name = "form_OrderList";
 			this.Text = "formOrderList";
 			this.Load += new System.EventHandler(this.form_OrderList_Load);
@@ -103,9 +117,9 @@
 		#endregion
 
 		private System.Windows.Forms.DataGridView dataGridView_Main;
-		private System.Windows.Forms.Button button1;
-		private System.Windows.Forms.Button button2;
-		private System.Windows.Forms.Button button3;
-		private System.Windows.Forms.Button button4;
+		private System.Windows.Forms.Button btn_EditListItem;
+		private System.Windows.Forms.Button btn_AddListItem;
+		private System.Windows.Forms.Button btn_DelteListItem;
+		private System.Windows.Forms.Button btn_DeleteOrder;
 	}
 }
