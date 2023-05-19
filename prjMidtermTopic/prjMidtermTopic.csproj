@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormMember\SqlParameterBulider.cs" />
     <Compile Include="form_Member.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,9 +89,6 @@
     <Compile Include="form_Main.Designer.cs">
       <DependentUpon>form_Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\IMember.cs" />
-    <Compile Include="Model\IMerchandise.cs" />
-    <Compile Include="Model\IPet.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="form_Main.resx">
@@ -120,6 +118,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Image\" />
+    <Folder Include="Model\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
