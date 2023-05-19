@@ -157,5 +157,11 @@
   <ItemGroup>
     <Folder Include="Image\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Ispan147.Estore.SqlDataLayer\Ispan147.Estore.SqlDataLayer.csproj">
+      <Project>{0ec3bab8-1ccc-430b-98a1-30c2d84d4808}</Project>
+      <Name>Ispan147.Estore.SqlDataLayer</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

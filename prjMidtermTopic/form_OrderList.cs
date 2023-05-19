@@ -74,7 +74,7 @@ namespace prjMidtermTopic
 
 		private void btn_DeleteOrder_Click(object sender, EventArgs e)
 		{
-			if (_data != null)
+			if (_data.Count>0)
 			{
 				MessageBox.Show("仍然有關連清單，訂單刪除失敗");
 			}
