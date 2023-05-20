@@ -1,6 +1,6 @@
 ﻿namespace prjMidtermTopic
 {
-	partial class form_OrderEditOrder
+	partial class form_OrderAdd
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -46,7 +46,7 @@
 			this.btn_commit.Name = "btn_commit";
 			this.btn_commit.Size = new System.Drawing.Size(123, 28);
 			this.btn_commit.TabIndex = 0;
-			this.btn_commit.Text = "確認修改";
+			this.btn_commit.Text = "確認新增";
 			this.btn_commit.UseVisualStyleBackColor = true;
 			this.btn_commit.Click += new System.EventHandler(this.btn_commit_Click);
 			// 
@@ -62,7 +62,6 @@
 			// 
 			// txt_OrderID
 			// 
-			this.txt_OrderID.Enabled = false;
 			this.txt_OrderID.Location = new System.Drawing.Point(93, 45);
 			this.txt_OrderID.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
 			this.txt_OrderID.Name = "txt_OrderID";
@@ -133,7 +132,7 @@
 			this.comboBox_Payed.Size = new System.Drawing.Size(149, 20);
 			this.comboBox_Payed.TabIndex = 4;
 			// 
-			// form_OrderEditOrder
+			// form_OrderAddOrder
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -148,8 +147,8 @@
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.btn_commit);
 			this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-			this.Name = "form_OrderEditOrder";
-			this.Text = "修改訂單";
+			this.Name = "form_OrderAddOrder";
+			this.Text = "新增訂單";
 			this.ResumeLayout(false);
 			this.PerformLayout();
 

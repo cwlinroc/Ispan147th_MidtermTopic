@@ -6,11 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ispan147.Estore.SqlDataLayer
+namespace ISpan147.Estore.SqlDataLayer
 {
 	public class SqlDb
 	{
-
 		public static string GetConnectString(string connectName)
 		{
 			try

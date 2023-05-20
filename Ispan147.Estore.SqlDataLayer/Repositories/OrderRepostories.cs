@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace prjMidtermTopic.Model
+namespace ISpan147.Estore.SqlDataLayer.Repositories
 {
-	public class MerchandiseOrderRepostery
+	public class OrderRepostories
 	{
 	}
 }

@@ -8,17 +8,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ISpan147.Estore.SqlDataLayer.Dtos;
+using ISpan147.Estore.SqlDataLayer.Services;
 
 namespace prjMidtermTopic
 {
-	public partial class form_OrderAddOrder : Form
+	public partial class form_OrderAdd : Form
 	{
-		private Action<MerchandiseOrderDto> func;
-		public form_OrderAddOrder(Action<MerchandiseOrderDto> func)
+		private Action<OrderGridDto> func;
+		public form_OrderAdd(Action<OrderGridDto> func)
 		{
 			InitializeComponent();
 			this.func = func;
 		}
+
 
 		private void btn_commit_Click(object sender, EventArgs e)
 		{
@@ -29,14 +32,14 @@ namespace prjMidtermTopic
 			if (int.TryParse(orderIDstr, out int orderID) && customerID != ""
 				&& payMethod != -1 && payed != -1)
 			{
-				func(new MerchandiseOrderDto()
+				func(new OrderGridDto()
 				{
-					orderID = orderID,
-					customerID = customerID,
-					paymentMethod = payMethod,
-					payed = payed == 0
+					ID = orderID,
+					CustomerID = customerID,
+					PaymentMethod = comboBox_PayMethod.SelectedItem.ToString(),
+					Payed = payed == 0
 				});
-				DisplayGrim.DisplayAll(this, new MessageArgs());
+				DisplayGrim.DisplayAll(this, new MessageArgs{ Message = "_Order_"});
 				this.Close();
 			}
 			else

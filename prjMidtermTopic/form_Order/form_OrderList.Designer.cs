@@ -41,22 +41,22 @@
 			this.dataGridView_Main.AllowUserToAddRows = false;
 			this.dataGridView_Main.AllowUserToDeleteRows = false;
 			this.dataGridView_Main.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dataGridView_Main.Location = new System.Drawing.Point(43, 76);
-			this.dataGridView_Main.Margin = new System.Windows.Forms.Padding(2);
+			this.dataGridView_Main.Location = new System.Drawing.Point(57, 95);
+			this.dataGridView_Main.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
 			this.dataGridView_Main.Name = "dataGridView_Main";
+			this.dataGridView_Main.ReadOnly = true;
 			this.dataGridView_Main.RowHeadersWidth = 51;
 			this.dataGridView_Main.RowTemplate.Height = 27;
-			this.dataGridView_Main.Size = new System.Drawing.Size(347, 286);
+			this.dataGridView_Main.Size = new System.Drawing.Size(634, 358);
 			this.dataGridView_Main.TabIndex = 0;
-			this.dataGridView_Main.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_Main_CellValueChanged);
 			this.dataGridView_Main.SelectionChanged += new System.EventHandler(this.dataGridView_Main_SelectionChanged);
 			// 
 			// btn_EditListItem
 			// 
-			this.btn_EditListItem.Location = new System.Drawing.Point(43, 24);
-			this.btn_EditListItem.Margin = new System.Windows.Forms.Padding(2);
+			this.btn_EditListItem.Location = new System.Drawing.Point(57, 30);
+			this.btn_EditListItem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
 			this.btn_EditListItem.Name = "btn_EditListItem";
-			this.btn_EditListItem.Size = new System.Drawing.Size(106, 30);
+			this.btn_EditListItem.Size = new System.Drawing.Size(141, 38);
 			this.btn_EditListItem.TabIndex = 1;
 			this.btn_EditListItem.Text = "編輯項目";
 			this.btn_EditListItem.UseVisualStyleBackColor = true;
@@ -64,10 +64,10 @@
 			// 
 			// btn_AddListItem
 			// 
-			this.btn_AddListItem.Location = new System.Drawing.Point(160, 24);
-			this.btn_AddListItem.Margin = new System.Windows.Forms.Padding(2);
+			this.btn_AddListItem.Location = new System.Drawing.Point(293, 30);
+			this.btn_AddListItem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
 			this.btn_AddListItem.Name = "btn_AddListItem";
-			this.btn_AddListItem.Size = new System.Drawing.Size(106, 30);
+			this.btn_AddListItem.Size = new System.Drawing.Size(141, 38);
 			this.btn_AddListItem.TabIndex = 1;
 			this.btn_AddListItem.Text = "添加項目";
 			this.btn_AddListItem.UseVisualStyleBackColor = true;
@@ -75,10 +75,10 @@
 			// 
 			// btn_DelteListItem
 			// 
-			this.btn_DelteListItem.Location = new System.Drawing.Point(284, 24);
-			this.btn_DelteListItem.Margin = new System.Windows.Forms.Padding(2);
+			this.btn_DelteListItem.Location = new System.Drawing.Point(538, 30);
+			this.btn_DelteListItem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
 			this.btn_DelteListItem.Name = "btn_DelteListItem";
-			this.btn_DelteListItem.Size = new System.Drawing.Size(106, 30);
+			this.btn_DelteListItem.Size = new System.Drawing.Size(141, 38);
 			this.btn_DelteListItem.TabIndex = 1;
 			this.btn_DelteListItem.Text = "刪除項目";
 			this.btn_DelteListItem.UseVisualStyleBackColor = true;
@@ -86,10 +86,10 @@
 			// 
 			// btn_DeleteOrder
 			// 
-			this.btn_DeleteOrder.Location = new System.Drawing.Point(284, 387);
-			this.btn_DeleteOrder.Margin = new System.Windows.Forms.Padding(2);
+			this.btn_DeleteOrder.Location = new System.Drawing.Point(550, 486);
+			this.btn_DeleteOrder.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
 			this.btn_DeleteOrder.Name = "btn_DeleteOrder";
-			this.btn_DeleteOrder.Size = new System.Drawing.Size(106, 30);
+			this.btn_DeleteOrder.Size = new System.Drawing.Size(141, 38);
 			this.btn_DeleteOrder.TabIndex = 1;
 			this.btn_DeleteOrder.Text = "刪除此清單";
 			this.btn_DeleteOrder.UseVisualStyleBackColor = true;
@@ -97,15 +97,15 @@
 			// 
 			// form_OrderList
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(422, 442);
+			this.ClientSize = new System.Drawing.Size(736, 552);
 			this.Controls.Add(this.btn_DeleteOrder);
 			this.Controls.Add(this.btn_DelteListItem);
 			this.Controls.Add(this.btn_AddListItem);
 			this.Controls.Add(this.btn_EditListItem);
 			this.Controls.Add(this.dataGridView_Main);
-			this.Margin = new System.Windows.Forms.Padding(2);
+			this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
 			this.Name = "form_OrderList";
 			this.Text = "formOrderList";
 			this.Load += new System.EventHandler(this.form_OrderList_Load);

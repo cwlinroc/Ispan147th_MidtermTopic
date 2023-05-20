@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ispan147.Estore.SqlDataLayer.ExtMethods
+namespace ISpan147.Estore.SqlDataLayer.ExtMethods
 {
 	public static class SqlDataReaderExtMethod
 	{

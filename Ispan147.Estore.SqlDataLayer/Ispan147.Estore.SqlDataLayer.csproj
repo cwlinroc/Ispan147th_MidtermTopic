@@ -44,13 +44,17 @@
   <ItemGroup>
     <Compile Include="Builders\SqlParameterBuilder.cs" />
     <Compile Include="Dtos\Assembler.cs" />
+    <Compile Include="Dtos\OrderDto.cs" />
+    <Compile Include="Dtos\OrderGridDto.cs" />
+    <Compile Include="Dtos\OrderListDto.cs" />
+    <Compile Include="Dtos\OrderListGridDto.cs" />
     <Compile Include="ExtMethods\SqlDataReaderExtMethod.cs" />
+    <Compile Include="Repositories\OrderRepostories.cs" />
+    <Compile Include="Services\OrderListManager.cs" />
+    <Compile Include="Services\OrderManager.cs" />
     <Compile Include="Sqldb.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Repositories\" />
-    <Folder Include="Services\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

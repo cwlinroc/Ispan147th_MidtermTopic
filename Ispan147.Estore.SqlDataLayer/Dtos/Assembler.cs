@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ispan147.Estore.SqlDataLayer.Dtos
+namespace ISpan147.Estore.SqlDataLayer.Dtos
 {
 	public static class Assembler
 	{

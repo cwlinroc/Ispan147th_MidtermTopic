@@ -46,58 +46,70 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="form_OrderEditOrder.cs">
+    <Compile Include="form_Order\form_OrderListAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="form_OrderEditOrder.Designer.cs">
-      <DependentUpon>form_OrderEditOrder.cs</DependentUpon>
+    <Compile Include="form_Order\form_OrderListAdd.Designer.cs">
+      <DependentUpon>form_OrderListAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="form_OrderList.cs">
+    <Compile Include="form_Order\form_OrderEdit.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="form_OrderList.Designer.cs">
+    <Compile Include="form_Order\form_OrderEdit.Designer.cs">
+      <DependentUpon>form_OrderEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form_Order\Form_OrderListEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form_Order\Form_OrderListEdit.Designer.cs">
+      <DependentUpon>Form_OrderListEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form_Order\form_OrderList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form_Order\form_OrderList.Designer.cs">
       <DependentUpon>form_OrderList.cs</DependentUpon>
     </Compile>
-    <Compile Include="form_Member.cs">
+    <Compile Include="form_Member\form_Member.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="form_Member.Designer.cs">
+    <Compile Include="form_Member\form_Member.Designer.cs">
       <DependentUpon>form_Member.cs</DependentUpon>
     </Compile>
-    <Compile Include="form_OrderAddOrder.cs">
+    <Compile Include="form_Order\form_OrderAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="form_OrderAddOrder.Designer.cs">
-      <DependentUpon>form_OrderAddOrder.cs</DependentUpon>
+    <Compile Include="form_Order\form_OrderAdd.Designer.cs">
+      <DependentUpon>form_OrderAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="form_Pet.cs">
+    <Compile Include="form_Pet\form_Pet.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="form_Pet.Designer.cs">
+    <Compile Include="form_Pet\form_Pet.Designer.cs">
       <DependentUpon>form_Pet.cs</DependentUpon>
     </Compile>
-    <Compile Include="form_Adopt.cs">
+    <Compile Include="form_Adopt\form_Adopt.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="form_Adopt.Designer.cs">
+    <Compile Include="form_Adopt\form_Adopt.Designer.cs">
       <DependentUpon>form_Adopt.cs</DependentUpon>
     </Compile>
-    <Compile Include="form_Merchandise.cs">
+    <Compile Include="form_Merchandise\form_Merchandise.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="form_Merchandise.Designer.cs">
+    <Compile Include="form_Merchandise\form_Merchandise.Designer.cs">
       <DependentUpon>form_Merchandise.cs</DependentUpon>
     </Compile>
-    <Compile Include="form_QA.cs">
+    <Compile Include="form_QA\form_QA.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="form_QA.Designer.cs">
+    <Compile Include="form_QA\form_QA.Designer.cs">
       <DependentUpon>form_QA.cs</DependentUpon>
     </Compile>
-    <Compile Include="form_Order.cs">
+    <Compile Include="form_Order\form_Order.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="form_Order.Designer.cs">
+    <Compile Include="form_Order\form_Order.Designer.cs">
       <DependentUpon>form_Order.cs</DependentUpon>
     </Compile>
     <Compile Include="form_Main.cs">
@@ -106,30 +118,29 @@
     <Compile Include="form_Main.Designer.cs">
       <DependentUpon>form_Main.cs</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces\IGrid.cs" />
     <Compile Include="Model\DisplayGrim.cs" />
-    <Compile Include="Model\MerchandiseOrderListManager.cs" />
-    <Compile Include="Model\MerchandiseOrderManager.cs" />
-    <Compile Include="Model\ICustomer.cs" />
-    <Compile Include="Model\IMerchandise.cs" />
-    <Compile Include="Model\IPet.cs" />
-    <Compile Include="Model\MerchandiseOrderListDto.cs" />
-    <Compile Include="Model\MerchandiseOrderRepostery.cs" />
-    <Compile Include="Model\MerchandiseOrderDto.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="form_Main.resx">
       <DependentUpon>form_Main.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="form_Order.resx">
+    <EmbeddedResource Include="form_Order\form_Order.resx">
       <DependentUpon>form_Order.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="form_OrderEditOrder.resx">
-      <DependentUpon>form_OrderEditOrder.cs</DependentUpon>
+    <EmbeddedResource Include="form_Order\form_OrderListAdd.resx">
+      <DependentUpon>form_OrderListAdd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="form_OrderAddOrder.resx">
-      <DependentUpon>form_OrderAddOrder.cs</DependentUpon>
+    <EmbeddedResource Include="form_Order\form_OrderEdit.resx">
+      <DependentUpon>form_OrderEdit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="form_OrderList.resx">
+    <EmbeddedResource Include="form_Order\form_OrderAdd.resx">
+      <DependentUpon>form_OrderAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form_Order\Form_OrderListEdit.resx">
+      <DependentUpon>Form_OrderListEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form_Order\form_OrderList.resx">
       <DependentUpon>form_OrderList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -158,9 +169,9 @@
     <Folder Include="Image\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Ispan147.Estore.SqlDataLayer\Ispan147.Estore.SqlDataLayer.csproj">
+    <ProjectReference Include="..\Ispan147.Estore.SqlDataLayer\ISpan147.Estore.SqlDataLayer.csproj">
       <Project>{0ec3bab8-1ccc-430b-98a1-30c2d84d4808}</Project>
-      <Name>Ispan147.Estore.SqlDataLayer</Name>
+      <Name>ISpan147.Estore.SqlDataLayer</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

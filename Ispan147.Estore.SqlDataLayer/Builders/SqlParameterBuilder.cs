@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ispan147.Estore.SqlDataLayer.Builders
+namespace ISpan147.Estore.SqlDataLayer.Builders
 {
 	public class SqlParameterBuilder
 	{
