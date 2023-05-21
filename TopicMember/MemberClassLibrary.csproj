@@ -44,7 +44,10 @@
     <Compile Include="Dtos\Assembler.cs" />
     <Compile Include="Dtos\MemberDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\MemberRepository.cs" />
     <Compile Include="Services\MemberService.cs" />
+    <Compile Include="SqlDb.cs" />
+    <Compile Include="SqlParameterBulider.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
