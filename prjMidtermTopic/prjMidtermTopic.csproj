@@ -186,8 +186,8 @@
     <Folder Include="Image\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Ispan147.Estore.SqlDataLayer\ISpan147.Estore.SqlDataLayer.csproj">
-      <Project>{0ec3bab8-1ccc-430b-98a1-30c2d84d4808}</Project>
+    <ProjectReference Include="..\ISpan147.Estore.SqlDataLayer\ISpan147.Estore.SqlDataLayer.csproj">
+      <Project>{9ee28126-8c44-4f99-867d-e316d537541b}</Project>
       <Name>ISpan147.Estore.SqlDataLayer</Name>
     </ProjectReference>
   </ItemGroup>
