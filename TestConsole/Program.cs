@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using ISpan147.Estore.SqlDataLayer.Repositories;
 using ISpan147.Estore.SqlDataLayer.Dtos;
 using System.Dynamic;
+using ISpan147.Estore.SqlDataLayer.ExtMethods;
 
 namespace TestConsole
 {
@@ -13,8 +14,7 @@ namespace TestConsole
 	{
 		static void Main(string[] args)
 		{
-			var repo = new OrderRepository();
-
+			//var repo = new OrderRepository();
 
 			//repo.Create(new OrderDto
 			//{
@@ -22,7 +22,6 @@ namespace TestConsole
 			//	PaymentMethod = 6,
 			//	Payed = true
 			//});
-
 
 			//var dtos = repo.Search(null, "666");
 
@@ -40,6 +39,18 @@ namespace TestConsole
 			//});
 
 			//repo.Delete(4);
+
+
+			new EmployeeRepositoy().Create(new EmployeeDto
+			{
+				Account = "admin",
+				Password = "admin".GetSaltedSha256(),
+				Permission = 1
+			});
+			var dto = new EmployeeRepositoy().Get("admin");
+			Console.WriteLine(dto.Password);
+			Console.WriteLine("admin".GetSaltedSha256());
+			Console.WriteLine("admin".GetSaltedSha256().Length);
 
 			Console.WriteLine("Test Over!");
 			Console.ReadKey();

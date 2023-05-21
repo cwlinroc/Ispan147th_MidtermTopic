@@ -44,16 +44,17 @@
   <ItemGroup>
     <Compile Include="Builders\SqlParameterBuilder.cs" />
     <Compile Include="Dtos\Assembler.cs" />
+    <Compile Include="Dtos\EmployeeDto.cs" />
     <Compile Include="Dtos\OrderDto.cs" />
     <Compile Include="Dtos\OrderGridDto.cs" />
     <Compile Include="Dtos\OrderListDto.cs" />
     <Compile Include="Dtos\OrderListGridDto.cs" />
+    <Compile Include="ExtMethods\MyEncoder.cs" />
     <Compile Include="ExtMethods\SqlDataReaderExtMethod.cs" />
+    <Compile Include="Repositories\EmployeeRepositoy.cs" />
     <Compile Include="Repositories\OrderListRepository.cs" />
     <Compile Include="Repositories\OrderRepository.cs" />
-    <Compile Include="Services\OrderListManager.cs" />
     <Compile Include="Services\OrderListService.cs" />
-    <Compile Include="Services\OrderManager.cs" />
     <Compile Include="Services\OrderService.cs" />
     <Compile Include="Sqldb.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

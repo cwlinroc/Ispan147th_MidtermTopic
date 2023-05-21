@@ -50,6 +50,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="form_LogIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form_LogIn.Designer.cs">
+      <DependentUpon>form_LogIn.cs</DependentUpon>
+    </Compile>
     <Compile Include="form_Order\form_OrderListAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,10 +130,14 @@
     </Compile>
     <Compile Include="Interfaces\IGrid.cs" />
     <Compile Include="Model\DisplayGrim.cs" />
+    <Compile Include="Model\MyValidator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\OrderListVM.cs" />
     <Compile Include="ViewModels\OrderVM.cs" />
+    <EmbeddedResource Include="form_LogIn.resx">
+      <DependentUpon>form_LogIn.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="form_Main.resx">
       <DependentUpon>form_Main.cs</DependentUpon>
     </EmbeddedResource>

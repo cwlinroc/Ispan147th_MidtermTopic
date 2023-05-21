@@ -31,5 +31,16 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
 				Quantity = reader.GetInt("Quantity")
 			};
 		}
+
+		public static Func<SqlDataReader, EmployeeDto> EmployeeDtoAssembler
+		{
+			get => (reader) => new EmployeeDto
+			{
+				Account = reader.GetString("Account"),
+				Password = reader.GetString("Password"),
+				Permission = reader.GetInt("Permission")
+			};
+		}
+
 	}
 }

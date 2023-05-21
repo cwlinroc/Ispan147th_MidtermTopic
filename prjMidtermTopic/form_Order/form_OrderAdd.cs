@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ISpan147.Estore.SqlDataLayer.Dtos;
 using ISpan147.Estore.SqlDataLayer.Services;
+using prjMidtermTopic.ViewModels;
 
 namespace prjMidtermTopic.form_Order
 {
@@ -18,27 +19,43 @@ namespace prjMidtermTopic.form_Order
 		public form_OrderAdd()
 		{
 			InitializeComponent();
+			comboBox_PayMethod.Items.AddRange(OrderVM.GetPayMethods().ToArray());
+			comboBox_Payed.Items.AddRange(OrderVM.GetPayed().ToArray());
 		}
 
 		private void btn_commit_Click(object sender, EventArgs e)
 		{
-			string customerID = txt_CustomerID.Text.Trim();
-			int payMethod = comboBox_PayMethod.SelectedIndex;
-			int payed = comboBox_Payed.SelectedIndex;
-			if (customerID != "" && payMethod != -1 && payed != -1)
+			try
 			{
-				new OrderService().Create(new OrderDto()
+				var vm = new OrderVM()
 				{
-					CustomerID = customerID,
-					PaymentMethod = comboBox_PayMethod.SelectedIndex,
-					Payed = payed == 0
-				});
+					CustomerID = txt_CustomerID.Text.Trim(),
+					PaymentMethod = comboBox_PayMethod.SelectedItem?.ToString(),
+					Payed = comboBox_Payed.SelectedItem?.ToString(),
+				};
+
+				var map = new Dictionary<string, Control>(StringComparer.CurrentCultureIgnoreCase) {
+					{ "ID" , txt_OrderID },
+					{ "CustomerID" , txt_CustomerID },
+					{ "PaymentMethod" , comboBox_PayMethod },
+					{ "Payed" , comboBox_Payed }
+				};
+
+				bool hasError = MyValidator.ValidateAndDisplay(vm, errorProvider1, map);
+
+				if (hasError) return;
+
+				int newId = new OrderService().Create(vm.ToDto());
+
+				MessageBox.Show($"輸入成功，ID為{newId}");
+
 				DisplayGrim.DisplayAll(this, new MessageArgs { Message = "_Order_" });
+
 				this.Close();
 			}
-			else
+			catch (Exception ex)
 			{
-				MessageBox.Show($"請輸入正確數值");
+				MessageBox.Show("新增失敗，可能原因：" + ex.Message);
 			}
 		}
 	}

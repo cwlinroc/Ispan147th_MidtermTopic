@@ -117,12 +117,30 @@ namespace ISpan147.Estore.SqlDataLayer
 					if (parameters.Length > 0) cmd.Parameters.AddRange(parameters);
 
 					cmd.ExecuteNonQuery();
-
-					return (int)cmd.Parameters["@newId"].Value;
+					
+					return (int)cmd.Parameters["@newId"].Value;					
 				}
 			}
 		}
 
+		public static void CreateWithoutScope(
+			Func<SqlConnection> connGetter,
+			string sql,
+			params SqlParameter[] parameters)
+		{
+			using (var conn = connGetter())
+			{
+				conn.Open();
+				using (SqlCommand cmd = conn.CreateCommand())
+				{
+					cmd.CommandText = sql;
+
+					if (parameters.Length > 0) cmd.Parameters.AddRange(parameters);
+
+					cmd.ExecuteNonQuery();
+				}
+			}
+		}
 
 
 		public static int UpdateOrDelete(

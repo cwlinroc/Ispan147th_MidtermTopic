@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			this.txt_MerchandiseID = new System.Windows.Forms.TextBox();
 			this.label2 = new System.Windows.Forms.Label();
 			this.txt_OrderID = new System.Windows.Forms.TextBox();
@@ -35,6 +36,8 @@
 			this.btn_commit = new System.Windows.Forms.Button();
 			this.label3 = new System.Windows.Forms.Label();
 			this.txt_Quantity = new System.Windows.Forms.TextBox();
+			this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// txt_MerchandiseID
@@ -100,6 +103,10 @@
 			this.txt_Quantity.Size = new System.Drawing.Size(235, 25);
 			this.txt_Quantity.TabIndex = 10;
 			// 
+			// errorProvider1
+			// 
+			this.errorProvider1.ContainerControl = this;
+			// 
 			// form_OrderListAdd
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -114,6 +121,7 @@
 			this.Controls.Add(this.btn_commit);
 			this.Name = "form_OrderListAdd";
 			this.Text = "form_OrderAddOrderList";
+			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -127,5 +135,6 @@
 		private System.Windows.Forms.Button btn_commit;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.TextBox txt_Quantity;
+		private System.Windows.Forms.ErrorProvider errorProvider1;
 	}
 }

@@ -33,6 +33,10 @@
 			this.btn_AddListItem = new System.Windows.Forms.Button();
 			this.btn_DelteListItem = new System.Windows.Forms.Button();
 			this.btn_DeleteOrder = new System.Windows.Forms.Button();
+			this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView_Main)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -41,6 +45,11 @@
 			this.dataGridView_Main.AllowUserToAddRows = false;
 			this.dataGridView_Main.AllowUserToDeleteRows = false;
 			this.dataGridView_Main.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dataGridView_Main.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3,
+            this.Column4});
 			this.dataGridView_Main.Location = new System.Drawing.Point(57, 95);
 			this.dataGridView_Main.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
 			this.dataGridView_Main.Name = "dataGridView_Main";
@@ -53,29 +62,29 @@
 			// 
 			// btn_EditListItem
 			// 
-			this.btn_EditListItem.Location = new System.Drawing.Point(57, 30);
+			this.btn_EditListItem.Location = new System.Drawing.Point(375, 30);
 			this.btn_EditListItem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
 			this.btn_EditListItem.Name = "btn_EditListItem";
 			this.btn_EditListItem.Size = new System.Drawing.Size(141, 38);
 			this.btn_EditListItem.TabIndex = 1;
-			this.btn_EditListItem.Text = "編輯項目";
+			this.btn_EditListItem.Text = "修改項目";
 			this.btn_EditListItem.UseVisualStyleBackColor = true;
 			this.btn_EditListItem.Click += new System.EventHandler(this.btn_EditListItem_Click);
 			// 
 			// btn_AddListItem
 			// 
-			this.btn_AddListItem.Location = new System.Drawing.Point(293, 30);
+			this.btn_AddListItem.Location = new System.Drawing.Point(550, 30);
 			this.btn_AddListItem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
 			this.btn_AddListItem.Name = "btn_AddListItem";
 			this.btn_AddListItem.Size = new System.Drawing.Size(141, 38);
 			this.btn_AddListItem.TabIndex = 1;
-			this.btn_AddListItem.Text = "添加項目";
+			this.btn_AddListItem.Text = "新增項目";
 			this.btn_AddListItem.UseVisualStyleBackColor = true;
 			this.btn_AddListItem.Click += new System.EventHandler(this.btn_AddListItem_Click);
 			// 
 			// btn_DelteListItem
 			// 
-			this.btn_DelteListItem.Location = new System.Drawing.Point(538, 30);
+			this.btn_DelteListItem.Location = new System.Drawing.Point(57, 486);
 			this.btn_DelteListItem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
 			this.btn_DelteListItem.Name = "btn_DelteListItem";
 			this.btn_DelteListItem.Size = new System.Drawing.Size(141, 38);
@@ -94,6 +103,42 @@
 			this.btn_DeleteOrder.Text = "刪除此清單";
 			this.btn_DeleteOrder.UseVisualStyleBackColor = true;
 			this.btn_DeleteOrder.Click += new System.EventHandler(this.btn_DeleteOrder_Click);
+			// 
+			// Column1
+			// 
+			this.Column1.DataPropertyName = "ID";
+			this.Column1.HeaderText = "編號";
+			this.Column1.MinimumWidth = 6;
+			this.Column1.Name = "Column1";
+			this.Column1.ReadOnly = true;
+			this.Column1.Width = 125;
+			// 
+			// Column2
+			// 
+			this.Column2.DataPropertyName = "OrderID";
+			this.Column2.HeaderText = "訂單編號";
+			this.Column2.MinimumWidth = 6;
+			this.Column2.Name = "Column2";
+			this.Column2.ReadOnly = true;
+			this.Column2.Width = 125;
+			// 
+			// Column3
+			// 
+			this.Column3.DataPropertyName = "MerchandiseID";
+			this.Column3.HeaderText = "商品編號";
+			this.Column3.MinimumWidth = 6;
+			this.Column3.Name = "Column3";
+			this.Column3.ReadOnly = true;
+			this.Column3.Width = 125;
+			// 
+			// Column4
+			// 
+			this.Column4.DataPropertyName = "Quantity";
+			this.Column4.HeaderText = "數量";
+			this.Column4.MinimumWidth = 6;
+			this.Column4.Name = "Column4";
+			this.Column4.ReadOnly = true;
+			this.Column4.Width = 125;
 			// 
 			// form_OrderList
 			// 
@@ -121,5 +166,9 @@
 		private System.Windows.Forms.Button btn_AddListItem;
 		private System.Windows.Forms.Button btn_DelteListItem;
 		private System.Windows.Forms.Button btn_DeleteOrder;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
 	}
 }

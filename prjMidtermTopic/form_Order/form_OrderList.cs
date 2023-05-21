@@ -57,22 +57,43 @@ namespace prjMidtermTopic.form_Order
 		}
 		private void btn_DelteListItem_Click(object sender, EventArgs e)
 		{
-			int orderListID = int.Parse(dataGridView_Main.Rows[_row].Cells[0].Value.ToString());
-			new OrderListService().Delete(orderListID);
+			DialogResult dialogResult = MessageBox.Show("確定篩除該項目？", "確認刪除", MessageBoxButtons.YesNo);
+			if (dialogResult == DialogResult.No) return;
 
-			Display();
+			try
+			{
+				int orderListID = int.Parse(dataGridView_Main.Rows[_row]
+								.Cells[0].Value.ToString());
+				new OrderListService().Delete(orderListID);
+
+				Display();
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show("刪除失敗，可能原因為：" + ex.Message);
+			}
 		}
 		private void btn_DeleteOrder_Click(object sender, EventArgs e)
 		{
-			if (_data.Count == 0)
-			{
-				MessageBox.Show("仍然有關連清單，訂單刪除失敗");
-				return;
-			}
-			new OrderService().Delete(_orderID);
+			DialogResult dialogResult = MessageBox.Show("確定篩除該訂單？", "確認刪除", MessageBoxButtons.YesNo);
+			if (dialogResult == DialogResult.No) return;
 
-			DisplayGrim.DisplayAll(this, new MessageArgs());
-			this.Close();
+			try
+			{
+				if (_data.Count > 0)
+				{
+					MessageBox.Show("仍然有關連清單，訂單刪除失敗");
+					return;
+				}
+				new OrderService().Delete(_orderID);
+
+				DisplayGrim.DisplayAll(this, new MessageArgs());
+				this.Close();
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show("刪除失敗，可能原因為：" + ex.Message);
+			}
 		}
 
 		#endregion
@@ -81,10 +102,17 @@ namespace prjMidtermTopic.form_Order
 		//methods
 		public void Display()
 		{
-			dataGridView_Main.DataSource = null;
-			_data = new OrderListService().Search(null, _orderID)
-				.Select(dto => new OrderListVM(dto)).ToList();
-			dataGridView_Main.DataSource = _data;
+			try
+			{
+				dataGridView_Main.DataSource = null;
+				_data = new OrderListService().Search(null, _orderID)
+					.Select(dto => new OrderListVM(dto)).ToList();
+				dataGridView_Main.DataSource = _data;
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show("資料查詢失敗，可能原因：" + ex.Message);
+			}
 		}
 
 	}

@@ -17,24 +17,27 @@ namespace prjMidtermTopic.ViewModels
 
 		[Display(Name = "訂單編號")]
 		[Required(ErrorMessage = "{0}必填")]
-		public int OrderID { get; set; }
+		[RegularExpression(@"^\d+$", ErrorMessage = "{0}請輸入正整數")]
+		public string OrderID { get; set; }
 
 		[Display(Name = "商品編號")]
 		[Required(ErrorMessage = "{0}必填")]
+		[RegularExpression(@"^\d+$", ErrorMessage = "{0}請輸入正整數")]
 		public string MerchandiseID { get; set; }
 
 		[Display(Name = "數量")]
 		[Required(ErrorMessage = "{0}必填")]
-		public int Quantity { get; set; }
+		[RegularExpression(@"^\d+$", ErrorMessage = "{0}請輸入正整數")]
+		public string Quantity { get; set; }
 
 		public OrderListVM() { }
 
 		public OrderListVM(OrderListDto dto)
 		{
 			ID = dto.ID;
-			OrderID = dto.OrderID;
+			OrderID = dto.OrderID.ToString();
 			MerchandiseID = dto.MerchandiseID;
-			Quantity = dto.Quantity;
+			Quantity = dto.Quantity.ToString();
 		}
 
 		public OrderListDto ToDto()
@@ -42,9 +45,9 @@ namespace prjMidtermTopic.ViewModels
 			return new OrderListDto
 			{
 				ID = this.ID,
-				OrderID = this.OrderID,
+				OrderID = int.Parse(this.OrderID),
 				MerchandiseID = this.MerchandiseID,
-				Quantity = this.Quantity
+				Quantity = int.Parse(this.Quantity)
 			};
 		}
 	}

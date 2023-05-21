@@ -73,18 +73,26 @@ namespace prjMidtermTopic.form_Order
 		//methods
 		private void Display()
 		{
-			int? orderID = null;
-			if (txt_OrderID.Text.Trim().Length > 0
-				&& int.TryParse(txt_OrderID.Text.Trim(), out int result))
+			try
 			{
-				orderID = result;
+				int? orderID = null;
+				if (txt_OrderID.Text.Trim().Length > 0
+					&& int.TryParse(txt_OrderID.Text.Trim(), out int result))
+				{
+					orderID = result;
+				}
+
+				var dtoList = new OrderService().Search(orderID, txt_CustomerID.Text.Trim());
+
+				_data = dtoList.Select(dto => new OrderVM(dto)).ToList();
+
+				dataGridView_Main.DataSource = _data;
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show("資料查詢失敗，可能原因：" + ex.Message);
 			}
 
-			var dtoList = new OrderService().Search(orderID, txt_CustomerID.Text.Trim());
-
-			_data = dtoList.Select(dto => new OrderVM(dto)).ToList();
-
-			dataGridView_Main.DataSource = _data;
 		}
 
 		private void AutoDisplay(object sender, EventArgs e)

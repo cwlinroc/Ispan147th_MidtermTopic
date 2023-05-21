@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			this.btn_commit = new System.Windows.Forms.Button();
 			this.label1 = new System.Windows.Forms.Label();
 			this.txt_OrderID = new System.Windows.Forms.TextBox();
@@ -37,6 +38,8 @@
 			this.label4 = new System.Windows.Forms.Label();
 			this.comboBox_PayMethod = new System.Windows.Forms.ComboBox();
 			this.comboBox_Payed = new System.Windows.Forms.ComboBox();
+			this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// btn_commit
@@ -106,11 +109,6 @@
 			// comboBox_PayMethod
 			// 
 			this.comboBox_PayMethod.FormattingEnabled = true;
-			this.comboBox_PayMethod.Items.AddRange(new object[] {
-            "會員點數",
-            "信用卡",
-            "LinePay",
-            "Bitcoin"});
 			this.comboBox_PayMethod.Location = new System.Drawing.Point(124, 119);
 			this.comboBox_PayMethod.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
 			this.comboBox_PayMethod.Name = "comboBox_PayMethod";
@@ -120,14 +118,15 @@
 			// comboBox_Payed
 			// 
 			this.comboBox_Payed.FormattingEnabled = true;
-			this.comboBox_Payed.Items.AddRange(new object[] {
-            "是",
-            "否"});
 			this.comboBox_Payed.Location = new System.Drawing.Point(124, 149);
 			this.comboBox_Payed.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
 			this.comboBox_Payed.Name = "comboBox_Payed";
 			this.comboBox_Payed.Size = new System.Drawing.Size(197, 23);
 			this.comboBox_Payed.TabIndex = 4;
+			// 
+			// errorProvider1
+			// 
+			this.errorProvider1.ContainerControl = this;
 			// 
 			// form_OrderAdd
 			// 
@@ -146,6 +145,7 @@
 			this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
 			this.Name = "form_OrderAdd";
 			this.Text = "新增訂單";
+			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -162,5 +162,6 @@
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.ComboBox comboBox_PayMethod;
 		private System.Windows.Forms.ComboBox comboBox_Payed;
+		private System.Windows.Forms.ErrorProvider errorProvider1;
 	}
 }
