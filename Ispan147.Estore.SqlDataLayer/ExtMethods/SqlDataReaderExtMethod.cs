@@ -23,6 +23,13 @@ namespace ISpan147.Estore.SqlDataLayer.ExtMethods
 			return result;
 		}
 
+		public static bool GetBool(this SqlDataReader reader, string columnName)
+		{
+			bool result = false;
+			GetData(reader, columnName, (r, i) => result = r.GetBoolean(i));
+			return result;
+		}
+
 		public static DateTime GetDate(this SqlDataReader reader, string columnName)
 		{
 			DateTime result = DateTime.MinValue;

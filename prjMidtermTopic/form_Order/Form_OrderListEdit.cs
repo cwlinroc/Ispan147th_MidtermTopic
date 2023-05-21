@@ -15,20 +15,18 @@ namespace prjMidtermTopic.form_Order
 {
 	public partial class Form_OrderListEdit : Form
 	{
-		private Action<OrderListGridDto> _func;
-		private OrderListGridDto _dto;
+		private OrderListDto _dto;
 
-		public Form_OrderListEdit(Action<OrderListGridDto> func, OrderListGridDto dto)
+		public Form_OrderListEdit(OrderListDto dto)
 		{
 			InitializeComponent();
-			_func = func;
 			_dto = dto;
 		}
 
 		private void Form_OrderListEdit_Load(object sender, EventArgs e)
 		{
 			txt_OrderID.Text = _dto.OrderID.ToString();
-			txt_MerchandiseID.Text = _dto.MerchadiseID;
+			txt_MerchandiseID.Text = _dto.MerchandiseID;
 			txt_Quantity.Text = _dto.Quantity.ToString();
 		}
 
@@ -41,15 +39,13 @@ namespace prjMidtermTopic.form_Order
 				return;
 			}
 
-			var dto = new OrderListGridDto
+			new OrderListService().Update(new OrderListDto
 			{
 				ID = _dto.ID,
 				OrderID = orderID,
-				MerchadiseID = txt_MerchandiseID.Text,
+				MerchandiseID = txt_MerchandiseID.Text,
 				Quantity = quantity
-			};
-
-			_func(dto);
+			});
 
 			if (Owner != null)
 			{

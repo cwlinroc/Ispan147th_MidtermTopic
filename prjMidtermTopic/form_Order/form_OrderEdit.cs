@@ -11,15 +11,13 @@ using System.Windows.Forms;
 using ISpan147.Estore.SqlDataLayer.Services;
 using ISpan147.Estore.SqlDataLayer.Dtos;
 
-namespace prjMidtermTopic
+namespace prjMidtermTopic.form_Order
 {
 	public partial class form_OrderEdit : Form
 	{
-		private Action<OrderGridDto> func;
-		public form_OrderEdit(Action<OrderGridDto> func, OrderGridDto dto)
+		public form_OrderEdit(OrderDto dto)
 		{
 			InitializeComponent();
-			this.func = func;
 
 			txt_OrderID.Text = dto.ID.ToString();
 			txt_CustomerID.Text = dto.CustomerID.ToString();
@@ -37,11 +35,11 @@ namespace prjMidtermTopic
 			if (int.TryParse(orderIDstr, out int orderID) && customerID != ""
 				&& payMethod != -1 && payed != -1)
 			{
-				func(new OrderGridDto()
+				new OrderService().Update(new OrderDto()
 				{
 					ID = orderID,
 					CustomerID = customerID,
-					PaymentMethod = comboBox_PayMethod.SelectedItem.ToString(),
+					PaymentMethod = comboBox_PayMethod.SelectedIndex,
 					Payed = payed == 0
 				});
 				DisplayGrim.DisplayAll(this, new MessageArgs { Message = "_Order_" });

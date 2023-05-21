@@ -11,35 +11,29 @@ using System.Windows.Forms;
 using ISpan147.Estore.SqlDataLayer.Dtos;
 using ISpan147.Estore.SqlDataLayer.Services;
 
-namespace prjMidtermTopic
+namespace prjMidtermTopic.form_Order
 {
 	public partial class form_OrderAdd : Form
 	{
-		private Action<OrderGridDto> func;
-		public form_OrderAdd(Action<OrderGridDto> func)
+		public form_OrderAdd()
 		{
 			InitializeComponent();
-			this.func = func;
 		}
-
 
 		private void btn_commit_Click(object sender, EventArgs e)
 		{
-			string orderIDstr = txt_OrderID.Text.Trim();
 			string customerID = txt_CustomerID.Text.Trim();
 			int payMethod = comboBox_PayMethod.SelectedIndex;
 			int payed = comboBox_Payed.SelectedIndex;
-			if (int.TryParse(orderIDstr, out int orderID) && customerID != ""
-				&& payMethod != -1 && payed != -1)
+			if (customerID != "" && payMethod != -1 && payed != -1)
 			{
-				func(new OrderGridDto()
+				new OrderService().Create(new OrderDto()
 				{
-					ID = orderID,
 					CustomerID = customerID,
-					PaymentMethod = comboBox_PayMethod.SelectedItem.ToString(),
+					PaymentMethod = comboBox_PayMethod.SelectedIndex,
 					Payed = payed == 0
 				});
-				DisplayGrim.DisplayAll(this, new MessageArgs{ Message = "_Order_"});
+				DisplayGrim.DisplayAll(this, new MessageArgs { Message = "_Order_" });
 				this.Close();
 			}
 			else

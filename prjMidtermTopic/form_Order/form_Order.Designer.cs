@@ -1,4 +1,4 @@
-﻿namespace prjMidtermTopic
+﻿namespace prjMidtermTopic.form_Order
 {
     partial class form_MerchandiseOrder
     {

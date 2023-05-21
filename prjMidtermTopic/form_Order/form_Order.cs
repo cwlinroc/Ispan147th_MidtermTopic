@@ -11,15 +11,15 @@ using System.Windows.Forms;
 using System.Xml.Linq;
 using ISpan147.Estore.SqlDataLayer.Services;
 using ISpan147.Estore.SqlDataLayer.Dtos;
+using prjMidtermTopic.ViewModels;
 
-namespace prjMidtermTopic
+namespace prjMidtermTopic.form_Order
 {
 	public partial class form_MerchandiseOrder : Form
 	{
-		private OrderManager _manager = new OrderManager();
-		private OrderListManager _listManager = new OrderListManager();
-		private List<OrderGridDto> _data;
-		private int _row = 0;
+
+		private List<OrderVM> _data;
+		private int _row = -1;
 		public form_MerchandiseOrder()
 		{
 			InitializeComponent();
@@ -28,8 +28,6 @@ namespace prjMidtermTopic
 		//load
 		private void form_MerchandiseOrder_Load(object sender, EventArgs e)
 		{
-			_manager.Load();
-			_listManager.Load();
 			Display();
 			DisplayGrim.Handler += AutoDisplay;
 		}
@@ -54,11 +52,11 @@ namespace prjMidtermTopic
 		private void btn_Edit_Click(object sender, EventArgs e)
 		{
 			if (_row < 0) return;
-			new form_OrderEdit(_manager.Update, _data[_row]).ShowDialog();
+			new form_OrderEdit(_data[_row].ToDto()).ShowDialog();
 		}
 		private void btn_Add_Click(object sender, EventArgs e)
 		{
-			new form_OrderAdd(_manager.Add).ShowDialog();
+			new form_OrderAdd().ShowDialog();
 		}
 
 		//double click
@@ -66,11 +64,11 @@ namespace prjMidtermTopic
 		{
 			_row = e.RowIndex;
 			if (_row < 0) return;
-			var frm = new form_OrderList(_listManager, _data[_row].ID, _manager);
+			var frm = new form_OrderList(_data[_row].ID);
 			frm.Owner = this;
 			frm.ShowDialog();
 		}
-		
+
 
 		//methods
 		private void Display()
@@ -81,15 +79,18 @@ namespace prjMidtermTopic
 			{
 				orderID = result;
 			}
-			_data = _manager.Search(orderID, txt_CustomerID.Text.Trim());
-			
+
+			var dtoList = new OrderService().Search(orderID, txt_CustomerID.Text.Trim());
+
+			_data = dtoList.Select(dto => new OrderVM(dto)).ToList();
+
 			dataGridView_Main.DataSource = _data;
 		}
 
 		private void AutoDisplay(object sender, EventArgs e)
 		{
 			string message = (e as MessageArgs).Message;
-			if (!string.IsNullOrEmpty(message)&&!message.Contains("_Order_")) return;
+			if (!string.IsNullOrEmpty(message) && !message.Contains("_Order_")) return;
 
 			Display();
 		}

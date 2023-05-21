@@ -18,49 +18,49 @@ namespace ISpan147.Estore.SqlDataLayer.Services
 			{
 				ID = 1,
 				OrderID = 10001,
-				MerchadiseID = "976",
+				MerchandiseID = "976",
 				Quantity = 1
 			});
 			_orderLists.Add(new OrderListGridDto
 			{
 				ID = 2,
 				OrderID = 10002,
-				MerchadiseID = "656",
+				MerchandiseID = "656",
 				Quantity = 1
 			});
 			_orderLists.Add(new OrderListGridDto
 			{
 				ID = 3,
 				OrderID = 10002,
-				MerchadiseID = "946",
+				MerchandiseID = "946",
 				Quantity = 3
 			});
 			_orderLists.Add(new OrderListGridDto
 			{
 				ID = 4,
 				OrderID = 10003,
-				MerchadiseID = "348",
+				MerchandiseID = "348",
 				Quantity = 10
 			});
 			_orderLists.Add(new OrderListGridDto
 			{
 				ID = 5,
 				OrderID = 10003,
-				MerchadiseID = "455",
+				MerchandiseID = "455",
 				Quantity = 5
 			});
 			_orderLists.Add(new OrderListGridDto
 			{
 				ID = 6,
 				OrderID = 10004,
-				MerchadiseID = "134",
+				MerchandiseID = "134",
 				Quantity = 2,
 			});
 			_orderLists.Add(new OrderListGridDto
 			{
 				ID = 7,
 				OrderID = 10005,
-				MerchadiseID = "656",
+				MerchandiseID = "656",
 				Quantity = 1,
 			});
 			_orderListIDCount = 8;
@@ -79,7 +79,7 @@ namespace ISpan147.Estore.SqlDataLayer.Services
 			}
 			if (!string.IsNullOrEmpty(merchandiseID))
 			{
-				sublists = sublists.FindAll(o => o.MerchadiseID == merchandiseID);
+				sublists = sublists.FindAll(o => o.MerchandiseID == merchandiseID);
 			}
 			return sublists;
 		}
@@ -103,7 +103,7 @@ namespace ISpan147.Estore.SqlDataLayer.Services
 			if (list != null)
 			{
 				list.OrderID = dto.OrderID;
-				list.MerchadiseID = dto.MerchadiseID;
+				list.MerchandiseID = dto.MerchandiseID;
 				list.Quantity = dto.Quantity;
 			}
 		}

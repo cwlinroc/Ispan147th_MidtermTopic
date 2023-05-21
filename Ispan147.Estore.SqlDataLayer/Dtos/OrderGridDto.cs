@@ -10,7 +10,9 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
 	{
 		public int ID { get; set; }
 		public string CustomerID { get; set; }
+		public string CustomerName { get; set; }
 		public string PaymentMethod { get; set; }
 		public bool Payed { get; set; }
+		public int PaymentAmount { get; set; }
 	}
 }

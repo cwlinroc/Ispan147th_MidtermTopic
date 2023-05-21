@@ -4,16 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0EC3BAB8-1CCC-430B-98A1-30C2D84D4808}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ISpan147.Estore.SqlDataLayer</RootNamespace>
-    <AssemblyName>ISpan147.Estore.SqlDataLayer</AssemblyName>
+    <ProjectGuid>{343DAF9E-1938-4B1F-B539-C4103A76C9ED}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>TestConsole</RootNamespace>
+    <AssemblyName>TestConsole</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,6 +24,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -32,7 +34,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -42,22 +43,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Builders\SqlParameterBuilder.cs" />
-    <Compile Include="Dtos\Assembler.cs" />
-    <Compile Include="Dtos\OrderDto.cs" />
-    <Compile Include="Dtos\OrderGridDto.cs" />
-    <Compile Include="Dtos\OrderListDto.cs" />
-    <Compile Include="Dtos\OrderListGridDto.cs" />
-    <Compile Include="ExtMethods\SqlDataReaderExtMethod.cs" />
-    <Compile Include="Repositories\OrderListRepository.cs" />
-    <Compile Include="Repositories\OrderRepository.cs" />
-    <Compile Include="Services\OrderListManager.cs" />
-    <Compile Include="Services\OrderListService.cs" />
-    <Compile Include="Services\OrderManager.cs" />
-    <Compile Include="Services\OrderService.cs" />
-    <Compile Include="Sqldb.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Ispan147.Estore.SqlDataLayer\ISpan147.Estore.SqlDataLayer.csproj">
+      <Project>{0ec3bab8-1ccc-430b-98a1-30c2d84d4808}</Project>
+      <Name>ISpan147.Estore.SqlDataLayer</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

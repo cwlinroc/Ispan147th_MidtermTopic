@@ -11,23 +11,19 @@ using System.Windows.Forms;
 using ISpan147.Estore.SqlDataLayer.Dtos;
 using ISpan147.Estore.SqlDataLayer.Services;
 using prjMidtermTopic.Interfaces;
-using prjMidtermTopic.form_Order;
+using prjMidtermTopic.ViewModels;
 
-namespace prjMidtermTopic
+namespace prjMidtermTopic.form_Order
 {
-	public partial class form_OrderList : Form , IGrid
+	public partial class form_OrderList : Form, IGrid
 	{
-		private OrderListManager _listManager;
-		private OrderManager _manager;
 		private int _orderID;
-		private List<OrderListGridDto> _data;
-		private int _row = 0;
-		public form_OrderList(OrderListManager listManager, int orderId, OrderManager manager)
+		private List<OrderListVM> _data;
+		private int _row = -1;
+		public form_OrderList(int orderId)
 		{
 			InitializeComponent();
-			_listManager = listManager;
 			_orderID = orderId;
-			_manager = manager;
 		}
 
 		//load
@@ -49,47 +45,45 @@ namespace prjMidtermTopic
 		{
 			if (_row < 0) return;
 
-			var frm = new Form_OrderListEdit(_listManager.Update, _data[_row]);
+			var frm = new Form_OrderListEdit(_data[_row].ToDto());
 			frm.Owner = this;
 			frm.ShowDialog();
 		}
 		private void btn_AddListItem_Click(object sender, EventArgs e)
 		{
-			if (_row < 0) return;
-
-			var frm = new form_OrderListAdd(_listManager.Add, _data[_row].OrderID);
+			var frm = new form_OrderListAdd(_orderID);
 			frm.Owner = this;
 			frm.ShowDialog();
 		}
 		private void btn_DelteListItem_Click(object sender, EventArgs e)
 		{
 			int orderListID = int.Parse(dataGridView_Main.Rows[_row].Cells[0].Value.ToString());
-			_listManager.Delete(orderListID);
+			new OrderListService().Delete(orderListID);
 
 			Display();
 		}
 		private void btn_DeleteOrder_Click(object sender, EventArgs e)
 		{
-			if (_data.Count > 0)
+			if (_data.Count == 0)
 			{
 				MessageBox.Show("仍然有關連清單，訂單刪除失敗");
+				return;
 			}
-			else
-			{
-				_manager.Delete(_orderID);
-				DisplayGrim.DisplayAll(this, new MessageArgs());
-				this.Close();
-			}
+			new OrderService().Delete(_orderID);
+
+			DisplayGrim.DisplayAll(this, new MessageArgs());
+			this.Close();
 		}
 
 		#endregion
 
-		
+
 		//methods
 		public void Display()
 		{
 			dataGridView_Main.DataSource = null;
-			_data = _listManager.Search(_orderID);
+			_data = new OrderListService().Search(null, _orderID)
+				.Select(dto => new OrderListVM(dto)).ToList();
 			dataGridView_Main.DataSource = _data;
 		}
 

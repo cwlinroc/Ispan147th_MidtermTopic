@@ -42,6 +42,21 @@ namespace ISpan147.Estore.SqlDataLayer.Builders
 			return this;
 		}
 
+		public SqlParameterBuilder AddBit(string columnName, bool? input)
+		{
+			SqlParameter parameter = new SqlParameter(columnName, SqlDbType.Bit);
+			if (input.HasValue)
+			{
+				parameter.Value = input.Value;
+			}
+			else
+			{
+				parameter.Value = DBNull.Value;
+			}
+			_parameters.Add(parameter);
+			return this;
+		}
+
 		public SqlParameterBuilder AddDateTime(string columnName, DateTime input)
 		{
 			_parameters.Add(new SqlParameter(columnName, SqlDbType.DateTime)

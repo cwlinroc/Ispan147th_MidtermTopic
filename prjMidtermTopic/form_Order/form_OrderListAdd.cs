@@ -15,14 +15,11 @@ namespace prjMidtermTopic.form_Order
 {
 	public partial class form_OrderListAdd : Form
 	{
-		private Action<OrderListGridDto> _func;
+		
 		private int _orderID;
-
-
-		public form_OrderListAdd(Action<OrderListGridDto> func, int orderId)
+		public form_OrderListAdd(int orderId)
 		{
 			InitializeComponent();
-			_func = func;
 			_orderID = orderId;
 			txt_OrderID.Text = orderId.ToString();
 		}
@@ -35,14 +32,12 @@ namespace prjMidtermTopic.form_Order
 				return;
 			}
 
-			var dto = new OrderListGridDto
+			new OrderListService().Create( new OrderListDto
 			{
 				OrderID = orderID,
-				MerchadiseID = txt_MerchandiseID.Text,
+				MerchandiseID = txt_MerchandiseID.Text,
 				Quantity = quantity
-			};
-
-			_func(dto);
+			});
 
 			if (Owner != null)
 			{
