@@ -12,9 +12,6 @@ namespace prjMidtermTopic.ViewModels
 
 	public class OrderVM
 	{
-		static private readonly string[] _payment = new string[] { "會員點數", "信用卡", "LinePay", "Bitcoin" };
-		static private readonly string[] _payed = new string[] { "尚未付款", "已付款" };
-
 		[Display(Name = "編號")]
 		[Required(ErrorMessage = "{0}必填")]
 		public int ID { get; set; }
@@ -30,35 +27,34 @@ namespace prjMidtermTopic.ViewModels
 		[Display(Name = "付款完畢")]
 		[Required(ErrorMessage = "{0}必填")]
 		public string Payed { get; set; }
+	}
 
-
-		public OrderVM() { }
-		public OrderVM(OrderDto dto)
-		{
-			ID = dto.ID;
-			CustomerID = dto.CustomerID;
-			PaymentMethod = _payment[dto.PaymentMethod];
-			Payed = dto.Payed ? "已付款" : "尚未付款";
-		}
-
-		public OrderDto ToDto()
+	static public class Orders
+	{
+		static public readonly string[] paymentOptions = new string[] { "會員點數", "信用卡", "LinePay", "Bitcoin" };
+		static public readonly string[] payedOptions = new string[] { "尚未付款", "已付款" };
+		static public OrderDto ToDto(this OrderVM vm)
 		{
 			return new OrderDto
 			{
-				ID = this.ID,
-				CustomerID = this.CustomerID,
-				PaymentMethod = Array.IndexOf(_payment, this.PaymentMethod),
-				Payed = this.Payed == "已付款"
+				ID = vm.ID,
+				CustomerID = vm.CustomerID,
+				PaymentMethod = Array.IndexOf(paymentOptions, vm.PaymentMethod),
+				Payed = vm.Payed == "已付款"
 			};
 		}
 
-		static public IEnumerable<string> GetPayMethods()
+		static public OrderVM ToVM(this OrderDto dto)
 		{
-			return _payment;
+			return new OrderVM
+			{
+				ID = dto.ID,
+				CustomerID = dto.CustomerID,
+				PaymentMethod = paymentOptions[dto.PaymentMethod],
+				Payed = dto.Payed ? "已付款" : "尚未付款"
+			};
 		}
-		static public IEnumerable<string> GetPayed()
-		{
-			return _payed;
-		}
+
 	}
+
 }

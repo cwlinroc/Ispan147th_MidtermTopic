@@ -84,7 +84,7 @@ namespace prjMidtermTopic.form_Order
 
 				var dtoList = new OrderService().Search(orderID, txt_CustomerID.Text.Trim());
 
-				_data = dtoList.Select(dto => new OrderVM(dto)).ToList();
+				_data = dtoList.Select(dto => dto.ToVM()).ToList();
 
 				dataGridView_Main.DataSource = _data;
 			}

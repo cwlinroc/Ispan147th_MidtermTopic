@@ -20,8 +20,8 @@ namespace prjMidtermTopic.form_Order
 		{
 			InitializeComponent();
 
-			comboBox_PayMethod.Items.AddRange(OrderVM.GetPayMethods().ToArray());
-			comboBox_Payed.Items.AddRange(OrderVM.GetPayed().ToArray());
+			comboBox_PayMethod.Items.AddRange(Orders.paymentOptions);
+			comboBox_Payed.Items.AddRange(Orders.payedOptions);
 
 			txt_OrderID.Text = dto.ID.ToString();
 			txt_CustomerID.Text = dto.CustomerID.ToString();
