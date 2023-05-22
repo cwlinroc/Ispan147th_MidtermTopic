@@ -14,7 +14,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 		public OrderDto Get(int id)
 		{
 			Func<SqlConnection> connGetter = SqlDb.GetConnection;
-			string sql = $"SELECT * FROM Orders WHERE ID = {id}";
+			string sql = $"SELECT * FROM Orders WHERE OrderID = {id}";
 			Func<SqlDataReader, OrderDto> assembler = Assembler.OrderDtoAssembler;
 
 			return SqlDb.Get(connGetter, sql, assembler);
@@ -33,8 +33,8 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 
 			if (orderID.HasValue)
 			{
-				where += " AND ID = @ID ";
-				parameterBuilder.AddInt("ID", orderID.Value);
+				where += " AND ID = @OrderID ";
+				parameterBuilder.AddInt("OrderID", orderID.Value);
 			}
 			if (!string.IsNullOrEmpty(customerID))
 			{
@@ -71,13 +71,13 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 
 			string sql = "UPDATE Orders SET CustomerID = @CustomerID"
 				+ ", Paymentmethod = @Paymentmethod "
-				+ ", Payed = @Payed WHERE ID = @ID ";
+				+ ", Payed = @Payed WHERE OrderID = @OrderID ";
 
 			var parameters = new SqlParameterBuilder()
 				.AddNVarchar("CustomerID", 15, dto.CustomerID)
 				.AddInt("Paymentmethod", dto.PaymentMethod)
 				.AddBit("Payed", dto.Payed)
-				.AddInt("ID", dto.ID)
+				.AddInt("OrderID", dto.ID)
 				.Build();
 
 			Func<SqlConnection> connGetter = SqlDb.GetConnection;
@@ -103,10 +103,10 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 
 		public int Delete(int orderID)
 		{
-			string sql = "DELETE Orders WHERE ID = @ID";
+			string sql = "DELETE Orders WHERE OrderID = @OrderID";
 
 			var parameters = new SqlParameterBuilder()
-				.AddInt("@ID", orderID)
+				.AddInt("@OrderID", orderID)
 				.Build();
 
 			Func<SqlConnection> connGetter = SqlDb.GetConnection;

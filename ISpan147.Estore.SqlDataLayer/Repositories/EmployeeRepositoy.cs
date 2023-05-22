@@ -14,10 +14,10 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 		public EmployeeDto Get(string account)
 		{
 			Func<SqlConnection> connGetter = SqlDb.GetConnection;
-			string sql = $"SELECT * FROM Employee WHERE Account = @Account";
+			string sql = $"SELECT * FROM Employee WHERE EmployeeAccount = @EmployeeAccount";
 			Func<SqlDataReader, EmployeeDto> assembler = Assembler.EmployeeDtoAssembler;
 			var parameters = new SqlParameterBuilder()
-				.AddNVarchar("@Account", 20, account).Build();
+				.AddNVarchar("@EmployeeAccount", 20, account).Build();
 
 			return SqlDb.Get(connGetter, sql, assembler, parameters);
 		}
@@ -27,14 +27,14 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 		{
 			if (dto == null) return 0;
 
-			string sql = "UPDATE Employee SET Password = @Password"
+			string sql = "UPDATE Employee SET EmployeePassword = @EmployeePassword"
 				+ ", Permission = @Permission "
-				+ " WHERE Account = @Account ";
+				+ " WHERE EmployeeAccount = @EmployeeAccount ";
 
 			var parameters = new SqlParameterBuilder()
-				.AddNVarchar("Password", 65, dto.Password)
+				.AddNVarchar("EmployeePassword", 65, dto.Password)
 				.AddInt("Permission", dto.Permission)
-				.AddNVarchar("Account", 20, dto.Account)
+				.AddNVarchar("EmployeeAccount", 20, dto.Account)
 				.Build();
 
 			Func<SqlConnection> connGetter = SqlDb.GetConnection;
@@ -44,12 +44,12 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 
 		public void Create(EmployeeDto dto)
 		{
-			string sql = "INSERT INTO Employee (Account, Password, Permission)"
-				+ " VALUES (@Account, @Password, @Permission) ";
+			string sql = "INSERT INTO Employee (EmployeeAccount, EmployeePassword, Permission)"
+				+ " VALUES (@EmployeeAccount, @EmployeePassword, @Permission) ";
 
 			var parameters = new SqlParameterBuilder()
-				.AddNVarchar("Account", 20, dto.Account)
-				.AddNVarchar("Password", 65, dto.Password)
+				.AddNVarchar("EmployeeAccount", 20, dto.Account)
+				.AddNVarchar("EmployeePassword", 65, dto.Password)
 				.AddInt("Permission", dto.Permission)
 				.Build();
 
@@ -60,10 +60,10 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 
 		public int Delete(string account)
 		{
-			string sql = "DELETE Employee WHERE Account = @Account";
+			string sql = "DELETE Employee WHERE EmployeeAccount = @EmployeeAccount";
 
 			var parameters = new SqlParameterBuilder()
-				.AddNVarchar("Account", 20, account)
+				.AddNVarchar("EmployeeAccount", 20, account)
 				.Build();
 
 			Func<SqlConnection> connGetter = SqlDb.GetConnection;
