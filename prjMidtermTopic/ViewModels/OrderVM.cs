@@ -37,8 +37,8 @@ namespace prjMidtermTopic.ViewModels
 		{
 			return new OrderDto
 			{
-				ID = vm.ID,
-				CustomerID = vm.CustomerID,
+				OrderID = vm.ID,
+				CustomerID = int.Parse(vm.CustomerID),
 				PaymentMethod = Array.IndexOf(paymentOptions, vm.PaymentMethod),
 				Payed = vm.Payed == "已付款"
 			};
@@ -48,8 +48,8 @@ namespace prjMidtermTopic.ViewModels
 		{
 			return new OrderVM
 			{
-				ID = dto.ID,
-				CustomerID = dto.CustomerID,
+				ID = dto.OrderID,
+				CustomerID = dto.CustomerID.ToString(),
 				PaymentMethod = paymentOptions[dto.PaymentMethod],
 				Payed = dto.Payed ? "已付款" : "尚未付款"
 			};

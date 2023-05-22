@@ -76,13 +76,20 @@ namespace prjMidtermTopic.form_Order
 			try
 			{
 				int? orderID = null;
+				int? customerID = null;
+
 				if (txt_OrderID.Text.Trim().Length > 0
-					&& int.TryParse(txt_OrderID.Text.Trim(), out int result))
+					&& int.TryParse(txt_OrderID.Text.Trim(), out int _orderID))
 				{
-					orderID = result;
+					orderID = _orderID;
+				}
+				if (txt_OrderID.Text.Trim().Length > 0
+					&& int.TryParse(txt_OrderID.Text.Trim(), out int _customerID))
+				{
+					customerID = _customerID;
 				}
 
-				var dtoList = new OrderService().Search(orderID, txt_CustomerID.Text.Trim());
+				var dtoList = new OrderService().Search(orderID, customerID);
 
 				_data = dtoList.Select(dto => dto.ToVM()).ToList();
 

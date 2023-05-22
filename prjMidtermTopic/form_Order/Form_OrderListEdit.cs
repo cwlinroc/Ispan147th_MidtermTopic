@@ -23,9 +23,9 @@ namespace prjMidtermTopic.form_Order
 		{
 			InitializeComponent();
 
-			_orderListID = dto.ID;
+			_orderListID = dto.OrderListID;
 			txt_OrderID.Text = dto.OrderID.ToString();
-			txt_MerchandiseID.Text = dto.MerchandiseID;
+			txt_MerchandiseID.Text = dto.MerchandiseID.ToString();
 			txt_Quantity.Text = dto.Quantity.ToString();
 		}
 

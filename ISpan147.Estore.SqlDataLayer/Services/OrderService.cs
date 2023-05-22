@@ -22,7 +22,7 @@ namespace ISpan147.Estore.SqlDataLayer.Services
 
 		public List<OrderDto> Search(
 			int? orderID = null,
-			string customerID = null,
+			int? customerID = null,
 			int? paymentmethod = null,
 			bool? payed = null)
 		{

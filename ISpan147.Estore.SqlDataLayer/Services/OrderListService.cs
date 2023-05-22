@@ -23,7 +23,7 @@ namespace ISpan147.Estore.SqlDataLayer.Services
 		public List<OrderListDto> Search(
 			int? id = null,
 			int? orderID = null,
-			string merchandiseID = null,
+			int? merchandiseID = null,
 			int? quantity = null)
 		{
 			return new OrderListRepository().Search(id, orderID, merchandiseID, quantity);

@@ -23,7 +23,7 @@ namespace prjMidtermTopic.form_Order
 			comboBox_PayMethod.Items.AddRange(Orders.paymentOptions);
 			comboBox_Payed.Items.AddRange(Orders.payedOptions);
 
-			txt_OrderID.Text = dto.ID.ToString();
+			txt_OrderID.Text = dto.OrderID.ToString();
 			txt_CustomerID.Text = dto.CustomerID.ToString();
 			comboBox_PayMethod.SelectedIndex = dto.PaymentMethod;
 			comboBox_Payed.SelectedIndex = (dto.Payed) ? 1 : 0;

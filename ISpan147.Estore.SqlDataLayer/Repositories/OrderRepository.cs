@@ -22,7 +22,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 
 		public List<OrderDto> Search(
 			int? orderID = null,
-			string customerID = null,
+			int? customerID = null,
 			int? paymentmethod = null,
 			bool? payed = null)
 		{
@@ -36,10 +36,10 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 				where += " AND ID = @OrderID ";
 				parameterBuilder.AddInt("OrderID", orderID.Value);
 			}
-			if (!string.IsNullOrEmpty(customerID))
+			if (customerID.HasValue				)
 			{
 				where += " AND CustomerID = @CustomerID ";
-				parameterBuilder.AddNVarchar("CustomerID", 15, customerID);
+				parameterBuilder.AddInt("CustomerID",  customerID.Value);
 			}
 			if (paymentmethod.HasValue)
 			{
@@ -74,10 +74,10 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 				+ ", Payed = @Payed WHERE OrderID = @OrderID ";
 
 			var parameters = new SqlParameterBuilder()
-				.AddNVarchar("CustomerID", 15, dto.CustomerID)
+				.AddInt("CustomerID", dto.CustomerID)
 				.AddInt("Paymentmethod", dto.PaymentMethod)
 				.AddBit("Payed", dto.Payed)
-				.AddInt("OrderID", dto.ID)
+				.AddInt("OrderID", dto.OrderID)
 				.Build();
 
 			Func<SqlConnection> connGetter = SqlDb.GetConnection;
@@ -90,8 +90,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 			string sql = "INSERT INTO Orders (CustomerID, Paymentmethod, Payed)"
 				+ " VALUES (@CustomerID, @Paymentmethod, @Payed) ";
 
-			var parameters = new SqlParameterBuilder()
-				.AddNVarchar("CustomerID", 15, dto.CustomerID)
+			var parameters = new SqlParameterBuilder().AddInt("CustomerID", dto.CustomerID)
 				.AddInt("Paymentmethod", dto.PaymentMethod)
 				.AddBit("Payed", dto.Payed)
 				.Build();

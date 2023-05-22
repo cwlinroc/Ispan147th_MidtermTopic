@@ -32,9 +32,9 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 				+ " WHERE EmployeeAccount = @EmployeeAccount ";
 
 			var parameters = new SqlParameterBuilder()
-				.AddNVarchar("EmployeePassword", 65, dto.Password)
+				.AddNVarchar("EmployeePassword", 65, dto.EmployeePassword)
 				.AddInt("Permission", dto.Permission)
-				.AddNVarchar("EmployeeAccount", 20, dto.Account)
+				.AddNVarchar("EmployeeAccount", 20, dto.EmployeeAccount)
 				.Build();
 
 			Func<SqlConnection> connGetter = SqlDb.GetConnection;
@@ -48,8 +48,8 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 				+ " VALUES (@EmployeeAccount, @EmployeePassword, @Permission) ";
 
 			var parameters = new SqlParameterBuilder()
-				.AddNVarchar("EmployeeAccount", 20, dto.Account)
-				.AddNVarchar("EmployeePassword", 65, dto.Password)
+				.AddNVarchar("EmployeeAccount", 20, dto.EmployeeAccount)
+				.AddNVarchar("EmployeePassword", 65, dto.EmployeePassword)
 				.AddInt("Permission", dto.Permission)
 				.Build();
 

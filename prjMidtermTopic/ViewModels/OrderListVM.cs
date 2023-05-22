@@ -38,9 +38,9 @@ namespace prjMidtermTopic.ViewModels
 		{
 			return new OrderListDto
 			{
-				ID = vm.ID,
+				OrderListID = vm.ID,
 				OrderID = int.Parse(vm.OrderID),
-				MerchandiseID =  vm.MerchandiseID,
+				MerchandiseID =  int.Parse(vm.MerchandiseID),
 				Quantity = int.Parse(vm.Quantity)
 			};
 		}
@@ -49,9 +49,9 @@ namespace prjMidtermTopic.ViewModels
 		{
 			return new OrderListVM
 			{
-				ID = dto.ID,
+				ID = dto.OrderListID,
 				OrderID = dto.OrderID.ToString(),
-				MerchandiseID = dto.MerchandiseID,
+				MerchandiseID = dto.MerchandiseID.ToString(),
 				Quantity = dto.Quantity.ToString(),
 			};
 		}

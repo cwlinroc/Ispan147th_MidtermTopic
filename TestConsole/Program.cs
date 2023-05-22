@@ -43,12 +43,12 @@ namespace TestConsole
 
 			new EmployeeRepositoy().Create(new EmployeeDto
 			{
-				Account = "admin",
-				Password = "admin".GetSaltedSha256(),
+				EmployeeAccount = "admin",
+				EmployeePassword = "admin".GetSaltedSha256(),
 				Permission = 1
 			});
 			var dto = new EmployeeRepositoy().Get("admin");
-			Console.WriteLine(dto.Password);
+			Console.WriteLine(dto.EmployeePassword);
 			Console.WriteLine("admin".GetSaltedSha256());
 			Console.WriteLine("admin".GetSaltedSha256().Length);
 
