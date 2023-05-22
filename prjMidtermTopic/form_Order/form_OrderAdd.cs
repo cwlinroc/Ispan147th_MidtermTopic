@@ -19,8 +19,8 @@ namespace prjMidtermTopic.form_Order
 		public form_OrderAdd()
 		{
 			InitializeComponent();
-			comboBox_PayMethod.Items.AddRange(OrderVM.GetPayMethods().ToArray());
-			comboBox_Payed.Items.AddRange(OrderVM.GetPayed().ToArray());
+			comboBox_PayMethod.Items.AddRange(Orders.paymentOptions);
+			comboBox_Payed.Items.AddRange(Orders.payedOptions);
 		}
 
 		private void btn_commit_Click(object sender, EventArgs e)

@@ -106,7 +106,7 @@ namespace prjMidtermTopic.form_Order
 			{
 				dataGridView_Main.DataSource = null;
 				_data = new OrderListService().Search(null, _orderID)
-					.Select(dto => new OrderListVM(dto)).ToList();
+					.Select(dto => dto.ToVM()).ToList();
 				dataGridView_Main.DataSource = _data;
 			}
 			catch (Exception ex)

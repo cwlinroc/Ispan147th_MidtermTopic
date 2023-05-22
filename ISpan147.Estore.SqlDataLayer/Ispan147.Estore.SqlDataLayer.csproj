@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Builders\SqlParameterBuilder.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="Dtos\AdoptDto.cs" />
     <Compile Include="Dtos\Assembler.cs" />
     <Compile Include="Dtos\EmployeeDto.cs" />
     <Compile Include="Dtos\OrderDto.cs" />

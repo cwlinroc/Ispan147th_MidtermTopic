@@ -29,25 +29,30 @@ namespace prjMidtermTopic.ViewModels
 		[Required(ErrorMessage = "{0}必填")]
 		[RegularExpression(@"^\d+$", ErrorMessage = "{0}請輸入正整數")]
 		public string Quantity { get; set; }
+		
+	}
 
-		public OrderListVM() { }
-
-		public OrderListVM(OrderListDto dto)
-		{
-			ID = dto.ID;
-			OrderID = dto.OrderID.ToString();
-			MerchandiseID = dto.MerchandiseID;
-			Quantity = dto.Quantity.ToString();
-		}
-
-		public OrderListDto ToDto()
+	static public class OrderLists
+	{
+		static public OrderListDto ToDto(this OrderListVM vm)
 		{
 			return new OrderListDto
 			{
-				ID = this.ID,
-				OrderID = int.Parse(this.OrderID),
-				MerchandiseID = this.MerchandiseID,
-				Quantity = int.Parse(this.Quantity)
+				ID = vm.ID,
+				OrderID = int.Parse(vm.OrderID),
+				MerchandiseID =  vm.MerchandiseID,
+				Quantity = int.Parse(vm.Quantity)
+			};
+		}
+
+		static public OrderListVM ToVM(this OrderListDto dto)
+		{
+			return new OrderListVM
+			{
+				ID = dto.ID,
+				OrderID = dto.OrderID.ToString(),
+				MerchandiseID = dto.MerchandiseID,
+				Quantity = dto.Quantity.ToString(),
 			};
 		}
 	}
