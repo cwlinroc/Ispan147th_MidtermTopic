@@ -7,6 +7,10 @@ using ISpan147.Estore.SqlDataLayer.Repositories;
 using ISpan147.Estore.SqlDataLayer.Dtos;
 using System.Dynamic;
 using ISpan147.Estore.SqlDataLayer.ExtMethods;
+using System.Security.Principal;
+using static System.Net.Mime.MediaTypeNames;
+using ISpan147.Estore.SqlDataLayer.Utility;
+using ISpan147.Estore.SqlDataLayer.Services;
 
 namespace TestConsole
 {
@@ -41,18 +45,40 @@ namespace TestConsole
 			//repo.Delete(4);
 
 
-			new EmployeeRepositoy().Create(new EmployeeDto
-			{
-				EmployeeAccount = "admin",
-				EmployeePassword = "admin".GetSaltedSha256(),
-				Permission = 1
-			});
-			var dto = new EmployeeRepositoy().Get("admin");
-			Console.WriteLine(dto.EmployeePassword);
-			Console.WriteLine("admin".GetSaltedSha256());
-			Console.WriteLine("admin".GetSaltedSha256().Length);
+			//new EmployeeRepositoy().Create(new EmployeeDto
+			//{
+			//	EmployeeAccount = "admin",
+			//	EmployeePassword = "admin".GetSaltedSha256(),
+			//	Permission = 1
+			//});
+			//var dto = new EmployeeRepositoy().Get("admin");
+			//Console.WriteLine(dto.EmployeePassword);
+			//Console.WriteLine("admin".GetSaltedSha256());
+			//Console.WriteLine("admin".GetSaltedSha256().Length);
+
+			//var repo = new MassInsertRepository();
+
+			//repo.CreatePet(new PetDto
+			//{
+			//	SpeciesID = 3,
+			//	BreedID = 19,
+			//	PetName = "笑鼠",
+			//	Gender = true,
+			//	Age = 2,
+			//	Description = "料理鼠王",
+			//	Location = "你家廚房"
+			//});
+
+
+			var mass = new MassInsertService();
+
+			mass.CreateRandomPets(50);
+
+			mass.CreateRandomMembers(200);
+
 
 			Console.WriteLine("Test Over!");
+			Console.ReadKey();
 			Console.ReadKey();
 		}
 	}
