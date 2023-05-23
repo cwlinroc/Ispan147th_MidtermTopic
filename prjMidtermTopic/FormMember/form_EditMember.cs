@@ -1,6 +1,6 @@
-﻿using MemberClassLibrary.Dtos;
-using MemberClassLibrary.Repositories;
-using MemberClassLibrary.Services;
+﻿using Ispan147.Estore.SqlDataLayer.Dtos;
+using Ispan147.Estore.SqlDataLayer.Repositories;
+using Ispan147.Estore.SqlDataLayer.Services;
 using prjMidtermTopic.Model;
 using System;
 using System.Collections.Generic;
@@ -11,7 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static MemberClassLibrary.Dtos.MemberDto;
+using static Ispan147.Estore.SqlDataLayer.Dtos.MemberDto;
 
 namespace prjMidtermTopic.FormMember
 {

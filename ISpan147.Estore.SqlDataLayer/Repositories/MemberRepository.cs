@@ -1,4 +1,4 @@
-﻿using MemberClassLibrary.Dtos;
+﻿using Ispan147.Estore.SqlDataLayer.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -10,7 +10,7 @@ using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MemberClassLibrary.Repositories
+namespace Ispan147.Estore.SqlDataLayer.Repositories
 {
 	public class MemberRepository
 	{

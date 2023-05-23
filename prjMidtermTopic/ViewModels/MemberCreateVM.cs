@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
-using static MemberClassLibrary.Dtos.MemberDto;
+using static Ispan147.Estore.SqlDataLayer.Dtos.MemberDto;
 
 namespace prjMidtermTopic.ViewModels
 {
@@ -32,7 +32,7 @@ namespace prjMidtermTopic.ViewModels
 
 		[Display(Name = "密碼")]
 		[Required(ErrorMessage = "{0}必填")]
-		[MaxLength(15, ErrorMessage = "{0}長度不可多於{1}")]
+		[MaxLength(65, ErrorMessage = "{0}長度不可多於{1}")]
 		public string Password { get; set; }
 
 		[Display(Name = "手機號碼")]
@@ -40,10 +40,11 @@ namespace prjMidtermTopic.ViewModels
 		[MaxLength(10, ErrorMessage = "{0}長度不可多於{1}")]
 		public string Phone { get; set; }
 
-		[Display(Name = "地址")]
+		[Display(Name = "地址")]		
 		public string Address { get; set; }
 
 		[Display(Name = "Email")]
+		[Required(ErrorMessage = "{0}必填")]
 		public string Email { get; set; }
 
 		[Display(Name = "頭像")]

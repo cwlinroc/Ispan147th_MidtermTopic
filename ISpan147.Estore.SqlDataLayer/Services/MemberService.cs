@@ -1,12 +1,12 @@
-﻿using MemberClassLibrary.Dtos;
-using MemberClassLibrary.Repositories;
+﻿using Ispan147.Estore.SqlDataLayer.Dtos;
+using Ispan147.Estore.SqlDataLayer.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MemberClassLibrary.Services
+namespace Ispan147.Estore.SqlDataLayer.Services
 {
 	public class MemberService
 	{

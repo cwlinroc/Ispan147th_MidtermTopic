@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using prjMidtermTopic.form_Order;
+//using prjMidtermTopic.form_Order;
 
 namespace prjMidtermTopic
 {
@@ -33,27 +33,27 @@ namespace prjMidtermTopic
 
 		private void toolStripButton_PetForm_Click(object sender, EventArgs e)
 		{
-			showForm(new form_Pet());
+			//showForm(new form_Pet());
 		}
 
 		private void toolStripButton_AdoptForm_Click(object sender, EventArgs e)
 		{
-			showForm(new form_Adopt());
+			//showForm(new form_Adopt());
 		}
 
 		private void toolStripButton_MerchandiseForm_Click(object sender, EventArgs e)
 		{
-			showForm(new form_Merchandise());
+			//showForm(new form_Merchandise());
 		}
 
 		private void toolStripButton_OrderForm_Click(object sender, EventArgs e)
 		{
-			showForm(new form_MerchandiseOrder());
+			//showForm(new form_MerchandiseOrder());
 		}
 
 		private void toolStripButton_QAForm_Click(object sender, EventArgs e)
 		{
-			showForm(new form_QA());
+			//showForm(new form_QA());
 		}
 
 		private void toolStripButton_Exit_Click(object sender, EventArgs e)

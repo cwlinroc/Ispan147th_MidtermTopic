@@ -68,36 +68,6 @@
     <Compile Include="FormMember\form_Member.Designer.cs">
       <DependentUpon>form_Member.cs</DependentUpon>
     </Compile>
-    <Compile Include="form_Pet.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="form_Pet.Designer.cs">
-      <DependentUpon>form_Pet.cs</DependentUpon>
-    </Compile>
-    <Compile Include="form_Adopt.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="form_Adopt.Designer.cs">
-      <DependentUpon>form_Adopt.cs</DependentUpon>
-    </Compile>
-    <Compile Include="form_Merchandise.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="form_Merchandise.Designer.cs">
-      <DependentUpon>form_Merchandise.cs</DependentUpon>
-    </Compile>
-    <Compile Include="form_QA.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="form_QA.Designer.cs">
-      <DependentUpon>form_QA.cs</DependentUpon>
-    </Compile>
-    <Compile Include="form_Order.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="form_Order.Designer.cs">
-      <DependentUpon>form_Order.cs</DependentUpon>
-    </Compile>
     <Compile Include="form_Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -147,9 +117,9 @@
     <Folder Include="Image\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TopicMember\MemberClassLibrary.csproj">
-      <Project>{4dd6e253-7767-4faa-af79-63dac5545bd8}</Project>
-      <Name>MemberClassLibrary</Name>
+    <ProjectReference Include="..\ISpan147.Estore.SqlDataLayer\Ispan147.Estore.SqlDataLayer.csproj">
+      <Project>{9ee28126-8c44-4f99-867d-e316d537541b}</Project>
+      <Name>Ispan147.Estore.SqlDataLayer</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

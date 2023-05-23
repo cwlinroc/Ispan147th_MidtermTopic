@@ -1,22 +1,14 @@
-﻿using MemberClassLibrary.Dtos;
-using MemberClassLibrary.Services;
-using MemberClassLibrary.Repositories;
+﻿using Ispan147.Estore.SqlDataLayer.Dtos;
+using Ispan147.Estore.SqlDataLayer.Repositories;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using prjMidtermTopic.Model;
 using prjMidtermTopic.FormMember;
 
 namespace prjMidtermTopic
 {
-    public partial class form_Member : Form, IGrid
+	public partial class form_Member : Form, IGrid
     {
 		List<MemberDto> data;
 

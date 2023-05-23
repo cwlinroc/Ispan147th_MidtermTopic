@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MemberClassLibrary.Dtos
+namespace Ispan147.Estore.SqlDataLayer.Dtos
 {
 	public class MemberDto
 	{
