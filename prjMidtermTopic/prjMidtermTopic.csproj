@@ -50,15 +50,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormMember\form_CreateMember.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="FormMember\form_CreateMember.cs" />
     <Compile Include="FormMember\form_CreateMember.Designer.cs">
       <DependentUpon>form_CreateMember.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormMember\form_EditMember.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="FormMember\form_EditMember.cs" />
     <Compile Include="FormMember\form_EditMember.Designer.cs">
       <DependentUpon>form_EditMember.cs</DependentUpon>
     </Compile>
