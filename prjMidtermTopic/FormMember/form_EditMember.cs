@@ -69,7 +69,7 @@ namespace prjMidtermTopic.FormMember
 		{
 			MemberDto dto = new MemberDto()
 			{
-				Id = this._memberId,
+				ID = this._memberId,
 				Name = txtName.Text,
 				DateOfBirth = DateTime.Parse(txtDateOfBirth.Text),
 				Account = txtAccount.Text,

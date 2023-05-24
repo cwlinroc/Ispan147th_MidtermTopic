@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-using static Ispan147.Estore.SqlDataLayer.Dtos.MemberDto;
 
 namespace prjMidtermTopic.ViewModels
 {
@@ -20,10 +14,12 @@ namespace prjMidtermTopic.ViewModels
 		public string Name { get; set; }
 
 		[Display(Name = "生日")]
+		[Required(ErrorMessage = "{0}必填")]
 		public DateTime DateOfBirth { get; set; }
 
 		[Display(Name = "性別")]
-		public GenderType Gender { get; set; }
+		[Required(ErrorMessage = "{0}必填")]
+		public bool Gender { get; set; }
 
 		[Display(Name = "帳號")]
 		[Required(ErrorMessage = "{0}必填")]

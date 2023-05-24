@@ -18,7 +18,7 @@ namespace prjMidtermTopic.FormMember
 {
 	public partial class form_CreateMember : Form
 	{
-		public GenderType _gender;
+		public bool _gender;
 		public form_CreateMember()
 		{
 			InitializeComponent();
@@ -71,7 +71,7 @@ namespace prjMidtermTopic.FormMember
 		{
 			if (radbtnMale.Checked)
 			{
-				_gender = GenderType.Male;
+				_gender = true;
 				radbtnFemale.Checked = false;
 			}
 		}
@@ -80,12 +80,11 @@ namespace prjMidtermTopic.FormMember
 		{
 			if (radbtnFemale.Checked)
 			{
-				_gender = GenderType.Female;
+				_gender = false;
 				radbtnMale.Checked = false;
 			}
 		}
-
-		public int newId = 5;
+		
 		private void btnAdd_Click(object sender, EventArgs e)
 		{
 			string name = txtName.Text;
@@ -123,7 +122,7 @@ namespace prjMidtermTopic.FormMember
 
 			MemberDto dto = new MemberDto
 			{
-				Id = vm.Id,
+				ID = vm.Id,
 				Name = vm.Name,
 				DateOfBirth = vm.DateOfBirth,
 				Gender = vm.Gender,
@@ -137,8 +136,8 @@ namespace prjMidtermTopic.FormMember
 
 			try
 			{
-				var service = new MemberService();				
-				newId++;
+				var service = new MemberService();
+				int newId = service.Create(dto);
 				MessageBox.Show($"新增成功,新的編號為{newId}");
 			}
 			catch (Exception ex)
@@ -148,17 +147,17 @@ namespace prjMidtermTopic.FormMember
 			}
 
 
-			//try
-			//{
-			//	var service = new MemberService();
-			//	int newId = service.Create(dto);
-			//	MessageBox.Show($"新增成功,新的編號為{newId}");
-			//}
-			//catch (Exception ex)
-			//{
-			//	MessageBox.Show("新增失敗, 原因: " + ex.Message);
-			//	return;
-			//}
+			try
+			{
+				var service = new MemberService();
+				int newId = service.Create(dto);
+				MessageBox.Show($"新增成功,新的編號為{newId}");
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show("新增失敗, 原因: " + ex.Message);
+				return;
+			}
 
 			// 關閉表單
 			IGrid parent = this.Owner as IGrid;

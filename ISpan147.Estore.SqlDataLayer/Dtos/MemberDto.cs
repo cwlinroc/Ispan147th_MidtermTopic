@@ -8,11 +8,10 @@ namespace Ispan147.Estore.SqlDataLayer.Dtos
 {
 	public class MemberDto
 	{
-		public int Id { get; set; }
+		public int ID { get; set; }
 		public string Name { get; set; }
-		public DateTime DateOfBirth { get; set; }
-		public enum GenderType { Male, Female }
-		public GenderType Gender { get; set; }
+		public DateTime DateOfBirth { get; set; }		
+		public bool Gender { get; set; }
 		public string Account { get; set; }
 		public string Password { get; set; }
 		public string Phone { get; set; }

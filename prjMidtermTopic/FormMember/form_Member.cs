@@ -19,36 +19,30 @@ namespace prjMidtermTopic
 
 		private void form_Member_Load(object sender, EventArgs e)
 		{
-			bool isInt = int.TryParse(txtId.Text, out int memberId);
-			int? mId = isInt ? memberId : (int?)null;			
-			string mName = txtName.Text;
-
-			var repo = new MemberRepository();
-			data = repo.LoadData(mId, mName);
-			dataGridView1.DataSource = data;
+			Display();
 		}
 
 		private void btnSearch_Click(object sender, EventArgs e)
 		{
-			//Display();
+			Display();
 		}
 
 		public void Display()
 		{
-			//bool isInt = int.TryParse(txtId.Text, out int memberId);
-			//int? mId = isInt ? memberId : (int?)null;
-			//string mName = txtName.Text;
+			bool isInt = int.TryParse(txtId.Text, out int memberId);
+			int? mId = isInt ? memberId : (int?)null;
+			string mName = txtName.Text;
 
-			//var repo = new MemberRepository();
-			//data = repo.Search(mId, mName);
-			//dataGridView1.DataSource = data;
+			var repo = new MemberRepository();
+			data = repo.Search(mId, mName);
+			dataGridView1.DataSource = data;
 		}
 
 		private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
 		{
 			if (e.RowIndex < 0) return; // 按到了header,不處理
 
-			int id = this.data[e.RowIndex].Id;
+			int id = this.data[e.RowIndex].ID;
 
 			var frm = new form_EditMember(id);
 			frm.Owner = this;
