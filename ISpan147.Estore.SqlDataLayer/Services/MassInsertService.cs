@@ -10,6 +10,7 @@ using System.Security.Policy;
 using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace ISpan147.Estore.SqlDataLayer.Services
 {
@@ -53,17 +54,36 @@ namespace ISpan147.Estore.SqlDataLayer.Services
 
 			for (int i = 0; i < total; i++)
 			{
-				int species = rng.RandonIntBetween(1, 4);
+				int species = rng.RandomIntBetween(1, 4);
 				repo.CreatePet(new PetDto
 				{
 					SpeciesID = species,
 					BreedID = rng.RandomFrom(breedIDs[species - 1]),
 					PetName = rng.RandomPetName(),
 					Gender = rng.RandomBool(),
-					Age = rng.RandonIntBetween(0, 5),
+					Age = rng.RandomIntBetween(0, 5),
 					Location = rng.RandomAddress()
 				});
 			}
+		}
+
+		public void CreateRandomOrder(int total)
+		{
+			var rng = new RandomGenerator();
+			var repo = new MassInsertRepository();
+
+			var memberIDs = repo.GetAllMemberID();
+
+			for (int i = 0; i < total; i++)
+			{
+				repo.CreateOrder(new OrderDto
+				{
+					CustomerID = rng.RandomFrom(memberIDs),
+					PaymentMethod = rng.RandomIntBetween(0, 3),
+					Payed = rng.RandomBool()
+				});
+			}
+
 		}
 
 

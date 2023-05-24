@@ -58,23 +58,14 @@ namespace TestConsole
 
 			//var repo = new MassInsertRepository();
 
-			//repo.CreatePet(new PetDto
-			//{
-			//	SpeciesID = 3,
-			//	BreedID = 19,
-			//	PetName = "笑鼠",
-			//	Gender = true,
-			//	Age = 2,
-			//	Description = "料理鼠王",
-			//	Location = "你家廚房"
-			//});
+
 
 
 			var mass = new MassInsertService();
 
-			mass.CreateRandomPets(50);
+			//mass.CreateRandomPets(50);
 
-			mass.CreateRandomMembers(200);
+			mass.CreateRandomMembers(500);
 
 
 			Console.WriteLine("Test Over!");

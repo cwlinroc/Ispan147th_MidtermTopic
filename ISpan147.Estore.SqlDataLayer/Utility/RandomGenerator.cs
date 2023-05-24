@@ -24,8 +24,8 @@ namespace ISpan147.Estore.SqlDataLayer.Utility
 		}
 		public string RandomName()
 		{
-			string name = _firstName[_rand.Next() % _firstName.Length];
-			name += _lastName[_rand.Next() % _lastName.Length];
+			string name = _firstName[_rand.Next(_firstName.Length)];
+			name += _lastName[_rand.Next(_lastName.Length)];
 			return name;
 		}
 
@@ -33,23 +33,23 @@ namespace ISpan147.Estore.SqlDataLayer.Utility
 		{
 			DateTime dt = DateTime.Now.Date;
 			dt = dt.AddYears(-60);
-			dt = dt.AddDays(_rand.Next() % 18250);
+			dt = dt.AddDays(_rand.Next(18250));
 			return dt;
 		}
 
 		public bool RandomBool()
 		{
-			return _rand.Next() % 2 == 0;
+			return _rand.Next(2) == 0;
 		}
 
 		public string RandomEnString()
 		{
-			int length = (_rand.Next() % 10) + 5;
+			int length = _rand.Next(5, 15);
 			string str = string.Empty;
-			str += (char)('A' + _rand.Next() % 26);
+			str += (char)('A' + _rand.Next(26));
 			for (int i = 0; i < length - 1; i++)
 			{
-				str += (char)('a' + _rand.Next() % 26);
+				str += (char)('a' + _rand.Next(26));
 			}
 			return str;
 		}
@@ -57,54 +57,62 @@ namespace ISpan147.Estore.SqlDataLayer.Utility
 		public string RandomEmail()
 		{
 			string str = RandomEnString();
-			str += _emailcom[_rand.Next() % _emailcom.Length];
+			str += _emailcom[_rand.Next(_emailcom.Length)];
 
 			return str;
 		}
 
 		public string RandomPhone()
 		{
-			string str = "09";
-			str += (_rand.Next() % 80 + 10).ToString("d2");
-			str += "-";
-			str += (_rand.Next() % 1000).ToString("d3");
-			str += "-";
-			str += (_rand.Next() % 1000).ToString("d3");
+			string str = "09"
+				+ _rand.Next(10, 90).ToString("d2")
+				+ "-"
+				+ (_rand.Next(1000)).ToString("d3")
+				+ "-"
+				+ (_rand.Next(1000)).ToString("d3");
 
 			return str;
 		}
 
 		public string RandomAddress()
 		{
-			string str = _city[_rand.Next() % _city.Length]
-				+ _street[_rand.Next() % _street.Length]
-				+ _zhNumber[_rand.Next() % _zhNumber.Length] + "段";
+			string str = _city[_rand.Next(_city.Length)]
+				+ _street[_rand.Next(_street.Length)]
+				+ _zhNumber[_rand.Next(_zhNumber.Length)] + "段";
 
-			if (RandomBool()) str += (_rand.Next() % 100 + 1) + "巷";
+			if (RandomBool()) str += _rand.Next(1, 100) + "巷";
 
-			str += (_rand.Next() % 299 + 1) + "號";
+			str += _rand.Next(1, 300) + "號";
 
 			return str;
 		}
 
-		public int RandonIntBetween(int start, int end)
+		public int RandomIntBetween(int start, int end)
 		{
-			return start + _rand.Next() % (end - start + 1);
+			if (start < end)
+			{
+				throw new ArgumentOutOfRangeException("前項為最小值，不可大於後項");
+			}
+			return _rand.Next(start, end + 1);
 		}
 
 		public T RandomFrom<T>(IEnumerable<T> objs)
 		{
+			if (objs == null)
+			{
+				throw new ArgumentOutOfRangeException("傳入集合為null");
+			}
 			int count = objs.Count();
 			var arr = objs.ToList();
 
-			return arr[_rand.Next() % count];
+			return arr[_rand.Next(count)];
 		}
 
 
 		public string RandomPetName()
 		{
-			string str = _petName[_rand.Next() % _petName.Length];
-			str += _petName[_rand.Next() % _petName.Length];
+			string str = _petName[_rand.Next(_petName.Length)];
+			str += _petName[_rand.Next(_petName.Length)];
 			return str;
 		}
 	}
