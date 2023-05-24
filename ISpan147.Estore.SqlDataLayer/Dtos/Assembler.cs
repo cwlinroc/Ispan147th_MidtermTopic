@@ -42,5 +42,18 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
 			};
 		}
 
+		public static Func<SqlDataReader, MerchandiseDto> MerchandiseDtoAssembler
+		{
+			get => (reader) => new MerchandiseDto
+			{
+				MerchandiseId = reader.GetInt("MerchandiseId"),
+				MerchandiseName = reader.GetString("MerchandiseName"),
+				CategoryId = reader.GetInt("CategoryId"),
+				Price = reader.GetInt("Price"),
+				Amount = reader.GetInt("Amount"),
+				Description = reader.GetString("Description"),
+				ImageURL = reader.GetString("ImageURL")
+			};
+		}
 	}
 }
