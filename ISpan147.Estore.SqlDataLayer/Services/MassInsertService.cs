@@ -67,26 +67,105 @@ namespace ISpan147.Estore.SqlDataLayer.Services
 			}
 		}
 
-		public void CreateRandomOrder(int total)
+
+
+		public void CreateRandomMerchandise(int total)
+		{
+			var rng = new RandomGenerator();
+			var repo = new MassInsertRepository();
+
+			for (int i = 0; i < total; i++)
+			{
+				repo.CreateMerchandise(rng.RandomMerchandise());
+			}
+		}
+
+
+		public void CreateRandomThemeAndCommon(int total)
+		{
+			var rng = new RandomGenerator();
+			var repo = new MassInsertRepository();
+
+			for (int i = 0; i < total; i++)
+			{
+				var dt = DateTime.Now.AddDays(-rng.RandomIntBetween(30, 365))
+					.AddMinutes(rng.RandomIntBetween(0, 1440));
+				int themeID = repo.CreateTheme(new ThemeDto
+				{
+					ThemeName = rng.RandomEnString(5, 11),
+					ThemeDateTime = dt,
+					ThemeContext = String.Concat(Enumerable
+						.Repeat(rng.RandomSentance(), rng.RandomIntBetween(1, 3)))
+				});
+				if (rng.RandomChance(70))
+				{
+					for (int j = 0; j < rng.RandomIntBetween(2, 13); j++)
+					{
+						dt = dt.AddMinutes(rng.RandomIntBetween(0, 5000));
+						repo.CreateCommon(new CommonDto
+						{
+							CommonName = rng.RandomEnString(5, 11),
+							CommonTime = dt,
+							ThemeID = themeID,
+							CommonContext = String.Concat(Enumerable
+						.Repeat(rng.RandomSentance(), rng.RandomIntBetween(1, 3)))
+						});
+					}
+				}
+			}
+		}
+
+
+
+
+		public void CreateRandomOrderAndOrderList(int total)
 		{
 			var rng = new RandomGenerator();
 			var repo = new MassInsertRepository();
 
 			var memberIDs = repo.GetAllMemberID();
+			var merchandiseIDs = repo.GetAllMerchandiseID();
 
 			for (int i = 0; i < total; i++)
 			{
-				repo.CreateOrder(new OrderDto
+				int orderID = repo.CreateOrder(new OrderDto
 				{
-					CustomerID = rng.RandomFrom(memberIDs),
+					MemberID = rng.RandomFrom(memberIDs),
 					PaymentMethod = rng.RandomIntBetween(0, 3),
 					Payed = rng.RandomBool()
 				});
-			}
 
+				for(int j = 0;  j < rng.RandomIntBetween(1, 15); j++)
+				{
+					repo.CreateOrderList(new OrderListDto
+					{
+						OrderID = orderID,
+						MerchandiseID = rng.RandomFrom(merchandiseIDs),
+						Quantity = rng.RandomIntBetween(1, 15)
+					});
+				}
+			}
 		}
 
+		public void CreateRandomAdopt(int total)
+		{
+			var rng = new RandomGenerator();
+			var repo = new MassInsertRepository();
 
+			var memberIDs = repo.GetAllMemberID();
+			var petIDs = repo.GetAllPetID();
+
+			for (int i = 0; i < total; i++)
+			{
+				repo.CreateAdopt(new AdoptDto
+				{
+					PetID = rng.RandomFrom(petIDs),
+					MemberID = rng.RandomFrom(memberIDs),
+					ApplicationTime = DateTime.Now.AddDays(rng.RandomIntBetween(-365, -10))
+						.AddMinutes(rng.RandomIntBetween(0, 1440))
+				});
+			}
+		}
 
 	}
 }

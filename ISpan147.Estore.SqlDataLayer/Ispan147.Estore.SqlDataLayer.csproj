@@ -46,14 +46,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Builders\SqlParameterBuilder.cs" />
+    <Compile Include="Dtos\AdoptDto.cs" />
     <Compile Include="Dtos\Assembler.cs" />
+    <Compile Include="Dtos\CommonDto.cs" />
     <Compile Include="Dtos\EmployeeDto.cs" />
     <Compile Include="Dtos\MemberDto.cs" />
+    <Compile Include="Dtos\MerchandiseDto.cs" />
     <Compile Include="Dtos\OrderDto.cs" />
     <Compile Include="Dtos\OrderGridDto.cs" />
     <Compile Include="Dtos\OrderListDto.cs" />
     <Compile Include="Dtos\OrderListGridDto.cs" />
     <Compile Include="Dtos\PetDto.cs" />
+    <Compile Include="Dtos\ThemeDto.cs" />
     <Compile Include="ExtMethods\MyEncoder.cs" />
     <Compile Include="ExtMethods\SqlDataReaderExtMethod.cs" />
     <Compile Include="Program.cs" />

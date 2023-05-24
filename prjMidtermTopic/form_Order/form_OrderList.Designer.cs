@@ -106,7 +106,7 @@
 			// 
 			// Column1
 			// 
-			this.Column1.DataPropertyName = "ID";
+			this.Column1.DataPropertyName = "OrderListID";
 			this.Column1.HeaderText = "編號";
 			this.Column1.MinimumWidth = 6;
 			this.Column1.Name = "Column1";

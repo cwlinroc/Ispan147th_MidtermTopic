@@ -42,18 +42,83 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 			}
 		}
 
-		public void CreateOrder(OrderDto dto)
+		public int CreateOrder(OrderDto dto)
 		{
 			using (var conn = SqlDb.GetConnection())
 			{
 				string strSql = "INSERT INTO Orders"
-					+ " ( CustomerID,  PaymentMethod,  Payed) "
-					+ " VALUES ( @CustomerID,  @PaymentMethod,  @Payed)";
+					+ " ( MemberID,  PaymentMethod,  Payed) "
+					+ " OUTPUT INSERTED.OrderID"
+					+ " VALUES ( @MemberID,  @PaymentMethod,  @Payed)";
+
+				int result = conn.QuerySingle<int>(strSql, dto);
+				return result;
+			}
+		}
+
+		public void CreateOrderList(OrderListDto dto)
+		{
+			using (var conn = SqlDb.GetConnection())
+			{
+				string strSql = "INSERT INTO OrderList (OrderID, MerchandiseID, Quantity)"
+				+ " VALUES (@OrderID, @MerchandiseID, @Quantity) ";
 
 				conn.Execute(strSql, dto);
 			}
 		}
 
+		public void CreateMerchandise(MerchandiseDto dto)
+		{
+			using (var conn = SqlDb.GetConnection())
+			{
+				string strSql = "INSERT INTO Merchandise"
+					+ " ( MerchandiseName, CategoryID, Price,"
+					+ " Amount, Description, ImageURL )"
+					+ " VALUES ( @MerchandiseName, @CategoryID, @Price,"
+					+ " @Amount, @Description, @ImageURL )";
+
+				conn.Execute(strSql, dto);
+			}
+		}
+
+		public int CreateTheme(ThemeDto dto)
+		{
+			using (var conn = SqlDb.GetConnection())
+			{
+				string strSql = "INSERT INTO Theme "
+					+ " ( ThemeName, ThemeDateTime, ThemeContext )"
+					+ " OUTPUT INSERTED.ThemeID"
+					+ " VALUES ( @ThemeName, @ThemeDateTime, @ThemeContext )";
+
+				int result = conn.QuerySingle<int>(strSql, dto);
+				return result;
+			}
+		}
+
+		public void CreateCommon(CommonDto dto)
+		{
+			using (var conn = SqlDb.GetConnection())
+			{
+				string strSql = "INSERT INTO Common "
+					+ " ( CommonName, CommonTime, CommonContext, ThemeID )"
+					+ " VALUES ( @CommonName, @CommonTime, @CommonContext, @ThemeID )";
+
+				conn.Execute(strSql, dto);
+			}
+		}
+
+
+		public void CreateAdopt(AdoptDto dto)
+		{
+			using (var conn = SqlDb.GetConnection())
+			{
+				string strSql = "INSERT INTO Adopt "
+					+ " ( PetID, MemberID, ApplicationTime )"
+					+ " VALUES ( @PetID, @MemberID, @ApplicationTime )";
+
+				conn.Execute(strSql, dto);
+			}
+		}
 
 
 		public IEnumerable<int> GetBreedIDs(int speciesID)
@@ -76,6 +141,18 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 			using (var conn = SqlDb.GetConnection())
 			{
 				string strSql = $"SELECT MemberID FROM Member ";
+
+				var result = conn.Query<int>(strSql);
+
+				return result;
+			}
+		}
+
+		public IEnumerable<int> GetAllPetID()
+		{
+			using (var conn = SqlDb.GetConnection())
+			{
+				string strSql = $"SELECT PetID FROM Pet ";
 
 				var result = conn.Query<int>(strSql);
 
@@ -108,6 +185,9 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 			}
 
 		}
+
+
+
 
 
 	}

@@ -1,6 +1,8 @@
-﻿using System;
+﻿using ISpan147.Estore.SqlDataLayer.Dtos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,22 +31,22 @@ namespace ISpan147.Estore.SqlDataLayer.Utility
 			return name;
 		}
 
-		public DateTime RandomBirthDate()
+		public DateTime RandomBirthDate(int minAge = 10, int maxAge = 60)
 		{
+			if (minAge > maxAge)
+			{
+				throw new ArgumentOutOfRangeException("前項為最小年齡，不可大於後項最大年齡");
+			}
+
 			DateTime dt = DateTime.Now.Date;
-			dt = dt.AddYears(-60);
-			dt = dt.AddDays(_rand.Next(18250));
+			dt = dt.AddYears(-maxAge);
+			dt = dt.AddDays(_rand.Next((maxAge - minAge) * 365));
 			return dt;
 		}
 
-		public bool RandomBool()
+		public string RandomEnString(int min = 5, int max = 15)
 		{
-			return _rand.Next(2) == 0;
-		}
-
-		public string RandomEnString()
-		{
-			int length = _rand.Next(5, 15);
+			int length = _rand.Next(min, max);
 			string str = string.Empty;
 			str += (char)('A' + _rand.Next(26));
 			for (int i = 0; i < length - 1; i++)
@@ -87,9 +89,33 @@ namespace ISpan147.Estore.SqlDataLayer.Utility
 			return str;
 		}
 
+		public string RandomPetName()
+		{
+			string str = _petName[_rand.Next(_petName.Length)];
+			str += _petName[_rand.Next(_petName.Length)];
+			return str;
+		}
+
+		public MerchandiseDto RandomMerchandise()
+		{
+			int categoryIndex = RandomIntByWeight(5, 5, 5, 2, 5, 3, 2, 2, 1, 2);
+			string merchandiseName = GetMerchandiseName(categoryIndex);
+
+			return new MerchandiseDto
+			{
+				MerchandiseName = merchandiseName,
+				CategoryID = categoryIndex + 1,
+				Price = _rand.Next(50, 5000),
+				Amount = _rand.Next(70),
+				Description = RandomChance(70) ? merchandiseName : null,
+				ImageURL = RandomChance(60) ? RandomEnString() + ".jpg" : null,
+			};
+		}
+
+
 		public int RandomIntBetween(int start, int end)
 		{
-			if (start < end)
+			if (start > end)
 			{
 				throw new ArgumentOutOfRangeException("前項為最小值，不可大於後項");
 			}
@@ -103,17 +129,96 @@ namespace ISpan147.Estore.SqlDataLayer.Utility
 				throw new ArgumentOutOfRangeException("傳入集合為null");
 			}
 			int count = objs.Count();
-			var arr = objs.ToList();
+			var arr = objs.ToArray();
 
 			return arr[_rand.Next(count)];
 		}
 
 
-		public string RandomPetName()
+		public bool RandomBool()
 		{
-			string str = _petName[_rand.Next(_petName.Length)];
-			str += _petName[_rand.Next(_petName.Length)];
-			return str;
+			return _rand.Next(2) == 0;
 		}
+
+		public bool RandomChance(int percent)
+		{
+			if (percent < 0) percent = 0;
+			if (percent > 100) percent = 100;
+
+			return percent > _rand.Next(0, 100);
+		}
+
+		public int RandomIntByWeight(params int[] weights)
+		{
+			if (weights == null || weights.Length == 0) return 0;
+
+			int sum = weights.Sum();
+
+			int rand = _rand.Next(sum);
+
+			sum = 0;
+
+			for (int i = 0; i < weights.Length; i++)
+			{
+				sum += weights[i];
+				if (sum > rand) return i;
+			}
+			return 0;
+		}
+
+		private readonly string[] _MerchandiseTitle0 = { "美國進口", "英國進口", "台灣品牌", "日本原裝進口", "芬蘭進口", "紐西蘭特產", "法國原裝", "德國引進", "花蓮進口" };
+		private readonly string[] _MerchandiseTitle1 = { "PETIZOO", "CARFIELD", "ArfArf", "PEHOM", "波斯米", "mao&kou", "Pinkoi", "Pidan", "Pets Zakka", "多格曼", "GuluPet", "Bayer", "Herchy" };
+		private readonly string[] _MerchandiseTitle2 = { "精裝版", "特仕版", "豪華", "經典款", "經濟版" };
+		private readonly string[] _MerchandiseTitle3 = { "(特大)", "(大)", "(中)", "(小)" };
+		private readonly string[][] _MerchandiseItem = {
+			new string[] { "貓罐頭","狗罐頭","保健食品","寵物零食","潔牙骨"},
+			new string[] { "貓砂","尿布墊","寵物貓專用沐浴乳","寵物犬專用沐浴乳"},
+			new string[] { "毛梳","牽繩","貓抓板","指甲剪"},
+			new string[] { "骨頭玩具","鈴鐺小球"},
+			new string[] { "貓砂盆","貓窩","狗窩籃子","貓用外出背包","寵物箱" },
+			new string[] { "葵花子","提摩西草","磨牙飼料","兔子飼料" },
+			new string[] { "木屑","鼠砂" },
+			new string[] { "餵水器","滾輪" },
+			new string[] { "蘿蔔娃娃" },
+			new string[] { "兔子用便盆","砂浴盆","壓克力鼠籠" },
+		};
+		private string GetMerchandiseName(int categoryIndex)
+		{
+			string name = ((RandomChance(60)) ? _MerchandiseTitle0[_rand.Next(_MerchandiseTitle0.Length)] : "")
+				+ _MerchandiseTitle1[_rand.Next(_MerchandiseTitle1.Length)]
+				+ ((RandomChance(50)) ? _MerchandiseTitle2[_rand.Next(_MerchandiseTitle2.Length)] : "")
+				+ _MerchandiseItem[categoryIndex][_rand.Next(_MerchandiseItem[categoryIndex].Length)]
+				+ ((RandomChance(60)) ? _MerchandiseTitle3[_rand.Next(_MerchandiseTitle3.Length)] : "");
+
+			return name;
+		}
+
+
+		private readonly string[] _nouns = { "bird", "clock", "boy", "plastic", "duck", "teacher", "old lady", "professor", "hamster", "dog" };
+		private readonly string[] _verbs = { "kicked", "ran", "flew", "dodged", "sliced", "rolled", "died", "breathed", "slept", "killed" };
+		private readonly string[] _adjectives = { "beautiful", "lazy", "professional", "lovely", "dumb", "rough", "soft", "hot", "vibrating", "slimy" };
+		private readonly string[] _adverbs = { "slowly", "elegantly", "precisely", "quickly", "sadly", "humbly", "proudly", "shockingly", "calmly", "passionately" };
+		private readonly string[] _preposition = { "down", "into", "up", "on", "upon", "below", "above", "through", "across", "towards" };
+
+		public string RandomSentance()
+		{
+			int rand1 = _rand.Next(10);
+			int rand2 = _rand.Next(10);
+			int rand3 = _rand.Next(10);
+			int rand4 = _rand.Next(10);
+			int rand5 = _rand.Next(10);
+			int rand6 = _rand.Next(10);
+
+			var content = "The " + _adjectives[rand1] + " "
+				+ _nouns[rand2] + " " + _adverbs[rand3] + " "
+				+ _verbs[rand4] + " because some " + _nouns[rand1]
+				+ " " + _adverbs[rand1] + " " + _verbs[rand1] + " "
+				+ _preposition[rand1] + " a " + _adjectives[rand2] + " "
+				+ _nouns[rand5] + " which, became a " + _adjectives[rand3] + ", "
+				+ _adjectives[rand4] + " " + _nouns[rand6] + ".";
+
+			return content;
+		}
+
 	}
 }

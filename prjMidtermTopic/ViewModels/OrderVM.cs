@@ -12,13 +12,13 @@ namespace prjMidtermTopic.ViewModels
 
 	public class OrderVM
 	{
-		[Display(Name = "編號")]
+		[Display(Name = "訂單編號")]
 		[Required(ErrorMessage = "{0}必填")]
-		public int ID { get; set; }
+		public int OrderID { get; set; }
 
 		[Display(Name = "顧客編號")]
 		[Required(ErrorMessage = "{0}必填")]
-		public string CustomerID { get; set; }
+		public string MemberID { get; set; }
 
 		[Display(Name = "付款方式")]
 		[Required(ErrorMessage = "{0}必填")]
@@ -37,8 +37,8 @@ namespace prjMidtermTopic.ViewModels
 		{
 			return new OrderDto
 			{
-				OrderID = vm.ID,
-				CustomerID = int.Parse(vm.CustomerID),
+				OrderID = vm.OrderID,
+				MemberID = int.Parse(vm.MemberID),
 				PaymentMethod = Array.IndexOf(paymentOptions, vm.PaymentMethod),
 				Payed = vm.Payed == "已付款"
 			};
@@ -48,8 +48,8 @@ namespace prjMidtermTopic.ViewModels
 		{
 			return new OrderVM
 			{
-				ID = dto.OrderID,
-				CustomerID = dto.CustomerID.ToString(),
+				OrderID = dto.OrderID,
+				MemberID = dto.MemberID.ToString(),
 				PaymentMethod = paymentOptions[dto.PaymentMethod],
 				Payed = dto.Payed ? "已付款" : "尚未付款"
 			};

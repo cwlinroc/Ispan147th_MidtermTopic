@@ -11,9 +11,9 @@ namespace prjMidtermTopic.ViewModels
 {
 	public class OrderListVM
 	{
-		[Display(Name = "編號")]
+		[Display(Name = "訂單詳情編號")]
 		[Required(ErrorMessage = "{0}必填")]
-		public int ID { get; set; }
+		public int OrderListID { get; set; }
 
 		[Display(Name = "訂單編號")]
 		[Required(ErrorMessage = "{0}必填")]
@@ -38,7 +38,7 @@ namespace prjMidtermTopic.ViewModels
 		{
 			return new OrderListDto
 			{
-				OrderListID = vm.ID,
+				OrderListID = vm.OrderListID,
 				OrderID = int.Parse(vm.OrderID),
 				MerchandiseID =  int.Parse(vm.MerchandiseID),
 				Quantity = int.Parse(vm.Quantity)
@@ -49,7 +49,7 @@ namespace prjMidtermTopic.ViewModels
 		{
 			return new OrderListVM
 			{
-				ID = dto.OrderListID,
+				OrderListID = dto.OrderListID,
 				OrderID = dto.OrderID.ToString(),
 				MerchandiseID = dto.MerchandiseID.ToString(),
 				Quantity = dto.Quantity.ToString(),

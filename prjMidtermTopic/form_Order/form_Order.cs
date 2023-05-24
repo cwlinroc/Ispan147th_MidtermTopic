@@ -64,7 +64,7 @@ namespace prjMidtermTopic.form_Order
 		{
 			_row = e.RowIndex;
 			if (_row < 0) return;
-			var frm = new form_OrderList(_data[_row].ID);
+			var frm = new form_OrderList(_data[_row].OrderID);
 			frm.Owner = this;
 			frm.ShowDialog();
 		}

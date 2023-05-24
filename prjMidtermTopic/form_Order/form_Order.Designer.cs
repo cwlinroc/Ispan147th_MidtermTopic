@@ -136,15 +136,16 @@
 			// 
 			// Column1
 			// 
-			this.Column1.DataPropertyName = "ID";
+			this.Column1.DataPropertyName = "OrderID";
 			this.Column1.HeaderText = "編號";
 			this.Column1.MinimumWidth = 6;
 			this.Column1.Name = "Column1";
 			this.Column1.ReadOnly = true;
+			this.Column1.Width = 125;
 			// 
 			// Column2
 			// 
-			this.Column2.DataPropertyName = "CustomerID";
+			this.Column2.DataPropertyName = "MemberID";
 			this.Column2.HeaderText = "顧客編號";
 			this.Column2.MinimumWidth = 6;
 			this.Column2.Name = "Column2";

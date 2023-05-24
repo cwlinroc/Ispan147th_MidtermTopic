@@ -15,7 +15,7 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
 			get => (reader) => new OrderDto
 			{
 				OrderID = reader.GetInt("OrderID"),
-				CustomerID = reader.GetInt("CustomerID"),
+				MemberID = reader.GetInt("MemberID"),
 				PaymentMethod = reader.GetInt("PaymentMethod"),
 				Payed = reader.GetBool("Payed")
 			};

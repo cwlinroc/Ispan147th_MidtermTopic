@@ -35,7 +35,7 @@ namespace prjMidtermTopic.form_Order
 			{
 				var vm = new OrderListVM
 				{
-					ID = _orderListID,
+					OrderListID = _orderListID,
 					OrderID = txt_OrderID.Text.Trim(),
 					MerchandiseID = txt_MerchandiseID.Text.Trim(),
 					Quantity = txt_Quantity.Text.Trim(),
