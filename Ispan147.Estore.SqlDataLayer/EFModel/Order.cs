@@ -22,6 +22,10 @@ namespace ISpan147.Estore.SqlDataLayer.EFModel
 
         public bool Payed { get; set; }
 
+        public DateTime PurchaseTime { get; set; }
+
+        public int? PaymentAmount { get; set; }
+
         public virtual Member Member { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

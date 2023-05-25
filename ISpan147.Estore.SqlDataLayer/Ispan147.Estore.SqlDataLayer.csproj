@@ -72,7 +72,7 @@
     <Compile Include="EFModel\AppDbContext.cs" />
     <Compile Include="EFModel\Breed.cs" />
     <Compile Include="EFModel\Category.cs" />
-    <Compile Include="EFModel\comment.cs" />
+    <Compile Include="EFModel\Comment.cs" />
     <Compile Include="EFModel\Employee.cs" />
     <Compile Include="EFModel\Member.cs" />
     <Compile Include="EFModel\Merchandise.cs" />

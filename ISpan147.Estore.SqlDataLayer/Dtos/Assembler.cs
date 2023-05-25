@@ -18,7 +18,9 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
 				OrderID = reader.GetInt("OrderID"),
 				MemberID = reader.GetInt("MemberID"),
 				PaymentMethod = reader.GetInt("PaymentMethod"),
-				Payed = reader.GetBool("Payed")
+				Payed = reader.GetBool("Payed"),
+				PurchaseTime = reader.GetDate("PurchaseTime"),
+				PaymentAmount = reader.GetInt("PaymentAmount")
 			};
 		}
 
@@ -56,7 +58,7 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
 					string acc = reader.GetString("account");
 					string pwd = reader.GetString("password");
 					string phone = reader.GetString("phone");
-					string address = reader.GetString("address");					
+					string address = reader.GetString("address");
 					string email = reader.GetString("email");
 					string avatar = reader.GetString("avatar");
 
@@ -69,7 +71,7 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
 						Account = acc,
 						Password = pwd,
 						Phone = phone,
-						Address = address,						
+						Address = address,
 						Email = email,
 						Avatar = avatar,
 					};
