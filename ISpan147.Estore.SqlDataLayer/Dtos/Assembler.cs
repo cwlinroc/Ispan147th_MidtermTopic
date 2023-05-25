@@ -49,8 +49,8 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
 			{
 				Func<SqlDataReader, MemberDto> func = (reader) =>
 				{
-					int id = reader.GetInt("id");
-					string name = reader.GetString("name");
+					int id = reader.GetInt("memberid");
+					string name = reader.GetString("membername");
 					DateTime dob = reader.GetDate("dateofbirth");
 					bool gender = reader.GetBool("gender");
 					string acc = reader.GetString("account");

@@ -15,12 +15,12 @@ using prjMidtermTopic.ViewModels;
 
 namespace prjMidtermTopic.form_Order
 {
-	public partial class form_MerchandiseOrder : Form
+	public partial class form_Orders : Form
 	{
 
 		private List<OrderVM> _data;
 		private int _row = -1;
-		public form_MerchandiseOrder()
+		public form_Orders()
 		{
 			InitializeComponent();
 		}

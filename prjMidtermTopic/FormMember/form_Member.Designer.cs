@@ -137,7 +137,7 @@
 			// 
 			// Column1
 			// 
-			this.Column1.DataPropertyName = "Id";
+			this.Column1.DataPropertyName = "MemberID";
 			this.Column1.HeaderText = "編號";
 			this.Column1.Name = "Column1";
 			this.Column1.ReadOnly = true;
@@ -145,7 +145,7 @@
 			// 
 			// Column2
 			// 
-			this.Column2.DataPropertyName = "Name";
+			this.Column2.DataPropertyName = "MemberName";
 			this.Column2.HeaderText = "姓名";
 			this.Column2.Name = "Column2";
 			this.Column2.ReadOnly = true;

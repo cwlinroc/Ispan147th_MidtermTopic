@@ -30,13 +30,6 @@
         {
 			this.btn_Add = new System.Windows.Forms.Button();
 			this.dataGridView1 = new System.Windows.Forms.DataGridView();
-			this.MerchandiseId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.MerchandiseName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.ImageURL = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.txt_MerchandiseName = new System.Windows.Forms.TextBox();
 			this.label2 = new System.Windows.Forms.Label();
 			this.txt_MerchandiseId = new System.Windows.Forms.TextBox();
@@ -44,6 +37,13 @@
 			this.btn_Search = new System.Windows.Forms.Button();
 			this.labCategoryName = new System.Windows.Forms.Label();
 			this.comboBox_Category = new System.Windows.Forms.ComboBox();
+			this.MerchandiseId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.MerchandiseName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ImageURL = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -82,55 +82,6 @@
 			this.dataGridView1.Size = new System.Drawing.Size(751, 326);
 			this.dataGridView1.TabIndex = 10;
 			this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
-			// 
-			// MerchandiseId
-			// 
-			this.MerchandiseId.DataPropertyName = "MerchandiseId";
-			this.MerchandiseId.HeaderText = "商品編號";
-			this.MerchandiseId.Name = "MerchandiseId";
-			this.MerchandiseId.ReadOnly = true;
-			// 
-			// MerchandiseName
-			// 
-			this.MerchandiseName.DataPropertyName = "MerchandiseName";
-			this.MerchandiseName.HeaderText = "商品名稱";
-			this.MerchandiseName.Name = "MerchandiseName";
-			this.MerchandiseName.ReadOnly = true;
-			// 
-			// Column1
-			// 
-			this.Column1.DataPropertyName = "CategoryId ";
-			this.Column1.HeaderText = "商品類別";
-			this.Column1.Name = "Column1";
-			this.Column1.ReadOnly = true;
-			// 
-			// Price
-			// 
-			this.Price.DataPropertyName = "Price";
-			this.Price.HeaderText = "價格";
-			this.Price.Name = "Price";
-			this.Price.ReadOnly = true;
-			// 
-			// Column2
-			// 
-			this.Column2.DataPropertyName = "Amount ";
-			this.Column2.HeaderText = "庫存數量";
-			this.Column2.Name = "Column2";
-			this.Column2.ReadOnly = true;
-			// 
-			// Column3
-			// 
-			this.Column3.DataPropertyName = "Description ";
-			this.Column3.HeaderText = "商品描述";
-			this.Column3.Name = "Column3";
-			this.Column3.ReadOnly = true;
-			// 
-			// ImageURL
-			// 
-			this.ImageURL.DataPropertyName = "ImageURL";
-			this.ImageURL.HeaderText = "商品圖片";
-			this.ImageURL.Name = "ImageURL";
-			this.ImageURL.ReadOnly = true;
 			// 
 			// txt_MerchandiseName
 			// 
@@ -199,6 +150,55 @@
 			this.comboBox_Category.Name = "comboBox_Category";
 			this.comboBox_Category.Size = new System.Drawing.Size(121, 20);
 			this.comboBox_Category.TabIndex = 2;
+			// 
+			// MerchandiseId
+			// 
+			this.MerchandiseId.DataPropertyName = "MerchandiseId";
+			this.MerchandiseId.HeaderText = "商品編號";
+			this.MerchandiseId.Name = "MerchandiseId";
+			this.MerchandiseId.ReadOnly = true;
+			// 
+			// MerchandiseName
+			// 
+			this.MerchandiseName.DataPropertyName = "MerchandiseName";
+			this.MerchandiseName.HeaderText = "商品名稱";
+			this.MerchandiseName.Name = "MerchandiseName";
+			this.MerchandiseName.ReadOnly = true;
+			// 
+			// Column1
+			// 
+			this.Column1.DataPropertyName = "CategoryID";
+			this.Column1.HeaderText = "商品類別";
+			this.Column1.Name = "Column1";
+			this.Column1.ReadOnly = true;
+			// 
+			// Price
+			// 
+			this.Price.DataPropertyName = "Price";
+			this.Price.HeaderText = "價格";
+			this.Price.Name = "Price";
+			this.Price.ReadOnly = true;
+			// 
+			// Column2
+			// 
+			this.Column2.DataPropertyName = "Amount";
+			this.Column2.HeaderText = "庫存數量";
+			this.Column2.Name = "Column2";
+			this.Column2.ReadOnly = true;
+			// 
+			// Column3
+			// 
+			this.Column3.DataPropertyName = "Description";
+			this.Column3.HeaderText = "商品描述";
+			this.Column3.Name = "Column3";
+			this.Column3.ReadOnly = true;
+			// 
+			// ImageURL
+			// 
+			this.ImageURL.DataPropertyName = "ImageURL";
+			this.ImageURL.HeaderText = "商品圖片";
+			this.ImageURL.Name = "ImageURL";
+			this.ImageURL.ReadOnly = true;
 			// 
 			// form_SearchMerchandise
 			// 

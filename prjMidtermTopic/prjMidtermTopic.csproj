@@ -98,11 +98,11 @@
     <Compile Include="FormMember\form_Member.Designer.cs">
       <DependentUpon>form_Member.cs</DependentUpon>
     </Compile>
-    <Compile Include="form_Order\form_Order.cs">
+    <Compile Include="form_Order\form_Orders.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="form_Order\form_Order.Designer.cs">
-      <DependentUpon>form_Order.cs</DependentUpon>
+    <Compile Include="form_Order\form_Orders.Designer.cs">
+      <DependentUpon>form_Orders.cs</DependentUpon>
     </Compile>
     <Compile Include="form_Order\form_OrderAdd.cs">
       <SubType>Form</SubType>
@@ -153,6 +153,12 @@
       <DependentUpon>form_Main.cs</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\IGrid.cs" />
+    <Compile Include="MassInsert\form_MassInsert.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MassInsert\form_MassInsert.Designer.cs">
+      <DependentUpon>form_MassInsert.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\DisplayGrim.cs" />
     <Compile Include="Model\MyValidator.cs" />
     <Compile Include="Program.cs" />
@@ -184,8 +190,8 @@
     <EmbeddedResource Include="form_Merchandise\form_SearchMerchandise.resx">
       <DependentUpon>form_SearchMerchandise.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="form_Order\form_Order.resx">
-      <DependentUpon>form_Order.cs</DependentUpon>
+    <EmbeddedResource Include="form_Order\form_Orders.resx">
+      <DependentUpon>form_Orders.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="form_Order\form_OrderAdd.resx">
       <DependentUpon>form_OrderAdd.cs</DependentUpon>
@@ -201,6 +207,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="form_Order\Form_OrderListEdit.resx">
       <DependentUpon>Form_OrderListEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MassInsert\form_MassInsert.resx">
+      <DependentUpon>form_MassInsert.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

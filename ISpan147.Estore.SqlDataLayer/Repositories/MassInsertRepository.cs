@@ -18,7 +18,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 		{
 			using (var conn = SqlDb.GetConnection())
 			{
-				string strSql = "INSERT INTO Member"
+				string strSql = "INSERT INTO Members"
 					+ " (MemberName, DateOfBirth, Gender, Account,"
 					+ " Password, Phone, Address, Email, Avatar)"
 					+ " VALUES (@MemberName, @DateOfBirth, @Gender, @Account,"
@@ -71,7 +71,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 		{
 			using (var conn = SqlDb.GetConnection())
 			{
-				string strSql = "INSERT INTO Merchandise"
+				string strSql = "INSERT INTO Merchandises"
 					+ " ( MerchandiseName, CategoryID, Price,"
 					+ " Amount, Description, ImageURL )"
 					+ " VALUES ( @MerchandiseName, @CategoryID, @Price,"
@@ -140,7 +140,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 		{
 			using (var conn = SqlDb.GetConnection())
 			{
-				string strSql = $"SELECT MemberID FROM Member ";
+				string strSql = $"SELECT MemberID FROM Members ";
 
 				var result = conn.Query<int>(strSql);
 
@@ -164,7 +164,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 		{
 			using (var conn = SqlDb.GetConnection())
 			{
-				string strSql = $"SELECT MerchandiseID FROM Merchandise ";
+				string strSql = $"SELECT MerchandiseID FROM Merchandises ";
 
 				var result = conn.Query<int>(strSql);
 

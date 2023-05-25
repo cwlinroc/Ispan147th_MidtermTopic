@@ -16,9 +16,5 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
         public string Description { get; set; }
         public string ImageURL { get; set; }
 
-		public override string ToString()
-		{
-			return $"{MerchandiseID}  {MerchandiseName}  {CategoryID}  {Price}  {Amount}  {Description}  {ImageURL} ";
-		}
 	}
 }

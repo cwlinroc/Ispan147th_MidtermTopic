@@ -1,6 +1,6 @@
 ﻿namespace prjMidtermTopic.form_Order
 {
-    partial class form_MerchandiseOrder
+    partial class form_Orders
     {
         /// <summary>
         /// Required designer variable.

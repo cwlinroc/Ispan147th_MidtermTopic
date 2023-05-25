@@ -19,7 +19,7 @@ namespace Ispan147.Estore.SqlDataLayer.Repositories
 	{
 		public MemberDto GetById(int memberId)
 		{
-			string sql = $"SELECT * FROM Members WHERE Id={memberId}";
+			string sql = $"SELECT * FROM Members WHERE MemberID={memberId}";
 			Func<SqlDataReader, MemberDto> func = Assembler.MemberDtoAssembler;
 			SqlParameter[] parameters = new SqlParameter[0];
 			Func<SqlConnection> connGetter = SqlDb.GetConnection;
@@ -29,10 +29,10 @@ namespace Ispan147.Estore.SqlDataLayer.Repositories
 
 		public MemberDto GetByName(string name)
 		{
-			string sql = $"SELECT * FROM Members WHERE Name=@Name";
+			string sql = $"SELECT * FROM Members WHERE MemberName = @MemberName";
 			Func<SqlDataReader, MemberDto> func = Assembler.MemberDtoAssembler;
 
-			SqlParameter parameter = new SqlParameter("@Name", SqlDbType.NVarChar, 30)
+			SqlParameter parameter = new SqlParameter("@MemberName", SqlDbType.NVarChar, 30)
 			{ Value = name };
 
 			Func<SqlConnection> connGetter = SqlDb.GetConnection;
@@ -51,14 +51,14 @@ namespace Ispan147.Estore.SqlDataLayer.Repositories
 			string where = string.Empty;
 			if (memberId.HasValue)
 			{
-				where += $" AND Id=@Id";
-				builder.AddInt("@Id", memberId.Value);
+				where += $" AND MemberID = @MemberID";
+				builder.AddInt(" @MemberID ", memberId.Value);
 			}
 
 			if (string.IsNullOrEmpty(s_name) == false)
 			{
-				where += $" AND Name LIKE '%' + @Name + '%'";
-				builder.AddNVarchar("@Name", 30, s_name);
+				where += $" AND MemberName LIKE '%' + @MemberName + '%'";
+				builder.AddNVarchar("@MemberName", 30, s_name);
 			}
 
 			if (string.IsNullOrEmpty(where) == false)
@@ -80,11 +80,11 @@ namespace Ispan147.Estore.SqlDataLayer.Repositories
 
 		public int Update(MemberDto dto)
 		{
-			string sql = "UPDATE Members SET Name=@Name WHERE Id=@Id";
+			string sql = "UPDATE Members SET MemberName = @MemberName WHERE MemberID = @MemberID";
 
 			var parameters = new SqlParameterBuilder()
-				.AddInt("@Id", dto.MemberID)
-				.AddNVarchar("@Name", 30, dto.MemberName)
+				.AddInt("@MemberID", dto.MemberID)
+				.AddNVarchar("@MemberName", 30, dto.MemberName)
 
 				.Build();
 			Func<SqlConnection> connGetter = SqlDb.GetConnection;
@@ -96,12 +96,12 @@ namespace Ispan147.Estore.SqlDataLayer.Repositories
 		public int Create(MemberDto dto)
 		{
 			string sql = @"INSERT INTO Members
-						(Name, )
+						(MemberName, )
 						VALUES
-						(@Name, )";
+						(@MemberName, )";
 
 			var parameters = new SqlParameterBuilder()
-				.AddNVarchar("@Name", 30, dto.MemberName)
+				.AddNVarchar("@MemberName", 30, dto.MemberName)
 
 				.Build();
 
@@ -110,9 +110,9 @@ namespace Ispan147.Estore.SqlDataLayer.Repositories
 
 		public int Delete(int memberId)
 		{
-			string sql = "DELETE FROM Members WHERE Id=@Id";
+			string sql = "DELETE FROM Members WHERE MemberID = @MemberID";
 
-			SqlParameter parameter = new SqlParameter("@Id", SqlDbType.Int)
+			SqlParameter parameter = new SqlParameter("@MemberID", SqlDbType.Int)
 			{ Value = memberId };
 			Func<SqlConnection> connGetter = SqlDb.GetConnection;
 

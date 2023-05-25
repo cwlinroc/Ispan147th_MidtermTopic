@@ -18,7 +18,7 @@ namespace prjMidtermTopic.FormMember
 {
 	public partial class form_EditMember : Form
 	{
-		public GenderType _gender;
+		public bool _gender;
 		private readonly int _memberId;
 		public form_EditMember(int memberId)
 		{
@@ -52,7 +52,7 @@ namespace prjMidtermTopic.FormMember
 		{
 			if (radbtnMale.Checked)
 			{
-				_gender = GenderType.Male;
+				_gender = true;
 				radbtnFemale.Checked = false;
 			}
 		}
@@ -61,7 +61,7 @@ namespace prjMidtermTopic.FormMember
 		{
 			if (radbtnFemale.Checked)
 			{
-				_gender = GenderType.Female;
+				_gender = false;
 				radbtnMale.Checked = false;
 			}
 		}

@@ -38,7 +38,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 		{
 			#region sql & SqlParameter[]
 
-			string sql = $"SELECT * FROM Categories";
+			string sql = $"SELECT * FROM Merchandises";
 
 			var builder = new SqlParameterBuilder();
 
@@ -73,7 +73,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 
 		public int Update(MerchandiseDto dto)
 		{
-			string sql = @"UPDATE Categories 
+			string sql = @"UPDATE Merchandises 
                             SET MerchandiseName = @MerchandiseName,
 							CategoryId = @CategoryId, Price = @Price, Amount = @Amount, 
 							Description = @Description, ImageURL = @ImageURL
