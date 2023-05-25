@@ -57,6 +57,19 @@
       <DependentUpon>form_CreateMember.cs</DependentUpon>
     </Compile>
     <Compile Include="FormMember\form_EditMember.cs">
+    <Compile Include="form_Merchandise\form_EditMerchandise.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form_Merchandise\form_EditMerchandise.Designer.cs">
+      <DependentUpon>form_EditMerchandise.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form_Merchandise\form_CreateMerchandise.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form_Merchandise\form_CreateMerchandise.Designer.cs">
+      <DependentUpon>form_CreateMerchandise.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form_Order\form_OrderListAdd.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormMember\form_EditMember.Designer.cs">
@@ -67,6 +80,42 @@
     </Compile>
     <Compile Include="FormMember\form_Member.Designer.cs">
       <DependentUpon>form_Member.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form_Order\form_OrderAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form_Order\form_OrderAdd.Designer.cs">
+      <DependentUpon>form_OrderAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form_Pet\form_Pet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form_Pet\form_Pet.Designer.cs">
+      <DependentUpon>form_Pet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form_Adopt\form_Adopt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form_Adopt\form_Adopt.Designer.cs">
+      <DependentUpon>form_Adopt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form_Merchandise\form_SearchMerchandise.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form_Merchandise\form_SearchMerchandise.Designer.cs">
+      <DependentUpon>form_SearchMerchandise.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form_QA\form_QA.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form_QA\form_QA.Designer.cs">
+      <DependentUpon>form_QA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form_Order\form_Order.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form_Order\form_Order.Designer.cs">
+      <DependentUpon>form_Order.cs</DependentUpon>
     </Compile>
     <Compile Include="form_Main.cs">
       <SubType>Form</SubType>
@@ -89,6 +138,32 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormMember\form_Member.resx">
       <DependentUpon>form_Member.cs</DependentUpon>
+    <EmbeddedResource Include="form_Merchandise\form_EditMerchandise.resx">
+      <DependentUpon>form_EditMerchandise.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form_Merchandise\form_CreateMerchandise.resx">
+      <DependentUpon>form_CreateMerchandise.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form_Merchandise\form_SearchMerchandise.resx">
+      <DependentUpon>form_SearchMerchandise.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form_Order\form_Order.resx">
+      <DependentUpon>form_Order.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form_Order\form_OrderListAdd.resx">
+      <DependentUpon>form_OrderListAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form_Order\form_OrderEdit.resx">
+      <DependentUpon>form_OrderEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form_Order\form_OrderAdd.resx">
+      <DependentUpon>form_OrderAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form_Order\Form_OrderListEdit.resx">
+      <DependentUpon>Form_OrderListEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form_Order\form_OrderList.resx">
+      <DependentUpon>form_OrderList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

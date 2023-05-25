@@ -44,8 +44,10 @@
   <ItemGroup>
     <Compile Include="Builders\SqlParameterBuilder.cs" />
     <Compile Include="Dtos\Assembler.cs" />
+    <Compile Include="Dtos\CategoryDto.cs" />
     <Compile Include="Dtos\EmployeeDto.cs" />
     <Compile Include="Dtos\MemberDto.cs" />
+    <Compile Include="Dtos\MerchandiseDto.cs" />
     <Compile Include="Dtos\OrderDto.cs" />
     <Compile Include="Dtos\OrderGridDto.cs" />
     <Compile Include="Dtos\OrderListDto.cs" />
@@ -59,6 +61,10 @@
     <Compile Include="Repositories\OrderListRepository.cs" />
     <Compile Include="Repositories\OrderRepository.cs" />
     <Compile Include="Services\MemberService.cs" />
+    <Compile Include="Repositories\MerchandiseRepository.cs" />
+    <Compile Include="Repositories\OrderListRepository.cs" />
+    <Compile Include="Repositories\OrderRepository.cs" />
+    <Compile Include="Services\MerchandiseService.cs" />
     <Compile Include="Services\OrderListService.cs" />
     <Compile Include="Services\OrderService.cs" />
     <Compile Include="Sqldb.cs" />

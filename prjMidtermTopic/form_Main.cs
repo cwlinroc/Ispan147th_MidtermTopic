@@ -44,6 +44,7 @@ namespace prjMidtermTopic
 		private void toolStripButton_MerchandiseForm_Click(object sender, EventArgs e)
 		{
 			//showForm(new form_Merchandise());
+			showForm(new form_SearchMerchandise());
 		}
 
 		private void toolStripButton_OrderForm_Click(object sender, EventArgs e)
