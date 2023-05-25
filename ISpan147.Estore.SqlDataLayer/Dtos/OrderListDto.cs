@@ -8,9 +8,9 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
 {
 	public class OrderListDto
 	{
-		public int ID { get; set; }
+		public int OrderListID { get; set; }
 		public int OrderID { get; set; }
-		public string MerchandiseID { get; set; }
+		public int MerchandiseID { get; set; }
 		public int Quantity { get; set; }
 
 	}

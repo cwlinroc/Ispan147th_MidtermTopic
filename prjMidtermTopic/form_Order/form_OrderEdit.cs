@@ -23,8 +23,8 @@ namespace prjMidtermTopic.form_Order
 			comboBox_PayMethod.Items.AddRange(Orders.paymentOptions);
 			comboBox_Payed.Items.AddRange(Orders.payedOptions);
 
-			txt_OrderID.Text = dto.ID.ToString();
-			txt_CustomerID.Text = dto.CustomerID.ToString();
+			txt_OrderID.Text = dto.OrderID.ToString();
+			txt_CustomerID.Text = dto.MemberID.ToString();
 			comboBox_PayMethod.SelectedIndex = dto.PaymentMethod;
 			comboBox_Payed.SelectedIndex = (dto.Payed) ? 1 : 0;
 		}
@@ -36,8 +36,8 @@ namespace prjMidtermTopic.form_Order
 			{
 				var vm = new OrderVM()
 				{
-					ID = int.Parse(txt_OrderID.Text.Trim()),
-					CustomerID = txt_CustomerID.Text.Trim(),
+					OrderID = int.Parse(txt_OrderID.Text.Trim()),
+					MemberID = txt_CustomerID.Text.Trim(),
 					PaymentMethod = comboBox_PayMethod.SelectedItem?.ToString(),
 					Payed = comboBox_Payed.SelectedItem?.ToString()
 				};

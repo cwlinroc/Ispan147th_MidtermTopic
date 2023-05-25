@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.2.0.123\lib\net461\Dapper.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -43,8 +46,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Builders\SqlParameterBuilder.cs" />
+    <Compile Include="Dtos\AdoptDto.cs" />
     <Compile Include="Dtos\Assembler.cs" />
     <Compile Include="Dtos\CategoryDto.cs" />
+    <Compile Include="Dtos\CommonDto.cs" />
     <Compile Include="Dtos\EmployeeDto.cs" />
     <Compile Include="Dtos\MemberDto.cs" />
     <Compile Include="Dtos\MerchandiseDto.cs" />
@@ -52,6 +57,8 @@
     <Compile Include="Dtos\OrderGridDto.cs" />
     <Compile Include="Dtos\OrderListDto.cs" />
     <Compile Include="Dtos\OrderListGridDto.cs" />
+    <Compile Include="Dtos\PetDto.cs" />
+    <Compile Include="Dtos\ThemeDto.cs" />
     <Compile Include="ExtMethods\MyEncoder.cs" />
     <Compile Include="ExtMethods\SqlDataReaderExtMethod.cs" />
     <Compile Include="Program.cs" />
@@ -65,12 +72,19 @@
     <Compile Include="Repositories\OrderListRepository.cs" />
     <Compile Include="Repositories\OrderRepository.cs" />
     <Compile Include="Services\MerchandiseService.cs" />
+    <Compile Include="Repositories\MassInsertRepository.cs" />
+    <Compile Include="Repositories\OrderListRepository.cs" />
+    <Compile Include="Repositories\OrderRepository.cs" />
+    <Compile Include="Services\MassInsertService.cs" />
     <Compile Include="Services\OrderListService.cs" />
     <Compile Include="Services\OrderService.cs" />
     <Compile Include="Sqldb.cs" />
+    <Compile Include="Utility\RandomGenerator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

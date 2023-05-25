@@ -8,8 +8,8 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
 {
 	public class EmployeeDto
 	{
-		public string Account { get; set; }
-		public string Password { get; set; }
+		public string EmployeeAccount { get; set; }
+		public string EmployeePassword { get; set; }
 		public int Permission { get; set; }
 	}
 }

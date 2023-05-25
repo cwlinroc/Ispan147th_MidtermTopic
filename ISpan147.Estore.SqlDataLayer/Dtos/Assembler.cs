@@ -15,8 +15,8 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
 		{
 			get => (reader) => new OrderDto
 			{
-				ID = reader.GetInt("OrderID"),
-				CustomerID = reader.GetString("CustomerID"),
+				OrderID = reader.GetInt("OrderID"),
+				MemberID = reader.GetInt("MemberID"),
 				PaymentMethod = reader.GetInt("PaymentMethod"),
 				Payed = reader.GetBool("Payed")
 			};
@@ -26,9 +26,9 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
 		{
 			get => (reader) => new OrderListDto
 			{
-				ID = reader.GetInt("OrderListID"),
+				OrderListID = reader.GetInt("OrderListID"),
 				OrderID = reader.GetInt("OrderID"),
-				MerchandiseID = reader.GetString("MerchandiseID"),
+				MerchandiseID = reader.GetInt("MerchandiseID"),
 				Quantity = reader.GetInt("Quantity")
 			};
 		}
@@ -37,8 +37,8 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
 		{
 			get => (reader) => new EmployeeDto
 			{
-				Account = reader.GetString("EmployeeAccount"),
-				Password = reader.GetString("EmployeePassword"),
+				EmployeeAccount = reader.GetString("EmployeeAccount"),
+				EmployeePassword = reader.GetString("EmployeePassword"),
 				Permission = reader.GetInt("Permission")
 			};
 		}
