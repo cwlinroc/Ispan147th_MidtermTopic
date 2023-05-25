@@ -1,5 +1,5 @@
-﻿using Ispan147.Estore.SqlDataLayer.Dtos;
-using Ispan147.Estore.SqlDataLayer.Repositories;
+﻿using Ispan147.Estore.SqlDataLayer.Repositories;
+using ISpan147.Estore.SqlDataLayer.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +13,7 @@ namespace Ispan147.Estore.SqlDataLayer.Services
 		public int Create(MemberDto dto)
 		{
 			var repo = new MemberRepository();
-			var dtoInDb = repo.GetByName(dto.Name);
+			var dtoInDb = repo.GetByName(dto.MemberName);
 			if (dtoInDb != null)
 			{
 				throw new Exception("此姓名已存在,無法新增");
@@ -27,8 +27,8 @@ namespace Ispan147.Estore.SqlDataLayer.Services
 		public int Update(MemberDto dto)
 		{
 			var repo = new MemberRepository();
-			var dtoInDb = repo.GetByName(dto.Name);
-			if (dtoInDb != null && dtoInDb.ID != dto.ID)
+			var dtoInDb = repo.GetByName(dto.MemberName);
+			if (dtoInDb != null && dtoInDb.MemberID != dto.MemberID)
 			{
 				throw new Exception("此姓名已存在,無法更新");
 			}

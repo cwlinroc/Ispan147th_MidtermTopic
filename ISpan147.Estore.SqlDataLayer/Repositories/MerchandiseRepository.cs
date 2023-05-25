@@ -80,9 +80,9 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
                             WHERE MerchandiseId = @MerchandiseId";
 
 			var parameters = new SqlParameterBuilder()
-				.AddInt("@MerchandiseId", dto.MerchandiseId)
+				.AddInt("@MerchandiseId", dto.MerchandiseID)
 				.AddNVarchar("@MerchandiseName", 30, dto.MerchandiseName)
-				.AddInt("@CategoryId", dto.CategoryId)
+				.AddInt("@CategoryId", dto.CategoryID)
 				.AddInt("@Price", dto.Price)
 				.AddInt("@Amount", dto.Amount)
 				.AddNVarchar("@Description", 30, dto.Description)
@@ -103,7 +103,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 
 			var parameters = new SqlParameterBuilder()
 				.AddNVarchar("@MerchandiseName", 30, dto.MerchandiseName)
-				.AddInt("@CategoryId", dto.CategoryId)
+				.AddInt("@CategoryId", dto.CategoryID)
 				.AddInt("@Price", dto.Price)
 				.AddInt("@Amount", dto.Amount)
 				.AddNVarchar("@Description", 30, dto.Description)

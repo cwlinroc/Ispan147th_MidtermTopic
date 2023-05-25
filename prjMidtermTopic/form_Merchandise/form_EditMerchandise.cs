@@ -1,6 +1,8 @@
 ﻿using ISpan147.Estore.SqlDataLayer.Dtos;
 using ISpan147.Estore.SqlDataLayer.Repositories;
+using ISpan147.Estore.SqlDataLayer.Services;
 using prjMidtermTopic.Interfaces;
+using prjMidtermTopic.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,27 +27,28 @@ namespace prjMidtermTopic.form_Merchandise
 			InitializeComponent();
 		}
 
-		private (bool isValid, List<ValidationResult> errors) Validate(MerchandiseCreateVM vm)
-		{
-			//取得驗證規則
-			ValidationContext context = new ValidationContext(vm, null, null);
+		//todo 建立MerchandiseCreateVM  
+		//private (bool isValid, List<ValidationResult> errors) Validate(MerchandiseCreateVM vm)
+		//{
+		//	//取得驗證規則
+		//	ValidationContext context = new ValidationContext(vm, null, null);
 
-			//建立存放錯誤集合
-			List<ValidationResult> errors = new List<ValidationResult>();
+		//	//建立存放錯誤集合
+		//	List<ValidationResult> errors = new List<ValidationResult>();
 
-			//驗證model
-			bool validateAllProperties = true;
-			bool isValid = Validator.TryValidateObject(vm, context, errors, validateAllProperties);
+		//	//驗證model
+		//	bool validateAllProperties = true;
+		//	bool isValid = Validator.TryValidateObject(vm, context, errors, validateAllProperties);
 
-			return (isValid, errors);
-		}
+		//	return (isValid, errors);
+		//}
 
 		private void DisplayErrors(List<ValidationResult> errors)
 		{
 			Dictionary<string, Control> map = new Dictionary<string, Control>(StringComparer.CurrentCultureIgnoreCase)
 			{
 				{"MerchandiseName", txt_MerchandiseName},
-				{"CategoryId ", },	// todo 下拉式選單
+				//{"CategoryId ", },	// todo 下拉式選單
 				{"Price", txt_Price},
 				{"Amount", txt_Amount},
 				{"Description", txt_Description},
@@ -67,14 +70,14 @@ namespace prjMidtermTopic.form_Merchandise
 		private void form_EditMerchandise_Load(object sender, EventArgs e)
 		{
 			var repo = new MerchandiseRepository();
-			MerchandiseDto dto = repo.GetByID(_merchandiseId);
+			MerchandiseDto dto = repo.GetByMerchandiseID(_merchandiseId);
 			if (dto == null)
 			{
 				MessageBox.Show("找不到符合紀錄");
 				return;
 			}
 
-			txt_MerchandiseId.Text = dto.MerchandiseId.ToString();
+			txt_MerchandiseId.Text = dto.MerchandiseID.ToString();
 			txt_MerchandiseName.Text = dto.MerchandiseName.ToString();
 			// todo 下拉式清單 = dto.CategoryId.ToString();
 			txt_Price.Text = dto.Price.ToString();
@@ -85,78 +88,83 @@ namespace prjMidtermTopic.form_Merchandise
 
 		private void btn_Updata_Click(object sender, EventArgs e)
 		{
-			//收集表單欄位值到dto
-			bool PriceisInt = int.TryParse(txt_Price.Text, out int Price);
-			Price = PriceisInt ? Price : 0;
-			bool AmountisInt = int.TryParse(txt_Price.Text, out int Amount);
-			Amount = AmountisInt ? Amount : 0;
+			//todo 建立MerchandiseCreateVM  		
+			
+			////收集表單欄位值到dto
+			//bool PriceisInt = int.TryParse(txt_Price.Text, out int Price);
+			//Price = PriceisInt ? Price : 0;
+			//bool AmountisInt = int.TryParse(txt_Price.Text, out int Amount);
+			//Amount = AmountisInt ? Amount : 0;
 
-			var vm = new MerchandiseCreateVM()
-			{
-				MerchandiseId = this._merchandiseId,
-				MerchandiseName = txt_MerchandiseName.Text,
-				// todo CategoryId
-				Price = Price,
-				Amount = Amount,
-				Description = txt_Description.Text,
-				ImageURL = txt_ImageURL.Text
-			};
+			
 
-			//驗證vm是否通過欄位驗證
-			(bool isValid, List<ValidationResult> errors) validationResult = Validate(vm);
+			//var vm = new MerchandiseCreateVM()
+			//{
+			//	MerchandiseId = this._merchandiseId,
+			//	MerchandiseName = txt_MerchandiseName.Text,
+			//	// todo CategoryId
+			//	Price = Price,
+			//	Amount = Amount,
+			//	Description = txt_Description.Text,
+			//	ImageURL = txt_ImageURL.Text
+			//};
 
-			//若有錯則顯示
-			if (validationResult.isValid == false)
-			{
-				this.errorProvider1.Clear();
-				DisplayErrors(validationResult.errors);
-				return;
-			}
+			////驗證vm是否通過欄位驗證
+			//(bool isValid, List<ValidationResult> errors) validationResult = Validate(vm);
 
-			//通過驗證則將vm轉型為CategoryDto
-			MerchandiseDto dto = new MerchandiseDto
-			{
-				MerchandiseId = vm.MerchandiseId,
-				MerchandiseName = vm.MerchandiseName,
-				CategoryId = vm.CategoryId,
-				Price = vm.Price,
-				Amount = vm.Amount,
-				Description = vm.Description,
-				ImageURL = vm.ImageURL
-			};
+			////若有錯則顯示
+			//if (validationResult.isValid == false)
+			//{
+			//	this.errorProvider1.Clear();
+			//	DisplayErrors(validationResult.errors);
+			//	return;
+			//}
 
-			try
-			{
-				var service = new MerchandiseService();
-				int rows = service.Update(dto);
+			////通過驗證則將vm轉型為CategoryDto
+			//MerchandiseDto dto = new MerchandiseDto
+			//{
+			//	MerchandiseID = vm.MerchandiseId,
+			//	MerchandiseName = vm.MerchandiseName,
+			//	CategoryID = vm.Category,
+			//	Price = vm.Price,
+			//	Amount = vm.Amount,
+			//	Description = vm.Description,
+			//	ImageURL = vm.ImageURL
+			//};
 
-				//回到FormCategories
-				if (rows > 0)
-				{
-					MessageBox.Show("更新成功");
-					this.Close();
-				}
-				else
-				{
-					MessageBox.Show("更新失敗，原因為：該紀錄可能已被其他使用者刪除");
-				}
-			}
-			catch (Exception ex)
-			{
-				MessageBox.Show("新增失敗，原因：" + ex.Message);
-			}
+			//try
+			//{
+			//	var service = new MerchandiseService();
+			//	int rows = service.Update(dto);
 
-			IGrid parent = this.Owner as IGrid; //將開啟視窗轉型為IGrid，若轉型失敗不會丟出例外，而是回傳NULL
-			if (parent == null)
-			{
-				MessageBox.Show("開啟用的表單沒有實作IGrid，因此無法回送通知");
-			}
-			else
-			{
-				parent.Display();
-			}
+			//	//回到FormCategories
+			//	if (rows > 0)
+			//	{
+			//		MessageBox.Show("更新成功");
+			//		this.Close();
+			//	}
+			//	else
+			//	{
+			//		MessageBox.Show("更新失敗，原因為：該紀錄可能已被其他使用者刪除");
+			//	}
+			//}
+			//catch (Exception ex)
+			//{
+			//	MessageBox.Show("新增失敗，原因：" + ex.Message);
+			//}
 
-			this.Close();
+			//IGrid parent = this.Owner as IGrid; //將開啟視窗轉型為IGrid，若轉型失敗不會丟出例外，而是回傳NULL
+			//if (parent == null)
+			//{
+			//	MessageBox.Show("開啟用的表單沒有實作IGrid，因此無法回送通知");
+			//}
+			//else
+			//{
+			//	parent.Display();
+			//}
+
+			//this.Close();
+			
 		}
 
 		private void btn_Delete_Click(object sender, EventArgs e)

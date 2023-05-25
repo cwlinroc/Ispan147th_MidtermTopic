@@ -1,4 +1,4 @@
-﻿using Ispan147.Estore.SqlDataLayer.Dtos;
+﻿
 using ISpan147.Estore.SqlDataLayer.Dtos;
 using ISpan147.Estore.SqlDataLayer;
 using System;
@@ -83,8 +83,8 @@ namespace Ispan147.Estore.SqlDataLayer.Repositories
 			string sql = "UPDATE Members SET Name=@Name WHERE Id=@Id";
 
 			var parameters = new SqlParameterBuilder()
-				.AddInt("@Id", dto.ID)
-				.AddNVarchar("@Name", 30, dto.Name)
+				.AddInt("@Id", dto.MemberID)
+				.AddNVarchar("@Name", 30, dto.MemberName)
 
 				.Build();
 			Func<SqlConnection> connGetter = SqlDb.GetConnection;
@@ -101,7 +101,7 @@ namespace Ispan147.Estore.SqlDataLayer.Repositories
 						(@Name, )";
 
 			var parameters = new SqlParameterBuilder()
-				.AddNVarchar("@Name", 30, dto.Name)
+				.AddNVarchar("@Name", 30, dto.MemberName)
 
 				.Build();
 

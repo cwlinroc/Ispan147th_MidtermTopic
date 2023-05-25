@@ -18,27 +18,28 @@ namespace prjMidtermTopic.form_Merchandise
 			InitializeComponent();
 		}
 
-		private (bool isValid, List<ValidationResult> errors) Validate(MerchandiseCreateVM vm)
-		{
-			//取得驗證規則
-			ValidationContext context = new ValidationContext(vm, null, null);
+		//todo 建立MerchandiseCreateVM  確認分層 
+		//private (bool isValid, List<ValidationResult> errors) Validate(MerchandiseCreateVM vm)
+		//{
+		//	//取得驗證規則
+		//	ValidationContext context = new ValidationContext(vm, null, null);
 
-			//建立存放錯誤集合
-			List<ValidationResult> errors = new List<ValidationResult>();
+		//	//建立存放錯誤集合
+		//	List<ValidationResult> errors = new List<ValidationResult>();
 
-			//驗證model
-			bool validateAllProperties = true;
-			bool isValid = Validator.TryValidateObject(vm, context, errors, validateAllProperties);
+		//	//驗證model
+		//	bool validateAllProperties = true;
+		//	bool isValid = Validator.TryValidateObject(vm, context, errors, validateAllProperties);
 
-			return (isValid, errors);
-		}
+		//	return (isValid, errors);
+		//}
 
 		private void DisplayErrors(List<ValidationResult> errors)
 		{
 			Dictionary<string, Control> map = new Dictionary<string, Control>(StringComparer.CurrentCultureIgnoreCase)
 			{
 				{"MerchandiseName", txt_MerchandiseName},
-				{"CategoryId ", },	// todo 下拉式選單
+				//{"CategoryId ", },	// todo 下拉式選單
 				{"Price", txt_Price},
 				{"Amount", txt_Amount},
 				{"Description", txt_Description},

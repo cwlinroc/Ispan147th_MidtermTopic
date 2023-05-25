@@ -25,7 +25,7 @@ namespace ISpan147.Estore.SqlDataLayer.Services
 		{
 			var repo = new MerchandiseRepository();
 			var dtoInDb = repo.GetByMerchandiseName(dto.MerchandiseName);
-			if (dtoInDb != null && dtoInDb.MerchandiseId != dto.MerchandiseId) { throw new Exception("此分類名稱已存在，請重新命名"); }
+			if (dtoInDb != null && dtoInDb.MerchandiseID != dto.MerchandiseID) { throw new Exception("此分類名稱已存在，請重新命名"); }
 			
 			int rows = repo.Update(dto);
 
@@ -38,7 +38,8 @@ namespace ISpan147.Estore.SqlDataLayer.Services
 			// todo int? categoryid = null
 			)
 		{
-			return new OrderListRepository().Search(merchandiseid, merchandisename, /*categoryid*/);
+			return new List<MerchandiseDto> { }; //todo 刪除這行  恢復下面那行
+			//return new OrderListRepository().Search(merchandiseid, merchandisename,/* categoryid*/);
 		}
 
 		public int Delete(int orderID)

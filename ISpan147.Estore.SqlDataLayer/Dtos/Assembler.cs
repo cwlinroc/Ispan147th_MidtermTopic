@@ -1,4 +1,4 @@
-﻿using Ispan147.Estore.SqlDataLayer.Dtos;
+﻿
 using ISpan147.Estore.SqlDataLayer.ExtMethods;
 using System;
 using System.Collections.Generic;
@@ -62,8 +62,8 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
 
 					return new MemberDto
 					{
-						ID = id,
-						Name = name,
+						MemberID = id,
+						MemberName = name,
 						DateOfBirth = dob,
 						Gender = gender,
 						Account = acc,
@@ -83,9 +83,9 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
 		{
 			get => (reader) => new MerchandiseDto
 			{
-				MerchandiseId = reader.GetInt("MerchandiseId"),
+				MerchandiseID = reader.GetInt("MerchandiseId"),
 				MerchandiseName = reader.GetString("MerchandiseName"),
-				CategoryId = reader.GetInt("CategoryId"),
+				CategoryID = reader.GetInt("CategoryId"),
 				Price = reader.GetInt("Price"),
 				Amount = reader.GetInt("Amount"),
 				Description = reader.GetString("Description"),

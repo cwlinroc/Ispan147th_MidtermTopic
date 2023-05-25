@@ -1,4 +1,4 @@
-﻿using Ispan147.Estore.SqlDataLayer.Dtos;
+﻿using ISpan147.Estore.SqlDataLayer.Dtos;
 using Ispan147.Estore.SqlDataLayer.Services;
 using prjMidtermTopic.Model;
 using prjMidtermTopic.ViewModels;
@@ -12,7 +12,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static Ispan147.Estore.SqlDataLayer.Dtos.MemberDto;
+using static ISpan147.Estore.SqlDataLayer.Dtos.MemberDto;
+using prjMidtermTopic.Interfaces;
 
 namespace prjMidtermTopic.FormMember
 {
@@ -122,8 +123,8 @@ namespace prjMidtermTopic.FormMember
 
 			MemberDto dto = new MemberDto
 			{
-				ID = vm.Id,
-				Name = vm.Name,
+				MemberID = vm.Id,
+				MemberName = vm.Name,
 				DateOfBirth = vm.DateOfBirth,
 				Gender = vm.Gender,
 				Account = vm.Account,

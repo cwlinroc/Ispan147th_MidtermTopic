@@ -153,7 +153,8 @@
       <DependentUpon>form_Main.cs</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\IGrid.cs" />
-    <Compile Include="Model\IGrid.cs" />
+    <Compile Include="Model\DisplayGrim.cs" />
+    <Compile Include="Model\MyValidator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\MemberCreateVM.cs" />
@@ -189,12 +190,18 @@
     <EmbeddedResource Include="form_Order\form_OrderAdd.resx">
       <DependentUpon>form_OrderAdd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="form_Order\form_OrderEdit.resx" />
-    <EmbeddedResource Include="form_Order\form_OrderList.resx" />
+    <EmbeddedResource Include="form_Order\form_OrderEdit.resx">
+      <DependentUpon>form_OrderEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form_Order\form_OrderList.resx">
+      <DependentUpon>form_OrderList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="form_Order\form_OrderListAdd.resx">
       <DependentUpon>form_OrderListAdd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="form_Order\Form_OrderListEdit.resx" />
+    <EmbeddedResource Include="form_Order\Form_OrderListEdit.resx">
+      <DependentUpon>Form_OrderListEdit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -204,7 +211,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="bin\Debug\prjMidtermTopic.exe.config" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -220,7 +226,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="bin\Release\" />
     <Folder Include="Image\" />
   </ItemGroup>
   <ItemGroup>
@@ -228,12 +233,6 @@
       <Project>{9ee28126-8c44-4f99-867d-e316d537541b}</Project>
       <Name>Ispan147.Estore.SqlDataLayer</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="bin\Debug\Ispan147.Estore.SqlDataLayer.dll" />
-    <Content Include="bin\Debug\Ispan147.Estore.SqlDataLayer.pdb" />
-    <Content Include="bin\Debug\prjMidtermTopic.exe" />
-    <Content Include="bin\Debug\prjMidtermTopic.pdb" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

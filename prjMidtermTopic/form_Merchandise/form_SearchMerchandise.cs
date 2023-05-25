@@ -57,7 +57,7 @@ namespace prjMidtermTopic
 		{
 			if (e.RowIndex < 0) return;
 
-			int id = this.data[e.RowIndex].MerchandiseId;
+			int id = this.data[e.RowIndex].MerchandiseID;
 
 			var frm = new form_EditMerchandise(id);
 			frm.Owner = this;

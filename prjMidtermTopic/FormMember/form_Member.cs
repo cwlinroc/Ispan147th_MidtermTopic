@@ -1,9 +1,9 @@
-﻿using Ispan147.Estore.SqlDataLayer.Dtos;
+﻿using ISpan147.Estore.SqlDataLayer.Dtos;
 using Ispan147.Estore.SqlDataLayer.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using prjMidtermTopic.Model;
+using prjMidtermTopic.Interfaces;
 using prjMidtermTopic.FormMember;
 
 namespace prjMidtermTopic
@@ -42,7 +42,7 @@ namespace prjMidtermTopic
 		{
 			if (e.RowIndex < 0) return; // 按到了header,不處理
 
-			int id = this.data[e.RowIndex].ID;
+			int id = this.data[e.RowIndex].MemberID;
 
 			var frm = new form_EditMember(id);
 			frm.Owner = this;
