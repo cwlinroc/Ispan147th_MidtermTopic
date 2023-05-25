@@ -19,9 +19,9 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 			using (var conn = SqlDb.GetConnection())
 			{
 				string strSql = "INSERT INTO Members"
-					+ " (MemberName, DateOfBirth, Gender, Account,"
+					+ " (MemberName, NickName, DateOfBirth, Gender, Account,"
 					+ " Password, Phone, Address, Email, Avatar)"
-					+ " VALUES (@MemberName, @DateOfBirth, @Gender, @Account,"
+					+ " VALUES (@MemberName, @NickName, @DateOfBirth, @Gender, @Account,"
 					+ " @Password, @Phone, @Address, @Email, @Avatar)";
 
 				conn.Execute(strSql, dto);
@@ -32,7 +32,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 		{
 			using (var conn = SqlDb.GetConnection())
 			{
-				string strSql = "INSERT INTO Pet"
+				string strSql = "INSERT INTO Pets"
 					+ " ( SpeciesID,  BreedID,  PetName,"
 					+ " Gender,  Age,  Description, Location) "
 					+ " VALUES ( @SpeciesID,  @BreedID,  @PetName,"
@@ -47,9 +47,9 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 			using (var conn = SqlDb.GetConnection())
 			{
 				string strSql = "INSERT INTO Orders"
-					+ " ( MemberID,  PaymentMethod,  Payed) "
+					+ " ( MemberID,  PaymentMethod,  Payed, PurchaseTime, PaymentAmount) "
 					+ " OUTPUT INSERTED.OrderID"
-					+ " VALUES ( @MemberID,  @PaymentMethod,  @Payed)";
+					+ " VALUES ( @MemberID,  @PaymentMethod,  @Payed, @PurchaseTime, @PaymentAmount)";
 
 				int result = conn.QuerySingle<int>(strSql, dto);
 				return result;
@@ -60,7 +60,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 		{
 			using (var conn = SqlDb.GetConnection())
 			{
-				string strSql = "INSERT INTO OrderList (OrderID, MerchandiseID, Quantity)"
+				string strSql = "INSERT INTO OrderLists (OrderID, MerchandiseID, Quantity)"
 				+ " VALUES (@OrderID, @MerchandiseID, @Quantity) ";
 
 				conn.Execute(strSql, dto);
@@ -85,7 +85,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 		{
 			using (var conn = SqlDb.GetConnection())
 			{
-				string strSql = "INSERT INTO Theme "
+				string strSql = "INSERT INTO Themes "
 					+ " ( ThemeName, ThemeDateTime, ThemeContext )"
 					+ " OUTPUT INSERTED.ThemeID"
 					+ " VALUES ( @ThemeName, @ThemeDateTime, @ThemeContext )";
@@ -95,13 +95,13 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 			}
 		}
 
-		public void CreateCommon(CommonDto dto)
+		public void CreateCommon(CommentDto dto)
 		{
 			using (var conn = SqlDb.GetConnection())
 			{
-				string strSql = "INSERT INTO Common "
-					+ " ( CommonName, CommonTime, CommonContext, ThemeID )"
-					+ " VALUES ( @CommonName, @CommonTime, @CommonContext, @ThemeID )";
+				string strSql = "INSERT INTO Comments "
+					+ " ( CommentName, CommentTime,CommentContext, ThemeID )"
+					+ " VALUES ( @CommentName, @CommentTime, @CommentContext, @ThemeID )";
 
 				conn.Execute(strSql, dto);
 			}
@@ -112,7 +112,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 		{
 			using (var conn = SqlDb.GetConnection())
 			{
-				string strSql = "INSERT INTO Adopt "
+				string strSql = "INSERT INTO Adopts "
 					+ " ( PetID, MemberID, ApplicationTime )"
 					+ " VALUES ( @PetID, @MemberID, @ApplicationTime )";
 
@@ -125,7 +125,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 		{
 			using (var conn = SqlDb.GetConnection())
 			{
-				string strSql = $"SELECT BreedID FROM Breed WHERE SpeciesID = @SpeciesID";
+				string strSql = $"SELECT BreedID FROM Breeds WHERE SpeciesID = @SpeciesID";
 
 				var parameters = new { SpeciesID = speciesID };
 
@@ -152,7 +152,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 		{
 			using (var conn = SqlDb.GetConnection())
 			{
-				string strSql = $"SELECT PetID FROM Pet ";
+				string strSql = $"SELECT PetID FROM Pets ";
 
 				var result = conn.Query<int>(strSql);
 
@@ -177,7 +177,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 		{
 			using (var conn = SqlDb.GetConnection())
 			{
-				string strSql = $"SELECT * FROM Member ";
+				string strSql = $"SELECT * FROM Members ";
 
 				var result = conn.Query<MemberDto>(strSql);
 

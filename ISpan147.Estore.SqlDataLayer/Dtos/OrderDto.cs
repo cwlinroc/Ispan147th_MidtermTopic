@@ -12,5 +12,8 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
         public int MemberID { get; set; }
         public int PaymentMethod { get; set; }
 		public bool Payed { get; set; }
+		public DateTime PurchaseTime { get; set; }
+		public int? PaymentAmount { get; set; }
+
 	}
 }

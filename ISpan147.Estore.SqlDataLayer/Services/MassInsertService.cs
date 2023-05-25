@@ -26,14 +26,15 @@ namespace ISpan147.Estore.SqlDataLayer.Services
 				repo.CreateMember(new MemberDto
 				{
 					MemberName = rng.RandomName(),
+					NickName = (rng.RandomChance(80)) ? rng.RandomPetName().Substring(0,2) : null,
 					DateOfBirth = rng.RandomBirthDate(),
 					Gender = rng.RandomBool(),
 					Account = rng.RandomEnString(),
 					Password = rng.RandomEnString().GetSaltedSha256(),
 					Phone = rng.RandomPhone(),
-					Address = rng.RandomAddress(),
+					Address = (rng.RandomChance(70)) ? rng.RandomAddress() : null,
 					Email = rng.RandomEmail(),
-					Avatar = rng.RandomEnString() + ".jpg"
+					Avatar = (rng.RandomChance(70)) ? rng.RandomEnString() + ".jpg" : null
 				});
 			}
 		}
@@ -102,12 +103,12 @@ namespace ISpan147.Estore.SqlDataLayer.Services
 					for (int j = 0; j < rng.RandomIntBetween(2, 13); j++)
 					{
 						dt = dt.AddMinutes(rng.RandomIntBetween(0, 5000));
-						repo.CreateCommon(new CommonDto
+						repo.CreateCommon(new CommentDto
 						{
-							CommonName = rng.RandomEnString(5, 11),
-							CommonTime = dt,
+							CommentName = rng.RandomEnString(5, 11),
+							CommentTime = dt,
 							ThemeID = themeID,
-							CommonContext = String.Concat(Enumerable
+							CommentContext = String.Concat(Enumerable
 						.Repeat(rng.RandomSentance(), rng.RandomIntBetween(1, 3)))
 						});
 					}
@@ -128,12 +129,17 @@ namespace ISpan147.Estore.SqlDataLayer.Services
 
 			for (int i = 0; i < total; i++)
 			{
-				int orderID = repo.CreateOrder(new OrderDto
+				var dto = new OrderDto
 				{
 					MemberID = rng.RandomFrom(memberIDs),
 					PaymentMethod = rng.RandomIntBetween(0, 3),
-					Payed = rng.RandomBool()
-				});
+					Payed = rng.RandomBool(),
+					PurchaseTime = DateTime.Now.AddDays(rng.RandomIntBetween(-365, -10))
+						.AddMinutes(rng.RandomIntBetween(0, 1440)),					
+				};
+				if (rng.RandomChance(80)) dto.PaymentAmount = rng.RandomIntBetween(300, 5000);
+
+				int orderID = repo.CreateOrder(dto);
 
 				for(int j = 0;  j < rng.RandomIntBetween(1, 15); j++)
 				{

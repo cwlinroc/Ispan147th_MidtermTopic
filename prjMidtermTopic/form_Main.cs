@@ -130,7 +130,7 @@ namespace prjMidtermTopic
 
 		private void 大量輸入ToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			new form_MassInsert().ShowDialog();
+			new MassInsert.form_MassInsert().ShowDialog();
 		}
 
 

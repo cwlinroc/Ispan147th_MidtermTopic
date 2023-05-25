@@ -62,6 +62,8 @@ namespace prjMidtermTopic.MassInsert
 				if (dialogResult == DialogResult.No) return;
 
 				func(total);
+
+				MessageBox.Show("輸入成功!");
 			}
 			catch (Exception ex)
 			{

@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace ISpan147.Estore.SqlDataLayer.Dtos
 {
-	public class CommonDto
+	public class CommentDto
 	{
-        public int CommonID { get; set; }
-        public string CommonName { get; set; }
-        public DateTime CommonTime { get; set; }
-        public string  CommonContext { get; set; }
+        public int CommentID { get; set; }
+        public string CommentName { get; set; }
+        public DateTime CommentTime { get; set; }
+        public string CommentContext { get; set; }
         public int ThemeID { get; set; }
 
     }
