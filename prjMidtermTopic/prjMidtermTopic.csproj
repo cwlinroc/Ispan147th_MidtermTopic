@@ -234,9 +234,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Image\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\ISpan147.Estore.SqlDataLayer\Ispan147.Estore.SqlDataLayer.csproj">
       <Project>{9ee28126-8c44-4f99-867d-e316d537541b}</Project>

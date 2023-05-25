@@ -21,13 +21,13 @@ namespace prjMidtermTopic.form_Merchandise
 		//todo 建立MerchandiseCreateVM  確認分層 
 		//private (bool isValid, List<ValidationResult> errors) Validate(MerchandiseCreateVM vm)
 		//{
-		//	//取得驗證規則
+		//	取得驗證規則
 		//	ValidationContext context = new ValidationContext(vm, null, null);
 
-		//	//建立存放錯誤集合
+		//	建立存放錯誤集合
 		//	List<ValidationResult> errors = new List<ValidationResult>();
 
-		//	//驗證model
+		//	驗證model
 		//	bool validateAllProperties = true;
 		//	bool isValid = Validator.TryValidateObject(vm, context, errors, validateAllProperties);
 
