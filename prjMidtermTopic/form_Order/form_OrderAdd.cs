@@ -29,7 +29,7 @@ namespace prjMidtermTopic.form_Order
 			{
 				var vm = new OrderVM()
 				{
-					CustomerID = txt_CustomerID.Text.Trim(),
+					MemberID = txt_CustomerID.Text.Trim(),
 					PaymentMethod = comboBox_PayMethod.SelectedItem?.ToString(),
 					Payed = comboBox_Payed.SelectedItem?.ToString(),
 				};

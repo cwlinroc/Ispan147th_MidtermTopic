@@ -24,7 +24,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 		public List<OrderListDto> Search(
 			int? id = null,
 			int? orderID = null,
-			string merchandiseID = null,
+			int? merchandiseID = null,
 			int? quantity = null)
 		{
 			string sql = $"SELECT * FROM OrderList ";
@@ -42,10 +42,10 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 				where += " AND OrderID = @OrderID ";
 				parameterBuilder.AddInt("OrderID", orderID.Value);
 			}
-			if (!string.IsNullOrEmpty(merchandiseID))
+			if (merchandiseID.HasValue)
 			{
 				where += " AND MerchandiseID = @MerchandiseID ";
-				parameterBuilder.AddNVarchar("MerchandiseID", 15, merchandiseID);
+				parameterBuilder.AddInt("MerchandiseID", merchandiseID.Value);
 			}
 			if (quantity.HasValue)
 			{
@@ -77,9 +77,9 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 
 			var parameters = new SqlParameterBuilder()
 				.AddInt("OrderID", dto.OrderID)
-				.AddNVarchar("MerchandiseID", 15,dto.MerchandiseID)
+				.AddInt("MerchandiseID", dto.MerchandiseID)
 				.AddInt("Quantity", dto.Quantity)
-				.AddInt("OrderListID", dto.ID)
+				.AddInt("OrderListID", dto.OrderListID)
 				.Build();
 
 			Func<SqlConnection> connGetter = SqlDb.GetConnection;
@@ -94,7 +94,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 
 			var parameters = new SqlParameterBuilder()
 				.AddInt("OrderID", dto.OrderID)
-				.AddNVarchar("MerchandiseID", 15, dto.MerchandiseID)
+				.AddInt("MerchandiseID", dto.MerchandiseID)
 				.AddInt("Quantity", dto.Quantity)
 				.Build();
 

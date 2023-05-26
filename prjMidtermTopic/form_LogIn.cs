@@ -25,7 +25,7 @@ namespace prjMidtermTopic
 			var repo = new EmployeeRepositoy();
 			var dto = repo.Get(txt_Account.Text);
 			
-			if(dto == null || txt_Password.Text.GetSaltedSha256() != dto.Password)
+			if(dto == null || txt_Password.Text.GetSaltedSha256() != dto.EmployeePassword)
 			{
 				MessageBox.Show("帳號密碼錯誤");
 				return;

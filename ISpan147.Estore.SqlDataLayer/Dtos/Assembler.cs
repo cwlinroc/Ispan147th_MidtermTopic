@@ -1,4 +1,5 @@
-﻿using ISpan147.Estore.SqlDataLayer.ExtMethods;
+﻿
+using ISpan147.Estore.SqlDataLayer.ExtMethods;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -14,8 +15,8 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
 		{
 			get => (reader) => new OrderDto
 			{
-				ID = reader.GetInt("OrderID"),
-				CustomerID = reader.GetString("CustomerID"),
+				OrderID = reader.GetInt("OrderID"),
+				MemberID = reader.GetInt("MemberID"),
 				PaymentMethod = reader.GetInt("PaymentMethod"),
 				Payed = reader.GetBool("Payed")
 			};
@@ -25,9 +26,9 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
 		{
 			get => (reader) => new OrderListDto
 			{
-				ID = reader.GetInt("OrderListID"),
+				OrderListID = reader.GetInt("OrderListID"),
 				OrderID = reader.GetInt("OrderID"),
-				MerchandiseID = reader.GetString("MerchandiseID"),
+				MerchandiseID = reader.GetInt("MerchandiseID"),
 				Quantity = reader.GetInt("Quantity")
 			};
 		}
@@ -36,19 +37,55 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
 		{
 			get => (reader) => new EmployeeDto
 			{
-				Account = reader.GetString("EmployeeAccount"),
-				Password = reader.GetString("EmployeePassword"),
+				EmployeeAccount = reader.GetString("EmployeeAccount"),
+				EmployeePassword = reader.GetString("EmployeePassword"),
 				Permission = reader.GetInt("Permission")
 			};
+		}
+
+		public static Func<SqlDataReader, MemberDto> MemberDtoAssembler
+		{
+			get
+			{
+				Func<SqlDataReader, MemberDto> func = (reader) =>
+				{
+					int id = reader.GetInt("memberid");
+					string name = reader.GetString("membername");
+					DateTime dob = reader.GetDate("dateofbirth");
+					bool gender = reader.GetBool("gender");
+					string acc = reader.GetString("account");
+					string pwd = reader.GetString("password");
+					string phone = reader.GetString("phone");
+					string address = reader.GetString("address");					
+					string email = reader.GetString("email");
+					string avatar = reader.GetString("avatar");
+
+					return new MemberDto
+					{
+						MemberID = id,
+						MemberName = name,
+						DateOfBirth = dob,
+						Gender = gender,
+						Account = acc,
+						Password = pwd,
+						Phone = phone,
+						Address = address,						
+						Email = email,
+						Avatar = avatar,
+					};
+				};
+				return func;
+
+			}
 		}
 
 		public static Func<SqlDataReader, MerchandiseDto> MerchandiseDtoAssembler
 		{
 			get => (reader) => new MerchandiseDto
 			{
-				MerchandiseId = reader.GetInt("MerchandiseId"),
+				MerchandiseID = reader.GetInt("MerchandiseId"),
 				MerchandiseName = reader.GetString("MerchandiseName"),
-				CategoryId = reader.GetInt("CategoryId"),
+				CategoryID = reader.GetInt("CategoryId"),
 				Price = reader.GetInt("Price"),
 				Amount = reader.GetInt("Amount"),
 				Description = reader.GetString("Description"),

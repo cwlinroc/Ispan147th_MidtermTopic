@@ -54,6 +54,7 @@
 			this.btnCreate.TabIndex = 13;
 			this.btnCreate.Text = "新增商品";
 			this.btnCreate.UseVisualStyleBackColor = true;
+			this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
 			// 
 			// label3
 			// 
@@ -152,12 +153,13 @@
 			this.comboBox_CategoryId.Name = "comboBox_CategoryId";
 			this.comboBox_CategoryId.Size = new System.Drawing.Size(266, 20);
 			this.comboBox_CategoryId.TabIndex = 14;
+			this.comboBox_CategoryId.SelectedIndexChanged += new System.EventHandler(this.comboBox_CategoryId_SelectedIndexChanged);
 			// 
 			// errorProvider1
 			// 
 			this.errorProvider1.ContainerControl = this;
 			// 
-			// form_EditMerchandise
+			// form_CreateMerchandise
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -175,7 +177,7 @@
 			this.Controls.Add(this.label3);
 			this.Controls.Add(this.txt_MerchandiseName);
 			this.Controls.Add(this.label2);
-			this.Name = "form_EditMerchandise";
+			this.Name = "form_CreateMerchandise";
 			this.Text = "商品管理：新增商品";
 			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
 			this.ResumeLayout(false);

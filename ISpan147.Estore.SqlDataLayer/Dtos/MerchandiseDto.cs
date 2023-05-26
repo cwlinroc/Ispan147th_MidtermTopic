@@ -8,12 +8,13 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
 {
 	public class MerchandiseDto
 	{
-		public int MerchandiseId { get; set; }
-		public string MerchandiseName { get; set; }
-		public int CategoryId { get; set; }
+        public int MerchandiseID { get; set; }
+        public string MerchandiseName { get; set; }
+		public int CategoryID { get; set; }
+		public string CategoryName { get; set; }		//todo 把其他地方都換成CName
 		public int Price { get; set; }
-		public int Amount { get; set; }
-		public string Description { get; set; }
-		public string ImageURL { get; set; }
+        public int Amount { get; set; }
+        public string Description { get; set; }
+        public string ImageURL { get; set; }
 	}
 }

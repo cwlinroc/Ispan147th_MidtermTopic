@@ -22,6 +22,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 
 			return SqlDb.Get(connGetter, sql, assembler);
 		}
+
 		public MerchandiseDto GetByMerchandiseName(string merchandisename)
 		{
 			Func<SqlConnection> connGetter = SqlDb.GetConnection;
@@ -32,13 +33,21 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 			return SqlDb.Get(connGetter, sql, assembler, parameters);
 		}
 
-		// todo GetByCategoryID
+		public MerchandiseDto GetByCategoryID(int categoryId)
+		{
+			Func<SqlConnection> connGetter = SqlDb.GetConnection;
+			string sql = $"SELECT * FROM Merchandises WHERE CategoryId = {categoryId}";
+			Func<SqlDataReader, MerchandiseDto> assembler = Assembler.MerchandiseDtoAssembler;
+			SqlParameter[] parameters = new SqlParameter[0];
 
-		public List<MerchandiseDto> Search(int? merchandiseId, string s_name)    //todo categoryId
+			return SqlDb.Get(connGetter, sql, assembler);
+		}
+
+		public List<MerchandiseDto> Search(int? merchandiseId, string s_name, int? s_categoryid)
 		{
 			#region sql & SqlParameter[]
 
-			string sql = $"SELECT * FROM Categories";
+			string sql = $"SELECT * FROM Merchandises AS m JOIN Categories AS c ON m.CategoryID = c.CategoryID ";
 
 			var builder = new SqlParameterBuilder();
 
@@ -53,9 +62,11 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 				where += $" AND MerchandiseName LIKE '%' + @MerchandiseName + '%'";
 				builder.AddNVarchar("@MerchandiseName", 30, s_name);
 			}
-
-			// todo categoryId
-
+			if (s_categoryid > 0)
+			{
+				where += $" AND m.CategoryID = @CategoryID";
+				builder.AddInt("@CategoryID", s_categoryid.Value);
+			}
 			if (string.IsNullOrEmpty(where) == false)
 			{
 				where = " WHERE " + where.Substring(5);
@@ -67,22 +78,21 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 			Func<SqlDataReader, MerchandiseDto> func = Assembler.MerchandiseDtoAssembler;
 			Func<SqlConnection> connGetter = SqlDb.GetConnection;
 
-			
 			return SqlDb.Search(connGetter, sql, func, parameters.ToArray()).ToList();
 		}
 
 		public int Update(MerchandiseDto dto)
 		{
-			string sql = @"UPDATE Categories 
+			string sql = @"UPDATE Merchandises 
                             SET MerchandiseName = @MerchandiseName,
 							CategoryId = @CategoryId, Price = @Price, Amount = @Amount, 
 							Description = @Description, ImageURL = @ImageURL
                             WHERE MerchandiseId = @MerchandiseId";
 
 			var parameters = new SqlParameterBuilder()
-				.AddInt("@MerchandiseId", dto.MerchandiseId)
+				.AddInt("@MerchandiseId", dto.MerchandiseID)
 				.AddNVarchar("@MerchandiseName", 30, dto.MerchandiseName)
-				.AddInt("@CategoryId", dto.CategoryId)
+				.AddInt("@CategoryId", dto.CategoryID)
 				.AddInt("@Price", dto.Price)
 				.AddInt("@Amount", dto.Amount)
 				.AddNVarchar("@Description", 30, dto.Description)
@@ -103,7 +113,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 
 			var parameters = new SqlParameterBuilder()
 				.AddNVarchar("@MerchandiseName", 30, dto.MerchandiseName)
-				.AddInt("@CategoryId", dto.CategoryId)
+				.AddInt("@CategoryId", dto.CategoryID)
 				.AddInt("@Price", dto.Price)
 				.AddInt("@Amount", dto.Amount)
 				.AddNVarchar("@Description", 30, dto.Description)
@@ -120,7 +130,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 			string sql = @"DELETE FROM Merchandises
                             WHERE MerchandiseId = @MerchandiseId";
 
-			SqlParameter parameter = new SqlParameter("@Id", SqlDbType.Int) { Value = merchandiseId };
+			SqlParameter parameter = new SqlParameter("@MerchandiseId", SqlDbType.Int) { Value = merchandiseId };
 
 			Func<SqlConnection> connGetter = SqlDb.GetConnection;
 

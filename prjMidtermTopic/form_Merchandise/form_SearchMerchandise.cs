@@ -1,6 +1,8 @@
 ﻿using ISpan147.Estore.SqlDataLayer.Dtos;
 using ISpan147.Estore.SqlDataLayer.Repositories;
 using prjMidtermTopic.form_Merchandise;
+using prjMidtermTopic.Interfaces;
+using prjMidtermTopic.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,11 +15,14 @@ using System.Windows.Forms;
 
 namespace prjMidtermTopic
 {
-    public partial class form_SearchMerchandise : Form
+    public partial class form_SearchMerchandise : Form, IGrid
     {
         public form_SearchMerchandise()
         {
             InitializeComponent();
+
+			comboBox_CategoryId.Items.AddRange(ChooseCategory.categoryNameOptions);
+			comboBox_CategoryId.SelectedIndex = 0;
 		}
 
 		List<MerchandiseDto> data;
@@ -43,11 +48,11 @@ namespace prjMidtermTopic
 
 			string sName = this.txt_MerchandiseName.Text;
 
-			// todo 下拉式選單設定key=categoryName, value=categoryId
-
+			int sCategoryId = this.comboBox_CategoryId.SelectedIndex;
+			
 			//取得符合紀錄
 			var repo = new MerchandiseRepository();
-			data = repo.Search(sId, sName);
+			data = repo.Search(sId, sName, sCategoryId);
 
 			//匯入DataGridView
 			this.dataGridView1.DataSource = data;
@@ -57,7 +62,7 @@ namespace prjMidtermTopic
 		{
 			if (e.RowIndex < 0) return;
 
-			int id = this.data[e.RowIndex].MerchandiseId;
+			int id = this.data[e.RowIndex].MerchandiseID;
 
 			var frm = new form_EditMerchandise(id);
 			frm.Owner = this;

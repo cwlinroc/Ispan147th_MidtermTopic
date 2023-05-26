@@ -22,7 +22,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 
 		public List<OrderDto> Search(
 			int? orderID = null,
-			string customerID = null,
+			int? memberID = null,
 			int? paymentmethod = null,
 			bool? payed = null)
 		{
@@ -36,10 +36,10 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 				where += " AND ID = @OrderID ";
 				parameterBuilder.AddInt("OrderID", orderID.Value);
 			}
-			if (!string.IsNullOrEmpty(customerID))
+			if (memberID.HasValue				)
 			{
-				where += " AND CustomerID = @CustomerID ";
-				parameterBuilder.AddNVarchar("CustomerID", 15, customerID);
+				where += " AND MemberID = @MemberID ";
+				parameterBuilder.AddInt("MemberID",  memberID.Value);
 			}
 			if (paymentmethod.HasValue)
 			{
@@ -69,15 +69,15 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 		{
 			if (dto == null) return 0;
 
-			string sql = "UPDATE Orders SET CustomerID = @CustomerID"
+			string sql = "UPDATE Orders SET MemberID = @MemberID"
 				+ ", Paymentmethod = @Paymentmethod "
 				+ ", Payed = @Payed WHERE OrderID = @OrderID ";
 
 			var parameters = new SqlParameterBuilder()
-				.AddNVarchar("CustomerID", 15, dto.CustomerID)
+				.AddInt("MemberID", dto.MemberID)
 				.AddInt("Paymentmethod", dto.PaymentMethod)
 				.AddBit("Payed", dto.Payed)
-				.AddInt("OrderID", dto.ID)
+				.AddInt("OrderID", dto.OrderID)
 				.Build();
 
 			Func<SqlConnection> connGetter = SqlDb.GetConnection;
@@ -87,11 +87,10 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 
 		public int Create(OrderDto dto)
 		{
-			string sql = "INSERT INTO Orders (CustomerID, Paymentmethod, Payed)"
-				+ " VALUES (@CustomerID, @Paymentmethod, @Payed) ";
+			string sql = "INSERT INTO Orders (MemberID, Paymentmethod, Payed)"
+				+ " VALUES (@MemberID, @Paymentmethod, @Payed) ";
 
-			var parameters = new SqlParameterBuilder()
-				.AddNVarchar("CustomerID", 15, dto.CustomerID)
+			var parameters = new SqlParameterBuilder().AddInt("MemberID", dto.MemberID)
 				.AddInt("Paymentmethod", dto.PaymentMethod)
 				.AddBit("Payed", dto.Payed)
 				.Build();

@@ -15,12 +15,12 @@ using prjMidtermTopic.ViewModels;
 
 namespace prjMidtermTopic.form_Order
 {
-	public partial class form_MerchandiseOrder : Form
+	public partial class form_Orders : Form
 	{
 
 		private List<OrderVM> _data;
 		private int _row = -1;
-		public form_MerchandiseOrder()
+		public form_Orders()
 		{
 			InitializeComponent();
 		}
@@ -64,7 +64,7 @@ namespace prjMidtermTopic.form_Order
 		{
 			_row = e.RowIndex;
 			if (_row < 0) return;
-			var frm = new form_OrderList(_data[_row].ID);
+			var frm = new form_OrderList(_data[_row].OrderID);
 			frm.Owner = this;
 			frm.ShowDialog();
 		}
@@ -76,13 +76,20 @@ namespace prjMidtermTopic.form_Order
 			try
 			{
 				int? orderID = null;
+				int? customerID = null;
+
 				if (txt_OrderID.Text.Trim().Length > 0
-					&& int.TryParse(txt_OrderID.Text.Trim(), out int result))
+					&& int.TryParse(txt_OrderID.Text.Trim(), out int _orderID))
 				{
-					orderID = result;
+					orderID = _orderID;
+				}
+				if (txt_OrderID.Text.Trim().Length > 0
+					&& int.TryParse(txt_OrderID.Text.Trim(), out int _customerID))
+				{
+					customerID = _customerID;
 				}
 
-				var dtoList = new OrderService().Search(orderID, txt_CustomerID.Text.Trim());
+				var dtoList = new OrderService().Search(orderID, customerID);
 
 				_data = dtoList.Select(dto => dto.ToVM()).ToList();
 

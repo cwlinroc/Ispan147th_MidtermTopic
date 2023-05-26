@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using prjMidtermTopic.form_Order;
+using prjMidtermTopic.MassInsert;
 
 namespace prjMidtermTopic
 {
@@ -43,12 +44,13 @@ namespace prjMidtermTopic
 
 		private void toolStripButton_MerchandiseForm_Click(object sender, EventArgs e)
 		{
+			
 			showForm(new form_SearchMerchandise());
 		}
 
 		private void toolStripButton_OrderForm_Click(object sender, EventArgs e)
 		{
-			showForm(new form_MerchandiseOrder());
+			showForm(new form_Orders());
 		}
 
 		private void toolStripButton_QAForm_Click(object sender, EventArgs e)
@@ -125,6 +127,13 @@ namespace prjMidtermTopic
 		{
 			while (ActiveMdiChild != null) ActiveMdiChild.Close();
 		}
+
+		private void 大量輸入ToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			new form_MassInsert().ShowDialog();
+		}
+
+
 		#endregion
 
 		private void showForm(Form frm)
@@ -134,6 +143,6 @@ namespace prjMidtermTopic
 			frm.Show();
 		}
 
-
+		
 	}
 }

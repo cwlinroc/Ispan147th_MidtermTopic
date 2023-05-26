@@ -43,13 +43,13 @@
 			this.label1 = new System.Windows.Forms.Label();
 			this.btn_Search = new System.Windows.Forms.Button();
 			this.labCategoryName = new System.Windows.Forms.Label();
-			this.comboBox_Category = new System.Windows.Forms.ComboBox();
+			this.comboBox_CategoryId = new System.Windows.Forms.ComboBox();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// btn_Add
 			// 
-			this.btn_Add.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btn_Add.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.btn_Add.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.btn_Add.Location = new System.Drawing.Point(683, 408);
 			this.btn_Add.Name = "btn_Add";
@@ -99,7 +99,7 @@
 			// 
 			// Column1
 			// 
-			this.Column1.DataPropertyName = "CategoryId ";
+			this.Column1.DataPropertyName = "CategoryID";
 			this.Column1.HeaderText = "商品類別";
 			this.Column1.Name = "Column1";
 			this.Column1.ReadOnly = true;
@@ -113,14 +113,14 @@
 			// 
 			// Column2
 			// 
-			this.Column2.DataPropertyName = "Amount ";
+			this.Column2.DataPropertyName = "Amount";
 			this.Column2.HeaderText = "庫存數量";
 			this.Column2.Name = "Column2";
 			this.Column2.ReadOnly = true;
 			// 
 			// Column3
 			// 
-			this.Column3.DataPropertyName = "Description ";
+			this.Column3.DataPropertyName = "Description";
 			this.Column3.HeaderText = "商品描述";
 			this.Column3.Name = "Column3";
 			this.Column3.ReadOnly = true;
@@ -192,20 +192,20 @@
 			this.labCategoryName.Text = "商品類別：";
 			this.labCategoryName.TextAlign = System.Drawing.ContentAlignment.TopRight;
 			// 
-			// comboBox_Category
+			// comboBox_CategoryId
 			// 
-			this.comboBox_Category.FormattingEnabled = true;
-			this.comboBox_Category.Location = new System.Drawing.Point(510, 28);
-			this.comboBox_Category.Name = "comboBox_Category";
-			this.comboBox_Category.Size = new System.Drawing.Size(121, 20);
-			this.comboBox_Category.TabIndex = 2;
+			this.comboBox_CategoryId.FormattingEnabled = true;
+			this.comboBox_CategoryId.Location = new System.Drawing.Point(510, 28);
+			this.comboBox_CategoryId.Name = "comboBox_CategoryId";
+			this.comboBox_CategoryId.Size = new System.Drawing.Size(121, 20);
+			this.comboBox_CategoryId.TabIndex = 2;
 			// 
 			// form_SearchMerchandise
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 450);
-			this.Controls.Add(this.comboBox_Category);
+			this.Controls.Add(this.comboBox_CategoryId);
 			this.Controls.Add(this.labCategoryName);
 			this.Controls.Add(this.btn_Add);
 			this.Controls.Add(this.dataGridView1);
@@ -233,7 +233,7 @@
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Button btn_Search;
 		private System.Windows.Forms.Label labCategoryName;
-		private System.Windows.Forms.ComboBox comboBox_Category;
+		private System.Windows.Forms.ComboBox comboBox_CategoryId;
 		private System.Windows.Forms.DataGridViewTextBoxColumn MerchandiseId;
 		private System.Windows.Forms.DataGridViewTextBoxColumn MerchandiseName;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Column1;

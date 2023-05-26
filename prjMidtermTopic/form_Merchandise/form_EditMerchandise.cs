@@ -1,6 +1,8 @@
 ﻿using ISpan147.Estore.SqlDataLayer.Dtos;
 using ISpan147.Estore.SqlDataLayer.Repositories;
+using ISpan147.Estore.SqlDataLayer.Services;
 using prjMidtermTopic.Interfaces;
+using prjMidtermTopic.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,8 +25,10 @@ namespace prjMidtermTopic.form_Merchandise
 			_merchandiseId = merchandiseId;
 
 			InitializeComponent();
-		}
 
+			comboBox_CategoryId.Items.AddRange(ChooseCategory.categoryNameOptions);
+		}
+ 
 		private (bool isValid, List<ValidationResult> errors) Validate(MerchandiseCreateVM vm)
 		{
 			//取得驗證規則
@@ -45,7 +49,7 @@ namespace prjMidtermTopic.form_Merchandise
 			Dictionary<string, Control> map = new Dictionary<string, Control>(StringComparer.CurrentCultureIgnoreCase)
 			{
 				{"MerchandiseName", txt_MerchandiseName},
-				{"CategoryId ", },	// todo 下拉式選單
+				{"CategoryId ", comboBox_CategoryId},
 				{"Price", txt_Price},
 				{"Amount", txt_Amount},
 				{"Description", txt_Description},
@@ -67,16 +71,16 @@ namespace prjMidtermTopic.form_Merchandise
 		private void form_EditMerchandise_Load(object sender, EventArgs e)
 		{
 			var repo = new MerchandiseRepository();
-			MerchandiseDto dto = repo.GetByID(_merchandiseId);
+			MerchandiseDto dto = repo.GetByMerchandiseID(_merchandiseId);
 			if (dto == null)
 			{
 				MessageBox.Show("找不到符合紀錄");
 				return;
 			}
 
-			txt_MerchandiseId.Text = dto.MerchandiseId.ToString();
+			txt_MerchandiseId.Text = dto.MerchandiseID.ToString();
 			txt_MerchandiseName.Text = dto.MerchandiseName.ToString();
-			// todo 下拉式清單 = dto.CategoryId.ToString();
+			comboBox_CategoryId.SelectedIndex = dto.CategoryID;
 			txt_Price.Text = dto.Price.ToString();
 			txt_Amount.Text = dto.Amount.ToString();
 			txt_Description.Text = dto.Description.ToString();
@@ -95,7 +99,7 @@ namespace prjMidtermTopic.form_Merchandise
 			{
 				MerchandiseId = this._merchandiseId,
 				MerchandiseName = txt_MerchandiseName.Text,
-				// todo CategoryId
+				CategoryID = comboBox_CategoryId.SelectedIndex,
 				Price = Price,
 				Amount = Amount,
 				Description = txt_Description.Text,
@@ -113,12 +117,12 @@ namespace prjMidtermTopic.form_Merchandise
 				return;
 			}
 
-			//通過驗證則將vm轉型為CategoryDto
+			//通過驗證則將vm轉型為MerchandiseDto
 			MerchandiseDto dto = new MerchandiseDto
 			{
-				MerchandiseId = vm.MerchandiseId,
+				MerchandiseID = vm.MerchandiseId,
 				MerchandiseName = vm.MerchandiseName,
-				CategoryId = vm.CategoryId,
+				CategoryID = vm.CategoryID,
 				Price = vm.Price,
 				Amount = vm.Amount,
 				Description = vm.Description,
@@ -157,6 +161,7 @@ namespace prjMidtermTopic.form_Merchandise
 			}
 
 			this.Close();
+
 		}
 
 		private void btn_Delete_Click(object sender, EventArgs e)
