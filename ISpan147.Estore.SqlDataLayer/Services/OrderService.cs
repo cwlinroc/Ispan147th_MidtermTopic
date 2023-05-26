@@ -20,15 +20,10 @@ namespace ISpan147.Estore.SqlDataLayer.Services
 			return new OrderRepository().Get(id);
 		}
 
-		public List<OrderDto> Search(
-			int? orderID = null,
-			int? customerID = null,
-			int? paymentmethod = null,
-			bool? payed = null)
+		public IEnumerable<OrderGridDto> Search(OrderSearchDto sDto)
 		{
-			return new OrderRepository().Search(orderID, customerID, paymentmethod, payed);
+			return new OrderRepository().Search(sDto);
 		}
-
 
 		public int Update(OrderDto dto)
 		{
@@ -39,7 +34,6 @@ namespace ISpan147.Estore.SqlDataLayer.Services
 		{
 			return new OrderRepository().Delete(orderID);
 		}
-
 
 	}
 }

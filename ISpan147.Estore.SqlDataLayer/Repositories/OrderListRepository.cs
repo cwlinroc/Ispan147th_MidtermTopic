@@ -15,7 +15,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 		public OrderListDto Get(int id)
 		{
 			Func<SqlConnection> connGetter = SqlDb.GetConnection;
-			string sql = $"SELECT * FROM OrderList WHERE OrderListID = {id}";
+			string sql = $"SELECT * FROM OrderLists WHERE OrderListID = {id}";
 			Func<SqlDataReader, OrderListDto> assembler = Assembler.OrderListDtoAssembler;
 
 			return SqlDb.Get(connGetter, sql, assembler);
@@ -27,7 +27,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 			int? merchandiseID = null,
 			int? quantity = null)
 		{
-			string sql = $"SELECT * FROM OrderList ";
+			string sql = $"SELECT * FROM OrderLists ";
 			var parameterBuilder = new SqlParameterBuilder();
 
 			string where = "";
@@ -70,7 +70,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 		{
 			if (dto == null) return 0;
 
-			string sql = "UPDATE OrderList SET OrderID = @OrderID"
+			string sql = "UPDATE OrderLists SET OrderID = @OrderID"
 				+ ", MerchandiseID = @MerchandiseID "
 				+ ", Quantity = @Quantity "
 				+ " WHERE OrderListID = @OrderListID ";
@@ -89,7 +89,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 
 		public int Create(OrderListDto dto)
 		{
-			string sql = "INSERT INTO OrderList (OrderID, MerchandiseID, Quantity)"
+			string sql = "INSERT INTO OrderLists (OrderID, MerchandiseID, Quantity)"
 				+ " VALUES (@OrderID, @MerchandiseID, @Quantity) ";
 
 			var parameters = new SqlParameterBuilder()
@@ -105,7 +105,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 
 		public int Delete(int orderID)
 		{
-			string sql = "DELETE OrderList WHERE OrderListID = @OrderListID";
+			string sql = "DELETE OrderLists WHERE OrderListID = @OrderListID";
 
 			var parameters = new SqlParameterBuilder()
 				.AddInt("@OrderListID", orderID)

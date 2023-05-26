@@ -19,6 +19,7 @@ namespace prjMidtermTopic.form_Order
 		public form_OrderAdd()
 		{
 			InitializeComponent();
+
 			comboBox_PayMethod.Items.AddRange(Orders.paymentOptions);
 			comboBox_Payed.Items.AddRange(Orders.payedOptions);
 		}

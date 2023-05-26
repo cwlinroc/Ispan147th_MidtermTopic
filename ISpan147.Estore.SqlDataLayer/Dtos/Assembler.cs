@@ -20,7 +20,7 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
 				PaymentMethod = reader.GetInt("PaymentMethod"),
 				Payed = reader.GetBool("Payed"),
 				PurchaseTime = reader.GetDate("PurchaseTime"),
-				PaymentAmount = reader.GetInt("PaymentAmount")
+				PaymentAmount = reader.GetNurableInt("PaymentAmount")
 			};
 		}
 

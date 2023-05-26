@@ -14,6 +14,7 @@ namespace prjMidtermTopic
 {
 	public partial class form_Main : Form
 	{
+		private bool _multiMdiChild = false;
 		public form_Main()
 		{
 			InitializeComponent();
@@ -44,7 +45,7 @@ namespace prjMidtermTopic
 
 		private void toolStripButton_MerchandiseForm_Click(object sender, EventArgs e)
 		{
-			
+
 			showForm(new form_SearchMerchandise());
 		}
 
@@ -138,11 +139,31 @@ namespace prjMidtermTopic
 
 		private void showForm(Form frm)
 		{
+			if (!_multiMdiChild)
+			{
+				MdiChildren.ToList().ForEach(o => o.Close());
+			}
+
 			frm.MdiParent = this;
 			frm.WindowState = FormWindowState.Maximized;
 			frm.Show();
 		}
 
-		
+		private void 單一子視窗ToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			多重子視窗ToolStripMenuItem.Checked = false;
+			_multiMdiChild = false;
+			if (ActiveMdiChild != null)
+			{
+				MdiChildren.Where(o=> o!= ActiveMdiChild).ToList().ForEach(o=> o.Close());
+			}
+		}
+
+		private void 多重子視窗ToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			單一子視窗ToolStripMenuItem.Checked = false;
+			_multiMdiChild = true;
+
+		}
 	}
 }

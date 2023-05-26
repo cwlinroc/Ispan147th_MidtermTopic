@@ -75,23 +75,22 @@ namespace prjMidtermTopic.form_Order
 		{
 			try
 			{
-				int? orderID = null;
-				int? customerID = null;
+				var sDto = new OrderSearchDto();
 
 				if (txt_OrderID.Text.Trim().Length > 0
 					&& int.TryParse(txt_OrderID.Text.Trim(), out int _orderID))
 				{
-					orderID = _orderID;
+					sDto.OrderID = _orderID;
 				}
 				if (txt_OrderID.Text.Trim().Length > 0
-					&& int.TryParse(txt_OrderID.Text.Trim(), out int _customerID))
+					&& int.TryParse(txt_OrderID.Text.Trim(), out int _memberID))
 				{
-					customerID = _customerID;
+					sDto.MemberID = _memberID;
 				}
 
-				var dtoList = new OrderService().Search(orderID, customerID);
+				var gridDtoList = new OrderService().Search(sDto);
 
-				_data = dtoList.Select(dto => dto.ToVM()).ToList();
+				_data = gridDtoList.Select(dto => dto.ToVM()).ToList();
 
 				dataGridView_Main.DataSource = _data;
 			}

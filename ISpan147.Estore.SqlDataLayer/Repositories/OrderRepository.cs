@@ -1,4 +1,5 @@
-﻿using ISpan147.Estore.SqlDataLayer.Builders;
+﻿using Dapper;
+using ISpan147.Estore.SqlDataLayer.Builders;
 using ISpan147.Estore.SqlDataLayer.Dtos;
 using System;
 using System.Collections.Generic;
@@ -9,108 +10,70 @@ using System.Threading.Tasks;
 
 namespace ISpan147.Estore.SqlDataLayer.Repositories
 {
+
 	public class OrderRepository
 	{
 		public OrderDto Get(int id)
 		{
-			Func<SqlConnection> connGetter = SqlDb.GetConnection;
 			string sql = $"SELECT * FROM Orders WHERE OrderID = {id}";
-			Func<SqlDataReader, OrderDto> assembler = Assembler.OrderDtoAssembler;
 
-			return SqlDb.Get(connGetter, sql, assembler);
+			using (var conn = SqlDb.GetConnection())
+			{
+				return conn.QuerySingle(sql);
+			}
 		}
 
-		public List<OrderDto> Search(
-			int? orderID = null,
-			int? memberID = null,
-			int? paymentmethod = null,
-			bool? payed = null)
+		public IEnumerable<OrderGridDto> Search(OrderSearchDto sDto)
 		{
-			string sql = $"SELECT * FROM Orders ";
-			var parameterBuilder = new SqlParameterBuilder();
+			string sql = $" SELECT OrderID ,[Members].MemberID , MemberName "
+					+ " , PaymentMethod ,Payed ,PurchaseTime , PaymentAmount  FROM Orders "
+					+ " JOIN Members ON [Members].MemberID = [Orders].MemberID ";
 
-			string where = "";
+			sql += DapperStringCreator.Where(sDto);
 
-			if (orderID.HasValue)
+			using (var conn = SqlDb.GetConnection())
 			{
-				where += " AND ID = @OrderID ";
-				parameterBuilder.AddInt("OrderID", orderID.Value);
+				return conn.Query<OrderGridDto>(sql, sDto);
 			}
-			if (memberID.HasValue				)
-			{
-				where += " AND MemberID = @MemberID ";
-				parameterBuilder.AddInt("MemberID",  memberID.Value);
-			}
-			if (paymentmethod.HasValue)
-			{
-				where += " AND Paymentmethod = @Paymentmethod ";
-				parameterBuilder.AddInt("Paymentmethod", paymentmethod.Value);
-			}
-			if (payed.HasValue)
-			{
-				where += " AND Payed = @Payed ";
-				parameterBuilder.AddBit("Payed", payed.Value);
-			}
-			if (where != "")
-			{
-				where = " WHERE " + where.Substring(5);
-				sql += where;
-			}
-
-			var parameters = parameterBuilder.Build();
-
-			Func<SqlConnection> connGetter = SqlDb.GetConnection;
-			Func<SqlDataReader, OrderDto> assembler = Assembler.OrderDtoAssembler;
-
-			return SqlDb.Search(connGetter, sql, assembler, parameters).ToList();
 		}
 
 		public int Update(OrderDto dto)
 		{
-			if (dto == null) return 0;
+			if (dto == null) return -1;
 
 			string sql = "UPDATE Orders SET MemberID = @MemberID"
-				+ ", Paymentmethod = @Paymentmethod "
-				+ ", Payed = @Payed WHERE OrderID = @OrderID ";
+					+ ", Paymentmethod = @Paymentmethod "
+					+ ", Payed = @Payed"
+					+ ", PurchaseTime = @PurchaseTime"
+					+ ", PaymentAmount = @PaymentAmount "
+					+ "OUTPUT INSERTED.OrderID WHERE OrderID = @OrderID ";
 
-			var parameters = new SqlParameterBuilder()
-				.AddInt("MemberID", dto.MemberID)
-				.AddInt("Paymentmethod", dto.PaymentMethod)
-				.AddBit("Payed", dto.Payed)
-				.AddInt("OrderID", dto.OrderID)
-				.Build();
-
-			Func<SqlConnection> connGetter = SqlDb.GetConnection;
-
-			return SqlDb.UpdateOrDelete(connGetter, sql, parameters);
+			using (var conn = SqlDb.GetConnection())
+			{
+				return conn.QuerySingle(sql, dto);
+			}
 		}
 
 		public int Create(OrderDto dto)
 		{
-			string sql = "INSERT INTO Orders (MemberID, Paymentmethod, Payed)"
-				+ " VALUES (@MemberID, @Paymentmethod, @Payed) ";
+			string strSql = DapperStringCreator.Insert(dto, "Orders", "OrderID");
 
-			var parameters = new SqlParameterBuilder().AddInt("MemberID", dto.MemberID)
-				.AddInt("Paymentmethod", dto.PaymentMethod)
-				.AddBit("Payed", dto.Payed)
-				.Build();
-
-			Func<SqlConnection> connGetter = SqlDb.GetConnection;
-
-			return SqlDb.Create(connGetter, sql, parameters);
+			using (var conn = SqlDb.GetConnection())
+			{
+				int result = conn.QuerySingle<int>(strSql, dto);
+				return result;
+			}
 		}
 
-		public int Delete(int orderID)
+		public int Delete(int OrderID)
 		{
-			string sql = "DELETE Orders WHERE OrderID = @OrderID";
+			string strSql = "DELETE Orders OUTPUT DELETED.OrderID WHERE OrderID = @OrderID";
 
-			var parameters = new SqlParameterBuilder()
-				.AddInt("@OrderID", orderID)
-				.Build();
-
-			Func<SqlConnection> connGetter = SqlDb.GetConnection;
-
-			return SqlDb.UpdateOrDelete(connGetter, sql, parameters);
+			using (var conn = SqlDb.GetConnection())
+			{
+				return conn.QuerySingle(strSql, OrderID);
+			}
 		}
+
 	}
 }

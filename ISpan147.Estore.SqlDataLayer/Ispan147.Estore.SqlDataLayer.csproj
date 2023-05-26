@@ -66,6 +66,7 @@
     <Compile Include="Dtos\OrderGridDto.cs" />
     <Compile Include="Dtos\OrderListDto.cs" />
     <Compile Include="Dtos\OrderListGridDto.cs" />
+    <Compile Include="Dtos\OrderSearchDto.cs" />
     <Compile Include="Dtos\PetDto.cs" />
     <Compile Include="Dtos\ThemeDto.cs" />
     <Compile Include="EFModel\Adopt.cs" />
@@ -91,12 +92,14 @@
     <Compile Include="Repositories\MerchandiseRepository.cs" />
     <Compile Include="Repositories\OrderListRepository.cs" />
     <Compile Include="Repositories\OrderRepository.cs" />
+    <Compile Include="Repositories\OrderRepositotyAdoNet.cs" />
     <Compile Include="Services\MemberService.cs" />
     <Compile Include="Services\MerchandiseService.cs" />
     <Compile Include="Services\MassInsertService.cs" />
     <Compile Include="Services\OrderListService.cs" />
     <Compile Include="Services\OrderService.cs" />
     <Compile Include="Sqldb.cs" />
+    <Compile Include="Dtos\SqlStringCreator.cs" />
     <Compile Include="Utility\RandomGenerator.cs" />
   </ItemGroup>
   <ItemGroup>

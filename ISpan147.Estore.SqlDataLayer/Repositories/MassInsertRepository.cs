@@ -46,10 +46,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 		{
 			using (var conn = SqlDb.GetConnection())
 			{
-				string strSql = "INSERT INTO Orders"
-					+ " ( MemberID,  PaymentMethod,  Payed, PurchaseTime, PaymentAmount) "
-					+ " OUTPUT INSERTED.OrderID"
-					+ " VALUES ( @MemberID,  @PaymentMethod,  @Payed, @PurchaseTime, @PaymentAmount)";
+				string strSql = DapperStringCreator.Insert(dto, "Orders", "OrderID");
 
 				int result = conn.QuerySingle<int>(strSql, dto);
 				return result;
