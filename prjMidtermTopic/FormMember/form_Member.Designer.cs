@@ -37,6 +37,7 @@
 			this.btnAdd = new System.Windows.Forms.Button();
 			this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -64,7 +65,7 @@
 			this.txtId.Location = new System.Drawing.Point(49, 36);
 			this.txtId.Name = "txtId";
 			this.txtId.Size = new System.Drawing.Size(100, 33);
-			this.txtId.TabIndex = 1;
+			this.txtId.TabIndex = 0;
 			// 
 			// label2
 			// 
@@ -86,9 +87,10 @@
 			// 
 			// btnSearch
 			// 
+			this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnSearch.AutoSize = true;
 			this.btnSearch.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.btnSearch.Location = new System.Drawing.Point(768, 36);
+			this.btnSearch.Location = new System.Drawing.Point(967, 33);
 			this.btnSearch.Name = "btnSearch";
 			this.btnSearch.Size = new System.Drawing.Size(109, 36);
 			this.btnSearch.TabIndex = 2;
@@ -107,6 +109,7 @@
 			this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2,
+            this.Column11,
             this.Column3,
             this.Column4,
             this.Column5,
@@ -119,18 +122,19 @@
 			this.dataGridView1.Name = "dataGridView1";
 			this.dataGridView1.ReadOnly = true;
 			this.dataGridView1.RowTemplate.Height = 24;
-			this.dataGridView1.Size = new System.Drawing.Size(963, 334);
+			this.dataGridView1.Size = new System.Drawing.Size(1064, 334);
 			this.dataGridView1.TabIndex = 3;
 			this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
 			// 
 			// btnAdd
 			// 
+			this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnAdd.AutoSize = true;
 			this.btnAdd.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.btnAdd.Location = new System.Drawing.Point(768, 458);
+			this.btnAdd.Location = new System.Drawing.Point(967, 459);
 			this.btnAdd.Name = "btnAdd";
 			this.btnAdd.Size = new System.Drawing.Size(109, 36);
-			this.btnAdd.TabIndex = 4;
+			this.btnAdd.TabIndex = 3;
 			this.btnAdd.Text = "Add";
 			this.btnAdd.UseVisualStyleBackColor = true;
 			this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
@@ -149,6 +153,13 @@
 			this.Column2.HeaderText = "姓名";
 			this.Column2.Name = "Column2";
 			this.Column2.ReadOnly = true;
+			// 
+			// Column11
+			// 
+			this.Column11.DataPropertyName = "NickName";
+			this.Column11.HeaderText = "暱稱";
+			this.Column11.Name = "Column11";
+			this.Column11.ReadOnly = true;
 			// 
 			// Column3
 			// 
@@ -174,6 +185,7 @@
 			// 
 			// Column6
 			// 
+			this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
 			this.Column6.DataPropertyName = "Password";
 			this.Column6.HeaderText = "密碼";
 			this.Column6.Name = "Column6";
@@ -188,6 +200,7 @@
 			// 
 			// Column8
 			// 
+			this.Column8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
 			this.Column8.DataPropertyName = "Address";
 			this.Column8.HeaderText = "地址";
 			this.Column8.Name = "Column8";
@@ -211,7 +224,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(987, 520);
+			this.ClientSize = new System.Drawing.Size(1088, 520);
 			this.Controls.Add(this.btnAdd);
 			this.Controls.Add(this.dataGridView1);
 			this.Controls.Add(this.btnSearch);
@@ -239,6 +252,7 @@
 		private System.Windows.Forms.Button btnAdd;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Column5;

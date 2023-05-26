@@ -45,38 +45,20 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
 
 		public static Func<SqlDataReader, MemberDto> MemberDtoAssembler
 		{
-			get
+			get => (reader) => new MemberDto
 			{
-				Func<SqlDataReader, MemberDto> func = (reader) =>
-				{
-					int id = reader.GetInt("memberid");
-					string name = reader.GetString("membername");
-					DateTime dob = reader.GetDate("dateofbirth");
-					bool gender = reader.GetBool("gender");
-					string acc = reader.GetString("account");
-					string pwd = reader.GetString("password");
-					string phone = reader.GetString("phone");
-					string address = reader.GetString("address");					
-					string email = reader.GetString("email");
-					string avatar = reader.GetString("avatar");
-
-					return new MemberDto
-					{
-						MemberID = id,
-						MemberName = name,
-						DateOfBirth = dob,
-						Gender = gender,
-						Account = acc,
-						Password = pwd,
-						Phone = phone,
-						Address = address,						
-						Email = email,
-						Avatar = avatar,
-					};
-				};
-				return func;
-
-			}
+				MemberID = reader.GetInt("memberid"),
+				MemberName = reader.GetString("membername"),
+				NickName = reader.GetString("nickname"),
+				DateOfBirth = reader.GetDate("dateofbirth"),
+				Gender = reader.GetBool("gender"),
+				Account = reader.GetString("account"),
+				Password = reader.GetString("password"),
+				Phone = reader.GetString("phone"),
+				Address = reader.GetString("address"),
+				Email = reader.GetString("email"),
+				Avatar = reader.GetString("avatar"),
+			};
 		}
 
 		public static Func<SqlDataReader, MerchandiseDto> MerchandiseDtoAssembler
