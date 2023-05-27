@@ -18,10 +18,14 @@ namespace prjMidtermTopic.form_Order
 {
 	public partial class form_OrderListAdd : Form
 	{
+
+		private IOrderListRepositoy _repo;
 		public form_OrderListAdd(int orderId)
 		{
 			InitializeComponent();
 			txt_OrderID.Text = orderId.ToString();
+
+			_repo = new OrderListRepositoryLinq();
 		}
 
 		private void btn_commit_Click(object sender, EventArgs e)
@@ -45,7 +49,7 @@ namespace prjMidtermTopic.form_Order
 
 				if (hasError) return;
 
-				int newId = new OrderListService(new OrderListRepositoryAdoNet())
+				int newId = new OrderListService(_repo)
 					.Create(vm.ToDto());
 
 				MessageBox.Show($"輸入成功，ID為{newId}");

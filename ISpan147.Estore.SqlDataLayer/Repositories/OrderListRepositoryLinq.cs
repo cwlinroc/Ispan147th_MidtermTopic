@@ -13,19 +13,30 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 	{
 		public int Create(OrderListDto dto)
 		{
-
-
-			throw new NotImplementedException();
+			if (dto == null) throw new ArgumentNullException(nameof(dto));
+			var db = new AppDbContext();
+			var obj = dto.ToEF();
+			db.OrderLists.Add(obj);
+			db.SaveChanges();
+			return obj.OrderListID;
 		}
 
-		public int Delete(int orderID)
+		public int Delete(int orderListID)
 		{
-			throw new NotImplementedException();
+			var db = new AppDbContext();
+			var obj = db.OrderLists.Where(o => o.OrderListID == orderListID).FirstOrDefault();
+			if (obj == null) return 0;
+			db.OrderLists.Remove(obj);
+			db.SaveChanges();
+			return obj.OrderListID;
 		}
 
-		public OrderListDto Get(int id)
+		public OrderListDto Get(int orderListID)
 		{
-			throw new NotImplementedException();
+			var db = new AppDbContext();
+			var obj = db.OrderLists.Where(o => o.OrderListID == orderListID).FirstOrDefault();
+			if (db == null) return null;
+			return obj.ToDto();
 		}
 
 		public List<OrderListGridDto> Search(
@@ -59,12 +70,13 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 
 		public int Update(OrderListDto dto)
 		{
-			throw new NotImplementedException();
+			var db = new AppDbContext();
+			var obj = db.OrderLists.Where(o => o.OrderListID == dto.OrderListID).FirstOrDefault();
+			if (obj == null) return 0;
+			obj.ChangeByDto(dto);
+			db.SaveChanges();
+			return obj.OrderListID;
 		}
-
-		List<OrderListGridDto> IOrderListRepositoy.Search(int? id, int? orderID, int? merchandiseID, int? quantity)
-		{
-			throw new NotImplementedException();
-		}
+				
 	}
 }

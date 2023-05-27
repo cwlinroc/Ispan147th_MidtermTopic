@@ -19,6 +19,7 @@ namespace prjMidtermTopic.form_Order
 {
 	public partial class form_OrderList : Form, IGrid
 	{
+		private IOrderListRepositoy _repo;
 		private int _orderID;
 		private List<OrderListGridDto> _data;
 		private int _row = -1;
@@ -36,6 +37,8 @@ namespace prjMidtermTopic.form_Order
 		{
 			InitializeComponent();
 			_orderID = orderId;
+
+			_repo = new OrderListRepositoryLinq();
 		}
 
 		//load
@@ -76,7 +79,7 @@ namespace prjMidtermTopic.form_Order
 			{
 				int orderListID = int.Parse(dataGridView_Main.Rows[_row]
 								.Cells[0].Value.ToString());
-				new OrderListService(new OrderListRepositoryAdoNet()).Delete(orderListID);
+				new OrderListService(_repo).Delete(orderListID);
 
 				Display();
 			}
@@ -142,7 +145,7 @@ namespace prjMidtermTopic.form_Order
 			try
 			{
 				dataGridView_Main.DataSource = null;
-				_data = new OrderListService(new OrderListRepositoryAdoNet())
+				_data = new OrderListService(_repo)
 					.Search(null, _orderID).ToList();
 
 				_data.Sort((prev, next) => prev.OrderListID.CompareTo(next.OrderListID));

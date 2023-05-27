@@ -20,6 +20,7 @@ namespace prjMidtermTopic.form_Order
 	{
 
 		private int _orderListID;
+		private IOrderListRepositoy _repo;
 		public Form_OrderListEdit(OrderListGridDto dto)
 		{
 			InitializeComponent();
@@ -28,6 +29,8 @@ namespace prjMidtermTopic.form_Order
 			txt_OrderID.Text = dto.OrderID.ToString();
 			txt_MerchandiseID.Text = dto.MerchandiseID.ToString();
 			txt_Quantity.Text = dto.Quantity.ToString();
+
+			_repo = new OrderListRepositoryLinq();
 		}
 
 		private void btn_commit_Click(object sender, EventArgs e)
@@ -52,7 +55,7 @@ namespace prjMidtermTopic.form_Order
 
 				if (hasError) return;
 
-				int editRows = new OrderListService(new OrderListRepositoryAdoNet())
+				int editRows = new OrderListService(_repo)
 					.Update(vm.ToDto());
 
 				if (editRows > 0)

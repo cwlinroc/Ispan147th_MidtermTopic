@@ -26,7 +26,6 @@ namespace prjMidtermTopic.ViewModels
 		public string MerchandiseID { get; set; }
 
 		[Display(Name = "商品名稱")]
-		[Required(ErrorMessage = "{0}必填")]
 		public string MerchandiseName { get; set; }
 
 		[Display(Name = "數量")]

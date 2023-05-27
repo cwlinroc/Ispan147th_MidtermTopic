@@ -42,16 +42,13 @@ namespace TestConsole
 			//領養清單
 
 			var repo = new OrderListRepositoryLinq();
+			//var repo = new OrderListRepositoryAdoNet();
+			int id = repo.Delete(10000);
 
-			var dto = repo.Search(12).FirstOrDefault();
-
-            Console.WriteLine(dto.MerchandiseName);
-			Console.WriteLine(dto.Quantity);
-			Console.WriteLine(dto.OrderID);
+            Console.WriteLine(id);
 
 
-
-			Console.WriteLine("Test Over!");
+            Console.WriteLine("Test Over!");
 			Console.ReadKey();
 			Console.ReadKey();
 		}
