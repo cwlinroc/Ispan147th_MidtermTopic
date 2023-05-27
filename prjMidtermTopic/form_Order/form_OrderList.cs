@@ -12,14 +12,26 @@ using ISpan147.Estore.SqlDataLayer.Dtos;
 using ISpan147.Estore.SqlDataLayer.Services;
 using prjMidtermTopic.Interfaces;
 using prjMidtermTopic.ViewModels;
+using ISpan147.Estore.SqlDataLayer.Repositories;
+using ISpan147.Estore.SqlDataLayer.EFModel;
 
 namespace prjMidtermTopic.form_Order
 {
 	public partial class form_OrderList : Form, IGrid
 	{
 		private int _orderID;
-		private List<OrderListVM> _data;
+		private List<OrderListGridDto> _data;
 		private int _row = -1;
+		private int _sortedIndex = 0;
+		private Dictionary<string, Func<OrderListGridDto, OrderListGridDto, int>> _sortMap =
+			new Dictionary<string, Func<OrderListGridDto, OrderListGridDto, int>>
+			{
+				{ "OrderListID", (prev, next) => prev.OrderListID.CompareTo(next.OrderListID) },
+				{ "MerchandiseID", (prev, next) => prev.MerchandiseID.CompareTo(next.MerchandiseID) },
+				{ "MerchandiseName", (prev, next) => prev.MerchandiseName.Length.CompareTo(next.MerchandiseName.Length) },
+				{ "OrderID", (prev, next) => prev.OrderID.CompareTo(next.OrderID) },
+				{ "Quantity", (prev, next) => prev.Quantity.CompareTo(next.Quantity) }
+			};
 		public form_OrderList(int orderId)
 		{
 			InitializeComponent();
@@ -45,7 +57,7 @@ namespace prjMidtermTopic.form_Order
 		{
 			if (_row < 0) return;
 
-			var frm = new Form_OrderListEdit(_data[_row].ToDto());
+			var frm = new Form_OrderListEdit(_data[_row]);
 			frm.Owner = this;
 			frm.ShowDialog();
 		}
@@ -64,7 +76,7 @@ namespace prjMidtermTopic.form_Order
 			{
 				int orderListID = int.Parse(dataGridView_Main.Rows[_row]
 								.Cells[0].Value.ToString());
-				new OrderListService().Delete(orderListID);
+				new OrderListService(new OrderListRepositoryAdoNet()).Delete(orderListID);
 
 				Display();
 			}
@@ -87,7 +99,7 @@ namespace prjMidtermTopic.form_Order
 				}
 				new OrderService().Delete(_orderID);
 
-				DisplayGrim.DisplayAll(this, new MessageArgs());
+				DisplayGrid.DisplayAll(this, new MessageArgs());
 				this.Close();
 			}
 			catch (Exception ex)
@@ -98,6 +110,31 @@ namespace prjMidtermTopic.form_Order
 
 		#endregion
 
+		//cell double click
+		//todo [君韋] 註解datagridview 排序
+		private void dataGridView_Main_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+		{
+			if (e.RowIndex > -1 || e.ColumnIndex < 0) return;
+
+			string colProp = dataGridView_Main.Columns[e.ColumnIndex].DataPropertyName;
+
+			if (_sortMap.TryGetValue(colProp, out Func<OrderListGridDto, OrderListGridDto, int> func))
+			{
+				if (_sortedIndex == e.ColumnIndex)
+				{
+					_data.Sort((x, y) => func(y, x));
+					_sortedIndex = -1;
+				}
+				else
+				{
+					_data.Sort((x, y) => func(x, y));
+					_sortedIndex = e.ColumnIndex;
+				}
+
+				dataGridView_Main.DataSource = _data.Select(dto => dto.ToVM()).ToArray();				
+			}
+		}
+
 
 		//methods
 		public void Display()
@@ -105,9 +142,12 @@ namespace prjMidtermTopic.form_Order
 			try
 			{
 				dataGridView_Main.DataSource = null;
-				_data = new OrderListService().Search(null, _orderID)
-					.Select(dto => dto.ToVM()).ToList();
-				dataGridView_Main.DataSource = _data;
+				_data = new OrderListService(new OrderListRepositoryAdoNet())
+					.Search(null, _orderID).ToList();
+
+				_data.Sort((prev, next) => prev.OrderListID.CompareTo(next.OrderListID));
+
+				dataGridView_Main.DataSource = _data.Select(dto => dto.ToVM()).ToArray();
 			}
 			catch (Exception ex)
 			{

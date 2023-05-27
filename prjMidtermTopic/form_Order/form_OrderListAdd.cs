@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ISpan147.Estore.SqlDataLayer.Dtos;
+using ISpan147.Estore.SqlDataLayer.Repositories;
 using ISpan147.Estore.SqlDataLayer.Services;
 using prjMidtermTopic.Interfaces;
 using prjMidtermTopic.Model;
@@ -44,7 +45,8 @@ namespace prjMidtermTopic.form_Order
 
 				if (hasError) return;
 
-				int newId = new OrderListService().Create(vm.ToDto());
+				int newId = new OrderListService(new OrderListRepositoryAdoNet())
+					.Create(vm.ToDto());
 
 				MessageBox.Show($"輸入成功，ID為{newId}");
 

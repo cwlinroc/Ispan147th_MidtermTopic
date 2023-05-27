@@ -44,7 +44,7 @@ namespace ISpan147.Estore.SqlDataLayer.Services
 
 		public int Delete(int orderID)
 		{
-			return new OrderListRepository().Delete(orderID);
+			return new OrderListRepositoryAdoNet().Delete(orderID);
 		}
 	}
 }

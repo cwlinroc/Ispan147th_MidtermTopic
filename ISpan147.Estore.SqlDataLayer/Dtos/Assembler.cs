@@ -35,6 +35,18 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
 			};
 		}
 
+		public static Func<SqlDataReader, OrderListGridDto> OrderListGridDtoAssembler
+		{
+			get => (reader) => new OrderListGridDto
+			{
+				OrderListID = reader.GetInt("OrderListID"),
+				OrderID = reader.GetInt("OrderID"),
+				MerchandiseID = reader.GetInt("MerchandiseID"),
+				MerchandiseName = reader.GetString("MerchandiseName"),
+				Quantity = reader.GetInt("Quantity")
+			};
+		}
+
 		public static Func<SqlDataReader, EmployeeDto> EmployeeDtoAssembler
 		{
 			get => (reader) => new EmployeeDto

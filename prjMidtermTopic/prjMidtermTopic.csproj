@@ -159,7 +159,7 @@
     <Compile Include="MassInsert\form_MassInsert.Designer.cs">
       <DependentUpon>form_MassInsert.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\DisplayGrim.cs" />
+    <Compile Include="Model\DisplayGrid.cs" />
     <Compile Include="Model\MyValidator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
