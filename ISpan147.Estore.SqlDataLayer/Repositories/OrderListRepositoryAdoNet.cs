@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ISpan147.Estore.SqlDataLayer.Repositories
 {
-	public class OrderListRepository
+	public class OrderListRepositoryAdoNet : IOrderListRepositoy
 	{
 		public OrderListDto Get(int id)
 		{
@@ -21,13 +21,14 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 			return SqlDb.Get(connGetter, sql, assembler);
 		}
 
-		public List<OrderListDto> Search(
+		public List<OrderListGridDto> Search(
 			int? id = null,
 			int? orderID = null,
 			int? merchandiseID = null,
 			int? quantity = null)
 		{
-			string sql = $"SELECT * FROM OrderLists ";
+			string sql = $"SELECT * FROM OrderLists " 
+				+ " JOIN Merchandises ON [OrderLists].MerchandiseID = [Merchandises].MerchandiseID ";
 			var parameterBuilder = new SqlParameterBuilder();
 
 			string where = "";
@@ -44,7 +45,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 			}
 			if (merchandiseID.HasValue)
 			{
-				where += " AND MerchandiseID = @MerchandiseID ";
+				where += " AND [OrderLists].MerchandiseID = @MerchandiseID ";
 				parameterBuilder.AddInt("MerchandiseID", merchandiseID.Value);
 			}
 			if (quantity.HasValue)
@@ -61,7 +62,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 			var parameters = parameterBuilder.Build();
 
 			Func<SqlConnection> connGetter = SqlDb.GetConnection;
-			Func<SqlDataReader, OrderListDto> assembler = Assembler.OrderListDtoAssembler;
+			Func<SqlDataReader, OrderListGridDto> assembler = Assembler.OrderListGridDtoAssembler;
 
 			return SqlDb.Search(connGetter, sql, assembler, parameters).ToList();
 		}

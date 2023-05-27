@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ISpan147.Estore.SqlDataLayer.Dtos;
+using ISpan147.Estore.SqlDataLayer.Repositories;
 using ISpan147.Estore.SqlDataLayer.Services;
 using prjMidtermTopic.Interfaces;
 using prjMidtermTopic.Model;
@@ -19,7 +20,7 @@ namespace prjMidtermTopic.form_Order
 	{
 
 		private int _orderListID;
-		public Form_OrderListEdit(OrderListDto dto)
+		public Form_OrderListEdit(OrderListGridDto dto)
 		{
 			InitializeComponent();
 
@@ -51,7 +52,8 @@ namespace prjMidtermTopic.form_Order
 
 				if (hasError) return;
 
-				int editRows = new OrderListService().Update(vm.ToDto());
+				int editRows = new OrderListService(new OrderListRepositoryAdoNet())
+					.Update(vm.ToDto());
 
 				if (editRows > 0)
 				{

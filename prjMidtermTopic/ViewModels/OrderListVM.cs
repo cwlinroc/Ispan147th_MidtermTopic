@@ -25,11 +25,15 @@ namespace prjMidtermTopic.ViewModels
 		[RegularExpression(@"^\d+$", ErrorMessage = "{0}請輸入正整數")]
 		public string MerchandiseID { get; set; }
 
+		[Display(Name = "商品名稱")]
+		[Required(ErrorMessage = "{0}必填")]
+		public string MerchandiseName { get; set; }
+
 		[Display(Name = "數量")]
 		[Required(ErrorMessage = "{0}必填")]
 		[RegularExpression(@"^\d+$", ErrorMessage = "{0}請輸入正整數")]
 		public string Quantity { get; set; }
-		
+
 	}
 
 	static public class OrderLists
@@ -40,7 +44,7 @@ namespace prjMidtermTopic.ViewModels
 			{
 				OrderListID = vm.OrderListID,
 				OrderID = int.Parse(vm.OrderID),
-				MerchandiseID =  int.Parse(vm.MerchandiseID),
+				MerchandiseID = int.Parse(vm.MerchandiseID),
 				Quantity = int.Parse(vm.Quantity)
 			};
 		}
@@ -55,6 +59,19 @@ namespace prjMidtermTopic.ViewModels
 				Quantity = dto.Quantity.ToString(),
 			};
 		}
+		//OrderListGridDtotatic
+		static public OrderListVM ToVM(this OrderListGridDto dto)
+		{
+			return new OrderListVM
+			{
+				OrderListID = dto.OrderListID,
+				OrderID = dto.OrderID.ToString(),
+				MerchandiseID = dto.MerchandiseID.ToString(),
+				MerchandiseName = dto.MerchandiseName,
+				Quantity = dto.Quantity.ToString(),
+			};
+		}
+
 	}
-		
+
 }

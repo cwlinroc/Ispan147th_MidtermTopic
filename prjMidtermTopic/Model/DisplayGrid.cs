@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace prjMidtermTopic.Model
 {
-	public class DisplayGrim
+	//todo [君韋] 註解DisplayGrid ///
+	public class DisplayGrid
 	{
 		public static EventHandler Handler;
 		public static void DisplayAll(object sender, MessageArgs e)

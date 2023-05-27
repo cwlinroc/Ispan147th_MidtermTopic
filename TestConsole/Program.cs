@@ -41,30 +41,15 @@ namespace TestConsole
 			//mass.CreateRandomAdopt(150);
 			//領養清單
 
+			var repo = new OrderListRepositoryLinq();
 
-			var dto = new OrderSearchDto
-			{
-				MemberID = 12,
-				MemberName = "fad",
-				Payed = true,
-				PurchaseTime = DateTime.Now,
-				//		public int? OrderID { get; set; }
-				//[Table("Orders")]
-				//public int? MemberID { get; set; }
-				//public string MemberName { get; set; }
-				//public int? PaymentMethod { get; set; }
-				//public bool? Payed { get; set; }
-				//public DateTime? PurchaseTime { get; set; }
-				//public int? PaymentAmount { get; set; }
-			};
+			var dto = repo.Search(12).FirstOrDefault();
 
-			string str = DapperStringCreator.Where(dto);
+            Console.WriteLine(dto.MerchandiseName);
+			Console.WriteLine(dto.Quantity);
+			Console.WriteLine(dto.OrderID);
 
-            Console.WriteLine(str);
 
-			str = DapperStringCreator.Insert(dto, "table");
-
-			Console.WriteLine(str);
 
 			Console.WriteLine("Test Over!");
 			Console.ReadKey();
