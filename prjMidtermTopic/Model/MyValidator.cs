@@ -8,7 +8,6 @@ using System.Windows.Forms;
 
 namespace prjMidtermTopic.Model
 {
-	//todo [君韋] 註解MyValidator ///
 	public class MyValidator
 	{
 		static public bool ValidateAndDisplay<T>(T vm, ErrorProvider provider, Dictionary<string, Control> map)

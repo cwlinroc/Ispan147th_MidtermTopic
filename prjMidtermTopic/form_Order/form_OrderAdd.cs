@@ -50,7 +50,7 @@ namespace prjMidtermTopic.form_Order
 
 				MessageBox.Show($"輸入成功，ID為{newId}");
 
-				DisplayGrid.DisplayAll(this, new MessageArgs { Message = "_Order_" });
+				DisplayGrim.DisplayAll(this, new MessageArgs { Message = "_Order_" });
 
 				this.Close();
 			}

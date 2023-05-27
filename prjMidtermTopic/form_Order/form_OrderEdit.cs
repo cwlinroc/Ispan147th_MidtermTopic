@@ -16,7 +16,7 @@ namespace prjMidtermTopic.form_Order
 {
 	public partial class form_OrderEdit : Form
 	{
-		public form_OrderEdit(OrderGridDto dto)
+		public form_OrderEdit(OrderDto dto)
 		{
 			InitializeComponent();
 
@@ -64,7 +64,7 @@ namespace prjMidtermTopic.form_Order
 					throw new Exception("資料庫回傳值為0");
 				}
 
-				DisplayGrid.DisplayAll(this, new MessageArgs { Message = "_Order_" });
+				DisplayGrim.DisplayAll(this, new MessageArgs { Message = "_Order_" });
 
 				this.Close();
 			}

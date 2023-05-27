@@ -10,41 +10,34 @@ namespace ISpan147.Estore.SqlDataLayer.Services
 {
 	public class OrderListService
 	{
-		private IOrderListRepositoy reop;
-
-		public OrderListService(IOrderListRepositoy reop)
-		{
-			this.reop = reop;
-		}
-
 		public int Create(OrderListDto dto)
 		{
-			return new OrderListRepositoryAdoNet().Create(dto);
+			return new OrderListRepository().Create(dto);
 		}
 
 		public OrderListDto Get(int id)
 		{
-			return new OrderListRepositoryAdoNet().Get(id);
+			return new OrderListRepository().Get(id);
 		}
 
-		public List<OrderListGridDto> Search(
+		public List<OrderListDto> Search(
 			int? id = null,
 			int? orderID = null,
 			int? merchandiseID = null,
 			int? quantity = null)
 		{
-			return new OrderListRepositoryAdoNet().Search(id, orderID, merchandiseID, quantity);
+			return new OrderListRepository().Search(id, orderID, merchandiseID, quantity);
 		}
 
 
 		public int Update(OrderListDto dto)
 		{
-			return new OrderListRepositoryAdoNet().Update(dto);
+			return new OrderListRepository().Update(dto);
 		}
 
 		public int Delete(int orderID)
 		{
-			return new OrderListRepositoryAdoNet().Delete(orderID);
+			return new OrderListRepository().Delete(orderID);
 		}
 
 	}

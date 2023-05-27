@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace ISpan147.Estore.SqlDataLayer.Repositories
 {
 
-	public class OrderRepository : IOrderRepository
+	public class OrderRepository
 	{
 		public OrderDto Get(int id)
 		{

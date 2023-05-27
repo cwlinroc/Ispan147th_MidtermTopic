@@ -13,7 +13,6 @@ using System.Windows.Forms;
 
 namespace prjMidtermTopic
 {
-	//todo [君韋] 新增employee管理
 	public partial class form_LogIn : Form
 	{
 		public form_LogIn()

@@ -18,7 +18,7 @@ namespace prjMidtermTopic.form_Order
 	public partial class form_Orders : Form
 	{
 
-		private List<OrderGridDto> _data;
+		private List<OrderVM> _data;
 		private int _row = -1;
 		public form_Orders()
 		{
@@ -29,13 +29,13 @@ namespace prjMidtermTopic.form_Order
 		private void form_MerchandiseOrder_Load(object sender, EventArgs e)
 		{
 			Display();
-			DisplayGrid.Handler += AutoDisplay;
+			DisplayGrim.Handler += AutoDisplay;
 		}
 
 		//closed
 		private void form_MerchandiseOrder_FormClosed(object sender, FormClosedEventArgs e)
 		{
-			DisplayGrid.Handler -= AutoDisplay;
+			DisplayGrim.Handler -= AutoDisplay;
 		}
 
 		//select change
@@ -52,7 +52,7 @@ namespace prjMidtermTopic.form_Order
 		private void btn_Edit_Click(object sender, EventArgs e)
 		{
 			if (_row < 0) return;
-			new form_OrderEdit(_data[_row]).ShowDialog();
+			new form_OrderEdit(_data[_row].ToDto()).ShowDialog();
 		}
 		private void btn_Add_Click(object sender, EventArgs e)
 		{
@@ -90,9 +90,9 @@ namespace prjMidtermTopic.form_Order
 
 				var gridDtoList = new OrderService().Search(sDto);
 
-				_data = gridDtoList.OrderBy(o=> o.OrderID).ToList();
+				_data = gridDtoList.Select(dto => dto.ToVM()).ToList();
 
-				dataGridView_Main.DataSource = _data.Select(dto => dto.ToVM()).ToArray();
+				dataGridView_Main.DataSource = _data;
 			}
 			catch (Exception ex)
 			{
