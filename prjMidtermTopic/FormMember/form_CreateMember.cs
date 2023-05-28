@@ -8,17 +8,20 @@ using System.Linq;
 using System.Windows.Forms;
 using prjMidtermTopic.Interfaces;
 using prjMidtermTopic.Model;
+using System.IO;
+using ISpan147.Estore.SqlDataLayer.ExtMethods;
 
 namespace prjMidtermTopic.FormMember
 {
 	public partial class form_CreateMember : Form
 	{
 		private bool _gender;
-		Dictionary<string, Control> map;
+		Dictionary<string, Control> _map;
+		string _filePath;
 		public form_CreateMember()
 		{
 			InitializeComponent();
-			map = new Dictionary<string, Control>(StringComparer.CurrentCultureIgnoreCase)
+			_map = new Dictionary<string, Control>(StringComparer.CurrentCultureIgnoreCase)
 			{
 				{ "MemberName", txtMemberName},
 				{ "NickName", txtNickName},
@@ -56,7 +59,7 @@ namespace prjMidtermTopic.FormMember
 			string nickname = txtNickName.Text;
 			DateTime dob = DateOfBirthPicker.Value;
 			string acc = txtAccount.Text;
-			string pwd = txtPassword.Text;
+			string pwd = MyEncoder.GetSaltedSha256(txtPassword.Text);
 			string phone = txtPhone.Text;
 			string address = txtAddress.Text;
 			string email = txtEmail.Text;
@@ -77,7 +80,7 @@ namespace prjMidtermTopic.FormMember
 			};
 
 			//驗證vm是否通過欄位驗證
-			bool hasError = MyValidator.ValidateAndDisplay(vm,errorProvider1,map);
+			bool hasError = MyValidator.ValidateAndDisplay(vm, errorProvider1, _map);
 			if (hasError) return;
 
 			MemberDto dto = new MemberDto
@@ -121,7 +124,49 @@ namespace prjMidtermTopic.FormMember
 
 			this.Close();
 		}
+		
+		private void btnUploadAvatar_Click(object sender, EventArgs e)
+		{
+			_filePath = string.Empty;
 
+			using (OpenFileDialog openFileDialog = new OpenFileDialog())
+			{
+				openFileDialog.InitialDirectory =
+					Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
+				openFileDialog.Title = "選擇檔案";
+				openFileDialog.Filter =
+					"(*.png)|*.png|(*.jpg)|*.jpg|(*.jpeg)|*.jpeg|(*.gif)|*.gif";
+				openFileDialog.Multiselect = false;
+
+				if (openFileDialog.ShowDialog() == DialogResult.OK)
+				{
+					_filePath = openFileDialog.FileName;
+
+					Upload(_filePath);
+				}
+			}
+
+		}
+
+		private void Upload(string filePath)
+		{
+			string targetFolderPath = @"images/avatar/";
+			string fileName = Path.GetFileName(filePath);
+			string targetFilePath = Path.Combine(targetFolderPath, fileName);
+
+			try
+			{
+				File.Copy(filePath, targetFilePath);
+				txtAvatar.Text = Path.GetFileNameWithoutExtension(filePath);
+
+				MessageBox.Show($"上傳成功,路徑:{filePath}");
+			}
+			catch (Exception)
+			{
+				MessageBox.Show("上傳失敗");
+				return;
+			}
+		}
 
 	}
 

@@ -53,6 +53,8 @@
 			this.label10 = new System.Windows.Forms.Label();
 			this.txtNickName = new System.Windows.Forms.TextBox();
 			this.DateOfBirthPicker = new System.Windows.Forms.DateTimePicker();
+			this.panel1 = new System.Windows.Forms.Panel();
+			this.panel1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// btnDelete
@@ -60,7 +62,7 @@
 			this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnDelete.AutoSize = true;
 			this.btnDelete.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.btnDelete.Location = new System.Drawing.Point(265, 594);
+			this.btnDelete.Location = new System.Drawing.Point(279, 594);
 			this.btnDelete.Name = "btnDelete";
 			this.btnDelete.Size = new System.Drawing.Size(80, 30);
 			this.btnDelete.TabIndex = 13;
@@ -73,7 +75,7 @@
 			this.btnUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnUpdate.AutoSize = true;
 			this.btnUpdate.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.btnUpdate.Location = new System.Drawing.Point(179, 594);
+			this.btnUpdate.Location = new System.Drawing.Point(193, 594);
 			this.btnUpdate.Name = "btnUpdate";
 			this.btnUpdate.Size = new System.Drawing.Size(80, 30);
 			this.btnUpdate.TabIndex = 12;
@@ -93,7 +95,7 @@
 			// 
 			this.radbtnFemale.AutoSize = true;
 			this.radbtnFemale.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.radbtnFemale.Location = new System.Drawing.Point(218, 208);
+			this.radbtnFemale.Location = new System.Drawing.Point(81, 9);
 			this.radbtnFemale.Name = "radbtnFemale";
 			this.radbtnFemale.Size = new System.Drawing.Size(93, 28);
 			this.radbtnFemale.TabIndex = 5;
@@ -105,7 +107,7 @@
 			// 
 			this.radbtnMale.AutoSize = true;
 			this.radbtnMale.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.radbtnMale.Location = new System.Drawing.Point(140, 208);
+			this.radbtnMale.Location = new System.Drawing.Point(3, 9);
 			this.radbtnMale.Name = "radbtnMale";
 			this.radbtnMale.Size = new System.Drawing.Size(72, 28);
 			this.radbtnMale.TabIndex = 4;
@@ -296,15 +298,23 @@
 			this.DateOfBirthPicker.TabIndex = 3;
 			this.DateOfBirthPicker.Value = new System.DateTime(1980, 1, 1, 0, 0, 0, 0);
 			// 
+			// panel1
+			// 
+			this.panel1.Controls.Add(this.radbtnMale);
+			this.panel1.Controls.Add(this.radbtnFemale);
+			this.panel1.Location = new System.Drawing.Point(140, 199);
+			this.panel1.Name = "panel1";
+			this.panel1.Size = new System.Drawing.Size(185, 50);
+			this.panel1.TabIndex = 41;
+			// 
 			// form_EditMember
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(357, 636);
+			this.ClientSize = new System.Drawing.Size(371, 636);
+			this.Controls.Add(this.panel1);
 			this.Controls.Add(this.DateOfBirthPicker);
 			this.Controls.Add(this.txtAvatar);
-			this.Controls.Add(this.radbtnFemale);
-			this.Controls.Add(this.radbtnMale);
 			this.Controls.Add(this.txtEmail);
 			this.Controls.Add(this.label8);
 			this.Controls.Add(this.label5);
@@ -329,6 +339,8 @@
 			this.Name = "form_EditMember";
 			this.Text = "form_EditMember";
 			this.Load += new System.EventHandler(this.form_EditMember_Load);
+			this.panel1.ResumeLayout(false);
+			this.panel1.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -361,5 +373,6 @@
 		private System.Windows.Forms.Label label10;
 		private System.Windows.Forms.TextBox txtNickName;
 		private System.Windows.Forms.DateTimePicker DateOfBirthPicker;
+		private System.Windows.Forms.Panel panel1;
 	}
 }

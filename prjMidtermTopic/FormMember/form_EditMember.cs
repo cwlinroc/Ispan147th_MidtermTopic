@@ -2,6 +2,7 @@
 using Ispan147.Estore.SqlDataLayer.Repositories;
 using Ispan147.Estore.SqlDataLayer.Services;
 using ISpan147.Estore.SqlDataLayer.Dtos;
+using ISpan147.Estore.SqlDataLayer.ExtMethods;
 using prjMidtermTopic.Interfaces;
 using System;
 using System.Windows.Forms;
@@ -27,7 +28,6 @@ namespace prjMidtermTopic.FormMember
 				MessageBox.Show("找不到紀錄");
 				return;
 			}
-
 			txtMemberID.Text = dto.MemberID.ToString();
 			txtMemberName.Text = dto.MemberName;
 			txtNickName.Text = dto.NickName;
@@ -69,7 +69,7 @@ namespace prjMidtermTopic.FormMember
 				DateOfBirth = DateOfBirthPicker.Value,
 				Gender = _gender,
 				Account = txtAccount.Text,
-				Password = txtPassword.Text,
+				Password = MyEncoder.GetSaltedSha256(txtPassword.Text),
 				Phone = txtPhone.Text,
 				Address = txtAddress.Text,
 				Email = txtEmail.Text,

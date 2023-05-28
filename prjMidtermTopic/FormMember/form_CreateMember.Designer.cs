@@ -52,7 +52,10 @@
 			this.label9 = new System.Windows.Forms.Label();
 			this.txtNickName = new System.Windows.Forms.TextBox();
 			this.DateOfBirthPicker = new System.Windows.Forms.DateTimePicker();
+			this.btnUploadAvatar = new System.Windows.Forms.Button();
+			this.panel1 = new System.Windows.Forms.Panel();
 			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+			this.panel1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// btnAdd
@@ -60,7 +63,7 @@
 			this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnAdd.AutoSize = true;
 			this.btnAdd.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.btnAdd.Location = new System.Drawing.Point(244, 544);
+			this.btnAdd.Location = new System.Drawing.Point(602, 544);
 			this.btnAdd.Name = "btnAdd";
 			this.btnAdd.Size = new System.Drawing.Size(80, 30);
 			this.btnAdd.TabIndex = 11;
@@ -222,7 +225,7 @@
 			// 
 			this.radbtnFemale.AutoSize = true;
 			this.radbtnFemale.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.radbtnFemale.Location = new System.Drawing.Point(219, 155);
+			this.radbtnFemale.Location = new System.Drawing.Point(81, 10);
 			this.radbtnFemale.Name = "radbtnFemale";
 			this.radbtnFemale.Size = new System.Drawing.Size(93, 28);
 			this.radbtnFemale.TabIndex = 4;
@@ -234,7 +237,7 @@
 			// 
 			this.radbtnMale.AutoSize = true;
 			this.radbtnMale.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.radbtnMale.Location = new System.Drawing.Point(141, 155);
+			this.radbtnMale.Location = new System.Drawing.Point(3, 10);
 			this.radbtnMale.Name = "radbtnMale";
 			this.radbtnMale.Size = new System.Drawing.Size(72, 28);
 			this.radbtnMale.TabIndex = 3;
@@ -269,14 +272,36 @@
 			this.DateOfBirthPicker.TabIndex = 2;
 			this.DateOfBirthPicker.Value = new System.DateTime(1980, 1, 1, 0, 0, 0, 0);
 			// 
+			// btnUploadAvatar
+			// 
+			this.btnUploadAvatar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnUploadAvatar.AutoSize = true;
+			this.btnUploadAvatar.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.btnUploadAvatar.Location = new System.Drawing.Point(452, 544);
+			this.btnUploadAvatar.Name = "btnUploadAvatar";
+			this.btnUploadAvatar.Size = new System.Drawing.Size(127, 30);
+			this.btnUploadAvatar.TabIndex = 22;
+			this.btnUploadAvatar.Text = "Upload Avatar";
+			this.btnUploadAvatar.UseVisualStyleBackColor = true;
+			this.btnUploadAvatar.Click += new System.EventHandler(this.btnUploadAvatar_Click);
+			// 
+			// panel1
+			// 
+			this.panel1.Controls.Add(this.radbtnMale);
+			this.panel1.Controls.Add(this.radbtnFemale);
+			this.panel1.Location = new System.Drawing.Point(141, 145);
+			this.panel1.Name = "panel1";
+			this.panel1.Size = new System.Drawing.Size(200, 51);
+			this.panel1.TabIndex = 23;
+			// 
 			// form_CreateMember
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(360, 586);
+			this.ClientSize = new System.Drawing.Size(718, 586);
+			this.Controls.Add(this.panel1);
+			this.Controls.Add(this.btnUploadAvatar);
 			this.Controls.Add(this.DateOfBirthPicker);
-			this.Controls.Add(this.radbtnFemale);
-			this.Controls.Add(this.radbtnMale);
 			this.Controls.Add(this.txtAvatar);
 			this.Controls.Add(this.btnAdd);
 			this.Controls.Add(this.txtEmail);
@@ -299,6 +324,8 @@
 			this.Name = "form_CreateMember";
 			this.Text = "form_CreateMember";
 			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+			this.panel1.ResumeLayout(false);
+			this.panel1.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -329,5 +356,7 @@
 		private System.Windows.Forms.TextBox txtNickName;
 		private System.Windows.Forms.Label label9;
 		private System.Windows.Forms.DateTimePicker DateOfBirthPicker;
+		private System.Windows.Forms.Button btnUploadAvatar;
+		private System.Windows.Forms.Panel panel1;
 	}
 }

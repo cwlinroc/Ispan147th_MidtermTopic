@@ -49,7 +49,7 @@ namespace prjMidtermTopic.ViewModels
 		[MaxLength(30, ErrorMessage = "{0}長度不可多於{1}")]
 		public string Email { get; set; }
 
-		[Display(Name = "頭像")]
+		[Display(Name = "頭像")]		
 		public string Avatar { get; set; }
 	}
 }
