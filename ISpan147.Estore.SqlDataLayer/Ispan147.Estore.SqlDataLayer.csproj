@@ -45,6 +45,7 @@
     <Compile Include="Builders\SqlParameterBuilder.cs" />
     <Compile Include="Dtos\Assembler.cs" />
     <Compile Include="Dtos\EmployeeDto.cs" />
+    <Compile Include="Dtos\QADto.cs" />
     <Compile Include="Dtos\OrderDto.cs" />
     <Compile Include="Dtos\OrderGridDto.cs" />
     <Compile Include="Dtos\OrderListDto.cs" />
