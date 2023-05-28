@@ -168,6 +168,17 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 				return result;
 			}
 		}
+		public IEnumerable<int> GetAllOrderID()
+		{
+			using (var conn = SqlDb.GetConnection())
+			{
+				string strSql = $"SELECT OrderID FROM Orders ";
+
+				var result = conn.Query<int>(strSql);
+
+				return result;
+			}
+		}
 
 
 		public IEnumerable<MemberDto> GetAllMemberDtos()
@@ -183,8 +194,35 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 
 		}
 
+		public int GetTotalPrice(int orderID)
+		{
+			string sql = "SELECT SUM(Quantity * Price)"
+				+ " From Orders t1 "
+				+ " JOIN OrderLists t2 ON t1.OrderID = t2.OrderID "
+				+ " JOIN Merchandises t3 ON t2.MerchandiseID = t3.MerchandiseID "
+				+ $" WHERE t1.OrderID = {orderID} "
+				+ " GROUP BY t1.OrderID";
 
+			using (var conn = SqlDb.GetConnection())
+			{
+				return conn.QuerySingle<int>(sql);
+			}
+		}
 
+		public int UpdateOrder(OrderDto dto)
+		{
+			if (dto == null) return -1;
+
+			string sql = " UPDATE Orders SET "
+					+ " Payed = @Payed, "
+					+ " PaymentAmount = @PaymentAmount "
+					+ " OUTPUT INSERTED.OrderID WHERE OrderID = @OrderID ";
+
+			using (var conn = SqlDb.GetConnection())
+			{
+				return conn.QuerySingle<int>(sql, dto);
+			}
+		}
 
 
 	}

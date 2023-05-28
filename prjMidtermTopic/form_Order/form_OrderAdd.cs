@@ -22,6 +22,7 @@ namespace prjMidtermTopic.form_Order
 
 			comboBox_PayMethod.Items.AddRange(Orders.paymentOptions);
 			comboBox_Payed.Items.AddRange(Orders.payedOptions);
+			dateTimePicker_PurchaseTime.Value = DateTime.Now;
 		}
 
 		private void btn_commit_Click(object sender, EventArgs e)
@@ -30,16 +31,20 @@ namespace prjMidtermTopic.form_Order
 			{
 				var vm = new OrderVM()
 				{
-					MemberID = txt_CustomerID.Text.Trim(),
+					MemberID = txt_MemberID.Text.Trim(),
 					PaymentMethod = comboBox_PayMethod.SelectedItem?.ToString(),
 					Payed = comboBox_Payed.SelectedItem?.ToString(),
+					PurchaseTime = dateTimePicker_PurchaseTime.Value,
+					PaymentAmount = txt_PaymentAmount.Text.Trim(),
 				};
 
 				var map = new Dictionary<string, Control>(StringComparer.CurrentCultureIgnoreCase) {
-					{ "ID" , txt_OrderID },
-					{ "CustomerID" , txt_CustomerID },
+					{ "OrderID" , txt_OrderID },
+					{ "MemberID" , txt_MemberID },
 					{ "PaymentMethod" , comboBox_PayMethod },
-					{ "Payed" , comboBox_Payed }
+					{ "Payed" , comboBox_Payed },
+					{ "PurchaseTime", dateTimePicker_PurchaseTime },
+					{ "PaymentAmount", txt_PaymentAmount }
 				};
 
 				bool hasError = MyValidator.ValidateAndDisplay(vm, errorProvider1, map);
@@ -59,5 +64,7 @@ namespace prjMidtermTopic.form_Order
 				MessageBox.Show("新增失敗，可能原因：" + ex.Message);
 			}
 		}
+
+		
 	}
 }

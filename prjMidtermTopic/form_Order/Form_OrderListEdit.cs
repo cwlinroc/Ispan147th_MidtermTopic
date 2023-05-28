@@ -30,7 +30,7 @@ namespace prjMidtermTopic.form_Order
 			txt_MerchandiseID.Text = dto.MerchandiseID.ToString();
 			txt_Quantity.Text = dto.Quantity.ToString();
 
-			_repo = new OrderListRepositoryLinq();
+			_repo = new OrderListRepositoryDapper();
 		}
 
 		private void btn_commit_Click(object sender, EventArgs e)

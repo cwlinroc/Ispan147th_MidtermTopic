@@ -105,7 +105,9 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
 			string sqlString = $" INSERT INTO [{table}] ( ";
 
 			sqlString += objProperties.Where(prop => prop.GetValue(obj) != null)
-				.Select(prop => prop.Name).Aggregate((acc, next) => acc + ", " + next);
+				.Select(prop => prop.Name)
+				.Where(o => o != output)
+				.Aggregate((acc, next) => acc + ", " + next);
 
 			sqlString += " ) ";
 
@@ -114,7 +116,9 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
 			sqlString += " VALUES ( @";
 
 			sqlString += objProperties.Where(prop => prop.GetValue(obj) != null)
-				.Select(prop => prop.Name).Aggregate((acc, next) => acc + ", @" + next);
+				.Select(prop => prop.Name)
+				.Where(o => o!=output)
+				.Aggregate((acc, next) => acc + ", @" + next);
 
 			sqlString += " )";
 

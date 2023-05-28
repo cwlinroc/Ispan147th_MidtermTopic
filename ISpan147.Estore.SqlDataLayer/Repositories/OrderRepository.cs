@@ -25,11 +25,48 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 
 		public IEnumerable<OrderGridDto> Search(OrderSearchDto sDto)
 		{
-			string sql = $" SELECT OrderID ,[Members].MemberID , MemberName "
-					+ " , PaymentMethod ,Payed ,PurchaseTime , PaymentAmount  FROM Orders "
-					+ " JOIN Members ON [Members].MemberID = [Orders].MemberID ";
+			string sql = $" SELECT OrderID ,o.MemberID , MemberName "
+					+ " , PaymentMethod ,Payed ,PurchaseTime , PaymentAmount "
+					+ " FROM Orders o "
+					+ " JOIN Members m ON m.MemberID = o.MemberID "
+					+ " WHERE 1 = 1 ";
 
-			sql += DapperStringCreator.Where(sDto);
+			#region --條件式--
+
+			if (sDto.OrderID != null)
+			{
+				sql += " AND OrderID = @OrderID ";
+			}
+			if (sDto.MemberID != null)
+			{
+				sql += " AND MemberID = @MemberID ";
+			}
+			if (sDto.MemberName != null)
+			{
+				sql += " AND MemberName LIKE '%'+@MemberName+'%' ";
+			}
+			if (sDto.PurchaseTime != null)
+			{
+				sql += " AND PurchaseTime >= @PurchaseTime ";
+			}
+			if (sDto.PaymentMethod != null)
+			{
+				sql += " AND PaymentMethod = @PaymentMethod ";
+			}
+			if (sDto.Payed != null)
+			{
+				sql += " AND Payed = @Payed ";
+			}
+			if (sDto.MinPaymentAmount != null)
+			{
+				sql += " AND PaymentAmount >= @MinPaymentAmount ";
+			}
+			if (sDto.MaxPaymentAmount != null)
+			{
+				sql += " AND PaymentAmount <= @MaxPaymentAmount ";
+			}
+
+			#endregion
 
 			using (var conn = SqlDb.GetConnection())
 			{
@@ -50,7 +87,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 
 			using (var conn = SqlDb.GetConnection())
 			{
-				return conn.QuerySingle(sql, dto);
+				return conn.QuerySingle<int>(sql, dto);
 			}
 		}
 
@@ -71,7 +108,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 
 			using (var conn = SqlDb.GetConnection())
 			{
-				return conn.QuerySingle(strSql, OrderID);
+				return conn.QuerySingle<int>(strSql, OrderID);
 			}
 		}
 

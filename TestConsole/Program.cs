@@ -41,11 +41,10 @@ namespace TestConsole
 			//mass.CreateRandomAdopt(150);
 			//領養清單
 
-			var repo = new OrderListRepositoryLinq();
+			var service = new MassInsertService();
 			//var repo = new OrderListRepositoryAdoNet();
-			int id = repo.Delete(10000);
+			service.OrganizeAllPayments();
 
-            Console.WriteLine(id);
 
 
             Console.WriteLine("Test Over!");

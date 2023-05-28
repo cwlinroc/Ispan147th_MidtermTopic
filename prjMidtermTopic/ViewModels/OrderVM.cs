@@ -36,6 +36,7 @@ namespace prjMidtermTopic.ViewModels
 		public DateTime? PurchaseTime { get; set; }
 
 		[Display(Name = "付款金額")]
+		[RegularExpression(@"^\d*$", ErrorMessage = "{0}請輸入正整數")]
 		public string PaymentAmount { get; set; }
 	}
 
@@ -45,15 +46,20 @@ namespace prjMidtermTopic.ViewModels
 		static public readonly string[] payedOptions = new string[] { "尚未付款", "已付款" };
 		static public OrderDto ToDto(this OrderVM vm)
 		{
-			return new OrderDto
+			var dto = new OrderDto
 			{
 				OrderID = vm.OrderID,
 				MemberID = int.Parse(vm.MemberID),
 				PaymentMethod = Array.IndexOf(paymentOptions, vm.PaymentMethod),
-				Payed = vm.Payed == "已付款"
+				Payed = vm.Payed == "已付款",
+				PurchaseTime = vm.PurchaseTime.Value,
 			};
+
+			if (int.TryParse(vm.PaymentAmount, out int output)) dto.PaymentAmount = output;
+
+			return dto;
 		}
-		
+
 		static public OrderVM ToVM(this OrderDto dto)
 		{
 			return new OrderVM
@@ -61,7 +67,9 @@ namespace prjMidtermTopic.ViewModels
 				OrderID = dto.OrderID,
 				MemberID = dto.MemberID.ToString(),
 				PaymentMethod = paymentOptions[dto.PaymentMethod],
-				Payed = dto.Payed ? "已付款" : "尚未付款"
+				Payed = dto.Payed ? "已付款" : "尚未付款",
+				PurchaseTime = dto.PurchaseTime,
+				PaymentAmount = dto.PaymentAmount?.ToString()
 			};
 		}
 
@@ -75,7 +83,7 @@ namespace prjMidtermTopic.ViewModels
 				PaymentMethod = paymentOptions[dto.PaymentMethod],
 				Payed = dto.Payed ? "已付款" : "尚未付款",
 				PurchaseTime = dto.PurchaseTime,
-				PaymentAmount = dto.PaymentAmount.ToString(),
+				PaymentAmount = dto.PaymentAmount?.ToString(),
 			};
 		}
 

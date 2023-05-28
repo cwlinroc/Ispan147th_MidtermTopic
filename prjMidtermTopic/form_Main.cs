@@ -7,8 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ISpan147.Estore.SqlDataLayer.Services;
 using prjMidtermTopic.form_Order;
 using prjMidtermTopic.MassInsert;
+using prjMidtermTopic.Model;
 
 namespace prjMidtermTopic
 {
@@ -104,6 +106,22 @@ namespace prjMidtermTopic
 			toolStripButton_Exit.PerformClick();
 		}
 
+		private void 單一子視窗ToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			多重子視窗ToolStripMenuItem.Checked = false;
+			_multiMdiChild = false;
+			if (ActiveMdiChild != null)
+			{
+				MdiChildren.Where(o => o != ActiveMdiChild).ToList().ForEach(o => o.Close());
+			}
+		}
+
+		private void 多重子視窗ToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			單一子視窗ToolStripMenuItem.Checked = false;
+			_multiMdiChild = true;
+		}
+
 		private void 水平排列ToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			LayoutMdi(MdiLayout.TileHorizontal);
@@ -134,6 +152,22 @@ namespace prjMidtermTopic
 			new MassInsert.form_MassInsert().ShowDialog();
 		}
 
+		private void 整理訂單金額ToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			try
+			{
+				DialogResult dialogResult = MessageBox.Show($"確認重整所有訂單金額？"
+					, "確認重整", MessageBoxButtons.YesNo);
+				if (dialogResult == DialogResult.No) return;
+				new MassInsertService().OrganizeAllPayments();
+				DisplayGrid.DisplayAll(this, new MessageArgs { Message = "_Order_" });
+				MessageBox.Show("整理完畢");
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show("整理失敗，可能原因：" + ex.Message);
+			}			
+		}
 
 		#endregion
 
@@ -149,21 +183,6 @@ namespace prjMidtermTopic
 			frm.Show();
 		}
 
-		private void 單一子視窗ToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			多重子視窗ToolStripMenuItem.Checked = false;
-			_multiMdiChild = false;
-			if (ActiveMdiChild != null)
-			{
-				MdiChildren.Where(o=> o!= ActiveMdiChild).ToList().ForEach(o=> o.Close());
-			}
-		}
 
-		private void 多重子視窗ToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			單一子視窗ToolStripMenuItem.Checked = false;
-			_multiMdiChild = true;
-
-		}
 	}
 }

@@ -26,7 +26,7 @@ namespace ISpan147.Estore.SqlDataLayer.Services
 				repo.CreateMember(new MemberDto
 				{
 					MemberName = rng.RandomName(),
-					NickName = (rng.RandomChance(80)) ? rng.RandomPetName().Substring(0,2) : null,
+					NickName = (rng.RandomChance(80)) ? rng.RandomPetName().Substring(0, 2) : null,
 					DateOfBirth = rng.RandomBirthDate(),
 					Gender = rng.RandomBool(),
 					Account = rng.RandomEnString(),
@@ -118,7 +118,7 @@ namespace ISpan147.Estore.SqlDataLayer.Services
 
 
 
-
+		//todo [君韋] 隨機訂單金額過高
 		public void CreateRandomOrderAndOrderList(int total)
 		{
 			var rng = new RandomGenerator();
@@ -135,19 +135,20 @@ namespace ISpan147.Estore.SqlDataLayer.Services
 					PaymentMethod = rng.RandomIntBetween(0, 3),
 					Payed = rng.RandomBool(),
 					PurchaseTime = DateTime.Now.AddDays(rng.RandomIntBetween(-365, -10))
-						.AddMinutes(rng.RandomIntBetween(0, 1440)),					
+						.AddMinutes(rng.RandomIntBetween(0, 1440)),
 				};
-				if (rng.RandomChance(80)) dto.PaymentAmount = rng.RandomIntBetween(300, 5000);
-
+				
 				int orderID = repo.CreateOrder(dto);
 
-				for(int j = 0;  j < rng.RandomIntBetween(1, 15); j++)
+				int scale = rng.RandomIntByWeight(0,4,4,3,2,2,1,1,1,1,1,1,1,1,1,1,1,1);
+
+				for (int j = 0; j < rng.RandomIntBetween(1, scale); j++)
 				{
 					repo.CreateOrderList(new OrderListDto
 					{
 						OrderID = orderID,
 						MerchandiseID = rng.RandomFrom(merchandiseIDs),
-						Quantity = rng.RandomIntBetween(1, 15)
+						Quantity = rng.RandomIntBetween(1, scale)
 					});
 				}
 			}
@@ -172,6 +173,39 @@ namespace ISpan147.Estore.SqlDataLayer.Services
 				});
 			}
 		}
+
+		public void OrganizeAllPayments()
+		{
+			var rng = new RandomGenerator();
+			var repo = new MassInsertRepository();
+
+			var ids = repo.GetAllOrderID();
+
+			foreach (int id in ids)
+			{
+				bool calculated = rng.RandomChance(90);
+
+				var dto = new OrderDto
+				{
+					OrderID = id,
+					Payed = calculated && rng.RandomChance(95)
+				};
+
+				if (calculated)
+				{
+					dto.PaymentAmount = repo.GetTotalPrice(id);
+					
+					if (rng.RandomChance(50))
+					{
+						dto.PaymentAmount = dto.PaymentAmount * rng.RandomIntBetween(80, 100) / 100;
+					}
+				}
+				repo.UpdateOrder(dto);
+			}
+
+		}
+
+
 
 	}
 }

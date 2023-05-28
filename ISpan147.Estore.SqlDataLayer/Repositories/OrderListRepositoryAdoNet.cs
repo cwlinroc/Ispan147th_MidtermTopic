@@ -12,6 +12,37 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 {
 	public class OrderListRepositoryAdoNet : IOrderListRepositoy
 	{
+		
+
+		public int Create(OrderListDto dto)
+		{
+			string sql = "INSERT INTO OrderLists (OrderID, MerchandiseID, Quantity)"
+				+ " VALUES (@OrderID, @MerchandiseID, @Quantity) ";
+
+			var parameters = new SqlParameterBuilder()
+				.AddInt("OrderID", dto.OrderID)
+				.AddInt("MerchandiseID", dto.MerchandiseID)
+				.AddInt("Quantity", dto.Quantity)
+				.Build();
+
+			Func<SqlConnection> connGetter = SqlDb.GetConnection;
+
+			return SqlDb.Create(connGetter, sql, parameters);
+		}
+
+		public int Delete(int orderID)
+		{
+			string sql = "DELETE OrderLists WHERE OrderListID = @OrderListID";
+
+			var parameters = new SqlParameterBuilder()
+				.AddInt("@OrderListID", orderID)
+				.Build();
+
+			Func<SqlConnection> connGetter = SqlDb.GetConnection;
+
+			return SqlDb.UpdateOrDelete(connGetter, sql, parameters);
+		}
+
 		public OrderListDto Get(int id)
 		{
 			Func<SqlConnection> connGetter = SqlDb.GetConnection;
@@ -21,14 +52,16 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 			return SqlDb.Get(connGetter, sql, assembler);
 		}
 
+
 		public List<OrderListGridDto> Search(
 			int? id = null,
 			int? orderID = null,
 			int? merchandiseID = null,
 			int? quantity = null)
 		{
-			string sql = $"SELECT * FROM OrderLists " 
-				+ " JOIN Merchandises ON [OrderLists].MerchandiseID = [Merchandises].MerchandiseID ";
+			string sql = $"SELECT OrderListID, OrderID, o.MerchandiseID, MerchandiseName, Quantity "
+				+ " FROM OrderLists o "
+				+ " JOIN Merchandises m ON o.MerchandiseID = m.MerchandiseID ";
 			var parameterBuilder = new SqlParameterBuilder();
 
 			string where = "";
@@ -45,7 +78,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 			}
 			if (merchandiseID.HasValue)
 			{
-				where += " AND [OrderLists].MerchandiseID = @MerchandiseID ";
+				where += " AND o.MerchandiseID = @MerchandiseID ";
 				parameterBuilder.AddInt("MerchandiseID", merchandiseID.Value);
 			}
 			if (quantity.HasValue)
@@ -88,33 +121,6 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 			return SqlDb.UpdateOrDelete(connGetter, sql, parameters);
 		}
 
-		public int Create(OrderListDto dto)
-		{
-			string sql = "INSERT INTO OrderLists (OrderID, MerchandiseID, Quantity)"
-				+ " VALUES (@OrderID, @MerchandiseID, @Quantity) ";
 
-			var parameters = new SqlParameterBuilder()
-				.AddInt("OrderID", dto.OrderID)
-				.AddInt("MerchandiseID", dto.MerchandiseID)
-				.AddInt("Quantity", dto.Quantity)
-				.Build();
-
-			Func<SqlConnection> connGetter = SqlDb.GetConnection;
-
-			return SqlDb.Create(connGetter, sql, parameters);
-		}
-
-		public int Delete(int orderID)
-		{
-			string sql = "DELETE OrderLists WHERE OrderListID = @OrderListID";
-
-			var parameters = new SqlParameterBuilder()
-				.AddInt("@OrderListID", orderID)
-				.Build();
-
-			Func<SqlConnection> connGetter = SqlDb.GetConnection;
-
-			return SqlDb.UpdateOrDelete(connGetter, sql, parameters);
-		}
 	}
 }

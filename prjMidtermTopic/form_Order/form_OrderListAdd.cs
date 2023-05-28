@@ -25,7 +25,7 @@ namespace prjMidtermTopic.form_Order
 			InitializeComponent();
 			txt_OrderID.Text = orderId.ToString();
 
-			_repo = new OrderListRepositoryLinq();
+			_repo = new OrderListRepositoryDapper();
 		}
 
 		private void btn_commit_Click(object sender, EventArgs e)

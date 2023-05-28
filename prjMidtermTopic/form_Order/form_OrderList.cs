@@ -24,8 +24,16 @@ namespace prjMidtermTopic.form_Order
 		private List<OrderListGridDto> _data;
 		private int _row = -1;
 		private int _sortedIndex = 0;
-		private Dictionary<string, Func<OrderListGridDto, OrderListGridDto, int>> _sortMap =
-			new Dictionary<string, Func<OrderListGridDto, OrderListGridDto, int>>
+		private readonly Dictionary<string, Func<OrderListGridDto, OrderListGridDto, int>> _sortMap;
+		public form_OrderList(int orderId)
+		{
+			InitializeComponent();
+
+			_orderID = orderId;
+
+			_repo = new OrderListRepositoryDapper();
+
+			_sortMap = new Dictionary<string, Func<OrderListGridDto, OrderListGridDto, int>>
 			{
 				{ "OrderListID", (prev, next) => prev.OrderListID.CompareTo(next.OrderListID) },
 				{ "MerchandiseID", (prev, next) => prev.MerchandiseID.CompareTo(next.MerchandiseID) },
@@ -33,12 +41,6 @@ namespace prjMidtermTopic.form_Order
 				{ "OrderID", (prev, next) => prev.OrderID.CompareTo(next.OrderID) },
 				{ "Quantity", (prev, next) => prev.Quantity.CompareTo(next.Quantity) }
 			};
-		public form_OrderList(int orderId)
-		{
-			InitializeComponent();
-			_orderID = orderId;
-
-			_repo = new OrderListRepositoryLinq();
 		}
 
 		//load
@@ -134,7 +136,7 @@ namespace prjMidtermTopic.form_Order
 					_sortedIndex = e.ColumnIndex;
 				}
 
-				dataGridView_Main.DataSource = _data.Select(dto => dto.ToVM()).ToArray();				
+				dataGridView_Main.DataSource = _data.Select(dto => dto.ToVM()).ToArray();
 			}
 		}
 
@@ -144,7 +146,6 @@ namespace prjMidtermTopic.form_Order
 		{
 			try
 			{
-				dataGridView_Main.DataSource = null;
 				_data = new OrderListService(_repo)
 					.Search(null, _orderID).ToList();
 

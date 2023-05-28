@@ -93,6 +93,7 @@
     <Compile Include="Repositories\MemberRepository.cs" />
     <Compile Include="Repositories\MerchandiseRepository.cs" />
     <Compile Include="Repositories\OrderListRepositoryAdoNet.cs" />
+    <Compile Include="Repositories\OrderListRepositoryDapper.cs" />
     <Compile Include="Repositories\OrderListRepositoryLinq.cs" />
     <Compile Include="Repositories\OrderRepository.cs" />
     <Compile Include="Services\MemberService.cs" />

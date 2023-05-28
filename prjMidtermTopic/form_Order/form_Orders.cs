@@ -20,9 +20,27 @@ namespace prjMidtermTopic.form_Order
 
 		private List<OrderGridDto> _data;
 		private int _row = -1;
+
+		private int _sortedIndex = 0;
+		private readonly Dictionary<string, Func<OrderGridDto, OrderGridDto, int>> _sortMap;
+
+
 		public form_Orders()
 		{
 			InitializeComponent();
+
+			_sortMap = new Dictionary<string, Func<OrderGridDto, OrderGridDto, int>>
+			{
+				{ "OrderID", (prev, next) => prev.OrderID.CompareTo(next.OrderID) },
+				{ "MemberID", (prev, next) => prev.MemberID.CompareTo(next.MemberID) },
+				{ "MemberName", (prev, next) => prev.MemberName.CompareTo(next.MemberName) },
+				{ "PaymentMethod", (prev, next) => prev.PaymentMethod.CompareTo(next.PaymentMethod) },
+				{ "Payed", (prev, next) => prev.Payed.CompareTo(next.Payed) },
+				{ "PurchaseTime", (prev, next) => prev.PurchaseTime.GetValueOrDefault().CompareTo(next.PurchaseTime.GetValueOrDefault()) },
+				{ "PaymentAmount", (prev, next) => prev.PaymentAmount.GetValueOrDefault().CompareTo(next.PaymentAmount.GetValueOrDefault()) }
+			};
+
+			comboBox_PaymentMethod.Items.AddRange(Orders.paymentOptions);
 		}
 
 		//load
@@ -49,6 +67,10 @@ namespace prjMidtermTopic.form_Order
 		{
 			Display();
 		}
+		private void btn_ClearSearch_Click(object sender, EventArgs e)
+		{
+			ClearSearchConditions();
+		}
 		private void btn_Edit_Click(object sender, EventArgs e)
 		{
 			if (_row < 0) return;
@@ -62,8 +84,11 @@ namespace prjMidtermTopic.form_Order
 		//double click
 		private void dataGridView_Main_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
 		{
-			_row = e.RowIndex;
-			if (_row < 0) return;
+			if (e.RowIndex < 0)
+			{
+				OrderByHeader(e.ColumnIndex);
+				return;
+			}
 			var frm = new form_OrderList(_data[_row].OrderID);
 			frm.Owner = this;
 			frm.ShowDialog();
@@ -75,22 +100,11 @@ namespace prjMidtermTopic.form_Order
 		{
 			try
 			{
-				var sDto = new OrderSearchDto();
-
-				if (txt_OrderID.Text.Trim().Length > 0
-					&& int.TryParse(txt_OrderID.Text.Trim(), out int _orderID))
-				{
-					sDto.OrderID = _orderID;
-				}
-				if (txt_OrderID.Text.Trim().Length > 0
-					&& int.TryParse(txt_OrderID.Text.Trim(), out int _memberID))
-				{
-					sDto.MemberID = _memberID;
-				}
+				var sDto = GetSearchDto();
 
 				var gridDtoList = new OrderService().Search(sDto);
 
-				_data = gridDtoList.OrderBy(o=> o.OrderID).ToList();
+				_data = gridDtoList.OrderBy(o => o.OrderID).ToList();
 
 				dataGridView_Main.DataSource = _data.Select(dto => dto.ToVM()).ToArray();
 			}
@@ -101,6 +115,101 @@ namespace prjMidtermTopic.form_Order
 
 		}
 
+		private OrderSearchDto GetSearchDto()
+		{
+			var sDto = new OrderSearchDto();
+
+			#region --條件判別--
+
+			if (int.TryParse(txt_OrderID.Text.Trim(), out int _orderID))
+			{
+				sDto.OrderID = _orderID;
+			}
+			if (int.TryParse(txt_MemberID.Text.Trim(), out int _memberID))
+			{
+				sDto.MemberID = _memberID;
+			}
+			if (txt_MemberName.Text.Trim().Length > 0)
+			{
+				sDto.MemberName = txt_MemberName.Text.Trim();
+			}
+			if (comboBox_PurchaseTime.SelectedIndex != -1)
+			{
+				switch (comboBox_PurchaseTime.SelectedIndex)
+				{
+					case 0:
+						sDto.PurchaseTime = DateTime.Now.AddDays(-7);
+						break;
+					case 1:
+						sDto.PurchaseTime = DateTime.Now.AddMonths(-1);
+						break;
+					case 2:
+						sDto.PurchaseTime = DateTime.Now.AddMonths(-3);
+						break;
+					case 3:
+						sDto.PurchaseTime = DateTime.Now.AddYears(-1);
+						break;
+				}
+			}
+			if (comboBox_PaymentMethod.SelectedIndex != -1)
+			{
+				sDto.PaymentMethod = comboBox_PaymentMethod.SelectedIndex;
+			}
+			if (comboBox_Payed.SelectedIndex != -1)
+			{
+				if (comboBox_Payed.SelectedIndex == 0) sDto.Payed = true;
+				if (comboBox_Payed.SelectedIndex == 1) sDto.Payed = false;
+			}
+			if (int.TryParse(txt_MinPaymentAmount.Text.Trim(), out int minAmount))
+			{
+				sDto.MinPaymentAmount = minAmount;
+			}
+			if (int.TryParse(txt_MaxPaymentAmount.Text.Trim(), out int maxAmount))
+			{
+				sDto.MaxPaymentAmount = maxAmount;
+			}
+
+			#endregion
+
+			return sDto;
+		}
+
+		private void OrderByHeader(int columnIndex)
+		{
+			if (columnIndex < 0) return;
+
+			string colProp = dataGridView_Main.Columns[columnIndex].DataPropertyName;
+
+			if (_sortMap.TryGetValue(colProp, out Func<OrderGridDto, OrderGridDto, int> func))
+			{
+				if (_sortedIndex == columnIndex)
+				{
+					_data.Sort((x, y) => func(y, x));
+					_sortedIndex = -1;
+				}
+				else
+				{
+					_data.Sort((x, y) => func(x, y));
+					_sortedIndex = columnIndex;
+				}
+
+				dataGridView_Main.DataSource = _data.Select(dto => dto.ToVM()).ToArray();
+			}
+
+		}
+
+		private void ClearSearchConditions()
+		{
+			txt_OrderID.Text = string.Empty;
+			txt_MemberID.Text = string.Empty;
+			txt_MemberName.Text = string.Empty;
+			comboBox_PurchaseTime.SelectedIndex = -1;
+			comboBox_PaymentMethod.SelectedIndex = -1;
+			comboBox_Payed.SelectedIndex = -1;
+			txt_MinPaymentAmount.Text = string.Empty;
+			txt_MaxPaymentAmount.Text = string.Empty;
+		}
+
 		private void AutoDisplay(object sender, EventArgs e)
 		{
 			string message = (e as MessageArgs).Message;
@@ -108,5 +217,7 @@ namespace prjMidtermTopic.form_Order
 
 			Display();
 		}
+		
+		
 	}
 }

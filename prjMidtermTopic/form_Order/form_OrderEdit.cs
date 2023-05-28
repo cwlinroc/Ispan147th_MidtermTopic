@@ -27,6 +27,8 @@ namespace prjMidtermTopic.form_Order
 			txt_CustomerID.Text = dto.MemberID.ToString();
 			comboBox_PayMethod.SelectedIndex = dto.PaymentMethod;
 			comboBox_Payed.SelectedIndex = (dto.Payed) ? 1 : 0;
+			dateTimePicker_PurchaseTime.Value = dto.PurchaseTime.Value;
+			txt_PaymentAmount.Text = dto.PaymentAmount?.ToString();
 		}
 
 
@@ -39,14 +41,18 @@ namespace prjMidtermTopic.form_Order
 					OrderID = int.Parse(txt_OrderID.Text.Trim()),
 					MemberID = txt_CustomerID.Text.Trim(),
 					PaymentMethod = comboBox_PayMethod.SelectedItem?.ToString(),
-					Payed = comboBox_Payed.SelectedItem?.ToString()
+					Payed = comboBox_Payed.SelectedItem?.ToString(),
+					PurchaseTime = dateTimePicker_PurchaseTime.Value,
+					PaymentAmount = txt_PaymentAmount.Text.Trim(),
 				};
 
 				var map = new Dictionary<string, Control>(StringComparer.CurrentCultureIgnoreCase) {
 					{ "ID" , txt_OrderID },
 					{ "CustomerID" , txt_CustomerID },
 					{ "PaymentMethod" , comboBox_PayMethod },
-					{ "Payed" , comboBox_Payed }
+					{ "Payed" , comboBox_Payed },
+					{ "PurchaseTime", dateTimePicker_PurchaseTime },
+					{ "PaymentAmount", txt_PaymentAmount }
 				};
 
 				bool hasError = MyValidator.ValidateAndDisplay(vm, errorProvider1, map);
@@ -55,7 +61,7 @@ namespace prjMidtermTopic.form_Order
 
 				int editRows = new OrderService().Update(vm.ToDto());
 
-				if(editRows > 0)
+				if (editRows > 0)
 				{
 					MessageBox.Show("更改成功");
 				}
@@ -72,9 +78,9 @@ namespace prjMidtermTopic.form_Order
 			{
 				MessageBox.Show("修改失敗，可能原因：" + ex.Message);
 			}
-			
+
 		}
 
-		
+
 	}
 }
