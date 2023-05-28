@@ -116,26 +116,33 @@ namespace prjMidtermTopic.form_Order
 		#endregion
 
 		//cell double click
-		//todo [君韋] 註解datagridview 排序
+		//依據標題欄位排序
 		private void dataGridView_Main_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
 		{
 			if (e.RowIndex > -1 || e.ColumnIndex < 0) return;
 
-			string colProp = dataGridView_Main.Columns[e.ColumnIndex].DataPropertyName;
-
+			//取得雙擊標題(column header)所對應的資料屬性名稱(Property Name)
+			string colProp = dataGridView_Main.Columns[e.ColumnIndex].DataPropertyName; 
+			
+			//將對應的名稱字串輸入Dictionary _sortMap,並得到對應比較方式的委派
 			if (_sortMap.TryGetValue(colProp, out Func<OrderListGridDto, OrderListGridDto, int> func))
 			{
+				//如果雙擊的標題是剛好是之前升冪排序的資料行(column)，則反轉為降冪排序
 				if (_sortedIndex == e.ColumnIndex)
 				{
+					//因為_data是List，所以直接呼叫List.Sort方法，並依照其中的委派比較方式做排序
 					_data.Sort((x, y) => func(y, x));
+					//將紀錄清空，因為下次不管點到哪個都肯定是昇冪
 					_sortedIndex = -1;
 				}
+				//其餘的就一律升冪排序
 				else
 				{
 					_data.Sort((x, y) => func(x, y));
+					//紀錄這次昇冪排列的資料行
 					_sortedIndex = e.ColumnIndex;
 				}
-
+				//將整理好的_data丟到dataGridView裡面
 				dataGridView_Main.DataSource = _data.Select(dto => dto.ToVM()).ToArray();
 			}
 		}

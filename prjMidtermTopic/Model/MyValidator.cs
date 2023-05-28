@@ -8,9 +8,17 @@ using System.Windows.Forms;
 
 namespace prjMidtermTopic.Model
 {
-	//todo [君韋] 註解MyValidator ///
+	
 	public class MyValidator
 	{
+		/// <summary>
+		/// 驗證View Model是否符合其Attribute的設定，若有錯誤則在對應的控制項跳出錯誤，並回傳true
+		/// </summary>
+		/// <typeparam name="T"></typeparam>
+		/// <param name="vm">要進行驗證的View Model</param>
+		/// <param name="provider">WinForm的ErrorProvider控制項</param>
+		/// <param name="map">屬性名稱以及對應顯示錯誤的控制項</param>
+		/// <returns>有無錯誤，有錯回傳true，反之則回傳false</returns>
 		static public bool ValidateAndDisplay<T>(T vm, ErrorProvider provider, Dictionary<string, Control> map)
 		{
 			ValidationContext context = new ValidationContext(vm);

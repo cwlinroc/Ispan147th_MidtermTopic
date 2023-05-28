@@ -72,6 +72,7 @@
 			// 
 			// btn_Add
 			// 
+			this.btn_Add.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.btn_Add.Location = new System.Drawing.Point(195, 612);
 			this.btn_Add.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
 			this.btn_Add.Name = "btn_Add";
@@ -119,6 +120,9 @@
 			// 
 			this.dataGridView_Main.AllowUserToAddRows = false;
 			this.dataGridView_Main.AllowUserToDeleteRows = false;
+			this.dataGridView_Main.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.dataGridView_Main.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dataGridView_Main.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -204,6 +208,7 @@
 			// 
 			// btn_Edit
 			// 
+			this.btn_Edit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.btn_Edit.Location = new System.Drawing.Point(47, 612);
 			this.btn_Edit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
 			this.btn_Edit.Name = "btn_Edit";
