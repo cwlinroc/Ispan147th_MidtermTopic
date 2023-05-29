@@ -226,6 +226,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MassInsert\form_MassInsert.resx">
       <DependentUpon>form_MassInsert.cs</DependentUpon>
+		</EmbeddedResource>
     <EmbeddedResource Include="form_QA\form_QAList.resx">
       <DependentUpon>form_QAList.cs</DependentUpon>
     </EmbeddedResource>
