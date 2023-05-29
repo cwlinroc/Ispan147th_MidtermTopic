@@ -133,50 +133,50 @@ namespace prjMidtermTopic.form_Merchandise
 																										};
 
 			//驗證vm是否通過欄位驗證
-			(bool isValid, List<ValidationResult> errors) validationResult = Validate(vm);
+			//(bool isValid, List<ValidationResult> errors) validationResult = Validate(vm);
 
-			//若有錯則顯示
-			if (validationResult.isValid == false)
-			{
-				this.errorProvider1.Clear();
-				DisplayErrors(validationResult.errors);
-				return;
-			}
+			////若有錯則顯示
+			//if (validationResult.isValid == false)
+			//{
+			//	this.errorProvider1.Clear();
+			//	DisplayErrors(validationResult.errors);
+			//	return;
+			//}
 
-			//通過驗證則將vm轉型為MerchandiseDto
-			MerchandiseDto dto = new MerchandiseDto
-			{
-				MerchandiseID = vm.MerchandiseId,
-				MerchandiseName = vm.MerchandiseName,
-				CategoryID = vm.CategoryID,
-				Price = vm.Price,
-				Amount = vm.Amount,
-				Description = vm.Description,
-				ImageURL = vm.ImageURL
-			};
-			try
-			{
-				var service = new MerchandiseService();
-				int newId = service.Create(dto);
-				MessageBox.Show($"新增成功，新的ID為{newId}。");
-			}
-			catch (Exception ex)
-			{
-				MessageBox.Show("新增失敗，原因：" + ex.Message);
-			}
+			////通過驗證則將vm轉型為MerchandiseDto
+			//MerchandiseDto dto = new MerchandiseDto
+			//{
+			//	MerchandiseID = vm.MerchandiseId,
+			//	MerchandiseName = vm.MerchandiseName,
+			//	CategoryID = vm.CategoryID,
+			//	Price = vm.Price,
+			//	Amount = vm.Amount,
+			//	Description = vm.Description,
+			//	ImageURL = vm.ImageURL
+			//};
+			//try
+			//{
+			//	var service = new MerchandiseService();
+			//	int newId = service.Create(dto);
+			//	MessageBox.Show($"新增成功，新的ID為{newId}。");
+			//}
+			//catch (Exception ex)
+			//{
+			//	MessageBox.Show("新增失敗，原因：" + ex.Message);
+			//}
 
-			//關閉表單
-			IGrid parent = this.Owner as IGrid; //將開啟視窗轉型為IGrid，若轉型失敗不會丟出例外，而是回傳NULL
-			if (parent == null)
-			{
-				MessageBox.Show("開啟用的表單沒有實作IGrid，因此無法回送通知");
-			}
-			else
-			{
-				parent.Display();
-			}
+			////關閉表單
+			//IGrid parent = this.Owner as IGrid; //將開啟視窗轉型為IGrid，若轉型失敗不會丟出例外，而是回傳NULL
+			//if (parent == null)
+			//{
+			//	MessageBox.Show("開啟用的表單沒有實作IGrid，因此無法回送通知");
+			//}
+			//else
+			//{
+			//	parent.Display();
+			//}
 
-			this.Close();
+			//this.Close();
 		}
 		private void btn_SelectImage_Click(object sender, EventArgs e)
 		{

@@ -214,13 +214,6 @@
 			this.MerchandiseName.Name = "MerchandiseName";
 			this.MerchandiseName.ReadOnly = true;
 			// 
-			// Column1
-			// 
-			this.Column1.DataPropertyName = "CategoryID";
-			this.Column1.HeaderText = "商品類別";
-			this.Column1.Name = "Column1";
-			this.Column1.ReadOnly = true;
-			// 
 			// Price
 			// 
 			this.Price.DataPropertyName = "Price";

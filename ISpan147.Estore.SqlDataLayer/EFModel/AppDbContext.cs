@@ -15,7 +15,7 @@ namespace ISpan147.Estore.SqlDataLayer.EFModel
 		public virtual DbSet<Adopt> Adopts { get; set; }
 		public virtual DbSet<Breed> Breeds { get; set; }
 		public virtual DbSet<Category> Categories { get; set; }
-		public virtual DbSet<comment> comments { get; set; }
+		public virtual DbSet<Comment> Comments { get; set; }
 		public virtual DbSet<Employee> Employees { get; set; }
 		public virtual DbSet<Member> Members { get; set; }
 		public virtual DbSet<Merchandise> Merchandises { get; set; }
@@ -89,7 +89,7 @@ namespace ISpan147.Estore.SqlDataLayer.EFModel
 				.WillCascadeOnDelete(false);
 
 			modelBuilder.Entity<Theme>()
-				.HasMany(e => e.comments)
+				.HasMany(e => e.Comments)
 				.WithRequired(e => e.Theme)
 				.WillCascadeOnDelete(false);
 		}

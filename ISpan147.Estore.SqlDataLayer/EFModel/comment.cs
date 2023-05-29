@@ -6,19 +6,18 @@ namespace ISpan147.Estore.SqlDataLayer.EFModel
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class comment
+    public partial class Comment
     {
-        [Key]
-        public int CommonID { get; set; }
+        public int CommentID { get; set; }
 
         [Required]
         [StringLength(15)]
-        public string CommonName { get; set; }
+        public string CommentName { get; set; }
 
-        public DateTime CommonTime { get; set; }
+        public DateTime CommentTime { get; set; }
 
         [StringLength(500)]
-        public string CommonContext { get; set; }
+        public string CommentContext { get; set; }
 
         public int ThemeID { get; set; }
 

@@ -11,7 +11,7 @@ namespace ISpan147.Estore.SqlDataLayer.EFModel
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Theme()
         {
-            comments = new HashSet<comment>();
+            Comments = new HashSet<Comment>();
         }
 
         public int ThemeID { get; set; }
@@ -27,6 +27,6 @@ namespace ISpan147.Estore.SqlDataLayer.EFModel
         public string ThemeContext { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<comment> comments { get; set; }
+        public virtual ICollection<Comment> Comments { get; set; }
     }
 }

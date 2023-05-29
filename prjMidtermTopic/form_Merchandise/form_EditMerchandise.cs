@@ -31,22 +31,23 @@ namespace prjMidtermTopic.form_Merchandise
 
 			comboBox_CategoryId.Items.AddRange(ChooseCategory.categoryNameOptions);
 		}
- 
+
 		private (bool isValid, List<ValidationResult> errors) Validate(MerchandiseCreateVM vm)
 		{
 			//取得驗證規則
 			ValidationContext context = new ValidationContext(vm, null, null);
 
-		//	//建立存放錯誤集合
-		//	List<ValidationResult> errors = new List<ValidationResult>();
+			//	//建立存放錯誤集合
+			//	List<ValidationResult> errors = new List<ValidationResult>();
 
-		//	//驗證model
-		//	bool validateAllProperties = true;
-		//	bool isValid = Validator.TryValidateObject(vm, context, errors, validateAllProperties);
+			//	//驗證model
+			//	bool validateAllProperties = true;
+			//	bool isValid = Validator.TryValidateObject(vm, context, errors, validateAllProperties);
 
-		//	return (isValid, errors);
-		//}
-
+			//	return (isValid, errors);
+			//}
+			throw new NotImplementedException();
+		}
 		private void DisplayErrors(List<ValidationResult> errors)
 		{
 			Dictionary<string, Control> map = new Dictionary<string, Control>(StringComparer.CurrentCultureIgnoreCase)
@@ -144,8 +145,8 @@ namespace prjMidtermTopic.form_Merchandise
 				MerchandiseId = this._merchandiseId,
 				MerchandiseName = txt_MerchandiseName.Text,
 				CategoryID = comboBox_CategoryId.SelectedIndex,
-				Price = Price,
-				Amount = Amount,
+				//Price = Price,
+				//Amount = Amount,
 				Description = txt_Description.Text,
 				ImageURL = txt_ImageURL.Text
 			};

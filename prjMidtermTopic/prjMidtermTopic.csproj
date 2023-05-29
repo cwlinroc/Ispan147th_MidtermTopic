@@ -193,7 +193,7 @@
     <Compile Include="MassInsert\form_MassInsert.Designer.cs">
       <DependentUpon>form_MassInsert.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\DisplayGrim.cs" />
+    <Compile Include="Model\DisplayGrid.cs" />
     <Compile Include="Model\MyValidator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -255,7 +255,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MassInsert\form_MassInsert.resx">
       <DependentUpon>form_MassInsert.cs</DependentUpon>
-		</EmbeddedResource>
+    </EmbeddedResource>
     <EmbeddedResource Include="form_QA\form_QAList.resx">
       <DependentUpon>form_QAList.cs</DependentUpon>
     </EmbeddedResource>
