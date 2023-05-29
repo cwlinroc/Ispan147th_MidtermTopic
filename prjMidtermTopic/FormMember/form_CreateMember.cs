@@ -18,7 +18,8 @@ namespace prjMidtermTopic.FormMember
 	{
 		private bool _gender;
 		private Dictionary<string, Control> _map;
-		private string _filePath;
+		private string _filePath = string.Empty;
+		private string _targetFolderPath = @"images/avatar/";
 		private IMemberRepo _memberRepo;
 		public form_CreateMember()
 		{
@@ -38,10 +39,9 @@ namespace prjMidtermTopic.FormMember
 
 		private void Upload(string filePath)
 		{
-			string targetFolderPath = @"images/avatar/";
 			string fileName = Path.GetFileName(filePath);
 			string newFileName = GenerateUniqueFileName(fileName);
-			string targetFilePath = Path.Combine(targetFolderPath, newFileName);
+			string targetFilePath = Path.Combine(_targetFolderPath, newFileName);
 
 			try
 			{
@@ -67,7 +67,7 @@ namespace prjMidtermTopic.FormMember
 			return newFileName;
 		}
 
-		//button
+		#region button
 		private void radbtnMale_CheckedChanged(object sender, EventArgs e)
 		{
 			if (radbtnMale.Checked)
@@ -130,17 +130,17 @@ namespace prjMidtermTopic.FormMember
 				Email = vm.Email,
 				Avatar = vm.Avatar
 			};
-			
+
 			try
 			{
 				var service = new MemberService(_memberRepo);
 				int newID = service.Create(dto);
-				MessageBox.Show($"新增成功,新的編號為{newID}");				
-				
+				MessageBox.Show($"新增成功,新的編號為{newID}");
+
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show("新增失敗, 原因: " + ex.Message);				
+				MessageBox.Show("新增失敗, 原因: " + ex.Message);
 			}
 
 			IGrid parent = this.Owner as IGrid;
@@ -158,15 +158,13 @@ namespace prjMidtermTopic.FormMember
 
 		private void btnUploadAvatar_Click(object sender, EventArgs e)
 		{
-			_filePath = string.Empty;
-
 			using (OpenFileDialog openFileDialog = new OpenFileDialog())
 			{
 				openFileDialog.InitialDirectory =
 					Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
 				openFileDialog.Title = "選擇檔案";
 				openFileDialog.Filter =
-					"(*.png)|*.png|(*.jpg)|*.jpg|(*.jpeg)|*.jpeg|(*.gif)|*.gif";
+					"Image Files(*.PNG;*.JPEG;*.JPG;*.GIF)|*.PNG*;.JPEG;*.JPG;*.GIF";
 				openFileDialog.Multiselect = false;
 
 				if (openFileDialog.ShowDialog() == DialogResult.OK)
@@ -177,6 +175,7 @@ namespace prjMidtermTopic.FormMember
 				}
 			}
 		}
+		#endregion
 	}
 
 }
