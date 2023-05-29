@@ -63,7 +63,7 @@
 			this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnAdd.AutoSize = true;
 			this.btnAdd.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.btnAdd.Location = new System.Drawing.Point(602, 544);
+			this.btnAdd.Location = new System.Drawing.Point(250, 544);
 			this.btnAdd.Name = "btnAdd";
 			this.btnAdd.Size = new System.Drawing.Size(80, 30);
 			this.btnAdd.TabIndex = 11;
@@ -277,7 +277,7 @@
 			this.btnUploadAvatar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnUploadAvatar.AutoSize = true;
 			this.btnUploadAvatar.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.btnUploadAvatar.Location = new System.Drawing.Point(452, 544);
+			this.btnUploadAvatar.Location = new System.Drawing.Point(100, 544);
 			this.btnUploadAvatar.Name = "btnUploadAvatar";
 			this.btnUploadAvatar.Size = new System.Drawing.Size(127, 30);
 			this.btnUploadAvatar.TabIndex = 22;
@@ -298,7 +298,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(718, 586);
+			this.ClientSize = new System.Drawing.Size(366, 586);
 			this.Controls.Add(this.panel1);
 			this.Controls.Add(this.btnUploadAvatar);
 			this.Controls.Add(this.DateOfBirthPicker);

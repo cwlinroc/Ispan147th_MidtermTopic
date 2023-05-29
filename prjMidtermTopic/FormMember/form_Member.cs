@@ -25,6 +25,14 @@ namespace prjMidtermTopic
 		private void btnSearch_Click(object sender, EventArgs e)
 		{
 			Display();
+			txtId.Text = string.Empty;
+			txtName.Text = string.Empty;
+			txtId.Focus();
+		}
+
+		private void btnReset_Click(object sender, EventArgs e)
+		{
+			Display();
 		}
 
 		public void Display()
@@ -55,5 +63,6 @@ namespace prjMidtermTopic
 			frm.Owner = this;
 			frm.ShowDialog();
 		}
+		
 	}
 }

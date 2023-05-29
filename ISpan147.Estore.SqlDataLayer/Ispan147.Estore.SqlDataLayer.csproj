@@ -92,6 +92,7 @@
     <Compile Include="Repositories\EmployeeRepositoy.cs" />
     <Compile Include="Repositories\IOrderListRepositoy.cs" />
     <Compile Include="Repositories\IOrderRepository.cs" />
+    <Compile Include="Repositories\IMemberRepo.cs" />
     <Compile Include="Repositories\MassInsertRepository.cs" />
     <Compile Include="Repositories\MemberRepository.cs" />
     <Compile Include="Repositories\MerchandiseRepository.cs" />

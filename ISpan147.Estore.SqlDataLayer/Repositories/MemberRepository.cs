@@ -12,10 +12,11 @@ using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using ISpan147.Estore.SqlDataLayer.Builders;
+using prjMidtermTopic.Interfaces;
 
 namespace Ispan147.Estore.SqlDataLayer.Repositories
 {
-	public class MemberRepository
+	public class MemberRepository : IMemberRepo
 	{
 		public MemberDto GetById(int memberID)
 		{
@@ -78,9 +79,37 @@ namespace Ispan147.Estore.SqlDataLayer.Repositories
 			return SqlDb.Search(connGetter, sql, func, parameters).ToList();
 		}
 
+		public int Create(MemberDto dto)
+		{
+			string sql = @"INSERT INTO Members
+						(MemberName, NickName, DateOfBirth, Gender, 
+						Account, Password, Phone, Address, Email, Avatar)
+						VALUES
+						(@MemberName, @NickName, @DateOfBirth, @Gender, 
+						@Account, @Password, @Phone, @Address, @Email, @Avatar)";
+
+			var parameters = new SqlParameterBuilder()
+				.AddNVarchar("@MemberName", 30, dto.MemberName)
+				.AddNVarchar("@NickName", 30, dto.NickName)
+				.AddDateTime("@DateOfBirth", dto.DateOfBirth)
+				.AddBit("@Gender", dto.Gender)
+				.AddNchar("@Account", 15, dto.Account)
+				.AddNchar("@Password", 65, dto.Password)
+				.AddNchar("@Phone", 20, dto.Phone)
+				.AddNVarchar("@Address", 30, dto.Address)
+				.AddNchar("@Email", 30, dto.Email)
+				.AddNVarchar("@Avatar", 50, dto.Avatar)
+				.Build();
+
+			return SqlDb.Create(SqlDb.GetConnection, sql, parameters);
+		}
+
 		public int Update(MemberDto dto)
 		{
-			string sql = "UPDATE Members SET MemberName = @MemberName WHERE MemberID = @MemberID";
+			string sql = "UPDATE Members SET MemberName = @MemberName, NickName = @NickName, " +
+				"DateOfBirth = @DateOfBirth, Gender = @Gender, Account = @Account, " +
+				"Password = @Password, Phone = @Phone, Address = @Address, Email = @Email, " +
+				"Avatar = @Avatar WHERE MemberID = @MemberID";
 
 			var parameters = new SqlParameterBuilder()
 				.AddInt("@MemberID", dto.MemberID)
@@ -99,31 +128,6 @@ namespace Ispan147.Estore.SqlDataLayer.Repositories
 
 			return SqlDb.UpdateOrDelete(connGetter, sql, parameters);
 
-		}
-
-		public int Create(MemberDto dto)
-		{
-			string sql = @"INSERT INTO Members
-						(MemberName, NickName, DateOfBirth, Gender, 
-						Account, Password, Phone, Address, Email, Avatar)
-						VALUES
-						(@MemberName, @NickName, @DateOfBirth, @Gender, 
-						@Account, @Password, @Phone, @Address, @Email, @Avatar)";
-
-			var parameters = new SqlParameterBuilder()
-				.AddNVarchar("@MemberName", 30, dto.MemberName)
-				.AddNVarchar("@NickName", 30, dto.NickName)
-				.AddDateTime("@DateOfBirth",dto.DateOfBirth)
-				.AddBit("@Gender",dto.Gender)
-				.AddNchar("@Account",15,dto.Account)
-				.AddNchar("@Password",65,dto.Password)
-				.AddNchar("@Phone",20,dto.Phone)
-				.AddNVarchar("@Address", 30, dto.Address)
-				.AddNchar("@Email",30,dto.Email)
-				.AddNVarchar("@Avatar", 50, dto.Avatar)
-				.Build();
-
-			return SqlDb.Create(SqlDb.GetConnection, sql, parameters);
 		}
 
 		public int Delete(int memberID)
