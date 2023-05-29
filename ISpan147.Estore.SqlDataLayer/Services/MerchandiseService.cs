@@ -18,7 +18,7 @@ namespace ISpan147.Estore.SqlDataLayer.Services
 			if (dtoInDb != null) { throw new Exception("此分類名稱已存在，請重新命名"); }
 			//驗證是否選擇商品類別
 			var dtoInDb2 = repo.GetByCategoryID(dto.CategoryID);
-			if (dtoInDb2 == null) { throw new Exception("請選擇商品類別"); }
+			if (dtoInDb2 == null) { throw new Exception("未選擇商品類別"); }
 
 			int newId = repo.Create(dto);
 
@@ -32,20 +32,21 @@ namespace ISpan147.Estore.SqlDataLayer.Services
 			if (dtoInDb != null && dtoInDb.MerchandiseID != dto.MerchandiseID) { throw new Exception("此商品名稱已存在，請重新命名"); }
 			//驗證是否選到預設值(預設值不存在於資料庫)
 			var dtoInDb2 = repo.GetByCategoryID(dto.CategoryID);
-			if (dtoInDb2 == null) { throw new Exception("請選擇商品類別"); }
+			if (dtoInDb2 == null) { throw new Exception("未選擇商品類別"); }
 
 			int rows = repo.Update(dto);
 
 			return rows;
 		}
 
-		public List<MerchandiseDto> Search(
+		public List<MerchandiseSearchDto> Search
+			(
 			int? merchandiseid = null,
 			string merchandisename = null,
 			int? categoryid = null
 			)
 		{
-			return new List<MerchandiseDto> { };
+			return new List<MerchandiseSearchDto> { };
 			return new MerchandiseRepository().Search(merchandiseid, merchandisename, categoryid);
 		}
 

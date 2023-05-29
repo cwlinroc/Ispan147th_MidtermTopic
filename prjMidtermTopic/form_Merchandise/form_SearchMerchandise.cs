@@ -26,7 +26,7 @@ namespace prjMidtermTopic
 			comboBox_CategoryId.SelectedIndex = 0;
 		}
 
-		List<MerchandiseDto> data;
+		List<MerchandiseSearchDto> data;
 
 		#region 開啟&按下搜尋時載入資料
 		private void FormSearchMerchandise_Load(object sender, EventArgs e)

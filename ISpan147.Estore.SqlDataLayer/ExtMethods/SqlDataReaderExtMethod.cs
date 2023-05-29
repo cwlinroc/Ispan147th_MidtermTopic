@@ -57,7 +57,7 @@ namespace ISpan147.Estore.SqlDataLayer.ExtMethods
 			}
 			catch (Exception ex)
 			{
-				throw new Exception("讀取資料欄位時發生錯誤" + ex.Message);
+				throw new Exception("讀取資料欄位時發生錯誤：" + ex.Message);
 			}
 		}
 

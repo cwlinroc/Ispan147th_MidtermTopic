@@ -46,15 +46,17 @@
 			this.label7 = new System.Windows.Forms.Label();
 			this.txt_MerchandiseId = new System.Windows.Forms.TextBox();
 			this.btn_Delete = new System.Windows.Forms.Button();
-			this.btn_SelectImage = new System.Windows.Forms.Button();
+			this.btn_SelectNewImage = new System.Windows.Forms.Button();
+			this.btn_DeleteImage = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// btn_Updata
 			// 
-			this.btn_Updata.Location = new System.Drawing.Point(307, 362);
+			this.btn_Updata.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.btn_Updata.Location = new System.Drawing.Point(287, 396);
 			this.btn_Updata.Name = "btn_Updata";
-			this.btn_Updata.Size = new System.Drawing.Size(75, 23);
+			this.btn_Updata.Size = new System.Drawing.Size(95, 34);
 			this.btn_Updata.TabIndex = 13;
 			this.btn_Updata.Text = "更新商品";
 			this.btn_Updata.UseVisualStyleBackColor = true;
@@ -148,7 +150,7 @@
 			this.txt_ImageURL.Location = new System.Drawing.Point(116, 334);
 			this.txt_ImageURL.Name = "txt_ImageURL";
 			this.txt_ImageURL.ReadOnly = true;
-			this.txt_ImageURL.Size = new System.Drawing.Size(208, 22);
+			this.txt_ImageURL.Size = new System.Drawing.Size(266, 22);
 			this.txt_ImageURL.TabIndex = 12;
 			// 
 			// comboBox_CategoryId
@@ -182,30 +184,43 @@
 			// 
 			// btn_Delete
 			// 
-			this.btn_Delete.Location = new System.Drawing.Point(307, 391);
+			this.btn_Delete.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.btn_Delete.Location = new System.Drawing.Point(287, 436);
 			this.btn_Delete.Name = "btn_Delete";
-			this.btn_Delete.Size = new System.Drawing.Size(75, 23);
+			this.btn_Delete.Size = new System.Drawing.Size(95, 34);
 			this.btn_Delete.TabIndex = 15;
 			this.btn_Delete.Text = "刪除商品";
 			this.btn_Delete.UseVisualStyleBackColor = true;
 			this.btn_Delete.Click += new System.EventHandler(this.btn_Delete_Click);
 			// 
-			// btn_SelectImage
+			// btn_SelectNewImage
 			// 
-			this.btn_SelectImage.Location = new System.Drawing.Point(330, 334);
-			this.btn_SelectImage.Name = "btn_SelectImage";
-			this.btn_SelectImage.Size = new System.Drawing.Size(52, 23);
-			this.btn_SelectImage.TabIndex = 16;
-			this.btn_SelectImage.Text = "選擇";
-			this.btn_SelectImage.UseVisualStyleBackColor = true;
-			this.btn_SelectImage.Click += new System.EventHandler(this.btn_SelectImage_Click);
+			this.btn_SelectNewImage.Location = new System.Drawing.Point(233, 362);
+			this.btn_SelectNewImage.Name = "btn_SelectNewImage";
+			this.btn_SelectNewImage.Size = new System.Drawing.Size(74, 23);
+			this.btn_SelectNewImage.TabIndex = 16;
+			this.btn_SelectNewImage.Text = "選擇新圖片";
+			this.btn_SelectNewImage.UseVisualStyleBackColor = true;
+			this.btn_SelectNewImage.Click += new System.EventHandler(this.btn_SelectNewImage_Click);
+			// 
+			// btn_DeleteImage
+			// 
+			this.btn_DeleteImage.Enabled = false;
+			this.btn_DeleteImage.Location = new System.Drawing.Point(313, 362);
+			this.btn_DeleteImage.Name = "btn_DeleteImage";
+			this.btn_DeleteImage.Size = new System.Drawing.Size(69, 23);
+			this.btn_DeleteImage.TabIndex = 17;
+			this.btn_DeleteImage.Text = "刪除圖片";
+			this.btn_DeleteImage.UseVisualStyleBackColor = true;
+			this.btn_DeleteImage.Click += new System.EventHandler(this.btn_DeleteImage_Click);
 			// 
 			// form_EditMerchandise
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(414, 433);
-			this.Controls.Add(this.btn_SelectImage);
+			this.ClientSize = new System.Drawing.Size(414, 488);
+			this.Controls.Add(this.btn_DeleteImage);
+			this.Controls.Add(this.btn_SelectNewImage);
 			this.Controls.Add(this.btn_Delete);
 			this.Controls.Add(this.comboBox_CategoryId);
 			this.Controls.Add(this.btn_Updata);
@@ -250,6 +265,7 @@
 		private System.Windows.Forms.TextBox txt_MerchandiseId;
 		private System.Windows.Forms.Label label7;
 		private System.Windows.Forms.Button btn_Delete;
-		private System.Windows.Forms.Button btn_SelectImage;
+		private System.Windows.Forms.Button btn_SelectNewImage;
+		private System.Windows.Forms.Button btn_DeleteImage;
 	}
 }

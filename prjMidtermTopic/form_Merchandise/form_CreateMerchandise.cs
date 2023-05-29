@@ -19,7 +19,7 @@ namespace prjMidtermTopic.form_Merchandise
 {
 	public partial class form_CreateMerchandise : Form
 	{
-		
+
 		private int _categoryId;
 
 		private string _imagePath = string.Empty;
@@ -73,44 +73,7 @@ namespace prjMidtermTopic.form_Merchandise
 
 		private void comboBox_CategoryId_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			// todo 確認是否可以直接設定
 			_categoryId = comboBox_CategoryId.SelectedIndex;
-			/*switch (comboBox_CategoryId.SelectedIndex)
-			{       
-				case 1:
-					_categoryId = 1;
-					break;
-				case 2:
-					_categoryId = 2;
-					break;
-				case 3:
-					_categoryId = 3;
-					break;
-				case 4:
-					_categoryId = 4;
-					break;
-				case 5:
-					_categoryId = 5;
-					break;
-				case 6:
-					_categoryId = 6;
-					break;
-				case 7:
-					_categoryId = 7;
-					break;
-				case 8:
-					_categoryId = 8;
-					break;
-				case 9:
-					_categoryId = 9;
-					break;
-				case 10:
-					_categoryId = 10;
-					break;
-				default:
-					_categoryId = 0;
-					break;
-			}*/
 		}
 
 		private void btnCreate_Click(object sender, EventArgs e)
@@ -127,10 +90,15 @@ namespace prjMidtermTopic.form_Merchandise
 			string Description = txt_Description.Text;
 			string ImageURL = txt_ImageURL.Text;
 
-			var vm = new MerchandiseCreateVM() { MerchandiseName = marchandisename, CategoryID = categoryId,
-												Price = Price, Amount = Amount,
-												Description = Description, ImageURL = ImageURL
-																										};
+			var vm = new MerchandiseCreateVM()
+			{
+				MerchandiseName = marchandisename,
+				CategoryID = categoryId,
+				Price = Price,
+				Amount = Amount,
+				Description = Description,
+				ImageURL = ImageURL
+			};
 
 			//驗證vm是否通過欄位驗證
 			//(bool isValid, List<ValidationResult> errors) validationResult = Validate(vm);
@@ -143,41 +111,46 @@ namespace prjMidtermTopic.form_Merchandise
 			//	return;
 			//}
 
-			////通過驗證則將vm轉型為MerchandiseDto
-			//MerchandiseDto dto = new MerchandiseDto
-			//{
-			//	MerchandiseID = vm.MerchandiseId,
-			//	MerchandiseName = vm.MerchandiseName,
-			//	CategoryID = vm.CategoryID,
-			//	Price = vm.Price,
-			//	Amount = vm.Amount,
-			//	Description = vm.Description,
-			//	ImageURL = vm.ImageURL
-			//};
-			//try
-			//{
-			//	var service = new MerchandiseService();
-			//	int newId = service.Create(dto);
-			//	MessageBox.Show($"新增成功，新的ID為{newId}。");
-			//}
-			//catch (Exception ex)
-			//{
-			//	MessageBox.Show("新增失敗，原因：" + ex.Message);
-			//}
+			//通過驗證則將vm轉型為MerchandiseDto
+			MerchandiseDto dto = new MerchandiseDto
+			{
+				MerchandiseID = vm.MerchandiseId,
+				MerchandiseName = vm.MerchandiseName,
+				CategoryID = vm.CategoryID,
+				// todo CategoryName = vm.CategoryName,
+				Price = vm.Price,
+				Amount = vm.Amount,
+				Description = vm.Description,
+				ImageURL = vm.ImageURL
+			};
+			try
+			{
+				var service = new MerchandiseService();
+				int newId = service.Create(dto);
 
-			////關閉表單
-			//IGrid parent = this.Owner as IGrid; //將開啟視窗轉型為IGrid，若轉型失敗不會丟出例外，而是回傳NULL
-			//if (parent == null)
-			//{
-			//	MessageBox.Show("開啟用的表單沒有實作IGrid，因此無法回送通知");
-			//}
-			//else
-			//{
-			//	parent.Display();
-			//}
+				UploadToDb(_imagePath);
 
-			//this.Close();
+				MessageBox.Show($"新增成功，新的ID為{newId}。");
+
+				//成功則關閉表單
+				IGrid parent = this.Owner as IGrid; //將開啟視窗轉型為IGrid，若轉型失敗不會丟出例外，而是回傳NULL
+				if (parent == null)
+				{
+					MessageBox.Show("開啟用的表單沒有實作IGrid，因此無法回送通知");
+				}
+				else
+				{
+					parent.Display();
+				}
+
+				this.Close();
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show("新增失敗，原因：" + ex.Message);
+			}
 		}
+
 		private void btn_SelectImage_Click(object sender, EventArgs e)
 		{
 			using (OpenFileDialog selectImage = new OpenFileDialog())
@@ -185,57 +158,65 @@ namespace prjMidtermTopic.form_Merchandise
 				selectImage.InitialDirectory =
 					Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
 				selectImage.Title = "選擇檔案";
-				selectImage.Filter =
-					"(*.png)|*.png|(*.jpg)|*.jpg|(*.jpeg)|*.jpeg|(*.gif)|*.gif";
+				selectImage.Filter = "(*.png)|*.png|(*.jpg)|*.jpg|(*.jpeg)|*.jpeg|(*.gif)|*.gif";
 				selectImage.Multiselect = false;
 
 				if (selectImage.ShowDialog() == DialogResult.OK)
 				{
 					_imagePath = selectImage.FileName;
 
-					UploadToDb(_imagePath);
+					UploadToForm(_imagePath);
 				}
 			}
-
-			btn_CancelImage.Enabled = true;
 		}
-		private void UploadToDb(string imagePath)
+
+		private void UploadToForm(string imagePath)
 		{
-			string targetFolderPath = @"images/";
-			string imageName = Path.GetFileName(imagePath);
-			string targetFilePath = Path.Combine(targetFolderPath, imageName);
+			//string targetFolderPath = @"images/MerchendisePicture/";
+			//string imageName = Path.GetFileName(imagePath);
+			//string targetFilePath = Path.Combine(targetFolderPath, imageName);
 
 			try
 			{
-				File.Copy(imagePath, targetFilePath);
-				txt_ImageURL.Text = Path.GetFileNameWithoutExtension(imagePath);
+				// 使用時間戳系統性改名，避免資料庫內名稱重複
+				txt_ImageURL.Text = DateTime.Now.ToString("yyyyMMddhhmmssss") + 
+																Path.GetFileName(imagePath);
 
-				MessageBox.Show($"上傳成功,路徑:{_imagePath}");
+				MessageBox.Show($"圖片選擇成功,路徑:{imagePath}");
+
+				btn_CancelImage.Enabled = true;
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show("上傳失敗，原因：" + ex.Message);
+				MessageBox.Show("選擇失敗，原因：" + ex.Message);
+
+			}
+		}
+
+		private void UploadToDb(string imagePath)
+		{
+			string targetFolderPath = @"images/MerchendisePicture/";
+			string imageName = Path.GetFileName(imagePath);
+			// 使用時間戳系統性改名，避免資料庫內名稱重複
+			string renamedtargetFilePath = targetFolderPath + txt_ImageURL.Text;
+
+			try
+			{
+				File.Copy(imagePath, renamedtargetFilePath);//(來源路徑(原始名), 目標路徑(改名))
+
+				MessageBox.Show($"圖片上傳成功");
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show("圖片上傳失敗，原因：" + ex.Message);
+
 			}
 		}
 
 		private void btn_CancelImage_Click(object sender, EventArgs e)
 		{
-			using (OpenFileDialog selectImage = new OpenFileDialog())
-			{
-				selectImage.InitialDirectory =
-					Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
-				selectImage.Title = "選擇檔案";
-				selectImage.Filter =
-					"(*.png)|*.png|(*.jpg)|*.jpg|(*.jpeg)|*.jpeg|(*.gif)|*.gif";
-				selectImage.Multiselect = false;
-
-				if (selectImage.ShowDialog() == DialogResult.OK)
-				{
-					_imagePath = selectImage.FileName;
-
-					UploadToDb(_imagePath);
-				}
-			}
+			txt_ImageURL.Text = string.Empty;
+			btn_CancelImage.Enabled = false;
 		}
 	}
 }

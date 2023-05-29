@@ -33,7 +33,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 			return SqlDb.Get(connGetter, sql, assembler, parameters);
 		}
 
-		public MerchandiseDto GetByCategoryID(int categoryId)
+		public MerchandiseDto GetByCategoryID(int? categoryId)
 		{
 			Func<SqlConnection> connGetter = SqlDb.GetConnection;
 			string sql = $"SELECT * FROM Merchandises WHERE CategoryId = {categoryId}";
@@ -43,7 +43,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 			return SqlDb.Get(connGetter, sql, assembler);
 		}
 
-		public List<MerchandiseDto> Search(int? merchandiseId, string s_name, int? s_categoryid)
+		public List<MerchandiseSearchDto> Search(int? merchandiseId, string s_name, int? s_categoryid)
 		{
 			#region sql & SqlParameter[]
 
@@ -75,7 +75,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 
 			SqlParameter[] parameters = builder.Build();
 			#endregion
-			Func<SqlDataReader, MerchandiseDto> func = Assembler.MerchandiseDtoAssembler;
+			Func<SqlDataReader, MerchandiseSearchDto> func = Assembler.MerchandiseSearchDtoAssembler;
 			Func<SqlConnection> connGetter = SqlDb.GetConnection;
 
 			return SqlDb.Search(connGetter, sql, func, parameters.ToArray()).ToList();
@@ -114,6 +114,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 			var parameters = new SqlParameterBuilder()
 				.AddNVarchar("@MerchandiseName", 30, dto.MerchandiseName)
 				.AddInt("@CategoryId", dto.CategoryID)
+				// todo .AddNVarchar("@CategoryName", dto.CategoryName)
 				.AddInt("@Price", dto.Price)
 				.AddInt("@Amount", dto.Amount)
 				.AddNVarchar("@Description", 30, dto.Description)
