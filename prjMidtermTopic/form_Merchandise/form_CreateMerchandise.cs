@@ -31,21 +31,21 @@ namespace prjMidtermTopic.form_Merchandise
 			comboBox_CategoryId.SelectedIndex = 0;
 		}
 
-		//todo 建立MerchandiseCreateVM  確認分層 
-		//private (bool isValid, List<ValidationResult> errors) Validate(MerchandiseCreateVM vm)
-		//{
-		//	取得驗證規則
-		//	ValidationContext context = new ValidationContext(vm, null, null);
+		//todo 建立MerchandiseCreateVM  
+		private (bool isValid, List<ValidationResult> errors) Validate(MerchandiseCreateVM vm)
+		{
+			//取得驗證規則
+			ValidationContext context = new ValidationContext(vm, null, null);
 
-		//	建立存放錯誤集合
-		//	List<ValidationResult> errors = new List<ValidationResult>();
+			//建立存放錯誤集合
+			List<ValidationResult> errors = new List<ValidationResult>();
 
-		//	驗證model
-		//	bool validateAllProperties = true;
-		//	bool isValid = Validator.TryValidateObject(vm, context, errors, validateAllProperties);
+			//驗證model
+			bool validateAllProperties = true;
+			bool isValid = Validator.TryValidateObject(vm, context, errors, validateAllProperties);
 
-		//	return (isValid, errors);
-		//}
+			return (isValid, errors);
+		}
 
 		private void DisplayErrors(List<ValidationResult> errors)
 		{
@@ -101,15 +101,15 @@ namespace prjMidtermTopic.form_Merchandise
 			};
 
 			//驗證vm是否通過欄位驗證
-			//(bool isValid, List<ValidationResult> errors) validationResult = Validate(vm);
+			(bool isValid, List < ValidationResult > errors) validationResult = Validate(vm);
 
-			////若有錯則顯示
-			//if (validationResult.isValid == false)
-			//{
-			//	this.errorProvider1.Clear();
-			//	DisplayErrors(validationResult.errors);
-			//	return;
-			//}
+			//若有錯則顯示
+			if (validationResult.isValid == false)
+			{
+				this.errorProvider1.Clear();
+				DisplayErrors(validationResult.errors);
+				return;
+			}
 
 			//通過驗證則將vm轉型為MerchandiseDto
 			MerchandiseDto dto = new MerchandiseDto
@@ -172,9 +172,9 @@ namespace prjMidtermTopic.form_Merchandise
 
 		private void UploadToForm(string imagePath)
 		{
-			//string targetFolderPath = @"images/MerchendisePicture/";
-			//string imageName = Path.GetFileName(imagePath);
-			//string targetFilePath = Path.Combine(targetFolderPath, imageName);
+			string targetFolderPath = @"images/MerchendisePicture/";
+			string imageName = Path.GetFileName(imagePath);
+			string targetFilePath = Path.Combine(targetFolderPath, imageName);
 
 			try
 			{
