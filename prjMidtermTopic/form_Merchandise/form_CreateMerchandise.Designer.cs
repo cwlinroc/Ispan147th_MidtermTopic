@@ -50,9 +50,10 @@
 			// 
 			// btnCreate
 			// 
-			this.btnCreate.Location = new System.Drawing.Point(307, 393);
+			this.btnCreate.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.btnCreate.Location = new System.Drawing.Point(283, 377);
 			this.btnCreate.Name = "btnCreate";
-			this.btnCreate.Size = new System.Drawing.Size(75, 23);
+			this.btnCreate.Size = new System.Drawing.Size(99, 30);
 			this.btnCreate.TabIndex = 13;
 			this.btnCreate.Text = "新增商品";
 			this.btnCreate.UseVisualStyleBackColor = true;

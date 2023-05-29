@@ -140,7 +140,6 @@ namespace ISpan147.Estore.SqlDataLayer
 			}
 		}
 
-
 		public static int UpdateOrDelete(
 			Func<SqlConnection> connGetter,
 			string sql,
@@ -173,7 +172,5 @@ namespace ISpan147.Estore.SqlDataLayer
 				}
 			}
 		}
-
-
 	}
 }

@@ -21,9 +21,13 @@ namespace prjMidtermTopic.ViewModels
 		[MaxLength(30, ErrorMessage = "{0}長度不可超過{1}字")]
 		public string MerchandiseName { get; set; }
 
-		[Display(Name = "商品類別")]
+		[Display(Name = "商品類別編號")]
 		[Required(ErrorMessage = "{0}為必選")]
 		public int CategoryID { get; set; }
+
+		//todo [Display(Name = "商品類別")]
+		//[Required(ErrorMessage = "{0}為必選")]
+		//public string CategoryName { get; set; }
 
 		[Display(Name = "價格")]
 		[Required(ErrorMessage = "{0}為必選")]
@@ -47,6 +51,15 @@ namespace prjMidtermTopic.ViewModels
 	static public class ChooseCategory
 	{
 		// todo 改由Category資料庫讀取選項
+		/*
+		 string[] items = { "12345", "oryhwsmg", "Cklqf", "fqe2534", "efq64", "qw12345678", "adaf" };
+
+			items.Where(c => c.Length > 5).ToList()
+										.ForEach(c => Console.WriteLine(c));
+		 */
+
+
+
 		static public readonly int[] categoryIdOptions = new int[] {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 		static public readonly string[] categoryNameOptions = new string[] {"未選擇", "貓狗>食品保健", "貓狗>清潔耗材", 
 												"貓狗>器材工具", "貓狗>飾品玩具", "貓狗>房屋器皿", "鼠兔>食品保健", 

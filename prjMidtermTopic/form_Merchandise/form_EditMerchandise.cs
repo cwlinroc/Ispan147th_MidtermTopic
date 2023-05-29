@@ -21,8 +21,9 @@ namespace prjMidtermTopic.form_Merchandise
 	public partial class form_EditMerchandise : Form
 	{
 		private readonly int _merchandiseId;
-
 		private string _newimagePath;
+		private string _iniImageURL;
+		private string _lasttargetFilePath;
 		public form_EditMerchandise(int merchandiseId)
 		{
 			_merchandiseId = merchandiseId;
@@ -31,7 +32,7 @@ namespace prjMidtermTopic.form_Merchandise
 
 			comboBox_CategoryId.Items.AddRange(ChooseCategory.categoryNameOptions);
 		}
- 
+
 		private (bool isValid, List<ValidationResult> errors) Validate(MerchandiseCreateVM vm)
 		{
 			//取得驗證規則
@@ -88,44 +89,114 @@ namespace prjMidtermTopic.form_Merchandise
 			txt_Amount.Text = dto.Amount.ToString();
 			txt_Description.Text = dto.Description.ToString();
 			txt_ImageURL.Text = dto.ImageURL.ToString();
+
+			_iniImageURL = dto.ImageURL.ToString();
+			_lasttargetFilePath = @"images/MerchendisePicture/" + dto.ImageURL.ToString();
+
+			btn_DeleteImage.Enabled = (txt_ImageURL.Text.Length > 0) ? true : false;
 		}
 
-		private void btn_SelectImage_Click(object sender, EventArgs e)
+		private void btn_SelectNewImage_Click(object sender, EventArgs e)
 		{
 			using (OpenFileDialog selectImage = new OpenFileDialog())
 			{
 				selectImage.InitialDirectory =
 					Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
 				selectImage.Title = "選擇檔案";
-				selectImage.Filter =
-					"(*.png)|*.png|(*.jpg)|*.jpg|(*.jpeg)|*.jpeg|(*.gif)|*.gif";
+				selectImage.Filter = "(*.png)|*.png|(*.jpg)|*.jpg|(*.jpeg)|*.jpeg|(*.gif)|*.gif";
 				selectImage.Multiselect = false;
 
 				if (selectImage.ShowDialog() == DialogResult.OK)
 				{
 					_newimagePath = selectImage.FileName;
 
-					UploadToDb(_newimagePath);
+					UploadToForm(_newimagePath);
 				}
 			}
+		}
 
+		private void UploadToForm(string newimagePath)
+		{
+			try
+			{
+				// 使用時間戳系統性改名，避免資料庫內名稱重複
+				txt_ImageURL.Text = DateTime.Now.ToString("yyyyMMddhhmmssss") +
+																Path.GetFileName(newimagePath);
+
+				MessageBox.Show($"圖片選擇成功,路徑:{newimagePath}");
+
+				btn_DeleteImage.Enabled = true;
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show("選擇失敗，原因：" + ex.Message);
+
+			}
 		}
 		private void UploadToDb(string newimagePath)
 		{
-			string targetFolderPath = @"images/";
+			DeleteFromDb();
+
+			string targetFolderPath = @"images/MerchendisePicture/";
 			string newimageName = Path.GetFileName(newimagePath);
-			string targetFilePath = Path.Combine(targetFolderPath, newimageName);
+			string renamedtargetFilePath = targetFolderPath + txt_ImageURL.Text;
 
 			try
 			{
-				File.Copy(newimagePath, targetFilePath);
-				txt_ImageURL.Text = Path.GetFileNameWithoutExtension(newimagePath);
+				File.Copy(newimagePath, renamedtargetFilePath);
 
-				MessageBox.Show($"上傳成功,路徑:{_newimagePath}");
+				MessageBox.Show($"上傳成功");
 			}
 			catch (Exception ex)
 			{
 				MessageBox.Show("上傳失敗，原因：" + ex.Message);
+			}
+		}
+
+		private void btn_DeleteImage_Click(object sender, EventArgs e)
+		{
+
+			if (File.Exists(_lasttargetFilePath))
+			{
+				try
+				{
+					txt_ImageURL.Text = string.Empty;
+
+					MessageBox.Show("儲存後將刪除商品圖片");
+
+					btn_DeleteImage.Enabled = false;
+				}
+				catch (Exception ex)
+				{
+					MessageBox.Show("刪除失敗，原因：" + ex.Message);
+				}
+			}
+			else
+			{
+				MessageBox.Show("本商品無圖片檔");
+
+				btn_DeleteImage.Enabled = false;
+			}
+
+		}
+		private void DeleteFromDb()
+		{
+			if (File.Exists(_lasttargetFilePath))
+			{
+				try
+				{
+					File.Delete(_lasttargetFilePath);
+
+					MessageBox.Show($"圖片刪除成功");
+				}
+				catch (Exception ex)
+				{
+					MessageBox.Show("刪除失敗，原因：" + ex.Message);
+				}
+			}
+			else
+			{
+				btn_DeleteImage.Enabled = false;
 			}
 		}
 
@@ -176,10 +247,30 @@ namespace prjMidtermTopic.form_Merchandise
 				var service = new MerchandiseService();
 				int rows = service.Update(dto);
 
+				if (txt_ImageURL.Text != _iniImageURL && txt_ImageURL.Text.Length > 0)
+				{ 				
+					UploadToDb(_newimagePath);
+				}
+				if (txt_ImageURL.Text != _iniImageURL && txt_ImageURL.Text.Length == 0)
+				{
+					DeleteFromDb();
+				}
+
 				//回到FormCategories
 				if (rows > 0)
 				{
 					MessageBox.Show("更新成功");
+
+					IGrid parent = this.Owner as IGrid; //將開啟視窗轉型為IGrid，若轉型失敗不會丟出例外，而是回傳NULL
+					if (parent == null)
+					{
+						MessageBox.Show("開啟用的表單沒有實作IGrid，因此無法回送通知");
+					}
+					else
+					{
+						parent.Display();
+					}
+
 					this.Close();
 				}
 				else
@@ -191,20 +282,7 @@ namespace prjMidtermTopic.form_Merchandise
 			{
 				MessageBox.Show("新增失敗，原因：" + ex.Message);
 			}
-
-			IGrid parent = this.Owner as IGrid; //將開啟視窗轉型為IGrid，若轉型失敗不會丟出例外，而是回傳NULL
-			if (parent == null)
-			{
-				MessageBox.Show("開啟用的表單沒有實作IGrid，因此無法回送通知");
-			}
-			else
-			{
-				parent.Display();
-			}
-
-			this.Close();
 		}
-
 		private void btn_Delete_Click(object sender, EventArgs e)
 		{
 			var repo = new MerchandiseRepository();
@@ -212,7 +290,10 @@ namespace prjMidtermTopic.form_Merchandise
 			{
 				if (MessageBox.Show("確定要刪除資料嗎?", "確認", MessageBoxButtons.YesNo) == DialogResult.Yes)
 				{
+					DeleteFromDb();
+
 					int rows = repo.Delete(_merchandiseId);
+
 					this.Close();
 					//回到FormCategories
 					if (rows > 0)

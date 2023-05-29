@@ -61,6 +61,7 @@
     <Compile Include="Dtos\CommonDto.cs" />
     <Compile Include="Dtos\EmployeeDto.cs" />
     <Compile Include="Dtos\MemberDto.cs" />
+    <Compile Include="Dtos\MerchandiseSearchDto.cs" />
     <Compile Include="Dtos\MerchandiseDto.cs" />
     <Compile Include="Dtos\OrderDto.cs" />
     <Compile Include="Dtos\OrderGridDto.cs" />
