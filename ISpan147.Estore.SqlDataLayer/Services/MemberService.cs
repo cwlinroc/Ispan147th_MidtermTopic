@@ -19,9 +19,9 @@ namespace Ispan147.Estore.SqlDataLayer.Services
 				throw new Exception("此姓名已存在,無法新增");
 			}
 			//建立一筆新紀錄			
-			int newId = repo.Create(dto);
+			int newID = repo.Create(dto);
 
-			return newId;
+			return newID;
 		}
 
 		public int Update(MemberDto dto)

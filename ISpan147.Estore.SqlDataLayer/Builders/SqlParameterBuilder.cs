@@ -85,6 +85,20 @@ namespace ISpan147.Estore.SqlDataLayer.Builders
 			return this;
 		}
 
+		public SqlParameterBuilder AddNchar(string columnName, int length, string input)
+		{
+			_parameters.Add(new SqlParameter(columnName, SqlDbType.NChar, length)
+			{ Value = input });
+			return this;
+		}
+
+		public SqlParameterBuilder AddOutNchar(string columnName, int length)
+		{
+			_parameters.Add(new SqlParameter(columnName, SqlDbType.NChar, length)
+			{ Direction = ParameterDirection.Output });
+			return this;
+		}
+
 		public SqlParameterBuilder AddVarchar(string columnName, int length, string input)
 		{
 			_parameters.Add(new SqlParameter(columnName, SqlDbType.VarChar, length)

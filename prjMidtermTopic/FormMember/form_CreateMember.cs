@@ -1,72 +1,39 @@
 ﻿using ISpan147.Estore.SqlDataLayer.Dtos;
 using Ispan147.Estore.SqlDataLayer.Services;
-using prjMidtermTopic.Model;
 using prjMidtermTopic.ViewModels;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static ISpan147.Estore.SqlDataLayer.Dtos.MemberDto;
 using prjMidtermTopic.Interfaces;
+using prjMidtermTopic.Model;
+using System.IO;
+using ISpan147.Estore.SqlDataLayer.ExtMethods;
 
 namespace prjMidtermTopic.FormMember
 {
 	public partial class form_CreateMember : Form
 	{
-		public bool _gender;
+		private bool _gender;
+		Dictionary<string, Control> _map;
+		string _filePath;
 		public form_CreateMember()
 		{
 			InitializeComponent();
-		}
-
-		private (bool isValid, List<ValidationResult> errors) Validate(MemberCreateVM vm)
-		{
-			//得知要驗證規則
-			ValidationContext context = new ValidationContext(vm, null, null);
-
-			//用來存放錯誤的集合,因為可能有零到多個錯誤
-			List<ValidationResult> errors = new List<ValidationResult>();
-
-			//驗證 model
-			bool validateAllPropeoties = true;//是否驗證所有規則,並非只驗證required規則
-			bool isValid = Validator.TryValidateObject(vm, context, errors, validateAllPropeoties);
-
-			return (isValid, errors);
-		}
-
-		private void DisplayErrors(List<ValidationResult> errors)
-		{
-			//大小寫不同仍視為相同的key
-			Dictionary<string, Control> map =
-				new Dictionary<string, Control>(StringComparer.CurrentCultureIgnoreCase)
+			_map = new Dictionary<string, Control>(StringComparer.CurrentCultureIgnoreCase)
 			{
-				{ "Name", txtName},
-				{ "DateOfBirth", txtDateOfBirth},
-				
+				{ "MemberName", txtMemberName},
+				{ "NickName", txtNickName},
 				{ "Account", txtAccount},
-				{ "Password", txtPassword},				
-				{ "Phone", txtPhone},				
-				{ "Address", txtAddress},				
+				{ "Password", txtPassword},
+				{ "Phone", txtPhone},
+				{ "Address", txtAddress},
 				{ "Email", txtEmail},
 				{ "Avatar", txtAvatar}
 			};
-			this.errorProvider1.Clear();
-
-			foreach (ValidationResult error in errors)
-			{
-				string propName = error.MemberNames.FirstOrDefault();
-				if (map.TryGetValue(propName, out Control ctrl))
-				{
-					this.errorProvider1.SetError(ctrl, error.ErrorMessage);
-				}
-			}
 		}
+
 		//button
 		private void radbtnMale_CheckedChanged(object sender, EventArgs e)
 		{
@@ -85,21 +52,23 @@ namespace prjMidtermTopic.FormMember
 				radbtnMale.Checked = false;
 			}
 		}
-		
+
 		private void btnAdd_Click(object sender, EventArgs e)
 		{
-			string name = txtName.Text;
-			DateTime dob = DateTime.Parse(txtDateOfBirth.Text);			
+			string membername = txtMemberName.Text;
+			string nickname = txtNickName.Text;
+			DateTime dob = DateOfBirthPicker.Value;
 			string acc = txtAccount.Text;
-			string pwd = txtPassword.Text;
+			string pwd = MyEncoder.GetSaltedSha256(txtPassword.Text);
 			string phone = txtPhone.Text;
 			string address = txtAddress.Text;
 			string email = txtEmail.Text;
-			string avatar = txtAvatar.Text;			
+			string avatar = txtAvatar.Text;
 
 			var vm = new MemberCreateVM()
 			{
-				Name = name,
+				MemberName = membername,
+				NickName = nickname,
 				DateOfBirth = dob,
 				Gender = _gender,
 				Account = acc,
@@ -107,24 +76,18 @@ namespace prjMidtermTopic.FormMember
 				Phone = phone,
 				Address = address,
 				Email = email,
-				Avatar = avatar				
+				Avatar = avatar
 			};
 
 			//驗證vm是否通過欄位驗證
-			(bool isValid, List<ValidationResult> errors) validationResult = Validate(vm);
-
-			//若有錯就顯示它
-			if (validationResult.isValid == false)
-			{
-				this.errorProvider1.Clear();
-				DisplayErrors(validationResult.errors);
-				return;
-			}
+			bool hasError = MyValidator.ValidateAndDisplay(vm, errorProvider1, _map);
+			if (hasError) return;
 
 			MemberDto dto = new MemberDto
 			{
-				MemberID = vm.Id,
-				MemberName = vm.Name,
+				MemberID = vm.MemberID,
+				MemberName = vm.MemberName,
+				NickName = vm.NickName,
 				DateOfBirth = vm.DateOfBirth,
 				Gender = vm.Gender,
 				Account = vm.Account,
@@ -138,21 +101,8 @@ namespace prjMidtermTopic.FormMember
 			try
 			{
 				var service = new MemberService();
-				int newId = service.Create(dto);
-				MessageBox.Show($"新增成功,新的編號為{newId}");
-			}
-			catch (Exception ex)
-			{
-				MessageBox.Show("新增失敗, 原因: " + ex.Message);
-				return;
-			}
-
-
-			try
-			{
-				var service = new MemberService();
-				int newId = service.Create(dto);
-				MessageBox.Show($"新增成功,新的編號為{newId}");
+				int newID = service.Create(dto);
+				MessageBox.Show($"新增成功,新的編號為{newID}");
 			}
 			catch (Exception ex)
 			{
@@ -174,8 +124,50 @@ namespace prjMidtermTopic.FormMember
 
 			this.Close();
 		}
-
 		
+		private void btnUploadAvatar_Click(object sender, EventArgs e)
+		{
+			_filePath = string.Empty;
+
+			using (OpenFileDialog openFileDialog = new OpenFileDialog())
+			{
+				openFileDialog.InitialDirectory =
+					Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
+				openFileDialog.Title = "選擇檔案";
+				openFileDialog.Filter =
+					"(*.png)|*.png|(*.jpg)|*.jpg|(*.jpeg)|*.jpeg|(*.gif)|*.gif";
+				openFileDialog.Multiselect = false;
+
+				if (openFileDialog.ShowDialog() == DialogResult.OK)
+				{
+					_filePath = openFileDialog.FileName;
+
+					Upload(_filePath);
+				}
+			}
+
+		}
+
+		private void Upload(string filePath)
+		{
+			string targetFolderPath = @"images/avatar/";
+			string fileName = Path.GetFileName(filePath);
+			string targetFilePath = Path.Combine(targetFolderPath, fileName);
+
+			try
+			{
+				File.Copy(filePath, targetFilePath);
+				txtAvatar.Text = Path.GetFileNameWithoutExtension(filePath);
+
+				MessageBox.Show($"上傳成功,路徑:{filePath}");
+			}
+			catch (Exception)
+			{
+				MessageBox.Show("上傳失敗");
+				return;
+			}
+		}
+
 	}
-	
+
 }

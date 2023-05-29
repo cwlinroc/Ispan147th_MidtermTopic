@@ -1,4 +1,5 @@
-﻿using System;
+﻿using prjMidtermTopic.FormMember;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +17,7 @@ namespace prjMidtermTopic
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new form_Main());
+            Application.Run(new form_Member());
         }
     }
 }
