@@ -92,5 +92,14 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
 				ImageURL = reader.GetString("ImageURL")
 			};
 		}
+
+		public static Func<SqlDataReader, CategoryDto> CategoryDtoAssembler
+		{
+			get => (reader) => new CategoryDto
+			{
+				CategoryId = reader.GetInt("CategoryId"),
+				CategoryName = reader.GetString("CategoryName")
+			};
+		}
 	}
 }

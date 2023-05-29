@@ -46,6 +46,7 @@
 			this.label7 = new System.Windows.Forms.Label();
 			this.txt_MerchandiseId = new System.Windows.Forms.TextBox();
 			this.btn_Delete = new System.Windows.Forms.Button();
+			this.btn_SelectImage = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -146,7 +147,8 @@
 			// 
 			this.txt_ImageURL.Location = new System.Drawing.Point(116, 334);
 			this.txt_ImageURL.Name = "txt_ImageURL";
-			this.txt_ImageURL.Size = new System.Drawing.Size(266, 22);
+			this.txt_ImageURL.ReadOnly = true;
+			this.txt_ImageURL.Size = new System.Drawing.Size(208, 22);
 			this.txt_ImageURL.TabIndex = 12;
 			// 
 			// comboBox_CategoryId
@@ -188,11 +190,22 @@
 			this.btn_Delete.UseVisualStyleBackColor = true;
 			this.btn_Delete.Click += new System.EventHandler(this.btn_Delete_Click);
 			// 
+			// btn_SelectImage
+			// 
+			this.btn_SelectImage.Location = new System.Drawing.Point(330, 334);
+			this.btn_SelectImage.Name = "btn_SelectImage";
+			this.btn_SelectImage.Size = new System.Drawing.Size(52, 23);
+			this.btn_SelectImage.TabIndex = 16;
+			this.btn_SelectImage.Text = "選擇";
+			this.btn_SelectImage.UseVisualStyleBackColor = true;
+			this.btn_SelectImage.Click += new System.EventHandler(this.btn_SelectImage_Click);
+			// 
 			// form_EditMerchandise
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(414, 433);
+			this.Controls.Add(this.btn_SelectImage);
 			this.Controls.Add(this.btn_Delete);
 			this.Controls.Add(this.comboBox_CategoryId);
 			this.Controls.Add(this.btn_Updata);
@@ -237,5 +250,6 @@
 		private System.Windows.Forms.TextBox txt_MerchandiseId;
 		private System.Windows.Forms.Label label7;
 		private System.Windows.Forms.Button btn_Delete;
+		private System.Windows.Forms.Button btn_SelectImage;
 	}
 }

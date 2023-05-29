@@ -46,10 +46,11 @@ namespace prjMidtermTopic.ViewModels
 
 	static public class ChooseCategory
 	{
+		// todo 改由Category資料庫讀取選項
 		static public readonly int[] categoryIdOptions = new int[] {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 		static public readonly string[] categoryNameOptions = new string[] {"未選擇", "貓狗>食品保健", "貓狗>清潔耗材", 
 												"貓狗>器材工具", "貓狗>飾品玩具", "貓狗>房屋器皿", "鼠兔>食品保健", 
-												"鼠兔>清潔耗材", "鼠兔>器材工具", "鼠兔>飾品玩具", "鼠兔>各類容器", };
+												"鼠兔>清潔耗材", "鼠兔>器材工具", "鼠兔>飾品玩具", "鼠兔>各類容器" };
 
 		static public MerchandiseDto ToDto(this MerchandiseCreateVM vm)
 		{

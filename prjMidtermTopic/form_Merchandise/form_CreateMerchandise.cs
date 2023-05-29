@@ -8,6 +8,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,8 +19,10 @@ namespace prjMidtermTopic.form_Merchandise
 {
 	public partial class form_CreateMerchandise : Form
 	{
-
+		
 		private int _categoryId;
+
+		private string _imagePath = string.Empty;
 		public form_CreateMerchandise()
 		{
 			InitializeComponent();
@@ -69,8 +72,10 @@ namespace prjMidtermTopic.form_Merchandise
 
 		private void comboBox_CategoryId_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			switch (comboBox_CategoryId.SelectedIndex)
-			{
+			// todo 確認是否可以直接設定
+			_categoryId = comboBox_CategoryId.SelectedIndex;
+			/*switch (comboBox_CategoryId.SelectedIndex)
+			{       
 				case 1:
 					_categoryId = 1;
 					break;
@@ -104,7 +109,7 @@ namespace prjMidtermTopic.form_Merchandise
 				default:
 					_categoryId = 0;
 					break;
-			}
+			}*/
 		}
 
 		private void btnCreate_Click(object sender, EventArgs e)
@@ -171,6 +176,65 @@ namespace prjMidtermTopic.form_Merchandise
 			}
 
 			this.Close();
+		}
+		private void btn_SelectImage_Click(object sender, EventArgs e)
+		{
+			using (OpenFileDialog selectImage = new OpenFileDialog())
+			{
+				selectImage.InitialDirectory =
+					Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
+				selectImage.Title = "選擇檔案";
+				selectImage.Filter =
+					"(*.png)|*.png|(*.jpg)|*.jpg|(*.jpeg)|*.jpeg|(*.gif)|*.gif";
+				selectImage.Multiselect = false;
+
+				if (selectImage.ShowDialog() == DialogResult.OK)
+				{
+					_imagePath = selectImage.FileName;
+
+					UploadToDb(_imagePath);
+				}
+			}
+
+			btn_CancelImage.Enabled = true;
+		}
+		private void UploadToDb(string imagePath)
+		{
+			string targetFolderPath = @"images/";
+			string imageName = Path.GetFileName(imagePath);
+			string targetFilePath = Path.Combine(targetFolderPath, imageName);
+
+			try
+			{
+				File.Copy(imagePath, targetFilePath);
+				txt_ImageURL.Text = Path.GetFileNameWithoutExtension(imagePath);
+
+				MessageBox.Show($"上傳成功,路徑:{_imagePath}");
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show("上傳失敗，原因：" + ex.Message);
+			}
+		}
+
+		private void btn_CancelImage_Click(object sender, EventArgs e)
+		{
+			using (OpenFileDialog selectImage = new OpenFileDialog())
+			{
+				selectImage.InitialDirectory =
+					Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
+				selectImage.Title = "選擇檔案";
+				selectImage.Filter =
+					"(*.png)|*.png|(*.jpg)|*.jpg|(*.jpeg)|*.jpeg|(*.gif)|*.gif";
+				selectImage.Multiselect = false;
+
+				if (selectImage.ShowDialog() == DialogResult.OK)
+				{
+					_imagePath = selectImage.FileName;
+
+					UploadToDb(_imagePath);
+				}
+			}
 		}
 	}
 }

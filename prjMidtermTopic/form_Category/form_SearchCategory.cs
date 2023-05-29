@@ -2,7 +2,6 @@
 using ISpan147.Estore.SqlDataLayer.Repositories;
 using prjMidtermTopic.form_Merchandise;
 using prjMidtermTopic.Interfaces;
-using prjMidtermTopic.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,23 +12,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace prjMidtermTopic
+namespace prjMidtermTopic.form_Category
 {
-    public partial class form_SearchMerchandise : Form, IGrid
-    {
-        public form_SearchMerchandise()
-        {
-            InitializeComponent();
-
-			//設定類別選單資料來源&預設值
-			comboBox_CategoryId.Items.AddRange(ChooseCategory.categoryNameOptions);
-			comboBox_CategoryId.SelectedIndex = 0;
+	public partial class form_SearchCategory : Form, IGrid
+	{
+		public form_SearchCategory()
+		{
+			InitializeComponent();
 		}
 
-		List<MerchandiseDto> data;
+		List<CategoryDto> data;
 
 		#region 開啟&按下搜尋時載入資料
-		private void FormSearchMerchandise_Load(object sender, EventArgs e)
+		private void form_SearchCategory_Load(object sender, EventArgs e)
 		{
 			Display();
 		}
@@ -44,16 +39,14 @@ namespace prjMidtermTopic
 		public void Display()
 		{
 			//讀取篩選條件
-			bool isInt = int.TryParse(this.txt_MerchandiseId.Text, out int merchandiseId);
-			int? sId = isInt ? merchandiseId : (int?)null;
+			bool isInt = int.TryParse(this.txt_CategoryId.Text, out int categoryId);
+			int? sId = isInt ? categoryId : (int?)null;
 
-			string sName = this.txt_MerchandiseName.Text;
+			string sName = this.txt_CategoryName.Text;
 
-			int sCategoryId = this.comboBox_CategoryId.SelectedIndex;
-			
 			//取得符合紀錄
-			var repo = new MerchandiseRepository();
-			data = repo.Search(sId, sName, sCategoryId);
+			var repo = new CategoryRepository();
+			data = repo.Search(sId, sName);
 
 			//匯入DataGridView
 			this.dataGridView1.DataSource = data;
@@ -63,16 +56,16 @@ namespace prjMidtermTopic
 		{
 			if (e.RowIndex < 0) return;
 
-			int id = this.data[e.RowIndex].MerchandiseID;
+			int id = this.data[e.RowIndex].CategoryId;
 
-			var frm = new form_EditMerchandise(id);
+			var frm = new form_EditCategory(id);
 			frm.Owner = this;
 			frm.ShowDialog();
 		}
 
 		private void btn_Add_Click(object sender, EventArgs e)
 		{
-			var frm = new form_CreateMerchandise();
+			var frm = new form_CreateCategory();
 			frm.Owner = this;
 			frm.ShowDialog();
 		}

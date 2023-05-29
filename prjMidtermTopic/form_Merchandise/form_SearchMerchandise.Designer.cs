@@ -30,13 +30,6 @@
         {
 			this.btn_Add = new System.Windows.Forms.Button();
 			this.dataGridView1 = new System.Windows.Forms.DataGridView();
-			this.MerchandiseId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.MerchandiseName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.ImageURL = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.txt_MerchandiseName = new System.Windows.Forms.TextBox();
 			this.label2 = new System.Windows.Forms.Label();
 			this.txt_MerchandiseId = new System.Windows.Forms.TextBox();
@@ -44,6 +37,13 @@
 			this.btn_Search = new System.Windows.Forms.Button();
 			this.labCategoryName = new System.Windows.Forms.Label();
 			this.comboBox_CategoryId = new System.Windows.Forms.ComboBox();
+			this.MerchandiseId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.MerchandiseName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.CategoryName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ImageURL = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -70,7 +70,7 @@
 			this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MerchandiseId,
             this.MerchandiseName,
-            this.Column1,
+            this.CategoryName,
             this.Price,
             this.Column2,
             this.Column3,
@@ -82,55 +82,6 @@
 			this.dataGridView1.Size = new System.Drawing.Size(751, 326);
 			this.dataGridView1.TabIndex = 10;
 			this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
-			// 
-			// MerchandiseId
-			// 
-			this.MerchandiseId.DataPropertyName = "MerchandiseId";
-			this.MerchandiseId.HeaderText = "商品編號";
-			this.MerchandiseId.Name = "MerchandiseId";
-			this.MerchandiseId.ReadOnly = true;
-			// 
-			// MerchandiseName
-			// 
-			this.MerchandiseName.DataPropertyName = "MerchandiseName";
-			this.MerchandiseName.HeaderText = "商品名稱";
-			this.MerchandiseName.Name = "MerchandiseName";
-			this.MerchandiseName.ReadOnly = true;
-			// 
-			// Column1
-			// 
-			this.Column1.DataPropertyName = "CategoryID";
-			this.Column1.HeaderText = "商品類別";
-			this.Column1.Name = "Column1";
-			this.Column1.ReadOnly = true;
-			// 
-			// Price
-			// 
-			this.Price.DataPropertyName = "Price";
-			this.Price.HeaderText = "價格";
-			this.Price.Name = "Price";
-			this.Price.ReadOnly = true;
-			// 
-			// Column2
-			// 
-			this.Column2.DataPropertyName = "Amount";
-			this.Column2.HeaderText = "庫存數量";
-			this.Column2.Name = "Column2";
-			this.Column2.ReadOnly = true;
-			// 
-			// Column3
-			// 
-			this.Column3.DataPropertyName = "Description";
-			this.Column3.HeaderText = "商品描述";
-			this.Column3.Name = "Column3";
-			this.Column3.ReadOnly = true;
-			// 
-			// ImageURL
-			// 
-			this.ImageURL.DataPropertyName = "ImageURL";
-			this.ImageURL.HeaderText = "商品圖片";
-			this.ImageURL.Name = "ImageURL";
-			this.ImageURL.ReadOnly = true;
 			// 
 			// txt_MerchandiseName
 			// 
@@ -200,6 +151,55 @@
 			this.comboBox_CategoryId.Size = new System.Drawing.Size(121, 20);
 			this.comboBox_CategoryId.TabIndex = 2;
 			// 
+			// MerchandiseId
+			// 
+			this.MerchandiseId.DataPropertyName = "MerchandiseId";
+			this.MerchandiseId.HeaderText = "商品編號";
+			this.MerchandiseId.Name = "MerchandiseId";
+			this.MerchandiseId.ReadOnly = true;
+			// 
+			// MerchandiseName
+			// 
+			this.MerchandiseName.DataPropertyName = "MerchandiseName";
+			this.MerchandiseName.HeaderText = "商品名稱";
+			this.MerchandiseName.Name = "MerchandiseName";
+			this.MerchandiseName.ReadOnly = true;
+			// 
+			// CategoryName
+			// 
+			this.CategoryName.DataPropertyName = "CategoryName";
+			this.CategoryName.HeaderText = "商品類別";
+			this.CategoryName.Name = "CategoryName";
+			this.CategoryName.ReadOnly = true;
+			// 
+			// Price
+			// 
+			this.Price.DataPropertyName = "Price";
+			this.Price.HeaderText = "價格";
+			this.Price.Name = "Price";
+			this.Price.ReadOnly = true;
+			// 
+			// Column2
+			// 
+			this.Column2.DataPropertyName = "Amount";
+			this.Column2.HeaderText = "庫存數量";
+			this.Column2.Name = "Column2";
+			this.Column2.ReadOnly = true;
+			// 
+			// Column3
+			// 
+			this.Column3.DataPropertyName = "Description";
+			this.Column3.HeaderText = "商品描述";
+			this.Column3.Name = "Column3";
+			this.Column3.ReadOnly = true;
+			// 
+			// ImageURL
+			// 
+			this.ImageURL.DataPropertyName = "ImageURL";
+			this.ImageURL.HeaderText = "商品圖片";
+			this.ImageURL.Name = "ImageURL";
+			this.ImageURL.ReadOnly = true;
+			// 
 			// form_SearchMerchandise
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -215,7 +215,7 @@
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.btn_Search);
 			this.Name = "form_SearchMerchandise";
-			this.Text = "商品管理：總覽、搜尋頁";
+			this.Text = "商品管理：檢視、搜尋";
 			this.Load += new System.EventHandler(this.FormSearchMerchandise_Load);
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
 			this.ResumeLayout(false);
@@ -236,7 +236,7 @@
 		private System.Windows.Forms.ComboBox comboBox_CategoryId;
 		private System.Windows.Forms.DataGridViewTextBoxColumn MerchandiseId;
 		private System.Windows.Forms.DataGridViewTextBoxColumn MerchandiseName;
-		private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+		private System.Windows.Forms.DataGridViewTextBoxColumn CategoryName;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Price;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
