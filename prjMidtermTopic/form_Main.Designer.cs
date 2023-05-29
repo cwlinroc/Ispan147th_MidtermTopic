@@ -96,54 +96,54 @@
 			// 會員管理ToolStripMenuItem
 			// 
 			this.會員管理ToolStripMenuItem.Name = "會員管理ToolStripMenuItem";
-			this.會員管理ToolStripMenuItem.Size = new System.Drawing.Size(182, 26);
+			this.會員管理ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
 			this.會員管理ToolStripMenuItem.Text = "會員管理";
 			this.會員管理ToolStripMenuItem.Click += new System.EventHandler(this.會員管理ToolStripMenuItem_Click);
 			// 
 			// 寵物列表ToolStripMenuItem
 			// 
 			this.寵物列表ToolStripMenuItem.Name = "寵物列表ToolStripMenuItem";
-			this.寵物列表ToolStripMenuItem.Size = new System.Drawing.Size(182, 26);
+			this.寵物列表ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
 			this.寵物列表ToolStripMenuItem.Text = "寵物列表管理";
 			this.寵物列表ToolStripMenuItem.Click += new System.EventHandler(this.寵物列表ToolStripMenuItem_Click);
 			// 
 			// 領養清單ToolStripMenuItem
 			// 
 			this.領養清單ToolStripMenuItem.Name = "領養清單ToolStripMenuItem";
-			this.領養清單ToolStripMenuItem.Size = new System.Drawing.Size(182, 26);
+			this.領養清單ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
 			this.領養清單ToolStripMenuItem.Text = "領養清單管理";
 			this.領養清單ToolStripMenuItem.Click += new System.EventHandler(this.領養清單ToolStripMenuItem_Click);
 			// 
 			// 商品ToolStripMenuItem
 			// 
 			this.商品ToolStripMenuItem.Name = "商品ToolStripMenuItem";
-			this.商品ToolStripMenuItem.Size = new System.Drawing.Size(182, 26);
+			this.商品ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
 			this.商品ToolStripMenuItem.Text = "商品管理";
 			this.商品ToolStripMenuItem.Click += new System.EventHandler(this.商品ToolStripMenuItem_Click);
 			// 
 			// 訂單ToolStripMenuItem
 			// 
 			this.訂單ToolStripMenuItem.Name = "訂單ToolStripMenuItem";
-			this.訂單ToolStripMenuItem.Size = new System.Drawing.Size(182, 26);
+			this.訂單ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
 			this.訂單ToolStripMenuItem.Text = "訂單管理";
 			this.訂單ToolStripMenuItem.Click += new System.EventHandler(this.訂單ToolStripMenuItem_Click);
 			// 
 			// 留言QAToolStripMenuItem
 			// 
 			this.留言QAToolStripMenuItem.Name = "留言QAToolStripMenuItem";
-			this.留言QAToolStripMenuItem.Size = new System.Drawing.Size(182, 26);
+			this.留言QAToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
 			this.留言QAToolStripMenuItem.Text = "留言QA管理";
 			this.留言QAToolStripMenuItem.Click += new System.EventHandler(this.留言QAToolStripMenuItem_Click);
 			// 
 			// toolStripMenuItem1
 			// 
 			this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-			this.toolStripMenuItem1.Size = new System.Drawing.Size(179, 6);
+			this.toolStripMenuItem1.Size = new System.Drawing.Size(143, 6);
 			// 
 			// 關閉ToolStripMenuItem
 			// 
 			this.關閉ToolStripMenuItem.Name = "關閉ToolStripMenuItem";
-			this.關閉ToolStripMenuItem.Size = new System.Drawing.Size(182, 26);
+			this.關閉ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
 			this.關閉ToolStripMenuItem.Text = "關閉";
 			this.關閉ToolStripMenuItem.Click += new System.EventHandler(this.關閉ToolStripMenuItem_Click);
 			// 
@@ -189,40 +189,40 @@
 			// 水平排列ToolStripMenuItem
 			// 
 			this.水平排列ToolStripMenuItem.Name = "水平排列ToolStripMenuItem";
-			this.水平排列ToolStripMenuItem.Size = new System.Drawing.Size(182, 26);
+			this.水平排列ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
 			this.水平排列ToolStripMenuItem.Text = "水平排列";
 			this.水平排列ToolStripMenuItem.Click += new System.EventHandler(this.水平排列ToolStripMenuItem_Click);
 			// 
 			// 垂直排列ToolStripMenuItem
 			// 
 			this.垂直排列ToolStripMenuItem.Name = "垂直排列ToolStripMenuItem";
-			this.垂直排列ToolStripMenuItem.Size = new System.Drawing.Size(182, 26);
+			this.垂直排列ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
 			this.垂直排列ToolStripMenuItem.Text = "垂直排列";
 			this.垂直排列ToolStripMenuItem.Click += new System.EventHandler(this.垂直排列ToolStripMenuItem_Click);
 			// 
 			// 階梯排列ToolStripMenuItem
 			// 
 			this.階梯排列ToolStripMenuItem.Name = "階梯排列ToolStripMenuItem";
-			this.階梯排列ToolStripMenuItem.Size = new System.Drawing.Size(182, 26);
+			this.階梯排列ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
 			this.階梯排列ToolStripMenuItem.Text = "階梯排列";
 			this.階梯排列ToolStripMenuItem.Click += new System.EventHandler(this.階梯排列ToolStripMenuItem_Click);
 			// 
 			// toolStripMenuItem2
 			// 
 			this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-			this.toolStripMenuItem2.Size = new System.Drawing.Size(179, 6);
+			this.toolStripMenuItem2.Size = new System.Drawing.Size(143, 6);
 			// 
 			// 關閉當前視窗ToolStripMenuItem
 			// 
 			this.關閉當前視窗ToolStripMenuItem.Name = "關閉當前視窗ToolStripMenuItem";
-			this.關閉當前視窗ToolStripMenuItem.Size = new System.Drawing.Size(182, 26);
+			this.關閉當前視窗ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
 			this.關閉當前視窗ToolStripMenuItem.Text = "關閉當前視窗";
 			this.關閉當前視窗ToolStripMenuItem.Click += new System.EventHandler(this.關閉當前視窗ToolStripMenuItem_Click);
 			// 
 			// 關閉所有視窗ToolStripMenuItem
 			// 
 			this.關閉所有視窗ToolStripMenuItem.Name = "關閉所有視窗ToolStripMenuItem";
-			this.關閉所有視窗ToolStripMenuItem.Size = new System.Drawing.Size(182, 26);
+			this.關閉所有視窗ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
 			this.關閉所有視窗ToolStripMenuItem.Text = "關閉所有視窗";
 			this.關閉所有視窗ToolStripMenuItem.Click += new System.EventHandler(this.關閉所有視窗ToolStripMenuItem_Click);
 			// 
@@ -255,7 +255,7 @@
             this.toolStripButton_Exit});
 			this.toolStrip_Main.Location = new System.Drawing.Point(0, 28);
 			this.toolStrip_Main.Name = "toolStrip_Main";
-			this.toolStrip_Main.Size = new System.Drawing.Size(932, 39);
+			this.toolStrip_Main.Size = new System.Drawing.Size(699, 39);
 			this.toolStrip_Main.TabIndex = 2;
 			this.toolStrip_Main.Text = "toolStrip1";
 			// 
@@ -264,7 +264,7 @@
 			this.toolStripButton_MemberForm.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton_MemberForm.Image")));
 			this.toolStripButton_MemberForm.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.toolStripButton_MemberForm.Name = "toolStripButton_MemberForm";
-			this.toolStripButton_MemberForm.Size = new System.Drawing.Size(105, 36);
+			this.toolStripButton_MemberForm.Size = new System.Drawing.Size(91, 36);
 			this.toolStripButton_MemberForm.Text = "會員管理";
 			this.toolStripButton_MemberForm.Click += new System.EventHandler(this.toolStripButton_MemberForm_Click);
 			// 
@@ -273,7 +273,7 @@
 			this.toolStripButton_PetForm.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton_PetForm.Image")));
 			this.toolStripButton_PetForm.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.toolStripButton_PetForm.Name = "toolStripButton_PetForm";
-			this.toolStripButton_PetForm.Size = new System.Drawing.Size(105, 36);
+			this.toolStripButton_PetForm.Size = new System.Drawing.Size(91, 36);
 			this.toolStripButton_PetForm.Text = "寵物列表";
 			this.toolStripButton_PetForm.Click += new System.EventHandler(this.toolStripButton_PetForm_Click);
 			// 
@@ -282,7 +282,7 @@
 			this.toolStripButton_AdoptForm.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton_AdoptForm.Image")));
 			this.toolStripButton_AdoptForm.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.toolStripButton_AdoptForm.Name = "toolStripButton_AdoptForm";
-			this.toolStripButton_AdoptForm.Size = new System.Drawing.Size(105, 36);
+			this.toolStripButton_AdoptForm.Size = new System.Drawing.Size(91, 36);
 			this.toolStripButton_AdoptForm.Text = "領養清單";
 			this.toolStripButton_AdoptForm.Click += new System.EventHandler(this.toolStripButton_AdoptForm_Click);
 			// 
@@ -291,7 +291,7 @@
 			this.toolStripButton_MerchandiseForm.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton_MerchandiseForm.Image")));
 			this.toolStripButton_MerchandiseForm.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.toolStripButton_MerchandiseForm.Name = "toolStripButton_MerchandiseForm";
-			this.toolStripButton_MerchandiseForm.Size = new System.Drawing.Size(75, 36);
+			this.toolStripButton_MerchandiseForm.Size = new System.Drawing.Size(67, 36);
 			this.toolStripButton_MerchandiseForm.Text = "商品";
 			this.toolStripButton_MerchandiseForm.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
 			this.toolStripButton_MerchandiseForm.Click += new System.EventHandler(this.toolStripButton_MerchandiseForm_Click);
@@ -301,7 +301,7 @@
 			this.toolStripButton_OrderForm.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton_OrderForm.Image")));
 			this.toolStripButton_OrderForm.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.toolStripButton_OrderForm.Name = "toolStripButton_OrderForm";
-			this.toolStripButton_OrderForm.Size = new System.Drawing.Size(75, 36);
+			this.toolStripButton_OrderForm.Size = new System.Drawing.Size(67, 36);
 			this.toolStripButton_OrderForm.Text = "訂單";
 			this.toolStripButton_OrderForm.Click += new System.EventHandler(this.toolStripButton_OrderForm_Click);
 			// 
@@ -310,7 +310,7 @@
 			this.toolStripButton_QAForm.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton_QAForm.Image")));
 			this.toolStripButton_QAForm.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.toolStripButton_QAForm.Name = "toolStripButton_QAForm";
-			this.toolStripButton_QAForm.Size = new System.Drawing.Size(97, 36);
+			this.toolStripButton_QAForm.Size = new System.Drawing.Size(85, 36);
 			this.toolStripButton_QAForm.Text = "留言QA";
 			this.toolStripButton_QAForm.Click += new System.EventHandler(this.toolStripButton_QAForm_Click);
 			// 
@@ -319,7 +319,7 @@
 			this.toolStripButton_Exit.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton_Exit.Image")));
 			this.toolStripButton_Exit.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.toolStripButton_Exit.Name = "toolStripButton_Exit";
-			this.toolStripButton_Exit.Size = new System.Drawing.Size(75, 36);
+			this.toolStripButton_Exit.Size = new System.Drawing.Size(67, 36);
 			this.toolStripButton_Exit.Text = "離開";
 			this.toolStripButton_Exit.Click += new System.EventHandler(this.toolStripButton_Exit_Click);
 			// 
@@ -332,9 +332,9 @@
 			// 
 			// form_Main
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(932, 544);
+			this.ClientSize = new System.Drawing.Size(699, 435);
 			this.Controls.Add(this.toolStrip_Main);
 			this.Controls.Add(this.menuStrip_Main);
 			this.IsMdiContainer = true;

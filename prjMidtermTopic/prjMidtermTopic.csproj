@@ -75,6 +75,24 @@
     <Compile Include="form_Adopt\form_Adopt.Designer.cs">
       <DependentUpon>form_Adopt.cs</DependentUpon>
     </Compile>
+    <Compile Include="form_Category\form_CreateCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form_Category\form_CreateCategory.Designer.cs">
+      <DependentUpon>form_CreateCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form_Category\form_EditCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form_Category\form_EditCategory.Designer.cs">
+      <DependentUpon>form_EditCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form_Category\form_SearchCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form_Category\form_SearchCategory.Designer.cs">
+      <DependentUpon>form_SearchCategory.cs</DependentUpon>
+    </Compile>
     <Compile Include="form_LogIn.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -175,11 +193,13 @@
     <Compile Include="MassInsert\form_MassInsert.Designer.cs">
       <DependentUpon>form_MassInsert.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\DisplayGrid.cs" />
+    <Compile Include="Model\DisplayGrim.cs" />
     <Compile Include="Model\MyValidator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\CategoryCreateVM.cs" />
     <Compile Include="ViewModels\MemberCreateVM.cs" />
+    <Compile Include="ViewModels\MerchandiseCreateVM.cs" />
     <Compile Include="ViewModels\OrderListVM.cs" />
     <Compile Include="ViewModels\OrderVM.cs" />
     <EmbeddedResource Include="FormMember\form_CreateMember.resx">
@@ -187,6 +207,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormMember\form_EditMember.resx">
       <DependentUpon>form_EditMember.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form_Category\form_CreateCategory.resx">
+      <DependentUpon>form_CreateCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form_Category\form_EditCategory.resx">
+      <DependentUpon>form_EditCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form_Category\form_SearchCategory.resx">
+      <DependentUpon>form_SearchCategory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="form_LogIn.resx">
       <DependentUpon>form_LogIn.cs</DependentUpon>

@@ -20,6 +20,11 @@ namespace TestConsole
 		static void Main(string[] args)
 		{
 
+			//mass.CreateRandomThemeAndCommon(150);
+			//QA
+
+			//mass.CreateRandomAdopt(150);
+			//領養清單
 
 			//var mass = new MassInsertService();
 
@@ -48,6 +53,7 @@ namespace TestConsole
 
 
             Console.WriteLine("Test Over!");
+			Console.ReadKey();
 			Console.ReadKey();
 			Console.ReadKey();
 		}

@@ -99,8 +99,6 @@ namespace ISpan147.Estore.SqlDataLayer
 			}
 		}
 
-
-
 		public static int Create(
 			Func<SqlConnection> connGetter,
 			string sql,

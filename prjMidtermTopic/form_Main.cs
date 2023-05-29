@@ -47,7 +47,6 @@ namespace prjMidtermTopic
 
 		private void toolStripButton_MerchandiseForm_Click(object sender, EventArgs e)
 		{
-
 			showForm(new form_SearchMerchandise());
 		}
 
@@ -183,6 +182,6 @@ namespace prjMidtermTopic
 			frm.Show();
 		}
 
-
+		
 	}
 }

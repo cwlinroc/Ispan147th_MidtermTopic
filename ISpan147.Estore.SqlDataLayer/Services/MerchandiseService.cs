@@ -12,10 +12,13 @@ namespace ISpan147.Estore.SqlDataLayer.Services
 	{
 		public int Create(MerchandiseDto dto)
 		{
-			//驗證分類名稱是否重複
 			var repo = new MerchandiseRepository();
+			//驗證分類名稱是否重複
 			var dtoInDb = repo.GetByMerchandiseName(dto.MerchandiseName);
-			if (dtoInDb != null) { throw new Exception("此分類名稱已存在，請重新命名");}
+			if (dtoInDb != null) { throw new Exception("此分類名稱已存在，請重新命名"); }
+			//驗證是否選擇商品類別
+			var dtoInDb2 = repo.GetByCategoryID(dto.CategoryID);
+			if (dtoInDb2 == null) { throw new Exception("請選擇商品類別"); }
 
 			int newId = repo.Create(dto);
 
@@ -24,9 +27,13 @@ namespace ISpan147.Estore.SqlDataLayer.Services
 		public int Update(MerchandiseDto dto)
 		{
 			var repo = new MerchandiseRepository();
+			//驗證分類名稱是否重複
 			var dtoInDb = repo.GetByMerchandiseName(dto.MerchandiseName);
-			if (dtoInDb != null && dtoInDb.MerchandiseID != dto.MerchandiseID) { throw new Exception("此分類名稱已存在，請重新命名"); }
-			
+			if (dtoInDb != null && dtoInDb.MerchandiseID != dto.MerchandiseID) { throw new Exception("此商品名稱已存在，請重新命名"); }
+			//驗證是否選到預設值(預設值不存在於資料庫)
+			var dtoInDb2 = repo.GetByCategoryID(dto.CategoryID);
+			if (dtoInDb2 == null) { throw new Exception("請選擇商品類別"); }
+
 			int rows = repo.Update(dto);
 
 			return rows;
@@ -34,17 +41,17 @@ namespace ISpan147.Estore.SqlDataLayer.Services
 
 		public List<MerchandiseDto> Search(
 			int? merchandiseid = null,
-			string merchandisename = null//,
-			// todo int? categoryid = null
+			string merchandisename = null,
+			int? categoryid = null
 			)
 		{
-			return new List<MerchandiseDto> { }; //todo 刪除這行  恢復下面那行
-			//return new OrderListRepository().Search(merchandiseid, merchandisename,/* categoryid*/);
+			return new List<MerchandiseDto> { };
+			return new MerchandiseRepository().Search(merchandiseid, merchandisename, categoryid);
 		}
 
-		public int Delete(int orderID)
+		public int Delete(int merchandiseID)
 		{
-			return new OrderListRepositoryAdoNet().Delete(orderID);
+			return new MerchandiseRepository().Delete(merchandiseID);
 		}
 	}
 }

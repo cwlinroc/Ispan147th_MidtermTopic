@@ -43,17 +43,20 @@
 			this.txt_ImageURL = new System.Windows.Forms.TextBox();
 			this.comboBox_CategoryId = new System.Windows.Forms.ComboBox();
 			this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+			this.btn_SelectImage = new System.Windows.Forms.Button();
+			this.btn_CancelImage = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// btnCreate
 			// 
-			this.btnCreate.Location = new System.Drawing.Point(307, 339);
+			this.btnCreate.Location = new System.Drawing.Point(307, 393);
 			this.btnCreate.Name = "btnCreate";
 			this.btnCreate.Size = new System.Drawing.Size(75, 23);
 			this.btnCreate.TabIndex = 13;
 			this.btnCreate.Text = "新增商品";
 			this.btnCreate.UseVisualStyleBackColor = true;
+			this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
 			// 
 			// label3
 			// 
@@ -142,6 +145,7 @@
 			// 
 			this.txt_ImageURL.Location = new System.Drawing.Point(116, 311);
 			this.txt_ImageURL.Name = "txt_ImageURL";
+			this.txt_ImageURL.ReadOnly = true;
 			this.txt_ImageURL.Size = new System.Drawing.Size(266, 22);
 			this.txt_ImageURL.TabIndex = 12;
 			// 
@@ -152,16 +156,40 @@
 			this.comboBox_CategoryId.Name = "comboBox_CategoryId";
 			this.comboBox_CategoryId.Size = new System.Drawing.Size(266, 20);
 			this.comboBox_CategoryId.TabIndex = 14;
+			this.comboBox_CategoryId.SelectedIndexChanged += new System.EventHandler(this.comboBox_CategoryId_SelectedIndexChanged);
 			// 
 			// errorProvider1
 			// 
 			this.errorProvider1.ContainerControl = this;
 			// 
-			// form_EditMerchandise
+			// btn_SelectImage
+			// 
+			this.btn_SelectImage.Location = new System.Drawing.Point(238, 339);
+			this.btn_SelectImage.Name = "btn_SelectImage";
+			this.btn_SelectImage.Size = new System.Drawing.Size(69, 23);
+			this.btn_SelectImage.TabIndex = 15;
+			this.btn_SelectImage.Text = "選擇圖片";
+			this.btn_SelectImage.UseVisualStyleBackColor = true;
+			this.btn_SelectImage.Click += new System.EventHandler(this.btn_SelectImage_Click);
+			// 
+			// btn_CancelImage
+			// 
+			this.btn_CancelImage.Enabled = false;
+			this.btn_CancelImage.Location = new System.Drawing.Point(313, 339);
+			this.btn_CancelImage.Name = "btn_CancelImage";
+			this.btn_CancelImage.Size = new System.Drawing.Size(69, 23);
+			this.btn_CancelImage.TabIndex = 16;
+			this.btn_CancelImage.Text = "刪除選擇";
+			this.btn_CancelImage.UseVisualStyleBackColor = true;
+			this.btn_CancelImage.Click += new System.EventHandler(this.btn_CancelImage_Click);
+			// 
+			// form_CreateMerchandise
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(414, 392);
+			this.ClientSize = new System.Drawing.Size(414, 428);
+			this.Controls.Add(this.btn_CancelImage);
+			this.Controls.Add(this.btn_SelectImage);
 			this.Controls.Add(this.comboBox_CategoryId);
 			this.Controls.Add(this.btnCreate);
 			this.Controls.Add(this.txt_ImageURL);
@@ -175,7 +203,7 @@
 			this.Controls.Add(this.label3);
 			this.Controls.Add(this.txt_MerchandiseName);
 			this.Controls.Add(this.label2);
-			this.Name = "form_EditMerchandise";
+			this.Name = "form_CreateMerchandise";
 			this.Text = "商品管理：新增商品";
 			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
 			this.ResumeLayout(false);
@@ -199,5 +227,7 @@
 		private System.Windows.Forms.TextBox txt_ImageURL;
 		private System.Windows.Forms.ComboBox comboBox_CategoryId;
 		private System.Windows.Forms.ErrorProvider errorProvider1;
+		private System.Windows.Forms.Button btn_SelectImage;
+		private System.Windows.Forms.Button btn_CancelImage;
 	}
 }

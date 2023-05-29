@@ -36,10 +36,10 @@
 			this.label1 = new System.Windows.Forms.Label();
 			this.btn_Search = new System.Windows.Forms.Button();
 			this.labCategoryName = new System.Windows.Forms.Label();
-			this.comboBox_Category = new System.Windows.Forms.ComboBox();
+			this.comboBox_CategoryId = new System.Windows.Forms.ComboBox();
 			this.MerchandiseId = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.MerchandiseName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.CategoryName = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,7 +49,7 @@
 			// 
 			// btn_Add
 			// 
-			this.btn_Add.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btn_Add.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.btn_Add.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.btn_Add.Location = new System.Drawing.Point(683, 408);
 			this.btn_Add.Name = "btn_Add";
@@ -70,7 +70,7 @@
 			this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MerchandiseId,
             this.MerchandiseName,
-            this.Column1,
+            this.CategoryName,
             this.Price,
             this.Column2,
             this.Column3,
@@ -143,13 +143,62 @@
 			this.labCategoryName.Text = "商品類別：";
 			this.labCategoryName.TextAlign = System.Drawing.ContentAlignment.TopRight;
 			// 
-			// comboBox_Category
+			// comboBox_CategoryId
 			// 
-			this.comboBox_Category.FormattingEnabled = true;
-			this.comboBox_Category.Location = new System.Drawing.Point(510, 28);
-			this.comboBox_Category.Name = "comboBox_Category";
-			this.comboBox_Category.Size = new System.Drawing.Size(121, 20);
-			this.comboBox_Category.TabIndex = 2;
+			this.comboBox_CategoryId.FormattingEnabled = true;
+			this.comboBox_CategoryId.Location = new System.Drawing.Point(510, 28);
+			this.comboBox_CategoryId.Name = "comboBox_CategoryId";
+			this.comboBox_CategoryId.Size = new System.Drawing.Size(121, 20);
+			this.comboBox_CategoryId.TabIndex = 2;
+			// 
+			// MerchandiseId
+			// 
+			this.MerchandiseId.DataPropertyName = "MerchandiseId";
+			this.MerchandiseId.HeaderText = "商品編號";
+			this.MerchandiseId.Name = "MerchandiseId";
+			this.MerchandiseId.ReadOnly = true;
+			// 
+			// MerchandiseName
+			// 
+			this.MerchandiseName.DataPropertyName = "MerchandiseName";
+			this.MerchandiseName.HeaderText = "商品名稱";
+			this.MerchandiseName.Name = "MerchandiseName";
+			this.MerchandiseName.ReadOnly = true;
+			// 
+			// CategoryName
+			// 
+			this.CategoryName.DataPropertyName = "CategoryName";
+			this.CategoryName.HeaderText = "商品類別";
+			this.CategoryName.Name = "CategoryName";
+			this.CategoryName.ReadOnly = true;
+			// 
+			// Price
+			// 
+			this.Price.DataPropertyName = "Price";
+			this.Price.HeaderText = "價格";
+			this.Price.Name = "Price";
+			this.Price.ReadOnly = true;
+			// 
+			// Column2
+			// 
+			this.Column2.DataPropertyName = "Amount";
+			this.Column2.HeaderText = "庫存數量";
+			this.Column2.Name = "Column2";
+			this.Column2.ReadOnly = true;
+			// 
+			// Column3
+			// 
+			this.Column3.DataPropertyName = "Description";
+			this.Column3.HeaderText = "商品描述";
+			this.Column3.Name = "Column3";
+			this.Column3.ReadOnly = true;
+			// 
+			// ImageURL
+			// 
+			this.ImageURL.DataPropertyName = "ImageURL";
+			this.ImageURL.HeaderText = "商品圖片";
+			this.ImageURL.Name = "ImageURL";
+			this.ImageURL.ReadOnly = true;
 			// 
 			// MerchandiseId
 			// 
@@ -205,7 +254,7 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 450);
-			this.Controls.Add(this.comboBox_Category);
+			this.Controls.Add(this.comboBox_CategoryId);
 			this.Controls.Add(this.labCategoryName);
 			this.Controls.Add(this.btn_Add);
 			this.Controls.Add(this.dataGridView1);
@@ -215,7 +264,7 @@
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.btn_Search);
 			this.Name = "form_SearchMerchandise";
-			this.Text = "商品管理：總覽、搜尋頁";
+			this.Text = "商品管理：檢視、搜尋";
 			this.Load += new System.EventHandler(this.FormSearchMerchandise_Load);
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
 			this.ResumeLayout(false);
@@ -233,10 +282,10 @@
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Button btn_Search;
 		private System.Windows.Forms.Label labCategoryName;
-		private System.Windows.Forms.ComboBox comboBox_Category;
+		private System.Windows.Forms.ComboBox comboBox_CategoryId;
 		private System.Windows.Forms.DataGridViewTextBoxColumn MerchandiseId;
 		private System.Windows.Forms.DataGridViewTextBoxColumn MerchandiseName;
-		private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+		private System.Windows.Forms.DataGridViewTextBoxColumn CategoryName;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Price;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
