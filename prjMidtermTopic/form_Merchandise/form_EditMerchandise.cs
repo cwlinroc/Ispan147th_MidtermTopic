@@ -38,17 +38,16 @@ namespace prjMidtermTopic.form_Merchandise
 			//取得驗證規則
 			ValidationContext context = new ValidationContext(vm, null, null);
 
-			//	//建立存放錯誤集合
-			//	List<ValidationResult> errors = new List<ValidationResult>();
+			//建立存放錯誤集合
+			List<ValidationResult> errors = new List<ValidationResult>();
 
-			//	//驗證model
-			//	bool validateAllProperties = true;
-			//	bool isValid = Validator.TryValidateObject(vm, context, errors, validateAllProperties);
+			//驗證model
+			bool validateAllProperties = true;
+			bool isValid = Validator.TryValidateObject(vm, context, errors, validateAllProperties);
 
-			//	return (isValid, errors);
-			//}
-			throw new NotImplementedException();
+			return (isValid, errors);
 		}
+
 		private void DisplayErrors(List<ValidationResult> errors)
 		{
 			Dictionary<string, Control> map = new Dictionary<string, Control>(StringComparer.CurrentCultureIgnoreCase)
@@ -203,38 +202,33 @@ namespace prjMidtermTopic.form_Merchandise
 
 		private void btn_Updata_Click(object sender, EventArgs e)
 		{
-			//todo 建立MerchandiseCreateVM  		
-			
-			////收集表單欄位值到dto
-			//bool PriceisInt = int.TryParse(txt_Price.Text, out int Price);
-			//Price = PriceisInt ? Price : 0;
-			//bool AmountisInt = int.TryParse(txt_Price.Text, out int Amount);
-			//Amount = AmountisInt ? Amount : 0;
+			//收集表單欄位值到dto
+			bool PriceisInt = int.TryParse(txt_Price.Text, out int Price);
+			Price = PriceisInt ? Price : 0;
+			bool AmountisInt = int.TryParse(txt_Price.Text, out int Amount);
+			Amount = AmountisInt ? Amount : 0;
 
 			var vm = new MerchandiseCreateVM()
 			{
 				MerchandiseId = this._merchandiseId,
 				MerchandiseName = txt_MerchandiseName.Text,
 				CategoryID = comboBox_CategoryId.SelectedIndex,
-				//Price = Price,
-				//Amount = Amount,
+				Price = Price,
+				Amount = Amount,
 				Description = txt_Description.Text,
 				ImageURL = txt_ImageURL.Text
 			};
 
-			//var vm = new MerchandiseCreateVM()
-			//{
-			//	MerchandiseId = this._merchandiseId,
-			//	MerchandiseName = txt_MerchandiseName.Text,
-			//	// todo CategoryId
-			//	Price = Price,
-			//	Amount = Amount,
-			//	Description = txt_Description.Text,
-			//	ImageURL = txt_ImageURL.Text
-			//};
+			//驗證vm是否通過欄位驗證
+			(bool isValid, List<ValidationResult> errors) validationResult = Validate(vm);
 
-			////驗證vm是否通過欄位驗證
-			//(bool isValid, List<ValidationResult> errors) validationResult = Validate(vm);
+			//若有錯則顯示
+			if (validationResult.isValid == false)
+			{
+				this.errorProvider1.Clear();
+				DisplayErrors(validationResult.errors);
+				return;
+			}
 
 			//通過驗證則將vm轉型為MerchandiseDto
 			MerchandiseDto dto = new MerchandiseDto
@@ -248,20 +242,13 @@ namespace prjMidtermTopic.form_Merchandise
 				ImageURL = vm.ImageURL
 			};
 
-			////通過驗證則將vm轉型為CategoryDto
-			//MerchandiseDto dto = new MerchandiseDto
-			//{
-			//	MerchandiseID = vm.MerchandiseId,
-			//	MerchandiseName = vm.MerchandiseName,
-			//	CategoryID = vm.Category,
-			//	Price = vm.Price,
-			//	Amount = vm.Amount,
-			//	Description = vm.Description,
-			//	ImageURL = vm.ImageURL
-			//};
+			try
+			{
+				var service = new MerchandiseService();
+				int rows = service.Update(dto);
 
 				if (txt_ImageURL.Text != _iniImageURL && txt_ImageURL.Text.Length > 0)
-				{ 				
+				{
 					UploadToDb(_newimagePath);
 				}
 				if (txt_ImageURL.Text != _iniImageURL && txt_ImageURL.Text.Length == 0)
