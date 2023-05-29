@@ -75,6 +75,30 @@
     <Compile Include="form_Adopt\form_Adopt.Designer.cs">
       <DependentUpon>form_Adopt.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form_Employee\form_EmployeeChangePermission.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Employee\form_EmployeeChangePermission.Designer.cs">
+      <DependentUpon>form_EmployeeChangePermission.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_Employee\form_EmployeeResetPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Employee\form_EmployeeResetPassword.Designer.cs">
+      <DependentUpon>form_EmployeeResetPassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_Employee\form_Employee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Employee\form_Employee.Designer.cs">
+      <DependentUpon>form_Employee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_Employee\form_EmployeeAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Employee\form_EmployeeAdd.Designer.cs">
+      <DependentUpon>form_EmployeeAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="form_LogIn.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -108,40 +132,40 @@
     <Compile Include="FormMember\form_Member.Designer.cs">
       <DependentUpon>form_Member.cs</DependentUpon>
     </Compile>
-    <Compile Include="form_Order\form_Orders.cs">
+    <Compile Include="Form_Order\form_Orders.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="form_Order\form_Orders.Designer.cs">
+    <Compile Include="Form_Order\form_Orders.Designer.cs">
       <DependentUpon>form_Orders.cs</DependentUpon>
     </Compile>
-    <Compile Include="form_Order\form_OrderAdd.cs">
+    <Compile Include="Form_Order\form_OrdersAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="form_Order\form_OrderAdd.Designer.cs">
-      <DependentUpon>form_OrderAdd.cs</DependentUpon>
+    <Compile Include="Form_Order\form_OrdersAdd.Designer.cs">
+      <DependentUpon>form_OrdersAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="form_Order\form_OrderEdit.cs">
+    <Compile Include="Form_Order\form_OrdersEdit.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="form_Order\form_OrderEdit.Designer.cs">
-      <DependentUpon>form_OrderEdit.cs</DependentUpon>
+    <Compile Include="Form_Order\form_OrdersEdit.Designer.cs">
+      <DependentUpon>form_OrdersEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="form_Order\form_OrderList.cs">
+    <Compile Include="Form_Order\form_OrderList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="form_Order\form_OrderList.Designer.cs">
+    <Compile Include="Form_Order\form_OrderList.Designer.cs">
       <DependentUpon>form_OrderList.cs</DependentUpon>
     </Compile>
-    <Compile Include="form_Order\form_OrderListAdd.cs">
+    <Compile Include="Form_Order\form_OrderListAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="form_Order\form_OrderListAdd.Designer.cs">
+    <Compile Include="Form_Order\form_OrderListAdd.Designer.cs">
       <DependentUpon>form_OrderListAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="form_Order\Form_OrderListEdit.cs">
+    <Compile Include="Form_Order\Form_OrderListEdit.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="form_Order\Form_OrderListEdit.Designer.cs">
+    <Compile Include="Form_Order\Form_OrderListEdit.Designer.cs">
       <DependentUpon>Form_OrderListEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="form_Pet\form_Pet.cs">
@@ -188,6 +212,18 @@
     <EmbeddedResource Include="FormMember\form_EditMember.resx">
       <DependentUpon>form_EditMember.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form_Employee\form_EmployeeChangePermission.resx">
+      <DependentUpon>form_EmployeeChangePermission.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Employee\form_EmployeeResetPassword.resx">
+      <DependentUpon>form_EmployeeResetPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Employee\form_Employee.resx">
+      <DependentUpon>form_Employee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Employee\form_EmployeeAdd.resx">
+      <DependentUpon>form_EmployeeAdd.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="form_LogIn.resx">
       <DependentUpon>form_LogIn.cs</DependentUpon>
     </EmbeddedResource>
@@ -206,27 +242,27 @@
     <EmbeddedResource Include="form_Merchandise\form_SearchMerchandise.resx">
       <DependentUpon>form_SearchMerchandise.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="form_Order\form_Orders.resx">
+    <EmbeddedResource Include="Form_Order\form_Orders.resx">
       <DependentUpon>form_Orders.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="form_Order\form_OrderAdd.resx">
-      <DependentUpon>form_OrderAdd.cs</DependentUpon>
+    <EmbeddedResource Include="Form_Order\form_OrdersAdd.resx">
+      <DependentUpon>form_OrdersAdd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="form_Order\form_OrderEdit.resx">
-      <DependentUpon>form_OrderEdit.cs</DependentUpon>
+    <EmbeddedResource Include="Form_Order\form_OrdersEdit.resx">
+      <DependentUpon>form_OrdersEdit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="form_Order\form_OrderList.resx">
+    <EmbeddedResource Include="Form_Order\form_OrderList.resx">
       <DependentUpon>form_OrderList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="form_Order\form_OrderListAdd.resx">
+    <EmbeddedResource Include="Form_Order\form_OrderListAdd.resx">
       <DependentUpon>form_OrderListAdd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="form_Order\Form_OrderListEdit.resx">
+    <EmbeddedResource Include="Form_Order\Form_OrderListEdit.resx">
       <DependentUpon>Form_OrderListEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MassInsert\form_MassInsert.resx">
       <DependentUpon>form_MassInsert.cs</DependentUpon>
-		</EmbeddedResource>
+    </EmbeddedResource>
     <EmbeddedResource Include="form_QA\form_QAList.resx">
       <DependentUpon>form_QAList.cs</DependentUpon>
     </EmbeddedResource>

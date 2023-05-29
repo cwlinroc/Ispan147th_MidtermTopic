@@ -8,29 +8,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ISpan147.Estore.SqlDataLayer.Services;
 using ISpan147.Estore.SqlDataLayer.Dtos;
+using ISpan147.Estore.SqlDataLayer.Services;
 using prjMidtermTopic.ViewModels;
 
-namespace prjMidtermTopic.form_Order
+namespace prjMidtermTopic.Form_Order
 {
-	public partial class form_OrderEdit : Form
+	public partial class form_OrdersAdd : Form
 	{
-		public form_OrderEdit(OrderGridDto dto)
+		public form_OrdersAdd()
 		{
 			InitializeComponent();
 
 			comboBox_PayMethod.Items.AddRange(Orders.paymentOptions);
 			comboBox_Payed.Items.AddRange(Orders.payedOptions);
-
-			txt_OrderID.Text = dto.OrderID.ToString();
-			txt_CustomerID.Text = dto.MemberID.ToString();
-			comboBox_PayMethod.SelectedIndex = dto.PaymentMethod;
-			comboBox_Payed.SelectedIndex = (dto.Payed) ? 1 : 0;
-			dateTimePicker_PurchaseTime.Value = dto.PurchaseTime.Value;
-			txt_PaymentAmount.Text = dto.PaymentAmount?.ToString();
+			dateTimePicker_PurchaseTime.Value = DateTime.Now;
 		}
-
 
 		private void btn_commit_Click(object sender, EventArgs e)
 		{
@@ -38,8 +31,7 @@ namespace prjMidtermTopic.form_Order
 			{
 				var vm = new OrderVM()
 				{
-					OrderID = int.Parse(txt_OrderID.Text.Trim()),
-					MemberID = txt_CustomerID.Text.Trim(),
+					MemberID = txt_MemberID.Text.Trim(),
 					PaymentMethod = comboBox_PayMethod.SelectedItem?.ToString(),
 					Payed = comboBox_Payed.SelectedItem?.ToString(),
 					PurchaseTime = dateTimePicker_PurchaseTime.Value,
@@ -47,8 +39,8 @@ namespace prjMidtermTopic.form_Order
 				};
 
 				var map = new Dictionary<string, Control>(StringComparer.CurrentCultureIgnoreCase) {
-					{ "ID" , txt_OrderID },
-					{ "CustomerID" , txt_CustomerID },
+					{ "OrderID" , txt_OrderID },
+					{ "MemberID" , txt_MemberID },
 					{ "PaymentMethod" , comboBox_PayMethod },
 					{ "Payed" , comboBox_Payed },
 					{ "PurchaseTime", dateTimePicker_PurchaseTime },
@@ -59,16 +51,9 @@ namespace prjMidtermTopic.form_Order
 
 				if (hasError) return;
 
-				int editRows = new OrderService().Update(vm.ToDto());
+				int newId = new OrderService().Create(vm.ToDto());
 
-				if (editRows > 0)
-				{
-					MessageBox.Show("更改成功");
-				}
-				else
-				{
-					throw new Exception("資料庫回傳值為0");
-				}
+				MessageBox.Show($"輸入成功，ID為{newId}");
 
 				DisplayGrid.DisplayAll(this, new MessageArgs { Message = "_Order_" });
 
@@ -76,11 +61,10 @@ namespace prjMidtermTopic.form_Order
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show("修改失敗，可能原因：" + ex.Message);
+				MessageBox.Show("新增失敗，可能原因：" + ex.Message);
 			}
-
 		}
 
-
+		
 	}
 }

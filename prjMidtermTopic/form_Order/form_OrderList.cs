@@ -15,7 +15,7 @@ using prjMidtermTopic.ViewModels;
 using ISpan147.Estore.SqlDataLayer.Repositories;
 using ISpan147.Estore.SqlDataLayer.EFModel;
 
-namespace prjMidtermTopic.form_Order
+namespace prjMidtermTopic.Form_Order
 {
 	public partial class form_OrderList : Form, IGrid
 	{

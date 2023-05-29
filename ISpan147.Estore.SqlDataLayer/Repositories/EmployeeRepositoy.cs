@@ -1,5 +1,6 @@
 ﻿using ISpan147.Estore.SqlDataLayer.Builders;
 using ISpan147.Estore.SqlDataLayer.Dtos;
+using ISpan147.Estore.SqlDataLayer.EFModel;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -13,13 +14,11 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 	{
 		public EmployeeDto Get(string account)
 		{
-			Func<SqlConnection> connGetter = SqlDb.GetConnection;
-			string sql = $"SELECT * FROM Employee WHERE EmployeeAccount = @EmployeeAccount";
-			Func<SqlDataReader, EmployeeDto> assembler = Assembler.EmployeeDtoAssembler;
-			var parameters = new SqlParameterBuilder()
-				.AddNVarchar("@EmployeeAccount", 20, account).Build();
-
-			return SqlDb.Get(connGetter, sql, assembler, parameters);
+			if (string.IsNullOrEmpty(account)) return null;
+			var db = new AppDbContext();
+			var obj = db.Employees.Where(o => o.EmployeeAccount == account).FirstOrDefault();
+			if (db == null) return null;
+			return obj.ToDto();
 		}
 
 
@@ -27,48 +26,39 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 		{
 			if (dto == null) return 0;
 
-			string sql = "UPDATE Employee SET EmployeePassword = @EmployeePassword"
-				+ ", Permission = @Permission "
-				+ " WHERE EmployeeAccount = @EmployeeAccount ";
-
-			var parameters = new SqlParameterBuilder()
-				.AddNVarchar("EmployeePassword", 65, dto.EmployeePassword)
-				.AddInt("Permission", dto.Permission)
-				.AddNVarchar("EmployeeAccount", 20, dto.EmployeeAccount)
-				.Build();
-
-			Func<SqlConnection> connGetter = SqlDb.GetConnection;
-
-			return SqlDb.UpdateOrDelete(connGetter, sql, parameters);
+			var db = new AppDbContext();
+			var obj = db.Employees.Where(o => o.EmployeeID == dto.EmployeeID).FirstOrDefault();
+			if (obj == null) return 0;
+			obj.ChangeByDto(dto);
+			db.SaveChanges();
+			return obj.EmployeeID;
 		}
 
-		public void Create(EmployeeDto dto)
+		public List<EmployeeDto> GetAll()
 		{
-			string sql = "INSERT INTO Employee (EmployeeAccount, EmployeePassword, Permission)"
-				+ " VALUES (@EmployeeAccount, @EmployeePassword, @Permission) ";
+			var db = new AppDbContext();
+			var query = db.Employees.ToList();
+			return query.Select(o => o.ToDto()).ToList();
+		}
 
-			var parameters = new SqlParameterBuilder()
-				.AddNVarchar("EmployeeAccount", 20, dto.EmployeeAccount)
-				.AddNVarchar("EmployeePassword", 65, dto.EmployeePassword)
-				.AddInt("Permission", dto.Permission)
-				.Build();
-
-			Func<SqlConnection> connGetter = SqlDb.GetConnection;
-
-			SqlDb.CreateWithoutScope(connGetter, sql, parameters);
+		public int Create(EmployeeDto dto)
+		{
+			if (dto == null) throw new ArgumentNullException(nameof(dto));
+			var db = new AppDbContext();
+			var obj = dto.ToEF();
+			db.Employees.Add(obj);
+			db.SaveChanges();
+			return obj.EmployeeID;
 		}
 
 		public int Delete(string account)
 		{
-			string sql = "DELETE Employee WHERE EmployeeAccount = @EmployeeAccount";
-
-			var parameters = new SqlParameterBuilder()
-				.AddNVarchar("EmployeeAccount", 20, account)
-				.Build();
-
-			Func<SqlConnection> connGetter = SqlDb.GetConnection;
-
-			return SqlDb.UpdateOrDelete(connGetter, sql, parameters);
+			var db = new AppDbContext();
+			var obj = db.Employees.Where(o => o.EmployeeAccount == account).FirstOrDefault();
+			if (obj == null) return 0;
+			db.Employees.Remove(obj);
+			db.SaveChanges();
+			return obj.EmployeeID;
 		}
 	}
 }

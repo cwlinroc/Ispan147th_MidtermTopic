@@ -25,7 +25,19 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 
 		public IEnumerable<OrderGridDto> Search(OrderSearchDto sDto)
 		{
-			string sql = $" SELECT OrderID ,o.MemberID , MemberName "
+			if (sDto == null) return null;
+
+			string top = string.Empty;
+			string orderBy = " ORDER BY OrderID ";
+
+			if(sDto.MaxQueryNumber != null)
+			{
+				top = $" TOP {sDto.MaxQueryNumber} ";
+				//orderBy = (sDto.Descending) ? $" ORDER BY @OrderBy DESC " : $" ORDER BY @OrderBy ";
+				orderBy = (sDto.Descending)? $" ORDER BY {sDto.OrderBy} DESC " : $" ORDER BY {sDto.OrderBy} ";
+			}
+
+			string sql = $" SELECT {top} OrderID ,o.MemberID , MemberName "
 					+ " , PaymentMethod ,Payed ,PurchaseTime , PaymentAmount "
 					+ " FROM Orders o "
 					+ " JOIN Members m ON m.MemberID = o.MemberID "
@@ -67,6 +79,8 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 			}
 
 			#endregion
+
+			sql += orderBy;
 
 			using (var conn = SqlDb.GetConnection())
 			{
