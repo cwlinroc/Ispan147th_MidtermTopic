@@ -8,7 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ISpan147.Estore.SqlDataLayer.Services;
-using prjMidtermTopic.form_Order;
+using prjMidtermTopic.Form_Employee;
+using prjMidtermTopic.Form_Order;
 using prjMidtermTopic.MassInsert;
 using prjMidtermTopic.Model;
 
@@ -98,6 +99,11 @@ namespace prjMidtermTopic
 		private void 留言QAToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			toolStripButton_QAForm.PerformClick();
+		}
+
+		private void 員工管理ToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			new form_Employee().ShowDialog();
 		}
 
 		private void 關閉ToolStripMenuItem_Click(object sender, EventArgs e)

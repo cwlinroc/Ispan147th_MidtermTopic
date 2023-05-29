@@ -13,7 +13,7 @@ using ISpan147.Estore.SqlDataLayer.Services;
 using ISpan147.Estore.SqlDataLayer.Dtos;
 using prjMidtermTopic.ViewModels;
 
-namespace prjMidtermTopic.form_Order
+namespace prjMidtermTopic.Form_Order
 {
 	public partial class form_Orders : Form
 	{
@@ -23,7 +23,10 @@ namespace prjMidtermTopic.form_Order
 
 		private int _sortedIndex = 0;
 		private readonly Dictionary<string, Func<OrderGridDto, OrderGridDto, int>> _sortMap;
-
+		private readonly string[] _orderByColumns = { "OrderID", "MemberID", "MemberName"
+				, "PurchaseTime", "PaymentMethod", "PaymentAmount" };
+		private readonly string[] _orderByColumnName = { "訂單編號", "顧客ID", "顧客姓名"
+				, "購買時間", "付款方式", "實付金額" };
 
 		public form_Orders()
 		{
@@ -41,6 +44,7 @@ namespace prjMidtermTopic.form_Order
 			};
 
 			comboBox_PaymentMethod.Items.AddRange(Orders.paymentOptions);
+			comboBox_SortBy.Items.AddRange(_orderByColumnName);
 		}
 
 		//load
@@ -74,11 +78,11 @@ namespace prjMidtermTopic.form_Order
 		private void btn_Edit_Click(object sender, EventArgs e)
 		{
 			if (_row < 0) return;
-			new form_OrderEdit(_data[_row]).ShowDialog();
+			new form_OrdersEdit(_data[_row]).ShowDialog();
 		}
 		private void btn_Add_Click(object sender, EventArgs e)
 		{
-			new form_OrderAdd().ShowDialog();
+			new form_OrdersAdd().ShowDialog();
 		}
 
 		//double click
@@ -168,6 +172,20 @@ namespace prjMidtermTopic.form_Order
 			{
 				sDto.MaxPaymentAmount = maxAmount;
 			}
+			if (checkBox_MaxData.Checked)
+			{
+				sDto.MaxQueryNumber = int.Parse(txt_MaxQuery.Text.Trim());
+				sDto.Descending = checkBox_desc.Checked;
+
+				if (comboBox_SortBy.SelectedIndex != -1)
+				{
+					sDto.OrderBy = _orderByColumns[comboBox_SortBy.SelectedIndex];
+				}
+				else
+				{
+					sDto.OrderBy = "OrderID";
+				}
+			}
 
 			#endregion
 
@@ -208,6 +226,10 @@ namespace prjMidtermTopic.form_Order
 			comboBox_Payed.SelectedIndex = -1;
 			txt_MinPaymentAmount.Text = string.Empty;
 			txt_MaxPaymentAmount.Text = string.Empty;
+			txt_MaxQuery.Text = "500";
+			checkBox_MaxData.Checked = true;
+			checkBox_desc.Checked = false;
+			comboBox_SortBy.SelectedIndex = -1;
 		}
 
 		private void AutoDisplay(object sender, EventArgs e)
@@ -217,7 +239,7 @@ namespace prjMidtermTopic.form_Order
 
 			Display();
 		}
-		
-		
+
+
 	}
 }

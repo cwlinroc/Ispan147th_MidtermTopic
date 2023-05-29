@@ -34,7 +34,7 @@ namespace ISpan147.Estore.SqlDataLayer.Services
 					Phone = rng.RandomPhone(),
 					Address = (rng.RandomChance(70)) ? rng.RandomAddress() : null,
 					Email = rng.RandomEmail(),
-					Avatar = (rng.RandomChance(70)) ? rng.RandomEnString() + ".jpg" : null
+					//Avatar = (rng.RandomChance(70)) ? rng.RandomEnString() + ".jpg" : null
 				});
 			}
 		}

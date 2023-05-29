@@ -51,6 +51,7 @@
 			this.關閉所有視窗ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.功能ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.大量輸入ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.整理訂單金額ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStrip_Main = new System.Windows.Forms.ToolStrip();
 			this.toolStripButton_MemberForm = new System.Windows.Forms.ToolStripButton();
 			this.toolStripButton_PetForm = new System.Windows.Forms.ToolStripButton();
@@ -59,7 +60,9 @@
 			this.toolStripButton_OrderForm = new System.Windows.Forms.ToolStripButton();
 			this.toolStripButton_QAForm = new System.Windows.Forms.ToolStripButton();
 			this.toolStripButton_Exit = new System.Windows.Forms.ToolStripButton();
-			this.整理訂單金額ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.系統ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripSeparator();
+			this.員工管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuStrip_Main.SuspendLayout();
 			this.toolStrip_Main.SuspendLayout();
 			this.SuspendLayout();
@@ -70,11 +73,12 @@
 			this.menuStrip_Main.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.系統ToolStripMenuItem,
             this.視窗ToolStripMenuItem,
-            this.功能ToolStripMenuItem});
+            this.功能ToolStripMenuItem,
+            this.系統ToolStripMenuItem1});
 			this.menuStrip_Main.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip_Main.Name = "menuStrip_Main";
-			this.menuStrip_Main.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-			this.menuStrip_Main.Size = new System.Drawing.Size(932, 28);
+			this.menuStrip_Main.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+			this.menuStrip_Main.Size = new System.Drawing.Size(699, 24);
 			this.menuStrip_Main.TabIndex = 1;
 			this.menuStrip_Main.Text = "menuStrip1";
 			// 
@@ -90,60 +94,60 @@
             this.toolStripMenuItem1,
             this.關閉ToolStripMenuItem});
 			this.系統ToolStripMenuItem.Name = "系統ToolStripMenuItem";
-			this.系統ToolStripMenuItem.Size = new System.Drawing.Size(53, 24);
+			this.系統ToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
 			this.系統ToolStripMenuItem.Text = "系統";
 			// 
 			// 會員管理ToolStripMenuItem
 			// 
 			this.會員管理ToolStripMenuItem.Name = "會員管理ToolStripMenuItem";
-			this.會員管理ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+			this.會員管理ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.會員管理ToolStripMenuItem.Text = "會員管理";
 			this.會員管理ToolStripMenuItem.Click += new System.EventHandler(this.會員管理ToolStripMenuItem_Click);
 			// 
 			// 寵物列表ToolStripMenuItem
 			// 
 			this.寵物列表ToolStripMenuItem.Name = "寵物列表ToolStripMenuItem";
-			this.寵物列表ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+			this.寵物列表ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.寵物列表ToolStripMenuItem.Text = "寵物列表管理";
 			this.寵物列表ToolStripMenuItem.Click += new System.EventHandler(this.寵物列表ToolStripMenuItem_Click);
 			// 
 			// 領養清單ToolStripMenuItem
 			// 
 			this.領養清單ToolStripMenuItem.Name = "領養清單ToolStripMenuItem";
-			this.領養清單ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+			this.領養清單ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.領養清單ToolStripMenuItem.Text = "領養清單管理";
 			this.領養清單ToolStripMenuItem.Click += new System.EventHandler(this.領養清單ToolStripMenuItem_Click);
 			// 
 			// 商品ToolStripMenuItem
 			// 
 			this.商品ToolStripMenuItem.Name = "商品ToolStripMenuItem";
-			this.商品ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+			this.商品ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.商品ToolStripMenuItem.Text = "商品管理";
 			this.商品ToolStripMenuItem.Click += new System.EventHandler(this.商品ToolStripMenuItem_Click);
 			// 
 			// 訂單ToolStripMenuItem
 			// 
 			this.訂單ToolStripMenuItem.Name = "訂單ToolStripMenuItem";
-			this.訂單ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+			this.訂單ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.訂單ToolStripMenuItem.Text = "訂單管理";
 			this.訂單ToolStripMenuItem.Click += new System.EventHandler(this.訂單ToolStripMenuItem_Click);
 			// 
 			// 留言QAToolStripMenuItem
 			// 
 			this.留言QAToolStripMenuItem.Name = "留言QAToolStripMenuItem";
-			this.留言QAToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+			this.留言QAToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.留言QAToolStripMenuItem.Text = "留言QA管理";
 			this.留言QAToolStripMenuItem.Click += new System.EventHandler(this.留言QAToolStripMenuItem_Click);
 			// 
 			// toolStripMenuItem1
 			// 
 			this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-			this.toolStripMenuItem1.Size = new System.Drawing.Size(143, 6);
+			this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
 			// 
 			// 關閉ToolStripMenuItem
 			// 
 			this.關閉ToolStripMenuItem.Name = "關閉ToolStripMenuItem";
-			this.關閉ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+			this.關閉ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.關閉ToolStripMenuItem.Text = "關閉";
 			this.關閉ToolStripMenuItem.Click += new System.EventHandler(this.關閉ToolStripMenuItem_Click);
 			// 
@@ -160,7 +164,7 @@
             this.關閉當前視窗ToolStripMenuItem,
             this.關閉所有視窗ToolStripMenuItem});
 			this.視窗ToolStripMenuItem.Name = "視窗ToolStripMenuItem";
-			this.視窗ToolStripMenuItem.Size = new System.Drawing.Size(53, 24);
+			this.視窗ToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
 			this.視窗ToolStripMenuItem.Text = "視窗";
 			// 
 			// 單一子視窗ToolStripMenuItem
@@ -169,7 +173,7 @@
 			this.單一子視窗ToolStripMenuItem.CheckOnClick = true;
 			this.單一子視窗ToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
 			this.單一子視窗ToolStripMenuItem.Name = "單一子視窗ToolStripMenuItem";
-			this.單一子視窗ToolStripMenuItem.Size = new System.Drawing.Size(182, 26);
+			this.單一子視窗ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
 			this.單一子視窗ToolStripMenuItem.Text = "單一子視窗";
 			this.單一子視窗ToolStripMenuItem.Click += new System.EventHandler(this.單一子視窗ToolStripMenuItem_Click);
 			// 
@@ -177,14 +181,14 @@
 			// 
 			this.多重子視窗ToolStripMenuItem.CheckOnClick = true;
 			this.多重子視窗ToolStripMenuItem.Name = "多重子視窗ToolStripMenuItem";
-			this.多重子視窗ToolStripMenuItem.Size = new System.Drawing.Size(182, 26);
+			this.多重子視窗ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
 			this.多重子視窗ToolStripMenuItem.Text = "多重子視窗";
 			this.多重子視窗ToolStripMenuItem.Click += new System.EventHandler(this.多重子視窗ToolStripMenuItem_Click);
 			// 
 			// toolStripMenuItem3
 			// 
 			this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-			this.toolStripMenuItem3.Size = new System.Drawing.Size(179, 6);
+			this.toolStripMenuItem3.Size = new System.Drawing.Size(143, 6);
 			// 
 			// 水平排列ToolStripMenuItem
 			// 
@@ -232,15 +236,22 @@
             this.大量輸入ToolStripMenuItem,
             this.整理訂單金額ToolStripMenuItem});
 			this.功能ToolStripMenuItem.Name = "功能ToolStripMenuItem";
-			this.功能ToolStripMenuItem.Size = new System.Drawing.Size(83, 24);
+			this.功能ToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
 			this.功能ToolStripMenuItem.Text = "亂數功能";
 			// 
 			// 大量輸入ToolStripMenuItem
 			// 
 			this.大量輸入ToolStripMenuItem.Name = "大量輸入ToolStripMenuItem";
-			this.大量輸入ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+			this.大量輸入ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
 			this.大量輸入ToolStripMenuItem.Text = "大量輸入";
 			this.大量輸入ToolStripMenuItem.Click += new System.EventHandler(this.大量輸入ToolStripMenuItem_Click);
+			// 
+			// 整理訂單金額ToolStripMenuItem
+			// 
+			this.整理訂單金額ToolStripMenuItem.Name = "整理訂單金額ToolStripMenuItem";
+			this.整理訂單金額ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+			this.整理訂單金額ToolStripMenuItem.Text = "整理訂單金額";
+			this.整理訂單金額ToolStripMenuItem.Click += new System.EventHandler(this.整理訂單金額ToolStripMenuItem_Click);
 			// 
 			// toolStrip_Main
 			// 
@@ -253,7 +264,7 @@
             this.toolStripButton_OrderForm,
             this.toolStripButton_QAForm,
             this.toolStripButton_Exit});
-			this.toolStrip_Main.Location = new System.Drawing.Point(0, 28);
+			this.toolStrip_Main.Location = new System.Drawing.Point(0, 24);
 			this.toolStrip_Main.Name = "toolStrip_Main";
 			this.toolStrip_Main.Size = new System.Drawing.Size(699, 39);
 			this.toolStrip_Main.TabIndex = 2;
@@ -323,12 +334,26 @@
 			this.toolStripButton_Exit.Text = "離開";
 			this.toolStripButton_Exit.Click += new System.EventHandler(this.toolStripButton_Exit_Click);
 			// 
-			// 整理訂單金額ToolStripMenuItem
+			// 系統ToolStripMenuItem1
 			// 
-			this.整理訂單金額ToolStripMenuItem.Name = "整理訂單金額ToolStripMenuItem";
-			this.整理訂單金額ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-			this.整理訂單金額ToolStripMenuItem.Text = "整理訂單金額";
-			this.整理訂單金額ToolStripMenuItem.Click += new System.EventHandler(this.整理訂單金額ToolStripMenuItem_Click);
+			this.系統ToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.員工管理ToolStripMenuItem,
+            this.toolStripMenuItem4});
+			this.系統ToolStripMenuItem1.Name = "系統ToolStripMenuItem1";
+			this.系統ToolStripMenuItem1.Size = new System.Drawing.Size(43, 20);
+			this.系統ToolStripMenuItem1.Text = "系統";
+			// 
+			// toolStripMenuItem4
+			// 
+			this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+			this.toolStripMenuItem4.Size = new System.Drawing.Size(177, 6);
+			// 
+			// 員工管理ToolStripMenuItem
+			// 
+			this.員工管理ToolStripMenuItem.Name = "員工管理ToolStripMenuItem";
+			this.員工管理ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.員工管理ToolStripMenuItem.Text = "員工管理";
+			this.員工管理ToolStripMenuItem.Click += new System.EventHandler(this.員工管理ToolStripMenuItem_Click);
 			// 
 			// form_Main
 			// 
@@ -339,7 +364,7 @@
 			this.Controls.Add(this.menuStrip_Main);
 			this.IsMdiContainer = true;
 			this.MainMenuStrip = this.menuStrip_Main;
-			this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+			this.Margin = new System.Windows.Forms.Padding(2);
 			this.Name = "form_Main";
 			this.Text = "管理系統";
 			this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -386,6 +411,9 @@
 		private System.Windows.Forms.ToolStripMenuItem 多重子視窗ToolStripMenuItem;
 		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
 		private System.Windows.Forms.ToolStripMenuItem 整理訂單金額ToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem 系統ToolStripMenuItem1;
+		private System.Windows.Forms.ToolStripMenuItem 員工管理ToolStripMenuItem;
+		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem4;
 	}
 }
 

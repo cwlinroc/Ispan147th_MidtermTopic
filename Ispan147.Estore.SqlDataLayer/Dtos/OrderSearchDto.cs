@@ -17,9 +17,12 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
 		public bool? Payed { get; set; }
 		public DateTime? PurchaseTime { get; set; }
 		public int? PaymentMethod { get; set; }
+		public int? MaxQueryNumber { get; set; }
+		public string OrderBy { get; set; }
+		public bool Descending { get; set; }
 	}
 
 
-	
+
 
 }

@@ -14,7 +14,7 @@ using prjMidtermTopic.Interfaces;
 using prjMidtermTopic.Model;
 using prjMidtermTopic.ViewModels;
 
-namespace prjMidtermTopic.form_Order
+namespace prjMidtermTopic.Form_Order
 {
 	public partial class Form_OrderListEdit : Form
 	{
