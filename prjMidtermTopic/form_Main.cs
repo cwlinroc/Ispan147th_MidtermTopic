@@ -58,7 +58,7 @@ namespace prjMidtermTopic
 
 		private void toolStripButton_QAForm_Click(object sender, EventArgs e)
 		{
-			showForm(new form_QA());
+			showForm(new form_QAList());
 		}
 
 		private void toolStripButton_Exit_Click(object sender, EventArgs e)

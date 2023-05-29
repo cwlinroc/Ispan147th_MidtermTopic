@@ -47,6 +47,7 @@
       <HintPath>..\packages\System.ComponentModel.Annotations.5.0.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
     </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -149,17 +150,23 @@
     <Compile Include="form_Pet\form_Pet.Designer.cs">
       <DependentUpon>form_Pet.cs</DependentUpon>
     </Compile>
-    <Compile Include="form_QA\form_QA.cs">
+    <Compile Include="form_QA\form_QAList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="form_QA\form_QA.Designer.cs">
-      <DependentUpon>form_QA.cs</DependentUpon>
+    <Compile Include="form_QA\form_QAList.Designer.cs">
+      <DependentUpon>form_QAList.cs</DependentUpon>
     </Compile>
     <Compile Include="form_Main.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="form_Main.Designer.cs">
       <DependentUpon>form_Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form_QA\from_QACreate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form_QA\from_QACreate.Designer.cs">
+      <DependentUpon>from_QACreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\IGrid.cs" />
     <Compile Include="MassInsert\form_MassInsert.cs">
@@ -219,6 +226,11 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MassInsert\form_MassInsert.resx">
       <DependentUpon>form_MassInsert.cs</DependentUpon>
+    <EmbeddedResource Include="form_QA\form_QAList.resx">
+      <DependentUpon>form_QAList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form_QA\from_QACreate.resx">
+      <DependentUpon>from_QACreate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
