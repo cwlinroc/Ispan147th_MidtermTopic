@@ -10,6 +10,7 @@ using prjMidtermTopic.Interfaces;
 using prjMidtermTopic.Model;
 using System.IO;
 using ISpan147.Estore.SqlDataLayer.ExtMethods;
+using Ispan147.Estore.SqlDataLayer.Repositories;
 
 namespace prjMidtermTopic.FormMember
 {
@@ -97,20 +98,20 @@ namespace prjMidtermTopic.FormMember
 				Email = vm.Email,
 				Avatar = vm.Avatar
 			};
-
+			
 			try
 			{
-				var service = new MemberService();
+				IMemberRepo repo = new MemberRepository();
+				var service = new MemberService(repo);
 				int newID = service.Create(dto);
-				MessageBox.Show($"新增成功,新的編號為{newID}");
+				MessageBox.Show($"新增成功,新的編號為{newID}");				
+				
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show("新增失敗, 原因: " + ex.Message);
-				return;
+				MessageBox.Show("新增失敗, 原因: " + ex.Message);				
 			}
 
-			// 關閉表單
 			IGrid parent = this.Owner as IGrid;
 			// 將開啟我的那個視窗, 轉型成 IGrid, 如果轉型失敗,不會丟出例外, 而是傳回null
 			if (parent == null) // 表示轉型失敗
@@ -121,10 +122,9 @@ namespace prjMidtermTopic.FormMember
 			{
 				parent.Display(); // 呼叫它的 Display() 重新顯示資料
 			}
-
 			this.Close();
 		}
-		
+
 		private void btnUploadAvatar_Click(object sender, EventArgs e)
 		{
 			_filePath = string.Empty;
@@ -145,27 +145,37 @@ namespace prjMidtermTopic.FormMember
 					Upload(_filePath);
 				}
 			}
-
 		}
 
 		private void Upload(string filePath)
 		{
 			string targetFolderPath = @"images/avatar/";
 			string fileName = Path.GetFileName(filePath);
-			string targetFilePath = Path.Combine(targetFolderPath, fileName);
+			string newFileName = GenerateUniqueFileName(fileName);
+			string targetFilePath = Path.Combine(targetFolderPath, newFileName);
 
 			try
 			{
 				File.Copy(filePath, targetFilePath);
-				txtAvatar.Text = Path.GetFileNameWithoutExtension(filePath);
+				txtAvatar.Text = newFileName;
 
-				MessageBox.Show($"上傳成功,路徑:{filePath}");
+				MessageBox.Show($"上傳成功,路徑:{targetFilePath}");
 			}
-			catch (Exception)
+			catch (Exception ex)
 			{
-				MessageBox.Show("上傳失敗");
-				return;
+				MessageBox.Show($"上傳失敗,{ex.Message}");				
 			}
+		}
+
+		private string GenerateUniqueFileName(string fileName)
+		{
+			string baseFileName = Path.GetFileNameWithoutExtension(fileName);
+			string fileExtension = Path.GetExtension(fileName);
+			string timeStamp = DateTime.Now.ToString("yyyyMMddHHmmssfff");
+
+			string newFileName = $"{baseFileName}_{timeStamp}{fileExtension}";
+
+			return newFileName;
 		}
 
 	}

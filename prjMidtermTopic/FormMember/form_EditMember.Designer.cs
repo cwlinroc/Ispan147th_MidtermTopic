@@ -54,6 +54,8 @@
 			this.txtNickName = new System.Windows.Forms.TextBox();
 			this.DateOfBirthPicker = new System.Windows.Forms.DateTimePicker();
 			this.panel1 = new System.Windows.Forms.Panel();
+			this.btnUploadAvatar = new System.Windows.Forms.Button();
+			this.btnDeleteAvatar = new System.Windows.Forms.Button();
 			this.panel1.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -62,7 +64,7 @@
 			this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnDelete.AutoSize = true;
 			this.btnDelete.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.btnDelete.Location = new System.Drawing.Point(279, 594);
+			this.btnDelete.Location = new System.Drawing.Point(322, 624);
 			this.btnDelete.Name = "btnDelete";
 			this.btnDelete.Size = new System.Drawing.Size(80, 30);
 			this.btnDelete.TabIndex = 13;
@@ -75,7 +77,7 @@
 			this.btnUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnUpdate.AutoSize = true;
 			this.btnUpdate.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.btnUpdate.Location = new System.Drawing.Point(193, 594);
+			this.btnUpdate.Location = new System.Drawing.Point(322, 588);
 			this.btnUpdate.Name = "btnUpdate";
 			this.btnUpdate.Size = new System.Drawing.Size(80, 30);
 			this.btnUpdate.TabIndex = 12;
@@ -307,11 +309,39 @@
 			this.panel1.Size = new System.Drawing.Size(185, 50);
 			this.panel1.TabIndex = 41;
 			// 
+			// btnUploadAvatar
+			// 
+			this.btnUploadAvatar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.btnUploadAvatar.AutoSize = true;
+			this.btnUploadAvatar.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.btnUploadAvatar.Location = new System.Drawing.Point(12, 588);
+			this.btnUploadAvatar.Name = "btnUploadAvatar";
+			this.btnUploadAvatar.Size = new System.Drawing.Size(127, 30);
+			this.btnUploadAvatar.TabIndex = 42;
+			this.btnUploadAvatar.Text = "Upload Avatar";
+			this.btnUploadAvatar.UseVisualStyleBackColor = true;
+			this.btnUploadAvatar.Click += new System.EventHandler(this.btnUploadAvatar_Click);
+			// 
+			// btnDeleteAvatar
+			// 
+			this.btnDeleteAvatar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.btnDeleteAvatar.AutoSize = true;
+			this.btnDeleteAvatar.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.btnDeleteAvatar.Location = new System.Drawing.Point(12, 624);
+			this.btnDeleteAvatar.Name = "btnDeleteAvatar";
+			this.btnDeleteAvatar.Size = new System.Drawing.Size(127, 30);
+			this.btnDeleteAvatar.TabIndex = 43;
+			this.btnDeleteAvatar.Text = "Delete Avatar";
+			this.btnDeleteAvatar.UseVisualStyleBackColor = true;
+			this.btnDeleteAvatar.Click += new System.EventHandler(this.btnDeleteAvatar_Click);
+			// 
 			// form_EditMember
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(371, 636);
+			this.ClientSize = new System.Drawing.Size(414, 666);
+			this.Controls.Add(this.btnDeleteAvatar);
+			this.Controls.Add(this.btnUploadAvatar);
 			this.Controls.Add(this.panel1);
 			this.Controls.Add(this.DateOfBirthPicker);
 			this.Controls.Add(this.txtAvatar);
@@ -374,5 +404,7 @@
 		private System.Windows.Forms.TextBox txtNickName;
 		private System.Windows.Forms.DateTimePicker DateOfBirthPicker;
 		private System.Windows.Forms.Panel panel1;
+		private System.Windows.Forms.Button btnUploadAvatar;
+		private System.Windows.Forms.Button btnDeleteAvatar;
 	}
 }

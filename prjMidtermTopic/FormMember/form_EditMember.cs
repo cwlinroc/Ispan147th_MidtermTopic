@@ -5,6 +5,7 @@ using ISpan147.Estore.SqlDataLayer.Dtos;
 using ISpan147.Estore.SqlDataLayer.ExtMethods;
 using prjMidtermTopic.Interfaces;
 using System;
+using System.IO;
 using System.Windows.Forms;
 
 namespace prjMidtermTopic.FormMember
@@ -13,11 +14,13 @@ namespace prjMidtermTopic.FormMember
 	{
 		private bool _gender;
 		private readonly int _memberID;
+		string _filePath = string.Empty;
+		string _targetFolderPath = @"images/avatar/";
 		public form_EditMember(int memberID)
 		{
 			InitializeComponent();
 			_memberID = memberID;
-		}		
+		}
 
 		private void form_EditMember_Load(object sender, EventArgs e)
 		{
@@ -38,6 +41,55 @@ namespace prjMidtermTopic.FormMember
 			txtAddress.Text = dto.Address;
 			txtEmail.Text = dto.Email;
 			txtAvatar.Text = dto.Avatar;
+		}
+
+		private void UploadFile(string filePath)
+		{						
+			string fileName = Path.GetFileName(filePath);
+			string newFileName = GenerateUniqueFileName(fileName);
+			string targetFilePath = Path.Combine(_targetFolderPath, newFileName);
+
+			if (!string.IsNullOrEmpty(txtAvatar.Text))
+			{
+				DeleteFile(txtAvatar.Text);
+			}
+			try
+			{
+				File.Copy(filePath, targetFilePath);
+				txtAvatar.Text = newFileName;
+
+				MessageBox.Show($"上傳成功,路徑:{targetFilePath}");
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show($"上傳失敗,{ex.Message}");
+			}
+		}
+
+		private string GenerateUniqueFileName(string fileName)
+		{
+			string baseFileName = Path.GetFileNameWithoutExtension(fileName);
+			string fileExtension = Path.GetExtension(fileName);
+			string timeStamp = DateTime.Now.ToString("yyyyMMddHHmmssfff");
+
+			string newFileName = $"{baseFileName}_{timeStamp}{fileExtension}";
+
+			return newFileName;
+		}
+
+		private void DeleteFile(string fileName)
+		{			
+			string targetFilePath = Path.Combine(_targetFolderPath, fileName);
+			try
+			{
+				if (File.Exists(targetFilePath))
+				{
+					File.Delete(targetFilePath);
+					MessageBox.Show("刪除成功");
+				}
+
+			}
+			catch (Exception) { MessageBox.Show("刪除失敗"); }
 		}
 
 		//button
@@ -78,7 +130,8 @@ namespace prjMidtermTopic.FormMember
 
 			try
 			{
-				var service = new MemberService();
+				IMemberRepo repo = new MemberRepository();
+				var service = new MemberService(repo);
 				int rows = service.Update(dto);
 				if (rows > 0)
 				{
@@ -123,24 +176,50 @@ namespace prjMidtermTopic.FormMember
 				{
 					MessageBox.Show("刪除失敗");
 				}
-				IGrid parent = this.Owner as IGrid;
-				//將開啟我的視窗轉型成IGrid,若轉型失敗,不丟出例外而是傳回null
-				if (parent == null)
-				{
-					MessageBox.Show("開啟我的表單沒有實作IGrid,所以無法通知它");
-				}
-				else
-				{
-					parent.Display();//呼叫它的Display()重新顯示資料
-				}
-				this.Close();
 			}
 			catch (Exception ex)
 			{
 				MessageBox.Show("刪除失敗,原因:" + ex.Message);
 			}
+
+			IGrid parent = this.Owner as IGrid;
+			//將開啟我的視窗轉型成IGrid,若轉型失敗,不丟出例外而是傳回null
+			if (parent == null)
+			{
+				MessageBox.Show("開啟我的表單沒有實作IGrid,所以無法通知它");
+			}
+			else
+			{
+				parent.Display();//呼叫它的Display()重新顯示資料
+			}
+			this.Close();
 		}
 
-		
+		private void btnUploadAvatar_Click(object sender, EventArgs e)
+		{	
+			using (OpenFileDialog openFileDialog = new OpenFileDialog())
+			{
+				openFileDialog.InitialDirectory =
+					Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
+				openFileDialog.Title = "選擇檔案";
+				openFileDialog.Filter =
+					"(*.png)|*.png|(*.jpg)|*.jpg|(*.jpeg)|*.jpeg|(*.gif)|*.gif";
+				openFileDialog.Multiselect = false;
+
+				if (openFileDialog.ShowDialog() == DialogResult.OK)
+				{
+					_filePath = openFileDialog.FileName;
+
+					UploadFile(_filePath);
+				}
+			}
+		}
+
+		private void btnDeleteAvatar_Click(object sender, EventArgs e)
+		{
+			string fileName = Path.GetFileName(txtAvatar.Text);
+			DeleteFile(fileName);
+			txtAvatar.Text = string.Empty;
+		}
 	}
 }
