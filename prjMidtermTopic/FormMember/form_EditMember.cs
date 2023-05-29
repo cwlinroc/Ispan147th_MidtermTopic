@@ -14,17 +14,19 @@ namespace prjMidtermTopic.FormMember
 	{
 		private bool _gender;
 		private readonly int _memberID;
-		string _filePath = string.Empty;
-		string _targetFolderPath = @"images/avatar/";
+		private string _filePath = string.Empty;
+		private string _targetFolderPath = @"images/avatar/";
+		private IMemberRepo _memberRepo;
 		public form_EditMember(int memberID)
 		{
 			InitializeComponent();
 			_memberID = memberID;
+			
 		}
 
 		private void form_EditMember_Load(object sender, EventArgs e)
 		{
-			var repo = new MemberRepository();
+			IMemberRepo repo = new MemberRepository();			
 			MemberDto dto = repo.GetById(_memberID);
 			if (dto == null)
 			{
@@ -41,6 +43,12 @@ namespace prjMidtermTopic.FormMember
 			txtAddress.Text = dto.Address;
 			txtEmail.Text = dto.Email;
 			txtAvatar.Text = dto.Avatar;
+
+			if (!string.IsNullOrEmpty(txtAvatar.Text))
+			{
+				btnDeleteAvatar.Enabled = true;
+			}
+			else { btnDeleteAvatar.Enabled = false; }
 		}
 
 		private void UploadFile(string filePath)
@@ -51,7 +59,7 @@ namespace prjMidtermTopic.FormMember
 
 			if (!string.IsNullOrEmpty(txtAvatar.Text))
 			{
-				DeleteFile(txtAvatar.Text);
+				File.Delete(Path.Combine(_targetFolderPath, txtAvatar.Text)) ;
 			}
 			try
 			{
@@ -129,9 +137,8 @@ namespace prjMidtermTopic.FormMember
 			};
 
 			try
-			{
-				IMemberRepo repo = new MemberRepository();
-				var service = new MemberService(repo);
+			{				
+				var service = new MemberService(_memberRepo);
 				int rows = service.Update(dto);
 				if (rows > 0)
 				{
@@ -163,10 +170,10 @@ namespace prjMidtermTopic.FormMember
 
 		private void btnDelete_Click(object sender, EventArgs e)
 		{
-			var repo = new MemberRepository();
+			var service = new MemberService(_memberRepo);
 			try
 			{
-				int rows = repo.Delete(_memberID);
+				int rows = service.Delete(_memberID);
 				//回到FormCategories
 				if (rows > 0)
 				{
@@ -216,7 +223,7 @@ namespace prjMidtermTopic.FormMember
 		}
 
 		private void btnDeleteAvatar_Click(object sender, EventArgs e)
-		{
+		{			
 			string fileName = Path.GetFileName(txtAvatar.Text);
 			DeleteFile(fileName);
 			txtAvatar.Text = string.Empty;

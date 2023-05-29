@@ -17,8 +17,9 @@ namespace prjMidtermTopic.FormMember
 	public partial class form_CreateMember : Form
 	{
 		private bool _gender;
-		Dictionary<string, Control> _map;
-		string _filePath;
+		private Dictionary<string, Control> _map;
+		private string _filePath;
+		private IMemberRepo _memberRepo;
 		public form_CreateMember()
 		{
 			InitializeComponent();
@@ -33,6 +34,37 @@ namespace prjMidtermTopic.FormMember
 				{ "Email", txtEmail},
 				{ "Avatar", txtAvatar}
 			};
+		}
+
+		private void Upload(string filePath)
+		{
+			string targetFolderPath = @"images/avatar/";
+			string fileName = Path.GetFileName(filePath);
+			string newFileName = GenerateUniqueFileName(fileName);
+			string targetFilePath = Path.Combine(targetFolderPath, newFileName);
+
+			try
+			{
+				File.Copy(filePath, targetFilePath);
+				txtAvatar.Text = newFileName;
+
+				MessageBox.Show($"上傳成功,路徑:{targetFilePath}");
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show($"上傳失敗,{ex.Message}");
+			}
+		}
+
+		private string GenerateUniqueFileName(string fileName)
+		{
+			string baseFileName = Path.GetFileNameWithoutExtension(fileName);
+			string fileExtension = Path.GetExtension(fileName);
+			string timeStamp = DateTime.Now.ToString("yyyyMMddHHmmssfff");
+
+			string newFileName = $"{baseFileName}_{timeStamp}{fileExtension}";
+
+			return newFileName;
 		}
 
 		//button
@@ -101,8 +133,7 @@ namespace prjMidtermTopic.FormMember
 			
 			try
 			{
-				IMemberRepo repo = new MemberRepository();
-				var service = new MemberService(repo);
+				var service = new MemberService(_memberRepo);
 				int newID = service.Create(dto);
 				MessageBox.Show($"新增成功,新的編號為{newID}");				
 				
@@ -146,38 +177,6 @@ namespace prjMidtermTopic.FormMember
 				}
 			}
 		}
-
-		private void Upload(string filePath)
-		{
-			string targetFolderPath = @"images/avatar/";
-			string fileName = Path.GetFileName(filePath);
-			string newFileName = GenerateUniqueFileName(fileName);
-			string targetFilePath = Path.Combine(targetFolderPath, newFileName);
-
-			try
-			{
-				File.Copy(filePath, targetFilePath);
-				txtAvatar.Text = newFileName;
-
-				MessageBox.Show($"上傳成功,路徑:{targetFilePath}");
-			}
-			catch (Exception ex)
-			{
-				MessageBox.Show($"上傳失敗,{ex.Message}");				
-			}
-		}
-
-		private string GenerateUniqueFileName(string fileName)
-		{
-			string baseFileName = Path.GetFileNameWithoutExtension(fileName);
-			string fileExtension = Path.GetExtension(fileName);
-			string timeStamp = DateTime.Now.ToString("yyyyMMddHHmmssfff");
-
-			string newFileName = $"{baseFileName}_{timeStamp}{fileExtension}";
-
-			return newFileName;
-		}
-
 	}
 
 }

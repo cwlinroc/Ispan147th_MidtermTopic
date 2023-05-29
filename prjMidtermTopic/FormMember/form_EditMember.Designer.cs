@@ -326,6 +326,7 @@
 			// 
 			this.btnDeleteAvatar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.btnDeleteAvatar.AutoSize = true;
+			this.btnDeleteAvatar.Enabled = false;
 			this.btnDeleteAvatar.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.btnDeleteAvatar.Location = new System.Drawing.Point(12, 624);
 			this.btnDeleteAvatar.Name = "btnDeleteAvatar";
