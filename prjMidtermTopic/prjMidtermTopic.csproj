@@ -92,6 +92,7 @@
     </Compile>
     <Compile Include="form_Category\form_SearchCategory.Designer.cs">
       <DependentUpon>form_SearchCategory.cs</DependentUpon>
+	</Compile>
     <Compile Include="Form_Employee\form_EmployeeChangePermission.cs">
       <SubType>Form</SubType>
     </Compile>
