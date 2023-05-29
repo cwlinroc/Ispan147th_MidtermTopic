@@ -46,7 +46,6 @@ namespace ISpan147.Estore.SqlDataLayer.Services
 			int? categoryid = null
 			)
 		{
-			return new List<MerchandiseSearchDto> { };
 			return new MerchandiseRepository().Search(merchandiseid, merchandisename, categoryid);
 		}
 
