@@ -60,7 +60,7 @@ namespace prjMidtermTopic.FormMember
 		{
 			string baseFileName = Path.GetFileNameWithoutExtension(fileName);
 			string fileExtension = Path.GetExtension(fileName);
-			string timeStamp = DateTime.Now.ToString("yyyyMMddHHmmssfff");
+			string timeStamp = DateTime.Now.ToString("yyyyMMddHHmmss");
 
 			string newFileName = $"{baseFileName}_{timeStamp}{fileExtension}";
 
@@ -130,17 +130,17 @@ namespace prjMidtermTopic.FormMember
 				Email = vm.Email,
 				Avatar = vm.Avatar
 			};
-			
+
 			try
 			{
 				var service = new MemberService(_memberRepo);
 				int newID = service.Create(dto);
-				MessageBox.Show($"新增成功,新的編號為{newID}");				
-				
+				MessageBox.Show($"新增成功,新的編號為{newID}");
+
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show("新增失敗, 原因: " + ex.Message);				
+				MessageBox.Show("新增失敗, 原因: " + ex.Message);
 			}
 
 			IGrid parent = this.Owner as IGrid;
@@ -166,7 +166,7 @@ namespace prjMidtermTopic.FormMember
 					Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
 				openFileDialog.Title = "選擇檔案";
 				openFileDialog.Filter =
-					"(*.png)|*.png|(*.jpg)|*.jpg|(*.jpeg)|*.jpeg|(*.gif)|*.gif";
+					"Image files(*.png;*.jpg;*.jpeg;*.gif)|*.png;*.jpg;*.jpeg;*.gif";
 				openFileDialog.Multiselect = false;
 
 				if (openFileDialog.ShowDialog() == DialogResult.OK)
