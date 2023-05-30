@@ -20,6 +20,7 @@ namespace prjMidtermTopic.form_Merchandise
 {
 	public partial class form_EditMerchandise : Form
 	{
+		private Dictionary<int, string> map = new Dictionary<int, string>();
 		private readonly int _merchandiseId;
 		private string _newimagePath;
 		private string _iniImageURL;
@@ -30,7 +31,17 @@ namespace prjMidtermTopic.form_Merchandise
 
 			InitializeComponent();
 
-			comboBox_CategoryId.Items.AddRange(ChooseCategory.categoryNameOptions);
+			//動態生成類別資料 for 下拉選單
+			map.Add(0, "未選擇");
+			new CategoryService().Search().ForEach(c => map.Add(c.CategoryId, c.CategoryName));
+			foreach (var item in map)
+			{
+				comboBox_CategoryId.Items.Add(item);
+			}
+			comboBox_CategoryId.DisplayMember = "Value";
+
+			//設定類別選單資料來源&預設值
+			comboBox_CategoryId.SelectedIndex = 0;
 		}
 
 		private (bool isValid, List<ValidationResult> errors) Validate(MerchandiseCreateVM vm)
@@ -84,7 +95,8 @@ namespace prjMidtermTopic.form_Merchandise
 
 			txt_MerchandiseId.Text = dto.MerchandiseID.ToString();
 			txt_MerchandiseName.Text = dto.MerchandiseName.ToString();
-			comboBox_CategoryId.SelectedIndex = dto.CategoryID;
+			comboBox_CategoryId.SelectedItem = comboBox_CategoryId.Items.Cast<dynamic>()
+														.FirstOrDefault(x => x.Key == dto.CategoryID);
 			txt_Price.Text = dto.Price.ToString();
 			txt_Amount.Text = dto.Amount.ToString();
 			txt_Description.Text = dto.Description.ToString();
@@ -212,7 +224,7 @@ namespace prjMidtermTopic.form_Merchandise
 			{
 				MerchandiseId = this._merchandiseId,
 				MerchandiseName = txt_MerchandiseName.Text,
-				CategoryID = comboBox_CategoryId.SelectedIndex,
+				CategoryID = (comboBox_CategoryId.SelectedItem as dynamic).Key,
 				Price = Price,
 				Amount = Amount,
 				Description = txt_Description.Text,
@@ -285,14 +297,15 @@ namespace prjMidtermTopic.form_Merchandise
 		}
 		private void btn_Delete_Click(object sender, EventArgs e)
 		{
-			var repo = new MerchandiseRepository();
+			//var repo = new MerchandiseRepository();
+			var service = new MerchandiseService();
 			try
 			{
 				if (MessageBox.Show("確定要刪除資料嗎?", "確認", MessageBoxButtons.YesNo) == DialogResult.Yes)
 				{
 					DeleteFromDb();
 
-					int rows = repo.Delete(_merchandiseId);
+					int rows = service.Delete(_merchandiseId);
 
 					this.Close();
 					//回到FormCategories

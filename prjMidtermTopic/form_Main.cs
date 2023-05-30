@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ISpan147.Estore.SqlDataLayer.Services;
+using prjMidtermTopic.form_Category;
 using prjMidtermTopic.Form_Employee;
 using prjMidtermTopic.Form_Order;
 using prjMidtermTopic.MassInsert;
@@ -49,6 +50,11 @@ namespace prjMidtermTopic
 		private void toolStripButton_MerchandiseForm_Click(object sender, EventArgs e)
 		{
 			showForm(new form_SearchMerchandise());
+		}
+
+		private void toolStripButton_Category_Click(object sender, EventArgs e)
+		{
+			showForm(new form_SearchCategory());
 		}
 
 		private void toolStripButton_OrderForm_Click(object sender, EventArgs e)
@@ -187,7 +193,5 @@ namespace prjMidtermTopic
 			frm.WindowState = FormWindowState.Maximized;
 			frm.Show();
 		}
-
-		
 	}
 }

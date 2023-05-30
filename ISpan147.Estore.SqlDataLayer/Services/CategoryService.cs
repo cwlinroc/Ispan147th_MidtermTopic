@@ -38,7 +38,6 @@ namespace ISpan147.Estore.SqlDataLayer.Services
 			string categoryname = null
 			)
 		{
-			return new List<CategoryDto> { };
 			return new CategoryRepository().Search(categoryid, categoryname);
 		}
 
