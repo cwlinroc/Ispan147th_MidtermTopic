@@ -1,4 +1,5 @@
-﻿using Ispan147.Estore.SqlDataLayer.Repositories;
+﻿
+using Ispan147.Estore.SqlDataLayer.Repositories;
 using Ispan147.Estore.SqlDataLayer.Services;
 using ISpan147.Estore.SqlDataLayer.Dtos;
 using ISpan147.Estore.SqlDataLayer.ExtMethods;
@@ -20,12 +21,12 @@ namespace prjMidtermTopic.FormMember
 		{
 			InitializeComponent();
 			_memberID = memberID;
-
+			
 		}
 
 		private void form_EditMember_Load(object sender, EventArgs e)
 		{
-			IMemberRepo repo = new MemberRepository();
+			IMemberRepo repo = new MemberRepository();			
 			MemberDto dto = repo.GetById(_memberID);
 			if (dto == null)
 			{
@@ -43,18 +44,22 @@ namespace prjMidtermTopic.FormMember
 			txtEmail.Text = dto.Email;
 			txtAvatar.Text = dto.Avatar;
 
-			btnDeleteAvatar.Enabled = !string.IsNullOrEmpty(txtAvatar.Text) ? true : false;
+			if (!string.IsNullOrEmpty(txtAvatar.Text))
+			{
+				btnDeleteAvatar.Enabled = true;
+			}
+			else { btnDeleteAvatar.Enabled = false; }
 		}
 
 		private void UploadFile(string filePath)
-		{
+		{						
 			string fileName = Path.GetFileName(filePath);
 			string newFileName = GenerateUniqueFileName(fileName);
 			string targetFilePath = Path.Combine(_targetFolderPath, newFileName);
 
 			if (!string.IsNullOrEmpty(txtAvatar.Text))
 			{
-				File.Delete(Path.Combine(_targetFolderPath, txtAvatar.Text));
+				File.Delete(Path.Combine(_targetFolderPath, txtAvatar.Text)) ;
 			}
 			try
 			{
@@ -81,7 +86,7 @@ namespace prjMidtermTopic.FormMember
 		}
 
 		private void DeleteFile(string fileName)
-		{
+		{			
 			string targetFilePath = Path.Combine(_targetFolderPath, fileName);
 			try
 			{
@@ -95,7 +100,7 @@ namespace prjMidtermTopic.FormMember
 			catch (Exception) { MessageBox.Show("刪除失敗"); }
 		}
 
-		#region button
+		//button
 		private void radbtnMale_CheckedChanged(object sender, EventArgs e)
 		{
 			if (radbtnMale.Checked)
@@ -132,7 +137,7 @@ namespace prjMidtermTopic.FormMember
 			};
 
 			try
-			{
+			{				
 				var service = new MemberService(_memberRepo);
 				int rows = service.Update(dto);
 				if (rows > 0)
@@ -198,14 +203,14 @@ namespace prjMidtermTopic.FormMember
 		}
 
 		private void btnUploadAvatar_Click(object sender, EventArgs e)
-		{
+		{	
 			using (OpenFileDialog openFileDialog = new OpenFileDialog())
 			{
 				openFileDialog.InitialDirectory =
 					Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
 				openFileDialog.Title = "選擇檔案";
 				openFileDialog.Filter =
-					"Image Files(*.PNG;*.JPEG;*.JPG;*.GIF)|*.PNG*;.JPEG;*.JPG;*.GIF";
+					"(*.png)|*.png|(*.jpg)|*.jpg|(*.jpeg)|*.jpeg|(*.gif)|*.gif";
 				openFileDialog.Multiselect = false;
 
 				if (openFileDialog.ShowDialog() == DialogResult.OK)
@@ -218,11 +223,10 @@ namespace prjMidtermTopic.FormMember
 		}
 
 		private void btnDeleteAvatar_Click(object sender, EventArgs e)
-		{
+		{			
 			string fileName = Path.GetFileName(txtAvatar.Text);
 			DeleteFile(fileName);
 			txtAvatar.Text = string.Empty;
 		}
-		#endregion
 	}
 }

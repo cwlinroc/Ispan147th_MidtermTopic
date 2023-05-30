@@ -1,6 +1,12 @@
-﻿using ISpan147.Estore.SqlDataLayer.Dtos;
+﻿using Ispan147.Estore.SqlDataLayer.Repositories;
+using ISpan147.Estore.SqlDataLayer.Dtos;
+using ISpan147.Estore.SqlDataLayer.EFModel;
 using prjMidtermTopic.Interfaces;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 
 namespace Ispan147.Estore.SqlDataLayer.Services
