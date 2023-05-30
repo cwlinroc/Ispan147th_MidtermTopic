@@ -43,11 +43,7 @@ namespace prjMidtermTopic.FormMember
 			txtEmail.Text = dto.Email;
 			txtAvatar.Text = dto.Avatar;
 
-			if (!string.IsNullOrEmpty(txtAvatar.Text))
-			{
-				btnDeleteAvatar.Enabled = true;
-			}
-			else { btnDeleteAvatar.Enabled = false; }
+			btnDeleteAvatar.Enabled = !string.IsNullOrEmpty(txtAvatar.Text) ? true : false;
 		}
 
 		private void UploadFile(string filePath)
