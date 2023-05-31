@@ -13,7 +13,7 @@ namespace prjMidtermTopic.FormMember
 	{
 		private bool _gender;
 		private readonly int _memberID;
-		private string _filePath = string.Empty;
+		private string _originalFilePath;
 		private string _targetFolderPath = @"images/avatar/";
 		private IMemberRepo _memberRepo;
 		public form_EditMember(int memberID)
@@ -41,27 +41,51 @@ namespace prjMidtermTopic.FormMember
 			txtPhone.Text = dto.Phone;
 			txtAddress.Text = dto.Address;
 			txtEmail.Text = dto.Email;
-			txtAvatar.Text = dto.Avatar;
+			txtAvatar.Text = dto.Avatar;			
+
+			if (dto.Gender)
+			{
+				radbtnMale.Checked = true;
+			}
+			else
+			{
+				radbtnFemale.Checked = true;
+			}
 
 			btnDeleteAvatar.Enabled = !string.IsNullOrEmpty(txtAvatar.Text) ? true : false;
 		}
 
-		private void UploadFile(string filePath)
+		private void SelectFileToForm(string filePath)
 		{
-			string fileName = Path.GetFileName(filePath);
-			string newFileName = GenerateUniqueFileName(fileName);
-			string targetFilePath = Path.Combine(_targetFolderPath, newFileName);
-
-			if (!string.IsNullOrEmpty(txtAvatar.Text))
+			try
 			{
-				File.Delete(Path.Combine(_targetFolderPath, txtAvatar.Text));
+				string fileName = Path.GetFileName(filePath);
+				//加上時間戳重新命名,避免檔名重複
+				txtAvatar.Text = DateTime.Now.ToString("yyyyMMddhhmmssss_") + fileName;
+
+				btnDeleteAvatar.Enabled = true;
+				MessageBox.Show("選擇成功");
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show($"選擇失敗,原因:{ex.Message}");
+			}
+
+		}
+
+		private void UploadFileToDb(string filePath)
+		{			
+			string renamedtargetFilePath = _targetFolderPath + txtAvatar.Text;
+
+			if (!string.IsNullOrEmpty(filePath))
+			{
+				File.Delete(renamedtargetFilePath);
 			}
 			try
 			{
-				File.Copy(filePath, targetFilePath);
-				txtAvatar.Text = newFileName;
+				File.Copy(filePath, renamedtargetFilePath);
 
-				MessageBox.Show($"上傳成功,路徑:{targetFilePath}");
+				MessageBox.Show($"上傳成功,路徑:{renamedtargetFilePath}");
 			}
 			catch (Exception ex)
 			{
@@ -69,30 +93,19 @@ namespace prjMidtermTopic.FormMember
 			}
 		}
 
-		private string GenerateUniqueFileName(string fileName)
-		{
-			string baseFileName = Path.GetFileNameWithoutExtension(fileName);
-			string fileExtension = Path.GetExtension(fileName);
-			string timeStamp = DateTime.Now.ToString("yyyyMMddHHmmss");
-
-			string newFileName = $"{baseFileName}_{timeStamp}{fileExtension}";
-
-			return newFileName;
-		}
-
-		private void DeleteFile(string fileName)
-		{
-			string targetFilePath = Path.Combine(_targetFolderPath, fileName);
+		private void DeleteFile(string filePath)
+		{			
+			string renamedtargetFilePath = _targetFolderPath + filePath;
 			try
 			{
-				if (File.Exists(targetFilePath))
+				if (File.Exists(renamedtargetFilePath))
 				{
-					File.Delete(targetFilePath);
+					File.Delete(renamedtargetFilePath);
 					MessageBox.Show("刪除成功");
 				}
 
 			}
-			catch (Exception) { MessageBox.Show("刪除失敗"); }
+			catch (Exception ex) { MessageBox.Show($"刪除失敗,原因:{ex.Message}"); }
 		}
 
 		//button
@@ -111,6 +124,26 @@ namespace prjMidtermTopic.FormMember
 			{
 				_gender = false;
 				radbtnMale.Checked = false;
+			}
+		}
+
+		private void btnSelectAvatar_Click(object sender, EventArgs e)
+		{
+			using (OpenFileDialog openFileDialog = new OpenFileDialog())
+			{
+				openFileDialog.InitialDirectory =
+					Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
+				openFileDialog.Title = "選擇檔案";
+				openFileDialog.Filter =
+					"Image files(*.png;*.jpg;*.jpeg;*.gif)|*.png;*.jpg;*.jpeg;*.gif";
+				openFileDialog.Multiselect = false;
+
+				if (openFileDialog.ShowDialog() == DialogResult.OK)
+				{
+					_originalFilePath = openFileDialog.FileName;
+
+					SelectFileToForm(_originalFilePath);
+				}
 			}
 		}
 
@@ -135,6 +168,9 @@ namespace prjMidtermTopic.FormMember
 			{
 				var service = new MemberService(_memberRepo);
 				int rows = service.Update(dto);
+				
+				UploadFileToDb(_originalFilePath);
+
 				if (rows > 0)
 				{
 					MessageBox.Show("更新成功");
@@ -195,32 +231,11 @@ namespace prjMidtermTopic.FormMember
 				parent.Display();//呼叫它的Display()重新顯示資料
 			}
 			this.Close();
-		}
-
-		private void btnUploadAvatar_Click(object sender, EventArgs e)
-		{
-			using (OpenFileDialog openFileDialog = new OpenFileDialog())
-			{
-				openFileDialog.InitialDirectory =
-					Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
-				openFileDialog.Title = "選擇檔案";
-				openFileDialog.Filter =
-					"Image files(*.png;*.jpg;*.jpeg;*.gif)|*.png;*.jpg;*.jpeg;*.gif";
-				openFileDialog.Multiselect = false;
-
-				if (openFileDialog.ShowDialog() == DialogResult.OK)
-				{
-					_filePath = openFileDialog.FileName;
-
-					UploadFile(_filePath);
-				}
-			}
-		}
+		}		
 
 		private void btnDeleteAvatar_Click(object sender, EventArgs e)
-		{
-			string fileName = Path.GetFileName(txtAvatar.Text);
-			DeleteFile(fileName);
+		{			
+			DeleteFile(txtAvatar.Text);
 			txtAvatar.Text = string.Empty;
 		}
 	}

@@ -320,7 +320,7 @@
 			this.btnUploadAvatar.TabIndex = 42;
 			this.btnUploadAvatar.Text = "Upload Avatar";
 			this.btnUploadAvatar.UseVisualStyleBackColor = true;
-			this.btnUploadAvatar.Click += new System.EventHandler(this.btnUploadAvatar_Click);
+			this.btnUploadAvatar.Click += new System.EventHandler(this.btnSelectAvatar_Click);
 			// 
 			// btnDeleteAvatar
 			// 

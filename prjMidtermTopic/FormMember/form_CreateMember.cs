@@ -57,12 +57,10 @@ namespace prjMidtermTopic.FormMember
 		}
 
 		private string GenerateUniqueFileName(string fileName)
-		{
-			string baseFileName = Path.GetFileNameWithoutExtension(fileName);
-			string fileExtension = Path.GetExtension(fileName);
+		{			
 			string timeStamp = DateTime.Now.ToString("yyyyMMddHHmmss");
 
-			string newFileName = $"{baseFileName}_{timeStamp}{fileExtension}";
+			string newFileName = $"{timeStamp}_{fileName}";
 
 			return newFileName;
 		}
