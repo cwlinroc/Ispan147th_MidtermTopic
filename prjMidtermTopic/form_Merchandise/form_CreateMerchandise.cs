@@ -28,7 +28,7 @@ namespace prjMidtermTopic.form_Merchandise
 		{
 			InitializeComponent();
 
-			//動態生成類別資料 for 下拉選單
+			//動態生成商品類別資料 for 下拉選單
 			map.Add(0, "未選擇");
 			new CategoryService().Search().ForEach(c => map.Add(c.CategoryId, c.CategoryName));
 			foreach (var item in map)
@@ -37,7 +37,7 @@ namespace prjMidtermTopic.form_Merchandise
 			}
 			comboBox_CategoryId.DisplayMember = "Value";
 
-			//設定類別選單資料來源&預設值
+			//設定預設值
 			comboBox_CategoryId.SelectedIndex = 0;
 		}
 
@@ -90,9 +90,9 @@ namespace prjMidtermTopic.form_Merchandise
 			//收集表單欄位值建立MerchandiseCreateVM物件
 			bool PriceisInt = int.TryParse(txt_Price.Text, out int Price);
 			Price = PriceisInt ? Price : 0;
-			bool AmountisInt = int.TryParse(txt_Price.Text, out int Amount);
+			bool AmountisInt = int.TryParse(txt_Amount.Text, out int Amount);
 			Amount = AmountisInt ? Amount : 0;
-			// 讀取下拉選單的欄位值
+			// ↓讀取下拉選單的欄位值
 			int categoryId = (comboBox_CategoryId.SelectedItem as dynamic).Key;
 			string marchandisename = txt_MerchandiseName.Text;
 			string Description = txt_Description.Text;

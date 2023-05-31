@@ -217,7 +217,7 @@ namespace prjMidtermTopic.form_Merchandise
 			//收集表單欄位值到dto
 			bool PriceisInt = int.TryParse(txt_Price.Text, out int Price);
 			Price = PriceisInt ? Price : 0;
-			bool AmountisInt = int.TryParse(txt_Price.Text, out int Amount);
+			bool AmountisInt = int.TryParse(txt_Amount.Text, out int Amount);
 			Amount = AmountisInt ? Amount : 0;
 
 			var vm = new MerchandiseCreateVM()

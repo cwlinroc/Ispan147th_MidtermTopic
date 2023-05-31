@@ -67,6 +67,7 @@ namespace prjMidtermTopic
 			//取得符合紀錄
 			//var repo = new MerchandiseRepository();
 			//data = repo.Search(sId, sName, sCategoryId);
+			//使用商業邏輯檢查
 			var service = new MerchandiseService();
 			data = service.Search(sId, sName, sCategoryId);
 
