@@ -1,4 +1,5 @@
 ﻿using ISpan147.Estore.SqlDataLayer.Dtos;
+using ISpan147.Estore.SqlDataLayer.Repositories;
 using ISpan147.Estore.SqlDataLayer.Services;
 using prjMidtermTopic.Interfaces;
 using prjMidtermTopic.ViewModels;
@@ -19,18 +20,21 @@ namespace prjMidtermTopic.form_Merchandise
 {
 	public partial class form_CreateMerchandise : Form
 	{
+		private IMerchandiseRepository _repo;
+		private ICategoryRepository _categoryRepository;
 		private Dictionary<int, string> map = new Dictionary<int, string>();
-
 		private int _categoryId;
-
 		private string _imagePath = string.Empty;
 		public form_CreateMerchandise()
 		{
 			InitializeComponent();
 
+			_repo = new MerchandiseRepository();
+			_categoryRepository = new CategoryRepository();
+
 			//動態生成商品類別資料 for 下拉選單
 			map.Add(0, "未選擇");
-			new CategoryService().Search().ForEach(c => map.Add(c.CategoryId, c.CategoryName));
+			new CategoryService(_categoryRepository).Search().ForEach(c => map.Add(c.CategoryId, c.CategoryName));
 			foreach (var item in map)
 			{
 				comboBox_CategoryId.Items.Add(item);
@@ -132,7 +136,7 @@ namespace prjMidtermTopic.form_Merchandise
 			};
 			try
 			{
-				var service = new MerchandiseService();
+				var service = new MerchandiseService(_repo);
 				int newId = service.Create(dto);
 				
 				if (txt_ImageURL.Text.Length > 0)

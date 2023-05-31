@@ -20,6 +20,8 @@ namespace prjMidtermTopic.form_Merchandise
 {
 	public partial class form_EditMerchandise : Form
 	{
+		private IMerchandiseRepository _repo;
+		private ICategoryRepository _categoryRepository;
 		private Dictionary<int, string> map = new Dictionary<int, string>();
 		private readonly int _merchandiseId;
 		private string _newimagePath;
@@ -31,9 +33,12 @@ namespace prjMidtermTopic.form_Merchandise
 
 			InitializeComponent();
 
+			_repo = new MerchandiseRepository();
+			_categoryRepository = new CategoryRepository();
+
 			//動態生成類別資料 for 下拉選單
 			map.Add(0, "未選擇");
-			new CategoryService().Search().ForEach(c => map.Add(c.CategoryId, c.CategoryName));
+			new CategoryService(_categoryRepository).Search().ForEach(c => map.Add(c.CategoryId, c.CategoryName));
 			foreach (var item in map)
 			{
 				comboBox_CategoryId.Items.Add(item);
@@ -85,8 +90,8 @@ namespace prjMidtermTopic.form_Merchandise
 
 		private void form_EditMerchandise_Load(object sender, EventArgs e)
 		{
-			var repo = new MerchandiseRepository();
-			MerchandiseDto dto = repo.GetByMerchandiseID(_merchandiseId);
+			//var repo = new MerchandiseRepository();
+			MerchandiseDto dto = _repo.GetByMerchandiseID(_merchandiseId);
 			if (dto == null)
 			{
 				MessageBox.Show("找不到符合紀錄");
@@ -256,7 +261,7 @@ namespace prjMidtermTopic.form_Merchandise
 
 			try
 			{
-				var service = new MerchandiseService();
+				var service = new MerchandiseService(_repo);
 				int rows = service.Update(dto);
 
 				if (txt_ImageURL.Text != _iniImageURL && txt_ImageURL.Text.Length > 0)
@@ -298,7 +303,7 @@ namespace prjMidtermTopic.form_Merchandise
 		private void btn_Delete_Click(object sender, EventArgs e)
 		{
 			//var repo = new MerchandiseRepository();
-			var service = new MerchandiseService();
+			var service = new MerchandiseService(_repo);
 			try
 			{
 				if (MessageBox.Show("確定要刪除資料嗎?", "確認", MessageBoxButtons.YesNo) == DialogResult.Yes)

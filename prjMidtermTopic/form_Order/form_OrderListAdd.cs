@@ -23,6 +23,7 @@ namespace prjMidtermTopic.Form_Order
 		public form_OrderListAdd(int orderId)
 		{
 			InitializeComponent();
+
 			txt_OrderID.Text = orderId.ToString();
 
 			_repo = new OrderListRepositoryDapper();

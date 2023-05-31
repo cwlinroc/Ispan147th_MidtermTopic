@@ -17,9 +17,12 @@ namespace prjMidtermTopic.form_Category
 {
 	public partial class form_SearchCategory : Form, IGrid
 	{
+		private ICategoryRepository _repo;
 		public form_SearchCategory()
 		{
 			InitializeComponent();
+
+			_repo = new CategoryRepository();
 		}
 
 		List<CategoryDto> data;
@@ -46,8 +49,8 @@ namespace prjMidtermTopic.form_Category
 			string sName = this.txt_CategoryName.Text;
 
 			//取得符合紀錄
-			var repo = new CategoryRepository();
-			data = repo.Search(sId, sName);
+			//var repo = new CategoryRepository();
+			data = _repo.Search(sId, sName);
 
 			//匯入DataGridView
 			this.dataGridView1.DataSource = data;

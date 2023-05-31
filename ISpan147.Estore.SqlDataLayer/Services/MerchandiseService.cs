@@ -10,6 +10,12 @@ namespace ISpan147.Estore.SqlDataLayer.Services
 {
 	public class MerchandiseService
 	{
+		private IMerchandiseRepository _repo;
+
+		public MerchandiseService(IMerchandiseRepository repo)
+		{
+			this._repo = repo;
+		}
 		public List<MerchandiseSearchDto> Search(
 			//設定未給值時的預設值
 			int? merchandiseid = null,
@@ -17,43 +23,43 @@ namespace ISpan147.Estore.SqlDataLayer.Services
 			int? categoryid = null
 												)
 		{
-			return new MerchandiseRepository().Search(merchandiseid, merchandisename, categoryid);
+			return _repo.Search(merchandiseid, merchandisename, categoryid);
 		}
 
 		public int Create(MerchandiseDto dto)
 		{
-			var repo = new MerchandiseRepository();
+			//var repo = new MerchandiseRepository();
 			//驗證分類名稱是否重複
-			var dtoInDb = repo.GetByMerchandiseName(dto.MerchandiseName);
+			var dtoInDb = _repo.GetByMerchandiseName(dto.MerchandiseName);
 			if (dtoInDb != null) { throw new Exception("此分類名稱已存在，請重新命名"); }
 			//驗證是否選擇商品類別
 			var repoC = new CategoryRepository();
 			var dtoInDb2 = repoC.GetByCategoryID(dto.CategoryID);
 			if (dtoInDb2 == null) { throw new Exception("未選擇商品類別"); }
 
-			int newId = repo.Create(dto);
+			int newId = _repo.Create(dto);
 
 			return newId;
 		}
 		public int Update(MerchandiseDto dto)
 		{
-			var repo = new MerchandiseRepository();
+			//var repo = new MerchandiseRepository();
 			//驗證分類名稱是否重複
-			var dtoInDb = repo.GetByMerchandiseName(dto.MerchandiseName);
+			var dtoInDb = _repo.GetByMerchandiseName(dto.MerchandiseName);
 			if (dtoInDb != null && dtoInDb.MerchandiseID != dto.MerchandiseID) { throw new Exception("此商品名稱已存在，請重新命名"); }
 			//驗證是否選到預設值(預設值不存在於資料庫)
 			var repoC = new CategoryRepository();
 			var dtoInDb2 = repoC.GetByCategoryID(dto.CategoryID);
 			if (dtoInDb2 == null) { throw new Exception("未選擇商品類別"); }
 
-			int rows = repo.Update(dto);
+			int rows = _repo.Update(dto);
 
 			return rows;
 		}
 
 		public int Delete(int merchandiseID)
 		{
-			return new MerchandiseRepository().Delete(merchandiseID);
+			return _repo.Delete(merchandiseID);
 		}
 	}
 }

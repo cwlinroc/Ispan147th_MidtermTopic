@@ -17,18 +17,22 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace prjMidtermTopic
 {
-	// todo 增加反轉注入、排序
+	// todo 進階排序功能
     public partial class form_SearchMerchandise : Form, IGrid
 	{
-
+		private IMerchandiseRepository _repo;
+		private ICategoryRepository _categoryRepository;
 		private Dictionary<int, string> map = new Dictionary<int, string>();
 		public form_SearchMerchandise()
         {
             InitializeComponent();
 
+			_repo = new MerchandiseRepository();
+			_categoryRepository = new CategoryRepository();
+
 			//動態生成類別資料 for 下拉選單
 			map.Add(0, "未選擇");
-			new CategoryService().Search().ForEach(c => map.Add(c.CategoryId, c.CategoryName));
+			new CategoryService(_categoryRepository).Search().ForEach(c => map.Add(c.CategoryId, c.CategoryName));
 			foreach(var item in map)
 			{
 				comboBox_CategoryId.Items.Add(item);
@@ -62,13 +66,13 @@ namespace prjMidtermTopic
 
 			string sName = this.txt_MerchandiseName.Text;
 
-			int sCategoryId = this.comboBox_CategoryId.SelectedIndex;
+			int sCategoryId = (this.comboBox_CategoryId.SelectedItem as dynamic).Key;
 
 			//取得符合紀錄
 			//var repo = new MerchandiseRepository();
 			//data = repo.Search(sId, sName, sCategoryId);
 			//使用商業邏輯檢查
-			var service = new MerchandiseService();
+			var service = new MerchandiseService(_repo);
 			data = service.Search(sId, sName, sCategoryId);
 
 			//匯入DataGridView
