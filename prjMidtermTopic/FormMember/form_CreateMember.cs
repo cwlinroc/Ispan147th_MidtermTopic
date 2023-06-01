@@ -16,9 +16,11 @@ namespace prjMidtermTopic.FormMember
 {
 	public partial class form_CreateMember : Form
 	{
-		private bool _gender;
-		Dictionary<string, Control> _map;
-		string _filePath;
+		private bool? _gender;
+		private Dictionary<string, Control> _map;
+		private string _originalFilePath;
+		private string _targetFolderPath = @"images/avatar/";
+		private IMemberRepo _memberRepo;
 		public form_CreateMember()
 		{
 			InitializeComponent();
@@ -26,6 +28,8 @@ namespace prjMidtermTopic.FormMember
 			{
 				{ "MemberName", txtMemberName},
 				{ "NickName", txtNickName},
+				{ "DateOfBirth", DateOfBirthPicker },
+				{ "Gender", radbtnFemale},
 				{ "Account", txtAccount},
 				{ "Password", txtPassword},
 				{ "Phone", txtPhone},
@@ -33,9 +37,63 @@ namespace prjMidtermTopic.FormMember
 				{ "Email", txtEmail},
 				{ "Avatar", txtAvatar}
 			};
+
+			_memberRepo = new MemberRepository();
 		}
 
-		//button
+		private void SelectFileToForm(string filePath)
+		{
+			try
+			{
+				string fileName = Path.GetFileName(filePath);
+				//加上時間戳重新命名,避免檔名重複
+				txtAvatar.Text = DateTime.Now.ToString("yyyyMMddhhmmssss_") + fileName;
+				
+				MessageBox.Show("選擇成功");
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show($"選擇失敗,原因:{ex.Message}");
+			}
+
+		}
+
+		private void UploadFileToDb(string filePath)
+		{
+			string renamedtargetFilePath = _targetFolderPath + txtAvatar.Text;
+
+			if (!string.IsNullOrEmpty(filePath))
+			{
+				File.Delete(renamedtargetFilePath);
+			}
+			else
+			{
+				return;
+			}
+			try
+			{
+				File.Copy(filePath, renamedtargetFilePath);
+
+				MessageBox.Show($"上傳成功,路徑:{renamedtargetFilePath}");
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show($"上傳失敗,{ex.Message}");
+			}
+		}
+
+		private void DateOfBirthPicker_ValueChanged(object sender, EventArgs e)
+		{
+			DateTime selectedDate = DateOfBirthPicker.Value;
+			DateTime currentDate = DateTime.Now;
+
+			if (selectedDate < currentDate.AddYears(-100))
+			{
+				MessageBox.Show("選擇時間早於目前時間100年!", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+			}
+		}
+
+		#region button
 		private void radbtnMale_CheckedChanged(object sender, EventArgs e)
 		{
 			if (radbtnMale.Checked)
@@ -51,6 +109,26 @@ namespace prjMidtermTopic.FormMember
 			{
 				_gender = false;
 				radbtnMale.Checked = false;
+			}
+		}
+
+		private void btnSelectAvatar_Click(object sender, EventArgs e)
+		{
+			using (OpenFileDialog openFileDialog = new OpenFileDialog())
+			{
+				openFileDialog.InitialDirectory =
+					Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
+				openFileDialog.Title = "選擇檔案";
+				openFileDialog.Filter =
+					"Image files(*.png;*.jpg;*.jpeg;*.gif)|*.png;*.jpg;*.jpeg;*.gif";
+				openFileDialog.Multiselect = false;
+
+				if (openFileDialog.ShowDialog() == DialogResult.OK)
+				{
+					_originalFilePath = openFileDialog.FileName;
+
+					SelectFileToForm(_originalFilePath);
+				}
 			}
 		}
 
@@ -90,7 +168,7 @@ namespace prjMidtermTopic.FormMember
 				MemberName = vm.MemberName,
 				NickName = vm.NickName,
 				DateOfBirth = vm.DateOfBirth,
-				Gender = vm.Gender,
+				Gender = vm.Gender.Value,
 				Account = vm.Account,
 				Password = vm.Password,
 				Phone = vm.Phone,
@@ -98,18 +176,19 @@ namespace prjMidtermTopic.FormMember
 				Email = vm.Email,
 				Avatar = vm.Avatar
 			};
-			
+
 			try
 			{
-				IMemberRepo repo = new MemberRepository();
-				var service = new MemberService(repo);
+				var service = new MemberService(_memberRepo);
 				int newID = service.Create(dto);
-				MessageBox.Show($"新增成功,新的編號為{newID}");				
-				
+
+				UploadFileToDb(_originalFilePath);
+
+				MessageBox.Show($"新增成功,新的編號為{newID}");
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show("新增失敗, 原因: " + ex.Message);				
+				MessageBox.Show("新增失敗, 原因: " + ex.Message);
 			}
 
 			IGrid parent = this.Owner as IGrid;
@@ -125,59 +204,8 @@ namespace prjMidtermTopic.FormMember
 			this.Close();
 		}
 
-		private void btnUploadAvatar_Click(object sender, EventArgs e)
-		{
-			_filePath = string.Empty;
-
-			using (OpenFileDialog openFileDialog = new OpenFileDialog())
-			{
-				openFileDialog.InitialDirectory =
-					Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
-				openFileDialog.Title = "選擇檔案";
-				openFileDialog.Filter =
-					"(*.png)|*.png|(*.jpg)|*.jpg|(*.jpeg)|*.jpeg|(*.gif)|*.gif";
-				openFileDialog.Multiselect = false;
-
-				if (openFileDialog.ShowDialog() == DialogResult.OK)
-				{
-					_filePath = openFileDialog.FileName;
-
-					Upload(_filePath);
-				}
-			}
-		}
-
-		private void Upload(string filePath)
-		{
-			string targetFolderPath = @"images/avatar/";
-			string fileName = Path.GetFileName(filePath);
-			string newFileName = GenerateUniqueFileName(fileName);
-			string targetFilePath = Path.Combine(targetFolderPath, newFileName);
-
-			try
-			{
-				File.Copy(filePath, targetFilePath);
-				txtAvatar.Text = newFileName;
-
-				MessageBox.Show($"上傳成功,路徑:{targetFilePath}");
-			}
-			catch (Exception ex)
-			{
-				MessageBox.Show($"上傳失敗,{ex.Message}");				
-			}
-		}
-
-		private string GenerateUniqueFileName(string fileName)
-		{
-			string baseFileName = Path.GetFileNameWithoutExtension(fileName);
-			string fileExtension = Path.GetExtension(fileName);
-			string timeStamp = DateTime.Now.ToString("yyyyMMddHHmmssfff");
-
-			string newFileName = $"{baseFileName}_{timeStamp}{fileExtension}";
-
-			return newFileName;
-		}
-
+		#endregion
+		
 	}
 
 }

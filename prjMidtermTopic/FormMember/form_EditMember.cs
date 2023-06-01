@@ -1,64 +1,112 @@
-﻿
-using Ispan147.Estore.SqlDataLayer.Repositories;
+﻿using Ispan147.Estore.SqlDataLayer.Repositories;
 using Ispan147.Estore.SqlDataLayer.Services;
 using ISpan147.Estore.SqlDataLayer.Dtos;
 using ISpan147.Estore.SqlDataLayer.ExtMethods;
 using prjMidtermTopic.Interfaces;
+using prjMidtermTopic.Model;
+using prjMidtermTopic.ViewModels;
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Net;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace prjMidtermTopic.FormMember
 {
 	public partial class form_EditMember : Form
 	{
+		private Dictionary<string, Control> _map;
 		private bool _gender;
 		private readonly int _memberID;
-		string _filePath = string.Empty;
-		string _targetFolderPath = @"images/avatar/";
+		private string _originalFilePath;
+		private string _targetFolderPath = @"images/avatar/";
+		private IMemberRepo _memberRepo;
 		public form_EditMember(int memberID)
 		{
 			InitializeComponent();
 			_memberID = memberID;
+
+			_map = new Dictionary<string, Control>(StringComparer.CurrentCultureIgnoreCase)
+			{
+				{ "MemberName", txtMemberName},
+				{ "NickName", txtNickName},
+				{ "DateOfBirth", DateOfBirthPicker },
+				{ "Gender", radbtnFemale},
+				{ "Account", txtAccount},				
+				{ "Phone", txtPhone},
+				{ "Address", txtAddress},
+				{ "Email", txtEmail},
+				{ "Avatar", txtAvatar}
+			};
+
 		}
 
 		private void form_EditMember_Load(object sender, EventArgs e)
 		{
-			var repo = new MemberRepository();
-			MemberDto dto = repo.GetById(_memberID);
+			_memberRepo = new MemberRepository();
+			MemberDto dto = _memberRepo.GetById(_memberID);
 			if (dto == null)
 			{
 				MessageBox.Show("找不到紀錄");
 				return;
-			}
-			txtMemberID.Text = dto.MemberID.ToString();
+			}			
 			txtMemberName.Text = dto.MemberName;
 			txtNickName.Text = dto.NickName;
 			DateOfBirthPicker.Value = dto.DateOfBirth;
-			txtAccount.Text = dto.Account;
-			txtPassword.Text = dto.Password;
+			txtAccount.Text = dto.Account;			
 			txtPhone.Text = dto.Phone;
 			txtAddress.Text = dto.Address;
 			txtEmail.Text = dto.Email;
 			txtAvatar.Text = dto.Avatar;
+
+			if (dto.Gender)
+			{
+				radbtnMale.Checked = true;
+			}
+			else
+			{
+				radbtnFemale.Checked = true;
+			}
+
+			btnDeleteAvatar.Enabled = !string.IsNullOrEmpty(txtAvatar.Text) ? true : false;
 		}
 
-		private void UploadFile(string filePath)
-		{						
-			string fileName = Path.GetFileName(filePath);
-			string newFileName = GenerateUniqueFileName(fileName);
-			string targetFilePath = Path.Combine(_targetFolderPath, newFileName);
-
-			if (!string.IsNullOrEmpty(txtAvatar.Text))
+		private void SelectFileToForm(string filePath)
+		{
+			try
 			{
-				DeleteFile(txtAvatar.Text);
+				string fileName = Path.GetFileName(filePath);
+				//加上時間戳重新命名,避免檔名重複
+				txtAvatar.Text = DateTime.Now.ToString("yyyyMMddhhmmssss_") + fileName;
+
+				btnDeleteAvatar.Enabled = true;
+				MessageBox.Show("選擇成功");
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show($"選擇失敗,原因:{ex.Message}");
+			}
+
+		}
+
+		private void UploadFileToDb(string filePath)
+		{
+			string renamedtargetFilePath = _targetFolderPath + txtAvatar.Text;
+
+			if (!string.IsNullOrEmpty(filePath))
+			{
+				File.Delete(renamedtargetFilePath);
+			}
+			else
+			{
+				return;
 			}
 			try
 			{
-				File.Copy(filePath, targetFilePath);
-				txtAvatar.Text = newFileName;
+				File.Copy(filePath, renamedtargetFilePath);
 
-				MessageBox.Show($"上傳成功,路徑:{targetFilePath}");
+				MessageBox.Show($"上傳成功,路徑:{renamedtargetFilePath}");
 			}
 			catch (Exception ex)
 			{
@@ -66,33 +114,33 @@ namespace prjMidtermTopic.FormMember
 			}
 		}
 
-		private string GenerateUniqueFileName(string fileName)
+		private void DeleteFile(string filePath)
 		{
-			string baseFileName = Path.GetFileNameWithoutExtension(fileName);
-			string fileExtension = Path.GetExtension(fileName);
-			string timeStamp = DateTime.Now.ToString("yyyyMMddHHmmssfff");
-
-			string newFileName = $"{baseFileName}_{timeStamp}{fileExtension}";
-
-			return newFileName;
-		}
-
-		private void DeleteFile(string fileName)
-		{			
-			string targetFilePath = Path.Combine(_targetFolderPath, fileName);
+			string renamedtargetFilePath = _targetFolderPath + filePath;
 			try
 			{
-				if (File.Exists(targetFilePath))
+				if (File.Exists(renamedtargetFilePath))
 				{
-					File.Delete(targetFilePath);
+					File.Delete(renamedtargetFilePath);
 					MessageBox.Show("刪除成功");
 				}
 
 			}
-			catch (Exception) { MessageBox.Show("刪除失敗"); }
+			catch (Exception ex) { MessageBox.Show($"刪除失敗,原因:{ex.Message}"); }
 		}
 
-		//button
+		private void DateOfBirthPicker_ValueChanged(object sender, EventArgs e)
+		{
+			DateTime selectedDate = DateOfBirthPicker.Value;
+			DateTime currentDate = DateTime.Now;
+
+			if (selectedDate < currentDate.AddYears(-100))
+			{
+				MessageBox.Show("選擇時間早於目前時間100年!", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+			}
+		}
+
+		#region button
 		private void radbtnMale_CheckedChanged(object sender, EventArgs e)
 		{
 			if (radbtnMale.Checked)
@@ -111,9 +159,30 @@ namespace prjMidtermTopic.FormMember
 			}
 		}
 
-		private void btnUpdate_Click(object sender, EventArgs e)
+		private void btnSelectAvatar_Click(object sender, EventArgs e)
 		{
-			MemberDto dto = new MemberDto()
+			using (OpenFileDialog openFileDialog = new OpenFileDialog())
+			{
+				openFileDialog.InitialDirectory =
+					Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
+				openFileDialog.Title = "選擇檔案";
+				openFileDialog.Filter =
+					"Image files(*.png;*.jpg;*.jpeg;*.gif)|*.png;*.jpg;*.jpeg;*.gif";
+				openFileDialog.Multiselect = false;
+
+				if (openFileDialog.ShowDialog() == DialogResult.OK)
+				{
+					_originalFilePath = openFileDialog.FileName;
+
+					SelectFileToForm(_originalFilePath);
+				}
+			}
+		}
+
+		private void btnUpdate_Click(object sender, EventArgs e)
+		{		
+
+			var vm = new MemberCreateVM()
 			{
 				MemberID = this._memberID,
 				MemberName = txtMemberName.Text,
@@ -121,18 +190,38 @@ namespace prjMidtermTopic.FormMember
 				DateOfBirth = DateOfBirthPicker.Value,
 				Gender = _gender,
 				Account = txtAccount.Text,
-				Password = MyEncoder.GetSaltedSha256(txtPassword.Text),
 				Phone = txtPhone.Text,
 				Address = txtAddress.Text,
 				Email = txtEmail.Text,
 				Avatar = txtAvatar.Text
 			};
 
+			//驗證vm是否通過欄位驗證
+			bool hasError = MyValidator.ValidateAndDisplay(vm, errorProvider1, _map);
+			if (hasError) return;
+
+			MemberDto dto = new MemberDto
+			{
+				MemberID = vm.MemberID,
+				MemberName = vm.MemberName,
+				NickName = vm.NickName,
+				DateOfBirth = vm.DateOfBirth,
+				Gender = vm.Gender.Value,
+				Account = vm.Account,
+				Password = vm.Password,
+				Phone = vm.Phone,
+				Address = vm.Address,
+				Email = vm.Email,
+				Avatar = vm.Avatar
+			};
+
 			try
 			{
-				IMemberRepo repo = new MemberRepository();
-				var service = new MemberService(repo);
+				var service = new MemberService(_memberRepo);
 				int rows = service.Update(dto);
+
+				UploadFileToDb(_originalFilePath);
+
 				if (rows > 0)
 				{
 					MessageBox.Show("更新成功");
@@ -163,10 +252,10 @@ namespace prjMidtermTopic.FormMember
 
 		private void btnDelete_Click(object sender, EventArgs e)
 		{
-			var repo = new MemberRepository();
+			var service = new MemberService(_memberRepo);
 			try
 			{
-				int rows = repo.Delete(_memberID);
+				int rows = service.Delete(_memberID);
 				//回到FormCategories
 				if (rows > 0)
 				{
@@ -195,31 +284,11 @@ namespace prjMidtermTopic.FormMember
 			this.Close();
 		}
 
-		private void btnUploadAvatar_Click(object sender, EventArgs e)
-		{	
-			using (OpenFileDialog openFileDialog = new OpenFileDialog())
-			{
-				openFileDialog.InitialDirectory =
-					Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
-				openFileDialog.Title = "選擇檔案";
-				openFileDialog.Filter =
-					"(*.png)|*.png|(*.jpg)|*.jpg|(*.jpeg)|*.jpeg|(*.gif)|*.gif";
-				openFileDialog.Multiselect = false;
-
-				if (openFileDialog.ShowDialog() == DialogResult.OK)
-				{
-					_filePath = openFileDialog.FileName;
-
-					UploadFile(_filePath);
-				}
-			}
-		}
-
 		private void btnDeleteAvatar_Click(object sender, EventArgs e)
 		{
-			string fileName = Path.GetFileName(txtAvatar.Text);
-			DeleteFile(fileName);
+			DeleteFile(txtAvatar.Text);
 			txtAvatar.Text = string.Empty;
 		}
+		#endregion
 	}
 }

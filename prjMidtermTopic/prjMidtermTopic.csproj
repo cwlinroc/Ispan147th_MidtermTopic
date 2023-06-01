@@ -42,7 +42,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="System" />
+    <Reference Include="System">
+      <HintPath>..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
+    </Reference>
     <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.ComponentModel.Annotations.5.0.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
     </Reference>
@@ -92,7 +94,7 @@
     </Compile>
     <Compile Include="form_Category\form_SearchCategory.Designer.cs">
       <DependentUpon>form_SearchCategory.cs</DependentUpon>
-	</Compile>
+    </Compile>
     <Compile Include="Form_Employee\form_EmployeeChangePermission.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -240,7 +242,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="form_Category\form_SearchCategory.resx">
       <DependentUpon>form_SearchCategory.cs</DependentUpon>
-       </EmbeddedResource>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form_Employee\form_EmployeeChangePermission.resx">
       <DependentUpon>form_EmployeeChangePermission.cs</DependentUpon>
     </EmbeddedResource>
