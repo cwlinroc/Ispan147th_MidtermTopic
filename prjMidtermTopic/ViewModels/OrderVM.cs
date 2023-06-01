@@ -33,6 +33,7 @@ namespace prjMidtermTopic.ViewModels
 
 		[Display(Name = "購買時間")]
 		[Required(ErrorMessage = "{0}必填")]
+		[DateValid(UpToYears = 10)]
 		public DateTime? PurchaseTime { get; set; }
 
 		[Display(Name = "付款金額")]
@@ -85,6 +86,45 @@ namespace prjMidtermTopic.ViewModels
 				PurchaseTime = dto.PurchaseTime,
 				PaymentAmount = dto.PaymentAmount?.ToString(),
 			};
+		}
+
+	}
+
+	[AttributeUsage(AttributeTargets.Property, AllowMultiple = false, Inherited = false)]
+	public class DateValid : ValidationAttribute
+	{
+		private DateTime? _minDate;
+		public int UpToYears { get; set; } = -1;
+		public int UpToMonths { get; set; } = -1;
+		public int UpToDays { get; set; } = -1;
+
+		protected override ValidationResult IsValid(object value, ValidationContext validationContext)
+		{
+			DateTime dateTime = Convert.ToDateTime(value);
+
+			if (UpToYears > 0)
+			{
+				_minDate = DateTime.Now.AddYears(-UpToYears);
+			}
+			if (UpToMonths > 0)
+			{
+				_minDate = DateTime.Now.AddMonths(-UpToMonths);
+			}
+			if (UpToDays > 0)
+			{
+				_minDate = DateTime.Now.AddDays(-UpToDays);
+			}
+
+			if (_minDate != null && dateTime < _minDate)
+			{
+				return new ValidationResult("選擇時間過早", new[] { validationContext.MemberName });
+			}
+			if (dateTime > DateTime.Now)
+			{
+				return new ValidationResult("選擇時間大於現在", new[] { validationContext.MemberName });
+			}
+
+			return ValidationResult.Success; ;
 		}
 
 	}

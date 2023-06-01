@@ -109,7 +109,7 @@ namespace prjMidtermTopic.form_Merchandise
 			};
 
 			//驗證vm是否通過欄位驗證
-			(bool isValid, List<ValidationResult> errors) validationResult = Validate(vm);
+			(bool isValid, List < ValidationResult > errors) validationResult = Validate(vm);
 
 			//若有錯則顯示
 			if (validationResult.isValid == false)
@@ -182,9 +182,9 @@ namespace prjMidtermTopic.form_Merchandise
 
 		private void UploadToForm(string imagePath)
 		{
-			//string targetFolderPath = @"images/MerchendisePicture/";
-			//string imageName = Path.GetFileName(imagePath);
-			//string targetFilePath = Path.Combine(targetFolderPath, imageName);
+			string targetFolderPath = @"images/MerchendisePicture/";
+			string imageName = Path.GetFileName(imagePath);
+			string targetFilePath = Path.Combine(targetFolderPath, imageName);
 
 			try
 			{

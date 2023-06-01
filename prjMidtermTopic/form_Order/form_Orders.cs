@@ -108,7 +108,7 @@ namespace prjMidtermTopic.Form_Order
 
 				var gridDtoList = new OrderService().Search(sDto);
 
-				_data = gridDtoList.OrderBy(o => o.OrderID).ToList();
+				_data = gridDtoList.ToList();
 
 				dataGridView_Main.DataSource = _data.Select(dto => dto.ToVM()).ToArray();
 			}
@@ -174,17 +174,18 @@ namespace prjMidtermTopic.Form_Order
 			}
 			if (checkBox_MaxData.Checked)
 			{
-				sDto.MaxQueryNumber = int.Parse(txt_MaxQuery.Text.Trim());
-				sDto.Descending = checkBox_desc.Checked;
+				sDto.MaxQueryNumber = int.Parse(txt_MaxQuery.Text.Trim());				
+			}
 
-				if (comboBox_SortBy.SelectedIndex != -1)
-				{
-					sDto.OrderBy = _orderByColumns[comboBox_SortBy.SelectedIndex];
-				}
-				else
-				{
-					sDto.OrderBy = "OrderID";
-				}
+			sDto.Descending = checkBox_desc.Checked;
+
+			if (comboBox_SortBy.SelectedIndex != -1)
+			{
+				sDto.OrderBy = _orderByColumns[comboBox_SortBy.SelectedIndex];
+			}
+			else
+			{
+				sDto.OrderBy = "OrderID";
 			}
 
 			#endregion

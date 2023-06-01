@@ -138,7 +138,7 @@ namespace ISpan147.Estore.SqlDataLayer.Services
 				
 				int orderID = repo.CreateOrder(dto);
 
-				int scale = rng.RandomIntByWeight(0,4,4,3,2,2,1,1,1,1,1,1,1,1,1,1,1,1);
+				int scale = rng.RandomIntByWeight(0,2,5,5,3,2,1,0,0,0,1,0,1,0,0,0,0,1);
 
 				for (int j = 0; j < rng.RandomIntBetween(1, scale); j++)
 				{

@@ -12,8 +12,8 @@ namespace prjMidtermTopic.Model
 		public static EventHandler Handler;
 		public static void DisplayAll(object sender, MessageArgs e)
 		{
-			Handler(sender,e);
-		}		
+			if (Handler != null) Handler(sender, e);
+		}
 	}
 	public class MessageArgs : EventArgs
 	{
