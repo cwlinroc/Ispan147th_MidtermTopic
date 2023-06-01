@@ -143,8 +143,6 @@ namespace ISpan147.Estore.SqlDataLayer.Services
 			}
 		}
 
-
-
 		//todo [君韋] 隨機訂單金額過高
 		public void CreateRandomOrderAndOrderList(int total)
 		{
@@ -229,10 +227,6 @@ namespace ISpan147.Estore.SqlDataLayer.Services
 				}
 				repo.UpdateOrder(dto);
 			}
-
 		}
-
-
-
 	}
 }

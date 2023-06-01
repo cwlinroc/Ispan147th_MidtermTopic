@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace ISpan147.Estore.SqlDataLayer.Repositories
 {
-	public class CategoryRepository
+	public class CategoryRepository : ICategoryRepository
 	{
 		public CategoryDto GetByCategoryID(int categoryId)
 		{

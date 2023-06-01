@@ -11,7 +11,6 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
         public int MerchandiseID { get; set; }
         public string MerchandiseName { get; set; }
 		public int CategoryID { get; set; }
-		//public string CategoryName { get; set; }
 		public int Price { get; set; }
         public int Amount { get; set; }
         public string Description { get; set; }

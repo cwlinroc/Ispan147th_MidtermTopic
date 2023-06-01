@@ -20,6 +20,9 @@ namespace prjMidtermTopic.form_Merchandise
 {
 	public partial class form_EditMerchandise : Form
 	{
+		private IMerchandiseRepository _repo;
+		private ICategoryRepository _categoryRepository;
+		private Dictionary<int, string> map = new Dictionary<int, string>();
 		private readonly int _merchandiseId;
 		private string _newimagePath;
 		private string _iniImageURL;
@@ -30,7 +33,20 @@ namespace prjMidtermTopic.form_Merchandise
 
 			InitializeComponent();
 
-			comboBox_CategoryId.Items.AddRange(ChooseCategory.categoryNameOptions);
+			_repo = new MerchandiseRepository();
+			_categoryRepository = new CategoryRepository();
+
+			//動態生成類別資料 for 下拉選單
+			map.Add(0, "未選擇");
+			new CategoryService(_categoryRepository).Search().ForEach(c => map.Add(c.CategoryId, c.CategoryName));
+			foreach (var item in map)
+			{
+				comboBox_CategoryId.Items.Add(item);
+			}
+			comboBox_CategoryId.DisplayMember = "Value";
+
+			//設定類別選單資料來源&預設值
+			comboBox_CategoryId.SelectedIndex = 0;
 		}
 
 		private (bool isValid, List<ValidationResult> errors) Validate(MerchandiseCreateVM vm)
@@ -74,8 +90,8 @@ namespace prjMidtermTopic.form_Merchandise
 
 		private void form_EditMerchandise_Load(object sender, EventArgs e)
 		{
-			var repo = new MerchandiseRepository();
-			MerchandiseDto dto = repo.GetByMerchandiseID(_merchandiseId);
+			//var repo = new MerchandiseRepository();
+			MerchandiseDto dto = _repo.GetByMerchandiseID(_merchandiseId);
 			if (dto == null)
 			{
 				MessageBox.Show("找不到符合紀錄");
@@ -84,7 +100,8 @@ namespace prjMidtermTopic.form_Merchandise
 
 			txt_MerchandiseId.Text = dto.MerchandiseID.ToString();
 			txt_MerchandiseName.Text = dto.MerchandiseName.ToString();
-			comboBox_CategoryId.SelectedIndex = dto.CategoryID;
+			comboBox_CategoryId.SelectedItem = comboBox_CategoryId.Items.Cast<dynamic>()
+														.FirstOrDefault(x => x.Key == dto.CategoryID);
 			txt_Price.Text = dto.Price.ToString();
 			txt_Amount.Text = dto.Amount.ToString();
 			txt_Description.Text = dto.Description.ToString();
@@ -205,14 +222,14 @@ namespace prjMidtermTopic.form_Merchandise
 			//收集表單欄位值到dto
 			bool PriceisInt = int.TryParse(txt_Price.Text, out int Price);
 			Price = PriceisInt ? Price : 0;
-			bool AmountisInt = int.TryParse(txt_Price.Text, out int Amount);
+			bool AmountisInt = int.TryParse(txt_Amount.Text, out int Amount);
 			Amount = AmountisInt ? Amount : 0;
 
 			var vm = new MerchandiseCreateVM()
 			{
 				MerchandiseId = this._merchandiseId,
 				MerchandiseName = txt_MerchandiseName.Text,
-				CategoryID = comboBox_CategoryId.SelectedIndex,
+				CategoryID = (comboBox_CategoryId.SelectedItem as dynamic).Key,
 				Price = Price,
 				Amount = Amount,
 				Description = txt_Description.Text,
@@ -244,7 +261,7 @@ namespace prjMidtermTopic.form_Merchandise
 
 			try
 			{
-				var service = new MerchandiseService();
+				var service = new MerchandiseService(_repo);
 				int rows = service.Update(dto);
 
 				if (txt_ImageURL.Text != _iniImageURL && txt_ImageURL.Text.Length > 0)
@@ -285,14 +302,15 @@ namespace prjMidtermTopic.form_Merchandise
 		}
 		private void btn_Delete_Click(object sender, EventArgs e)
 		{
-			var repo = new MerchandiseRepository();
+			//var repo = new MerchandiseRepository();
+			var service = new MerchandiseService(_repo);
 			try
 			{
 				if (MessageBox.Show("確定要刪除資料嗎?", "確認", MessageBoxButtons.YesNo) == DialogResult.Yes)
 				{
 					DeleteFromDb();
 
-					int rows = repo.Delete(_merchandiseId);
+					int rows = service.Delete(_merchandiseId);
 
 					this.Close();
 					//回到FormCategories

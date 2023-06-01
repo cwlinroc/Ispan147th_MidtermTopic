@@ -10,25 +10,31 @@ namespace ISpan147.Estore.SqlDataLayer.Services
 {
 	public class CategoryService
 	{
+		private ICategoryRepository _repo;
+
+		public CategoryService(ICategoryRepository repo)
+		{
+			this._repo = repo;
+		}
 		public int Create(CategoryDto dto)
 		{
-			var repo = new CategoryRepository();
+			//var repo = new CategoryRepository();
 			//驗證分類名稱是否重複
-			var dtoInDb = repo.GetByCategoryName(dto.CategoryName);
+			var dtoInDb = _repo.GetByCategoryName(dto.CategoryName);
 			if (dtoInDb != null) { throw new Exception("此分類名稱已存在，請重新命名"); }
 
-			int newId = repo.Create(dto);
+			int newId = _repo.Create(dto);
 
 			return newId;
 		}
 		public int Update(CategoryDto dto)
 		{
-			var repo = new CategoryRepository();
+			//var repo = new CategoryRepository();
 			//驗證分類名稱是否重複
-			var dtoInDb = repo.GetByCategoryName(dto.CategoryName);
+			var dtoInDb = _repo.GetByCategoryName(dto.CategoryName);
 			if (dtoInDb != null && dtoInDb.CategoryId != dto.CategoryId) { throw new Exception("此分類名稱已存在，請重新命名"); }
 
-			int rows = repo.Update(dto);
+			int rows = _repo.Update(dto);
 
 			return rows;
 		}
@@ -38,13 +44,12 @@ namespace ISpan147.Estore.SqlDataLayer.Services
 			string categoryname = null
 			)
 		{
-			return new List<CategoryDto> { };
-			return new CategoryRepository().Search(categoryid, categoryname);
+			return _repo.Search(categoryid, categoryname);
 		}
 
 		public int Delete(int categoryId)
 		{
-			return new CategoryRepository().Delete(categoryId);
+			return _repo.Delete(categoryId);
 		}
 	}
 }

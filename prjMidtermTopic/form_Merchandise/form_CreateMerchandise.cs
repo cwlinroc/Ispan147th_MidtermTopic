@@ -1,4 +1,5 @@
 ﻿using ISpan147.Estore.SqlDataLayer.Dtos;
+using ISpan147.Estore.SqlDataLayer.Repositories;
 using ISpan147.Estore.SqlDataLayer.Services;
 using prjMidtermTopic.Interfaces;
 using prjMidtermTopic.ViewModels;
@@ -19,19 +20,31 @@ namespace prjMidtermTopic.form_Merchandise
 {
 	public partial class form_CreateMerchandise : Form
 	{
-
+		private IMerchandiseRepository _repo;
+		private ICategoryRepository _categoryRepository;
+		private Dictionary<int, string> map = new Dictionary<int, string>();
 		private int _categoryId;
-
 		private string _imagePath = string.Empty;
 		public form_CreateMerchandise()
 		{
 			InitializeComponent();
 
-			comboBox_CategoryId.Items.AddRange(ChooseCategory.categoryNameOptions);
+			_repo = new MerchandiseRepository();
+			_categoryRepository = new CategoryRepository();
+
+			//動態生成商品類別資料 for 下拉選單
+			map.Add(0, "未選擇");
+			new CategoryService(_categoryRepository).Search().ForEach(c => map.Add(c.CategoryId, c.CategoryName));
+			foreach (var item in map)
+			{
+				comboBox_CategoryId.Items.Add(item);
+			}
+			comboBox_CategoryId.DisplayMember = "Value";
+
+			//設定預設值
 			comboBox_CategoryId.SelectedIndex = 0;
 		}
 
-		//todo 建立MerchandiseCreateVM  
 		private (bool isValid, List<ValidationResult> errors) Validate(MerchandiseCreateVM vm)
 		{
 			//取得驗證規則
@@ -73,7 +86,7 @@ namespace prjMidtermTopic.form_Merchandise
 
 		private void comboBox_CategoryId_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			_categoryId = comboBox_CategoryId.SelectedIndex;
+			_categoryId = (comboBox_CategoryId.SelectedItem as dynamic).Key;
 		}
 
 		private void btnCreate_Click(object sender, EventArgs e)
@@ -81,11 +94,10 @@ namespace prjMidtermTopic.form_Merchandise
 			//收集表單欄位值建立MerchandiseCreateVM物件
 			bool PriceisInt = int.TryParse(txt_Price.Text, out int Price);
 			Price = PriceisInt ? Price : 0;
-			bool AmountisInt = int.TryParse(txt_Price.Text, out int Amount);
+			bool AmountisInt = int.TryParse(txt_Amount.Text, out int Amount);
 			Amount = AmountisInt ? Amount : 0;
-
-			int categoryId = comboBox_CategoryId.SelectedIndex;
-
+			// ↓讀取下拉選單的欄位值
+			int categoryId = (comboBox_CategoryId.SelectedItem as dynamic).Key;
 			string marchandisename = txt_MerchandiseName.Text;
 			string Description = txt_Description.Text;
 			string ImageURL = txt_ImageURL.Text;
@@ -101,7 +113,7 @@ namespace prjMidtermTopic.form_Merchandise
 			};
 
 			//驗證vm是否通過欄位驗證
-			(bool isValid, List < ValidationResult > errors) validationResult = Validate(vm);
+			(bool isValid, List<ValidationResult> errors) validationResult = Validate(vm);
 
 			//若有錯則顯示
 			if (validationResult.isValid == false)
@@ -117,7 +129,6 @@ namespace prjMidtermTopic.form_Merchandise
 				MerchandiseID = vm.MerchandiseId,
 				MerchandiseName = vm.MerchandiseName,
 				CategoryID = vm.CategoryID,
-				// todo CategoryName = vm.CategoryName,
 				Price = vm.Price,
 				Amount = vm.Amount,
 				Description = vm.Description,
@@ -125,10 +136,13 @@ namespace prjMidtermTopic.form_Merchandise
 			};
 			try
 			{
-				var service = new MerchandiseService();
+				var service = new MerchandiseService(_repo);
 				int newId = service.Create(dto);
-
-				UploadToDb(_imagePath);
+				
+				if (txt_ImageURL.Text.Length > 0)
+				{
+					UploadToDb(_imagePath);
+				}
 
 				MessageBox.Show($"新增成功，新的ID為{newId}。");
 

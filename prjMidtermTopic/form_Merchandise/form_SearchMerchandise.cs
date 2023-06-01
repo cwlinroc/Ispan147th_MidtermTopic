@@ -1,5 +1,6 @@
 ﻿using ISpan147.Estore.SqlDataLayer.Dtos;
 using ISpan147.Estore.SqlDataLayer.Repositories;
+using ISpan147.Estore.SqlDataLayer.Services;
 using prjMidtermTopic.form_Merchandise;
 using prjMidtermTopic.Interfaces;
 using prjMidtermTopic.ViewModels;
@@ -12,17 +13,33 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace prjMidtermTopic
 {
+	// todo 進階排序功能
     public partial class form_SearchMerchandise : Form, IGrid
-    {
-        public form_SearchMerchandise()
+	{
+		private IMerchandiseRepository _repo;
+		private ICategoryRepository _categoryRepository;
+		private Dictionary<int, string> map = new Dictionary<int, string>();
+		public form_SearchMerchandise()
         {
             InitializeComponent();
 
+			_repo = new MerchandiseRepository();
+			_categoryRepository = new CategoryRepository();
+
+			//動態生成類別資料 for 下拉選單
+			map.Add(0, "未選擇");
+			new CategoryService(_categoryRepository).Search().ForEach(c => map.Add(c.CategoryId, c.CategoryName));
+			foreach(var item in map)
+			{
+				comboBox_CategoryId.Items.Add(item);
+			}
+			comboBox_CategoryId.DisplayMember = "Value";
+
 			//設定類別選單資料來源&預設值
-			comboBox_CategoryId.Items.AddRange(ChooseCategory.categoryNameOptions);
 			comboBox_CategoryId.SelectedIndex = 0;
 		}
 
@@ -49,11 +66,14 @@ namespace prjMidtermTopic
 
 			string sName = this.txt_MerchandiseName.Text;
 
-			int sCategoryId = this.comboBox_CategoryId.SelectedIndex;
-			
+			int sCategoryId = (this.comboBox_CategoryId.SelectedItem as dynamic).Key;
+
 			//取得符合紀錄
-			var repo = new MerchandiseRepository();
-			data = repo.Search(sId, sName, sCategoryId);
+			//var repo = new MerchandiseRepository();
+			//data = repo.Search(sId, sName, sCategoryId);
+			//使用商業邏輯檢查
+			var service = new MerchandiseService(_repo);
+			data = service.Search(sId, sName, sCategoryId);
 
 			//匯入DataGridView
 			this.dataGridView1.DataSource = data;

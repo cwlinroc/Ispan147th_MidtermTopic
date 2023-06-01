@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ISpan147.Estore.SqlDataLayer.Repositories
 {
-	public class MerchandiseRepository
+	public class MerchandiseRepository : IMerchandiseRepository
 	{
 		/// 透過字串組成SQL語法，取得商品分類記錄
 		public MerchandiseDto GetByMerchandiseID(int merchandiseId)
@@ -114,7 +114,6 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 			var parameters = new SqlParameterBuilder()
 				.AddNVarchar("@MerchandiseName", 30, dto.MerchandiseName)
 				.AddInt("@CategoryId", dto.CategoryID)
-				// todo .AddNVarchar("@CategoryName", dto.CategoryName)
 				.AddInt("@Price", dto.Price)
 				.AddInt("@Amount", dto.Amount)
 				.AddNVarchar("@Description", 30, dto.Description)
