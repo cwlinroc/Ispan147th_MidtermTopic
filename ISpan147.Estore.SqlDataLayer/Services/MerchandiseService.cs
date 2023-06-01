@@ -11,19 +11,22 @@ namespace ISpan147.Estore.SqlDataLayer.Services
 	public class MerchandiseService
 	{
 		private IMerchandiseRepository _repo;
-
 		public MerchandiseService(IMerchandiseRepository repo)
 		{
 			this._repo = repo;
 		}
-		public List<MerchandiseSearchDto> Search(
-			//設定未給值時的預設值
-			int? merchandiseid = null,
-			string merchandisename = null,
-			int? categoryid = null
-												)
+
+		//public List<MerchandiseSearchDto> Search(
+		//	//設定未給值時的預設值
+		//	int? merchandiseid = null,
+		//	string merchandisename = null,
+		//	int? categoryid = null		)
+		//{
+		//	return _repo.Search(merchandiseid, merchandisename, categoryid);
+		//}
+		public IEnumerable<MerchandiseSearchDto> Search(MerchandiseConditionSearchDto csDto)
 		{
-			return _repo.Search(merchandiseid, merchandisename, categoryid);
+			return new MerchandiseRepository().Search(csDto);
 		}
 
 		public int Create(MerchandiseDto dto)

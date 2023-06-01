@@ -186,9 +186,9 @@ namespace prjMidtermTopic.form_Merchandise
 
 		private void UploadToForm(string imagePath)
 		{
-			string targetFolderPath = @"images/MerchendisePicture/";
-			string imageName = Path.GetFileName(imagePath);
-			string targetFilePath = Path.Combine(targetFolderPath, imageName);
+			//string targetFolderPath = @"images/MerchendisePicture/";
+			//string imageName = Path.GetFileName(imagePath);
+			//string targetFilePath = Path.Combine(targetFolderPath, imageName);
 
 			try
 			{

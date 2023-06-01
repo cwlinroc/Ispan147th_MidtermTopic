@@ -73,5 +73,17 @@ namespace prjMidtermTopic.form_Category
 			frm.Owner = this;
 			frm.ShowDialog();
 		}
+
+		private void btn_DefaultSearch_Click(object sender, EventArgs e)
+		{
+			DefaultSearch();
+		}
+
+		public void DefaultSearch()
+		{
+			txt_CategoryId.Text = string.Empty;
+			txt_CategoryName.Text = string.Empty;
+			Display();
+		}
 	}
 }

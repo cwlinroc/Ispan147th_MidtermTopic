@@ -13,7 +13,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 		MerchandiseDto GetByMerchandiseID(int merchandiseId);
 		MerchandiseDto GetByMerchandiseName(string merchandisename);
 		MerchandiseDto GetByCategoryID(int? categoryId);
-		List<MerchandiseSearchDto> Search(int? merchandiseId, string s_name, int? s_categoryid);
+		IEnumerable<MerchandiseSearchDto> Search(MerchandiseConditionSearchDto csDto);
 		int Update(MerchandiseDto dto);
 		int Create(MerchandiseDto dto);
 		int Delete(int merchandiseId);

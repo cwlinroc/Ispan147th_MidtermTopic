@@ -7,6 +7,8 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ISpan147.Estore.SqlDataLayer.EFModel;
+using Dapper;
 
 namespace ISpan147.Estore.SqlDataLayer.Repositories
 {
@@ -79,6 +81,69 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 			Func<SqlConnection> connGetter = SqlDb.GetConnection;
 
 			return SqlDb.Search(connGetter, sql, func, parameters.ToArray()).ToList();
+		}
+		public IEnumerable<MerchandiseSearchDto> Search(MerchandiseConditionSearchDto csDto)
+		{
+			if (csDto == null) { return null; }
+
+			string top = string.Empty;
+			if (csDto.MaxQueryNumber.HasValue)
+			{
+				top = $"TOP (" + csDto.MaxQueryNumber + ") ";
+			}
+			else
+			{
+				top = string.Empty;
+			}
+
+			string orderBy = $" ORDER BY {csDto.OrderBy}";
+			string decending = csDto.Descending ? " ASC" : " DESC";
+
+			string sql = $@"SELECT {top}MerchandiseID, MerchandiseName, CategoryName, Price, Amount, 
+										Description, ImageURL 
+							FROM Merchandises AS m 
+							JOIN Categories AS c 
+							ON m.CategoryID = c.CategoryID ";
+
+			//var builder = new SqlParameterBuilder();
+
+			string where = string.Empty;
+			#region 串接搜尋條件
+			if (csDto.MerchandiseID.HasValue)
+			{
+				where += $" AND MerchandiseID = @MerchandiseID";
+				//builder.AddInt("@MerchandiseID", csDto.MerchandiseID.Value);
+			}
+			if (string.IsNullOrEmpty(csDto.MerchandiseName) == false)
+			{
+				where += $" AND MerchandiseName LIKE '%'+@MerchandiseName+'%'";
+				//builder.AddNVarchar("@MerchandiseName", 30, csDto.MerchandiseName);
+			}
+			if (csDto.CategoryID.HasValue)
+			{
+				where += $" AND m.CategoryID = @CategoryID";
+				//builder.AddInt("@CategoryID", csDto.CategoryID.Value);
+			}
+			if (csDto.MaxPrice.HasValue)
+			{
+				where += $" AND Price <= @MaxPrice";
+			}
+			if (csDto.MinPrice.HasValue)
+			{
+				where += $" AND Price >= @MinPrice";
+			}
+			if (string.IsNullOrEmpty(where) == false)
+			{
+				where = " WHERE " + where.Substring(5);
+			}
+			#endregion
+
+			string assembleSQL = sql + where + orderBy + decending;
+
+			using (var conn = SqlDb.GetConnection())
+			{
+				return conn.Query<MerchandiseSearchDto>(assembleSQL, csDto);
+			}
 		}
 
 		public int Update(MerchandiseDto dto)
