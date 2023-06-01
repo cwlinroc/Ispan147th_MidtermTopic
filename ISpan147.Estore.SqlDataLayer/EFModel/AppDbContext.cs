@@ -17,12 +17,14 @@ namespace ISpan147.Estore.SqlDataLayer.EFModel
 		public virtual DbSet<Category> Categories { get; set; }
 		public virtual DbSet<Comment> Comments { get; set; }
 		public virtual DbSet<Employee> Employees { get; set; }
+		public virtual DbSet<ForumAccount> ForumAccounts { get; set; }
 		public virtual DbSet<Member> Members { get; set; }
 		public virtual DbSet<Merchandise> Merchandises { get; set; }
 		public virtual DbSet<OrderList> OrderLists { get; set; }
 		public virtual DbSet<Order> Orders { get; set; }
 		public virtual DbSet<Pet> Pets { get; set; }
 		public virtual DbSet<Species> Species { get; set; }
+		public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
 		public virtual DbSet<Theme> Themes { get; set; }
 
 		protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -35,6 +37,16 @@ namespace ISpan147.Estore.SqlDataLayer.EFModel
 			modelBuilder.Entity<Category>()
 				.HasMany(e => e.Merchandises)
 				.WithRequired(e => e.Category)
+				.WillCascadeOnDelete(false);
+
+			modelBuilder.Entity<ForumAccount>()
+				.HasMany(e => e.Comments)
+				.WithRequired(e => e.ForumAccount)
+				.WillCascadeOnDelete(false);
+
+			modelBuilder.Entity<ForumAccount>()
+				.HasMany(e => e.Themes)
+				.WithRequired(e => e.ForumAccount)
 				.WillCascadeOnDelete(false);
 
 			modelBuilder.Entity<Member>()

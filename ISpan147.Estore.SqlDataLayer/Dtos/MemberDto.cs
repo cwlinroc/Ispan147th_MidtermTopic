@@ -10,6 +10,7 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
 	{
         public int MemberID { get; set; }
         public string MemberName { get; set; }
+        public int? ForumAccount { get; set; }
         public string NickName { get; set; }
         public DateTime DateOfBirth { get; set; }
         public bool Gender { get; set; }

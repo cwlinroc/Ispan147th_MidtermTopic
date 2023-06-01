@@ -60,6 +60,7 @@
     <Compile Include="Dtos\CategoryDto.cs" />
     <Compile Include="Dtos\CommentDto.cs" />
     <Compile Include="Dtos\EmployeeDto.cs" />
+    <Compile Include="Dtos\ForumAccountDto.cs" />
     <Compile Include="Dtos\MemberDto.cs" />
     <Compile Include="Dtos\MerchandiseSearchDto.cs" />
     <Compile Include="Dtos\MerchandiseDto.cs" />
@@ -77,12 +78,14 @@
     <Compile Include="EFModel\Category.cs" />
     <Compile Include="EFModel\Comment.cs" />
     <Compile Include="EFModel\Employee.cs" />
+    <Compile Include="EFModel\ForumAccount.cs" />
     <Compile Include="EFModel\Member.cs" />
     <Compile Include="EFModel\Merchandise.cs" />
     <Compile Include="EFModel\Order.cs" />
     <Compile Include="EFModel\OrderList.cs" />
     <Compile Include="EFModel\Pet.cs" />
     <Compile Include="EFModel\Species.cs" />
+    <Compile Include="EFModel\sysdiagram.cs" />
     <Compile Include="EFModel\Theme.cs" />
     <Compile Include="ExtMethods\MyEncoder.cs" />
     <Compile Include="ExtMethods\SqlDataReaderExtMethod.cs" />

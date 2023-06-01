@@ -9,10 +9,10 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
 	public class CommentDto
 	{
         public int CommentID { get; set; }
-        public string CommentName { get; set; }
         public DateTime CommentTime { get; set; }
         public string CommentContext { get; set; }
         public int ThemeID { get; set; }
+		public int ForumAccountID { get; set; }
 
-    }
+	}
 }

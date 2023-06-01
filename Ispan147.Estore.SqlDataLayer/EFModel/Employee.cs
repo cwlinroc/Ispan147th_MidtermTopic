@@ -23,5 +23,9 @@ namespace ISpan147.Estore.SqlDataLayer.EFModel
         public string EmployeePassword { get; set; }
 
         public int Permission { get; set; }
+
+        public int? ForumAccountID { get; set; }
+
+        public virtual ForumAccount ForumAccount { get; set; }
     }
 }
