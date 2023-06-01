@@ -16,7 +16,7 @@ namespace prjMidtermTopic.FormMember
 {
 	public partial class form_CreateMember : Form
 	{
-		private bool _gender;
+		private bool? _gender;
 		private Dictionary<string, Control> _map;
 		private string _originalFilePath;
 		private string _targetFolderPath = @"images/avatar/";
@@ -28,6 +28,8 @@ namespace prjMidtermTopic.FormMember
 			{
 				{ "MemberName", txtMemberName},
 				{ "NickName", txtNickName},
+				{ "DateOfBirth", DateOfBirthPicker },
+				{ "Gender", radbtnFemale},
 				{ "Account", txtAccount},
 				{ "Password", txtPassword},
 				{ "Phone", txtPhone},
@@ -77,6 +79,17 @@ namespace prjMidtermTopic.FormMember
 			catch (Exception ex)
 			{
 				MessageBox.Show($"上傳失敗,{ex.Message}");
+			}
+		}
+
+		private void DateOfBirthPicker_ValueChanged(object sender, EventArgs e)
+		{
+			DateTime selectedDate = DateOfBirthPicker.Value;
+			DateTime currentDate = DateTime.Now;
+
+			if (selectedDate < currentDate.AddYears(-100))
+			{
+				MessageBox.Show("選擇時間早於目前時間100年!", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 			}
 		}
 
@@ -155,7 +168,7 @@ namespace prjMidtermTopic.FormMember
 				MemberName = vm.MemberName,
 				NickName = vm.NickName,
 				DateOfBirth = vm.DateOfBirth,
-				Gender = vm.Gender,
+				Gender = vm.Gender.Value,
 				Account = vm.Account,
 				Password = vm.Password,
 				Phone = vm.Phone,
@@ -190,8 +203,9 @@ namespace prjMidtermTopic.FormMember
 			}
 			this.Close();
 		}
-		
+
 		#endregion
+		
 	}
 
 }

@@ -66,7 +66,7 @@
 			this.btnAdd.Location = new System.Drawing.Point(250, 544);
 			this.btnAdd.Name = "btnAdd";
 			this.btnAdd.Size = new System.Drawing.Size(80, 30);
-			this.btnAdd.TabIndex = 11;
+			this.btnAdd.TabIndex = 10;
 			this.btnAdd.Text = "Add";
 			this.btnAdd.UseVisualStyleBackColor = true;
 			this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
@@ -77,7 +77,7 @@
 			this.txtEmail.Location = new System.Drawing.Point(141, 432);
 			this.txtEmail.Name = "txtEmail";
 			this.txtEmail.Size = new System.Drawing.Size(183, 29);
-			this.txtEmail.TabIndex = 9;
+			this.txtEmail.TabIndex = 7;
 			// 
 			// label5
 			// 
@@ -95,7 +95,7 @@
 			this.txtPhone.Location = new System.Drawing.Point(141, 322);
 			this.txtPhone.Name = "txtPhone";
 			this.txtPhone.Size = new System.Drawing.Size(183, 29);
-			this.txtPhone.TabIndex = 7;
+			this.txtPhone.TabIndex = 5;
 			// 
 			// label4
 			// 
@@ -123,7 +123,7 @@
 			this.txtPassword.Location = new System.Drawing.Point(141, 267);
 			this.txtPassword.Name = "txtPassword";
 			this.txtPassword.Size = new System.Drawing.Size(183, 29);
-			this.txtPassword.TabIndex = 6;
+			this.txtPassword.TabIndex = 4;
 			// 
 			// label1
 			// 
@@ -141,7 +141,7 @@
 			this.txtAccount.Location = new System.Drawing.Point(141, 212);
 			this.txtAccount.Name = "txtAccount";
 			this.txtAccount.Size = new System.Drawing.Size(183, 29);
-			this.txtAccount.TabIndex = 5;
+			this.txtAccount.TabIndex = 3;
 			// 
 			// label3
 			// 
@@ -197,7 +197,7 @@
 			this.txtAddress.Location = new System.Drawing.Point(141, 377);
 			this.txtAddress.Name = "txtAddress";
 			this.txtAddress.Size = new System.Drawing.Size(183, 29);
-			this.txtAddress.TabIndex = 8;
+			this.txtAddress.TabIndex = 6;
 			// 
 			// label8
 			// 
@@ -219,7 +219,7 @@
 			this.txtAvatar.Location = new System.Drawing.Point(141, 481);
 			this.txtAvatar.Name = "txtAvatar";
 			this.txtAvatar.Size = new System.Drawing.Size(183, 29);
-			this.txtAvatar.TabIndex = 10;
+			this.txtAvatar.TabIndex = 8;
 			// 
 			// radbtnFemale
 			// 
@@ -228,7 +228,7 @@
 			this.radbtnFemale.Location = new System.Drawing.Point(81, 10);
 			this.radbtnFemale.Name = "radbtnFemale";
 			this.radbtnFemale.Size = new System.Drawing.Size(93, 28);
-			this.radbtnFemale.TabIndex = 4;
+			this.radbtnFemale.TabIndex = 1;
 			this.radbtnFemale.Text = "Female";
 			this.radbtnFemale.UseVisualStyleBackColor = true;
 			this.radbtnFemale.CheckedChanged += new System.EventHandler(this.radbtnFemale_CheckedChanged);
@@ -240,7 +240,7 @@
 			this.radbtnMale.Location = new System.Drawing.Point(3, 10);
 			this.radbtnMale.Name = "radbtnMale";
 			this.radbtnMale.Size = new System.Drawing.Size(72, 28);
-			this.radbtnMale.TabIndex = 3;
+			this.radbtnMale.TabIndex = 0;
 			this.radbtnMale.Text = "Male";
 			this.radbtnMale.UseVisualStyleBackColor = true;
 			this.radbtnMale.CheckedChanged += new System.EventHandler(this.radbtnMale_CheckedChanged);
@@ -271,6 +271,7 @@
 			this.DateOfBirthPicker.Size = new System.Drawing.Size(183, 29);
 			this.DateOfBirthPicker.TabIndex = 2;
 			this.DateOfBirthPicker.Value = new System.DateTime(1980, 1, 1, 0, 0, 0, 0);
+			this.DateOfBirthPicker.ValueChanged += new System.EventHandler(this.DateOfBirthPicker_ValueChanged);
 			// 
 			// btnSelectAvatar
 			// 
@@ -280,7 +281,7 @@
 			this.btnSelectAvatar.Location = new System.Drawing.Point(100, 544);
 			this.btnSelectAvatar.Name = "btnSelectAvatar";
 			this.btnSelectAvatar.Size = new System.Drawing.Size(127, 30);
-			this.btnSelectAvatar.TabIndex = 22;
+			this.btnSelectAvatar.TabIndex = 9;
 			this.btnSelectAvatar.Text = "Select Avatar";
 			this.btnSelectAvatar.UseVisualStyleBackColor = true;
 			this.btnSelectAvatar.Click += new System.EventHandler(this.btnSelectAvatar_Click);

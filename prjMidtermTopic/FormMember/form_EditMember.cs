@@ -3,14 +3,20 @@ using Ispan147.Estore.SqlDataLayer.Services;
 using ISpan147.Estore.SqlDataLayer.Dtos;
 using ISpan147.Estore.SqlDataLayer.ExtMethods;
 using prjMidtermTopic.Interfaces;
+using prjMidtermTopic.Model;
+using prjMidtermTopic.ViewModels;
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Net;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace prjMidtermTopic.FormMember
 {
 	public partial class form_EditMember : Form
 	{
+		private Dictionary<string, Control> _map;
 		private bool _gender;
 		private readonly int _memberID;
 		private string _originalFilePath;
@@ -20,6 +26,19 @@ namespace prjMidtermTopic.FormMember
 		{
 			InitializeComponent();
 			_memberID = memberID;
+
+			_map = new Dictionary<string, Control>(StringComparer.CurrentCultureIgnoreCase)
+			{
+				{ "MemberName", txtMemberName},
+				{ "NickName", txtNickName},
+				{ "DateOfBirth", DateOfBirthPicker },
+				{ "Gender", radbtnFemale},
+				{ "Account", txtAccount},				
+				{ "Phone", txtPhone},
+				{ "Address", txtAddress},
+				{ "Email", txtEmail},
+				{ "Avatar", txtAvatar}
+			};
 
 		}
 
@@ -31,17 +50,15 @@ namespace prjMidtermTopic.FormMember
 			{
 				MessageBox.Show("找不到紀錄");
 				return;
-			}
-			txtMemberID.Text = dto.MemberID.ToString();
+			}			
 			txtMemberName.Text = dto.MemberName;
 			txtNickName.Text = dto.NickName;
 			DateOfBirthPicker.Value = dto.DateOfBirth;
-			txtAccount.Text = dto.Account;
-			txtPassword.Text = dto.Password;
+			txtAccount.Text = dto.Account;			
 			txtPhone.Text = dto.Phone;
 			txtAddress.Text = dto.Address;
 			txtEmail.Text = dto.Email;
-			txtAvatar.Text = dto.Avatar;			
+			txtAvatar.Text = dto.Avatar;
 
 			if (dto.Gender)
 			{
@@ -74,7 +91,7 @@ namespace prjMidtermTopic.FormMember
 		}
 
 		private void UploadFileToDb(string filePath)
-		{			
+		{
 			string renamedtargetFilePath = _targetFolderPath + txtAvatar.Text;
 
 			if (!string.IsNullOrEmpty(filePath))
@@ -98,7 +115,7 @@ namespace prjMidtermTopic.FormMember
 		}
 
 		private void DeleteFile(string filePath)
-		{			
+		{
 			string renamedtargetFilePath = _targetFolderPath + filePath;
 			try
 			{
@@ -112,7 +129,18 @@ namespace prjMidtermTopic.FormMember
 			catch (Exception ex) { MessageBox.Show($"刪除失敗,原因:{ex.Message}"); }
 		}
 
-		//button
+		private void DateOfBirthPicker_ValueChanged(object sender, EventArgs e)
+		{
+			DateTime selectedDate = DateOfBirthPicker.Value;
+			DateTime currentDate = DateTime.Now;
+
+			if (selectedDate < currentDate.AddYears(-100))
+			{
+				MessageBox.Show("選擇時間早於目前時間100年!", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+			}
+		}
+
+		#region button
 		private void radbtnMale_CheckedChanged(object sender, EventArgs e)
 		{
 			if (radbtnMale.Checked)
@@ -152,8 +180,9 @@ namespace prjMidtermTopic.FormMember
 		}
 
 		private void btnUpdate_Click(object sender, EventArgs e)
-		{
-			MemberDto dto = new MemberDto()
+		{		
+
+			var vm = new MemberCreateVM()
 			{
 				MemberID = this._memberID,
 				MemberName = txtMemberName.Text,
@@ -161,18 +190,36 @@ namespace prjMidtermTopic.FormMember
 				DateOfBirth = DateOfBirthPicker.Value,
 				Gender = _gender,
 				Account = txtAccount.Text,
-				Password = MyEncoder.GetSaltedSha256(txtPassword.Text),
 				Phone = txtPhone.Text,
 				Address = txtAddress.Text,
 				Email = txtEmail.Text,
 				Avatar = txtAvatar.Text
 			};
 
+			//驗證vm是否通過欄位驗證
+			bool hasError = MyValidator.ValidateAndDisplay(vm, errorProvider1, _map);
+			if (hasError) return;
+
+			MemberDto dto = new MemberDto
+			{
+				MemberID = vm.MemberID,
+				MemberName = vm.MemberName,
+				NickName = vm.NickName,
+				DateOfBirth = vm.DateOfBirth,
+				Gender = vm.Gender.Value,
+				Account = vm.Account,
+				Password = vm.Password,
+				Phone = vm.Phone,
+				Address = vm.Address,
+				Email = vm.Email,
+				Avatar = vm.Avatar
+			};
+
 			try
 			{
 				var service = new MemberService(_memberRepo);
 				int rows = service.Update(dto);
-				
+
 				UploadFileToDb(_originalFilePath);
 
 				if (rows > 0)
@@ -235,12 +282,13 @@ namespace prjMidtermTopic.FormMember
 				parent.Display();//呼叫它的Display()重新顯示資料
 			}
 			this.Close();
-		}		
+		}
 
 		private void btnDeleteAvatar_Click(object sender, EventArgs e)
-		{			
+		{
 			DeleteFile(txtAvatar.Text);
 			txtAvatar.Text = string.Empty;
 		}
+		#endregion
 	}
 }

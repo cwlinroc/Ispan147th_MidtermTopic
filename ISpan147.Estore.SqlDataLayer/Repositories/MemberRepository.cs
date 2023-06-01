@@ -6,11 +6,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Net;
-using System.Security.Policy;
-using System.Security.Principal;
-using System.Text;
-using System.Threading.Tasks;
 using ISpan147.Estore.SqlDataLayer.Builders;
 using prjMidtermTopic.Interfaces;
 
@@ -108,7 +103,7 @@ namespace Ispan147.Estore.SqlDataLayer.Repositories
 		{
 			string sql = "UPDATE Members SET MemberName = @MemberName, NickName = @NickName, " +
 				"DateOfBirth = @DateOfBirth, Gender = @Gender, Account = @Account, " +
-				"Password = @Password, Phone = @Phone, Address = @Address, Email = @Email, " +
+				"Phone = @Phone, Address = @Address, Email = @Email, " +
 				"Avatar = @Avatar WHERE MemberID = @MemberID";
 
 			var parameters = new SqlParameterBuilder()
@@ -117,8 +112,7 @@ namespace Ispan147.Estore.SqlDataLayer.Repositories
 				.AddNVarchar("@NickName", 30, dto.NickName)
 				.AddDateTime("@DateOfBirth", dto.DateOfBirth)
 				.AddBit("@Gender", dto.Gender)
-				.AddNchar("@Account", 15, dto.Account)
-				.AddNchar("@Password", 65, dto.Password)
+				.AddNchar("@Account", 15, dto.Account)				
 				.AddNchar("@Phone", 20, dto.Phone)
 				.AddNVarchar("@Address", 30, dto.Address)
 				.AddNchar("@Email", 30, dto.Email)
