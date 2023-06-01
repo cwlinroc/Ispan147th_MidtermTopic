@@ -81,6 +81,10 @@ namespace prjMidtermTopic.FormMember
 			{
 				File.Delete(renamedtargetFilePath);
 			}
+			else
+			{
+				return;
+			}
 			try
 			{
 				File.Copy(filePath, renamedtargetFilePath);

@@ -52,7 +52,7 @@
 			this.label9 = new System.Windows.Forms.Label();
 			this.txtNickName = new System.Windows.Forms.TextBox();
 			this.DateOfBirthPicker = new System.Windows.Forms.DateTimePicker();
-			this.btnUploadAvatar = new System.Windows.Forms.Button();
+			this.btnSelectAvatar = new System.Windows.Forms.Button();
 			this.panel1 = new System.Windows.Forms.Panel();
 			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
 			this.panel1.SuspendLayout();
@@ -272,18 +272,18 @@
 			this.DateOfBirthPicker.TabIndex = 2;
 			this.DateOfBirthPicker.Value = new System.DateTime(1980, 1, 1, 0, 0, 0, 0);
 			// 
-			// btnUploadAvatar
+			// btnSelectAvatar
 			// 
-			this.btnUploadAvatar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnUploadAvatar.AutoSize = true;
-			this.btnUploadAvatar.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.btnUploadAvatar.Location = new System.Drawing.Point(100, 544);
-			this.btnUploadAvatar.Name = "btnUploadAvatar";
-			this.btnUploadAvatar.Size = new System.Drawing.Size(127, 30);
-			this.btnUploadAvatar.TabIndex = 22;
-			this.btnUploadAvatar.Text = "Upload Avatar";
-			this.btnUploadAvatar.UseVisualStyleBackColor = true;
-			this.btnUploadAvatar.Click += new System.EventHandler(this.btnUploadAvatar_Click);
+			this.btnSelectAvatar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnSelectAvatar.AutoSize = true;
+			this.btnSelectAvatar.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.btnSelectAvatar.Location = new System.Drawing.Point(100, 544);
+			this.btnSelectAvatar.Name = "btnSelectAvatar";
+			this.btnSelectAvatar.Size = new System.Drawing.Size(127, 30);
+			this.btnSelectAvatar.TabIndex = 22;
+			this.btnSelectAvatar.Text = "Select Avatar";
+			this.btnSelectAvatar.UseVisualStyleBackColor = true;
+			this.btnSelectAvatar.Click += new System.EventHandler(this.btnSelectAvatar_Click);
 			// 
 			// panel1
 			// 
@@ -300,7 +300,7 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(366, 586);
 			this.Controls.Add(this.panel1);
-			this.Controls.Add(this.btnUploadAvatar);
+			this.Controls.Add(this.btnSelectAvatar);
 			this.Controls.Add(this.DateOfBirthPicker);
 			this.Controls.Add(this.txtAvatar);
 			this.Controls.Add(this.btnAdd);
@@ -356,7 +356,7 @@
 		private System.Windows.Forms.TextBox txtNickName;
 		private System.Windows.Forms.Label label9;
 		private System.Windows.Forms.DateTimePicker DateOfBirthPicker;
-		private System.Windows.Forms.Button btnUploadAvatar;
+		private System.Windows.Forms.Button btnSelectAvatar;
 		private System.Windows.Forms.Panel panel1;
 	}
 }
