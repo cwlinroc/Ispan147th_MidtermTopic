@@ -110,7 +110,21 @@ namespace prjMidtermTopic.form_Merchandise
 			_iniImageURL = dto.ImageURL;
 			_lasttargetFilePath = @"images/MerchendisePicture/" + dto.ImageURL;
 
+			#region 限制按鈕使用
 			btn_DeleteImage.Enabled = (string.IsNullOrEmpty(txt_ImageURL.Text)) ? false : true;
+			
+			//權限限制關閉按鈕
+			if (Authentication.Permission >= 5)
+			{
+				btn_SelectNewImage.Enabled = false;
+				btn_DeleteImage.Enabled = false;
+				btn_Update.Enabled = false;
+			}
+			if (Authentication.Permission >= 4)
+			{
+				btn_Delete.Enabled = false;
+			}
+			#endregion
 		}
 
 		#region 圖片上傳/移除
@@ -172,7 +186,6 @@ namespace prjMidtermTopic.form_Merchandise
 
 		private void btn_DeleteImage_Click(object sender, EventArgs e)
 		{
-
 			if (File.Exists(_lasttargetFilePath))
 			{
 				try

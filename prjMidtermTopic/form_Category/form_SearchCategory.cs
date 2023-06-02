@@ -31,6 +31,11 @@ namespace prjMidtermTopic.form_Category
 		private void form_SearchCategory_Load(object sender, EventArgs e)
 		{
 			Display();
+
+			if (Authentication.Permission >= 4)
+			{
+				btn_Add.Enabled = false;
+			}
 		}
 
 		private void btn_Search_Click(object sender, EventArgs e)
@@ -59,6 +64,12 @@ namespace prjMidtermTopic.form_Category
 		private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
 		{
 			if (e.RowIndex < 0) return;
+
+			if (Authentication.Permission >= 4)
+			{
+				MessageBox.Show("權限不足，無法編輯商品類別。");
+				return;
+			}
 
 			int id = this.data[e.RowIndex].CategoryId;
 
