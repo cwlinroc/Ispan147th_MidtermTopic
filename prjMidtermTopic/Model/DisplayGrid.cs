@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ISpan147.Estore.SqlDataLayer.Dtos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,4 +20,8 @@ namespace prjMidtermTopic.Model
 	{
 		public string Message { get; set; }
 	}
+
+
+	
+
 }

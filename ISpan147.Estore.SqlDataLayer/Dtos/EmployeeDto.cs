@@ -14,6 +14,7 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
 		public string EmployeeAccount { get; set; }
 		public string EmployeePassword { get; set; }
 		public int Permission { get; set; }
+		public int? ForumAccountID { get; set; }
 	}
 
 	static public class EmployeeDtoEF
@@ -26,7 +27,8 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
 				EmployeeName = ef.EmployeeName,
 				EmployeeAccount = ef.EmployeeAccount,
 				EmployeePassword = ef.EmployeePassword,
-				Permission = ef.Permission
+				Permission = ef.Permission,
+				ForumAccountID = ef.ForumAccountID,
 			};
 		}
 
@@ -38,7 +40,8 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
 				EmployeeName = dto.EmployeeName,
 				EmployeeAccount = dto.EmployeeAccount,
 				EmployeePassword = dto.EmployeePassword,
-				Permission = dto.Permission
+				Permission = dto.Permission,
+				ForumAccountID = dto.ForumAccountID
 			};
 		}
 
@@ -49,6 +52,7 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
 			ef.EmployeeAccount = dto.EmployeeAccount;
 			ef.EmployeePassword = dto.EmployeePassword;
 			ef.Permission = dto.Permission;
+			ef.ForumAccountID = dto.ForumAccountID;
 		}
 	}
 }
