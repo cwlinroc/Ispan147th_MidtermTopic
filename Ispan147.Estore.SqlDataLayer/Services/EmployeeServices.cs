@@ -46,5 +46,38 @@ namespace ISpan147.Estore.SqlDataLayer.Services
 		{
 			return (int)_repo.Delete(account);
 		}
+
+
+		public int CreateForumAccount(string account, string forumName)
+		{
+			var dto = Get(account);
+
+			if (dto == null) return 0;
+
+			int forumAccountID = _repo.CreateForumAccount(forumName);
+
+			dto.ForumAccountID = forumAccountID;
+
+			Update(dto);
+
+			return forumAccountID;
+
+		}
+
+		public string GetForumAccountName(int forumID)
+		{
+			return _repo.GetForumAccountName(forumID);
+		}
+
+		public int UpdateForumAccount(int forumAccountID, string forumName)
+		{
+			return _repo.UpdateForumAccount(new ForumAccountDto
+			{
+				ForumAccountID = forumAccountID,
+				ForumAccountName = forumName
+			});
+
+		}
+
 	}
 }

@@ -2,6 +2,7 @@
 using ISpan147.Estore.SqlDataLayer.ExtMethods;
 using ISpan147.Estore.SqlDataLayer.Repositories;
 using ISpan147.Estore.SqlDataLayer.Services;
+using prjMidtermTopic.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -39,5 +40,8 @@ namespace prjMidtermTopic
 			this.Hide();
 			frm.Show();
 		}
+
+
+
 	}
 }

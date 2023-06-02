@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace prjMidtermTopic.Model
 {
-	//todo [君韋] 註解DisplayGrid ///
+
 	public class DisplayGrid
 	{
 		public static EventHandler Handler;
@@ -21,7 +21,5 @@ namespace prjMidtermTopic.Model
 		public string Message { get; set; }
 	}
 
-
-	
 
 }

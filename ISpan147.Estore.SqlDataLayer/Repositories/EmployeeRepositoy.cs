@@ -60,5 +60,45 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 			db.SaveChanges();
 			return obj.EmployeeID;
 		}
+
+		public int CreateForumAccount(string accountName)
+		{
+			if (string.IsNullOrEmpty(accountName)) return -1;
+
+			var db = new AppDbContext();
+			var obj = new ForumAccount
+			{
+				ForumAccountName = accountName,
+			};
+			db.ForumAccounts.Add(obj);
+			db.SaveChanges();
+			return obj.ForumAccountID;
+		}
+
+		public int UpdateForumAccount(ForumAccountDto dto)
+		{
+			if (string.IsNullOrEmpty(dto.ForumAccountName)) return -1;
+
+			var db = new AppDbContext();
+			var obj = db.ForumAccounts.Where(o => o.ForumAccountID == dto.ForumAccountID).FirstOrDefault();
+
+			if (obj == null) return 0;
+
+			obj.ForumAccountName = dto.ForumAccountName;
+			db.SaveChanges();
+			return obj.ForumAccountID;
+		}
+
+		public string GetForumAccountName(int forumID)
+		{
+			var db = new AppDbContext();
+			var obj = db.ForumAccounts.Where(o => o.ForumAccountID == forumID).FirstOrDefault();
+
+			if(obj == null) return null;
+
+			return obj.ForumAccountName;
+
+		}
+
 	}
 }
