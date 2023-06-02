@@ -45,6 +45,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 			return SqlDb.Get(connGetter, sql, assembler);
 		}
 
+		/* 使用三個參數搜尋
 		public List<MerchandiseSearchDto> Search(int? merchandiseId, string s_name, int? s_categoryid)
 		{
 			#region sql & SqlParameter[]
@@ -81,7 +82,8 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 			Func<SqlConnection> connGetter = SqlDb.GetConnection;
 
 			return SqlDb.Search(connGetter, sql, func, parameters.ToArray()).ToList();
-		}
+		}*/
+
 		public IEnumerable<MerchandiseSearchDto> Search(MerchandiseConditionSearchDto csDto)
 		{
 			if (csDto == null) { return null; }
@@ -96,7 +98,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 				top = string.Empty;
 			}
 
-			string orderBy = $" ORDER BY {csDto.OrderBy}";
+			string orderBy = $" ORDER BY m.{csDto.OrderBy}";
 			string decending = csDto.Descending ? " ASC" : " DESC";
 
 			string sql = $@"SELECT {top}MerchandiseID, MerchandiseName, CategoryName, Price, Amount, 

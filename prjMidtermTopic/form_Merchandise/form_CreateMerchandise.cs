@@ -186,14 +186,10 @@ namespace prjMidtermTopic.form_Merchandise
 
 		private void UploadToForm(string imagePath)
 		{
-			//string targetFolderPath = @"images/MerchendisePicture/";
-			//string imageName = Path.GetFileName(imagePath);
-			//string targetFilePath = Path.Combine(targetFolderPath, imageName);
-
 			try
 			{
 				// 使用時間戳系統性改名，避免資料庫內名稱重複
-				txt_ImageURL.Text = DateTime.Now.ToString("yyyyMMddhhmmssss") + 
+				txt_ImageURL.Text = DateTime.Now.ToString("yyyyMMddhhmmssffff") + 
 																Path.GetFileName(imagePath);
 
 				MessageBox.Show($"圖片選擇成功,路徑:{imagePath}");
@@ -203,7 +199,6 @@ namespace prjMidtermTopic.form_Merchandise
 			catch (Exception ex)
 			{
 				MessageBox.Show("選擇失敗，原因：" + ex.Message);
-
 			}
 		}
 

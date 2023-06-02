@@ -30,14 +30,6 @@
         {
 			this.btn_Add = new System.Windows.Forms.Button();
 			this.dataGridView1 = new System.Windows.Forms.DataGridView();
-			this.MerchandiseId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.MerchandiseName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.CategoryName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.ImageURL = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.CategoryId = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.txt_MerchandiseName = new System.Windows.Forms.TextBox();
 			this.label2 = new System.Windows.Forms.Label();
 			this.txt_MerchandiseId = new System.Windows.Forms.TextBox();
@@ -56,6 +48,14 @@
 			this.label7 = new System.Windows.Forms.Label();
 			this.checkBox_desc = new System.Windows.Forms.CheckBox();
 			this.checkBox_MaxData = new System.Windows.Forms.CheckBox();
+			this.MerchandiseId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.MerchandiseName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.CategoryName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ImageURL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.CategoryId = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -96,71 +96,6 @@
 			this.dataGridView1.TabIndex = 10;
 			this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
 			this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
-			// 
-			// MerchandiseId
-			// 
-			this.MerchandiseId.DataPropertyName = "MerchandiseID";
-			this.MerchandiseId.Frozen = true;
-			this.MerchandiseId.HeaderText = "商品編號";
-			this.MerchandiseId.Name = "MerchandiseId";
-			this.MerchandiseId.ReadOnly = true;
-			this.MerchandiseId.Width = 80;
-			// 
-			// MerchandiseName
-			// 
-			this.MerchandiseName.DataPropertyName = "MerchandiseName";
-			this.MerchandiseName.Frozen = true;
-			this.MerchandiseName.HeaderText = "商品名稱";
-			this.MerchandiseName.Name = "MerchandiseName";
-			this.MerchandiseName.ReadOnly = true;
-			this.MerchandiseName.Width = 180;
-			// 
-			// CategoryName
-			// 
-			this.CategoryName.DataPropertyName = "CategoryName";
-			this.CategoryName.HeaderText = "商品類別";
-			this.CategoryName.Name = "CategoryName";
-			this.CategoryName.ReadOnly = true;
-			// 
-			// Price
-			// 
-			this.Price.DataPropertyName = "Price";
-			this.Price.HeaderText = "價格";
-			this.Price.Name = "Price";
-			this.Price.ReadOnly = true;
-			this.Price.Width = 80;
-			// 
-			// Column2
-			// 
-			this.Column2.DataPropertyName = "Amount";
-			this.Column2.HeaderText = "庫存數量";
-			this.Column2.Name = "Column2";
-			this.Column2.ReadOnly = true;
-			this.Column2.Width = 80;
-			// 
-			// Description
-			// 
-			this.Description.DataPropertyName = "Description";
-			this.Description.HeaderText = "商品描述";
-			this.Description.Name = "Description";
-			this.Description.ReadOnly = true;
-			this.Description.Width = 250;
-			// 
-			// ImageURL
-			// 
-			this.ImageURL.DataPropertyName = "ImageURL";
-			this.ImageURL.HeaderText = "商品圖片";
-			this.ImageURL.Name = "ImageURL";
-			this.ImageURL.ReadOnly = true;
-			this.ImageURL.Width = 150;
-			// 
-			// CategoryId
-			// 
-			this.CategoryId.DataPropertyName = "CategoryId";
-			this.CategoryId.HeaderText = "類別編號";
-			this.CategoryId.Name = "CategoryId";
-			this.CategoryId.ReadOnly = true;
-			this.CategoryId.Visible = false;
 			// 
 			// txt_MerchandiseName
 			// 
@@ -340,6 +275,71 @@
 			this.checkBox_MaxData.TabIndex = 17;
 			this.checkBox_MaxData.Text = "最多顯示";
 			this.checkBox_MaxData.UseVisualStyleBackColor = true;
+			// 
+			// MerchandiseId
+			// 
+			this.MerchandiseId.DataPropertyName = "MerchandiseID";
+			this.MerchandiseId.Frozen = true;
+			this.MerchandiseId.HeaderText = "商品編號";
+			this.MerchandiseId.Name = "MerchandiseId";
+			this.MerchandiseId.ReadOnly = true;
+			this.MerchandiseId.Width = 80;
+			// 
+			// MerchandiseName
+			// 
+			this.MerchandiseName.DataPropertyName = "MerchandiseName";
+			this.MerchandiseName.Frozen = true;
+			this.MerchandiseName.HeaderText = "商品名稱";
+			this.MerchandiseName.Name = "MerchandiseName";
+			this.MerchandiseName.ReadOnly = true;
+			this.MerchandiseName.Width = 180;
+			// 
+			// CategoryName
+			// 
+			this.CategoryName.DataPropertyName = "CategoryName";
+			this.CategoryName.HeaderText = "商品類別";
+			this.CategoryName.Name = "CategoryName";
+			this.CategoryName.ReadOnly = true;
+			// 
+			// Price
+			// 
+			this.Price.DataPropertyName = "Price";
+			this.Price.HeaderText = "價格";
+			this.Price.Name = "Price";
+			this.Price.ReadOnly = true;
+			this.Price.Width = 80;
+			// 
+			// Column2
+			// 
+			this.Column2.DataPropertyName = "Amount";
+			this.Column2.HeaderText = "庫存數量";
+			this.Column2.Name = "Column2";
+			this.Column2.ReadOnly = true;
+			this.Column2.Width = 80;
+			// 
+			// Description
+			// 
+			this.Description.DataPropertyName = "Description";
+			this.Description.HeaderText = "商品描述";
+			this.Description.Name = "Description";
+			this.Description.ReadOnly = true;
+			this.Description.Width = 250;
+			// 
+			// ImageURL
+			// 
+			this.ImageURL.DataPropertyName = "ImageURL";
+			this.ImageURL.HeaderText = "商品圖片";
+			this.ImageURL.Name = "ImageURL";
+			this.ImageURL.ReadOnly = true;
+			this.ImageURL.Width = 150;
+			// 
+			// CategoryId
+			// 
+			this.CategoryId.DataPropertyName = "CategoryId";
+			this.CategoryId.HeaderText = "類別編號";
+			this.CategoryId.Name = "CategoryId";
+			this.CategoryId.ReadOnly = true;
+			this.CategoryId.Visible = false;
 			// 
 			// form_SearchMerchandise
 			// 
