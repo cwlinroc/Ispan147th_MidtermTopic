@@ -105,12 +105,7 @@ namespace prjMidtermTopic
 		private void 留言QAToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			toolStripButton_QAForm.PerformClick();
-		}
-
-		private void 員工管理ToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			new form_Employee().ShowDialog();
-		}
+		}		
 
 		private void 關閉ToolStripMenuItem_Click(object sender, EventArgs e)
 		{
@@ -180,6 +175,15 @@ namespace prjMidtermTopic
 			}			
 		}
 
+		private void 員工管理ToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			if (Authentication.Permission > 3)
+			{
+				MessageBox.Show("權限不足，禁止訪問。");
+				return;
+			}
+			new form_Employee().ShowDialog();
+		}
 		#endregion
 
 		private void showForm(Form frm)

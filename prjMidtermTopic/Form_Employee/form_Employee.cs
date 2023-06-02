@@ -22,12 +22,13 @@ namespace prjMidtermTopic.Form_Employee
 		private int _row = 0;
 		public form_Employee()
 		{
+			
 			InitializeComponent();
 			Load += Form_Employee_Load;
 		}
 
 		private void Form_Employee_Load(object sender, EventArgs e)
-		{
+		{			
 			Display();
 		}
 
