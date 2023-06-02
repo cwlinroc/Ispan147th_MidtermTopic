@@ -52,6 +52,12 @@ namespace prjMidtermTopic.Form_Order
 		{
 			Display();
 			DisplayGrid.Handler += AutoDisplay;
+
+			if (Authentication.Permission > 3)
+			{
+				btn_Add.Enabled = false;
+				btn_Edit.Enabled = false;
+			}
 		}
 
 		//closed
@@ -78,10 +84,12 @@ namespace prjMidtermTopic.Form_Order
 		private void btn_Edit_Click(object sender, EventArgs e)
 		{
 			if (_row < 0) return;
+			if (!PermissionCheck.Enable(3)) return;
 			new form_OrdersEdit(_data[_row]).ShowDialog();
 		}
 		private void btn_Add_Click(object sender, EventArgs e)
 		{
+			if (!PermissionCheck.Enable(3)) return;
 			new form_OrdersAdd().ShowDialog();
 		}
 
@@ -174,7 +182,7 @@ namespace prjMidtermTopic.Form_Order
 			}
 			if (checkBox_MaxData.Checked)
 			{
-				sDto.MaxQueryNumber = int.Parse(txt_MaxQuery.Text.Trim());				
+				sDto.MaxQueryNumber = int.Parse(txt_MaxQuery.Text.Trim());
 			}
 
 			sDto.Descending = checkBox_desc.Checked;

@@ -47,6 +47,14 @@ namespace prjMidtermTopic.Form_Order
 		private void form_OrderList_Load(object sender, EventArgs e)
 		{
 			Display();
+
+			if (Authentication.Permission > 3)
+			{
+				btn_AddListItem.Enabled = false;
+				btn_EditListItem.Enabled = false;
+				btn_DeleteOrder.Enabled = false;
+				btn_DelteListItem.Enabled = false;
+			}
 		}
 
 		//select change
@@ -61,6 +69,7 @@ namespace prjMidtermTopic.Form_Order
 		private void btn_EditListItem_Click(object sender, EventArgs e)
 		{
 			if (_row < 0) return;
+			if (!PermissionCheck.Enable(3)) return;
 
 			var frm = new Form_OrderListEdit(_data[_row]);
 			frm.Owner = this;
@@ -68,12 +77,16 @@ namespace prjMidtermTopic.Form_Order
 		}
 		private void btn_AddListItem_Click(object sender, EventArgs e)
 		{
+			if (!PermissionCheck.Enable(3)) return;
+
 			var frm = new form_OrderListAdd(_orderID);
 			frm.Owner = this;
 			frm.ShowDialog();
 		}
 		private void btn_DelteListItem_Click(object sender, EventArgs e)
 		{
+			if (!PermissionCheck.Enable(3)) return;
+
 			DialogResult dialogResult = MessageBox.Show("確定篩除該項目？", "確認刪除", MessageBoxButtons.YesNo);
 			if (dialogResult == DialogResult.No) return;
 
@@ -92,6 +105,8 @@ namespace prjMidtermTopic.Form_Order
 		}
 		private void btn_DeleteOrder_Click(object sender, EventArgs e)
 		{
+			if (!PermissionCheck.Enable(3)) return;
+
 			DialogResult dialogResult = MessageBox.Show("確定篩除該訂單？", "確認刪除", MessageBoxButtons.YesNo);
 			if (dialogResult == DialogResult.No) return;
 

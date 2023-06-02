@@ -19,6 +19,7 @@ namespace prjMidtermTopic
 	public partial class form_Main : Form
 	{
 		private bool _multiMdiChild = false;
+		private bool _logOut = false;
 		public form_Main()
 		{
 			InitializeComponent();
@@ -27,7 +28,17 @@ namespace prjMidtermTopic
 		//closed
 		private void form_Main_FormClosed(object sender, FormClosedEventArgs e)
 		{
-			if (this.Owner != null) Owner.Show();
+			if (this.Owner != null)
+			{
+				if (!_logOut)
+				{
+					Application.Exit();
+				}
+				else
+				{
+					Owner.Show();
+				}
+			}
 		}
 
 		//toolStripButtons
@@ -65,6 +76,12 @@ namespace prjMidtermTopic
 		private void toolStripButton_QAForm_Click(object sender, EventArgs e)
 		{
 			showForm(new form_QAList());
+		}
+
+		private void toolStripButton_LogOut_Click(object sender, EventArgs e)
+		{
+			_logOut = true;
+			this.Close();
 		}
 
 		private void toolStripButton_Exit_Click(object sender, EventArgs e)
@@ -105,8 +122,12 @@ namespace prjMidtermTopic
 		private void 留言QAToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			toolStripButton_QAForm.PerformClick();
-		}		
+		}
 
+		private void 登出ToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			toolStripButton_LogOut.PerformClick();
+		}
 		private void 關閉ToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			toolStripButton_Exit.PerformClick();
@@ -155,11 +176,15 @@ namespace prjMidtermTopic
 
 		private void 大量輸入ToolStripMenuItem_Click(object sender, EventArgs e)
 		{
+			if (!PermissionCheck.Enable(2)) return;
+
 			new MassInsert.form_MassInsert().ShowDialog();
 		}
 
 		private void 整理訂單金額ToolStripMenuItem_Click(object sender, EventArgs e)
 		{
+			if (!PermissionCheck.Enable(2)) return;
+
 			try
 			{
 				DialogResult dialogResult = MessageBox.Show($"確認重整所有訂單金額？"
@@ -172,18 +197,38 @@ namespace prjMidtermTopic
 			catch (Exception ex)
 			{
 				MessageBox.Show("整理失敗，可能原因：" + ex.Message);
-			}			
+			}
 		}
 
 		private void 員工管理ToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			if (Authentication.Permission > 3)
-			{
-				MessageBox.Show("權限不足，禁止訪問。");
-				return;
-			}
+			if (!PermissionCheck.Enable(1)) return;
+
 			new form_Employee().ShowDialog();
 		}
+		private void 修改個人資料ToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			if (Authentication.EmployeeID < 0) return;
+
+			var dto = new EmployeeServices().Get(Authentication.EmployeeAccount);
+			var frm = new form_EmployeeEdit(dto);
+
+			frm.ShowDialog();
+		}
+
+		private void 論壇帳號ToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			if (Authentication.EmployeeID < 0) return;
+			if (Authentication.ForumAccountID == null)
+			{
+				
+			}
+			else
+			{
+
+			}
+		}
+
 		#endregion
 
 		private void showForm(Form frm)
@@ -197,5 +242,6 @@ namespace prjMidtermTopic
 			frm.WindowState = FormWindowState.Maximized;
 			frm.Show();
 		}
+
 	}
 }

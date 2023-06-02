@@ -95,17 +95,23 @@
     <Compile Include="form_Category\form_SearchCategory.Designer.cs">
       <DependentUpon>form_SearchCategory.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form_Employee\EmployeeForumAccountAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Employee\EmployeeForumAccountAdd.Designer.cs">
+      <DependentUpon>EmployeeForumAccountAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form_Employee\form_EmployeeChangePermission.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form_Employee\form_EmployeeChangePermission.Designer.cs">
       <DependentUpon>form_EmployeeChangePermission.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form_Employee\form_EmployeeResetPassword.cs">
+    <Compile Include="Form_Employee\form_EmployeeEdit.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form_Employee\form_EmployeeResetPassword.Designer.cs">
-      <DependentUpon>form_EmployeeResetPassword.cs</DependentUpon>
+    <Compile Include="Form_Employee\form_EmployeeEdit.Designer.cs">
+      <DependentUpon>form_EmployeeEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="Form_Employee\form_Employee.cs">
       <SubType>Form</SubType>
@@ -221,6 +227,7 @@
     </Compile>
     <Compile Include="Model\DisplayGrid.cs" />
     <Compile Include="Model\MyValidator.cs" />
+    <Compile Include="Model\PermissionCheck.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\CategoryCreateVM.cs" />
@@ -243,11 +250,14 @@
     <EmbeddedResource Include="form_Category\form_SearchCategory.resx">
       <DependentUpon>form_SearchCategory.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form_Employee\EmployeeForumAccountAdd.resx">
+      <DependentUpon>EmployeeForumAccountAdd.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form_Employee\form_EmployeeChangePermission.resx">
       <DependentUpon>form_EmployeeChangePermission.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form_Employee\form_EmployeeResetPassword.resx">
-      <DependentUpon>form_EmployeeResetPassword.cs</DependentUpon>
+    <EmbeddedResource Include="Form_Employee\form_EmployeeEdit.resx">
+      <DependentUpon>form_EmployeeEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_Employee\form_Employee.resx">
       <DependentUpon>form_Employee.cs</DependentUpon>

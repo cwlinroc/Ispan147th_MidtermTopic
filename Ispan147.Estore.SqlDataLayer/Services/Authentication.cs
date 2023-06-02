@@ -27,15 +27,16 @@ namespace ISpan147.Estore.SqlDataLayer.Services
 			get => _employee.Permission;
 		}
 
-		static public string EmployeeName
+		static public string EmployeeAccount
 		{
-			get => _employee.EmployeeName;
+			get => _employee.EmployeeAccount;
 		}
 
 		static public int EmployeeID
 		{
 			get => _employee.EmployeeID;
 		}
+		
 
 		static public void LogIn(EmployeeDto employee)
 		{
