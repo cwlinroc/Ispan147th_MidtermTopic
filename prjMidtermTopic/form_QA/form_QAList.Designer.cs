@@ -54,7 +54,7 @@
 			this.textBoxSearch.Location = new System.Drawing.Point(55, 23);
 			this.textBoxSearch.Margin = new System.Windows.Forms.Padding(2);
 			this.textBoxSearch.Name = "textBoxSearch";
-			this.textBoxSearch.Size = new System.Drawing.Size(76, 25);
+			this.textBoxSearch.Size = new System.Drawing.Size(76, 22);
 			this.textBoxSearch.TabIndex = 11;
 			// 
 			// buttonCreateTheme
@@ -125,6 +125,7 @@
 			this.Controls.Add(this.buttonCreateTheme);
 			this.Controls.Add(this.dataGridView1);
 			this.Name = "form_QAList";
+			this.Text = "主留言列表";
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();

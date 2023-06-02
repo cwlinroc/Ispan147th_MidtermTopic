@@ -12,9 +12,9 @@ using System.Windows.Forms;
 
 namespace prjMidtermTopic.form_QA
 {
-	public partial class from_QACreate : Form
+	public partial class from_ThemeCreate : Form
 	{
-		public from_QACreate()
+		public from_ThemeCreate()
 		{
 			InitializeComponent();
 		}
