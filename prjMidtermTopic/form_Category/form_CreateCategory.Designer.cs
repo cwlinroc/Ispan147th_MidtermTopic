@@ -41,7 +41,7 @@
 			this.btn_Add.Location = new System.Drawing.Point(254, 43);
 			this.btn_Add.Name = "btn_Add";
 			this.btn_Add.Size = new System.Drawing.Size(75, 23);
-			this.btn_Add.TabIndex = 19;
+			this.btn_Add.TabIndex = 1;
 			this.btn_Add.Text = "新增類別";
 			this.btn_Add.UseVisualStyleBackColor = true;
 			this.btn_Add.Click += new System.EventHandler(this.btn_Add_Click);
@@ -51,7 +51,7 @@
 			this.txt_CategoryName.Location = new System.Drawing.Point(91, 12);
 			this.txt_CategoryName.Name = "txt_CategoryName";
 			this.txt_CategoryName.Size = new System.Drawing.Size(238, 22);
-			this.txt_CategoryName.TabIndex = 18;
+			this.txt_CategoryName.TabIndex = 0;
 			// 
 			// label2
 			// 

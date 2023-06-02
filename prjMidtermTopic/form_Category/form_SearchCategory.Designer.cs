@@ -48,7 +48,7 @@
 			this.btn_Add.Location = new System.Drawing.Point(254, 526);
 			this.btn_Add.Name = "btn_Add";
 			this.btn_Add.Size = new System.Drawing.Size(91, 30);
-			this.btn_Add.TabIndex = 17;
+			this.btn_Add.TabIndex = 4;
 			this.btn_Add.Text = "新增類別";
 			this.btn_Add.UseVisualStyleBackColor = true;
 			this.btn_Add.Click += new System.EventHandler(this.btn_Add_Click);
@@ -93,7 +93,7 @@
 			this.txt_CategoryName.Location = new System.Drawing.Point(112, 59);
 			this.txt_CategoryName.Name = "txt_CategoryName";
 			this.txt_CategoryName.Size = new System.Drawing.Size(100, 29);
-			this.txt_CategoryName.TabIndex = 14;
+			this.txt_CategoryName.TabIndex = 1;
 			// 
 			// label2
 			// 
@@ -112,7 +112,7 @@
 			this.txt_CategoryId.Location = new System.Drawing.Point(112, 24);
 			this.txt_CategoryId.Name = "txt_CategoryId";
 			this.txt_CategoryId.Size = new System.Drawing.Size(100, 29);
-			this.txt_CategoryId.TabIndex = 13;
+			this.txt_CategoryId.TabIndex = 0;
 			// 
 			// label1
 			// 
@@ -131,7 +131,7 @@
 			this.btn_Search.Location = new System.Drawing.Point(254, 23);
 			this.btn_Search.Name = "btn_Search";
 			this.btn_Search.Size = new System.Drawing.Size(91, 30);
-			this.btn_Search.TabIndex = 16;
+			this.btn_Search.TabIndex = 2;
 			this.btn_Search.Text = "搜尋";
 			this.btn_Search.UseVisualStyleBackColor = true;
 			this.btn_Search.Click += new System.EventHandler(this.btn_Search_Click);
@@ -142,7 +142,7 @@
 			this.btn_DefaultSearch.Location = new System.Drawing.Point(254, 57);
 			this.btn_DefaultSearch.Name = "btn_DefaultSearch";
 			this.btn_DefaultSearch.Size = new System.Drawing.Size(91, 30);
-			this.btn_DefaultSearch.TabIndex = 21;
+			this.btn_DefaultSearch.TabIndex = 3;
 			this.btn_DefaultSearch.Text = "清空條件";
 			this.btn_DefaultSearch.UseVisualStyleBackColor = true;
 			this.btn_DefaultSearch.Click += new System.EventHandler(this.btn_DefaultSearch_Click);

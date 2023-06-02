@@ -119,6 +119,12 @@ namespace prjMidtermTopic.form_Merchandise
 				btn_SelectNewImage.Enabled = false;
 				btn_DeleteImage.Enabled = false;
 				btn_Update.Enabled = false;
+				txt_MerchandiseName.ReadOnly = true;
+				comboBox_CategoryId.Enabled = false;
+				txt_Price.ReadOnly = true;
+				txt_Amount.ReadOnly = true;
+				txt_Description.ReadOnly = true;
+				txt_ImageURL.ReadOnly = true;
 			}
 			if (Authentication.Permission >= 4)
 			{

@@ -30,6 +30,14 @@
         {
 			this.btn_Add = new System.Windows.Forms.Button();
 			this.dataGridView1 = new System.Windows.Forms.DataGridView();
+			this.MerchandiseId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.MerchandiseName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.CategoryName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ImageURL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.CategoryId = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.txt_MerchandiseName = new System.Windows.Forms.TextBox();
 			this.label2 = new System.Windows.Forms.Label();
 			this.txt_MerchandiseId = new System.Windows.Forms.TextBox();
@@ -48,14 +56,6 @@
 			this.label7 = new System.Windows.Forms.Label();
 			this.checkBox_desc = new System.Windows.Forms.CheckBox();
 			this.checkBox_MaxData = new System.Windows.Forms.CheckBox();
-			this.MerchandiseId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.MerchandiseName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.CategoryName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.ImageURL = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.CategoryId = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -66,7 +66,7 @@
 			this.btn_Add.Location = new System.Drawing.Point(1154, 408);
 			this.btn_Add.Name = "btn_Add";
 			this.btn_Add.Size = new System.Drawing.Size(91, 30);
-			this.btn_Add.TabIndex = 4;
+			this.btn_Add.TabIndex = 11;
 			this.btn_Add.Text = "新增商品";
 			this.btn_Add.UseVisualStyleBackColor = true;
 			this.btn_Add.Click += new System.EventHandler(this.btn_Add_Click);
@@ -96,185 +96,6 @@
 			this.dataGridView1.TabIndex = 10;
 			this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
 			this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
-			// 
-			// txt_MerchandiseName
-			// 
-			this.txt_MerchandiseName.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.txt_MerchandiseName.Location = new System.Drawing.Point(110, 49);
-			this.txt_MerchandiseName.Name = "txt_MerchandiseName";
-			this.txt_MerchandiseName.Size = new System.Drawing.Size(100, 29);
-			this.txt_MerchandiseName.TabIndex = 1;
-			// 
-			// label2
-			// 
-			this.label2.AutoSize = true;
-			this.label2.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.label2.Location = new System.Drawing.Point(21, 52);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(89, 20);
-			this.label2.TabIndex = 7;
-			this.label2.Text = "商品名稱：";
-			this.label2.TextAlign = System.Drawing.ContentAlignment.TopRight;
-			// 
-			// txt_MerchandiseId
-			// 
-			this.txt_MerchandiseId.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.txt_MerchandiseId.Location = new System.Drawing.Point(110, 13);
-			this.txt_MerchandiseId.Name = "txt_MerchandiseId";
-			this.txt_MerchandiseId.Size = new System.Drawing.Size(100, 29);
-			this.txt_MerchandiseId.TabIndex = 0;
-			// 
-			// label1
-			// 
-			this.label1.AutoSize = true;
-			this.label1.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.label1.Location = new System.Drawing.Point(21, 16);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(89, 20);
-			this.label1.TabIndex = 8;
-			this.label1.Text = "商品編號：";
-			this.label1.TextAlign = System.Drawing.ContentAlignment.TopRight;
-			// 
-			// btn_Search
-			// 
-			this.btn_Search.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.btn_Search.Location = new System.Drawing.Point(1154, 11);
-			this.btn_Search.Name = "btn_Search";
-			this.btn_Search.Size = new System.Drawing.Size(91, 30);
-			this.btn_Search.TabIndex = 3;
-			this.btn_Search.Text = "搜尋";
-			this.btn_Search.UseVisualStyleBackColor = true;
-			this.btn_Search.Click += new System.EventHandler(this.btn_Search_Click);
-			// 
-			// labCategoryName
-			// 
-			this.labCategoryName.AutoSize = true;
-			this.labCategoryName.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.labCategoryName.Location = new System.Drawing.Point(275, 34);
-			this.labCategoryName.Name = "labCategoryName";
-			this.labCategoryName.Size = new System.Drawing.Size(89, 20);
-			this.labCategoryName.TabIndex = 12;
-			this.labCategoryName.Text = "商品類別：";
-			this.labCategoryName.TextAlign = System.Drawing.ContentAlignment.TopRight;
-			// 
-			// comboBox_CategoryId
-			// 
-			this.comboBox_CategoryId.FormattingEnabled = true;
-			this.comboBox_CategoryId.Location = new System.Drawing.Point(370, 34);
-			this.comboBox_CategoryId.Name = "comboBox_CategoryId";
-			this.comboBox_CategoryId.Size = new System.Drawing.Size(121, 20);
-			this.comboBox_CategoryId.TabIndex = 2;
-			// 
-			// label3
-			// 
-			this.label3.AutoSize = true;
-			this.label3.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.label3.Location = new System.Drawing.Point(566, 15);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(89, 20);
-			this.label3.TabIndex = 7;
-			this.label3.Text = "最高價格：";
-			this.label3.TextAlign = System.Drawing.ContentAlignment.TopRight;
-			// 
-			// txt_MaxPrice
-			// 
-			this.txt_MaxPrice.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.txt_MaxPrice.Location = new System.Drawing.Point(655, 12);
-			this.txt_MaxPrice.Name = "txt_MaxPrice";
-			this.txt_MaxPrice.Size = new System.Drawing.Size(100, 29);
-			this.txt_MaxPrice.TabIndex = 1;
-			// 
-			// label4
-			// 
-			this.label4.AutoSize = true;
-			this.label4.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.label4.Location = new System.Drawing.Point(566, 50);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(89, 20);
-			this.label4.TabIndex = 7;
-			this.label4.Text = "最低價格：";
-			this.label4.TextAlign = System.Drawing.ContentAlignment.TopRight;
-			// 
-			// txt_MinPrice
-			// 
-			this.txt_MinPrice.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.txt_MinPrice.Location = new System.Drawing.Point(655, 47);
-			this.txt_MinPrice.Name = "txt_MinPrice";
-			this.txt_MinPrice.Size = new System.Drawing.Size(100, 29);
-			this.txt_MinPrice.TabIndex = 1;
-			// 
-			// btn_DefaultSearch
-			// 
-			this.btn_DefaultSearch.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.btn_DefaultSearch.Location = new System.Drawing.Point(1154, 47);
-			this.btn_DefaultSearch.Name = "btn_DefaultSearch";
-			this.btn_DefaultSearch.Size = new System.Drawing.Size(91, 30);
-			this.btn_DefaultSearch.TabIndex = 3;
-			this.btn_DefaultSearch.Text = "清空條件";
-			this.btn_DefaultSearch.UseVisualStyleBackColor = true;
-			this.btn_DefaultSearch.Click += new System.EventHandler(this.btn_DefaultSearch_Click);
-			// 
-			// txt_MaxQuery
-			// 
-			this.txt_MaxQuery.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.txt_MaxQuery.Location = new System.Drawing.Point(915, 11);
-			this.txt_MaxQuery.Name = "txt_MaxQuery";
-			this.txt_MaxQuery.Size = new System.Drawing.Size(67, 29);
-			this.txt_MaxQuery.TabIndex = 1;
-			this.txt_MaxQuery.Text = "100";
-			// 
-			// label6
-			// 
-			this.label6.AutoSize = true;
-			this.label6.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.label6.Location = new System.Drawing.Point(820, 55);
-			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(89, 20);
-			this.label6.TabIndex = 12;
-			this.label6.Text = "排序依據：";
-			this.label6.TextAlign = System.Drawing.ContentAlignment.TopRight;
-			// 
-			// comboBox_SortBy
-			// 
-			this.comboBox_SortBy.FormattingEnabled = true;
-			this.comboBox_SortBy.Location = new System.Drawing.Point(915, 55);
-			this.comboBox_SortBy.Name = "comboBox_SortBy";
-			this.comboBox_SortBy.Size = new System.Drawing.Size(121, 20);
-			this.comboBox_SortBy.TabIndex = 2;
-			// 
-			// label7
-			// 
-			this.label7.AutoSize = true;
-			this.label7.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.label7.Location = new System.Drawing.Point(988, 16);
-			this.label7.Name = "label7";
-			this.label7.Size = new System.Drawing.Size(57, 20);
-			this.label7.TabIndex = 13;
-			this.label7.Text = "筆資料";
-			this.label7.TextAlign = System.Drawing.ContentAlignment.TopRight;
-			// 
-			// checkBox_desc
-			// 
-			this.checkBox_desc.AutoSize = true;
-			this.checkBox_desc.Location = new System.Drawing.Point(1042, 59);
-			this.checkBox_desc.Name = "checkBox_desc";
-			this.checkBox_desc.Size = new System.Drawing.Size(48, 16);
-			this.checkBox_desc.TabIndex = 16;
-			this.checkBox_desc.Text = "降冪";
-			this.checkBox_desc.UseVisualStyleBackColor = true;
-			// 
-			// checkBox_MaxData
-			// 
-			this.checkBox_MaxData.AutoSize = true;
-			this.checkBox_MaxData.Checked = true;
-			this.checkBox_MaxData.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.checkBox_MaxData.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.checkBox_MaxData.Location = new System.Drawing.Point(824, 14);
-			this.checkBox_MaxData.Name = "checkBox_MaxData";
-			this.checkBox_MaxData.Size = new System.Drawing.Size(92, 24);
-			this.checkBox_MaxData.TabIndex = 17;
-			this.checkBox_MaxData.Text = "最多顯示";
-			this.checkBox_MaxData.UseVisualStyleBackColor = true;
 			// 
 			// MerchandiseId
 			// 
@@ -340,6 +161,185 @@
 			this.CategoryId.Name = "CategoryId";
 			this.CategoryId.ReadOnly = true;
 			this.CategoryId.Visible = false;
+			// 
+			// txt_MerchandiseName
+			// 
+			this.txt_MerchandiseName.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.txt_MerchandiseName.Location = new System.Drawing.Point(110, 49);
+			this.txt_MerchandiseName.Name = "txt_MerchandiseName";
+			this.txt_MerchandiseName.Size = new System.Drawing.Size(100, 29);
+			this.txt_MerchandiseName.TabIndex = 1;
+			// 
+			// label2
+			// 
+			this.label2.AutoSize = true;
+			this.label2.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.label2.Location = new System.Drawing.Point(21, 52);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(89, 20);
+			this.label2.TabIndex = 7;
+			this.label2.Text = "商品名稱：";
+			this.label2.TextAlign = System.Drawing.ContentAlignment.TopRight;
+			// 
+			// txt_MerchandiseId
+			// 
+			this.txt_MerchandiseId.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.txt_MerchandiseId.Location = new System.Drawing.Point(110, 13);
+			this.txt_MerchandiseId.Name = "txt_MerchandiseId";
+			this.txt_MerchandiseId.Size = new System.Drawing.Size(100, 29);
+			this.txt_MerchandiseId.TabIndex = 0;
+			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.label1.Location = new System.Drawing.Point(21, 16);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(89, 20);
+			this.label1.TabIndex = 8;
+			this.label1.Text = "商品編號：";
+			this.label1.TextAlign = System.Drawing.ContentAlignment.TopRight;
+			// 
+			// btn_Search
+			// 
+			this.btn_Search.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.btn_Search.Location = new System.Drawing.Point(1154, 11);
+			this.btn_Search.Name = "btn_Search";
+			this.btn_Search.Size = new System.Drawing.Size(91, 30);
+			this.btn_Search.TabIndex = 9;
+			this.btn_Search.Text = "搜尋";
+			this.btn_Search.UseVisualStyleBackColor = true;
+			this.btn_Search.Click += new System.EventHandler(this.btn_Search_Click);
+			// 
+			// labCategoryName
+			// 
+			this.labCategoryName.AutoSize = true;
+			this.labCategoryName.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.labCategoryName.Location = new System.Drawing.Point(275, 34);
+			this.labCategoryName.Name = "labCategoryName";
+			this.labCategoryName.Size = new System.Drawing.Size(89, 20);
+			this.labCategoryName.TabIndex = 12;
+			this.labCategoryName.Text = "商品類別：";
+			this.labCategoryName.TextAlign = System.Drawing.ContentAlignment.TopRight;
+			// 
+			// comboBox_CategoryId
+			// 
+			this.comboBox_CategoryId.FormattingEnabled = true;
+			this.comboBox_CategoryId.Location = new System.Drawing.Point(370, 34);
+			this.comboBox_CategoryId.Name = "comboBox_CategoryId";
+			this.comboBox_CategoryId.Size = new System.Drawing.Size(121, 20);
+			this.comboBox_CategoryId.TabIndex = 2;
+			// 
+			// label3
+			// 
+			this.label3.AutoSize = true;
+			this.label3.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.label3.Location = new System.Drawing.Point(566, 15);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(89, 20);
+			this.label3.TabIndex = 7;
+			this.label3.Text = "最高價格：";
+			this.label3.TextAlign = System.Drawing.ContentAlignment.TopRight;
+			// 
+			// txt_MaxPrice
+			// 
+			this.txt_MaxPrice.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.txt_MaxPrice.Location = new System.Drawing.Point(655, 12);
+			this.txt_MaxPrice.Name = "txt_MaxPrice";
+			this.txt_MaxPrice.Size = new System.Drawing.Size(100, 29);
+			this.txt_MaxPrice.TabIndex = 3;
+			// 
+			// label4
+			// 
+			this.label4.AutoSize = true;
+			this.label4.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.label4.Location = new System.Drawing.Point(566, 50);
+			this.label4.Name = "label4";
+			this.label4.Size = new System.Drawing.Size(89, 20);
+			this.label4.TabIndex = 7;
+			this.label4.Text = "最低價格：";
+			this.label4.TextAlign = System.Drawing.ContentAlignment.TopRight;
+			// 
+			// txt_MinPrice
+			// 
+			this.txt_MinPrice.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.txt_MinPrice.Location = new System.Drawing.Point(655, 47);
+			this.txt_MinPrice.Name = "txt_MinPrice";
+			this.txt_MinPrice.Size = new System.Drawing.Size(100, 29);
+			this.txt_MinPrice.TabIndex = 4;
+			// 
+			// btn_DefaultSearch
+			// 
+			this.btn_DefaultSearch.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.btn_DefaultSearch.Location = new System.Drawing.Point(1154, 47);
+			this.btn_DefaultSearch.Name = "btn_DefaultSearch";
+			this.btn_DefaultSearch.Size = new System.Drawing.Size(91, 30);
+			this.btn_DefaultSearch.TabIndex = 10;
+			this.btn_DefaultSearch.Text = "清空條件";
+			this.btn_DefaultSearch.UseVisualStyleBackColor = true;
+			this.btn_DefaultSearch.Click += new System.EventHandler(this.btn_DefaultSearch_Click);
+			// 
+			// txt_MaxQuery
+			// 
+			this.txt_MaxQuery.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.txt_MaxQuery.Location = new System.Drawing.Point(915, 11);
+			this.txt_MaxQuery.Name = "txt_MaxQuery";
+			this.txt_MaxQuery.Size = new System.Drawing.Size(67, 29);
+			this.txt_MaxQuery.TabIndex = 6;
+			this.txt_MaxQuery.Text = "100";
+			// 
+			// label6
+			// 
+			this.label6.AutoSize = true;
+			this.label6.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.label6.Location = new System.Drawing.Point(820, 55);
+			this.label6.Name = "label6";
+			this.label6.Size = new System.Drawing.Size(89, 20);
+			this.label6.TabIndex = 12;
+			this.label6.Text = "排序依據：";
+			this.label6.TextAlign = System.Drawing.ContentAlignment.TopRight;
+			// 
+			// comboBox_SortBy
+			// 
+			this.comboBox_SortBy.FormattingEnabled = true;
+			this.comboBox_SortBy.Location = new System.Drawing.Point(915, 55);
+			this.comboBox_SortBy.Name = "comboBox_SortBy";
+			this.comboBox_SortBy.Size = new System.Drawing.Size(121, 20);
+			this.comboBox_SortBy.TabIndex = 7;
+			// 
+			// label7
+			// 
+			this.label7.AutoSize = true;
+			this.label7.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.label7.Location = new System.Drawing.Point(988, 16);
+			this.label7.Name = "label7";
+			this.label7.Size = new System.Drawing.Size(57, 20);
+			this.label7.TabIndex = 13;
+			this.label7.Text = "筆資料";
+			this.label7.TextAlign = System.Drawing.ContentAlignment.TopRight;
+			// 
+			// checkBox_desc
+			// 
+			this.checkBox_desc.AutoSize = true;
+			this.checkBox_desc.Location = new System.Drawing.Point(1042, 59);
+			this.checkBox_desc.Name = "checkBox_desc";
+			this.checkBox_desc.Size = new System.Drawing.Size(48, 16);
+			this.checkBox_desc.TabIndex = 8;
+			this.checkBox_desc.Text = "降冪";
+			this.checkBox_desc.UseVisualStyleBackColor = true;
+			// 
+			// checkBox_MaxData
+			// 
+			this.checkBox_MaxData.AutoSize = true;
+			this.checkBox_MaxData.Checked = true;
+			this.checkBox_MaxData.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.checkBox_MaxData.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.checkBox_MaxData.Location = new System.Drawing.Point(824, 14);
+			this.checkBox_MaxData.Name = "checkBox_MaxData";
+			this.checkBox_MaxData.Size = new System.Drawing.Size(92, 24);
+			this.checkBox_MaxData.TabIndex = 5;
+			this.checkBox_MaxData.Text = "最多顯示";
+			this.checkBox_MaxData.UseVisualStyleBackColor = true;
 			// 
 			// form_SearchMerchandise
 			// 
