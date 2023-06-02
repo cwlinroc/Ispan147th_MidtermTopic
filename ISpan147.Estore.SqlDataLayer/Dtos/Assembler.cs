@@ -20,7 +20,7 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
 				PaymentMethod = reader.GetInt("PaymentMethod"),
 				Payed = reader.GetBool("Payed"),
 				PurchaseTime = reader.GetDate("PurchaseTime"),
-				PaymentAmount = reader.GetNurableInt("PaymentAmount")
+				PaymentAmount = reader.GetNullableInt("PaymentAmount")
 			};
 		}
 
@@ -63,6 +63,7 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
 			{
 				MemberID = reader.GetInt("memberid"),
 				MemberName = reader.GetString("membername"),
+				ForumAccountID = reader.GetNullableInt("forumAccountid"),
 				NickName = reader.GetString("nickname"),
 				DateOfBirth = reader.GetDate("dateofbirth"),
 				Gender = reader.GetBool("gender"),

@@ -66,7 +66,7 @@ namespace Ispan147.Estore.SqlDataLayer.Repositories
 			var parameters = builder.Build().ToArray();
 			#endregion
 
-			//sql += " ORDER BY ";
+			
 			#endregion
 			Func<SqlConnection> connGetter = SqlDb.GetConnection;
 			Func<SqlDataReader, MemberDto> func = Assembler.MemberDtoAssembler;
@@ -77,14 +77,15 @@ namespace Ispan147.Estore.SqlDataLayer.Repositories
 		public int Create(MemberDto dto)
 		{
 			string sql = @"INSERT INTO Members
-						(MemberName, NickName, DateOfBirth, Gender, 
+						(MemberName, ForumAccountID, NickName, DateOfBirth, Gender, 
 						Account, Password, Phone, Address, Email, Avatar)
 						VALUES
-						(@MemberName, @NickName, @DateOfBirth, @Gender, 
+						(@MemberName, @ForumAccountID, @NickName, @DateOfBirth, @Gender, 
 						@Account, @Password, @Phone, @Address, @Email, @Avatar)";
 
 			var parameters = new SqlParameterBuilder()
 				.AddNVarchar("@MemberName", 30, dto.MemberName)
+				.AddNullableInt("@ForumAccountID",dto.ForumAccountID)
 				.AddNVarchar("@NickName", 30, dto.NickName)
 				.AddDateTime("@DateOfBirth", dto.DateOfBirth)
 				.AddBit("@Gender", dto.Gender)
@@ -101,23 +102,37 @@ namespace Ispan147.Estore.SqlDataLayer.Repositories
 
 		public int Update(MemberDto dto)
 		{
-			string sql = "UPDATE Members SET MemberName = @MemberName, NickName = @NickName, " +
-				"DateOfBirth = @DateOfBirth, Gender = @Gender, Account = @Account, " +
-				"Phone = @Phone, Address = @Address, Email = @Email, " +
-				"Avatar = @Avatar WHERE MemberID = @MemberID";
-
-			var parameters = new SqlParameterBuilder()
+			var builder = new SqlParameterBuilder()
 				.AddInt("@MemberID", dto.MemberID)
 				.AddNVarchar("@MemberName", 30, dto.MemberName)
 				.AddNVarchar("@NickName", 30, dto.NickName)
 				.AddDateTime("@DateOfBirth", dto.DateOfBirth)
 				.AddBit("@Gender", dto.Gender)
-				.AddNchar("@Account", 15, dto.Account)				
+				.AddNchar("@Account", 15, dto.Account)
 				.AddNchar("@Phone", 20, dto.Phone)
 				.AddNVarchar("@Address", 30, dto.Address)
-				.AddNchar("@Email", 30, dto.Email)
-				.AddNVarchar("@Avatar", 50, dto.Avatar)
-				.Build();
+				.AddNchar("@Email", 30, dto.Email);
+
+			string forumAccountID ="";
+			string avatar = "";
+
+			if (dto.ForumAccountID != null)
+			{
+				builder = builder.AddNullableInt("@ForumAccountID", dto.ForumAccountID);
+				forumAccountID = ", ForumAccountID = @ForumAccountID ";
+			}
+			if (dto.Avatar != null)
+			{
+				builder = builder.AddNVarchar("@Avatar", 50, dto.Avatar);
+				avatar = ", Avatar = @Avatar ";
+			}
+			var parameters = builder.Build();
+
+			string sql = "UPDATE Members SET MemberName = @MemberName, " +
+				"NickName = @NickName, DateOfBirth = @DateOfBirth, Gender = @Gender, " +
+				"Account = @Account, Phone = @Phone, Address = @Address, Email = @Email" +
+				$"{forumAccountID}{avatar}WHERE MemberID = @MemberID";
+
 			Func<SqlConnection> connGetter = SqlDb.GetConnection;
 
 			return SqlDb.UpdateOrDelete(connGetter, sql, parameters);

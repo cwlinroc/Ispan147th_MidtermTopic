@@ -13,6 +13,9 @@ namespace prjMidtermTopic.ViewModels
 		[MaxLength(30, ErrorMessage = "{0}長度不可多於{1}")]
 		public string MemberName { get; set; }
 
+		[Display(Name = "論壇帳戶編號")]
+		public int? ForumAccountID { get; set; }
+
 		[Display(Name = "暱稱")]
 		[MaxLength(30, ErrorMessage = "{0}長度不可多於{1}")]
 		public string NickName { get; set; }

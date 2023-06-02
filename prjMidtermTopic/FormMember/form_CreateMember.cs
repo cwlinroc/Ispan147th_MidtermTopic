@@ -11,6 +11,7 @@ using prjMidtermTopic.Model;
 using System.IO;
 using ISpan147.Estore.SqlDataLayer.ExtMethods;
 using Ispan147.Estore.SqlDataLayer.Repositories;
+using ISpan147.Estore.SqlDataLayer.Utility;
 
 namespace prjMidtermTopic.FormMember
 {
@@ -27,6 +28,7 @@ namespace prjMidtermTopic.FormMember
 			_map = new Dictionary<string, Control>(StringComparer.CurrentCultureIgnoreCase)
 			{
 				{ "MemberName", txtMemberName},
+				{ "ForumAccountID", txtForumAccountID},
 				{ "NickName", txtNickName},
 				{ "DateOfBirth", DateOfBirthPicker },
 				{ "Gender", radbtnFemale},
@@ -133,8 +135,9 @@ namespace prjMidtermTopic.FormMember
 		}
 
 		private void btnAdd_Click(object sender, EventArgs e)
-		{
+		{			
 			string membername = txtMemberName.Text;
+			int? faccid = Utility.ToNullableInt(txtForumAccountID.Text);
 			string nickname = txtNickName.Text;
 			DateTime dob = DateOfBirthPicker.Value;
 			string acc = txtAccount.Text;
@@ -147,6 +150,7 @@ namespace prjMidtermTopic.FormMember
 			var vm = new MemberCreateVM()
 			{
 				MemberName = membername,
+				ForumAccountID = faccid,
 				NickName = nickname,
 				DateOfBirth = dob,
 				Gender = _gender,
@@ -166,6 +170,7 @@ namespace prjMidtermTopic.FormMember
 			{
 				MemberID = vm.MemberID,
 				MemberName = vm.MemberName,
+				ForumAccountID = vm.ForumAccountID,
 				NickName = vm.NickName,
 				DateOfBirth = vm.DateOfBirth,
 				Gender = vm.Gender.Value,
@@ -205,7 +210,12 @@ namespace prjMidtermTopic.FormMember
 		}
 
 		#endregion
-		
+
+		private void btnApplyForumAccount_Click(object sender, EventArgs e)
+		{
+			var frm = new form_ApplyForumMember();
+			frm.ShowDialog();
+		}
 	}
 
 }
