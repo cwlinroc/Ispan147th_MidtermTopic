@@ -2,15 +2,14 @@
 using Ispan147.Estore.SqlDataLayer.Services;
 using ISpan147.Estore.SqlDataLayer.Dtos;
 using ISpan147.Estore.SqlDataLayer.ExtMethods;
+using ISpan147.Estore.SqlDataLayer.Utility;
 using prjMidtermTopic.Interfaces;
 using prjMidtermTopic.Model;
 using prjMidtermTopic.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Net;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace prjMidtermTopic.FormMember
 {
@@ -21,7 +20,7 @@ namespace prjMidtermTopic.FormMember
 		private readonly int _memberID;
 		private string _originalFilePath;
 		private string _targetFolderPath = @"images/avatar/";
-		private IMemberRepo _memberRepo;
+		private IMemberRepo _memberRepo;		
 		public form_EditMember(int memberID)
 		{
 			InitializeComponent();
@@ -30,12 +29,14 @@ namespace prjMidtermTopic.FormMember
 			_map = new Dictionary<string, Control>(StringComparer.CurrentCultureIgnoreCase)
 			{
 				{ "MemberName", txtMemberName},
+				{ "ForumAccountID", txtForumAccountID},
 				{ "NickName", txtNickName},
-				{ "DateOfBirth", DateOfBirthPicker },
+				{ "DateOfBirth", DateOfBirthPicker},
 				{ "Gender", radbtnFemale},
-				{ "Account", txtAccount},				
+				{ "Account", txtAccount},
 				{ "Phone", txtPhone},
 				{ "Address", txtAddress},
+				{ "Password", txtPassword},
 				{ "Email", txtEmail},
 				{ "Avatar", txtAvatar}
 			};
@@ -50,11 +51,14 @@ namespace prjMidtermTopic.FormMember
 			{
 				MessageBox.Show("找不到紀錄");
 				return;
-			}			
+			}
 			txtMemberName.Text = dto.MemberName;
+			txtForumAccountID.Text = string.IsNullOrEmpty(txtForumAccountID.Text) ?
+									null : dto.ForumAccountID.ToString();
 			txtNickName.Text = dto.NickName;
 			DateOfBirthPicker.Value = dto.DateOfBirth;
-			txtAccount.Text = dto.Account;			
+			txtAccount.Text = dto.Account;
+			txtPassword.Text = dto.Password;
 			txtPhone.Text = dto.Phone;
 			txtAddress.Text = dto.Address;
 			txtEmail.Text = dto.Email;
@@ -138,7 +142,7 @@ namespace prjMidtermTopic.FormMember
 			{
 				MessageBox.Show("選擇時間早於目前時間100年!", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 			}
-		}
+		}		
 
 		#region button
 		private void radbtnMale_CheckedChanged(object sender, EventArgs e)
@@ -180,16 +184,17 @@ namespace prjMidtermTopic.FormMember
 		}
 
 		private void btnUpdate_Click(object sender, EventArgs e)
-		{		
-
+		{			
 			var vm = new MemberCreateVM()
 			{
 				MemberID = this._memberID,
 				MemberName = txtMemberName.Text,
+				ForumAccountID = Utility.ToNullableInt(txtForumAccountID.Text),
 				NickName = txtNickName.Text,
 				DateOfBirth = DateOfBirthPicker.Value,
 				Gender = _gender,
 				Account = txtAccount.Text,
+				Password = txtPassword.Text,
 				Phone = txtPhone.Text,
 				Address = txtAddress.Text,
 				Email = txtEmail.Text,
@@ -204,6 +209,7 @@ namespace prjMidtermTopic.FormMember
 			{
 				MemberID = vm.MemberID,
 				MemberName = vm.MemberName,
+				ForumAccountID = vm.ForumAccountID,
 				NickName = vm.NickName,
 				DateOfBirth = vm.DateOfBirth,
 				Gender = vm.Gender.Value,
@@ -287,8 +293,14 @@ namespace prjMidtermTopic.FormMember
 		private void btnDeleteAvatar_Click(object sender, EventArgs e)
 		{
 			DeleteFile(txtAvatar.Text);
-			txtAvatar.Text = string.Empty;
+			txtAvatar.Text = null;
 		}
 		#endregion
+
+		private void btnApplyForumMember_Click(object sender, EventArgs e)
+		{			
+		 	var frm = new form_ApplyForumMember();
+			frm.ShowDialog();
+		}
 	}
 }
