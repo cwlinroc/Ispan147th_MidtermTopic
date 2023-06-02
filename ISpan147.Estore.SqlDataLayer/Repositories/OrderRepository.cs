@@ -28,14 +28,15 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 			if (sDto == null) return null;
 
 			string top = string.Empty;
-			string orderBy = " ORDER BY OrderID ";
 
-			if(sDto.MaxQueryNumber != null)
+			if (string.IsNullOrEmpty(sDto.OrderBy)) sDto.OrderBy = "OrderID";
+
+			if (sDto.MaxQueryNumber != null)
 			{
 				top = $" TOP {sDto.MaxQueryNumber} ";
-				//orderBy = (sDto.Descending) ? $" ORDER BY @OrderBy DESC " : $" ORDER BY @OrderBy ";
-				orderBy = (sDto.Descending)? $" ORDER BY {sDto.OrderBy} DESC " : $" ORDER BY {sDto.OrderBy} ";
 			}
+
+			string orderBy = (sDto.Descending) ? $" ORDER BY {sDto.OrderBy} DESC " : $" ORDER BY {sDto.OrderBy} ";
 
 			string sql = $" SELECT {top} OrderID ,o.MemberID , MemberName "
 					+ " , PaymentMethod ,Payed ,PurchaseTime , PaymentAmount "

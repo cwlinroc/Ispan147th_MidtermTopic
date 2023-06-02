@@ -16,6 +16,7 @@ namespace prjMidtermTopic.Form_Order
 {
 	public partial class form_OrdersAdd : Form
 	{
+		private readonly Dictionary<string, Control> _validateMap;
 		public form_OrdersAdd()
 		{
 			InitializeComponent();
@@ -23,8 +24,18 @@ namespace prjMidtermTopic.Form_Order
 			comboBox_PayMethod.Items.AddRange(Orders.paymentOptions);
 			comboBox_Payed.Items.AddRange(Orders.payedOptions);
 			dateTimePicker_PurchaseTime.Value = DateTime.Now;
+
+			_validateMap = new Dictionary<string, Control>(StringComparer.CurrentCultureIgnoreCase) {
+					{ "OrderID" , txt_OrderID },
+					{ "MemberID" , txt_MemberID },
+					{ "PaymentMethod" , comboBox_PayMethod },
+					{ "Payed" , comboBox_Payed },
+					{ "PurchaseTime", dateTimePicker_PurchaseTime },
+					{ "PaymentAmount", txt_PaymentAmount }
+				};
 		}
 
+		//button
 		private void btn_commit_Click(object sender, EventArgs e)
 		{
 			try
@@ -38,16 +49,7 @@ namespace prjMidtermTopic.Form_Order
 					PaymentAmount = txt_PaymentAmount.Text.Trim(),
 				};
 
-				var map = new Dictionary<string, Control>(StringComparer.CurrentCultureIgnoreCase) {
-					{ "OrderID" , txt_OrderID },
-					{ "MemberID" , txt_MemberID },
-					{ "PaymentMethod" , comboBox_PayMethod },
-					{ "Payed" , comboBox_Payed },
-					{ "PurchaseTime", dateTimePicker_PurchaseTime },
-					{ "PaymentAmount", txt_PaymentAmount }
-				};
-
-				bool hasError = MyValidator.ValidateAndDisplay(vm, errorProvider1, map);
+				bool hasError = MyValidator.ValidateAndDisplay(vm, errorProvider1, _validateMap);
 
 				if (hasError) return;
 
@@ -65,6 +67,6 @@ namespace prjMidtermTopic.Form_Order
 			}
 		}
 
-		
+
 	}
 }

@@ -1,5 +1,6 @@
 ﻿using ISpan147.Estore.SqlDataLayer.Dtos;
 using ISpan147.Estore.SqlDataLayer.Repositories;
+using ISpan147.Estore.SqlDataLayer.Services;
 using prjMidtermTopic.form_Merchandise;
 using prjMidtermTopic.Interfaces;
 using System;

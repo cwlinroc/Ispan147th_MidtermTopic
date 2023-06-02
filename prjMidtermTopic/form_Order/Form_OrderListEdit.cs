@@ -21,6 +21,7 @@ namespace prjMidtermTopic.Form_Order
 
 		private int _orderListID;
 		private IOrderListRepositoy _repo;
+		private readonly Dictionary<string, Control> _validateMap;
 		public Form_OrderListEdit(OrderListGridDto dto)
 		{
 			InitializeComponent();
@@ -31,8 +32,15 @@ namespace prjMidtermTopic.Form_Order
 			txt_Quantity.Text = dto.Quantity.ToString();
 
 			_repo = new OrderListRepositoryDapper();
+
+			_validateMap = new Dictionary<string, Control>(StringComparer.CurrentCultureIgnoreCase) {
+					{ "OrderID" , txt_OrderID },
+					{ "MerchandiseID" , txt_MerchandiseID },
+					{ "Quantity" , txt_Quantity }
+				};
 		}
 
+		//button
 		private void btn_commit_Click(object sender, EventArgs e)
 		{
 			try
@@ -45,13 +53,7 @@ namespace prjMidtermTopic.Form_Order
 					Quantity = txt_Quantity.Text.Trim(),
 				};
 
-				var map = new Dictionary<string, Control>(StringComparer.CurrentCultureIgnoreCase) {
-					{ "OrderID" , txt_OrderID },
-					{ "MerchandiseID" , txt_MerchandiseID },
-					{ "Quantity" , txt_Quantity }
-				};
-
-				bool hasError = MyValidator.ValidateAndDisplay(vm, errorProvider1, map);
+				bool hasError = MyValidator.ValidateAndDisplay(vm, errorProvider1, _validateMap);
 
 				if (hasError) return;
 

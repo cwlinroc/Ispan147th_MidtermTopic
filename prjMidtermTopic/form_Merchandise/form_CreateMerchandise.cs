@@ -19,6 +19,7 @@ namespace prjMidtermTopic.form_Merchandise
 {
 	public partial class form_CreateMerchandise : Form
 	{
+		private Dictionary<int, string> map = new Dictionary<int, string>();
 
 		private int _categoryId;
 
@@ -27,25 +28,33 @@ namespace prjMidtermTopic.form_Merchandise
 		{
 			InitializeComponent();
 
-			comboBox_CategoryId.Items.AddRange(ChooseCategory.categoryNameOptions);
+			//動態生成類別資料 for 下拉選單
+			map.Add(0, "未選擇");
+			new CategoryService().Search().ForEach(c => map.Add(c.CategoryId, c.CategoryName));
+			foreach (var item in map)
+			{
+				comboBox_CategoryId.Items.Add(item);
+			}
+			comboBox_CategoryId.DisplayMember = "Value";
+
+			//設定類別選單資料來源&預設值
 			comboBox_CategoryId.SelectedIndex = 0;
 		}
 
-		//todo 建立MerchandiseCreateVM  確認分層 
-		//private (bool isValid, List<ValidationResult> errors) Validate(MerchandiseCreateVM vm)
-		//{
-		//	取得驗證規則
-		//	ValidationContext context = new ValidationContext(vm, null, null);
+		private (bool isValid, List<ValidationResult> errors) Validate(MerchandiseCreateVM vm)
+		{
+			//取得驗證規則
+			ValidationContext context = new ValidationContext(vm, null, null);
 
-		//	建立存放錯誤集合
-		//	List<ValidationResult> errors = new List<ValidationResult>();
+			//建立存放錯誤集合
+			List<ValidationResult> errors = new List<ValidationResult>();
 
-		//	驗證model
-		//	bool validateAllProperties = true;
-		//	bool isValid = Validator.TryValidateObject(vm, context, errors, validateAllProperties);
+			//驗證model
+			bool validateAllProperties = true;
+			bool isValid = Validator.TryValidateObject(vm, context, errors, validateAllProperties);
 
-		//	return (isValid, errors);
-		//}
+			return (isValid, errors);
+		}
 
 		private void DisplayErrors(List<ValidationResult> errors)
 		{
@@ -73,7 +82,7 @@ namespace prjMidtermTopic.form_Merchandise
 
 		private void comboBox_CategoryId_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			_categoryId = comboBox_CategoryId.SelectedIndex;
+			_categoryId = (comboBox_CategoryId.SelectedItem as dynamic).Key;
 		}
 
 		private void btnCreate_Click(object sender, EventArgs e)
@@ -83,9 +92,8 @@ namespace prjMidtermTopic.form_Merchandise
 			Price = PriceisInt ? Price : 0;
 			bool AmountisInt = int.TryParse(txt_Price.Text, out int Amount);
 			Amount = AmountisInt ? Amount : 0;
-
-			int categoryId = comboBox_CategoryId.SelectedIndex;
-
+			// 讀取下拉選單的欄位值
+			int categoryId = (comboBox_CategoryId.SelectedItem as dynamic).Key;
 			string marchandisename = txt_MerchandiseName.Text;
 			string Description = txt_Description.Text;
 			string ImageURL = txt_ImageURL.Text;
@@ -101,15 +109,15 @@ namespace prjMidtermTopic.form_Merchandise
 			};
 
 			//驗證vm是否通過欄位驗證
-			//(bool isValid, List<ValidationResult> errors) validationResult = Validate(vm);
+			(bool isValid, List < ValidationResult > errors) validationResult = Validate(vm);
 
-			////若有錯則顯示
-			//if (validationResult.isValid == false)
-			//{
-			//	this.errorProvider1.Clear();
-			//	DisplayErrors(validationResult.errors);
-			//	return;
-			//}
+			//若有錯則顯示
+			if (validationResult.isValid == false)
+			{
+				this.errorProvider1.Clear();
+				DisplayErrors(validationResult.errors);
+				return;
+			}
 
 			//通過驗證則將vm轉型為MerchandiseDto
 			MerchandiseDto dto = new MerchandiseDto
@@ -117,7 +125,6 @@ namespace prjMidtermTopic.form_Merchandise
 				MerchandiseID = vm.MerchandiseId,
 				MerchandiseName = vm.MerchandiseName,
 				CategoryID = vm.CategoryID,
-				// todo CategoryName = vm.CategoryName,
 				Price = vm.Price,
 				Amount = vm.Amount,
 				Description = vm.Description,
@@ -127,8 +134,11 @@ namespace prjMidtermTopic.form_Merchandise
 			{
 				var service = new MerchandiseService();
 				int newId = service.Create(dto);
-
-				UploadToDb(_imagePath);
+				
+				if (txt_ImageURL.Text.Length > 0)
+				{
+					UploadToDb(_imagePath);
+				}
 
 				MessageBox.Show($"新增成功，新的ID為{newId}。");
 
@@ -172,9 +182,9 @@ namespace prjMidtermTopic.form_Merchandise
 
 		private void UploadToForm(string imagePath)
 		{
-			//string targetFolderPath = @"images/MerchendisePicture/";
-			//string imageName = Path.GetFileName(imagePath);
-			//string targetFilePath = Path.Combine(targetFolderPath, imageName);
+			string targetFolderPath = @"images/MerchendisePicture/";
+			string imageName = Path.GetFileName(imagePath);
+			string targetFilePath = Path.Combine(targetFolderPath, imageName);
 
 			try
 			{

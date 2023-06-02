@@ -114,7 +114,6 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 			var parameters = new SqlParameterBuilder()
 				.AddNVarchar("@MerchandiseName", 30, dto.MerchandiseName)
 				.AddInt("@CategoryId", dto.CategoryID)
-				// todo .AddNVarchar("@CategoryName", dto.CategoryName)
 				.AddInt("@Price", dto.Price)
 				.AddInt("@Amount", dto.Amount)
 				.AddNVarchar("@Description", 30, dto.Description)

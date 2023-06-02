@@ -33,7 +33,7 @@
 			this.label1 = new System.Windows.Forms.Label();
 			this.txt_OrderID = new System.Windows.Forms.TextBox();
 			this.label2 = new System.Windows.Forms.Label();
-			this.txt_CustomerID = new System.Windows.Forms.TextBox();
+			this.txt_MemberID = new System.Windows.Forms.TextBox();
 			this.label3 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
 			this.comboBox_PayMethod = new System.Windows.Forms.ComboBox();
@@ -86,11 +86,11 @@
 			// 
 			// txt_CustomerID
 			// 
-			this.txt_CustomerID.Location = new System.Drawing.Point(124, 90);
-			this.txt_CustomerID.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-			this.txt_CustomerID.Name = "txt_CustomerID";
-			this.txt_CustomerID.Size = new System.Drawing.Size(235, 25);
-			this.txt_CustomerID.TabIndex = 2;
+			this.txt_MemberID.Location = new System.Drawing.Point(124, 90);
+			this.txt_MemberID.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+			this.txt_MemberID.Name = "txt_CustomerID";
+			this.txt_MemberID.Size = new System.Drawing.Size(235, 25);
+			this.txt_MemberID.TabIndex = 2;
 			// 
 			// label3
 			// 
@@ -179,7 +179,7 @@
 			this.Controls.Add(this.comboBox_PayMethod);
 			this.Controls.Add(this.label4);
 			this.Controls.Add(this.label3);
-			this.Controls.Add(this.txt_CustomerID);
+			this.Controls.Add(this.txt_MemberID);
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.txt_OrderID);
 			this.Controls.Add(this.label1);
@@ -199,7 +199,7 @@
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.TextBox txt_OrderID;
 		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.TextBox txt_CustomerID;
+		private System.Windows.Forms.TextBox txt_MemberID;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.ComboBox comboBox_PayMethod;
