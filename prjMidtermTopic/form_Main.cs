@@ -221,11 +221,13 @@ namespace prjMidtermTopic
 			if (Authentication.EmployeeID < 0) return;
 			if (Authentication.ForumAccountID == null)
 			{
-				
+				new form_EmployeeForumAccountAdd(Authentication.EmployeeAccount)
+					.ShowDialog();
 			}
 			else
 			{
-
+				new form_EmployeeForumAccountEdit(Authentication.EmployeeAccount,
+					Authentication.ForumAccountID.Value).ShowDialog();
 			}
 		}
 

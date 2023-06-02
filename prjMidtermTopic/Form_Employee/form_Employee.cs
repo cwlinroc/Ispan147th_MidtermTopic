@@ -48,6 +48,7 @@ namespace prjMidtermTopic.Form_Employee
 		{
 			var dto = _data[_row];
 			var frm = new form_EmployeeEdit(dto);
+			frm.Owner = this;
 			frm.ShowDialog();
 		}
 

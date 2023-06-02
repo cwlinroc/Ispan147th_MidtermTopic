@@ -1,6 +1,7 @@
 ﻿using ISpan147.Estore.SqlDataLayer.Dtos;
 using ISpan147.Estore.SqlDataLayer.ExtMethods;
 using ISpan147.Estore.SqlDataLayer.Repositories;
+using prjMidtermTopic.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -40,6 +41,12 @@ namespace prjMidtermTopic.Form_Employee
 
 			if (checkBox_ChangePassWord.Checked)
 			{
+				if (txt_ConfirmPassword.Text != txt_EmployeePassword.Text)
+				{
+					MessageBox.Show("新設定的密碼不一致!!");
+					return;
+				}
+
 				string password = txt_OldPassword.Text.GetSaltedSha256();
 
 				if (_dto.EmployeePassword != password)
@@ -48,20 +55,16 @@ namespace prjMidtermTopic.Form_Employee
 					return;
 				}
 
-				password = txt_EmployeePassword.Text;
-
-				if (txt_ConfirmPassword.Text != password)
-				{
-					MessageBox.Show("新設定的密碼不一致!!");
-					return;
-				}
-
-				_dto.EmployeePassword = password.GetSaltedSha256();
+				_dto.EmployeePassword = txt_EmployeePassword.Text.GetSaltedSha256();
 			}			
 
 			new EmployeeRepositoy().Update(_dto);
 
 			MessageBox.Show("資料更新成功。");
+
+			var parent = Owner as IGrid;
+
+			if (parent != null) parent.Display();
 
 			this.Close();
 		}

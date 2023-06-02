@@ -69,14 +69,8 @@ namespace ISpan147.Estore.SqlDataLayer.Services
 			return _repo.GetForumAccountName(forumID);
 		}
 
-		public int UpdateForumAccount(string account, string forumName)
+		public int UpdateForumAccount(int forumAccountID, string forumName)
 		{
-			var dto = Get(account);
-
-			if (dto == null) return 0;
-
-			int forumAccountID = _repo.CreateForumAccount(forumName);
-
 			return _repo.UpdateForumAccount(new ForumAccountDto
 			{
 				ForumAccountID = forumAccountID,

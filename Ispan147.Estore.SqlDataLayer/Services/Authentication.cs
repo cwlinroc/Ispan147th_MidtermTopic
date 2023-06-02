@@ -20,6 +20,7 @@ namespace ISpan147.Estore.SqlDataLayer.Services
 		static public int? ForumAccountID
 		{
 			get => _employee.ForumAccountID;
+			set => _employee.ForumAccountID = value;
 		}
 
 		static public int Permission
