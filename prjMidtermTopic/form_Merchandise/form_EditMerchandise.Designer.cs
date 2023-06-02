@@ -29,7 +29,7 @@
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
-			this.btn_Updata = new System.Windows.Forms.Button();
+			this.btn_Update = new System.Windows.Forms.Button();
 			this.label3 = new System.Windows.Forms.Label();
 			this.txt_MerchandiseName = new System.Windows.Forms.TextBox();
 			this.label2 = new System.Windows.Forms.Label();
@@ -51,16 +51,16 @@
 			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
 			this.SuspendLayout();
 			// 
-			// btn_Updata
+			// btn_Update
 			// 
-			this.btn_Updata.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.btn_Updata.Location = new System.Drawing.Point(287, 396);
-			this.btn_Updata.Name = "btn_Updata";
-			this.btn_Updata.Size = new System.Drawing.Size(95, 34);
-			this.btn_Updata.TabIndex = 13;
-			this.btn_Updata.Text = "更新商品";
-			this.btn_Updata.UseVisualStyleBackColor = true;
-			this.btn_Updata.Click += new System.EventHandler(this.btn_Updata_Click);
+			this.btn_Update.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.btn_Update.Location = new System.Drawing.Point(287, 396);
+			this.btn_Update.Name = "btn_Update";
+			this.btn_Update.Size = new System.Drawing.Size(95, 34);
+			this.btn_Update.TabIndex = 13;
+			this.btn_Update.Text = "更新商品";
+			this.btn_Update.UseVisualStyleBackColor = true;
+			this.btn_Update.Click += new System.EventHandler(this.btn_Update_Click);
 			// 
 			// label3
 			// 
@@ -223,7 +223,7 @@
 			this.Controls.Add(this.btn_SelectNewImage);
 			this.Controls.Add(this.btn_Delete);
 			this.Controls.Add(this.comboBox_CategoryId);
-			this.Controls.Add(this.btn_Updata);
+			this.Controls.Add(this.btn_Update);
 			this.Controls.Add(this.txt_ImageURL);
 			this.Controls.Add(this.label6);
 			this.Controls.Add(this.txt_Description);
@@ -248,7 +248,7 @@
 
 		#endregion
 
-		private System.Windows.Forms.Button btn_Updata;
+		private System.Windows.Forms.Button btn_Update;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.TextBox txt_MerchandiseName;
 		private System.Windows.Forms.Label label2;

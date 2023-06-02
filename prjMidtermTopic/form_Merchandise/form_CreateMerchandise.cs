@@ -165,6 +165,7 @@ namespace prjMidtermTopic.form_Merchandise
 			}
 		}
 
+		#region 圖片上傳
 		private void btn_SelectImage_Click(object sender, EventArgs e)
 		{
 			using (OpenFileDialog selectImage = new OpenFileDialog())
@@ -227,5 +228,6 @@ namespace prjMidtermTopic.form_Merchandise
 			txt_ImageURL.Text = string.Empty;
 			btn_CancelImage.Enabled = false;
 		}
+		#endregion
 	}
 }

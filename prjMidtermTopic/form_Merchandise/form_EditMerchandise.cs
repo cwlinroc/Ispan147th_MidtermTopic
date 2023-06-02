@@ -113,6 +113,7 @@ namespace prjMidtermTopic.form_Merchandise
 			btn_DeleteImage.Enabled = (txt_ImageURL.Text.Length > 0) ? true : false;
 		}
 
+		#region 圖片上傳/移除
 		private void btn_SelectNewImage_Click(object sender, EventArgs e)
 		{
 			using (OpenFileDialog selectImage = new OpenFileDialog())
@@ -215,8 +216,9 @@ namespace prjMidtermTopic.form_Merchandise
 				btn_DeleteImage.Enabled = false;
 			}
 		}
+		#endregion
 
-		private void btn_Updata_Click(object sender, EventArgs e)
+		private void btn_Update_Click(object sender, EventArgs e)
 		{
 			//收集表單欄位值到dto
 			bool PriceisInt = int.TryParse(txt_Price.Text, out int Price);

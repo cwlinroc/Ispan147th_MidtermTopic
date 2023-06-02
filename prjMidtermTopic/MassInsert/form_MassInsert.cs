@@ -42,7 +42,7 @@ namespace prjMidtermTopic.MassInsert
 					throw new ArgumentOutOfRangeException("請入正整數");
 				}
 
-				DialogResult dialogResult = MessageBox.Show($"確任新增論壇帳號？會員新增機率為{chance}%", "確認增加", MessageBoxButtons.YesNo);
+				DialogResult dialogResult = MessageBox.Show($"確認新增論壇帳號？會員新增機率為{chance}%", "確認增加", MessageBoxButtons.YesNo);
 				if (dialogResult == DialogResult.No) return;
 
 				new MassInsertService().CreateRandomForumAccount(chance);
