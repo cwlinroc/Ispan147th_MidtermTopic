@@ -12,9 +12,9 @@ using System.Windows.Forms;
 
 namespace prjMidtermTopic.form_QA
 {
-	public partial class from_QACreate : Form
+	public partial class from_ThemeCreate : Form
 	{
-		public from_QACreate()
+		public from_ThemeCreate()
 		{
 			InitializeComponent();
 		}
@@ -69,6 +69,8 @@ namespace prjMidtermTopic.form_QA
 									   // cmd.ExecuteReader(); 查詢使用
 				conn.Close();
 				conn.Dispose();
+				MessageBox.Show("新增成功");
+				this.Close();
 			}
 			catch (Exception ex)
 			{

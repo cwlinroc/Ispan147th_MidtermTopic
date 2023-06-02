@@ -54,7 +54,7 @@
 			this.textBoxSearch.Location = new System.Drawing.Point(55, 23);
 			this.textBoxSearch.Margin = new System.Windows.Forms.Padding(2);
 			this.textBoxSearch.Name = "textBoxSearch";
-			this.textBoxSearch.Size = new System.Drawing.Size(76, 25);
+			this.textBoxSearch.Size = new System.Drawing.Size(76, 22);
 			this.textBoxSearch.TabIndex = 11;
 			// 
 			// buttonCreateTheme
@@ -89,6 +89,7 @@
 			this.dataGridView1.RowTemplate.Height = 27;
 			this.dataGridView1.Size = new System.Drawing.Size(549, 267);
 			this.dataGridView1.TabIndex = 9;
+			this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
 			// 
 			// ThemeId
 			// 
@@ -125,6 +126,8 @@
 			this.Controls.Add(this.buttonCreateTheme);
 			this.Controls.Add(this.dataGridView1);
 			this.Name = "form_QAList";
+			this.Text = "主留言列表";
+			this.Load += new System.EventHandler(this.form_QAList_Load);
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();

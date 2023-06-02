@@ -113,5 +113,31 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
 				CategoryName = reader.GetString("CategoryName")
 			};
 		}
+		public static Func<SqlDataReader, QADto.Theme> ThemeDtoAssembler
+		{
+			get => (reader) => new QADto.Theme
+			{
+				ThemeId = reader.GetInt("ThemeId"),
+				UserId = reader.GetInt("UserId"),
+				UserName = reader.GetString("UserName"),
+				ThemeDateTime = reader.GetDateTime(reader.GetOrdinal("ThemeDateTime")),
+				ThemeContext = reader.GetString("ThemeContext")
+			};
+		}
+
+		public static Func<SqlDataReader, QADto.Comment> CommentDtoAssembler
+		{
+			get => (reader) => new QADto.Comment
+			{
+				ThemeId = reader.GetInt("ThemeId"),
+				CommentId = reader.GetInt("CommentId"),
+				UserId = reader.GetInt("UserId"),
+				UserName = reader.GetString("UserName"),
+				CommentDateTime = reader.GetDateTime(reader.GetOrdinal("CommentDateTime")),
+				CommentContext = reader.GetString("CommentContext")
+			};	
+		
+		}
+
 	}
 }
