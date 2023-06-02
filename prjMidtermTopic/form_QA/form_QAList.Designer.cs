@@ -89,6 +89,7 @@
 			this.dataGridView1.RowTemplate.Height = 27;
 			this.dataGridView1.Size = new System.Drawing.Size(549, 267);
 			this.dataGridView1.TabIndex = 9;
+			this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
 			// 
 			// ThemeId
 			// 
@@ -126,6 +127,7 @@
 			this.Controls.Add(this.dataGridView1);
 			this.Name = "form_QAList";
 			this.Text = "主留言列表";
+			this.Load += new System.EventHandler(this.form_QAList_Load);
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();

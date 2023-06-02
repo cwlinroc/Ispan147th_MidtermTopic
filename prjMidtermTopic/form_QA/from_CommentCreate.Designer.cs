@@ -46,6 +46,7 @@
 			this.buttonConfirmComment.TabIndex = 24;
 			this.buttonConfirmComment.Text = "確認送出";
 			this.buttonConfirmComment.UseVisualStyleBackColor = true;
+			this.buttonConfirmComment.Click += new System.EventHandler(this.buttonConfirmComment_Click);
 			// 
 			// richTextBoxComment
 			// 

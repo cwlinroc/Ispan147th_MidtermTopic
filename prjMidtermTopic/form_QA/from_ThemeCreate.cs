@@ -69,6 +69,8 @@ namespace prjMidtermTopic.form_QA
 									   // cmd.ExecuteReader(); 查詢使用
 				conn.Close();
 				conn.Dispose();
+				MessageBox.Show("新增成功");
+				this.Close();
 			}
 			catch (Exception ex)
 			{

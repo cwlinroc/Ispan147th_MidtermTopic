@@ -109,6 +109,7 @@
 			this.buttonDeleteTheme.TabIndex = 29;
 			this.buttonDeleteTheme.Text = "刪除此筆";
 			this.buttonDeleteTheme.UseVisualStyleBackColor = true;
+			this.buttonDeleteTheme.Click += new System.EventHandler(this.buttonDeleteTheme_Click);
 			// 
 			// buttonCreateCommon
 			// 
@@ -120,6 +121,7 @@
 			this.buttonCreateCommon.TabIndex = 28;
 			this.buttonCreateCommon.Text = "回覆留言";
 			this.buttonCreateCommon.UseVisualStyleBackColor = true;
+			this.buttonCreateCommon.Click += new System.EventHandler(this.buttonCreateCommon_Click);
 			// 
 			// richTextBoxTheme
 			// 
@@ -167,6 +169,7 @@
 			this.Controls.Add(this.labelThemeRole);
 			this.Name = "Form_ThemeCommemt";
 			this.Text = "Form_ThemeCommemt";
+			this.Load += new System.EventHandler(this.Form_ThemeCommemt_Load);
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
