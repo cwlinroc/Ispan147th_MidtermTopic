@@ -99,18 +99,18 @@ namespace prjMidtermTopic.form_Merchandise
 			}
 
 			txt_MerchandiseId.Text = dto.MerchandiseID.ToString();
-			txt_MerchandiseName.Text = dto.MerchandiseName.ToString();
+			txt_MerchandiseName.Text = dto.MerchandiseName;
 			comboBox_CategoryId.SelectedItem = comboBox_CategoryId.Items.Cast<dynamic>()
 														.FirstOrDefault(x => x.Key == dto.CategoryID);
 			txt_Price.Text = dto.Price.ToString();
 			txt_Amount.Text = dto.Amount.ToString();
-			txt_Description.Text = dto.Description.ToString();
-			txt_ImageURL.Text = dto.ImageURL.ToString();
+			txt_Description.Text = dto.Description;
+			txt_ImageURL.Text = dto.ImageURL;
 
-			_iniImageURL = dto.ImageURL.ToString();
-			_lasttargetFilePath = @"images/MerchendisePicture/" + dto.ImageURL.ToString();
+			_iniImageURL = dto.ImageURL;
+			_lasttargetFilePath = @"images/MerchendisePicture/" + dto.ImageURL;
 
-			btn_DeleteImage.Enabled = (txt_ImageURL.Text.Length > 0) ? true : false;
+			btn_DeleteImage.Enabled = (string.IsNullOrEmpty(txt_ImageURL.Text)) ? false : true;
 		}
 
 		#region 圖片上傳/移除
@@ -177,7 +177,7 @@ namespace prjMidtermTopic.form_Merchandise
 			{
 				try
 				{
-					txt_ImageURL.Text = string.Empty;
+					txt_ImageURL.Text = null;
 
 					MessageBox.Show("儲存後將刪除商品圖片");
 
@@ -233,8 +233,8 @@ namespace prjMidtermTopic.form_Merchandise
 				CategoryID = (comboBox_CategoryId.SelectedItem as dynamic).Key,
 				Price = Price,
 				Amount = Amount,
-				Description = txt_Description.Text,
-				ImageURL = txt_ImageURL.Text
+				Description = (string.IsNullOrEmpty(txt_Description.Text))? null : txt_Description.Text,
+				ImageURL = (string.IsNullOrEmpty(txt_ImageURL.Text))? null : txt_ImageURL.Text
 			};
 
 			//驗證vm是否通過欄位驗證
@@ -265,11 +265,11 @@ namespace prjMidtermTopic.form_Merchandise
 				var service = new MerchandiseService(_repo);
 				int rows = service.Update(dto);
 
-				if (txt_ImageURL.Text != _iniImageURL && txt_ImageURL.Text.Length > 0)
+				if (txt_ImageURL.Text != _iniImageURL && !string.IsNullOrEmpty(txt_ImageURL.Text))
 				{
 					UploadToDb(_newimagePath);
 				}
-				if (txt_ImageURL.Text != _iniImageURL && txt_ImageURL.Text.Length == 0)
+				if (txt_ImageURL.Text != _iniImageURL && string.IsNullOrEmpty(txt_ImageURL.Text))
 				{
 					DeleteFromDb();
 				}

@@ -99,8 +99,8 @@ namespace prjMidtermTopic.form_Merchandise
 			// ↓讀取下拉選單的欄位值
 			int categoryId = (comboBox_CategoryId.SelectedItem as dynamic).Key;
 			string marchandisename = txt_MerchandiseName.Text;
-			string Description = txt_Description.Text;
-			string ImageURL = txt_ImageURL.Text;
+			string Description = (string.IsNullOrEmpty(txt_Description.Text)) ? null : txt_Description.Text;
+			string ImageURL = (string.IsNullOrEmpty(txt_ImageURL.Text)) ? null : txt_ImageURL.Text;
 
 			var vm = new MerchandiseCreateVM()
 			{
@@ -225,7 +225,7 @@ namespace prjMidtermTopic.form_Merchandise
 
 		private void btn_CancelImage_Click(object sender, EventArgs e)
 		{
-			txt_ImageURL.Text = string.Empty;
+			txt_ImageURL.Text = null;
 			btn_CancelImage.Enabled = false;
 		}
 		#endregion
