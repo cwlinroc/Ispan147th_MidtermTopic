@@ -74,8 +74,8 @@ namespace prjMidtermTopic.form_QA
 
 		private void buttonCreateCommon_Click(object sender, EventArgs e)
 		{
-			Form_ThemeCommemt commentCreate = new Form_ThemeCommemt();
-			commentCreate.ShowDialog();
+			//Form_ThemeCommemt commentCreate = new Form_ThemeCommemt();
+			//commentCreate.ShowDialog();
 		}
 	}
 }

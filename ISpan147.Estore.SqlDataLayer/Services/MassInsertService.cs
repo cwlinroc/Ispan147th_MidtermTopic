@@ -94,7 +94,7 @@ namespace ISpan147.Estore.SqlDataLayer.Services
 
 			foreach (var dto in dtos)
 			{
-				if (dto.ForumAccount == null && rng.RandomChance(chance))
+				if (dto.ForumAccountID == null && rng.RandomChance(chance))
 				{
 					int forumID = repo.CreateForumAccount(new ForumAccountDto
 					{

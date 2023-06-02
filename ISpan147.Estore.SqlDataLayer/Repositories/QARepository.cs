@@ -9,7 +9,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
-using static ISpan147.Estore.SqlDataLayer.Dtos.QADto;
 
 namespace ISpan147.Estore.SqlDataLayer.Repositories
 {

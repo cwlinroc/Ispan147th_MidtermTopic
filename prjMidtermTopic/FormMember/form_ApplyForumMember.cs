@@ -18,7 +18,9 @@ namespace prjMidtermTopic.FormMember
 	{
 		private Dictionary<string, Control> _map;
 		private IMemberRepo _memberRepo;
-		
+		private int _memberID;
+
+
 		public form_ApplyForumMember()
 		{
 			InitializeComponent();			

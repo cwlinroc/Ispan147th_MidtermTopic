@@ -117,9 +117,9 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
 		{
 			get => (reader) => new QADto.Theme
 			{
-				ThemeId = reader.GetInt("ThemeId"),
-				UserId = reader.GetInt("UserId"),
-				UserName = reader.GetString("UserName"),
+				ThemeId = reader.GetInt("ThemeID"),
+				UserId = reader.GetInt("ForumAccountID"),
+				UserName = reader.GetString("ForumAccountName"),
 				ThemeDateTime = reader.GetDateTime(reader.GetOrdinal("ThemeDateTime")),
 				ThemeContext = reader.GetString("ThemeContext")
 			};
