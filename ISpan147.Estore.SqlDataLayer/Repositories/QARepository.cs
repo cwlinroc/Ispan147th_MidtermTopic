@@ -6,6 +6,8 @@ using System.ComponentModel.Design;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Reflection.Emit;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
@@ -15,42 +17,56 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 {
 	public class QARepository
 	{
-		public QADto.Theme GetTheme(int themeid)
+		/// <summary>
+		/// 取得特定ID的主題
+		/// </summary>
+		/// <param name="themeid">主題ID</param>
+		/// <returns></returns>
+		public List<QADto.Theme> GetTheme(int? themeId = null)
 		{
-			string sql = $@"SELECT ForumAccountName, ThemeContext, ThemeDateTime FROM Themes AS T JOIN ForumAccounts AS F 
-                            ON T.ForumAccountID = F.ForumAccountID WHERE ThemeID ={themeid}";
-			Func<SqlDataReader, QADto.Theme> func = Assembler.ThemeDtoAssembler;
-			//SqlParameter[] parameters = new SqlParameter[0];
-			Func<SqlConnection> connGetter = SqlDb.GetConnection;
+			StringBuilder sql = new StringBuilder();
+			sql.AppendLine("SELECT ThemeID, ThemeContext, ThemeDateTime ");
+			sql.AppendLine("FROM Themes AS T ");
+			sql.AppendLine("JOIN ForumAccounts AS F ON T.ForumAccountID = F.ForumAccountID ");
+			sql.AppendLine("WHERE 1 = 1 ");
 
-			return SqlDb.Get(connGetter, sql, func);
+			var parameter = new SqlParameterBuilder();
+			if (themeId.HasValue)
+			{
+				sql.AppendLine("AND ThemeID = @ThemeID ");
+				parameter.AddInt("ThemeID", themeId.Value);
+			}
+			var parameters = parameter.Build();
+
+			Func<SqlConnection> connGetter = SqlDb.GetConnection;
+			Func<SqlDataReader, QADto.Theme> func = Assembler.ThemeDtoAssembler;
+
+			return SqlDb.Search(connGetter, sql.ToString(), func, parameters).ToList();
 		}
+
 
 		public List<QADto.Theme> SearchTheme(string themeContext = null)
 		{
-			
-			string sql = @" SELECT ForumAccountName , ThemeContext , ThemeDateTime FROM THEMES AS T JOIN ForumAccounts AS F 
-                            ON T.ForumAccountID = F.ForumAccountID ";
+			string sql = @" SELECT ThemeID, ThemeContext, ThemeDateTime 
+							FROM THEMES AS T 
+							JOIN ForumAccounts AS F ON T.ForumAccountID = F.ForumAccountID 
+							WHERE 1 = 1 ";
 
 			var builder = new SqlParameterBuilder();
 
-			string where = "";
-
 			if (!string.IsNullOrEmpty(themeContext))
 			{
-				where += $" ThemeContext LIKE '%' + @keyword + '%'";
-				builder.AddNVarchar("keyword", 2, themeContext);                
+				themeContext = $"%{themeContext}%";
+				sql += $" AND ThemeContext LIKE @keyword ";
+				builder.AddNVarchar("keyword", 500, themeContext);
 			}
-			if (where != "")
-			{
-				where = " WHERE " + where.Substring(5);
-				sql += where;
-			}
+			
 			var parameters = builder.Build();
 			sql += "  ORDER BY ThemeID";
 
 			Func<SqlConnection> connGetter = SqlDb.GetConnection;
 			Func<SqlDataReader, QADto.Theme> func = Assembler.ThemeDtoAssembler;
+
 			return SqlDb.Search(connGetter, sql, func, parameters).ToList();
 		}
 
@@ -60,7 +76,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 							VALUES (@ForumAccountID, @ThemeDateTime, @ThemeContext) ";
 
 			var parameters = new SqlParameterBuilder()
-				.AddInt("ForumAccountID",themeDto.UserId)
+				.AddInt("ForumAccountID", themeDto.ForumAccountId)
 				.AddDateTime("ThemeDateTime", themeDto.ThemeDateTime)
 				.AddNVarchar("ThemeContext", 500, themeDto.ThemeContext)
 				.Build();
@@ -96,7 +112,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 
 			string sql = @" SELECT ForumAccountName, CommentContext, CommentTime
 							FROM Comments AS C JOIN ForumAccounts AS F ON C.ForumAccountID = F.ForumAccountID";
-			
+
 			var builder = new SqlParameterBuilder();
 
 			string where = "";
@@ -123,14 +139,14 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 		{
 			string sql = @" INSERT INTO Comments(ForumAccountID, CommentTime, CommentContext, ThemeID) 
 							VALUES ( @ForumAccountID, @CommentTime, @CommentContext, @ThemeID) ";
-			
+
 			var parameters = new SqlParameterBuilder()
 				.AddInt("ForumAccountID", commentDto.UserId)
 				.AddDateTime("CommentTime", commentDto.CommentDateTime)
 				.AddNVarchar("CommentContext", 500, commentDto.CommentContext)
 				.AddInt("ThemeID", commentDto.ThemeId)
 				.Build();
-			
+
 			return SqlDb.Create(SqlDb.GetConnection, sql, parameters);
 		}
 

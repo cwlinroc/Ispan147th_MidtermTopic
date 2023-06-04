@@ -58,6 +58,7 @@
     <Compile Include="Repositories\OrderListRepository.cs" />
     <Compile Include="Repositories\OrderRepository.cs" />
     <Compile Include="Repositories\QARepository.cs" />
+    <Compile Include="Services\QAService.cs" />
     <Compile Include="Services\OrderListService.cs" />
     <Compile Include="Services\OrderService.cs" />
     <Compile Include="Sqldb.cs" />

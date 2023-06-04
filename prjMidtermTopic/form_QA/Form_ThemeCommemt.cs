@@ -28,7 +28,7 @@ namespace prjMidtermTopic.form_QA
 
 			string sql = $"SELECT * FROM THEMES WHERE THEMEID={_themeId}";
 
-			string connStr = ConfigurationManager.ConnectionStrings["ISpan147"].ConnectionString;
+			string connStr = ConfigurationManager.ConnectionStrings["default"].ConnectionString;
 			SqlConnection conn = new SqlConnection(connStr);
 			conn.Open();
 
@@ -74,7 +74,7 @@ namespace prjMidtermTopic.form_QA
 
 		private void buttonCreateCommon_Click(object sender, EventArgs e)
 		{
-			Form_ThemeCommemt commentCreate = new Form_ThemeCommemt();
+			Form_ThemeCommemt commentCreate = new Form_ThemeCommemt(1);
 			commentCreate.ShowDialog();
 		}
 	}
