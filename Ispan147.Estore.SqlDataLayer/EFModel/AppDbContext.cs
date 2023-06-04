@@ -17,6 +17,7 @@ namespace ISpan147.Estore.SqlDataLayer.EFModel
 		public virtual DbSet<Category> Categories { get; set; }
 		public virtual DbSet<Comment> Comments { get; set; }
 		public virtual DbSet<Employee> Employees { get; set; }
+		public virtual DbSet<ForumAccount> ForumAccounts { get; set; }
 		public virtual DbSet<Member> Members { get; set; }
 		public virtual DbSet<Merchandise> Merchandises { get; set; }
 		public virtual DbSet<OrderList> OrderLists { get; set; }

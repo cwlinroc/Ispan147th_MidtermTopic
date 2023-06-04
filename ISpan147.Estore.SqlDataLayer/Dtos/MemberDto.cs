@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ISpan147.Estore.SqlDataLayer.EFModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,4 +22,5 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
         public string Email { get; set; }
         public string Avatar { get; set; }
     }
+    
 }

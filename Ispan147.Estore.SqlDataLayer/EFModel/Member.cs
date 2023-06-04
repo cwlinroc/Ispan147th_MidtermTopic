@@ -20,8 +20,10 @@ namespace ISpan147.Estore.SqlDataLayer.EFModel
         [Required]
         [StringLength(30)]
         public string MemberName { get; set; }
+        		
+		public int? ForumAccountID { get; set; }
 
-        [StringLength(30)]
+		[StringLength(30)]
         public string NickName { get; set; }
 
         [Column(TypeName = "date")]

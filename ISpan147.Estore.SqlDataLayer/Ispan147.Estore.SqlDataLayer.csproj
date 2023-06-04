@@ -60,6 +60,7 @@
     <Compile Include="Dtos\CategoryDto.cs" />
     <Compile Include="Dtos\CommentDto.cs" />
     <Compile Include="Dtos\EmployeeDto.cs" />
+    <Compile Include="Dtos\ForumAccountDto.cs" />
     <Compile Include="Dtos\MemberDto.cs" />
     <Compile Include="Dtos\MerchandiseSearchDto.cs" />
     <Compile Include="Dtos\MerchandiseDto.cs" />
@@ -77,6 +78,7 @@
     <Compile Include="EFModel\Category.cs" />
     <Compile Include="EFModel\Comment.cs" />
     <Compile Include="EFModel\Employee.cs" />
+    <Compile Include="EFModel\ForumAccount.cs" />
     <Compile Include="EFModel\Member.cs" />
     <Compile Include="EFModel\Merchandise.cs" />
     <Compile Include="EFModel\Order.cs" />
@@ -90,6 +92,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\CategoryRepository.cs" />
     <Compile Include="Repositories\EmployeeRepositoy.cs" />
+    <Compile Include="Repositories\ForumAccountRepository.cs" />
+    <Compile Include="Repositories\IForumAccountRepo.cs" />
     <Compile Include="Repositories\IOrderListRepositoy.cs" />
     <Compile Include="Repositories\IOrderRepository.cs" />
     <Compile Include="Repositories\IMemberRepo.cs" />
@@ -101,6 +105,7 @@
     <Compile Include="Repositories\OrderListRepositoryLinq.cs" />
     <Compile Include="Repositories\OrderRepository.cs" />
     <Compile Include="Services\CategoryService.cs" />
+    <Compile Include="Services\ForumAccountService.cs" />
     <Compile Include="Services\MemberService.cs" />
     <Compile Include="Services\MerchandiseService.cs" />
     <Compile Include="Services\MassInsertService.cs" />

@@ -295,12 +295,14 @@ namespace prjMidtermTopic.FormMember
 			DeleteFile(txtAvatar.Text);
 			txtAvatar.Text = null;
 		}
-		#endregion
 
 		private void btnApplyForumMember_Click(object sender, EventArgs e)
-		{			
-		 	var frm = new form_ApplyForumMember();
+		{
+			var frm = new form_ApplyForumMember(_memberID);
 			frm.ShowDialog();
 		}
+		#endregion
+
+
 	}
 }
