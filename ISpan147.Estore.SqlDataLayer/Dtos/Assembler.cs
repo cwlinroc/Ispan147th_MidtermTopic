@@ -74,7 +74,17 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
 				Avatar = reader.GetString("avatar"),
 			};
 		}
+		public static Func<SqlDataReader, AdoptDto> AdoptDtoAssembler
+		{
+			get => (reader) => new AdoptDto
+			{
+				AdoptID = reader.GetInt("AdoptID"),
+				PetID = reader.GetInt("PetID"),
+				MemberID = reader.GetInt("MemberID"),
+				ApplicationTime = reader.GetDate("ApplicationTime")
 
+			};
+		}
 		public static Func<SqlDataReader, MerchandiseDto> MerchandiseDtoAssembler
 		{
 			get => (reader) => new MerchandiseDto

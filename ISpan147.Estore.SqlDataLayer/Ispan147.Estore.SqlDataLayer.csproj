@@ -56,6 +56,7 @@
   <ItemGroup>
     <Compile Include="Builders\SqlParameterBuilder.cs" />
     <Compile Include="Dtos\AdoptDto.cs" />
+    <Compile Include="Dtos\AdoptGridDto.cs" />
     <Compile Include="Dtos\Assembler.cs" />
     <Compile Include="Dtos\CategoryDto.cs" />
     <Compile Include="Dtos\CommentDto.cs" />
@@ -87,6 +88,7 @@
     <Compile Include="ExtMethods\SqlDataReaderExtMethod.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\AdoptRepositories.cs" />
     <Compile Include="Repositories\CategoryRepository.cs" />
     <Compile Include="Repositories\EmployeeRepositoy.cs" />
     <Compile Include="Repositories\IOrderListRepositoy.cs" />

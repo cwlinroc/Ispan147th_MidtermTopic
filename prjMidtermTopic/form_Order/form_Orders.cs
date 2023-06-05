@@ -217,7 +217,7 @@ namespace prjMidtermTopic.form_Order
 
 			Display();
 		}
-		
-		
-	}
+
+        
+    }
 }
