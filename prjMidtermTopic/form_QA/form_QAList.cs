@@ -39,42 +39,36 @@ namespace prjMidtermTopic
 			var data = _service.SearchTheme(this.textBoxSearch.Text);
 
 			// 繫結到DataGridView
-			DataGridView1Show(data);
+			DataGridViewThemeShow(data);
 		}
 
 
 		private void Display()
 		{
-			//int? keyword = null;
-			//if (string.IsNullOrWhiteSpace(this.textBoxSearch.Text) == false)
-			//{
-			//	keyword = Convert.ToInt32(this.textBoxSearch.Text);
-			//}
-
 			// 叫用Search(),取得符合的記錄
 			var data = _service.GetThemeList(null);
 			// 繫結到DataGridView
-			DataGridView1Show(data);
+			DataGridViewThemeShow(data);
 		}
 
-		private void DataGridView1Show(List<Theme> data)
+		private void DataGridViewThemeShow(List<Theme> data)
 		{
-			this.dataGridView1.DataSource = data;
-			this.dataGridView1.Columns["ForumAccountId"].Visible = false;
-			this.dataGridView1.Columns["ForumAccountName"].Visible = false;
+			this.dataGridViewTheme.DataSource = data;
+			this.dataGridViewTheme.Columns["ForumAccountId"].Visible = false;
+			this.dataGridViewTheme.Columns["ForumAccountName"].Visible = false;
 		}
 
 
 
 		//methods
 
-		private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+		public void dataGridViewTheme_CellClick(object sender, DataGridViewCellEventArgs e)
 		{
 			if (e.RowIndex < 0) return;
 			                              //            列                欄位
-			var themeId = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[0].Value);
+			var themeId = Convert.ToInt32(dataGridViewTheme.Rows[e.RowIndex].Cells[0].Value);
 			//var themeId = this._data[e.RowIndex].ThemeId;
-			var selectedThemeId = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["themeId"].Value);
+			var selectedThemeId = Convert.ToInt32(dataGridViewTheme.Rows[e.RowIndex].Cells["themeId"].Value);
 
 
 			var frm = new Form_ThemeCommemt(themeId);

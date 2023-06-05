@@ -23,20 +23,10 @@ namespace prjMidtermTopic.form_QA
 		{
 			try
 			{
-				var employeeAccount = 222;//Label.EmeploeeID;
-										  //var memberID = 111; Label.MemberID;
+				var forumAccountId = 01; 
 				var theme = richTextBoxTheme.Text;
 				string connStringHome = ConfigurationManager.ConnectionStrings["default"].ConnectionString;
-				//string connStringSchool = ConfigurationManager.ConnectionStrings["ISpan147"].ConnectionString;
-				//connStringHome = @"data source =.\SQLEXPRESS; initial catalog = ISpan147MidTopic; User Id = sa6; Password = sa6; integrated security = True; MultipleActiveResultSets = True;";
-
-
-
-				//string cmdStr1 = string.Format(@" INSERT INTO THEME (USERID, THEMEDATETIME, THEMECONTEXT) 
-				//							   VALUE ({0},{1},{2})",id ,DateTime.Now ,theme);
-
-				//string cmdStr2 = $@" INSERT INTO THEME (USERID, THEMEDATETIME, THEMECONTEXT)  
-				//							  VALUE ({id},{DateTime.Now},{theme})";
+				
 
 				string cmdStr3 = @" INSERT INTO THEMES (THEMENAME, THEMEDATETIME, THEMECONTEXT)  
                               VALUES (@THEMENAME, @THEMEDATETIME, @THEMECONTEXT) ";
@@ -47,7 +37,7 @@ namespace prjMidtermTopic.form_QA
 
 				parameters.Add(new SqlParameter("@THEMENAME", SqlDbType.NVarChar)
 				{
-					Value = employeeAccount,
+					Value = forumAccountId,
 					Direction = ParameterDirection.Input
 				});
 				parameters.Add(new SqlParameter("@THEMEDATETIME", SqlDbType.DateTime)

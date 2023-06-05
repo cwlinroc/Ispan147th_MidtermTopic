@@ -29,7 +29,7 @@
 		private void InitializeComponent()
 		{
 			this.label1 = new System.Windows.Forms.Label();
-			this.dataGridView1 = new System.Windows.Forms.DataGridView();
+			this.dataGridViewComment = new System.Windows.Forms.DataGridView();
 			this.ThemeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.ThemeContext = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.ThemeDateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -38,7 +38,7 @@
 			this.richTextBoxTheme = new System.Windows.Forms.RichTextBox();
 			this.labelThemeDatetime = new System.Windows.Forms.Label();
 			this.labelThemeRole = new System.Windows.Forms.Label();
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.dataGridViewComment)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// label1
@@ -50,27 +50,28 @@
 			this.label1.TabIndex = 31;
 			this.label1.Text = "留言回覆列";
 			// 
-			// dataGridView1
+			// dataGridViewComment
 			// 
-			this.dataGridView1.AllowUserToAddRows = false;
-			this.dataGridView1.AllowUserToDeleteRows = false;
-			this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+			this.dataGridViewComment.AllowUserToAddRows = false;
+			this.dataGridViewComment.AllowUserToDeleteRows = false;
+			this.dataGridViewComment.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+			this.dataGridViewComment.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dataGridViewComment.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ThemeId,
             this.ThemeContext,
             this.ThemeDateTime});
-			this.dataGridView1.Location = new System.Drawing.Point(34, 206);
-			this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
-			this.dataGridView1.MultiSelect = false;
-			this.dataGridView1.Name = "dataGridView1";
-			this.dataGridView1.ReadOnly = true;
-			this.dataGridView1.RowHeadersWidth = 51;
-			this.dataGridView1.RowTemplate.Height = 27;
-			this.dataGridView1.Size = new System.Drawing.Size(549, 166);
-			this.dataGridView1.TabIndex = 30;
+			this.dataGridViewComment.Location = new System.Drawing.Point(34, 206);
+			this.dataGridViewComment.Margin = new System.Windows.Forms.Padding(2);
+			this.dataGridViewComment.MultiSelect = false;
+			this.dataGridViewComment.Name = "dataGridViewComment";
+			this.dataGridViewComment.ReadOnly = true;
+			this.dataGridViewComment.RowHeadersWidth = 51;
+			this.dataGridViewComment.RowTemplate.Height = 27;
+			this.dataGridViewComment.Size = new System.Drawing.Size(549, 166);
+			this.dataGridViewComment.TabIndex = 30;
+			this.dataGridViewComment.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewComment_CellClick);
 			// 
 			// ThemeId
 			// 
@@ -161,7 +162,7 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(616, 401);
 			this.Controls.Add(this.label1);
-			this.Controls.Add(this.dataGridView1);
+			this.Controls.Add(this.dataGridViewComment);
 			this.Controls.Add(this.buttonDeleteTheme);
 			this.Controls.Add(this.buttonCreateCommon);
 			this.Controls.Add(this.richTextBoxTheme);
@@ -170,7 +171,7 @@
 			this.Name = "Form_ThemeCommemt";
 			this.Text = "Form_ThemeCommemt";
 			this.Load += new System.EventHandler(this.Form_ThemeCommemt_Load);
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.dataGridViewComment)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -179,7 +180,7 @@
 		#endregion
 
 		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.DataGridView dataGridView1;
+		private System.Windows.Forms.DataGridView dataGridViewComment;
 		private System.Windows.Forms.DataGridViewTextBoxColumn ThemeId;
 		private System.Windows.Forms.DataGridViewTextBoxColumn ThemeContext;
 		private System.Windows.Forms.DataGridViewTextBoxColumn ThemeDateTime;

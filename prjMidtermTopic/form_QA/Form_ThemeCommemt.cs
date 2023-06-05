@@ -1,4 +1,5 @@
 ﻿using ISpan147.Estore.SqlDataLayer.Dtos;
+using ISpan147.Estore.SqlDataLayer.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,16 +11,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static ISpan147.Estore.SqlDataLayer.Dtos.QADto;
 
 namespace prjMidtermTopic.form_QA
 {
 	public partial class Form_ThemeCommemt : Form
 	{
 		private readonly int _themeId;
+		QAService _service;
 		public Form_ThemeCommemt(int themeId)
 		{
-			_themeId = themeId;
 			InitializeComponent();
+			_themeId = themeId;
+			_service = new QAService();
 		}
 
 		private void Form_ThemeCommemt_Load(object sender, EventArgs e)
@@ -76,6 +80,26 @@ namespace prjMidtermTopic.form_QA
 		{
 			Form_ThemeCommemt commentCreate = new Form_ThemeCommemt(1);
 			commentCreate.ShowDialog();
+		}
+
+		private void dataGridViewComment_CellClick(object sender, DataGridViewCellEventArgs e)
+		{
+
+		}
+
+		private void Display()
+		{
+			// 叫用Search(),取得符合的記錄
+			var data = _service.GetCommentList(null);
+			// 繫結到DataGridView
+			DataGridViewCommentShow(data);
+		}
+
+		private void DataGridViewCommentShow(List<Comment> data)
+		{
+			this.dataGridViewComment.DataSource = data;
+			this.dataGridViewComment.Columns["ForumAccountId"].Visible = false;
+			this.dataGridViewComment.Columns["ForumAccountName"].Visible = false;
 		}
 	}
 }

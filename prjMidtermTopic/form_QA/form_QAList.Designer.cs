@@ -31,11 +31,11 @@
 			this.buttonSearch = new System.Windows.Forms.Button();
 			this.textBoxSearch = new System.Windows.Forms.TextBox();
 			this.buttonCreateTheme = new System.Windows.Forms.Button();
-			this.dataGridView1 = new System.Windows.Forms.DataGridView();
+			this.dataGridViewTheme = new System.Windows.Forms.DataGridView();
 			this.ThemeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.ThemeContext = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.ThemeDateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.dataGridViewTheme)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// buttonSearch
@@ -69,27 +69,27 @@
 			this.buttonCreateTheme.UseVisualStyleBackColor = true;
 			this.buttonCreateTheme.Click += new System.EventHandler(this.buttonCreateTheme_Click_1);
 			// 
-			// dataGridView1
+			// dataGridViewTheme
 			// 
-			this.dataGridView1.AllowUserToAddRows = false;
-			this.dataGridView1.AllowUserToDeleteRows = false;
-			this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+			this.dataGridViewTheme.AllowUserToAddRows = false;
+			this.dataGridViewTheme.AllowUserToDeleteRows = false;
+			this.dataGridViewTheme.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+			this.dataGridViewTheme.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dataGridViewTheme.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ThemeId,
             this.ThemeContext,
             this.ThemeDateTime});
-			this.dataGridView1.Location = new System.Drawing.Point(55, 69);
-			this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
-			this.dataGridView1.Name = "dataGridView1";
-			this.dataGridView1.ReadOnly = true;
-			this.dataGridView1.RowHeadersWidth = 51;
-			this.dataGridView1.RowTemplate.Height = 27;
-			this.dataGridView1.Size = new System.Drawing.Size(549, 267);
-			this.dataGridView1.TabIndex = 9;
-			this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+			this.dataGridViewTheme.Location = new System.Drawing.Point(55, 69);
+			this.dataGridViewTheme.Margin = new System.Windows.Forms.Padding(2);
+			this.dataGridViewTheme.Name = "dataGridViewTheme";
+			this.dataGridViewTheme.ReadOnly = true;
+			this.dataGridViewTheme.RowHeadersWidth = 51;
+			this.dataGridViewTheme.RowTemplate.Height = 27;
+			this.dataGridViewTheme.Size = new System.Drawing.Size(549, 267);
+			this.dataGridViewTheme.TabIndex = 9;
+			this.dataGridViewTheme.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewTheme_CellClick);
 			// 
 			// ThemeId
 			// 
@@ -124,11 +124,11 @@
 			this.Controls.Add(this.buttonSearch);
 			this.Controls.Add(this.textBoxSearch);
 			this.Controls.Add(this.buttonCreateTheme);
-			this.Controls.Add(this.dataGridView1);
+			this.Controls.Add(this.dataGridViewTheme);
 			this.Name = "form_QAList";
 			this.Text = "主留言列表";
 			this.Load += new System.EventHandler(this.form_QAList_Load);
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.dataGridViewTheme)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -139,7 +139,7 @@
 		private System.Windows.Forms.Button buttonSearch;
 		private System.Windows.Forms.TextBox textBoxSearch;
 		private System.Windows.Forms.Button buttonCreateTheme;
-		private System.Windows.Forms.DataGridView dataGridView1;
+		private System.Windows.Forms.DataGridView dataGridViewTheme;
 		private System.Windows.Forms.DataGridViewTextBoxColumn ThemeId;
 		private System.Windows.Forms.DataGridViewTextBoxColumn ThemeContext;
 		private System.Windows.Forms.DataGridViewTextBoxColumn ThemeDateTime;
