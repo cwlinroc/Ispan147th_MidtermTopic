@@ -9,10 +9,8 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
 {
 	public class ForumAccountDto
 	{		
-		public string MemberName { get; set; }
-		public int? ForumAccountID { get; set; }
-		public string ForumAccountName { get; set; }
-		public string NickName { get; set; }
+		public int ForumAccountID { get; set; }
+		public string ForumAccountName { get; set; }		
 	}
 
 	static public class ForumAccountDtoEF
@@ -22,8 +20,7 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
 			return new ForumAccount
 			{	
 				ForumAccountID = dto.ForumAccountID,
-				ForumAccountName = string.IsNullOrEmpty(dto.NickName)? 
-									dto.MemberName: dto.NickName				
+				ForumAccountName = dto.ForumAccountName
 			};
 		}
 
@@ -32,8 +29,7 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
 			return new ForumAccountDto
 			{
 				ForumAccountID = ef.ForumAccountID,
-				ForumAccountName = string.IsNullOrEmpty(ef.NickName) ? 
-									ef.MemberName : ef.NickName				
+				ForumAccountName = ef.ForumAccountName		
 			};
 		}
 
