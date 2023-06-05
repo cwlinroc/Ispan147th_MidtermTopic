@@ -74,6 +74,12 @@
     <Compile Include="FormMember\form_CreateMember.Designer.cs">
       <DependentUpon>form_CreateMember.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormMember\form_EditForumName.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMember\form_EditForumName.Designer.cs">
+      <DependentUpon>form_EditForumName.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormMember\form_EditMember.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -260,13 +266,16 @@
     <Compile Include="ViewModels\MemberCreateVM.cs" />
     <Compile Include="ViewModels\MerchandiseCreateVM.cs" />
     <Compile Include="ViewModels\OrderListVM.cs" />
-    <Compile Include="ViewModels\OrderVM.cs" />    
+    <Compile Include="ViewModels\OrderVM.cs" />
     <Compile Include="ViewModels\QAVM.cs" />
     <EmbeddedResource Include="FormMember\form_ApplyForumMember.resx">
       <DependentUpon>form_ApplyForumMember.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormMember\form_CreateMember.resx">
       <DependentUpon>form_CreateMember.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMember\form_EditForumName.resx">
+      <DependentUpon>form_EditForumName.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormMember\form_EditMember.resx">
       <DependentUpon>form_EditMember.cs</DependentUpon>

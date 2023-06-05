@@ -95,7 +95,6 @@
     <Compile Include="Repositories\CategoryRepository.cs" />
     <Compile Include="Repositories\EmployeeRepositoy.cs" />
     <Compile Include="Repositories\ForumAccountRepository.cs" />
-    <Compile Include="Repositories\IForumAccountRepo.cs" />
     <Compile Include="Repositories\ICategoryRepository.cs" />
     <Compile Include="Repositories\IMerchandiseRepository.cs" />
     <Compile Include="Repositories\IOrderListRepositoy.cs" />

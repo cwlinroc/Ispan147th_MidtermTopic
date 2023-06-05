@@ -301,6 +301,13 @@ namespace prjMidtermTopic.FormMember
 			var frm = new form_ApplyForumMember(_memberID);
 			frm.ShowDialog();
 		}
+
+		private void btnEditForumName_Click(object sender, EventArgs e)
+		{
+			var frm = new form_EditForumName();
+			frm.ShowDialog();
+		}
+
 		#endregion
 
 

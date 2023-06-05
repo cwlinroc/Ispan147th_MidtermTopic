@@ -9,8 +9,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 {
 	public interface IForumAccountRepo
 	{
-		ForumAccountDto GetById(int id);
-		ForumAccountDto GetByName(string name);
+		ForumAccountDto GetById(int id);		
 		int Create(ForumAccountDto dto);
 		string Update(ForumAccountDto dto);
 	}

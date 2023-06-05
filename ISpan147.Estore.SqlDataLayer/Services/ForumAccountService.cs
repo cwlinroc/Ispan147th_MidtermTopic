@@ -10,16 +10,21 @@ namespace ISpan147.Estore.SqlDataLayer.Services
 {
 	public class ForumAccountService
 	{
-		private IForumAccountRepo _repo;
+		private ForumAccountRepository _repo;
 
-		public ForumAccountService(IForumAccountRepo repo)
+		public ForumAccountService()
+		{
+			_repo = new ForumAccountRepository();
+		}
+
+		public ForumAccountService(ForumAccountRepository repo)
 		{
 			_repo = repo;
 		}
 
-		public ForumAccountDto GetById(int id)
+		public ForumAccountDto Get(int id)
 		{
-			return _repo.GetById(id);
+			return _repo.Get(id);
 		}
 
 		public int Create(ForumAccountDto dto)
@@ -30,6 +35,37 @@ namespace ISpan147.Estore.SqlDataLayer.Services
 		public string Update(ForumAccountDto dto) 
 		{  
 			return _repo.Update(dto); 
+		}
+
+		public string GetForumAccountName(int forumID)
+		{
+			return _repo.GetForumAccountName(forumID);
+		}
+
+		public int CreateForumAccount(int memberId, string forumName)
+		{
+			var dto = Get(memberId);
+
+			if (dto == null) return 0;
+
+			int forumAccountID = _repo.CreateForumAccount(forumName);
+
+			dto.ForumAccountID = forumAccountID;
+
+			Update(dto);
+
+			return forumAccountID;
+
+		}
+
+		public int UpdateForumAccount(int forumAccountID, string forumName)
+		{
+			return _repo.UpdateForumAccount(new ForumAccountDto
+			{
+				ForumAccountID = forumAccountID,
+				ForumAccountName = forumName
+			});
+
 		}
 	}
 

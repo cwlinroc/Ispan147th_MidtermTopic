@@ -8,23 +8,15 @@ using System.Threading.Tasks;
 
 namespace ISpan147.Estore.SqlDataLayer.Repositories
 {
-	public class ForumAccountRepository : IForumAccountRepo
+	public class ForumAccountRepository
 	{	
-		public ForumAccountDto GetById(int forumAccountId)
+		public ForumAccountDto Get(int forumId)
 		{
 			var db = new AppDbContext();
-			var obj = db.ForumAccounts.Where(o => o.ForumAccountID == forumAccountId).FirstOrDefault();
+			var obj = db.ForumAccounts.Where(o => o.ForumAccountID == forumId).FirstOrDefault();
 			if (db == null) return null;
 			return obj.ToDto();
-		}
-
-		public ForumAccountDto GetByName(string forumAccountName)
-		{
-			var db = new AppDbContext();
-			var obj = db.ForumAccounts.Where(o => o.ForumAccountName == forumAccountName).FirstOrDefault();
-			if (db == null) return null;
-			return obj.ToDto();
-		}
+		}		
 
 		public int Create(ForumAccountDto dto)
 		{
@@ -33,7 +25,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 			var obj = dto.ToEF();
 			db.ForumAccounts.Add(obj);
 			db.SaveChanges();
-			return obj.ForumAccountID.Value;
+			return obj.ForumAccountID;
 		}		
 
 		public string Update(ForumAccountDto dto)
@@ -44,6 +36,45 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 			obj.ChangeByDto(dto);
 			db.SaveChanges();
 			return obj.ForumAccountName;
+		}
+
+		public int CreateForumAccount(string accountName)
+		{
+			if (string.IsNullOrEmpty(accountName)) return -1;
+
+			var db = new AppDbContext();
+			var obj = new ForumAccount
+			{
+				ForumAccountName = accountName,
+			};
+			db.ForumAccounts.Add(obj);
+			db.SaveChanges();
+			return obj.ForumAccountID;
+		}
+
+		public int UpdateForumAccount(ForumAccountDto dto)
+		{
+			if (string.IsNullOrEmpty(dto.ForumAccountName)) return -1;
+
+			var db = new AppDbContext();
+			var obj = db.ForumAccounts.Where(o => o.ForumAccountID == dto.ForumAccountID).FirstOrDefault();
+
+			if (obj == null) return 0;
+
+			obj.ForumAccountName = dto.ForumAccountName;
+			db.SaveChanges();
+			return obj.ForumAccountID;
+		}
+
+		public string GetForumAccountName(int forumID)
+		{
+			var db = new AppDbContext();
+			var obj = db.ForumAccounts.Where(o => o.ForumAccountID == forumID).FirstOrDefault();
+
+			if (obj == null) return null;
+
+			return obj.ForumAccountName;
+
 		}
 	}
 }

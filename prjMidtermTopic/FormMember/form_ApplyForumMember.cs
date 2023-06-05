@@ -22,7 +22,7 @@ namespace prjMidtermTopic.FormMember
 	public partial class form_ApplyForumMember : Form
 	{
 		private readonly Dictionary<string, Control> _map;
-		private IForumAccountRepo _forumAccountrepo;
+		private ForumAccountRepository _forumAccountrepo;
 		private IMemberRepo _memberrepo;
 		private readonly int _memberId;
 
@@ -53,8 +53,7 @@ namespace prjMidtermTopic.FormMember
 			txtNickName.Text = dto.NickName;
 			txtForumAccountId.Text = dto.ForumAccountID.ToString();
 
-			btnApply.Enabled = string.IsNullOrEmpty(txtForumAccountId.Text);
-			btnEdit.Enabled = !string.IsNullOrEmpty(txtForumAccountId.Text);
+			btnApply.Enabled = string.IsNullOrEmpty(txtForumAccountId.Text);			
 		}
 
 		private void btnApply_Click(object sender, EventArgs e)
@@ -63,23 +62,25 @@ namespace prjMidtermTopic.FormMember
 			{
 				var vm = new ForumAccountVM
 				{
-					MemberName = txtMemberName.Text.Trim(),
-					NickName = txtNickName.Text.Trim()
+					ForumAccountName = string.IsNullOrEmpty(txtNickName.Text)?
+									txtMemberName.Text.Trim() : txtNickName.Text.Trim()
 				};
 
 				bool hasError = MyValidator.ValidateAndDisplay(vm, errorProvider1, _map);
 				if (hasError) return;
 
-				int newId = new ForumAccountService(_forumAccountrepo)
-					.Create(vm.ToDto());
+				int forumID = new ForumAccountService()
+					.CreateForumAccount(_memberId, vm.ForumAccountName);
 
-				MessageBox.Show($"申請成功,論壇帳戶編號為{newId}");
-
-				if (Owner != null)
+				if (forumID <= 0)
 				{
-					IGrid parent = Owner as IGrid;
-					parent.Display();
+					throw new Exception("未成功取得ForumAccountID");
 				}
+
+				Authentication.ForumAccountID = forumID;
+
+				MessageBox.Show($"申請成功,論壇帳戶編號為{forumID}");
+				
 				this.Close();
 			}
 			catch (Exception ex)
@@ -87,36 +88,6 @@ namespace prjMidtermTopic.FormMember
 				MessageBox.Show("申請失敗,原因:" + ex.Message);
 			}
 		}
-
-		private void btnEdit_Click(object sender, EventArgs e)
-		{
-			try
-			{
-				var vm = new ForumAccountVM
-				{
-					ForumAccountName = string.IsNullOrEmpty(txtNickName.Text) ?
-							txtMemberName.Text.Trim() : txtNickName.Text.Trim()
-				};
-
-				bool hasError = MyValidator.ValidateAndDisplay(vm, errorProvider1, _map);
-				if (hasError) return;
-
-				string newName = new ForumAccountService(_forumAccountrepo)
-					.Update(vm.ToDto());
-
-				MessageBox.Show($"修改成功,論壇帳戶稱呼為{newName}");
-
-				if (Owner != null)
-				{
-					IGrid parent = Owner as IGrid;
-					parent.Display();
-				}
-				this.Close();
-			}
-			catch (Exception ex)
-			{
-				MessageBox.Show("修改失敗,原因:" + ex.Message);
-			}
-		}
+		
 	}
 }

@@ -59,6 +59,7 @@
 			this.txtPassword = new System.Windows.Forms.TextBox();
 			this.btnApplyForumMember = new System.Windows.Forms.Button();
 			this.label9 = new System.Windows.Forms.Label();
+			this.btnEditForumName = new System.Windows.Forms.Button();
 			this.panel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
 			this.SuspendLayout();
@@ -344,7 +345,7 @@
 			this.btnApplyForumMember.Name = "btnApplyForumMember";
 			this.btnApplyForumMember.Size = new System.Drawing.Size(154, 30);
 			this.btnApplyForumMember.TabIndex = 45;
-			this.btnApplyForumMember.Text = "申請/修改論壇帳戶";
+			this.btnApplyForumMember.Text = "申請論壇帳戶";
 			this.btnApplyForumMember.UseVisualStyleBackColor = true;
 			this.btnApplyForumMember.Click += new System.EventHandler(this.btnApplyForumMember_Click);
 			// 
@@ -358,12 +359,26 @@
 			this.label9.TabIndex = 46;
 			this.label9.Text = "密碼:";
 			// 
+			// btnEditForumName
+			// 
+			this.btnEditForumName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.btnEditForumName.AutoSize = true;
+			this.btnEditForumName.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.btnEditForumName.Location = new System.Drawing.Point(114, 591);
+			this.btnEditForumName.Name = "btnEditForumName";
+			this.btnEditForumName.Size = new System.Drawing.Size(154, 30);
+			this.btnEditForumName.TabIndex = 45;
+			this.btnEditForumName.Text = "修改論壇稱呼";
+			this.btnEditForumName.UseVisualStyleBackColor = true;
+			this.btnEditForumName.Click += new System.EventHandler(this.btnEditForumName_Click);
+			// 
 			// form_EditMember
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(449, 628);
 			this.Controls.Add(this.label9);
+			this.Controls.Add(this.btnEditForumName);
 			this.Controls.Add(this.btnApplyForumMember);
 			this.Controls.Add(this.txtPassword);
 			this.Controls.Add(this.txtForumAccountID);
@@ -433,5 +448,6 @@
 		private System.Windows.Forms.TextBox txtPassword;
 		private System.Windows.Forms.Button btnApplyForumMember;
 		private System.Windows.Forms.Label label9;
+		private System.Windows.Forms.Button btnEditForumName;
 	}
 }

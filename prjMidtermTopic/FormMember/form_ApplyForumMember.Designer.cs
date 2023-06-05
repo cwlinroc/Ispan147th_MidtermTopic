@@ -35,7 +35,6 @@
 			this.labName = new System.Windows.Forms.Label();
 			this.btnApply = new System.Windows.Forms.Button();
 			this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-			this.btnEdit = new System.Windows.Forms.Button();
 			this.txtForumAccountId = new System.Windows.Forms.TextBox();
 			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
 			this.SuspendLayout();
@@ -81,7 +80,7 @@
 			this.btnApply.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnApply.AutoSize = true;
 			this.btnApply.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.btnApply.Location = new System.Drawing.Point(90, 148);
+			this.btnApply.Location = new System.Drawing.Point(173, 152);
 			this.btnApply.Name = "btnApply";
 			this.btnApply.Size = new System.Drawing.Size(80, 30);
 			this.btnApply.TabIndex = 26;
@@ -93,23 +92,10 @@
 			// 
 			this.errorProvider1.ContainerControl = this;
 			// 
-			// btnEdit
-			// 
-			this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnEdit.AutoSize = true;
-			this.btnEdit.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.btnEdit.Location = new System.Drawing.Point(173, 148);
-			this.btnEdit.Name = "btnEdit";
-			this.btnEdit.Size = new System.Drawing.Size(83, 30);
-			this.btnEdit.TabIndex = 27;
-			this.btnEdit.Text = "修改稱呼";
-			this.btnEdit.UseVisualStyleBackColor = true;
-			this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
-			// 
 			// txtForumAccountId
 			// 
 			this.txtForumAccountId.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.txtForumAccountId.Location = new System.Drawing.Point(155, 306);
+			this.txtForumAccountId.Location = new System.Drawing.Point(70, 357);
 			this.txtForumAccountId.Name = "txtForumAccountId";
 			this.txtForumAccountId.Size = new System.Drawing.Size(183, 29);
 			this.txtForumAccountId.TabIndex = 28;
@@ -118,9 +104,8 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(294, 190);
+			this.ClientSize = new System.Drawing.Size(268, 214);
 			this.Controls.Add(this.txtForumAccountId);
-			this.Controls.Add(this.btnEdit);
 			this.Controls.Add(this.btnApply);
 			this.Controls.Add(this.txtNickName);
 			this.Controls.Add(this.label9);
@@ -143,7 +128,6 @@
 		private System.Windows.Forms.Label labName;
 		private System.Windows.Forms.Button btnApply;
 		private System.Windows.Forms.ErrorProvider errorProvider1;
-		private System.Windows.Forms.Button btnEdit;
 		private System.Windows.Forms.TextBox txtForumAccountId;
 	}
 }
