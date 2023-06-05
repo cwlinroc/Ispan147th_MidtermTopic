@@ -35,6 +35,9 @@ namespace ISpan147.Estore.SqlDataLayer.EFModel
         [StringLength(30)]
         public string Location { get; set; }
 
+        [StringLength(50)]
+        public string PetAvatar { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Adopt> Adopts { get; set; }
 
