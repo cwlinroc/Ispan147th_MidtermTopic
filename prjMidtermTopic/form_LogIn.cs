@@ -8,10 +8,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UClass.View.Login;
 
 namespace prjMidtermTopic
 {
@@ -21,6 +23,8 @@ namespace prjMidtermTopic
 		public form_LogIn()
 		{
 			InitializeComponent();
+
+			Beautify.SetFormRoundRectRgn(this, 20);
 		}
 
 		private void btn_LogIn_Click(object sender, EventArgs e)
@@ -39,9 +43,14 @@ namespace prjMidtermTopic
 			frm.Owner = this;
 			this.Hide();
 			frm.Show();
+		}		
+
+		private void btn_Close_Click(object sender, EventArgs e)
+		{
+			this.Close();
 		}
-
-
-
 	}
+
+
+
 }
