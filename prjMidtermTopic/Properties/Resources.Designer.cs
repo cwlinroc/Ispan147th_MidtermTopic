@@ -63,6 +63,16 @@ namespace prjMidtermTopic.Properties {
         /// <summary>
         ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
         /// </summary>
+        internal static System.Drawing.Bitmap black_cat {
+            get {
+                object obj = ResourceManager.GetObject("black_cat", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+        /// </summary>
         internal static System.Drawing.Bitmap closeWin {
             get {
                 object obj = ResourceManager.GetObject("closeWin", resourceCulture);
@@ -93,9 +103,9 @@ namespace prjMidtermTopic.Properties {
         /// <summary>
         ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
         /// </summary>
-        internal static System.Drawing.Bitmap remove {
+        internal static System.Drawing.Bitmap 暫定logo {
             get {
-                object obj = ResourceManager.GetObject("remove", resourceCulture);
+                object obj = ResourceManager.GetObject("暫定logo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

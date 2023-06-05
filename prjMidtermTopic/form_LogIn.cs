@@ -14,7 +14,6 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using UClass.View.Login;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace prjMidtermTopic
@@ -25,8 +24,6 @@ namespace prjMidtermTopic
 		public form_LogIn()
 		{
 			InitializeComponent();
-
-			//Beautify.SetFormRoundRectRgn(this, 32);
 		}
 
 		private void btn_LogIn_Click(object sender, EventArgs e)
@@ -61,7 +58,7 @@ namespace prjMidtermTopic
 		public const int SC_MOVE = 0xF010;
 		public const int HTCAPTION = 0x0002;
 		/// <summary>
-		/// 为了是主界面能够移动
+		/// 為了主介面能夠移動
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>

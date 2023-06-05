@@ -21,11 +21,13 @@ namespace prjMidtermTopic
 	{
 		private bool _multiMdiChild = false;
 		private bool _logOut = false;
+		private bool _maxed = true;
 		public form_Main()
 		{
 			InitializeComponent();
-			toolStrip_Main.Renderer = new MyRender();
-			toolStrip_Title.Renderer = new MyRender();
+			toolStrip_Main.Renderer = new NoEdgeRenderer();
+			toolStrip_Title.Renderer = new NoEdgeRenderer();
+			menuStrip_Main.Renderer = new ColoredRenderer();
 
 			MaximizeWindow();
 		}
@@ -48,7 +50,36 @@ namespace prjMidtermTopic
 		}
 
 		//toolStripButtons
-		#region --toolStripButtons--
+
+		#region --toolStripTitleButtons-
+
+		private void toolStripButton_Min_Click(object sender, EventArgs e)
+		{
+			this.WindowState = FormWindowState.Minimized;
+		}
+
+		private void toolStripButton_Max_Click(object sender, EventArgs e)
+		{
+			if (_maxed || this.WindowState == FormWindowState.Maximized)
+			{
+				ResizableWindow();
+				_maxed = false;
+			}
+			else
+			{
+				MaximizeWindow();
+				_maxed = true;
+			}
+		}		
+
+		private void toolStripButton_Close_Click(object sender, EventArgs e)
+		{
+			this.Close();
+		}
+
+		#endregion
+
+		#region --toolStripMainButtons--
 		private void toolStripButton_MemberForm_Click(object sender, EventArgs e)
 		{
 			showForm(new form_Member());
@@ -87,6 +118,7 @@ namespace prjMidtermTopic
 		private void toolStripButton_LogOut_Click(object sender, EventArgs e)
 		{
 			_logOut = true;
+			關閉所有視窗ToolStripMenuItem.PerformClick();
 			this.Close();
 		}
 
@@ -96,6 +128,7 @@ namespace prjMidtermTopic
 		}
 
 		#endregion
+
 
 
 		//menuStripButtons
@@ -239,6 +272,10 @@ namespace prjMidtermTopic
 
 		#endregion
 
+
+
+
+		//methods
 		private void showForm(Form frm)
 		{
 			if (!_multiMdiChild)
@@ -249,35 +286,7 @@ namespace prjMidtermTopic
 			frm.MdiParent = this;
 			frm.WindowState = FormWindowState.Maximized;
 			frm.Show();
-
-		}
-
-		private void toolStripButton_Close_Click(object sender, EventArgs e)
-		{
-			this.Close();
-		}
-
-
-		private bool _maxed = true;
-		private void toolStripButton_Max_Click(object sender, EventArgs e)
-		{
-			if (_maxed || this.WindowState == FormWindowState.Maximized)
-			{
-				ResizableWindow();
-				_maxed = false;
-			}
-			else
-			{
-				MaximizeWindow();
-				_maxed = true;
-			}
-
-		}
-
-		private void toolStripButton_Min_Click(object sender, EventArgs e)
-		{
-			this.WindowState = FormWindowState.Minimized;
-		}
+		}		
 
 		private void MaximizeWindow()
 		{
