@@ -21,8 +21,7 @@ namespace prjMidtermTopic
     public partial class form_QAList : Form
     {
 		QAService _service;
-		//List<QADto> _data;
-
+		
 		public form_QAList()
 		{
             InitializeComponent();

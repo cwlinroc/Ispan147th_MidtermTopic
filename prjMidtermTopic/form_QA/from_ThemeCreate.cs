@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ISpan147.Estore.SqlDataLayer.Dtos;
+using ISpan147.Estore.SqlDataLayer.Services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
@@ -14,59 +16,34 @@ namespace prjMidtermTopic.form_QA
 {
 	public partial class from_ThemeCreate : Form
 	{
+		QAService _service;
 		public from_ThemeCreate()
 		{
 			InitializeComponent();
+			_service = new QAService();
 		}
 
 		private void buttonConfirmTheme_Click(object sender, EventArgs e)
 		{
-			try
-			{
-				var forumAccountId = 01; 
-				var theme = richTextBoxTheme.Text;
-				string connStringHome = ConfigurationManager.ConnectionStrings["default"].ConnectionString;
-				
+			QADto.Theme themeDto = new QADto.Theme();
+			themeDto.ForumAccountId = Convert.ToInt32(labelThemeRoleID.Text);
+			themeDto.ForumAccountName = labelThemeRole.Text;
+			themeDto.ThemeContext = richTextBoxTheme.Text;
+			themeDto.ThemeDateTime = DateTime.Now;
 
-				string cmdStr3 = @" INSERT INTO THEMES (THEMENAME, THEMEDATETIME, THEMECONTEXT)  
-                              VALUES (@THEMENAME, @THEMEDATETIME, @THEMECONTEXT) ";
+			var result = _service.CreateTheme(themeDto);
 
-				SqlConnection conn = new SqlConnection(connStringHome);  //連線資訊
-				conn.Open();  //開啟
-				List<SqlParameter> parameters = new List<SqlParameter>();
+			MessageBox.Show(result);
+			this.Close();
 
-				parameters.Add(new SqlParameter("@THEMENAME", SqlDbType.NVarChar)
-				{
-					Value = forumAccountId,
-					Direction = ParameterDirection.Input
-				});
-				parameters.Add(new SqlParameter("@THEMEDATETIME", SqlDbType.DateTime)
-				{
-					Value = DateTime.Now,
-					Direction = ParameterDirection.Input
-				});
-				parameters.Add(new SqlParameter("@THEMECONTEXT", SqlDbType.NVarChar, size: 500)
-				{
-					Value = theme,
-					Direction = ParameterDirection.Input
 
-				});
+		}
 
-				SqlCommand cmd = conn.CreateCommand();
-				cmd.Parameters.AddRange(parameters.ToArray());
-				cmd.CommandText = cmdStr3;
-				cmd.ExecuteNonQuery(); //執行不查詢
-									   // cmd.ExecuteReader(); 查詢使用
-				conn.Close();
-				conn.Dispose();
-				MessageBox.Show("新增成功");
-				this.Close();
-			}
-			catch (Exception ex)
-			{
-				throw new Exception("連線失敗" + ex);
-			}
-
+		private void from_ThemeCreate_Load(object sender, EventArgs e)
+		{
+			// 顯示要留言人資訊
+			labelThemeRole.Text = "留言者";
+			labelThemeRoleID.Text = "123";
 		}
 	}
 }

@@ -64,7 +64,6 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
 			{
 				//ThemeId = reader.GetInt("ThemeId"),
 				CommentId = reader.GetInt("CommentId"),
-				
 				CommentDateTime = reader.GetDateTime(reader.GetOrdinal("CommentTime")),
 				CommentContext = reader.GetString("CommentContext").Length > 50 ?
 										reader.GetString("CommentContext").Substring(0, 50) + "..." : reader.GetString("CommentContext")

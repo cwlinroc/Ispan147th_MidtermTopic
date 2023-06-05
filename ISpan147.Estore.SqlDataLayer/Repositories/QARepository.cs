@@ -97,11 +97,10 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 		}
 
 
-		public QADto.Comment GetComment(int? themeId = null)     //顯示ThemeID = dataGridViewTheme_CellClick的
+		public List<QADto.Comment> GetComment(int? themeId = null)     //顯示ThemeID = dataGridViewTheme_CellClick的
 		{
-			
 			StringBuilder sql = new StringBuilder();
-			sql.AppendLine("SELECT ThemeID , CommentContext , CommentTime ");
+			sql.AppendLine("SELECT CommentID, CommentContext, CommentTime ");
 			sql.AppendLine("FROM Comments AS C ");
 			sql.AppendLine("JOIN ForumAccounts AS F ON C.ForumAccountID = F.ForumAccountID ");
 			sql.AppendLine("WHERE 1 = 1 ");

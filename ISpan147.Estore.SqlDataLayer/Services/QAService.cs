@@ -1,6 +1,7 @@
 ﻿using ISpan147.Estore.SqlDataLayer.Dtos;
 using ISpan147.Estore.SqlDataLayer.Repositories;
 using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,6 +26,13 @@ namespace ISpan147.Estore.SqlDataLayer.Services
 			return new QARepository().SearchTheme(keyword);
 		}
 
+		public string CreateTheme(QADto.Theme themeDto)
+		{
+			var result = new QARepository().CreateTheme(themeDto);
+
+			return result > 0 ? $"新增一筆留言成功，留言編號是{result}。" : "新增留言失敗";
+		}
+
 		/// <summary>
 		/// 取得回覆留言列表
 		/// </summary>
@@ -38,6 +46,13 @@ namespace ISpan147.Estore.SqlDataLayer.Services
 		public List<QADto.Comment> SearchComment(string keyword) 
 		{
 			return new QARepository().SearchComment(keyword);
+		}
+
+		public string CreateComment(QADto.Comment commentDto)
+		{ 
+			var result = new QARepository().CreateComment(commentDto);
+
+			return result > 0 ? $"新增一筆留言成功，留言編號是{result}。" : "新增留言失敗";
 		}
 
 	}
