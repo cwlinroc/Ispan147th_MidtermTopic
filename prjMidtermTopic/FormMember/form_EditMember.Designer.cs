@@ -57,7 +57,7 @@
 			this.txtForumAccountID = new System.Windows.Forms.TextBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.txtPassword = new System.Windows.Forms.TextBox();
-			this.btnApplyForumMember = new System.Windows.Forms.Button();
+			this.btnApplyForumAccount = new System.Windows.Forms.Button();
 			this.label9 = new System.Windows.Forms.Label();
 			this.btnEditForumName = new System.Windows.Forms.Button();
 			this.panel1.SuspendLayout();
@@ -336,18 +336,18 @@
 			this.txtPassword.Size = new System.Drawing.Size(173, 29);
 			this.txtPassword.TabIndex = 44;
 			// 
-			// btnApplyForumMember
+			// btnApplyForumAccount
 			// 
-			this.btnApplyForumMember.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.btnApplyForumMember.AutoSize = true;
-			this.btnApplyForumMember.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.btnApplyForumMember.Location = new System.Drawing.Point(114, 555);
-			this.btnApplyForumMember.Name = "btnApplyForumMember";
-			this.btnApplyForumMember.Size = new System.Drawing.Size(154, 30);
-			this.btnApplyForumMember.TabIndex = 45;
-			this.btnApplyForumMember.Text = "申請論壇帳戶";
-			this.btnApplyForumMember.UseVisualStyleBackColor = true;
-			this.btnApplyForumMember.Click += new System.EventHandler(this.btnApplyForumMember_Click);
+			this.btnApplyForumAccount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.btnApplyForumAccount.AutoSize = true;
+			this.btnApplyForumAccount.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.btnApplyForumAccount.Location = new System.Drawing.Point(114, 555);
+			this.btnApplyForumAccount.Name = "btnApplyForumAccount";
+			this.btnApplyForumAccount.Size = new System.Drawing.Size(154, 30);
+			this.btnApplyForumAccount.TabIndex = 45;
+			this.btnApplyForumAccount.Text = "申請論壇帳戶";
+			this.btnApplyForumAccount.UseVisualStyleBackColor = true;
+			this.btnApplyForumAccount.Click += new System.EventHandler(this.btnApplyForumAccount_Click);
 			// 
 			// label9
 			// 
@@ -376,10 +376,10 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(449, 628);
+			this.ClientSize = new System.Drawing.Size(857, 628);
 			this.Controls.Add(this.label9);
 			this.Controls.Add(this.btnEditForumName);
-			this.Controls.Add(this.btnApplyForumMember);
+			this.Controls.Add(this.btnApplyForumAccount);
 			this.Controls.Add(this.txtPassword);
 			this.Controls.Add(this.txtForumAccountID);
 			this.Controls.Add(this.label1);
@@ -446,7 +446,7 @@
 		private System.Windows.Forms.TextBox txtForumAccountID;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.TextBox txtPassword;
-		private System.Windows.Forms.Button btnApplyForumMember;
+		private System.Windows.Forms.Button btnApplyForumAccount;
 		private System.Windows.Forms.Label label9;
 		private System.Windows.Forms.Button btnEditForumName;
 	}

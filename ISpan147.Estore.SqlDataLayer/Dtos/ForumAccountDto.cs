@@ -1,10 +1,4 @@
 ﻿using ISpan147.Estore.SqlDataLayer.EFModel;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ISpan147.Estore.SqlDataLayer.Dtos
 {

@@ -1,25 +1,15 @@
 ﻿using ISpan147.Estore.SqlDataLayer.Services;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Security.Principal;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace prjMidtermTopic.FormMember
 {
 	public partial class form_EditForumName : Form
-	{
-		private string _account;
+	{		
 		private int _forumID;
-		public form_EditForumName(string account, int forumID)
+		public form_EditForumName(int forumID)
 		{
 			InitializeComponent();
-			_account = account;
 			_forumID = forumID;
 			Load += form_EditForumName_Load;
 		}
@@ -32,7 +22,35 @@ namespace prjMidtermTopic.FormMember
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show("取得ForumName失敗，可能原因：" + ex.Message);
+				MessageBox.Show("取得稱呼失敗,原因:" + ex.Message);
+			}
+		}
+
+		private void btnConfirm_Click(object sender, EventArgs e)
+		{
+			if (string.IsNullOrEmpty(txtForumName.Text))
+			{
+				MessageBox.Show("請輸入稱呼!");
+				return;
+			}
+
+			try
+			{
+				var service = new ForumAccountService();
+				int forumID = service.UpdateForumAccount(_forumID, txtForumName.Text);
+
+				if (forumID <= 0)
+				{
+					throw new Exception("未成功取得論壇編號");
+				}
+
+				MessageBox.Show("修改成功");
+
+				this.Close();
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show("修改失敗,原因:" + ex.Message);
 			}
 		}
 	}

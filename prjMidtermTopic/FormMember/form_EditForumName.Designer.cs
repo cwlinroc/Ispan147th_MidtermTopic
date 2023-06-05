@@ -28,22 +28,23 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.btnEdit = new System.Windows.Forms.Button();
+			this.btnConfirm = new System.Windows.Forms.Button();
 			this.txtForumName = new System.Windows.Forms.TextBox();
 			this.label9 = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
-			// btnEdit
+			// btnConfirm
 			// 
-			this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnEdit.AutoSize = true;
-			this.btnEdit.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.btnEdit.Location = new System.Drawing.Point(216, 143);
-			this.btnEdit.Name = "btnEdit";
-			this.btnEdit.Size = new System.Drawing.Size(80, 30);
-			this.btnEdit.TabIndex = 29;
-			this.btnEdit.Text = "修改";
-			this.btnEdit.UseVisualStyleBackColor = true;
+			this.btnConfirm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnConfirm.AutoSize = true;
+			this.btnConfirm.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.btnConfirm.Location = new System.Drawing.Point(213, 143);
+			this.btnConfirm.Name = "btnConfirm";
+			this.btnConfirm.Size = new System.Drawing.Size(83, 30);
+			this.btnConfirm.TabIndex = 29;
+			this.btnConfirm.Text = "確認修改";
+			this.btnConfirm.UseVisualStyleBackColor = true;
+			this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
 			// 
 			// txtForumName
 			// 
@@ -68,7 +69,7 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(308, 185);
-			this.Controls.Add(this.btnEdit);
+			this.Controls.Add(this.btnConfirm);
 			this.Controls.Add(this.txtForumName);
 			this.Controls.Add(this.label9);
 			this.Name = "form_EditForumName";
@@ -81,7 +82,7 @@
 
 		#endregion
 
-		private System.Windows.Forms.Button btnEdit;
+		private System.Windows.Forms.Button btnConfirm;
 		private System.Windows.Forms.TextBox txtForumName;
 		private System.Windows.Forms.Label label9;
 	}

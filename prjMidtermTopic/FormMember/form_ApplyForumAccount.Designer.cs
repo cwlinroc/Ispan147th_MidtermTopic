@@ -1,6 +1,6 @@
 ﻿namespace prjMidtermTopic.FormMember
 {
-	partial class form_ApplyForumMember
+	partial class form_ApplyForumAccount
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -113,7 +113,7 @@
 			this.Controls.Add(this.labName);
 			this.Name = "form_ApplyForumMember";
 			this.Text = "form_ApplyForumMember";
-			this.Load += new System.EventHandler(this.form_ApplyForumMember_Load);
+			this.Load += new System.EventHandler(this.form_ApplyForumAccount_Load);
 			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();

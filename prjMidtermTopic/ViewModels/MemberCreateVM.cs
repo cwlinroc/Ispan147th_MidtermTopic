@@ -22,7 +22,7 @@ namespace prjMidtermTopic.ViewModels
 				
 		[Display(Name = "生日")]
 		[Required(ErrorMessage = "{0}必填")]
-		[DateTimeRange(100, ErrorMessage = "生日不可早於100年前!")]
+		[DateTimeRange(-100, ErrorMessage = "生日不可早於100年前!")]
 		public DateTime DateOfBirth { get; set; }
 
 		[Display(Name = "性別")]
@@ -63,7 +63,7 @@ namespace prjMidtermTopic.ViewModels
 
 		public DateTimeRangeAttribute(int years)
 		{
-			_minDate = DateTime.Now.AddYears(-years);
+			_minDate = DateTime.Now.AddYears(years);
 		}
 
 		protected override ValidationResult IsValid(object value, ValidationContext validationContext)

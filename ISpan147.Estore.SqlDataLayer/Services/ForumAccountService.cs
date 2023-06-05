@@ -22,7 +22,7 @@ namespace ISpan147.Estore.SqlDataLayer.Services
 			_repo = repo;
 		}
 
-		public ForumAccountDto Get(int id)
+		public MemberDto Get(int id)
 		{
 			return _repo.Get(id);
 		}
@@ -32,9 +32,9 @@ namespace ISpan147.Estore.SqlDataLayer.Services
 			return _repo.Create(dto);
 		}
 
-		public string Update(ForumAccountDto dto) 
-		{  
-			return _repo.Update(dto); 
+		public string Update(MemberDto dto)
+		{
+			return _repo.Update(dto);
 		}
 
 		public string GetForumAccountName(int forumID)

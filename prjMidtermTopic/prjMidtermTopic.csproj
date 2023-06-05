@@ -62,11 +62,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormMember\form_ApplyForumMember.cs">
+    <Compile Include="FormMember\form_ApplyForumAccount.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormMember\form_ApplyForumMember.Designer.cs">
-      <DependentUpon>form_ApplyForumMember.cs</DependentUpon>
+    <Compile Include="FormMember\form_ApplyForumAccount.Designer.cs">
+      <DependentUpon>form_ApplyForumAccount.cs</DependentUpon>
     </Compile>
     <Compile Include="FormMember\form_CreateMember.cs">
       <SubType>Form</SubType>
@@ -268,8 +268,8 @@
     <Compile Include="ViewModels\OrderListVM.cs" />
     <Compile Include="ViewModels\OrderVM.cs" />
     <Compile Include="ViewModels\QAVM.cs" />
-    <EmbeddedResource Include="FormMember\form_ApplyForumMember.resx">
-      <DependentUpon>form_ApplyForumMember.cs</DependentUpon>
+    <EmbeddedResource Include="FormMember\form_ApplyForumAccount.resx">
+      <DependentUpon>form_ApplyForumAccount.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormMember\form_CreateMember.resx">
       <DependentUpon>form_CreateMember.cs</DependentUpon>

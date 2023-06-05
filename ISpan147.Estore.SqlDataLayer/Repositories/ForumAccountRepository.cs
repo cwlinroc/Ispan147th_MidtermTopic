@@ -1,19 +1,16 @@
 ﻿using ISpan147.Estore.SqlDataLayer.Dtos;
 using ISpan147.Estore.SqlDataLayer.EFModel;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ISpan147.Estore.SqlDataLayer.Repositories
 {
 	public class ForumAccountRepository
 	{	
-		public ForumAccountDto Get(int forumId)
+		public MemberDto Get(int memberId)
 		{
 			var db = new AppDbContext();
-			var obj = db.ForumAccounts.Where(o => o.ForumAccountID == forumId).FirstOrDefault();
+			var obj = db.Members.Where(o => o.MemberID == memberId).FirstOrDefault();
 			if (db == null) return null;
 			return obj.ToDto();
 		}		
@@ -26,26 +23,26 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 			db.ForumAccounts.Add(obj);
 			db.SaveChanges();
 			return obj.ForumAccountID;
-		}		
+		}
 
-		public string Update(ForumAccountDto dto)
+		public string Update(MemberDto dto)
 		{
 			var db = new AppDbContext();
-			var obj = db.ForumAccounts.Where(o => o.ForumAccountID == dto.ForumAccountID).FirstOrDefault();
+			var obj = db.Members.Where(o => o.MemberID == dto.MemberID).FirstOrDefault();
 			if (obj == null) return null;
 			obj.ChangeByDto(dto);
 			db.SaveChanges();
-			return obj.ForumAccountName;
+			return obj.ForumAccountID.ToString();
 		}
 
-		public int CreateForumAccount(string accountName)
+		public int CreateForumAccount(string forumName)
 		{
-			if (string.IsNullOrEmpty(accountName)) return -1;
+			if (string.IsNullOrEmpty(forumName)) return -1;
 
 			var db = new AppDbContext();
 			var obj = new ForumAccount
 			{
-				ForumAccountName = accountName,
+				ForumAccountName = forumName,
 			};
 			db.ForumAccounts.Add(obj);
 			db.SaveChanges();
