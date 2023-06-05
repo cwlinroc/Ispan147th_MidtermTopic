@@ -115,15 +115,18 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
 		}
 		public static Func<SqlDataReader, QADto.Theme> ThemeDtoAssembler
 		{
-			get => (reader) => new QADto.Theme
-			{
-				ThemeId = reader.GetInt("ThemeID"),
-				UserId = reader.GetInt("ForumAccountID"),
-				UserName = reader.GetString("ForumAccountName"),
-				ThemeDateTime = reader.GetDateTime(reader.GetOrdinal("ThemeDateTime")),
-				ThemeContext = reader.GetString("ThemeContext")
-			};
+			get => (reader) =>
+				new QADto.Theme
+				{
+					ThemeId = reader.GetInt("ThemeId"),
+					//UserId = reader.GetInt("UserId"),
+					//ForumAccountName = reader.GetString("ForumAccountName"),
+					ThemeDateTime = reader.GetDateTime(reader.GetOrdinal("ThemeDateTime")),
+					ThemeContext = reader.GetString("ThemeContext").Length > 50 ?
+										reader.GetString("ThemeContext").Substring(0, 50) + "..." : reader.GetString("ThemeContext")
+				};
 		}
+
 
 		public static Func<SqlDataReader, QADto.Comment> CommentDtoAssembler
 		{
@@ -135,8 +138,8 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
 				UserName = reader.GetString("UserName"),
 				CommentDateTime = reader.GetDateTime(reader.GetOrdinal("CommentDateTime")),
 				CommentContext = reader.GetString("CommentContext")
-			};	
-		
+			};
+
 		}
 
 	}
