@@ -78,14 +78,41 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 			}
 		}
 
+		public int CreateForumAccount(ForumAccountDto dto)
+		{
+			using (var conn = SqlDb.GetConnection())
+			{
+				string strSql = "INSERT INTO ForumAccounts "
+					+ " ( ForumAccountName )"
+					+ " OUTPUT INSERTED.ForumAccountID"
+					+ " VALUES ( @ForumAccountName )";
+
+				int result = conn.QuerySingle<int>(strSql, dto);
+				return result;
+			}
+		}
+
+		public void UpdateForumAccountID(int MemberID, int ForumAccountID)
+		{
+			using (var conn = SqlDb.GetConnection())
+			{
+				string strSql = "Update Members "
+					+ $" SET ForumAccountID = {ForumAccountID} "
+					+ $" WHERE MemberID = {MemberID}";
+
+				conn.Execute(strSql);
+			}
+		}
+
+
 		public int CreateTheme(ThemeDto dto)
 		{
 			using (var conn = SqlDb.GetConnection())
 			{
 				string strSql = "INSERT INTO Themes "
-					+ " ( ThemeName, ThemeDateTime, ThemeContext )"
+					+ " ( ThemeName, ThemeDateTime, ThemeContext, ForumAccountID )"
 					+ " OUTPUT INSERTED.ThemeID"
-					+ " VALUES ( @ThemeName, @ThemeDateTime, @ThemeContext )";
+					+ " VALUES ( @ThemeName, @ThemeDateTime, @ThemeContext, @ForumAccountID )";
 
 				int result = conn.QuerySingle<int>(strSql, dto);
 				return result;
@@ -97,13 +124,12 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 			using (var conn = SqlDb.GetConnection())
 			{
 				string strSql = "INSERT INTO Comments "
-					+ " ( CommentName, CommentTime,CommentContext, ThemeID )"
-					+ " VALUES ( @CommentName, @CommentTime, @CommentContext, @ThemeID )";
+					+ " ( ForumAccountID, CommentTime,CommentContext, ThemeID )"
+					+ " VALUES ( @ForumAccountID, @CommentTime, @CommentContext, @ThemeID )";
 
 				conn.Execute(strSql, dto);
 			}
 		}
-
 
 		public void CreateAdopt(AdoptDto dto)
 		{
@@ -180,7 +206,17 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 			}
 		}
 
+		public IEnumerable<int> GetAllForumAccountID()
+		{
+			using (var conn = SqlDb.GetConnection())
+			{
+				string strSql = $"SELECT ForumAccountID FROM ForumAccounts";
 
+				var result = conn.Query<int>(strSql);
+
+				return result;
+			}
+		}
 		public IEnumerable<MemberDto> GetAllMemberDtos()
 		{
 			using (var conn = SqlDb.GetConnection())

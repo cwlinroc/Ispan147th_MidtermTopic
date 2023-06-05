@@ -46,22 +46,27 @@
 			this.label6 = new System.Windows.Forms.Label();
 			this.btn_AddAdopt = new System.Windows.Forms.Button();
 			this.textBox_Adopt = new System.Windows.Forms.TextBox();
+			this.label7 = new System.Windows.Forms.Label();
+			this.btn_AddForumAccount = new System.Windows.Forms.Button();
+			this.txt_ForumAccount = new System.Windows.Forms.TextBox();
 			this.SuspendLayout();
 			// 
 			// label1
 			// 
 			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(56, 39);
+			this.label1.Location = new System.Drawing.Point(75, 49);
+			this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(53, 12);
+			this.label1.Size = new System.Drawing.Size(67, 15);
 			this.label1.TabIndex = 0;
 			this.label1.Text = "新增會員";
 			// 
 			// btn_AddMember
 			// 
-			this.btn_AddMember.Location = new System.Drawing.Point(336, 34);
+			this.btn_AddMember.Location = new System.Drawing.Point(448, 42);
+			this.btn_AddMember.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.btn_AddMember.Name = "btn_AddMember";
-			this.btn_AddMember.Size = new System.Drawing.Size(75, 23);
+			this.btn_AddMember.Size = new System.Drawing.Size(100, 29);
 			this.btn_AddMember.TabIndex = 1;
 			this.btn_AddMember.Text = "Add";
 			this.btn_AddMember.UseVisualStyleBackColor = true;
@@ -69,25 +74,28 @@
 			// 
 			// textBox_Member
 			// 
-			this.textBox_Member.Location = new System.Drawing.Point(168, 34);
+			this.textBox_Member.Location = new System.Drawing.Point(224, 42);
+			this.textBox_Member.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.textBox_Member.Name = "textBox_Member";
-			this.textBox_Member.Size = new System.Drawing.Size(97, 22);
+			this.textBox_Member.Size = new System.Drawing.Size(128, 25);
 			this.textBox_Member.TabIndex = 2;
 			// 
 			// label2
 			// 
 			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(56, 68);
+			this.label2.Location = new System.Drawing.Point(75, 85);
+			this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(53, 12);
+			this.label2.Size = new System.Drawing.Size(67, 15);
 			this.label2.TabIndex = 0;
 			this.label2.Text = "新增寵物";
 			// 
 			// btn_AddPet
 			// 
-			this.btn_AddPet.Location = new System.Drawing.Point(336, 63);
+			this.btn_AddPet.Location = new System.Drawing.Point(448, 79);
+			this.btn_AddPet.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.btn_AddPet.Name = "btn_AddPet";
-			this.btn_AddPet.Size = new System.Drawing.Size(75, 23);
+			this.btn_AddPet.Size = new System.Drawing.Size(100, 29);
 			this.btn_AddPet.TabIndex = 1;
 			this.btn_AddPet.Text = "Add";
 			this.btn_AddPet.UseVisualStyleBackColor = true;
@@ -95,25 +103,28 @@
 			// 
 			// textBox_Pet
 			// 
-			this.textBox_Pet.Location = new System.Drawing.Point(168, 63);
+			this.textBox_Pet.Location = new System.Drawing.Point(224, 79);
+			this.textBox_Pet.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.textBox_Pet.Name = "textBox_Pet";
-			this.textBox_Pet.Size = new System.Drawing.Size(97, 22);
+			this.textBox_Pet.Size = new System.Drawing.Size(128, 25);
 			this.textBox_Pet.TabIndex = 2;
 			// 
 			// label3
 			// 
 			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(56, 97);
+			this.label3.Location = new System.Drawing.Point(75, 121);
+			this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(53, 12);
+			this.label3.Size = new System.Drawing.Size(67, 15);
 			this.label3.TabIndex = 0;
 			this.label3.Text = "新增商品";
 			// 
 			// btn_AddMerchanDise
 			// 
-			this.btn_AddMerchanDise.Location = new System.Drawing.Point(336, 92);
+			this.btn_AddMerchanDise.Location = new System.Drawing.Point(448, 115);
+			this.btn_AddMerchanDise.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.btn_AddMerchanDise.Name = "btn_AddMerchanDise";
-			this.btn_AddMerchanDise.Size = new System.Drawing.Size(75, 23);
+			this.btn_AddMerchanDise.Size = new System.Drawing.Size(100, 29);
 			this.btn_AddMerchanDise.TabIndex = 1;
 			this.btn_AddMerchanDise.Text = "Add";
 			this.btn_AddMerchanDise.UseVisualStyleBackColor = true;
@@ -121,25 +132,28 @@
 			// 
 			// textBox_Merchandise
 			// 
-			this.textBox_Merchandise.Location = new System.Drawing.Point(168, 92);
+			this.textBox_Merchandise.Location = new System.Drawing.Point(224, 115);
+			this.textBox_Merchandise.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.textBox_Merchandise.Name = "textBox_Merchandise";
-			this.textBox_Merchandise.Size = new System.Drawing.Size(97, 22);
+			this.textBox_Merchandise.Size = new System.Drawing.Size(128, 25);
 			this.textBox_Merchandise.TabIndex = 2;
 			// 
 			// label4
 			// 
 			this.label4.AutoSize = true;
-			this.label4.Location = new System.Drawing.Point(56, 126);
+			this.label4.Location = new System.Drawing.Point(75, 194);
+			this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(53, 12);
+			this.label4.Size = new System.Drawing.Size(67, 15);
 			this.label4.TabIndex = 0;
 			this.label4.Text = "新增問答";
 			// 
 			// btn_AddThemeCommon
 			// 
-			this.btn_AddThemeCommon.Location = new System.Drawing.Point(336, 121);
+			this.btn_AddThemeCommon.Location = new System.Drawing.Point(448, 187);
+			this.btn_AddThemeCommon.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.btn_AddThemeCommon.Name = "btn_AddThemeCommon";
-			this.btn_AddThemeCommon.Size = new System.Drawing.Size(75, 23);
+			this.btn_AddThemeCommon.Size = new System.Drawing.Size(100, 29);
 			this.btn_AddThemeCommon.TabIndex = 1;
 			this.btn_AddThemeCommon.Text = "Add";
 			this.btn_AddThemeCommon.UseVisualStyleBackColor = true;
@@ -147,25 +161,28 @@
 			// 
 			// textBox_ThemeAndCommon
 			// 
-			this.textBox_ThemeAndCommon.Location = new System.Drawing.Point(168, 121);
+			this.textBox_ThemeAndCommon.Location = new System.Drawing.Point(224, 187);
+			this.textBox_ThemeAndCommon.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.textBox_ThemeAndCommon.Name = "textBox_ThemeAndCommon";
-			this.textBox_ThemeAndCommon.Size = new System.Drawing.Size(97, 22);
+			this.textBox_ThemeAndCommon.Size = new System.Drawing.Size(128, 25);
 			this.textBox_ThemeAndCommon.TabIndex = 2;
 			// 
 			// label5
 			// 
 			this.label5.AutoSize = true;
-			this.label5.Location = new System.Drawing.Point(56, 155);
+			this.label5.Location = new System.Drawing.Point(75, 230);
+			this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(53, 12);
+			this.label5.Size = new System.Drawing.Size(67, 15);
 			this.label5.TabIndex = 0;
 			this.label5.Text = "新增訂單";
 			// 
 			// btn_AddOrderOrderList
 			// 
-			this.btn_AddOrderOrderList.Location = new System.Drawing.Point(336, 150);
+			this.btn_AddOrderOrderList.Location = new System.Drawing.Point(448, 224);
+			this.btn_AddOrderOrderList.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.btn_AddOrderOrderList.Name = "btn_AddOrderOrderList";
-			this.btn_AddOrderOrderList.Size = new System.Drawing.Size(75, 23);
+			this.btn_AddOrderOrderList.Size = new System.Drawing.Size(100, 29);
 			this.btn_AddOrderOrderList.TabIndex = 1;
 			this.btn_AddOrderOrderList.Text = "Add";
 			this.btn_AddOrderOrderList.UseVisualStyleBackColor = true;
@@ -173,25 +190,28 @@
 			// 
 			// textBox_OrderAndOrderList
 			// 
-			this.textBox_OrderAndOrderList.Location = new System.Drawing.Point(168, 150);
+			this.textBox_OrderAndOrderList.Location = new System.Drawing.Point(224, 224);
+			this.textBox_OrderAndOrderList.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.textBox_OrderAndOrderList.Name = "textBox_OrderAndOrderList";
-			this.textBox_OrderAndOrderList.Size = new System.Drawing.Size(97, 22);
+			this.textBox_OrderAndOrderList.Size = new System.Drawing.Size(128, 25);
 			this.textBox_OrderAndOrderList.TabIndex = 2;
 			// 
 			// label6
 			// 
 			this.label6.AutoSize = true;
-			this.label6.Location = new System.Drawing.Point(56, 184);
+			this.label6.Location = new System.Drawing.Point(75, 266);
+			this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(65, 12);
+			this.label6.Size = new System.Drawing.Size(82, 15);
 			this.label6.TabIndex = 0;
 			this.label6.Text = "新增領養單";
 			// 
 			// btn_AddAdopt
 			// 
-			this.btn_AddAdopt.Location = new System.Drawing.Point(336, 179);
+			this.btn_AddAdopt.Location = new System.Drawing.Point(448, 260);
+			this.btn_AddAdopt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.btn_AddAdopt.Name = "btn_AddAdopt";
-			this.btn_AddAdopt.Size = new System.Drawing.Size(75, 23);
+			this.btn_AddAdopt.Size = new System.Drawing.Size(100, 29);
 			this.btn_AddAdopt.TabIndex = 1;
 			this.btn_AddAdopt.Text = "Add";
 			this.btn_AddAdopt.UseVisualStyleBackColor = true;
@@ -199,19 +219,50 @@
 			// 
 			// textBox_Adopt
 			// 
-			this.textBox_Adopt.Location = new System.Drawing.Point(168, 179);
+			this.textBox_Adopt.Location = new System.Drawing.Point(224, 260);
+			this.textBox_Adopt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.textBox_Adopt.Name = "textBox_Adopt";
-			this.textBox_Adopt.Size = new System.Drawing.Size(97, 22);
+			this.textBox_Adopt.Size = new System.Drawing.Size(128, 25);
 			this.textBox_Adopt.TabIndex = 2;
+			// 
+			// label7
+			// 
+			this.label7.AutoSize = true;
+			this.label7.Location = new System.Drawing.Point(75, 156);
+			this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+			this.label7.Name = "label7";
+			this.label7.Size = new System.Drawing.Size(119, 15);
+			this.label7.TabIndex = 0;
+			this.label7.Text = "新增論壇帳號(%)";
+			// 
+			// btn_AddForumAccount
+			// 
+			this.btn_AddForumAccount.Location = new System.Drawing.Point(448, 150);
+			this.btn_AddForumAccount.Margin = new System.Windows.Forms.Padding(4);
+			this.btn_AddForumAccount.Name = "btn_AddForumAccount";
+			this.btn_AddForumAccount.Size = new System.Drawing.Size(100, 29);
+			this.btn_AddForumAccount.TabIndex = 1;
+			this.btn_AddForumAccount.Text = "Add";
+			this.btn_AddForumAccount.UseVisualStyleBackColor = true;
+			this.btn_AddForumAccount.Click += new System.EventHandler(this.btn_AddForumAccount_Click);
+			// 
+			// txt_ForumAccount
+			// 
+			this.txt_ForumAccount.Location = new System.Drawing.Point(224, 150);
+			this.txt_ForumAccount.Margin = new System.Windows.Forms.Padding(4);
+			this.txt_ForumAccount.Name = "txt_ForumAccount";
+			this.txt_ForumAccount.Size = new System.Drawing.Size(128, 25);
+			this.txt_ForumAccount.TabIndex = 2;
 			// 
 			// form_MassInsert
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(460, 289);
+			this.ClientSize = new System.Drawing.Size(613, 361);
 			this.Controls.Add(this.textBox_Adopt);
 			this.Controls.Add(this.textBox_OrderAndOrderList);
 			this.Controls.Add(this.textBox_ThemeAndCommon);
+			this.Controls.Add(this.txt_ForumAccount);
 			this.Controls.Add(this.textBox_Merchandise);
 			this.Controls.Add(this.textBox_Pet);
 			this.Controls.Add(this.textBox_Member);
@@ -221,12 +272,15 @@
 			this.Controls.Add(this.label5);
 			this.Controls.Add(this.btn_AddThemeCommon);
 			this.Controls.Add(this.label4);
+			this.Controls.Add(this.btn_AddForumAccount);
+			this.Controls.Add(this.label7);
 			this.Controls.Add(this.btn_AddMerchanDise);
 			this.Controls.Add(this.label3);
 			this.Controls.Add(this.btn_AddPet);
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.btn_AddMember);
 			this.Controls.Add(this.label1);
+			this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.Name = "form_MassInsert";
 			this.Text = "form_MassInsert";
 			this.ResumeLayout(false);
@@ -254,5 +308,8 @@
 		private System.Windows.Forms.Label label6;
 		private System.Windows.Forms.Button btn_AddAdopt;
 		private System.Windows.Forms.TextBox textBox_Adopt;
+		private System.Windows.Forms.Label label7;
+		private System.Windows.Forms.Button btn_AddForumAccount;
+		private System.Windows.Forms.TextBox txt_ForumAccount;
 	}
 }

@@ -7,10 +7,12 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ISpan147.Estore.SqlDataLayer.EFModel;
+using Dapper;
 
 namespace ISpan147.Estore.SqlDataLayer.Repositories
 {
-	public class MerchandiseRepository
+	public class MerchandiseRepository : IMerchandiseRepository
 	{
 		/// 透過字串組成SQL語法，取得商品分類記錄
 		public MerchandiseDto GetByMerchandiseID(int merchandiseId)
@@ -43,6 +45,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 			return SqlDb.Get(connGetter, sql, assembler);
 		}
 
+		/* 使用三個參數搜尋
 		public List<MerchandiseSearchDto> Search(int? merchandiseId, string s_name, int? s_categoryid)
 		{
 			#region sql & SqlParameter[]
@@ -79,25 +82,106 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 			Func<SqlConnection> connGetter = SqlDb.GetConnection;
 
 			return SqlDb.Search(connGetter, sql, func, parameters.ToArray()).ToList();
+		}*/
+
+		public IEnumerable<MerchandiseSearchDto> Search(MerchandiseConditionSearchDto csDto)
+		{
+			if (csDto == null) { return null; }
+
+			string top = string.Empty;
+			if (csDto.MaxQueryNumber.HasValue)
+			{
+				top = $"TOP (" + csDto.MaxQueryNumber + ") ";
+			}
+			else
+			{
+				top = string.Empty;
+			}
+
+			string orderBy = $" ORDER BY m.{csDto.OrderBy}";
+			string decending = csDto.Descending ? " ASC" : " DESC";
+
+			string sql = $@"SELECT {top}MerchandiseID, MerchandiseName, CategoryName, Price, Amount, 
+										Description, ImageURL 
+							FROM Merchandises AS m 
+							JOIN Categories AS c 
+							ON m.CategoryID = c.CategoryID ";
+
+			//var builder = new SqlParameterBuilder();
+
+			string where = string.Empty;
+			#region 串接搜尋條件
+			if (csDto.MerchandiseID.HasValue)
+			{
+				where += $" AND MerchandiseID = @MerchandiseID";
+			}
+			if (string.IsNullOrEmpty(csDto.MerchandiseName) == false)
+			{
+				where += $" AND MerchandiseName LIKE '%'+@MerchandiseName+'%'";
+			}
+			if (csDto.CategoryID.HasValue)
+			{
+				where += $" AND m.CategoryID = @CategoryID";
+			}
+			if (csDto.MaxPrice.HasValue)
+			{
+				where += $" AND Price <= @MaxPrice";
+			}
+			if (csDto.MinPrice.HasValue)
+			{
+				where += $" AND Price >= @MinPrice";
+			}
+			if (string.IsNullOrEmpty(where) == false)
+			{
+				where = " WHERE " + where.Substring(5);
+			}
+			#endregion
+
+			string assembleSQL = sql + where + orderBy + decending;
+
+			using (var conn = SqlDb.GetConnection())
+			{
+				return conn.Query<MerchandiseSearchDto>(assembleSQL, csDto);
+			}
 		}
 
 		public int Update(MerchandiseDto dto)
 		{
-			string sql = @"UPDATE Merchandises 
-                            SET MerchandiseName = @MerchandiseName,
-							CategoryId = @CategoryId, Price = @Price, Amount = @Amount, 
-							Description = @Description, ImageURL = @ImageURL
-                            WHERE MerchandiseId = @MerchandiseId";
-
-			var parameters = new SqlParameterBuilder()
+			var builder = new SqlParameterBuilder()
 				.AddInt("@MerchandiseId", dto.MerchandiseID)
 				.AddNVarchar("@MerchandiseName", 30, dto.MerchandiseName)
 				.AddInt("@CategoryId", dto.CategoryID)
 				.AddInt("@Price", dto.Price)
-				.AddInt("@Amount", dto.Amount)
-				.AddNVarchar("@Description", 30, dto.Description)
-				.AddNVarchar("@ImageURL", 30, dto.ImageURL)
-				.Build();
+				.AddInt("@Amount", dto.Amount);
+			string description = "";
+			string imageurl = "";
+
+			if (dto.Description != null)
+			{
+				builder = builder.AddNVarchar("@Description", 30, dto.Description);
+				description = ", Description = @Description ";
+			}
+			else
+			{
+				description = ", Description = null ";
+			}
+
+			if (dto.ImageURL != null)
+			{
+				builder = builder.AddNVarchar("@ImageURL", 30, dto.ImageURL);
+				imageurl = ", ImageURL = @ImageURL ";
+			}
+			else
+			{
+				imageurl = ", ImageURL = null ";
+			}
+			var parameters = builder.Build();
+
+			string sql = $@"UPDATE Merchandises 
+                            SET MerchandiseName = @MerchandiseName,
+							CategoryId = @CategoryId, Price = @Price, Amount = @Amount 
+							{description} {imageurl}
+                            WHERE MerchandiseId = @MerchandiseId";
 
 			Func<SqlConnection> connGetter = SqlDb.GetConnection;
 
@@ -106,19 +190,35 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 
 		public int Create(MerchandiseDto dto)
 		{
-			string sql = @"INSERT INTO Merchandises       
-                            (MerchandiseName, CategoryId, Price, Amount, Description, ImageURL)
-                            Values
-                            (@MerchandiseName, @CategoryId, @Price, @Amount, @Description, @ImageURL)";
-
-			var parameters = new SqlParameterBuilder()
+			var builder = new SqlParameterBuilder()
+				.AddInt("@MerchandiseId", dto.MerchandiseID)
 				.AddNVarchar("@MerchandiseName", 30, dto.MerchandiseName)
 				.AddInt("@CategoryId", dto.CategoryID)
 				.AddInt("@Price", dto.Price)
-				.AddInt("@Amount", dto.Amount)
-				.AddNVarchar("@Description", 30, dto.Description)
-				.AddNVarchar("@ImageURL", 30, dto.ImageURL)
-				.Build();
+				.AddInt("@Amount", dto.Amount);
+			string _description = "";
+			string description = "";
+			string _imageurl = "";
+			string imageurl = "";
+
+			if (dto.Description != null)
+			{
+				builder = builder.AddNVarchar("@Description", 30, dto.Description);
+				_description = ", Description ";
+				description = ", @Description ";
+			}
+			if (dto.ImageURL != null)
+			{
+				builder = builder.AddNVarchar("@ImageURL", 30, dto.ImageURL);
+				_imageurl = ", ImageURL ";
+				imageurl = ", @ImageURL ";
+			}
+			var parameters = builder.Build();
+
+			string sql = $@"INSERT INTO Merchandises       
+                            (MerchandiseName, CategoryId, Price, Amount{_description}{_imageurl})
+                            Values
+                            (@MerchandiseName, @CategoryId, @Price, @Amount{description}{imageurl})";
 
 			Func<SqlConnection> connGetter = SqlDb.GetConnection;
 

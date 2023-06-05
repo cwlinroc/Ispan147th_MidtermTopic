@@ -82,10 +82,36 @@ namespace ISpan147.Estore.SqlDataLayer.Services
 		}
 
 
+		public void CreateRandomForumAccount(int chance)
+		{
+			if (chance <= 0) return;
+			if (chance > 100) chance = 100;
+
+			var rng = new RandomGenerator();
+			var repo = new MassInsertRepository();
+
+			var dtos = repo.GetAllMemberDtos();
+
+			foreach (var dto in dtos)
+			{
+				if (dto.ForumAccountID == null && rng.RandomChance(chance))
+				{
+					int forumID = repo.CreateForumAccount(new ForumAccountDto
+					{
+						ForumAccountName = (string.IsNullOrEmpty(dto.NickName)) ? dto.MemberName : dto.NickName
+					});
+					repo.UpdateForumAccountID(dto.MemberID, forumID);
+				}
+			}
+		}
+
+
 		public void CreateRandomThemeAndCommon(int total)
 		{
 			var rng = new RandomGenerator();
 			var repo = new MassInsertRepository();
+
+			var forumIDs = repo.GetAllForumAccountID();
 
 			for (int i = 0; i < total; i++)
 			{
@@ -96,7 +122,8 @@ namespace ISpan147.Estore.SqlDataLayer.Services
 					ThemeName = rng.RandomEnString(5, 11),
 					ThemeDateTime = dt,
 					ThemeContext = String.Concat(Enumerable
-						.Repeat(rng.RandomSentance(), rng.RandomIntBetween(1, 3)))
+						.Repeat(rng.RandomSentance(), rng.RandomIntBetween(1, 3))),
+					ForumAccountID = rng.RandomFrom(forumIDs)
 				});
 				if (rng.RandomChance(70))
 				{
@@ -105,11 +132,11 @@ namespace ISpan147.Estore.SqlDataLayer.Services
 						dt = dt.AddMinutes(rng.RandomIntBetween(0, 5000));
 						repo.CreateCommon(new CommentDto
 						{
-							CommentName = rng.RandomEnString(5, 11),
 							CommentTime = dt,
 							ThemeID = themeID,
 							CommentContext = String.Concat(Enumerable
-						.Repeat(rng.RandomSentance(), rng.RandomIntBetween(1, 3)))
+						.Repeat(rng.RandomSentance(), rng.RandomIntBetween(1, 3))),
+							ForumAccountID = rng.RandomFrom(forumIDs)
 						});
 					}
 				}
@@ -135,10 +162,10 @@ namespace ISpan147.Estore.SqlDataLayer.Services
 					PurchaseTime = DateTime.Now.AddDays(rng.RandomIntBetween(-365, -10))
 						.AddMinutes(rng.RandomIntBetween(0, 1440)),
 				};
-				
+
 				int orderID = repo.CreateOrder(dto);
 
-				int scale = rng.RandomIntByWeight(0,2,5,5,3,2,1,0,0,0,1,0,1,0,0,0,0,1);
+				int scale = rng.RandomIntByWeight(0, 2, 5, 5, 3, 2, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1);
 
 				for (int j = 0; j < rng.RandomIntBetween(1, scale); j++)
 				{
@@ -192,7 +219,7 @@ namespace ISpan147.Estore.SqlDataLayer.Services
 				if (calculated)
 				{
 					dto.PaymentAmount = repo.GetTotalPrice(id);
-					
+
 					if (rng.RandomChance(50))
 					{
 						dto.PaymentAmount = dto.PaymentAmount * rng.RandomIntBetween(80, 100) / 100;

@@ -17,9 +17,12 @@ namespace prjMidtermTopic.form_Category
 {
 	public partial class form_SearchCategory : Form, IGrid
 	{
+		private ICategoryRepository _repo;
 		public form_SearchCategory()
 		{
 			InitializeComponent();
+
+			_repo = new CategoryRepository();
 		}
 
 		List<CategoryDto> data;
@@ -28,6 +31,11 @@ namespace prjMidtermTopic.form_Category
 		private void form_SearchCategory_Load(object sender, EventArgs e)
 		{
 			Display();
+
+			if (Authentication.Permission >= 4)
+			{
+				btn_Add.Enabled = false;
+			}
 		}
 
 		private void btn_Search_Click(object sender, EventArgs e)
@@ -46,8 +54,8 @@ namespace prjMidtermTopic.form_Category
 			string sName = this.txt_CategoryName.Text;
 
 			//取得符合紀錄
-			var repo = new CategoryRepository();
-			data = repo.Search(sId, sName);
+			//var repo = new CategoryRepository();
+			data = _repo.Search(sId, sName);
 
 			//匯入DataGridView
 			this.dataGridView1.DataSource = data;
@@ -56,6 +64,12 @@ namespace prjMidtermTopic.form_Category
 		private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
 		{
 			if (e.RowIndex < 0) return;
+
+			if (Authentication.Permission >= 4)
+			{
+				MessageBox.Show("權限不足，無法編輯商品類別。");
+				return;
+			}
 
 			int id = this.data[e.RowIndex].CategoryId;
 
@@ -69,6 +83,18 @@ namespace prjMidtermTopic.form_Category
 			var frm = new form_CreateCategory();
 			frm.Owner = this;
 			frm.ShowDialog();
+		}
+
+		private void btn_DefaultSearch_Click(object sender, EventArgs e)
+		{
+			DefaultSearch();
+		}
+
+		public void DefaultSearch()
+		{
+			txt_CategoryId.Text = string.Empty;
+			txt_CategoryName.Text = string.Empty;
+			Display();
 		}
 	}
 }

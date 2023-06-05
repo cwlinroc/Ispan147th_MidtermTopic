@@ -10,6 +10,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using System.Xml.Linq;
 using static System.Windows.Forms.AxHost;
 
@@ -30,13 +31,13 @@ namespace prjMidtermTopic.ViewModels
 		public int CategoryID { get; set; }
 
 		[Display(Name = "價格")]
-		[Required(ErrorMessage = "{0}為必選")]
-		// todo 是否可設定最小值? [Range(1, 99999, ErrorMessage = "{0}的值須介於{1}~{2}之間")]
+		[Required(ErrorMessage = "{0}為必填")]
+		[Range(1, int.MaxValue, ErrorMessage = "{0}必須為大於0的數字")]
 		public int Price { get; set; }
 
 		[Display(Name = "庫存數量")]
-		[Required(ErrorMessage = "{0}為必選")]
-		// todo 是否可設定最小值? [Range(1, 999, ErrorMessage = "{0}的值須介於{1}~{2}之間")]
+		[Required(ErrorMessage = "{0}為必填")]
+		[Range(1, int.MaxValue, ErrorMessage = "{0}必須為大於0的數字")]
 		public int Amount { get; set; }
 
 		[Display(Name = "商品描述")]
@@ -48,15 +49,16 @@ namespace prjMidtermTopic.ViewModels
 		public string ImageURL { get; set; }
 	}
 
+	#region 手動輸入下拉選單選項 (已改用動態生成選項)
 	static public class ChooseCategory
 	{
-		//改由Category資料庫讀取選項		
-		//static public readonly int[] categoryIdOptions = new int[] {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-		//static public readonly string[] categoryNameOptions = new string[] {"未選擇", "貓狗>食品保健", "貓狗>清潔耗材", 
-		//										"貓狗>器材工具", "貓狗>飾品玩具", "貓狗>房屋器皿", "鼠兔>食品保健", 
-		//										"鼠兔>清潔耗材", "鼠兔>器材工具", "鼠兔>飾品玩具", "鼠兔>各類容器" };
+		//手動輸入選項(現已改由Category資料庫讀取選項)
+		static public readonly int[] categoryIdOptions = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+		static public readonly string[] categoryNameOptions = new string[] {"未選擇", "貓狗>食品保健", "貓狗>清潔耗材",
+												"貓狗>器材工具", "貓狗>飾品玩具", "貓狗>房屋器皿", "鼠兔>食品保健",
+												"鼠兔>清潔耗材", "鼠兔>器材工具", "鼠兔>飾品玩具", "鼠兔>各類容器" };
 
-		static public MerchandiseDto ToDto(this MerchandiseCreateVM vm) // todo 新增下拉選單參數map
+		static public MerchandiseDto ToDto(this MerchandiseCreateVM vm)
 		{
 
 			return new MerchandiseDto
@@ -64,7 +66,6 @@ namespace prjMidtermTopic.ViewModels
 				MerchandiseID = vm.MerchandiseId,
 				MerchandiseName = vm.MerchandiseName,
 				CategoryID = vm.CategoryID,
-				//Array.IndexOf(categoryNameOptions, vm.CategoryID),	// todo 確認是否可如此轉換(P1)
 				Price = vm.Price,
 				Amount = vm.Amount,
 				Description = vm.Description,
@@ -80,12 +81,27 @@ namespace prjMidtermTopic.ViewModels
 			{
 				MerchandiseId = dto.MerchandiseID,
 				MerchandiseName = dto.MerchandiseName.ToString(),
-				CategoryID = dto.CategoryID, // todo 確認是否可如此轉換(P2)
+				CategoryID = dto.CategoryID,
 				Price = dto.Price,
 				Amount = dto.Amount,
 				Description = dto.Description.ToString(),
 				ImageURL = dto.ImageURL.ToString()
-		};
+			};
+		}
+		static public MerchandiseCreateVM ToVM(this MerchandiseSearchDto dto)
+		{
+			return new MerchandiseCreateVM
+			{
+				MerchandiseId = dto.MerchandiseID,
+				MerchandiseName = dto.MerchandiseName.ToString(),
+				CategoryID = dto.CategoryID,
+				Price = dto.Price,
+				Amount = dto.Amount,
+				Description = dto.Description.ToString(),
+				ImageURL = dto.ImageURL.ToString()
+			};
 		}
 	}
+
+	#endregion
 }

@@ -26,7 +26,11 @@ namespace ISpan147.Estore.SqlDataLayer.EFModel
         [StringLength(500)]
         public string ThemeContext { get; set; }
 
+        public int ForumAccountID { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Comment> Comments { get; set; }
+
+        public virtual ForumAccount ForumAccount { get; set; }
     }
 }

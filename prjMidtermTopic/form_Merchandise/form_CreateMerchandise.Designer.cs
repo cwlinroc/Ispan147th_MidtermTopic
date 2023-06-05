@@ -54,7 +54,7 @@
 			this.btnCreate.Location = new System.Drawing.Point(283, 377);
 			this.btnCreate.Name = "btnCreate";
 			this.btnCreate.Size = new System.Drawing.Size(99, 30);
-			this.btnCreate.TabIndex = 13;
+			this.btnCreate.TabIndex = 7;
 			this.btnCreate.Text = "新增商品";
 			this.btnCreate.UseVisualStyleBackColor = true;
 			this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
@@ -73,7 +73,7 @@
 			this.txt_MerchandiseName.Location = new System.Drawing.Point(116, 21);
 			this.txt_MerchandiseName.Name = "txt_MerchandiseName";
 			this.txt_MerchandiseName.Size = new System.Drawing.Size(266, 22);
-			this.txt_MerchandiseName.TabIndex = 11;
+			this.txt_MerchandiseName.TabIndex = 0;
 			// 
 			// label2
 			// 
@@ -98,7 +98,7 @@
 			this.txt_Price.Location = new System.Drawing.Point(116, 77);
 			this.txt_Price.Name = "txt_Price";
 			this.txt_Price.Size = new System.Drawing.Size(266, 22);
-			this.txt_Price.TabIndex = 12;
+			this.txt_Price.TabIndex = 2;
 			// 
 			// label4
 			// 
@@ -114,7 +114,7 @@
 			this.txt_Amount.Location = new System.Drawing.Point(116, 105);
 			this.txt_Amount.Name = "txt_Amount";
 			this.txt_Amount.Size = new System.Drawing.Size(266, 22);
-			this.txt_Amount.TabIndex = 12;
+			this.txt_Amount.TabIndex = 3;
 			// 
 			// label5
 			// 
@@ -131,7 +131,7 @@
 			this.txt_Description.Multiline = true;
 			this.txt_Description.Name = "txt_Description";
 			this.txt_Description.Size = new System.Drawing.Size(266, 172);
-			this.txt_Description.TabIndex = 12;
+			this.txt_Description.TabIndex = 4;
 			// 
 			// label6
 			// 
@@ -156,7 +156,7 @@
 			this.comboBox_CategoryId.Location = new System.Drawing.Point(116, 50);
 			this.comboBox_CategoryId.Name = "comboBox_CategoryId";
 			this.comboBox_CategoryId.Size = new System.Drawing.Size(266, 20);
-			this.comboBox_CategoryId.TabIndex = 14;
+			this.comboBox_CategoryId.TabIndex = 1;
 			this.comboBox_CategoryId.SelectedIndexChanged += new System.EventHandler(this.comboBox_CategoryId_SelectedIndexChanged);
 			// 
 			// errorProvider1
@@ -168,7 +168,7 @@
 			this.btn_SelectImage.Location = new System.Drawing.Point(238, 339);
 			this.btn_SelectImage.Name = "btn_SelectImage";
 			this.btn_SelectImage.Size = new System.Drawing.Size(69, 23);
-			this.btn_SelectImage.TabIndex = 15;
+			this.btn_SelectImage.TabIndex = 5;
 			this.btn_SelectImage.Text = "選擇圖片";
 			this.btn_SelectImage.UseVisualStyleBackColor = true;
 			this.btn_SelectImage.Click += new System.EventHandler(this.btn_SelectImage_Click);
@@ -179,7 +179,7 @@
 			this.btn_CancelImage.Location = new System.Drawing.Point(313, 339);
 			this.btn_CancelImage.Name = "btn_CancelImage";
 			this.btn_CancelImage.Size = new System.Drawing.Size(69, 23);
-			this.btn_CancelImage.TabIndex = 16;
+			this.btn_CancelImage.TabIndex = 6;
 			this.btn_CancelImage.Text = "刪除選擇";
 			this.btn_CancelImage.UseVisualStyleBackColor = true;
 			this.btn_CancelImage.Click += new System.EventHandler(this.btn_CancelImage_Click);

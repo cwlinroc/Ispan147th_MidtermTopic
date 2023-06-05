@@ -20,12 +20,12 @@ namespace prjMidtermTopic.MassInsert
 
 		private void btn_AddMember_Click(object sender, EventArgs e)
 		{
-			AddMassData(total => new MassInsertService().CreateRandomMembers(total),textBox_Member);
+			AddMassData(total => new MassInsertService().CreateRandomMembers(total), textBox_Member);
 		}
 
 		private void btn_AddPet_Click(object sender, EventArgs e)
 		{
-			AddMassData(total => new MassInsertService().CreateRandomPets(total),textBox_Pet);
+			AddMassData(total => new MassInsertService().CreateRandomPets(total), textBox_Pet);
 		}
 
 		private void btn_AddMerchanDise_Click(object sender, EventArgs e)
@@ -33,6 +33,27 @@ namespace prjMidtermTopic.MassInsert
 			AddMassData(total => new MassInsertService().CreateRandomMerchandise(total), textBox_Merchandise);
 		}
 
+		private void btn_AddForumAccount_Click(object sender, EventArgs e)
+		{
+			try
+			{
+				if (!int.TryParse(txt_ForumAccount.Text, out var chance))
+				{
+					throw new ArgumentOutOfRangeException("請入正整數");
+				}
+
+				DialogResult dialogResult = MessageBox.Show($"確認新增論壇帳號？會員新增機率為{chance}%", "確認增加", MessageBoxButtons.YesNo);
+				if (dialogResult == DialogResult.No) return;
+
+				new MassInsertService().CreateRandomForumAccount(chance);
+
+				MessageBox.Show("輸入成功!");
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show("輸入失敗，原因：" + ex.Message);
+			}
+		}
 		private void btn_AddThemeCommon_Click(object sender, EventArgs e)
 		{
 			AddMassData(total => new MassInsertService().CreateRandomThemeAndCommon(total), textBox_ThemeAndCommon);
@@ -49,16 +70,16 @@ namespace prjMidtermTopic.MassInsert
 		}
 
 
-		private void AddMassData(Action <int> func,TextBox box)
+		private void AddMassData(Action<int> func, TextBox box)
 		{
 			try
 			{
-				if (!int.TryParse(box.Text, out var total))
+				if (!int.TryParse(box.Text, out var total) && total < 0)
 				{
 					throw new ArgumentOutOfRangeException("請入正整數");
 				}
 
-				DialogResult dialogResult = MessageBox.Show($"確任新增{total}筆會員資料？", "確認增加", MessageBoxButtons.YesNo);
+				DialogResult dialogResult = MessageBox.Show($"確任新增{total}筆資料？", "確認增加", MessageBoxButtons.YesNo);
 				if (dialogResult == DialogResult.No) return;
 
 				func(total);
@@ -70,5 +91,7 @@ namespace prjMidtermTopic.MassInsert
 				MessageBox.Show("輸入失敗，原因：" + ex.Message);
 			}
 		}
+
+
 	}
 }

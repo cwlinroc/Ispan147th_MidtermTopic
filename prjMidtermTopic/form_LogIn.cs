@@ -1,6 +1,8 @@
 ﻿using ISpan147.Estore.SqlDataLayer.Dtos;
 using ISpan147.Estore.SqlDataLayer.ExtMethods;
 using ISpan147.Estore.SqlDataLayer.Repositories;
+using ISpan147.Estore.SqlDataLayer.Services;
+using prjMidtermTopic.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,17 +27,21 @@ namespace prjMidtermTopic
 		{
 			var repo = new EmployeeRepositoy();
 			var dto = repo.Get(txt_Account.Text);
-			
-			if(dto == null || txt_Password.Text.GetSaltedSha256() != dto.EmployeePassword)
+
+			if (dto == null || txt_Password.Text.GetSaltedSha256() != dto.EmployeePassword)
 			{
 				MessageBox.Show("帳號密碼錯誤");
 				return;
 			}
 
+			Authentication.LogIn(dto);
 			var frm = new form_Main();
 			frm.Owner = this;
 			this.Hide();
 			frm.Show();
 		}
+
+
+
 	}
 }

@@ -19,12 +19,15 @@ namespace prjMidtermTopic.form_Category
 {
 	public partial class form_EditCategory : Form
 	{
+		private ICategoryRepository _repo;
 		private readonly int _categoryId;
 		public form_EditCategory(int categoryId)
 		{
 			_categoryId = categoryId;
 
 			InitializeComponent();
+
+			_repo = new CategoryRepository();
 		}
 
 		private (bool isValid, List<ValidationResult> errors) Validate(CategoryCreateVM vm)
@@ -63,8 +66,8 @@ namespace prjMidtermTopic.form_Category
 
 		private void form_EditCategory_Load(object sender, EventArgs e)
 		{
-			var repo = new CategoryRepository();
-			CategoryDto dto = repo.GetByCategoryID(_categoryId);
+			//var repo = new CategoryRepository();
+			CategoryDto dto = _repo.GetByCategoryID(_categoryId);
 			if (dto == null)
 			{
 				MessageBox.Show("找不到符合紀錄");
@@ -73,6 +76,11 @@ namespace prjMidtermTopic.form_Category
 
 			txt_CategoryId.Text = dto.CategoryId.ToString();
 			txt_CategoryName.Text = dto.CategoryName.ToString();
+
+			if (Authentication.Permission >= 3)
+			{
+				btn_Delete.Enabled = false;
+			}
 		}
 
 		private void btn_Updata_Click(object sender, EventArgs e)
@@ -104,7 +112,7 @@ namespace prjMidtermTopic.form_Category
 
 			try
 			{
-				var service = new CategoryService();
+				var service = new CategoryService(_repo);
 				int rows = service.Update(dto);
 
 				//回到Form
@@ -138,12 +146,12 @@ namespace prjMidtermTopic.form_Category
 
 		private void btn_Delete_Click(object sender, EventArgs e)
 		{
-			var repo = new CategoryRepository();
+			//var repo = new CategoryRepository();
 			try
 			{
 				if (MessageBox.Show("確定要刪除資料嗎?", "確認", MessageBoxButtons.YesNo) == DialogResult.Yes)
 				{
-					int rows = repo.Delete(_categoryId);
+					int rows = _repo.Delete(_categoryId);
 					this.Close();
 					//回到Form
 					if (rows > 0)

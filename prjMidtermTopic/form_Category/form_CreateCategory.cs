@@ -1,4 +1,5 @@
 ﻿using ISpan147.Estore.SqlDataLayer.Dtos;
+using ISpan147.Estore.SqlDataLayer.Repositories;
 using ISpan147.Estore.SqlDataLayer.Services;
 using prjMidtermTopic.Interfaces;
 using prjMidtermTopic.ViewModels;
@@ -17,9 +18,12 @@ namespace prjMidtermTopic.form_Category
 {
 	public partial class form_CreateCategory : Form
 	{
+		private ICategoryRepository _repo;
 		public form_CreateCategory()
 		{
 			InitializeComponent();
+
+			_repo = new CategoryRepository();
 		}
 
 		private (bool isValid, List<ValidationResult> errors) Validate(CategoryCreateVM vm)
@@ -85,7 +89,7 @@ namespace prjMidtermTopic.form_Category
 			};
 			try
 			{
-				var service = new CategoryService();
+				var service = new CategoryService(_repo);
 				int newId = service.Create(dto);
 				MessageBox.Show($"新增成功，新的ID為{newId}。");
 			}

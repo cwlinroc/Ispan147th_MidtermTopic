@@ -12,5 +12,6 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
         public string ThemeName { get; set; }
         public DateTime ThemeDateTime { get; set; }
         public string ThemeContext { get; set; }
-    }
+		public int ForumAccountID { get; set; }
+	}
 }

@@ -37,6 +37,7 @@
 			this.txt_CategoryId = new System.Windows.Forms.TextBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.btn_Search = new System.Windows.Forms.Button();
+			this.btn_DefaultSearch = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -47,7 +48,7 @@
 			this.btn_Add.Location = new System.Drawing.Point(254, 526);
 			this.btn_Add.Name = "btn_Add";
 			this.btn_Add.Size = new System.Drawing.Size(91, 30);
-			this.btn_Add.TabIndex = 17;
+			this.btn_Add.TabIndex = 4;
 			this.btn_Add.Text = "新增類別";
 			this.btn_Add.UseVisualStyleBackColor = true;
 			this.btn_Add.Click += new System.EventHandler(this.btn_Add_Click);
@@ -92,7 +93,7 @@
 			this.txt_CategoryName.Location = new System.Drawing.Point(112, 59);
 			this.txt_CategoryName.Name = "txt_CategoryName";
 			this.txt_CategoryName.Size = new System.Drawing.Size(100, 29);
-			this.txt_CategoryName.TabIndex = 14;
+			this.txt_CategoryName.TabIndex = 1;
 			// 
 			// label2
 			// 
@@ -111,17 +112,17 @@
 			this.txt_CategoryId.Location = new System.Drawing.Point(112, 24);
 			this.txt_CategoryId.Name = "txt_CategoryId";
 			this.txt_CategoryId.Size = new System.Drawing.Size(100, 29);
-			this.txt_CategoryId.TabIndex = 13;
+			this.txt_CategoryId.TabIndex = 0;
 			// 
 			// label1
 			// 
 			this.label1.AutoSize = true;
 			this.label1.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.label1.Location = new System.Drawing.Point(39, 27);
+			this.label1.Location = new System.Drawing.Point(23, 28);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(74, 20);
+			this.label1.Size = new System.Drawing.Size(89, 20);
 			this.label1.TabIndex = 19;
-			this.label1.Text = "類別ID：";
+			this.label1.Text = "類別編號：";
 			this.label1.TextAlign = System.Drawing.ContentAlignment.TopRight;
 			// 
 			// btn_Search
@@ -130,16 +131,28 @@
 			this.btn_Search.Location = new System.Drawing.Point(254, 23);
 			this.btn_Search.Name = "btn_Search";
 			this.btn_Search.Size = new System.Drawing.Size(91, 30);
-			this.btn_Search.TabIndex = 16;
-			this.btn_Search.Text = "Search";
+			this.btn_Search.TabIndex = 2;
+			this.btn_Search.Text = "搜尋";
 			this.btn_Search.UseVisualStyleBackColor = true;
 			this.btn_Search.Click += new System.EventHandler(this.btn_Search_Click);
+			// 
+			// btn_DefaultSearch
+			// 
+			this.btn_DefaultSearch.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.btn_DefaultSearch.Location = new System.Drawing.Point(254, 57);
+			this.btn_DefaultSearch.Name = "btn_DefaultSearch";
+			this.btn_DefaultSearch.Size = new System.Drawing.Size(91, 30);
+			this.btn_DefaultSearch.TabIndex = 3;
+			this.btn_DefaultSearch.Text = "清空條件";
+			this.btn_DefaultSearch.UseVisualStyleBackColor = true;
+			this.btn_DefaultSearch.Click += new System.EventHandler(this.btn_DefaultSearch_Click);
 			// 
 			// form_SearchCategory
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(367, 568);
+			this.Controls.Add(this.btn_DefaultSearch);
 			this.Controls.Add(this.btn_Add);
 			this.Controls.Add(this.dataGridView1);
 			this.Controls.Add(this.txt_CategoryName);
@@ -166,5 +179,6 @@
 		private System.Windows.Forms.Button btn_Search;
 		private System.Windows.Forms.DataGridViewTextBoxColumn CategoryId;
 		private System.Windows.Forms.DataGridViewTextBoxColumn CategoryName;
+		private System.Windows.Forms.Button btn_DefaultSearch;
 	}
 }

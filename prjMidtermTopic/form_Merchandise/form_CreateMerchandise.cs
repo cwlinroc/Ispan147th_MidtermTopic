@@ -1,4 +1,5 @@
 ﻿using ISpan147.Estore.SqlDataLayer.Dtos;
+using ISpan147.Estore.SqlDataLayer.Repositories;
 using ISpan147.Estore.SqlDataLayer.Services;
 using prjMidtermTopic.Interfaces;
 using prjMidtermTopic.ViewModels;
@@ -19,25 +20,28 @@ namespace prjMidtermTopic.form_Merchandise
 {
 	public partial class form_CreateMerchandise : Form
 	{
+		private IMerchandiseRepository _repo;
+		private ICategoryRepository _categoryRepository;
 		private Dictionary<int, string> map = new Dictionary<int, string>();
-
 		private int _categoryId;
-
 		private string _imagePath = string.Empty;
 		public form_CreateMerchandise()
 		{
 			InitializeComponent();
 
-			//動態生成類別資料 for 下拉選單
+			_repo = new MerchandiseRepository();
+			_categoryRepository = new CategoryRepository();
+
+			//動態生成商品類別資料 for 下拉選單
 			map.Add(0, "未選擇");
-			new CategoryService().Search().ForEach(c => map.Add(c.CategoryId, c.CategoryName));
+			new CategoryService(_categoryRepository).Search().ForEach(c => map.Add(c.CategoryId, c.CategoryName));
 			foreach (var item in map)
 			{
 				comboBox_CategoryId.Items.Add(item);
 			}
 			comboBox_CategoryId.DisplayMember = "Value";
 
-			//設定類別選單資料來源&預設值
+			//設定預設值
 			comboBox_CategoryId.SelectedIndex = 0;
 		}
 
@@ -90,13 +94,13 @@ namespace prjMidtermTopic.form_Merchandise
 			//收集表單欄位值建立MerchandiseCreateVM物件
 			bool PriceisInt = int.TryParse(txt_Price.Text, out int Price);
 			Price = PriceisInt ? Price : 0;
-			bool AmountisInt = int.TryParse(txt_Price.Text, out int Amount);
+			bool AmountisInt = int.TryParse(txt_Amount.Text, out int Amount);
 			Amount = AmountisInt ? Amount : 0;
-			// 讀取下拉選單的欄位值
+			// ↓讀取下拉選單的欄位值
 			int categoryId = (comboBox_CategoryId.SelectedItem as dynamic).Key;
 			string marchandisename = txt_MerchandiseName.Text;
-			string Description = txt_Description.Text;
-			string ImageURL = txt_ImageURL.Text;
+			string Description = (string.IsNullOrEmpty(txt_Description.Text)) ? null : txt_Description.Text;
+			string ImageURL = (string.IsNullOrEmpty(txt_ImageURL.Text)) ? null : txt_ImageURL.Text;
 
 			var vm = new MerchandiseCreateVM()
 			{
@@ -109,7 +113,7 @@ namespace prjMidtermTopic.form_Merchandise
 			};
 
 			//驗證vm是否通過欄位驗證
-			(bool isValid, List < ValidationResult > errors) validationResult = Validate(vm);
+			(bool isValid, List<ValidationResult> errors) validationResult = Validate(vm);
 
 			//若有錯則顯示
 			if (validationResult.isValid == false)
@@ -132,7 +136,7 @@ namespace prjMidtermTopic.form_Merchandise
 			};
 			try
 			{
-				var service = new MerchandiseService();
+				var service = new MerchandiseService(_repo);
 				int newId = service.Create(dto);
 				
 				if (txt_ImageURL.Text.Length > 0)
@@ -161,6 +165,7 @@ namespace prjMidtermTopic.form_Merchandise
 			}
 		}
 
+		#region 圖片上傳
 		private void btn_SelectImage_Click(object sender, EventArgs e)
 		{
 			using (OpenFileDialog selectImage = new OpenFileDialog())
@@ -182,14 +187,10 @@ namespace prjMidtermTopic.form_Merchandise
 
 		private void UploadToForm(string imagePath)
 		{
-			string targetFolderPath = @"images/MerchendisePicture/";
-			string imageName = Path.GetFileName(imagePath);
-			string targetFilePath = Path.Combine(targetFolderPath, imageName);
-
 			try
 			{
 				// 使用時間戳系統性改名，避免資料庫內名稱重複
-				txt_ImageURL.Text = DateTime.Now.ToString("yyyyMMddhhmmssss") + 
+				txt_ImageURL.Text = DateTime.Now.ToString("yyyyMMddhhmmssffff") + 
 																Path.GetFileName(imagePath);
 
 				MessageBox.Show($"圖片選擇成功,路徑:{imagePath}");
@@ -199,7 +200,6 @@ namespace prjMidtermTopic.form_Merchandise
 			catch (Exception ex)
 			{
 				MessageBox.Show("選擇失敗，原因：" + ex.Message);
-
 			}
 		}
 
@@ -225,8 +225,9 @@ namespace prjMidtermTopic.form_Merchandise
 
 		private void btn_CancelImage_Click(object sender, EventArgs e)
 		{
-			txt_ImageURL.Text = string.Empty;
+			txt_ImageURL.Text = null;
 			btn_CancelImage.Enabled = false;
 		}
+		#endregion
 	}
 }
