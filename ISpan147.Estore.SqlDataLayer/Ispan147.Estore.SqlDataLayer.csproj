@@ -86,7 +86,6 @@
     <Compile Include="EFModel\OrderList.cs" />
     <Compile Include="EFModel\Pet.cs" />
     <Compile Include="EFModel\Species.cs" />
-    <Compile Include="EFModel\sysdiagram.cs" />
     <Compile Include="EFModel\Theme.cs" />
     <Compile Include="ExtMethods\MyEncoder.cs" />
     <Compile Include="ExtMethods\SqlDataReaderExtMethod.cs" />

@@ -110,9 +110,11 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 			using (var conn = SqlDb.GetConnection())
 			{
 				string strSql = "INSERT INTO Themes "
-					+ " ( ThemeName, ThemeDateTime, ThemeContext, ForumAccountID )"
+					//+ " ( ThemeName, ThemeDateTime, ThemeContext, ForumAccountID )"
+					+ " ( ThemeDateTime, ThemeContext, ForumAccountID )"
 					+ " OUTPUT INSERTED.ThemeID"
-					+ " VALUES ( @ThemeName, @ThemeDateTime, @ThemeContext, @ForumAccountID )";
+					+ " VALUES ( @ThemeDateTime, @ThemeContext, @ForumAccountID )";
+					//+ " VALUES ( @ThemeName, @ThemeDateTime, @ThemeContext, @ForumAccountID )";
 
 				int result = conn.QuerySingle<int>(strSql, dto);
 				return result;
