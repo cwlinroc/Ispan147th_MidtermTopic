@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -23,7 +24,12 @@ namespace prjMidtermTopic
 		public form_Main()
 		{
 			InitializeComponent();
+			toolStrip_Main.Renderer = new MyRender();
+			toolStrip_Title.Renderer = new MyRender();
+
+			MaximizeWindow();
 		}
+
 
 		//closed
 		private void form_Main_FormClosed(object sender, FormClosedEventArgs e)
@@ -243,7 +249,55 @@ namespace prjMidtermTopic
 			frm.MdiParent = this;
 			frm.WindowState = FormWindowState.Maximized;
 			frm.Show();
+
 		}
+
+		private void toolStripButton_Close_Click(object sender, EventArgs e)
+		{
+			this.Close();
+		}
+
+
+		private bool _maxed = true;
+		private void toolStripButton_Max_Click(object sender, EventArgs e)
+		{
+			if (_maxed || this.WindowState == FormWindowState.Maximized)
+			{
+				ResizableWindow();
+				_maxed = false;
+			}
+			else
+			{
+				MaximizeWindow();
+				_maxed = true;
+			}
+
+		}
+
+		private void toolStripButton_Min_Click(object sender, EventArgs e)
+		{
+			this.WindowState = FormWindowState.Minimized;
+		}
+
+		private void MaximizeWindow()
+		{
+			this.WindowState = FormWindowState.Normal;
+			var rectangle = Screen.FromControl(this).Bounds;
+			this.FormBorderStyle = FormBorderStyle.None;
+			Size = new Size(rectangle.Width, rectangle.Height);
+			Location = new Point(0, 0);
+			Rectangle workingRectangle = Screen.PrimaryScreen.WorkingArea;
+			this.Size = new Size(workingRectangle.Width, workingRectangle.Height);
+		}
+
+		private void ResizableWindow()
+		{
+			this.WindowState = FormWindowState.Normal;
+			this.ControlBox = false;
+			this.FormBorderStyle = FormBorderStyle.SizableToolWindow;
+			this.Size = new Size(this.Width * 8 / 10, this.Height * 8 / 10);
+		}
+
 
 	}
 }

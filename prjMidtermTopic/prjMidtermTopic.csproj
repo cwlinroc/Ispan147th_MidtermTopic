@@ -232,6 +232,10 @@
       <DependentUpon>form_MassInsert.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Beautify.cs" />
+    <Compile Include="Model\MyRender.cs" />
+    <Compile Include="Model\RoundButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Model\DisplayGrid.cs" />
     <Compile Include="Model\MyValidator.cs" />
     <Compile Include="Model\PermissionCheck.cs" />
@@ -356,6 +360,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\remove.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\closeWin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\maxWin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\minWin.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
