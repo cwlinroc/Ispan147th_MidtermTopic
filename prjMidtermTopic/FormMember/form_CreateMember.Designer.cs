@@ -54,9 +54,6 @@
 			this.DateOfBirthPicker = new System.Windows.Forms.DateTimePicker();
 			this.btnSelectAvatar = new System.Windows.Forms.Button();
 			this.panel1 = new System.Windows.Forms.Panel();
-			this.label10 = new System.Windows.Forms.Label();
-			this.txtForumAccountID = new System.Windows.Forms.TextBox();
-			this.btnApplyForumAccount = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
 			this.panel1.SuspendLayout();
 			this.SuspendLayout();
@@ -66,7 +63,7 @@
 			this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnAdd.AutoSize = true;
 			this.btnAdd.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.btnAdd.Location = new System.Drawing.Point(350, 541);
+			this.btnAdd.Location = new System.Drawing.Point(354, 541);
 			this.btnAdd.Name = "btnAdd";
 			this.btnAdd.Size = new System.Drawing.Size(80, 30);
 			this.btnAdd.TabIndex = 11;
@@ -281,7 +278,7 @@
 			this.btnSelectAvatar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnSelectAvatar.AutoSize = true;
 			this.btnSelectAvatar.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.btnSelectAvatar.Location = new System.Drawing.Point(9, 541);
+			this.btnSelectAvatar.Location = new System.Drawing.Point(13, 541);
 			this.btnSelectAvatar.Name = "btnSelectAvatar";
 			this.btnSelectAvatar.Size = new System.Drawing.Size(127, 30);
 			this.btnSelectAvatar.TabIndex = 10;
@@ -298,43 +295,11 @@
 			this.panel1.Size = new System.Drawing.Size(200, 51);
 			this.panel1.TabIndex = 23;
 			// 
-			// label10
-			// 
-			this.label10.AutoSize = true;
-			this.label10.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.label10.Location = new System.Drawing.Point(446, 18);
-			this.label10.Name = "label10";
-			this.label10.Size = new System.Drawing.Size(142, 20);
-			this.label10.TabIndex = 21;
-			this.label10.Text = "ForumAccountID:";
-			// 
-			// txtForumAccountID
-			// 
-			this.txtForumAccountID.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.txtForumAccountID.Location = new System.Drawing.Point(594, 15);
-			this.txtForumAccountID.Name = "txtForumAccountID";
-			this.txtForumAccountID.Size = new System.Drawing.Size(183, 29);
-			this.txtForumAccountID.TabIndex = 1;
-			// 
-			// btnApplyForumAccount
-			// 
-			this.btnApplyForumAccount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnApplyForumAccount.AutoSize = true;
-			this.btnApplyForumAccount.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.btnApplyForumAccount.Location = new System.Drawing.Point(142, 541);
-			this.btnApplyForumAccount.Name = "btnApplyForumAccount";
-			this.btnApplyForumAccount.Size = new System.Drawing.Size(178, 30);
-			this.btnApplyForumAccount.TabIndex = 24;
-			this.btnApplyForumAccount.Text = "Apply ForumAccount";
-			this.btnApplyForumAccount.UseVisualStyleBackColor = true;
-			this.btnApplyForumAccount.Click += new System.EventHandler(this.btnApplyForumAccount_Click);
-			// 
 			// form_CreateMember
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(442, 583);
-			this.Controls.Add(this.btnApplyForumAccount);
+			this.ClientSize = new System.Drawing.Size(446, 583);
 			this.Controls.Add(this.panel1);
 			this.Controls.Add(this.btnSelectAvatar);
 			this.Controls.Add(this.DateOfBirthPicker);
@@ -355,8 +320,6 @@
 			this.Controls.Add(this.label3);
 			this.Controls.Add(this.txtNickName);
 			this.Controls.Add(this.label9);
-			this.Controls.Add(this.txtForumAccountID);
-			this.Controls.Add(this.label10);
 			this.Controls.Add(this.txtMemberName);
 			this.Controls.Add(this.labName);
 			this.Name = "form_CreateMember";
@@ -396,8 +359,5 @@
 		private System.Windows.Forms.DateTimePicker DateOfBirthPicker;
 		private System.Windows.Forms.Button btnSelectAvatar;
 		private System.Windows.Forms.Panel panel1;
-		private System.Windows.Forms.TextBox txtForumAccountID;
-		private System.Windows.Forms.Label label10;
-		private System.Windows.Forms.Button btnApplyForumAccount;
 	}
 }

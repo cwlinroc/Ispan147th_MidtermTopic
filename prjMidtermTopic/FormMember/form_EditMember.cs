@@ -1,7 +1,6 @@
 ﻿using Ispan147.Estore.SqlDataLayer.Repositories;
 using Ispan147.Estore.SqlDataLayer.Services;
 using ISpan147.Estore.SqlDataLayer.Dtos;
-using ISpan147.Estore.SqlDataLayer.ExtMethods;
 using ISpan147.Estore.SqlDataLayer.Utility;
 using prjMidtermTopic.Interfaces;
 using prjMidtermTopic.Model;
@@ -20,7 +19,7 @@ namespace prjMidtermTopic.FormMember
 		private readonly int _memberID;
 		private string _originalFilePath;
 		private string _targetFolderPath = @"images/avatar/";
-		private IMemberRepo _memberRepo;		
+		private IMemberRepo _memberRepo;
 		public form_EditMember(int memberID)
 		{
 			InitializeComponent();
@@ -53,8 +52,7 @@ namespace prjMidtermTopic.FormMember
 				return;
 			}
 			txtMemberName.Text = dto.MemberName;
-			txtForumAccountID.Text = string.IsNullOrEmpty(txtForumAccountID.Text) ?
-									null : dto.ForumAccountID.ToString();
+			txtForumAccountID.Text = dto.ForumAccountID.ToString();
 			txtNickName.Text = dto.NickName;
 			DateOfBirthPicker.Value = dto.DateOfBirth;
 			txtAccount.Text = dto.Account;
@@ -73,7 +71,9 @@ namespace prjMidtermTopic.FormMember
 				radbtnFemale.Checked = true;
 			}
 
-			btnDeleteAvatar.Enabled = !string.IsNullOrEmpty(txtAvatar.Text) ? true : false;
+			btnDeleteAvatar.Enabled = !string.IsNullOrEmpty(txtAvatar.Text);
+			btnApplyForumAccount.Enabled = string.IsNullOrEmpty(txtForumAccountID.Text);
+			btnEditForumName.Enabled = !string.IsNullOrEmpty(txtForumAccountID.Text);
 		}
 
 		private void SelectFileToForm(string filePath)
@@ -96,11 +96,11 @@ namespace prjMidtermTopic.FormMember
 
 		private void UploadFileToDb(string filePath)
 		{
-			string renamedtargetFilePath = _targetFolderPath + txtAvatar.Text;
+			string targetFilePath = _targetFolderPath + txtAvatar.Text;
 
 			if (!string.IsNullOrEmpty(filePath))
 			{
-				File.Delete(renamedtargetFilePath);
+				File.Delete(targetFilePath);
 			}
 			else
 			{
@@ -108,29 +108,32 @@ namespace prjMidtermTopic.FormMember
 			}
 			try
 			{
-				File.Copy(filePath, renamedtargetFilePath);
+				File.Copy(filePath, targetFilePath);
 
-				MessageBox.Show($"上傳成功,路徑:{renamedtargetFilePath}");
+				MessageBox.Show($"上傳成功,路徑:{targetFilePath}");
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show($"上傳失敗,{ex.Message}");
+				MessageBox.Show($"上傳失敗,原因:{ex.Message}");
 			}
 		}
 
 		private void DeleteFile(string filePath)
 		{
-			string renamedtargetFilePath = _targetFolderPath + filePath;
+			string targetFilePath = _targetFolderPath + filePath;
 			try
 			{
-				if (File.Exists(renamedtargetFilePath))
+				if (File.Exists(targetFilePath))
 				{
-					File.Delete(renamedtargetFilePath);
+					File.Delete(targetFilePath);
 					MessageBox.Show("刪除成功");
 				}
 
 			}
-			catch (Exception ex) { MessageBox.Show($"刪除失敗,原因:{ex.Message}"); }
+			catch (Exception ex)
+			{
+				MessageBox.Show($"刪除失敗,原因:{ex.Message}");
+			}
 		}
 
 		private void DateOfBirthPicker_ValueChanged(object sender, EventArgs e)
@@ -142,7 +145,7 @@ namespace prjMidtermTopic.FormMember
 			{
 				MessageBox.Show("選擇時間早於目前時間100年!", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 			}
-		}		
+		}
 
 		#region button
 		private void radbtnMale_CheckedChanged(object sender, EventArgs e)
@@ -184,7 +187,7 @@ namespace prjMidtermTopic.FormMember
 		}
 
 		private void btnUpdate_Click(object sender, EventArgs e)
-		{			
+		{
 			var vm = new MemberCreateVM()
 			{
 				MemberID = this._memberID,
@@ -262,7 +265,6 @@ namespace prjMidtermTopic.FormMember
 			try
 			{
 				int rows = service.Delete(_memberID);
-				//回到FormCategories
 				if (rows > 0)
 				{
 					MessageBox.Show("刪除成功");
@@ -295,12 +297,21 @@ namespace prjMidtermTopic.FormMember
 			DeleteFile(txtAvatar.Text);
 			txtAvatar.Text = null;
 		}
-		#endregion
 
-		private void btnApplyForumMember_Click(object sender, EventArgs e)
-		{			
-		 	var frm = new form_ApplyForumMember();
+		private void btnApplyForumAccount_Click(object sender, EventArgs e)
+		{
+			var frm = new form_ApplyForumAccount(_memberID);
 			frm.ShowDialog();
 		}
+
+		private void btnEditForumName_Click(object sender, EventArgs e)
+		{
+			var frm = new form_EditForumName(int.Parse(txtForumAccountID.Text));
+			frm.ShowDialog();
+		}
+
+		#endregion
+
+
 	}
 }
