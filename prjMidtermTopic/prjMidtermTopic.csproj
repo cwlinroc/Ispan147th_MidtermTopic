@@ -366,6 +366,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -381,12 +382,17 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="bin\Debug\images\MerchendisePicture\default.png" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ISpan147.Estore.SqlDataLayer\Ispan147.Estore.SqlDataLayer.csproj">
       <Project>{9ee28126-8c44-4f99-867d-e316d537541b}</Project>
       <Name>Ispan147.Estore.SqlDataLayer</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\images\MerchendisePicture\error.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -45,13 +45,16 @@
 			this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
 			this.btn_SelectImage = new System.Windows.Forms.Button();
 			this.btn_CancelImage = new System.Windows.Forms.Button();
+			this.label7 = new System.Windows.Forms.Label();
+			this.pictureBox_Image = new System.Windows.Forms.PictureBox();
 			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox_Image)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// btnCreate
 			// 
 			this.btnCreate.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.btnCreate.Location = new System.Drawing.Point(283, 377);
+			this.btnCreate.Location = new System.Drawing.Point(649, 289);
 			this.btnCreate.Name = "btnCreate";
 			this.btnCreate.Size = new System.Drawing.Size(99, 30);
 			this.btnCreate.TabIndex = 7;
@@ -136,15 +139,15 @@
 			// label6
 			// 
 			this.label6.AutoSize = true;
-			this.label6.Location = new System.Drawing.Point(40, 314);
+			this.label6.Location = new System.Drawing.Point(406, 235);
 			this.label6.Name = "label6";
 			this.label6.Size = new System.Drawing.Size(65, 12);
 			this.label6.TabIndex = 9;
-			this.label6.Text = "商品圖片：";
+			this.label6.Text = "匯入圖片：";
 			// 
 			// txt_ImageURL
 			// 
-			this.txt_ImageURL.Location = new System.Drawing.Point(116, 311);
+			this.txt_ImageURL.Location = new System.Drawing.Point(482, 232);
 			this.txt_ImageURL.Name = "txt_ImageURL";
 			this.txt_ImageURL.ReadOnly = true;
 			this.txt_ImageURL.Size = new System.Drawing.Size(266, 22);
@@ -165,7 +168,7 @@
 			// 
 			// btn_SelectImage
 			// 
-			this.btn_SelectImage.Location = new System.Drawing.Point(238, 339);
+			this.btn_SelectImage.Location = new System.Drawing.Point(604, 260);
 			this.btn_SelectImage.Name = "btn_SelectImage";
 			this.btn_SelectImage.Size = new System.Drawing.Size(69, 23);
 			this.btn_SelectImage.TabIndex = 5;
@@ -176,7 +179,7 @@
 			// btn_CancelImage
 			// 
 			this.btn_CancelImage.Enabled = false;
-			this.btn_CancelImage.Location = new System.Drawing.Point(313, 339);
+			this.btn_CancelImage.Location = new System.Drawing.Point(679, 260);
 			this.btn_CancelImage.Name = "btn_CancelImage";
 			this.btn_CancelImage.Size = new System.Drawing.Size(69, 23);
 			this.btn_CancelImage.TabIndex = 6;
@@ -184,11 +187,31 @@
 			this.btn_CancelImage.UseVisualStyleBackColor = true;
 			this.btn_CancelImage.Click += new System.EventHandler(this.btn_CancelImage_Click);
 			// 
+			// label7
+			// 
+			this.label7.AutoSize = true;
+			this.label7.Location = new System.Drawing.Point(406, 24);
+			this.label7.Name = "label7";
+			this.label7.Size = new System.Drawing.Size(65, 12);
+			this.label7.TabIndex = 13;
+			this.label7.Text = "商品圖片：";
+			// 
+			// pictureBox_Image
+			// 
+			this.pictureBox_Image.Location = new System.Drawing.Point(482, 21);
+			this.pictureBox_Image.Name = "pictureBox_Image";
+			this.pictureBox_Image.Size = new System.Drawing.Size(266, 205);
+			this.pictureBox_Image.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+			this.pictureBox_Image.TabIndex = 14;
+			this.pictureBox_Image.TabStop = false;
+			// 
 			// form_CreateMerchandise
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(414, 428);
+			this.ClientSize = new System.Drawing.Size(778, 333);
+			this.Controls.Add(this.pictureBox_Image);
+			this.Controls.Add(this.label7);
 			this.Controls.Add(this.btn_CancelImage);
 			this.Controls.Add(this.btn_SelectImage);
 			this.Controls.Add(this.comboBox_CategoryId);
@@ -207,6 +230,7 @@
 			this.Name = "form_CreateMerchandise";
 			this.Text = "商品管理：新增商品";
 			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox_Image)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -230,5 +254,7 @@
 		private System.Windows.Forms.ErrorProvider errorProvider1;
 		private System.Windows.Forms.Button btn_SelectImage;
 		private System.Windows.Forms.Button btn_CancelImage;
+		private System.Windows.Forms.PictureBox pictureBox_Image;
+		private System.Windows.Forms.Label label7;
 	}
 }
