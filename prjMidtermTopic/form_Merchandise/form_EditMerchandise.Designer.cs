@@ -48,13 +48,16 @@
 			this.btn_Delete = new System.Windows.Forms.Button();
 			this.btn_SelectNewImage = new System.Windows.Forms.Button();
 			this.btn_DeleteImage = new System.Windows.Forms.Button();
+			this.pictureBox_Image = new System.Windows.Forms.PictureBox();
+			this.label8 = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox_Image)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// btn_Update
 			// 
 			this.btn_Update.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.btn_Update.Location = new System.Drawing.Point(287, 396);
+			this.btn_Update.Location = new System.Drawing.Point(671, 310);
 			this.btn_Update.Name = "btn_Update";
 			this.btn_Update.Size = new System.Drawing.Size(95, 34);
 			this.btn_Update.TabIndex = 7;
@@ -139,15 +142,15 @@
 			// label6
 			// 
 			this.label6.AutoSize = true;
-			this.label6.Location = new System.Drawing.Point(40, 337);
+			this.label6.Location = new System.Drawing.Point(405, 233);
 			this.label6.Name = "label6";
 			this.label6.Size = new System.Drawing.Size(65, 12);
 			this.label6.TabIndex = 9;
-			this.label6.Text = "商品圖片：";
+			this.label6.Text = "匯入圖片：";
 			// 
 			// txt_ImageURL
 			// 
-			this.txt_ImageURL.Location = new System.Drawing.Point(116, 334);
+			this.txt_ImageURL.Location = new System.Drawing.Point(481, 230);
 			this.txt_ImageURL.Name = "txt_ImageURL";
 			this.txt_ImageURL.ReadOnly = true;
 			this.txt_ImageURL.Size = new System.Drawing.Size(266, 22);
@@ -185,7 +188,7 @@
 			// btn_Delete
 			// 
 			this.btn_Delete.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.btn_Delete.Location = new System.Drawing.Point(287, 436);
+			this.btn_Delete.Location = new System.Drawing.Point(570, 310);
 			this.btn_Delete.Name = "btn_Delete";
 			this.btn_Delete.Size = new System.Drawing.Size(95, 34);
 			this.btn_Delete.TabIndex = 8;
@@ -195,7 +198,7 @@
 			// 
 			// btn_SelectNewImage
 			// 
-			this.btn_SelectNewImage.Location = new System.Drawing.Point(233, 362);
+			this.btn_SelectNewImage.Location = new System.Drawing.Point(598, 258);
 			this.btn_SelectNewImage.Name = "btn_SelectNewImage";
 			this.btn_SelectNewImage.Size = new System.Drawing.Size(74, 23);
 			this.btn_SelectNewImage.TabIndex = 5;
@@ -206,7 +209,7 @@
 			// btn_DeleteImage
 			// 
 			this.btn_DeleteImage.Enabled = false;
-			this.btn_DeleteImage.Location = new System.Drawing.Point(313, 362);
+			this.btn_DeleteImage.Location = new System.Drawing.Point(678, 258);
 			this.btn_DeleteImage.Name = "btn_DeleteImage";
 			this.btn_DeleteImage.Size = new System.Drawing.Size(69, 23);
 			this.btn_DeleteImage.TabIndex = 6;
@@ -214,11 +217,31 @@
 			this.btn_DeleteImage.UseVisualStyleBackColor = true;
 			this.btn_DeleteImage.Click += new System.EventHandler(this.btn_DeleteImage_Click);
 			// 
+			// pictureBox_Image
+			// 
+			this.pictureBox_Image.Location = new System.Drawing.Point(481, 16);
+			this.pictureBox_Image.Name = "pictureBox_Image";
+			this.pictureBox_Image.Size = new System.Drawing.Size(266, 205);
+			this.pictureBox_Image.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+			this.pictureBox_Image.TabIndex = 16;
+			this.pictureBox_Image.TabStop = false;
+			// 
+			// label8
+			// 
+			this.label8.AutoSize = true;
+			this.label8.Location = new System.Drawing.Point(405, 19);
+			this.label8.Name = "label8";
+			this.label8.Size = new System.Drawing.Size(65, 12);
+			this.label8.TabIndex = 15;
+			this.label8.Text = "商品圖片：";
+			// 
 			// form_EditMerchandise
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(414, 488);
+			this.ClientSize = new System.Drawing.Size(778, 356);
+			this.Controls.Add(this.pictureBox_Image);
+			this.Controls.Add(this.label8);
 			this.Controls.Add(this.btn_DeleteImage);
 			this.Controls.Add(this.btn_SelectNewImage);
 			this.Controls.Add(this.btn_Delete);
@@ -241,6 +264,7 @@
 			this.Text = "商品管理：編輯商品";
 			this.Load += new System.EventHandler(this.form_EditMerchandise_Load);
 			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox_Image)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -267,5 +291,7 @@
 		private System.Windows.Forms.Button btn_Delete;
 		private System.Windows.Forms.Button btn_SelectNewImage;
 		private System.Windows.Forms.Button btn_DeleteImage;
+		private System.Windows.Forms.PictureBox pictureBox_Image;
+		private System.Windows.Forms.Label label8;
 	}
 }

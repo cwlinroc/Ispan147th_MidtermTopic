@@ -52,8 +52,8 @@
 			this.txt_Account.Location = new System.Drawing.Point(137, 95);
 			this.txt_Account.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
 			this.txt_Account.Name = "txt_Account";
-			this.txt_Account.Size = new System.Drawing.Size(171, 25);
-			this.txt_Account.TabIndex = 1;
+			this.txt_Account.Size = new System.Drawing.Size(129, 22);
+			this.txt_Account.TabIndex = 0;
 			this.txt_Account.Text = "admin";
 			// 
 			// label2
@@ -72,7 +72,7 @@
 			this.txt_Password.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
 			this.txt_Password.Name = "txt_Password";
 			this.txt_Password.PasswordChar = '*';
-			this.txt_Password.Size = new System.Drawing.Size(171, 25);
+			this.txt_Password.Size = new System.Drawing.Size(129, 22);
 			this.txt_Password.TabIndex = 1;
 			this.txt_Password.Text = "admin";
 			// 
@@ -107,7 +107,7 @@
 			// 
 			// form_LogIn
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(60)))));
 			this.ClientSize = new System.Drawing.Size(369, 325);
