@@ -2,6 +2,7 @@
 using ISpan147.Estore.SqlDataLayer.Repositories;
 using ISpan147.Estore.SqlDataLayer.Services;
 using prjMidtermTopic.form_QA;
+using prjMidtermTopic.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,8 +19,8 @@ using static ISpan147.Estore.SqlDataLayer.Dtos.QADto;
 
 namespace prjMidtermTopic
 {
-    public partial class form_QAList : Form
-    {
+    public partial class form_QAList : Form //, IGrid
+	{
 		QAService _service;
 		
 		public form_QAList()
