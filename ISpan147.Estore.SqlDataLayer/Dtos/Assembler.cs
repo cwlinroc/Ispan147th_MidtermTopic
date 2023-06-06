@@ -112,5 +112,21 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
 				CategoryName = reader.GetString("CategoryName")
 			};
 		}
+
+		public static Func<SqlDataReader, PetDto> PetDtoAssembler
+		{
+			get => (reader) => new PetDto
+			{
+				PetID = reader.GetInt("PetID"),
+				SpeciesID = reader.GetInt("SpeciesID"),
+				BreedID = reader.GetInt("BreedID"),
+				PetName = reader.GetString("PetName"),
+				Gender = reader.GetBool("Gender"),
+				Age = reader.GetInt("Age"),
+				Description = reader.GetString("Description"),
+				Location = reader.GetString("Location"),
+				PetAvatar = reader.GetString("PetAvatar")
+			};
+		}
 	}
 }
