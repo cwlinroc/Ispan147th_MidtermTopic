@@ -63,25 +63,29 @@ namespace prjMidtermTopic.Properties {
         /// <summary>
         ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
         /// </summary>
-        internal static System.Drawing.Bitmap 貓頭 {
-            get {
-                object obj = ResourceManager.GetObject("貓頭", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        internal static System.Drawing.Bitmap Adopt {
-            get {
-                object obj = ResourceManager.GetObject("Adopt", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-
-        /// <summary>
-        ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
-        /// </summary>
         internal static System.Drawing.Bitmap _default {
             get {
                 object obj = ResourceManager.GetObject("_default", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+        /// </summary>
+        internal static System.Drawing.Bitmap _error {
+            get {
+                object obj = ResourceManager.GetObject("_error", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+        /// </summary>
+        internal static System.Drawing.Bitmap Adopt {
+            get {
+                object obj = ResourceManager.GetObject("Adopt", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -245,14 +249,13 @@ namespace prjMidtermTopic.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
-
-
+        
         /// <summary>
         ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
         /// </summary>
-        internal static System.Drawing.Bitmap _error {
+        internal static System.Drawing.Bitmap 貓頭 {
             get {
-                object obj = ResourceManager.GetObject("_error", resourceCulture);
+                object obj = ResourceManager.GetObject("貓頭", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
