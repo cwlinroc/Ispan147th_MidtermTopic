@@ -285,6 +285,7 @@ namespace prjMidtermTopic
 
 			frm.MdiParent = this;
 			frm.WindowState = FormWindowState.Maximized;
+			Modifier.ModForm(frm);
 			frm.Show();
 		}		
 

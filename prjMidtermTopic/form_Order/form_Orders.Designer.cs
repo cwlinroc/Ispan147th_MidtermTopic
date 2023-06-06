@@ -310,6 +310,7 @@
 			// label6
 			// 
 			this.label6.AutoSize = true;
+			this.label6.Font = new System.Drawing.Font("細明體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.label6.Location = new System.Drawing.Point(726, 38);
 			this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.label6.Name = "label6";
@@ -448,6 +449,7 @@
 			this.Controls.Add(this.btn_Search);
 			this.Margin = new System.Windows.Forms.Padding(2);
 			this.Name = "form_Orders";
+			this.ShowIcon = false;
 			this.Text = "訂單管理";
 			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.form_MerchandiseOrder_FormClosed);
 			this.Load += new System.EventHandler(this.form_MerchandiseOrder_Load);

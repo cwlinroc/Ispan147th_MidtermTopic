@@ -231,6 +231,7 @@
     <Compile Include="MassInsert\form_MassInsert.Designer.cs">
       <DependentUpon>form_MassInsert.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\Modify.cs" />
     <Compile Include="Model\NoEdgeRenderer.cs" />
     <Compile Include="Model\RoundButton.cs">
       <SubType>Component</SubType>
@@ -373,6 +374,42 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\black-cat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\favicon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Adopt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Category.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Member.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Merchandise.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Order.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Pet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Question.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\empty.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shutdown.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
