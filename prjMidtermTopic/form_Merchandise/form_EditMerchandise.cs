@@ -95,6 +95,7 @@ namespace prjMidtermTopic.form_Merchandise
 
 		private void form_EditMerchandise_Load(object sender, EventArgs e)
 		{
+			
 			//var repo = new MerchandiseRepository();
 			MerchandiseDto dto = _repo.GetByMerchandiseID(_merchandiseId);
 			if (dto == null)

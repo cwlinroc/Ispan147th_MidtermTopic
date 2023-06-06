@@ -7,6 +7,7 @@ using prjMidtermTopic.Model;
 using prjMidtermTopic.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 
@@ -74,6 +75,27 @@ namespace prjMidtermTopic.FormMember
 			btnDeleteAvatar.Enabled = !string.IsNullOrEmpty(txtAvatar.Text);
 			btnApplyForumAccount.Enabled = string.IsNullOrEmpty(txtForumAccountID.Text);
 			btnEditForumName.Enabled = !string.IsNullOrEmpty(txtForumAccountID.Text);
+
+			#region 載入預覽圖片
+			try
+			{
+				if (string.IsNullOrEmpty(txtAvatar.Text))
+				{
+					pictureBoxAvatar.Image = Properties.Resources.default_avatar;
+				}
+				else
+				{
+					using (var bmpTemp = new Bitmap("images/avatar/" + txtAvatar.Text))
+					{
+						pictureBoxAvatar.Image = new Bitmap(bmpTemp, 256, 256);
+					}
+				}
+			}
+			catch
+			{
+				pictureBoxAvatar.Image = Properties.Resources.error_icon;
+			}
+			#endregion
 		}
 
 		private void SelectFileToForm(string filePath)
@@ -82,10 +104,16 @@ namespace prjMidtermTopic.FormMember
 			{
 				string fileName = Path.GetFileName(filePath);
 				//加上時間戳重新命名,避免檔名重複
-				txtAvatar.Text = DateTime.Now.ToString("yyyyMMddhhmmssss_") + fileName;
+				txtAvatar.Text = DateTime.Now.ToString("yyyyMMddhhmmss_") + fileName;
 
-				btnDeleteAvatar.Enabled = true;
+				//變更預覽圖片
+				using (var bmpTemp = new Bitmap(filePath))
+				{
+					pictureBoxAvatar.Image = new Bitmap(bmpTemp, 256, 256);
+				}
+
 				MessageBox.Show("選擇成功");
+
 			}
 			catch (Exception ex)
 			{
@@ -111,6 +139,7 @@ namespace prjMidtermTopic.FormMember
 				File.Copy(filePath, targetFilePath);
 
 				MessageBox.Show($"上傳成功,路徑:{targetFilePath}");
+				btnDeleteAvatar.Enabled = true;
 			}
 			catch (Exception ex)
 			{
@@ -296,6 +325,8 @@ namespace prjMidtermTopic.FormMember
 		{
 			DeleteFile(txtAvatar.Text);
 			txtAvatar.Text = null;
+			pictureBoxAvatar.Image = Properties.Resources.default_avatar;
+			btnDeleteAvatar.Enabled = false;
 		}
 
 		private void btnApplyForumAccount_Click(object sender, EventArgs e)
