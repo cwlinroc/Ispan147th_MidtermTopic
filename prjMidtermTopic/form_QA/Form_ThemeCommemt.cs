@@ -22,7 +22,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace prjMidtermTopic.form_QA
 {
-	public partial class Form_ThemeCommemt : Form//,IGrid
+	public partial class Form_ThemeCommemt : Form, IGridComment
 	{
 		private  int _themeId;
 		QAService _service;
@@ -34,7 +34,7 @@ namespace prjMidtermTopic.form_QA
 		}
 		private void Form_ThemeCommemt_Load(object sender, EventArgs e)
 		{
-			Display();
+			CommentDisplay();
 			string sql = $"SELECT * FROM COMMENTS WHERE THEMEID={_themeId}";
 			Func<SqlDataReader, QADto.Theme> func = (reader) =>
 			new QADto.Theme
@@ -62,10 +62,9 @@ namespace prjMidtermTopic.form_QA
 			richTextBoxTheme.Clear();
 			MessageBox.Show("刪除成功");
 
-			//IGrid parent = this.Owner as IGrid;
-			//parent.
-			Display();
-			
+			IGrid parent = this.Owner as IGrid;
+			parent.Display();
+			this.Close();
 		}
 
 		private void buttonCreateCommon_Click(object sender, EventArgs e)
@@ -74,7 +73,7 @@ namespace prjMidtermTopic.form_QA
 			commentCreate.ShowDialog();
 		}
 
-		public void Display()
+		public void CommentDisplay()
 		{
 			// 叫用Search(),取得符合的記錄
 			var data = _service.GetCommentList(_themeId);

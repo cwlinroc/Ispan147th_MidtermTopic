@@ -261,6 +261,7 @@
       <DependentUpon>from_ThemeCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\IGrid.cs" />
+    <Compile Include="Interfaces\IGridComment.cs" />
     <Compile Include="MassInsert\form_MassInsert.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -19,7 +19,7 @@ using static ISpan147.Estore.SqlDataLayer.Dtos.QADto;
 
 namespace prjMidtermTopic
 {
-    public partial class form_QAList : Form //, IGrid
+    public partial class form_QAList : Form , IGrid
 	{
 		QAService _service;
 		
@@ -43,7 +43,7 @@ namespace prjMidtermTopic
 		}
 
 
-		private void Display()
+		public void Display()
 		{
 			// 叫用Search(),取得符合的記錄
 			var data = _service.GetThemeList(null);
@@ -58,10 +58,7 @@ namespace prjMidtermTopic
 			this.dataGridViewTheme.Columns["ForumAccountName"].Visible = false;
 		}
 
-
-
 		//methods
-
 		public void dataGridViewTheme_CellClick(object sender, DataGridViewCellEventArgs e)
 		{
 			if (e.RowIndex < 0) return;
@@ -69,7 +66,6 @@ namespace prjMidtermTopic
 			var themeId = Convert.ToInt32(dataGridViewTheme.Rows[e.RowIndex].Cells[0].Value);
 			//var themeId = this._data[e.RowIndex].ThemeId;
 			var selectedThemeId = Convert.ToInt32(dataGridViewTheme.Rows[e.RowIndex].Cells["themeId"].Value);
-
 
 			var frm = new Form_ThemeCommemt(themeId);
 			frm.Owner = this;

@@ -304,6 +304,7 @@ namespace prjMidtermTopic
 			}
 			else
 			{
+				//todo 論壇帳號ID
 				new form_EmployeeForumAccountEdit(Authentication.EmployeeAccount,
 					Authentication.ForumAccountID.Value).ShowDialog();
 			}

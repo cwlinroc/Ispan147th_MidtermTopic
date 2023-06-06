@@ -1,5 +1,6 @@
 ﻿using ISpan147.Estore.SqlDataLayer.Dtos;
 using ISpan147.Estore.SqlDataLayer.Services;
+using prjMidtermTopic.Interfaces;
 using prjMidtermTopic.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -46,7 +47,10 @@ namespace prjMidtermTopic.form_QA
 			var result = _service.CreateComment(commentDto);
 
 			MessageBox.Show(result);
+			//IGridComment parent = this.Owner as IGridComment;
+			//parent.CommentDisplay();
 			this.Close();
+			
 			
 		}
 

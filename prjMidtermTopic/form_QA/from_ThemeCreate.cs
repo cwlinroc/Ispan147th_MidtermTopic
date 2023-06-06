@@ -1,5 +1,6 @@
 ﻿using ISpan147.Estore.SqlDataLayer.Dtos;
 using ISpan147.Estore.SqlDataLayer.Services;
+using prjMidtermTopic.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,7 +23,6 @@ namespace prjMidtermTopic.form_QA
 			InitializeComponent();
 			_service = new QAService();
 		}
-
 		private void buttonConfirmTheme_Click(object sender, EventArgs e)
 		{
 			QADto.Theme themeDto = new QADto.Theme();
@@ -34,9 +34,9 @@ namespace prjMidtermTopic.form_QA
 			var result = _service.CreateTheme(themeDto);
 
 			MessageBox.Show(result);
+			IGrid parent = this.Owner as IGrid;
+			parent.Display();
 			this.Close();
-
-
 		}
 
 		private void from_ThemeCreate_Load(object sender, EventArgs e)
