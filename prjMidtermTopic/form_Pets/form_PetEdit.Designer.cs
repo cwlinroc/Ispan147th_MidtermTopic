@@ -54,14 +54,17 @@
 			this.label7 = new System.Windows.Forms.Label();
 			this.label9 = new System.Windows.Forms.Label();
 			this.txtPetID = new System.Windows.Forms.TextBox();
+			this.pbPet = new System.Windows.Forms.PictureBox();
+			this.label10 = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
 			this.panel1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pbPet)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// label1
 			// 
 			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(48, 127);
+			this.label1.Location = new System.Drawing.Point(48, 141);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(53, 12);
 			this.label1.TabIndex = 0;
@@ -69,7 +72,7 @@
 			// 
 			// txtPetName
 			// 
-			this.txtPetName.Location = new System.Drawing.Point(109, 124);
+			this.txtPetName.Location = new System.Drawing.Point(109, 135);
 			this.txtPetName.Name = "txtPetName";
 			this.txtPetName.Size = new System.Drawing.Size(248, 22);
 			this.txtPetName.TabIndex = 2;
@@ -77,7 +80,7 @@
 			// label2
 			// 
 			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(48, 155);
+			this.label2.Location = new System.Drawing.Point(48, 175);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(29, 12);
 			this.label2.TabIndex = 0;
@@ -86,7 +89,7 @@
 			// label3
 			// 
 			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(48, 183);
+			this.label3.Location = new System.Drawing.Point(48, 209);
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(29, 12);
 			this.label3.TabIndex = 0;
@@ -94,7 +97,7 @@
 			// 
 			// txtAge
 			// 
-			this.txtAge.Location = new System.Drawing.Point(109, 180);
+			this.txtAge.Location = new System.Drawing.Point(109, 201);
 			this.txtAge.Name = "txtAge";
 			this.txtAge.Size = new System.Drawing.Size(248, 22);
 			this.txtAge.TabIndex = 3;
@@ -111,7 +114,7 @@
 			// label5
 			// 
 			this.label5.AutoSize = true;
-			this.label5.Location = new System.Drawing.Point(48, 211);
+			this.label5.Location = new System.Drawing.Point(48, 243);
 			this.label5.Name = "label5";
 			this.label5.Size = new System.Drawing.Size(41, 12);
 			this.label5.TabIndex = 0;
@@ -119,14 +122,14 @@
 			// 
 			// txtLocation
 			// 
-			this.txtLocation.Location = new System.Drawing.Point(109, 208);
+			this.txtLocation.Location = new System.Drawing.Point(109, 234);
 			this.txtLocation.Name = "txtLocation";
 			this.txtLocation.Size = new System.Drawing.Size(248, 22);
 			this.txtLocation.TabIndex = 4;
 			// 
 			// btnUpdate
 			// 
-			this.btnUpdate.Location = new System.Drawing.Point(50, 283);
+			this.btnUpdate.Location = new System.Drawing.Point(50, 308);
 			this.btnUpdate.Name = "btnUpdate";
 			this.btnUpdate.Size = new System.Drawing.Size(75, 23);
 			this.btnUpdate.TabIndex = 7;
@@ -136,7 +139,7 @@
 			// 
 			// btnDelete
 			// 
-			this.btnDelete.Location = new System.Drawing.Point(134, 283);
+			this.btnDelete.Location = new System.Drawing.Point(134, 308);
 			this.btnDelete.Name = "btnDelete";
 			this.btnDelete.Size = new System.Drawing.Size(75, 23);
 			this.btnDelete.TabIndex = 9;
@@ -146,11 +149,11 @@
 			// 
 			// txtDescription
 			// 
-			this.txtDescription.Location = new System.Drawing.Point(434, 80);
+			this.txtDescription.Location = new System.Drawing.Point(434, 39);
 			this.txtDescription.Multiline = true;
 			this.txtDescription.Name = "txtDescription";
 			this.txtDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-			this.txtDescription.Size = new System.Drawing.Size(434, 135);
+			this.txtDescription.Size = new System.Drawing.Size(277, 256);
 			this.txtDescription.TabIndex = 6;
 			// 
 			// radioButtonMale
@@ -182,7 +185,7 @@
 			// label6
 			// 
 			this.label6.AutoSize = true;
-			this.label6.Location = new System.Drawing.Point(48, 239);
+			this.label6.Location = new System.Drawing.Point(48, 277);
 			this.label6.Name = "label6";
 			this.label6.Size = new System.Drawing.Size(53, 12);
 			this.label6.TabIndex = 0;
@@ -190,14 +193,14 @@
 			// 
 			// txtPetAvatar
 			// 
-			this.txtPetAvatar.Location = new System.Drawing.Point(109, 236);
+			this.txtPetAvatar.Location = new System.Drawing.Point(109, 267);
 			this.txtPetAvatar.Name = "txtPetAvatar";
 			this.txtPetAvatar.Size = new System.Drawing.Size(248, 22);
 			this.txtPetAvatar.TabIndex = 5;
 			// 
 			// btnUpdatePetAvatar
 			// 
-			this.btnUpdatePetAvatar.Location = new System.Drawing.Point(434, 239);
+			this.btnUpdatePetAvatar.Location = new System.Drawing.Point(434, 308);
 			this.btnUpdatePetAvatar.Name = "btnUpdatePetAvatar";
 			this.btnUpdatePetAvatar.Size = new System.Drawing.Size(88, 23);
 			this.btnUpdatePetAvatar.TabIndex = 8;
@@ -207,7 +210,7 @@
 			// 
 			// btnDeletePetAvatar
 			// 
-			this.btnDeletePetAvatar.Location = new System.Drawing.Point(549, 239);
+			this.btnDeletePetAvatar.Location = new System.Drawing.Point(619, 308);
 			this.btnDeletePetAvatar.Name = "btnDeletePetAvatar";
 			this.btnDeletePetAvatar.Size = new System.Drawing.Size(92, 23);
 			this.btnDeletePetAvatar.TabIndex = 10;
@@ -219,14 +222,14 @@
 			// 
 			this.panel1.Controls.Add(this.radioButtonMale);
 			this.panel1.Controls.Add(this.radioButtonFemale);
-			this.panel1.Location = new System.Drawing.Point(109, 152);
+			this.panel1.Location = new System.Drawing.Point(109, 168);
 			this.panel1.Name = "panel1";
 			this.panel1.Size = new System.Drawing.Size(116, 22);
 			this.panel1.TabIndex = 5;
 			// 
 			// txtSpeciesID
 			// 
-			this.txtSpeciesID.Location = new System.Drawing.Point(109, 64);
+			this.txtSpeciesID.Location = new System.Drawing.Point(109, 69);
 			this.txtSpeciesID.Name = "txtSpeciesID";
 			this.txtSpeciesID.Size = new System.Drawing.Size(248, 22);
 			this.txtSpeciesID.TabIndex = 0;
@@ -234,7 +237,7 @@
 			// label8
 			// 
 			this.label8.AutoSize = true;
-			this.label8.Location = new System.Drawing.Point(48, 67);
+			this.label8.Location = new System.Drawing.Point(48, 73);
 			this.label8.Name = "label8";
 			this.label8.Size = new System.Drawing.Size(53, 12);
 			this.label8.TabIndex = 13;
@@ -242,7 +245,7 @@
 			// 
 			// txtBreedID
 			// 
-			this.txtBreedID.Location = new System.Drawing.Point(109, 92);
+			this.txtBreedID.Location = new System.Drawing.Point(109, 102);
 			this.txtBreedID.Name = "txtBreedID";
 			this.txtBreedID.Size = new System.Drawing.Size(248, 22);
 			this.txtBreedID.TabIndex = 1;
@@ -250,7 +253,7 @@
 			// label7
 			// 
 			this.label7.AutoSize = true;
-			this.label7.Location = new System.Drawing.Point(48, 95);
+			this.label7.Location = new System.Drawing.Point(48, 107);
 			this.label7.Name = "label7";
 			this.label7.Size = new System.Drawing.Size(53, 12);
 			this.label7.TabIndex = 14;
@@ -273,11 +276,33 @@
 			this.txtPetID.Size = new System.Drawing.Size(248, 22);
 			this.txtPetID.TabIndex = 0;
 			// 
+			// pbPet
+			// 
+			this.errorProvider1.SetIconAlignment(this.pbPet, System.Windows.Forms.ErrorIconAlignment.TopRight);
+			this.pbPet.Location = new System.Drawing.Point(755, 39);
+			this.pbPet.MaximumSize = new System.Drawing.Size(256, 256);
+			this.pbPet.Name = "pbPet";
+			this.pbPet.Size = new System.Drawing.Size(256, 256);
+			this.pbPet.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+			this.pbPet.TabIndex = 15;
+			this.pbPet.TabStop = false;
+			// 
+			// label10
+			// 
+			this.label10.AutoSize = true;
+			this.label10.Location = new System.Drawing.Point(820, 319);
+			this.label10.Name = "label10";
+			this.label10.Size = new System.Drawing.Size(128, 12);
+			this.label10.TabIndex = 16;
+			this.label10.Text = "圖片建議大小 256 * 256";
+			// 
 			// form_PetEdit
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(905, 339);
+			this.ClientSize = new System.Drawing.Size(1060, 376);
+			this.Controls.Add(this.label10);
+			this.Controls.Add(this.pbPet);
 			this.Controls.Add(this.txtPetID);
 			this.Controls.Add(this.label9);
 			this.Controls.Add(this.txtSpeciesID);
@@ -300,12 +325,15 @@
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.txtPetName);
 			this.Controls.Add(this.label1);
+			this.MaximumSize = new System.Drawing.Size(1076, 415);
+			this.MinimumSize = new System.Drawing.Size(1076, 378);
 			this.Name = "form_PetEdit";
 			this.Text = "form_PetEdit";
 			this.Load += new System.EventHandler(this.form_PetEdit_Load);
 			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
 			this.panel1.ResumeLayout(false);
 			this.panel1.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pbPet)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -338,5 +366,7 @@
 		private System.Windows.Forms.Label label7;
 		private System.Windows.Forms.TextBox txtPetID;
 		private System.Windows.Forms.Label label9;
+		private System.Windows.Forms.PictureBox pbPet;
+		private System.Windows.Forms.Label label10;
 	}
 }

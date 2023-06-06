@@ -62,6 +62,7 @@ namespace prjMidtermTopic.form_Pets
 		{
 			string renamedtargetFilePath = _targetFolderPath + txtPetAvatar.Text;
 
+
 			if (!string.IsNullOrEmpty(filePath))
 			{
 				File.Delete(renamedtargetFilePath);
@@ -86,18 +87,18 @@ namespace prjMidtermTopic.form_Pets
 
 		private void btnPetAvatar_Click(object sender, EventArgs e)
 		{
-			using (OpenFileDialog openFileDialog = new OpenFileDialog())
+			using (OpenFileDialog selectImage = new OpenFileDialog())
 			{
-				openFileDialog.InitialDirectory =
+				selectImage.InitialDirectory =
 					Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
-				openFileDialog.Title = "選擇檔案";
-				openFileDialog.Filter =
+				selectImage.Title = "選擇檔案";
+				selectImage.Filter =
 					"Image files(*.png;*.jpg;*.jpeg;*.gif)|*.png;*.jpg;*.jpeg;*.gif";
-				openFileDialog.Multiselect = false;
+				selectImage.Multiselect = false;
 
-				if (openFileDialog.ShowDialog() == DialogResult.OK)
+				if (selectImage.ShowDialog() == DialogResult.OK)
 				{
-					_originalFilePath = openFileDialog.FileName;
+					_originalFilePath = selectImage.FileName;
 
 					SelectFileToForm(_originalFilePath);
 				}

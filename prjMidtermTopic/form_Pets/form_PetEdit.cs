@@ -25,6 +25,7 @@ namespace prjMidtermTopic.form_Pets
 		private bool _gender;
 		private string _originalFilePath;
 		private string _targetFolderPath = @"images/petavatar/";
+		private string _lasttargetFilePath;
 		private IPetRepo _petRepo;
 		public form_PetEdit(int PetID)
 		{
@@ -72,7 +73,7 @@ namespace prjMidtermTopic.form_Pets
 				radioButtonFemale.Checked = true;
 			}
 
-			btnDeletePetAvatar.Enabled = !string.IsNullOrEmpty(txtPetAvatar.Text)?true:false;
+			btnDeletePetAvatar.Enabled = !string.IsNullOrEmpty(txtPetAvatar.Text) ? true : false;
 		}
 
 		private void SelectFileToForm(string filePath)
@@ -199,12 +200,12 @@ namespace prjMidtermTopic.form_Pets
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show("更新失敗，原因:"+ex.Message);
+				MessageBox.Show("更新失敗，原因:" + ex.Message);
 			}
 
 			IGrid parent = this.Owner as IGrid;
 			//將開啟我的視窗轉型為IGrid，若轉型失敗，不丟出例外而是傳回null
-			if(parent == null)
+			if (parent == null)
 			{
 				MessageBox.Show("開啟我的表單沒有實作IGrid，所以無法通知他");
 			}
@@ -223,7 +224,7 @@ namespace prjMidtermTopic.form_Pets
 			{
 				int rows = servise.Delete(_petID);
 				//回到Form_Pet
-				if(rows > 0)
+				if (rows > 0)
 				{
 					MessageBox.Show("刪除成功");
 				}
@@ -232,7 +233,7 @@ namespace prjMidtermTopic.form_Pets
 					MessageBox.Show("刪除失敗");
 				}
 			}
-			catch(Exception ex)
+			catch (Exception ex)
 			{
 				MessageBox.Show("刪除失敗，原因:" + ex.Message);
 			}
@@ -253,8 +254,24 @@ namespace prjMidtermTopic.form_Pets
 
 		private void btnDeletePetAvatar_Click(object sender, EventArgs e)
 		{
-			DeleteFile(txtPetAvatar.Text);
-			txtPetAvatar.Text =string.Empty;
+			if (File.Exists(_lasttargetFilePath))
+			{
+				try
+				{
+					DeleteFile(txtPetAvatar.Text);
+					txtPetAvatar.Text = string.Empty;
+					btnDeletePetAvatar.Enabled = false;
+				}
+				catch(Exception ex)
+				{
+					MessageBox.Show("刪除失敗，原因：" + ex.Message);
+				}
+			}
+			else
+			{
+				MessageBox.Show("無寵物圖片檔案");
+				btnDeletePetAvatar.Enabled = false;
+			}
 		}
 
 		private void btnUpdatePetAvatar_Click(object sender, EventArgs e)

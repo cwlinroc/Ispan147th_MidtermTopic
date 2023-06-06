@@ -50,6 +50,7 @@
 			this.label8 = new System.Windows.Forms.Label();
 			this.txtSpeciesID = new System.Windows.Forms.TextBox();
 			this.txtBreedID = new System.Windows.Forms.TextBox();
+			this.btnCancelPicture = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
 			this.panel1.SuspendLayout();
 			this.SuspendLayout();
@@ -82,12 +83,12 @@
 			this.txtDescription.Multiline = true;
 			this.txtDescription.Name = "txtDescription";
 			this.txtDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-			this.txtDescription.Size = new System.Drawing.Size(341, 189);
+			this.txtDescription.Size = new System.Drawing.Size(292, 236);
 			this.txtDescription.TabIndex = 6;
 			// 
 			// btnPetAvatar
 			// 
-			this.btnPetAvatar.Location = new System.Drawing.Point(200, 241);
+			this.btnPetAvatar.Location = new System.Drawing.Point(113, 239);
 			this.btnPetAvatar.Name = "btnPetAvatar";
 			this.btnPetAvatar.Size = new System.Drawing.Size(75, 23);
 			this.btnPetAvatar.TabIndex = 8;
@@ -97,7 +98,7 @@
 			// 
 			// btnCreate
 			// 
-			this.btnCreate.Location = new System.Drawing.Point(91, 241);
+			this.btnCreate.Location = new System.Drawing.Point(32, 240);
 			this.btnCreate.Name = "btnCreate";
 			this.btnCreate.Size = new System.Drawing.Size(75, 23);
 			this.btnCreate.TabIndex = 7;
@@ -232,13 +233,24 @@
 			this.txtBreedID.Size = new System.Drawing.Size(184, 22);
 			this.txtBreedID.TabIndex = 2;
 			// 
+			// btnCancelPicture
+			// 
+			this.btnCancelPicture.Location = new System.Drawing.Point(194, 239);
+			this.btnCancelPicture.Name = "btnCancelPicture";
+			this.btnCancelPicture.Size = new System.Drawing.Size(75, 23);
+			this.btnCancelPicture.TabIndex = 8;
+			this.btnCancelPicture.Text = "取消照片";
+			this.btnCancelPicture.UseVisualStyleBackColor = true;
+			this.btnCancelPicture.Click += new System.EventHandler(this.btnPetAvatar_Click);
+			// 
 			// form_PetCreate
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(715, 287);
+			this.ClientSize = new System.Drawing.Size(677, 294);
 			this.Controls.Add(this.panel1);
 			this.Controls.Add(this.txtDescription);
+			this.Controls.Add(this.btnCancelPicture);
 			this.Controls.Add(this.btnPetAvatar);
 			this.Controls.Add(this.btnCreate);
 			this.Controls.Add(this.txtPetAvatar);
@@ -255,6 +267,8 @@
 			this.Controls.Add(this.txtBreedID);
 			this.Controls.Add(this.txtPetName);
 			this.Controls.Add(this.label1);
+			this.MaximumSize = new System.Drawing.Size(693, 333);
+			this.MinimumSize = new System.Drawing.Size(693, 333);
 			this.Name = "form_PetCreate";
 			this.Text = "form_PetCreate";
 			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
@@ -288,5 +302,6 @@
 		private System.Windows.Forms.Label label7;
 		private System.Windows.Forms.TextBox txtSpeciesID;
 		private System.Windows.Forms.TextBox txtBreedID;
+		private System.Windows.Forms.Button btnCancelPicture;
 	}
 }

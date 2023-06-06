@@ -197,6 +197,8 @@
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.txtPetID);
 			this.Controls.Add(this.label1);
+			this.MaximumSize = new System.Drawing.Size(1176, 760);
+			this.MinimumSize = new System.Drawing.Size(1176, 760);
 			this.Name = "form_Pet";
 			this.Text = "Form2";
 			this.Load += new System.EventHandler(this.form_Pet_Load);
