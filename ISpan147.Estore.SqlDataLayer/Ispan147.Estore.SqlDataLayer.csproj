@@ -62,6 +62,7 @@
     <Compile Include="Dtos\EmployeeDto.cs" />
     <Compile Include="Dtos\ForumAccountDto.cs" />
     <Compile Include="Dtos\MemberDto.cs" />
+    <Compile Include="Dtos\MemberSearchDto.cs" />
     <Compile Include="Dtos\MerchandiseConditionSearchDto.cs" />
     <Compile Include="Dtos\MerchandiseSearchDto.cs" />
     <Compile Include="Dtos\MerchandiseDto.cs" />

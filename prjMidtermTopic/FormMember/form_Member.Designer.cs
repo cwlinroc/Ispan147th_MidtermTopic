@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
 			this.label1 = new System.Windows.Forms.Label();
-			this.txtId = new System.Windows.Forms.TextBox();
+			this.txtMemberID = new System.Windows.Forms.TextBox();
 			this.label2 = new System.Windows.Forms.Label();
-			this.txtName = new System.Windows.Forms.TextBox();
+			this.txtMemberName = new System.Windows.Forms.TextBox();
 			this.btnSearch = new System.Windows.Forms.Button();
 			this.dataGridView1 = new System.Windows.Forms.DataGridView();
 			this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,6 +48,9 @@
 			this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.btnAdd = new System.Windows.Forms.Button();
 			this.btnReset = new System.Windows.Forms.Button();
+			this.txtMaxQuery = new System.Windows.Forms.TextBox();
+			this.checkBoxMaxQuery = new System.Windows.Forms.CheckBox();
+			this.label3 = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -55,37 +58,37 @@
 			// 
 			this.label1.AutoSize = true;
 			this.label1.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.label1.Location = new System.Drawing.Point(12, 39);
+			this.label1.Location = new System.Drawing.Point(8, 39);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(90, 24);
 			this.label1.TabIndex = 0;
 			this.label1.Text = "會員編號:";
 			// 
-			// txtId
+			// txtMemberID
 			// 
-			this.txtId.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.txtId.Location = new System.Drawing.Point(108, 36);
-			this.txtId.Name = "txtId";
-			this.txtId.Size = new System.Drawing.Size(100, 33);
-			this.txtId.TabIndex = 0;
+			this.txtMemberID.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.txtMemberID.Location = new System.Drawing.Point(104, 36);
+			this.txtMemberID.Name = "txtMemberID";
+			this.txtMemberID.Size = new System.Drawing.Size(100, 33);
+			this.txtMemberID.TabIndex = 0;
 			// 
 			// label2
 			// 
 			this.label2.AutoSize = true;
 			this.label2.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.label2.Location = new System.Drawing.Point(245, 39);
+			this.label2.Location = new System.Drawing.Point(212, 39);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(52, 24);
 			this.label2.TabIndex = 0;
 			this.label2.Text = "姓名:";
 			// 
-			// txtName
+			// txtMemberName
 			// 
-			this.txtName.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.txtName.Location = new System.Drawing.Point(303, 36);
-			this.txtName.Name = "txtName";
-			this.txtName.Size = new System.Drawing.Size(100, 33);
-			this.txtName.TabIndex = 1;
+			this.txtMemberName.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.txtMemberName.Location = new System.Drawing.Point(270, 36);
+			this.txtMemberName.Name = "txtMemberName";
+			this.txtMemberName.Size = new System.Drawing.Size(100, 33);
+			this.txtMemberName.TabIndex = 1;
 			// 
 			// btnSearch
 			// 
@@ -241,18 +244,53 @@
 			this.btnReset.UseVisualStyleBackColor = true;
 			this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
 			// 
+			// txtMaxQuery
+			// 
+			this.txtMaxQuery.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.txtMaxQuery.Location = new System.Drawing.Point(583, 39);
+			this.txtMaxQuery.Name = "txtMaxQuery";
+			this.txtMaxQuery.Size = new System.Drawing.Size(100, 29);
+			this.txtMaxQuery.TabIndex = 5;
+			this.txtMaxQuery.Text = "100";
+			// 
+			// checkBoxMaxQuery
+			// 
+			this.checkBoxMaxQuery.AutoSize = true;
+			this.checkBoxMaxQuery.Checked = true;
+			this.checkBoxMaxQuery.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.checkBoxMaxQuery.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.checkBoxMaxQuery.Location = new System.Drawing.Point(485, 41);
+			this.checkBoxMaxQuery.Name = "checkBoxMaxQuery";
+			this.checkBoxMaxQuery.Size = new System.Drawing.Size(92, 24);
+			this.checkBoxMaxQuery.TabIndex = 6;
+			this.checkBoxMaxQuery.Text = "最多顯示";
+			this.checkBoxMaxQuery.UseVisualStyleBackColor = true;
+			// 
+			// label3
+			// 
+			this.label3.AutoSize = true;
+			this.label3.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.label3.Location = new System.Drawing.Point(689, 42);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(57, 20);
+			this.label3.TabIndex = 7;
+			this.label3.Text = "筆資料";
+			// 
 			// form_Member
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(1188, 520);
+			this.Controls.Add(this.label3);
+			this.Controls.Add(this.checkBoxMaxQuery);
+			this.Controls.Add(this.txtMaxQuery);
 			this.Controls.Add(this.btnReset);
 			this.Controls.Add(this.btnAdd);
 			this.Controls.Add(this.dataGridView1);
 			this.Controls.Add(this.btnSearch);
-			this.Controls.Add(this.txtName);
+			this.Controls.Add(this.txtMemberName);
 			this.Controls.Add(this.label2);
-			this.Controls.Add(this.txtId);
+			this.Controls.Add(this.txtMemberID);
 			this.Controls.Add(this.label1);
 			this.Name = "form_Member";
 			this.Text = "Form1";
@@ -266,9 +304,9 @@
 		#endregion
 
 		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.TextBox txtId;
+		private System.Windows.Forms.TextBox txtMemberID;
 		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.TextBox txtName;
+		private System.Windows.Forms.TextBox txtMemberName;
 		private System.Windows.Forms.Button btnSearch;
 		private System.Windows.Forms.DataGridView dataGridView1;
 		private System.Windows.Forms.Button btnAdd;
@@ -285,5 +323,8 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
+		private System.Windows.Forms.TextBox txtMaxQuery;
+		private System.Windows.Forms.CheckBox checkBoxMaxQuery;
+		private System.Windows.Forms.Label label3;
 	}
 }

@@ -28,8 +28,7 @@ namespace prjMidtermTopic.FormMember
 			InitializeComponent();
 			_map = new Dictionary<string, Control>(StringComparer.CurrentCultureIgnoreCase)
 			{
-				{ "MemberName", txtMemberName},				
-				//{ "ForumAccountID", txtForumAccountID},
+				{ "MemberName", txtMemberName},
 				{ "NickName", txtNickName},
 				{ "DateOfBirth", DateOfBirthPicker },
 				{ "Gender", radbtnFemale},
@@ -138,7 +137,6 @@ namespace prjMidtermTopic.FormMember
 		private void btnAdd_Click(object sender, EventArgs e)
 		{			
 			string membername = txtMemberName.Text;
-			//int? faccid = Utility.ToNullableInt(txtForumAccountID.Text);
 			string nickname = txtNickName.Text;
 			DateTime dob = DateOfBirthPicker.Value;
 			string acc = txtAccount.Text;
