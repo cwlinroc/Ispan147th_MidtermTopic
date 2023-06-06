@@ -76,7 +76,7 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
 			/// <summary>
 			/// 留言時間
 			/// </summary>
-			public DateTime CommentDateTime { get; set; }
+			public DateTime CommentTime { get; set; }
 
 			/// <summary>
 			/// 留言板內文

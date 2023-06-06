@@ -40,7 +40,7 @@ namespace prjMidtermTopic.form_QA
 			commentDto.ForumAccountId = Convert.ToInt32(labelCommentRoleID.Text);
 			commentDto.ForumAccountName = labelCommentRole.Text;
 			commentDto.CommentContext = richTextBoxComment.Text;
-			commentDto.CommentDateTime = DateTime.Now;
+			commentDto.CommentTime = DateTime.Now;
 			commentDto.ThemeId = this._themeId;
 					
 			var result = _service.CreateComment(commentDto);
