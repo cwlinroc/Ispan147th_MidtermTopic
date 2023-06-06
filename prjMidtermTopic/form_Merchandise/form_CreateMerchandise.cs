@@ -14,7 +14,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using Image = System.Drawing.Image;
 
 namespace prjMidtermTopic.form_Merchandise
 {
@@ -25,12 +27,22 @@ namespace prjMidtermTopic.form_Merchandise
 		private Dictionary<int, string> map = new Dictionary<int, string>();
 		private int _categoryId;
 		private string _imagePath = string.Empty;
+		string defaultImageURL = @"images/MerchendisePicture/default.png";
+	
 		public form_CreateMerchandise()
 		{
 			InitializeComponent();
 
 			_repo = new MerchandiseRepository();
 			_categoryRepository = new CategoryRepository();
+
+			//顯示預設圖片
+			//pictureBox_Image.Image = Image.FromFile(defaultImageURL);
+			//使用Bitmap轉檔，並兩次使用以達到暫存效果(??)並降低系統負擔
+			using (var bmpTemp = new Bitmap(defaultImageURL))
+			{
+				pictureBox_Image.Image = new Bitmap(bmpTemp);
+			}
 
 			//動態生成商品類別資料 for 下拉選單
 			map.Add(0, "未選擇");
@@ -196,6 +208,13 @@ namespace prjMidtermTopic.form_Merchandise
 				MessageBox.Show($"圖片選擇成功,路徑:{imagePath}");
 
 				btn_CancelImage.Enabled = true;
+
+				//顯示預覽圖片
+				//pictureBox_Image.Image = Image.FromFile(imagePath);
+				using (var bmpTemp = new Bitmap(imagePath))
+				{
+					pictureBox_Image.Image = new Bitmap(bmpTemp);
+				}
 			}
 			catch (Exception ex)
 			{
@@ -227,6 +246,11 @@ namespace prjMidtermTopic.form_Merchandise
 		{
 			txt_ImageURL.Text = null;
 			btn_CancelImage.Enabled = false;
+
+			using (var bmpTemp = new Bitmap(defaultImageURL))
+			{
+				pictureBox_Image.Image = new Bitmap(bmpTemp);
+			}
 		}
 		#endregion
 	}
