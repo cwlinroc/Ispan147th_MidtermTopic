@@ -285,9 +285,6 @@
     <Compile Include="ViewModels\OrderListVM.cs" />
     <Compile Include="ViewModels\OrderVM.cs" />
     <Compile Include="ViewModels\QAVM.cs" />
-    <EmbeddedResource Include="FormMember\form_ApplyForumMember.resx">
-      <DependentUpon>form_ApplyForumMember.cs</DependentUpon>
-    </EmbeddedResource>    
     <Compile Include="ViewModels\PetCreateVM.cs" />
     <EmbeddedResource Include="FormMember\form_CreateMember.resx">
       <DependentUpon>form_CreateMember.cs</DependentUpon>
@@ -471,7 +468,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\shutdown.png" />
-    </ItemGroup>
+  </ItemGroup>
   <ItemGroup>
     <None Include="bin\Debug\images\MerchendisePicture\error.png" />
   </ItemGroup>
