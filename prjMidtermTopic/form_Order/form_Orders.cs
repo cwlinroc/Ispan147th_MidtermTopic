@@ -45,6 +45,8 @@ namespace prjMidtermTopic.Form_Order
 
 			comboBox_PaymentMethod.Items.AddRange(Orders.paymentOptions);
 			comboBox_SortBy.Items.AddRange(_orderByColumnName);
+
+			Modifier.ModGridView(dataGridView_Main);
 		}
 
 		//load

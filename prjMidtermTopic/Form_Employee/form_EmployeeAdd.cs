@@ -59,5 +59,7 @@ namespace prjMidtermTopic.Form_Employee
 				MessageBox.Show("輸入失敗，可能原因" + ex.Message);
 			}
 		}
+
+		
 	}
 }
