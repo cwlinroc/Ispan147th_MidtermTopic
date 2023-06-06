@@ -98,6 +98,7 @@
     <Compile Include="Repositories\IOrderListRepositoy.cs" />
     <Compile Include="Repositories\IOrderRepository.cs" />
     <Compile Include="Repositories\IMemberRepo.cs" />
+    <Compile Include="Repositories\IPetRepo.cs" />
     <Compile Include="Repositories\MassInsertRepository.cs" />
     <Compile Include="Repositories\MemberRepository.cs" />
     <Compile Include="Repositories\MerchandiseRepository.cs" />
@@ -106,6 +107,7 @@
     <Compile Include="Repositories\OrderListRepositoryLinq.cs" />
     <Compile Include="Repositories\OrderRepository.cs" />
     <Compile Include="Services\Authentication.cs" />
+    <Compile Include="Repositories\PetRepository.cs" />
     <Compile Include="Services\CategoryService.cs" />
     <Compile Include="Services\EmployeeServices.cs" />
     <Compile Include="Services\MemberService.cs" />
@@ -115,6 +117,7 @@
     <Compile Include="Services\QAService.cs" />
     <Compile Include="Services\OrderListService.cs" />
     <Compile Include="Services\OrderService.cs" />
+    <Compile Include="Services\PetService.cs" />
     <Compile Include="Sqldb.cs" />
     <Compile Include="Dtos\SqlStringCreator.cs" />
     <Compile Include="Utility\RandomGenerator.cs" />

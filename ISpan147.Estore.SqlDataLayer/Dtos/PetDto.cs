@@ -16,6 +16,6 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
         public int Age { get; set; }
         public string Description { get; set; }
         public string Location { get; set; }
-		public string PetAvatar { get; set; }
-	}
+        public string PetAvatar { get; set; }
+    }
 }

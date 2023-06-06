@@ -206,11 +206,23 @@
     <Compile Include="Form_Order\Form_OrderListEdit.Designer.cs">
       <DependentUpon>Form_OrderListEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="form_Pet\form_Pet.cs">
+    <Compile Include="form_Pets\form_Pet.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="form_Pet\form_Pet.Designer.cs">
+    <Compile Include="form_Pets\form_Pet.Designer.cs">
       <DependentUpon>form_Pet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form_Pets\form_PetCreate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form_Pets\form_PetCreate.Designer.cs">
+      <DependentUpon>form_PetCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form_Pets\form_PetEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form_Pets\form_PetEdit.Designer.cs">
+      <DependentUpon>form_PetEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="form_QA\form_QAList.cs">
       <SubType>Form</SubType>
@@ -268,7 +280,8 @@
     <Compile Include="ViewModels\QAVM.cs" />
     <EmbeddedResource Include="FormMember\form_ApplyForumMember.resx">
       <DependentUpon>form_ApplyForumMember.cs</DependentUpon>
-    </EmbeddedResource>
+    </EmbeddedResource>    
+    <Compile Include="ViewModels\PetCreateVM.cs" />
     <EmbeddedResource Include="FormMember\form_CreateMember.resx">
       <DependentUpon>form_CreateMember.cs</DependentUpon>
     </EmbeddedResource>
@@ -337,6 +350,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form_Order\Form_OrderListEdit.resx">
       <DependentUpon>Form_OrderListEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form_Pets\form_Pet.resx">
+      <DependentUpon>form_Pet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form_Pets\form_PetCreate.resx">
+      <DependentUpon>form_PetCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form_Pets\form_PetEdit.resx">
+      <DependentUpon>form_PetEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MassInsert\form_MassInsert.resx">
       <DependentUpon>form_MassInsert.cs</DependentUpon>
