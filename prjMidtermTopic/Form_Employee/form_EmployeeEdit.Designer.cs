@@ -164,7 +164,7 @@
 			this.Controls.Add(this.label1);
 			this.Name = "form_EmployeeEdit";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-			this.Text = "EmployeeResetPassword";
+			this.Text = "修改資料";
 			this.ResumeLayout(false);
 			this.PerformLayout();
 

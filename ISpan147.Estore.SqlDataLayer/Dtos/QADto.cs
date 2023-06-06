@@ -40,7 +40,7 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
 		public class ThemeList
 		{
 			///// <summary>
-			///// 留言板內文
+			///// 主題留言板內文
 			///// </summary>
 			//public string ThemeContext { get; set; }
 
@@ -50,7 +50,7 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
 			//public DateTime ThemeDateTime { get; set; }
 
 			///// <summary>
-			///// 留言板內文
+			///// 主題留言板內文
 			///// </summary>
 			//public string ThemeContext { get; set; }
 		}
@@ -69,8 +69,8 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
 			/// <summary>
 			/// 使用者
 			/// </summary>
-			public int UserId { get; set; }    //EmployeeID or MemberId
-			public string UserName { get; set; }
+			public int ForumAccountId { get; set; }    //EmployeeID or MemberId
+			public string ForumAccountName { get; set; }
 
 
 			/// <summary>
@@ -82,6 +82,23 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
 			/// 留言板內文
 			/// </summary>
 			public string CommentContext { get; set; }
+		}
+		public class CommentList
+		{
+			///// <summary>
+			///// 回覆留言板內文
+			///// </summary>
+			//public string CommentContext { get; set; }
+
+			///// <summary>
+			///// 留言時間
+			///// </summary>
+			//public DateTime CommentTime { get; set; }
+
+			///// <summary>
+			///// 回覆留言板內文
+			///// </summary>
+			//public string CommentContext { get; set; }
 		}
 	}
 }

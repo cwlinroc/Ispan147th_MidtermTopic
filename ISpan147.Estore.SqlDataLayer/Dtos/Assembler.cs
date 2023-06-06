@@ -130,17 +130,33 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
 
 		public static Func<SqlDataReader, QADto.Comment> CommentDtoAssembler
 		{
-			get => (reader) => new QADto.Comment
+			get => (reader) => 
+				new QADto.Comment
 			{
-				ThemeId = reader.GetInt("ThemeId"),
+				//ThemeId = reader.GetInt("ThemeId"),
 				CommentId = reader.GetInt("CommentId"),
-				UserId = reader.GetInt("UserId"),
-				UserName = reader.GetString("UserName"),
-				CommentDateTime = reader.GetDateTime(reader.GetOrdinal("CommentDateTime")),
-				CommentContext = reader.GetString("CommentContext")
+				CommentDateTime = reader.GetDateTime(reader.GetOrdinal("CommentTime")),
+				CommentContext = reader.GetString("CommentContext").Length > 50 ?
+										reader.GetString("CommentContext").Substring(0, 50) + "..." : reader.GetString("CommentContext")
 			};
 
 		}
 
+
+		public static Func<SqlDataReader, PetDto> PetDtoAssembler
+		{
+			get => (reader) => new PetDto
+			{
+				PetID = reader.GetInt("PetID"),
+				SpeciesID = reader.GetInt("SpeciesID"),
+				BreedID = reader.GetInt("BreedID"),
+				PetName = reader.GetString("PetName"),
+				Gender = reader.GetBool("Gender"),
+				Age = reader.GetInt("Age"),
+				Description = reader.GetString("Description"),
+				Location = reader.GetString("Location"),
+				PetAvatar = reader.GetString("PetAvatar")
+			};
+		}
 	}
 }

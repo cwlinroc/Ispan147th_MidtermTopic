@@ -24,7 +24,6 @@ namespace ISpan147.Estore.SqlDataLayer.EFModel
 		public virtual DbSet<Order> Orders { get; set; }
 		public virtual DbSet<Pet> Pets { get; set; }
 		public virtual DbSet<Species> Species { get; set; }
-		public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
 		public virtual DbSet<Theme> Themes { get; set; }
 
 		protected override void OnModelCreating(DbModelBuilder modelBuilder)

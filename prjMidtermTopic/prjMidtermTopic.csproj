@@ -212,11 +212,23 @@
     <Compile Include="Form_Order\Form_OrderListEdit.Designer.cs">
       <DependentUpon>Form_OrderListEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="form_Pet\form_Pet.cs">
+    <Compile Include="form_Pets\form_Pet.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="form_Pet\form_Pet.Designer.cs">
+    <Compile Include="form_Pets\form_Pet.Designer.cs">
       <DependentUpon>form_Pet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form_Pets\form_PetCreate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form_Pets\form_PetCreate.Designer.cs">
+      <DependentUpon>form_PetCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form_Pets\form_PetEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form_Pets\form_PetEdit.Designer.cs">
+      <DependentUpon>form_PetEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="form_QA\form_QAList.cs">
       <SubType>Form</SubType>
@@ -255,6 +267,11 @@
     <Compile Include="MassInsert\form_MassInsert.Designer.cs">
       <DependentUpon>form_MassInsert.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\Modify.cs" />
+    <Compile Include="Model\NoEdgeRenderer.cs" />
+    <Compile Include="Model\RoundButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Model\DisplayGrid.cs" />
     <Compile Include="Model\MyValidator.cs" />
     <Compile Include="Model\PermissionCheck.cs" />
@@ -268,9 +285,7 @@
     <Compile Include="ViewModels\OrderListVM.cs" />
     <Compile Include="ViewModels\OrderVM.cs" />
     <Compile Include="ViewModels\QAVM.cs" />
-    <EmbeddedResource Include="FormMember\form_ApplyForumAccount.resx">
-      <DependentUpon>form_ApplyForumAccount.cs</DependentUpon>
-    </EmbeddedResource>
+    <Compile Include="ViewModels\PetCreateVM.cs" />
     <EmbeddedResource Include="FormMember\form_CreateMember.resx">
       <DependentUpon>form_CreateMember.cs</DependentUpon>
     </EmbeddedResource>
@@ -343,6 +358,15 @@
     <EmbeddedResource Include="Form_Order\Form_OrderListEdit.resx">
       <DependentUpon>Form_OrderListEdit.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="form_Pets\form_Pet.resx">
+      <DependentUpon>form_Pet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form_Pets\form_PetCreate.resx">
+      <DependentUpon>form_PetCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form_Pets\form_PetEdit.resx">
+      <DependentUpon>form_PetEdit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MassInsert\form_MassInsert.resx">
       <DependentUpon>form_MassInsert.cs</DependentUpon>
     </EmbeddedResource>
@@ -390,6 +414,60 @@
       <Project>{9ee28126-8c44-4f99-867d-e316d537541b}</Project>
       <Name>Ispan147.Estore.SqlDataLayer</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\remove.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\closeWin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\maxWin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\minWin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\暫定logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\black-cat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\favicon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Adopt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Category.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Member.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Merchandise.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Order.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Pet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Question.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\empty.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shutdown.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="bin\Debug\images\MerchendisePicture\error.png" />
