@@ -378,7 +378,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Image1.bmp" />
+    <None Include="bin\Debug\images\MerchendisePicture\default.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ISpan147.Estore.SqlDataLayer\Ispan147.Estore.SqlDataLayer.csproj">
@@ -439,6 +439,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\shutdown.png" />
+    </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\images\MerchendisePicture\error.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

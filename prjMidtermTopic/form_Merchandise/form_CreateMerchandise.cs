@@ -27,7 +27,8 @@ namespace prjMidtermTopic.form_Merchandise
 		private Dictionary<int, string> map = new Dictionary<int, string>();
 		private int _categoryId;
 		private string _imagePath = string.Empty;
-		string defaultImageURL = @"images/MerchendisePicture/default.png";
+		//改使用內嵌影像
+		//string defaultImageURL = @"images/MerchendisePicture/default.png";
 	
 		public form_CreateMerchandise()
 		{
@@ -37,13 +38,17 @@ namespace prjMidtermTopic.form_Merchandise
 			_categoryRepository = new CategoryRepository();
 
 			//顯示預設圖片
+			#region 其他圖片載入方法
 			//pictureBox_Image.Image = Image.FromFile(defaultImageURL);
-			//使用Bitmap轉檔，並兩次使用以達到暫存效果(??)並降低系統負擔
-			using (var bmpTemp = new Bitmap(defaultImageURL))
-			{
-				pictureBox_Image.Image = new Bitmap(bmpTemp);
-			}
 
+			//using (var bmpTemp = new Bitmap(defaultImageURL))
+			//{
+			//	pictureBox_Image.Image = new Bitmap(bmpTemp);
+			//}
+			#endregion
+			//使用內嵌影像，不從資料夾讀取，適合於系統預設圖片
+			pictureBox_Image.Image = Properties.Resources._default;
+			
 			//動態生成商品類別資料 for 下拉選單
 			map.Add(0, "未選擇");
 			new CategoryService(_categoryRepository).Search().ForEach(c => map.Add(c.CategoryId, c.CategoryName));
@@ -211,6 +216,7 @@ namespace prjMidtermTopic.form_Merchandise
 
 				//顯示預覽圖片
 				//pictureBox_Image.Image = Image.FromFile(imagePath);
+				//使用Bitmap轉檔，並兩次使用以達到暫存效果(??)並降低系統負擔
 				using (var bmpTemp = new Bitmap(imagePath))
 				{
 					pictureBox_Image.Image = new Bitmap(bmpTemp);
@@ -246,11 +252,8 @@ namespace prjMidtermTopic.form_Merchandise
 		{
 			txt_ImageURL.Text = null;
 			btn_CancelImage.Enabled = false;
-
-			using (var bmpTemp = new Bitmap(defaultImageURL))
-			{
-				pictureBox_Image.Image = new Bitmap(bmpTemp);
-			}
+						
+			pictureBox_Image.Image = Properties.Resources._default;
 		}
 		#endregion
 	}

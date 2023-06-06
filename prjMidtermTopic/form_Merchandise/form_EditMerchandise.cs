@@ -28,8 +28,9 @@ namespace prjMidtermTopic.form_Merchandise
 		private string _newimagePath;
 		private string _iniImageURL;
 		private string _lasttargetFilePath;
-		string defaultImageURL = @"images/MerchendisePicture/default.png";
-		string errorImageURL = @"images/MerchendisePicture/error.png";
+		//改使用內嵌影像
+		//string defaultImageURL = @"images/MerchendisePicture/default.png";
+		//string errorImageURL = @"images/MerchendisePicture/error.png";
 
 		public form_EditMerchandise(int merchandiseId)
 		{
@@ -123,10 +124,11 @@ namespace prjMidtermTopic.form_Merchandise
 				if (string.IsNullOrEmpty(txt_ImageURL.Text))
 				{
 					//pictureBox_Image.Image = Image.FromFile(defaultImageURL);
-					using (var bmpTemp = new Bitmap(defaultImageURL))
-					{
-						pictureBox_Image.Image = new Bitmap(bmpTemp);
-					}
+					//using (var bmpTemp = new Bitmap(defaultImageURL))
+					//{
+					//	pictureBox_Image.Image = new Bitmap(bmpTemp);
+					//}
+					pictureBox_Image.Image = Properties.Resources._default;
 				}
 				else
 				{
@@ -140,10 +142,11 @@ namespace prjMidtermTopic.form_Merchandise
 			catch
 			{
 				//pictureBox_Image.Image = Image.FromFile(errorImageURL);
-				using (var bmpTemp = new Bitmap(errorImageURL))
-				{
-					pictureBox_Image.Image = new Bitmap(bmpTemp);
-				}
+				//using (var bmpTemp = new Bitmap(errorImageURL))
+				//{
+				//	pictureBox_Image.Image = new Bitmap(bmpTemp);
+				//}
+				pictureBox_Image.Image = Properties.Resources._error;
 			}
 			#endregion
 
@@ -247,10 +250,11 @@ namespace prjMidtermTopic.form_Merchandise
 					btn_DeleteImage.Enabled = false;
 
 					//變更預覽圖片
-					using (var bmpTemp = new Bitmap(defaultImageURL))
-					{
-						pictureBox_Image.Image = new Bitmap(bmpTemp);
-					}
+					//using (var bmpTemp = new Bitmap(defaultImageURL))
+					//{
+					//	pictureBox_Image.Image = new Bitmap(bmpTemp);
+					//}
+					pictureBox_Image.Image = Properties.Resources._default;
 				}
 				catch (Exception ex)
 				{
