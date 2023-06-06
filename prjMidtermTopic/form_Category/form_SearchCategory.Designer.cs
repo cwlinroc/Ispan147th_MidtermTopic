@@ -98,10 +98,10 @@
 			// label2
 			// 
 			this.label2.AutoSize = true;
-			this.label2.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.label2.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.label2.Location = new System.Drawing.Point(23, 62);
 			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(89, 20);
+			this.label2.Size = new System.Drawing.Size(90, 21);
 			this.label2.TabIndex = 18;
 			this.label2.Text = "類別名稱：";
 			this.label2.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -117,10 +117,10 @@
 			// label1
 			// 
 			this.label1.AutoSize = true;
-			this.label1.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.label1.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.label1.Location = new System.Drawing.Point(23, 28);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(89, 20);
+			this.label1.Size = new System.Drawing.Size(90, 21);
 			this.label1.TabIndex = 19;
 			this.label1.Text = "類別編號：";
 			this.label1.TextAlign = System.Drawing.ContentAlignment.TopRight;
