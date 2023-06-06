@@ -68,9 +68,9 @@
 			this.toolStripButton_QAForm = new System.Windows.Forms.ToolStripButton();
 			this.toolStripButton_Exit = new System.Windows.Forms.ToolStripButton();
 			this.toolStripButton_LogOut = new System.Windows.Forms.ToolStripButton();
-			this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-			this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-			this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+			this.toolStripButton_SingleForm = new System.Windows.Forms.ToolStripButton();
+			this.toolStripButton_MultiForm = new System.Windows.Forms.ToolStripButton();
+			this.toolStrip_CloseAllForm = new System.Windows.Forms.ToolStripButton();
 			this.toolStrip_Title = new System.Windows.Forms.ToolStrip();
 			this.toolStripButton_Close = new System.Windows.Forms.ToolStripButton();
 			this.toolStripButton_Max = new System.Windows.Forms.ToolStripButton();
@@ -96,7 +96,7 @@
 			this.menuStrip_Main.Location = new System.Drawing.Point(0, 37);
 			this.menuStrip_Main.Name = "menuStrip_Main";
 			this.menuStrip_Main.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-			this.menuStrip_Main.Size = new System.Drawing.Size(1161, 24);
+			this.menuStrip_Main.Size = new System.Drawing.Size(1480, 24);
 			this.menuStrip_Main.TabIndex = 1;
 			this.menuStrip_Main.Text = "menuStrip1";
 			// 
@@ -222,6 +222,9 @@
 			// 
 			// 水平排列ToolStripMenuItem
 			// 
+			this.水平排列ToolStripMenuItem.Checked = true;
+			this.水平排列ToolStripMenuItem.CheckOnClick = true;
+			this.水平排列ToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
 			this.水平排列ToolStripMenuItem.Name = "水平排列ToolStripMenuItem";
 			this.水平排列ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.水平排列ToolStripMenuItem.Text = "水平排列";
@@ -229,6 +232,7 @@
 			// 
 			// 垂直排列ToolStripMenuItem
 			// 
+			this.垂直排列ToolStripMenuItem.CheckOnClick = true;
 			this.垂直排列ToolStripMenuItem.Name = "垂直排列ToolStripMenuItem";
 			this.垂直排列ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.垂直排列ToolStripMenuItem.Text = "垂直排列";
@@ -236,6 +240,7 @@
 			// 
 			// 階梯排列ToolStripMenuItem
 			// 
+			this.階梯排列ToolStripMenuItem.CheckOnClick = true;
 			this.階梯排列ToolStripMenuItem.Name = "階梯排列ToolStripMenuItem";
 			this.階梯排列ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.階梯排列ToolStripMenuItem.Text = "階梯排列";
@@ -274,14 +279,14 @@
 			// 大量輸入ToolStripMenuItem
 			// 
 			this.大量輸入ToolStripMenuItem.Name = "大量輸入ToolStripMenuItem";
-			this.大量輸入ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+			this.大量輸入ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.大量輸入ToolStripMenuItem.Text = "大量輸入";
 			this.大量輸入ToolStripMenuItem.Click += new System.EventHandler(this.大量輸入ToolStripMenuItem_Click);
 			// 
 			// 整理訂單金額ToolStripMenuItem
 			// 
 			this.整理訂單金額ToolStripMenuItem.Name = "整理訂單金額ToolStripMenuItem";
-			this.整理訂單金額ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+			this.整理訂單金額ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.整理訂單金額ToolStripMenuItem.Text = "整理訂單金額";
 			this.整理訂單金額ToolStripMenuItem.Click += new System.EventHandler(this.整理訂單金額ToolStripMenuItem_Click);
 			// 
@@ -301,26 +306,26 @@
 			// 修改密碼ToolStripMenuItem
 			// 
 			this.修改密碼ToolStripMenuItem.Name = "修改密碼ToolStripMenuItem";
-			this.修改密碼ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+			this.修改密碼ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.修改密碼ToolStripMenuItem.Text = "修改個人資料";
 			this.修改密碼ToolStripMenuItem.Click += new System.EventHandler(this.修改個人資料ToolStripMenuItem_Click);
 			// 
 			// 論壇帳號ToolStripMenuItem
 			// 
 			this.論壇帳號ToolStripMenuItem.Name = "論壇帳號ToolStripMenuItem";
-			this.論壇帳號ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+			this.論壇帳號ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.論壇帳號ToolStripMenuItem.Text = "論壇帳號";
 			this.論壇帳號ToolStripMenuItem.Click += new System.EventHandler(this.論壇帳號ToolStripMenuItem_Click);
 			// 
 			// toolStripMenuItem4
 			// 
 			this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-			this.toolStripMenuItem4.Size = new System.Drawing.Size(143, 6);
+			this.toolStripMenuItem4.Size = new System.Drawing.Size(177, 6);
 			// 
 			// 員工管理ToolStripMenuItem
 			// 
 			this.員工管理ToolStripMenuItem.Name = "員工管理ToolStripMenuItem";
-			this.員工管理ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+			this.員工管理ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.員工管理ToolStripMenuItem.Text = "員工管理";
 			this.員工管理ToolStripMenuItem.Click += new System.EventHandler(this.員工管理ToolStripMenuItem_Click);
 			// 
@@ -342,12 +347,12 @@
             this.toolStripButton_Category,
             this.toolStripButton_OrderForm,
             this.toolStripButton_QAForm,
-            this.toolStripButton1,
-            this.toolStripButton2,
-            this.toolStripButton3});
+            this.toolStripButton_SingleForm,
+            this.toolStripButton_MultiForm,
+            this.toolStrip_CloseAllForm});
 			this.toolStrip_Main.Location = new System.Drawing.Point(0, 61);
 			this.toolStrip_Main.Name = "toolStrip_Main";
-			this.toolStrip_Main.Size = new System.Drawing.Size(177, 721);
+			this.toolStrip_Main.Size = new System.Drawing.Size(177, 817);
 			this.toolStrip_Main.TabIndex = 2;
 			this.toolStrip_Main.Text = "toolStrip1";
 			// 
@@ -470,41 +475,44 @@
 			this.toolStripButton_LogOut.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.toolStripButton_LogOut.Click += new System.EventHandler(this.toolStripButton_LogOut_Click);
 			// 
-			// toolStripButton1
+			// toolStripButton_SingleForm
 			// 
-			this.toolStripButton1.ForeColor = System.Drawing.Color.LightGoldenrodYellow;
-			this.toolStripButton1.Image = global::prjMidtermTopic.Properties.Resources.selected;
-			this.toolStripButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.toolStripButton1.Margin = new System.Windows.Forms.Padding(15, 40, 0, 2);
-			this.toolStripButton1.Name = "toolStripButton1";
-			this.toolStripButton1.Size = new System.Drawing.Size(160, 36);
-			this.toolStripButton1.Text = "  單一視窗";
-			this.toolStripButton1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.toolStripButton_SingleForm.ForeColor = System.Drawing.Color.LightGoldenrodYellow;
+			this.toolStripButton_SingleForm.Image = global::prjMidtermTopic.Properties.Resources.selected;
+			this.toolStripButton_SingleForm.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.toolStripButton_SingleForm.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.toolStripButton_SingleForm.Margin = new System.Windows.Forms.Padding(15, 40, 0, 2);
+			this.toolStripButton_SingleForm.Name = "toolStripButton_SingleForm";
+			this.toolStripButton_SingleForm.Size = new System.Drawing.Size(160, 36);
+			this.toolStripButton_SingleForm.Text = "  單一視窗";
+			this.toolStripButton_SingleForm.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.toolStripButton_SingleForm.Click += new System.EventHandler(this.toolStripButton_SingleForm_Click);
 			// 
-			// toolStripButton2
+			// toolStripButton_MultiForm
 			// 
-			this.toolStripButton2.ForeColor = System.Drawing.Color.LightGoldenrodYellow;
-			this.toolStripButton2.Image = global::prjMidtermTopic.Properties.Resources.empty;
-			this.toolStripButton2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.toolStripButton2.Margin = new System.Windows.Forms.Padding(15, 20, 0, 2);
-			this.toolStripButton2.Name = "toolStripButton2";
-			this.toolStripButton2.Size = new System.Drawing.Size(160, 36);
-			this.toolStripButton2.Text = "  水平多重視窗";
-			this.toolStripButton2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.toolStripButton_MultiForm.ForeColor = System.Drawing.Color.LightGoldenrodYellow;
+			this.toolStripButton_MultiForm.Image = global::prjMidtermTopic.Properties.Resources.empty;
+			this.toolStripButton_MultiForm.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.toolStripButton_MultiForm.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.toolStripButton_MultiForm.Margin = new System.Windows.Forms.Padding(15, 20, 0, 2);
+			this.toolStripButton_MultiForm.Name = "toolStripButton_MultiForm";
+			this.toolStripButton_MultiForm.Size = new System.Drawing.Size(160, 36);
+			this.toolStripButton_MultiForm.Text = "  多重視窗";
+			this.toolStripButton_MultiForm.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.toolStripButton_MultiForm.Click += new System.EventHandler(this.toolStripButton_MultiForm_Click);
 			// 
-			// toolStripButton3
+			// toolStrip_CloseAllForm
 			// 
-			this.toolStripButton3.ForeColor = System.Drawing.Color.LightGoldenrodYellow;
-			this.toolStripButton3.Image = global::prjMidtermTopic.Properties.Resources.empty;
-			this.toolStripButton3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.toolStripButton3.Margin = new System.Windows.Forms.Padding(15, 20, 0, 2);
-			this.toolStripButton3.Name = "toolStripButton3";
-			this.toolStripButton3.Size = new System.Drawing.Size(121, 36);
-			this.toolStripButton3.Text = "  關閉所有視窗";
-			this.toolStripButton3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.toolStrip_CloseAllForm.ForeColor = System.Drawing.Color.LightGoldenrodYellow;
+			this.toolStrip_CloseAllForm.Image = global::prjMidtermTopic.Properties.Resources.empty;
+			this.toolStrip_CloseAllForm.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.toolStrip_CloseAllForm.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.toolStrip_CloseAllForm.Margin = new System.Windows.Forms.Padding(15, 20, 0, 2);
+			this.toolStrip_CloseAllForm.Name = "toolStrip_CloseAllForm";
+			this.toolStrip_CloseAllForm.Size = new System.Drawing.Size(160, 36);
+			this.toolStrip_CloseAllForm.Text = "  關閉所有視窗";
+			this.toolStrip_CloseAllForm.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.toolStrip_CloseAllForm.Click += new System.EventHandler(this.toolStrip_CloseAllForm_Click);
 			// 
 			// toolStrip_Title
 			// 
@@ -519,7 +527,7 @@
             this.toolStripLabel1});
 			this.toolStrip_Title.Location = new System.Drawing.Point(0, 0);
 			this.toolStrip_Title.Name = "toolStrip_Title";
-			this.toolStrip_Title.Size = new System.Drawing.Size(1161, 37);
+			this.toolStrip_Title.Size = new System.Drawing.Size(1480, 37);
 			this.toolStrip_Title.TabIndex = 6;
 			this.toolStrip_Title.Text = "toolStrip1";
 			// 
@@ -571,10 +579,10 @@
 			// 
 			this.statusStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(60)))));
 			this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-			this.statusStrip1.Location = new System.Drawing.Point(0, 782);
+			this.statusStrip1.Location = new System.Drawing.Point(0, 878);
 			this.statusStrip1.Name = "statusStrip1";
 			this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 10, 0);
-			this.statusStrip1.Size = new System.Drawing.Size(1161, 22);
+			this.statusStrip1.Size = new System.Drawing.Size(1480, 22);
 			this.statusStrip1.TabIndex = 7;
 			this.statusStrip1.Text = "statusStrip1";
 			// 
@@ -592,7 +600,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(1161, 804);
+			this.ClientSize = new System.Drawing.Size(1480, 900);
 			this.Controls.Add(this.toolStrip_Main);
 			this.Controls.Add(this.menuStrip_Main);
 			this.Controls.Add(this.toolStrip_Title);
@@ -663,9 +671,9 @@
 		private System.Windows.Forms.ToolStripButton toolStripButton_Min;
 		private System.Windows.Forms.ToolStripLabel toolStripLabel1;
 		private System.Windows.Forms.StatusStrip statusStrip1;
-		private System.Windows.Forms.ToolStripButton toolStripButton1;
-		private System.Windows.Forms.ToolStripButton toolStripButton2;
-		private System.Windows.Forms.ToolStripButton toolStripButton3;
+		private System.Windows.Forms.ToolStripButton toolStripButton_SingleForm;
+		private System.Windows.Forms.ToolStripButton toolStripButton_MultiForm;
+		private System.Windows.Forms.ToolStripButton toolStrip_CloseAllForm;
 		private System.Diagnostics.Process process1;
 	}
 }

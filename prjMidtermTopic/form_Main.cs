@@ -22,6 +22,7 @@ namespace prjMidtermTopic
 		private bool _multiMdiChild = false;
 		private bool _logOut = false;
 		private bool _maxed = true;
+		private MdiLayout _mdiLayout = MdiLayout.TileHorizontal;
 		public form_Main()
 		{
 			InitializeComponent();
@@ -115,6 +116,21 @@ namespace prjMidtermTopic
 			showForm(new form_QAList());
 		}
 
+		private void toolStripButton_SingleForm_Click(object sender, EventArgs e)
+		{
+			單一子視窗ToolStripMenuItem.PerformClick();
+		}
+
+		private void toolStripButton_MultiForm_Click(object sender, EventArgs e)
+		{
+			多重子視窗ToolStripMenuItem.PerformClick();
+		}
+
+		private void toolStrip_CloseAllForm_Click(object sender, EventArgs e)
+		{
+			關閉所有視窗ToolStripMenuItem.PerformClick();
+		}
+
 		private void toolStripButton_LogOut_Click(object sender, EventArgs e)
 		{
 			_logOut = true;
@@ -176,9 +192,14 @@ namespace prjMidtermTopic
 		{
 			多重子視窗ToolStripMenuItem.Checked = false;
 			_multiMdiChild = false;
+
+			toolStripButton_SingleForm.Image = Properties.Resources.selected;
+			toolStripButton_MultiForm.Image = Properties.Resources.empty;
+
 			if (ActiveMdiChild != null)
 			{
 				MdiChildren.Where(o => o != ActiveMdiChild).ToList().ForEach(o => o.Close());
+				ActiveMdiChild.WindowState = FormWindowState.Maximized;
 			}
 		}
 
@@ -186,21 +207,39 @@ namespace prjMidtermTopic
 		{
 			單一子視窗ToolStripMenuItem.Checked = false;
 			_multiMdiChild = true;
+
+			toolStripButton_SingleForm.Image = Properties.Resources.empty;
+			toolStripButton_MultiForm.Image = Properties.Resources.selected;
 		}
 
 		private void 水平排列ToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			LayoutMdi(MdiLayout.TileHorizontal);
+			_mdiLayout = MdiLayout.TileHorizontal;
+
+			//水平排列ToolStripMenuItem.Checked = false;
+			垂直排列ToolStripMenuItem.Checked = false;
+			階梯排列ToolStripMenuItem.Checked = false;
 		}
 
 		private void 垂直排列ToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			LayoutMdi(MdiLayout.TileVertical);
+			_mdiLayout = MdiLayout.TileVertical;
+
+			水平排列ToolStripMenuItem.Checked = false;
+			//垂直排列ToolStripMenuItem.Checked = false;
+			階梯排列ToolStripMenuItem.Checked = false;
 		}
 
 		private void 階梯排列ToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			LayoutMdi(MdiLayout.Cascade);
+			_mdiLayout = MdiLayout.Cascade;
+
+			水平排列ToolStripMenuItem.Checked = false;
+			垂直排列ToolStripMenuItem.Checked = false;
+			//階梯排列ToolStripMenuItem.Checked = false;
 		}
 
 		private void 關閉當前視窗ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -287,6 +326,11 @@ namespace prjMidtermTopic
 			frm.WindowState = FormWindowState.Maximized;
 			Modifier.ModForm(frm);
 			frm.Show();
+
+			if(_multiMdiChild)
+			{
+				LayoutMdi(_mdiLayout);
+			}
 		}		
 
 		private void MaximizeWindow()
@@ -307,7 +351,6 @@ namespace prjMidtermTopic
 			this.FormBorderStyle = FormBorderStyle.SizableToolWindow;
 			this.Size = new Size(this.Width * 8 / 10, this.Height * 8 / 10);
 		}
-
-
+		
 	}
 }

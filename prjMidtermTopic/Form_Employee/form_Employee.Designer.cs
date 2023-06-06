@@ -29,15 +29,16 @@
 		private void InitializeComponent()
 		{
 			this.dataGridView_Main = new System.Windows.Forms.DataGridView();
+			this.btn_AddEmployee = new System.Windows.Forms.Button();
+			this.btn_EditData = new System.Windows.Forms.Button();
+			this.btn_RemoveEmployee = new System.Windows.Forms.Button();
+			this.btn_ChangePermission = new System.Windows.Forms.Button();
 			this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.btn_AddEmployee = new System.Windows.Forms.Button();
-			this.btn_EditData = new System.Windows.Forms.Button();
-			this.btn_RemoveEmployee = new System.Windows.Forms.Button();
-			this.btn_ChangePermission = new System.Windows.Forms.Button();
+			this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView_Main)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -54,7 +55,8 @@
             this.Column2,
             this.Column3,
             this.Column4,
-            this.Column5});
+            this.Column5,
+            this.Column6});
 			this.dataGridView_Main.Location = new System.Drawing.Point(33, 42);
 			this.dataGridView_Main.Name = "dataGridView_Main";
 			this.dataGridView_Main.ReadOnly = true;
@@ -62,42 +64,6 @@
 			this.dataGridView_Main.Size = new System.Drawing.Size(445, 373);
 			this.dataGridView_Main.TabIndex = 0;
 			this.dataGridView_Main.SelectionChanged += new System.EventHandler(this.dataGridView_Main_SelectionChanged);
-			// 
-			// Column1
-			// 
-			this.Column1.DataPropertyName = "EmployeeID";
-			this.Column1.HeaderText = "編號";
-			this.Column1.Name = "Column1";
-			this.Column1.ReadOnly = true;
-			// 
-			// Column2
-			// 
-			this.Column2.DataPropertyName = "EmployeeName";
-			this.Column2.HeaderText = "員工姓名";
-			this.Column2.Name = "Column2";
-			this.Column2.ReadOnly = true;
-			// 
-			// Column3
-			// 
-			this.Column3.DataPropertyName = "EmployeeAccount";
-			this.Column3.HeaderText = "帳號";
-			this.Column3.Name = "Column3";
-			this.Column3.ReadOnly = true;
-			// 
-			// Column4
-			// 
-			this.Column4.DataPropertyName = "EmployeePassword";
-			this.Column4.HeaderText = "密碼";
-			this.Column4.Name = "Column4";
-			this.Column4.ReadOnly = true;
-			this.Column4.Visible = false;
-			// 
-			// Column5
-			// 
-			this.Column5.DataPropertyName = "Permission";
-			this.Column5.HeaderText = "權限";
-			this.Column5.Name = "Column5";
-			this.Column5.ReadOnly = true;
 			// 
 			// btn_AddEmployee
 			// 
@@ -143,6 +109,50 @@
 			this.btn_ChangePermission.UseVisualStyleBackColor = true;
 			this.btn_ChangePermission.Click += new System.EventHandler(this.btn_ChangePermission_Click);
 			// 
+			// Column1
+			// 
+			this.Column1.DataPropertyName = "EmployeeID";
+			this.Column1.HeaderText = "編號";
+			this.Column1.Name = "Column1";
+			this.Column1.ReadOnly = true;
+			// 
+			// Column2
+			// 
+			this.Column2.DataPropertyName = "EmployeeName";
+			this.Column2.HeaderText = "員工姓名";
+			this.Column2.Name = "Column2";
+			this.Column2.ReadOnly = true;
+			// 
+			// Column3
+			// 
+			this.Column3.DataPropertyName = "EmployeeAccount";
+			this.Column3.HeaderText = "帳號";
+			this.Column3.Name = "Column3";
+			this.Column3.ReadOnly = true;
+			// 
+			// Column4
+			// 
+			this.Column4.DataPropertyName = "EmployeePassword";
+			this.Column4.HeaderText = "密碼";
+			this.Column4.Name = "Column4";
+			this.Column4.ReadOnly = true;
+			this.Column4.Visible = false;
+			// 
+			// Column5
+			// 
+			this.Column5.DataPropertyName = "Permission";
+			this.Column5.HeaderText = "權限";
+			this.Column5.Name = "Column5";
+			this.Column5.ReadOnly = true;
+			// 
+			// Column6
+			// 
+			this.Column6.DataPropertyName = "ForumAccountID";
+			this.Column6.HeaderText = "論壇ID";
+			this.Column6.Name = "Column6";
+			this.Column6.ReadOnly = true;
+			this.Column6.Visible = false;
+			// 
 			// form_Employee
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -155,7 +165,7 @@
 			this.Controls.Add(this.dataGridView_Main);
 			this.Name = "form_Employee";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-			this.Text = "form_Employee";
+			this.Text = "員工清單";
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView_Main)).EndInit();
 			this.ResumeLayout(false);
 
@@ -173,5 +183,6 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
 	}
 }

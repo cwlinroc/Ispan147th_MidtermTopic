@@ -128,7 +128,7 @@
 			this.Controls.Add(this.txt_EmployeeAccount);
 			this.Controls.Add(this.label1);
 			this.Name = "form_EmployeeAdd";
-			this.Text = "form_EmployeeAdd";
+			this.Text = "新增員工";
 			this.ResumeLayout(false);
 			this.PerformLayout();
 

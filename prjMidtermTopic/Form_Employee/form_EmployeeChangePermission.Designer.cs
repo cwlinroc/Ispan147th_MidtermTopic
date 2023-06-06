@@ -68,7 +68,7 @@
 			this.Controls.Add(this.txt_Permission);
 			this.Controls.Add(this.btn_Change);
 			this.Name = "form_EmployeeChangePermission";
-			this.Text = "form_EmployeeChangePermission";
+			this.Text = "修改權限";
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
