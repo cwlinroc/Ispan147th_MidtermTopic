@@ -21,6 +21,8 @@ namespace prjMidtermTopic.FormMember
 		private string _originalFilePath;
 		private string _targetFolderPath = @"images/avatar/";
 		private IMemberRepo _memberRepo;
+		private string _forumAccountID;//txtForumAccountID
+		private string _password;//txtPassword
 		public form_EditMember(int memberID)
 		{
 			InitializeComponent();
@@ -29,14 +31,14 @@ namespace prjMidtermTopic.FormMember
 			_map = new Dictionary<string, Control>(StringComparer.CurrentCultureIgnoreCase)
 			{
 				{ "MemberName", txtMemberName},
-				{ "ForumAccountID", txtForumAccountID},
+				//{ "ForumAccountID", txtForumAccountID},
 				{ "NickName", txtNickName},
 				{ "DateOfBirth", DateOfBirthPicker},
 				{ "Gender", radbtnFemale},
 				{ "Account", txtAccount},
 				{ "Phone", txtPhone},
 				{ "Address", txtAddress},
-				{ "Password", txtPassword},
+				//{ "Password", txtPassword},
 				{ "Email", txtEmail},
 				{ "Avatar", txtAvatar}
 			};
@@ -53,11 +55,11 @@ namespace prjMidtermTopic.FormMember
 				return;
 			}
 			txtMemberName.Text = dto.MemberName;
-			txtForumAccountID.Text = dto.ForumAccountID.ToString();
+			_forumAccountID = dto.ForumAccountID.ToString();
 			txtNickName.Text = dto.NickName;
 			DateOfBirthPicker.Value = dto.DateOfBirth;
 			txtAccount.Text = dto.Account;
-			txtPassword.Text = dto.Password;
+			_password = dto.Password;
 			txtPhone.Text = dto.Phone;
 			txtAddress.Text = dto.Address;
 			txtEmail.Text = dto.Email;
@@ -73,8 +75,8 @@ namespace prjMidtermTopic.FormMember
 			}
 
 			btnDeleteAvatar.Enabled = !string.IsNullOrEmpty(txtAvatar.Text);
-			btnApplyForumAccount.Enabled = string.IsNullOrEmpty(txtForumAccountID.Text);
-			btnEditForumName.Enabled = !string.IsNullOrEmpty(txtForumAccountID.Text);
+			btnApplyForumAccount.Enabled = string.IsNullOrEmpty(_forumAccountID);
+			btnEditForumName.Enabled = !string.IsNullOrEmpty(_forumAccountID);
 
 			#region 載入預覽圖片
 			try
@@ -221,12 +223,12 @@ namespace prjMidtermTopic.FormMember
 			{
 				MemberID = this._memberID,
 				MemberName = txtMemberName.Text,
-				ForumAccountID = Utility.ToNullableInt(txtForumAccountID.Text),
+				ForumAccountID = Utility.ToNullableInt(_forumAccountID),
 				NickName = txtNickName.Text,
 				DateOfBirth = DateOfBirthPicker.Value,
 				Gender = _gender,
 				Account = txtAccount.Text,
-				Password = txtPassword.Text,
+				Password = _password,
 				Phone = txtPhone.Text,
 				Address = txtAddress.Text,
 				Email = txtEmail.Text,
@@ -337,7 +339,7 @@ namespace prjMidtermTopic.FormMember
 
 		private void btnEditForumName_Click(object sender, EventArgs e)
 		{
-			var frm = new form_EditForumName(int.Parse(txtForumAccountID.Text));
+			var frm = new form_EditForumName(int.Parse(_forumAccountID));
 			frm.ShowDialog();
 		}
 

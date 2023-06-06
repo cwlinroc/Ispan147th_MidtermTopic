@@ -8,6 +8,7 @@ using prjMidtermTopic.FormMember;
 using Ispan147.Estore.SqlDataLayer.Services;
 using ISpan147.Estore.SqlDataLayer.Repositories;
 using System.Linq;
+using prjMidtermTopic.Model;
 
 namespace prjMidtermTopic
 {
@@ -49,8 +50,9 @@ namespace prjMidtermTopic
 			if (e.RowIndex < 0) return; // 按到了header,不處理
 
 			int id = this._data[e.RowIndex].MemberID;
-
+			
 			var frm = new form_EditMember(id);
+			Modifier.ModForm(frm);
 			frm.Owner = this;
 			frm.ShowDialog();
 		}
@@ -59,6 +61,7 @@ namespace prjMidtermTopic
 		{
 			var frm = new form_CreateMember();
 			frm.Owner = this;
+			Modifier.ModForm(frm);
 			frm.ShowDialog();
 		}
 

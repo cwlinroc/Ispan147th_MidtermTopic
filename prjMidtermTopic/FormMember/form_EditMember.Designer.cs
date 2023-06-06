@@ -54,11 +54,7 @@
 			this.btnUploadAvatar = new System.Windows.Forms.Button();
 			this.btnDeleteAvatar = new System.Windows.Forms.Button();
 			this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-			this.txtForumAccountID = new System.Windows.Forms.TextBox();
-			this.label1 = new System.Windows.Forms.Label();
-			this.txtPassword = new System.Windows.Forms.TextBox();
 			this.btnApplyForumAccount = new System.Windows.Forms.Button();
-			this.label9 = new System.Windows.Forms.Label();
 			this.btnEditForumName = new System.Windows.Forms.Button();
 			this.pictureBoxAvatar = new System.Windows.Forms.PictureBox();
 			this.panel1.SuspendLayout();
@@ -71,7 +67,7 @@
 			this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.btnDelete.AutoSize = true;
 			this.btnDelete.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.btnDelete.Location = new System.Drawing.Point(349, 532);
+			this.btnDelete.Location = new System.Drawing.Point(349, 495);
 			this.btnDelete.Name = "btnDelete";
 			this.btnDelete.Size = new System.Drawing.Size(71, 30);
 			this.btnDelete.TabIndex = 12;
@@ -84,7 +80,7 @@
 			this.btnUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.btnUpdate.AutoSize = true;
 			this.btnUpdate.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.btnUpdate.Location = new System.Drawing.Point(349, 496);
+			this.btnUpdate.Location = new System.Drawing.Point(349, 459);
 			this.btnUpdate.Name = "btnUpdate";
 			this.btnUpdate.Size = new System.Drawing.Size(71, 30);
 			this.btnUpdate.TabIndex = 11;
@@ -287,7 +283,7 @@
 			this.btnUploadAvatar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.btnUploadAvatar.AutoSize = true;
 			this.btnUploadAvatar.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.btnUploadAvatar.Location = new System.Drawing.Point(22, 372);
+			this.btnUploadAvatar.Location = new System.Drawing.Point(12, 390);
 			this.btnUploadAvatar.Name = "btnUploadAvatar";
 			this.btnUploadAvatar.Size = new System.Drawing.Size(127, 30);
 			this.btnUploadAvatar.TabIndex = 9;
@@ -301,7 +297,7 @@
 			this.btnDeleteAvatar.AutoSize = true;
 			this.btnDeleteAvatar.Enabled = false;
 			this.btnDeleteAvatar.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.btnDeleteAvatar.Location = new System.Drawing.Point(164, 372);
+			this.btnDeleteAvatar.Location = new System.Drawing.Point(148, 390);
 			this.btnDeleteAvatar.Name = "btnDeleteAvatar";
 			this.btnDeleteAvatar.Size = new System.Drawing.Size(127, 30);
 			this.btnDeleteAvatar.TabIndex = 10;
@@ -313,40 +309,12 @@
 			// 
 			this.errorProvider1.ContainerControl = this;
 			// 
-			// txtForumAccountID
-			// 
-			this.txtForumAccountID.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.txtForumAccountID.Location = new System.Drawing.Point(945, 21);
-			this.txtForumAccountID.Name = "txtForumAccountID";
-			this.txtForumAccountID.ReadOnly = true;
-			this.txtForumAccountID.Size = new System.Drawing.Size(173, 29);
-			this.txtForumAccountID.TabIndex = 1;
-			// 
-			// label1
-			// 
-			this.label1.AutoSize = true;
-			this.label1.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.label1.Location = new System.Drawing.Point(830, 24);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(109, 20);
-			this.label1.TabIndex = 43;
-			this.label1.Text = "論壇帳戶編號:";
-			// 
-			// txtPassword
-			// 
-			this.txtPassword.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.txtPassword.Location = new System.Drawing.Point(945, 74);
-			this.txtPassword.Name = "txtPassword";
-			this.txtPassword.ReadOnly = true;
-			this.txtPassword.Size = new System.Drawing.Size(173, 29);
-			this.txtPassword.TabIndex = 44;
-			// 
 			// btnApplyForumAccount
 			// 
 			this.btnApplyForumAccount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.btnApplyForumAccount.AutoSize = true;
 			this.btnApplyForumAccount.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.btnApplyForumAccount.Location = new System.Drawing.Point(456, 496);
+			this.btnApplyForumAccount.Location = new System.Drawing.Point(456, 459);
 			this.btnApplyForumAccount.Name = "btnApplyForumAccount";
 			this.btnApplyForumAccount.Size = new System.Drawing.Size(154, 30);
 			this.btnApplyForumAccount.TabIndex = 45;
@@ -354,22 +322,12 @@
 			this.btnApplyForumAccount.UseVisualStyleBackColor = true;
 			this.btnApplyForumAccount.Click += new System.EventHandler(this.btnApplyForumAccount_Click);
 			// 
-			// label9
-			// 
-			this.label9.AutoSize = true;
-			this.label9.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.label9.Location = new System.Drawing.Point(894, 77);
-			this.label9.Name = "label9";
-			this.label9.Size = new System.Drawing.Size(45, 20);
-			this.label9.TabIndex = 46;
-			this.label9.Text = "密碼:";
-			// 
 			// btnEditForumName
 			// 
 			this.btnEditForumName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.btnEditForumName.AutoSize = true;
 			this.btnEditForumName.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.btnEditForumName.Location = new System.Drawing.Point(456, 532);
+			this.btnEditForumName.Location = new System.Drawing.Point(456, 495);
 			this.btnEditForumName.Name = "btnEditForumName";
 			this.btnEditForumName.Size = new System.Drawing.Size(154, 30);
 			this.btnEditForumName.TabIndex = 45;
@@ -389,14 +347,10 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(653, 572);
+			this.ClientSize = new System.Drawing.Size(666, 535);
 			this.Controls.Add(this.pictureBoxAvatar);
-			this.Controls.Add(this.label9);
 			this.Controls.Add(this.btnEditForumName);
 			this.Controls.Add(this.btnApplyForumAccount);
-			this.Controls.Add(this.txtPassword);
-			this.Controls.Add(this.txtForumAccountID);
-			this.Controls.Add(this.label1);
 			this.Controls.Add(this.btnDeleteAvatar);
 			this.Controls.Add(this.btnUploadAvatar);
 			this.Controls.Add(this.panel1);
@@ -458,11 +412,7 @@
 		private System.Windows.Forms.Button btnUploadAvatar;
 		private System.Windows.Forms.Button btnDeleteAvatar;
 		private System.Windows.Forms.ErrorProvider errorProvider1;
-		private System.Windows.Forms.TextBox txtForumAccountID;
-		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.TextBox txtPassword;
 		private System.Windows.Forms.Button btnApplyForumAccount;
-		private System.Windows.Forms.Label label9;
 		private System.Windows.Forms.Button btnEditForumName;
 		private System.Windows.Forms.PictureBox pictureBoxAvatar;
 	}
