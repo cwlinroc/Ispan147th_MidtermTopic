@@ -13,7 +13,7 @@ namespace prjMidtermTopic.Model
 	{
 		static public void ModForm(Form frm)
 		{
-			frm.BackColor = Color.AliceBlue;
+			frm.BackColor = Color.FromArgb(200,240,250);//	#97 CB FF   151  220 256
 			frm.ShowIcon = false;
 			frm.FormBorderStyle = FormBorderStyle.Sizable;
 			frm.AutoScroll = true;

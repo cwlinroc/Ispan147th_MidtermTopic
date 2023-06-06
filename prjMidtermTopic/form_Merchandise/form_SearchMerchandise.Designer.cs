@@ -173,10 +173,10 @@
 			// label2
 			// 
 			this.label2.AutoSize = true;
-			this.label2.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.label2.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.label2.Location = new System.Drawing.Point(21, 52);
 			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(89, 20);
+			this.label2.Size = new System.Drawing.Size(90, 21);
 			this.label2.TabIndex = 7;
 			this.label2.Text = "商品名稱：";
 			this.label2.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -192,10 +192,10 @@
 			// label1
 			// 
 			this.label1.AutoSize = true;
-			this.label1.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.label1.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.label1.Location = new System.Drawing.Point(21, 16);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(89, 20);
+			this.label1.Size = new System.Drawing.Size(90, 21);
 			this.label1.TabIndex = 8;
 			this.label1.Text = "商品編號：";
 			this.label1.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -214,10 +214,10 @@
 			// labCategoryName
 			// 
 			this.labCategoryName.AutoSize = true;
-			this.labCategoryName.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.labCategoryName.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.labCategoryName.Location = new System.Drawing.Point(275, 34);
 			this.labCategoryName.Name = "labCategoryName";
-			this.labCategoryName.Size = new System.Drawing.Size(89, 20);
+			this.labCategoryName.Size = new System.Drawing.Size(90, 21);
 			this.labCategoryName.TabIndex = 12;
 			this.labCategoryName.Text = "商品類別：";
 			this.labCategoryName.TextAlign = System.Drawing.ContentAlignment.TopRight;
