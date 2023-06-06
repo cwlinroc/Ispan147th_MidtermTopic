@@ -16,10 +16,6 @@ namespace ISpan147.Estore.SqlDataLayer.EFModel
 
         public int ThemeID { get; set; }
 
-        [Required]
-        [StringLength(15)]
-        public string ThemeName { get; set; }
-
         public DateTime ThemeDateTime { get; set; }
 
         [Required]

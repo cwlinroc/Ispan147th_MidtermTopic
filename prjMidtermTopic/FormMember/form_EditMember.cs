@@ -1,16 +1,14 @@
 ﻿using Ispan147.Estore.SqlDataLayer.Repositories;
 using Ispan147.Estore.SqlDataLayer.Services;
 using ISpan147.Estore.SqlDataLayer.Dtos;
-using ISpan147.Estore.SqlDataLayer.ExtMethods;
+using ISpan147.Estore.SqlDataLayer.Utility;
 using prjMidtermTopic.Interfaces;
 using prjMidtermTopic.Model;
 using prjMidtermTopic.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Net;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace prjMidtermTopic.FormMember
 {
@@ -30,12 +28,14 @@ namespace prjMidtermTopic.FormMember
 			_map = new Dictionary<string, Control>(StringComparer.CurrentCultureIgnoreCase)
 			{
 				{ "MemberName", txtMemberName},
+				{ "ForumAccountID", txtForumAccountID},
 				{ "NickName", txtNickName},
-				{ "DateOfBirth", DateOfBirthPicker },
+				{ "DateOfBirth", DateOfBirthPicker},
 				{ "Gender", radbtnFemale},
-				{ "Account", txtAccount},				
+				{ "Account", txtAccount},
 				{ "Phone", txtPhone},
 				{ "Address", txtAddress},
+				{ "Password", txtPassword},
 				{ "Email", txtEmail},
 				{ "Avatar", txtAvatar}
 			};
@@ -50,11 +50,13 @@ namespace prjMidtermTopic.FormMember
 			{
 				MessageBox.Show("找不到紀錄");
 				return;
-			}			
+			}
 			txtMemberName.Text = dto.MemberName;
+			txtForumAccountID.Text = dto.ForumAccountID.ToString();
 			txtNickName.Text = dto.NickName;
 			DateOfBirthPicker.Value = dto.DateOfBirth;
-			txtAccount.Text = dto.Account;			
+			txtAccount.Text = dto.Account;
+			txtPassword.Text = dto.Password;
 			txtPhone.Text = dto.Phone;
 			txtAddress.Text = dto.Address;
 			txtEmail.Text = dto.Email;
@@ -69,7 +71,9 @@ namespace prjMidtermTopic.FormMember
 				radbtnFemale.Checked = true;
 			}
 
-			btnDeleteAvatar.Enabled = !string.IsNullOrEmpty(txtAvatar.Text) ? true : false;
+			btnDeleteAvatar.Enabled = !string.IsNullOrEmpty(txtAvatar.Text);
+			btnApplyForumAccount.Enabled = string.IsNullOrEmpty(txtForumAccountID.Text);
+			btnEditForumName.Enabled = !string.IsNullOrEmpty(txtForumAccountID.Text);
 		}
 
 		private void SelectFileToForm(string filePath)
@@ -92,11 +96,11 @@ namespace prjMidtermTopic.FormMember
 
 		private void UploadFileToDb(string filePath)
 		{
-			string renamedtargetFilePath = _targetFolderPath + txtAvatar.Text;
+			string targetFilePath = _targetFolderPath + txtAvatar.Text;
 
 			if (!string.IsNullOrEmpty(filePath))
 			{
-				File.Delete(renamedtargetFilePath);
+				File.Delete(targetFilePath);
 			}
 			else
 			{
@@ -104,29 +108,32 @@ namespace prjMidtermTopic.FormMember
 			}
 			try
 			{
-				File.Copy(filePath, renamedtargetFilePath);
+				File.Copy(filePath, targetFilePath);
 
-				MessageBox.Show($"上傳成功,路徑:{renamedtargetFilePath}");
+				MessageBox.Show($"上傳成功,路徑:{targetFilePath}");
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show($"上傳失敗,{ex.Message}");
+				MessageBox.Show($"上傳失敗,原因:{ex.Message}");
 			}
 		}
 
 		private void DeleteFile(string filePath)
 		{
-			string renamedtargetFilePath = _targetFolderPath + filePath;
+			string targetFilePath = _targetFolderPath + filePath;
 			try
 			{
-				if (File.Exists(renamedtargetFilePath))
+				if (File.Exists(targetFilePath))
 				{
-					File.Delete(renamedtargetFilePath);
+					File.Delete(targetFilePath);
 					MessageBox.Show("刪除成功");
 				}
 
 			}
-			catch (Exception ex) { MessageBox.Show($"刪除失敗,原因:{ex.Message}"); }
+			catch (Exception ex)
+			{
+				MessageBox.Show($"刪除失敗,原因:{ex.Message}");
+			}
 		}
 
 		private void DateOfBirthPicker_ValueChanged(object sender, EventArgs e)
@@ -180,16 +187,17 @@ namespace prjMidtermTopic.FormMember
 		}
 
 		private void btnUpdate_Click(object sender, EventArgs e)
-		{		
-
+		{
 			var vm = new MemberCreateVM()
 			{
 				MemberID = this._memberID,
 				MemberName = txtMemberName.Text,
+				ForumAccountID = Utility.ToNullableInt(txtForumAccountID.Text),
 				NickName = txtNickName.Text,
 				DateOfBirth = DateOfBirthPicker.Value,
 				Gender = _gender,
 				Account = txtAccount.Text,
+				Password = txtPassword.Text,
 				Phone = txtPhone.Text,
 				Address = txtAddress.Text,
 				Email = txtEmail.Text,
@@ -204,6 +212,7 @@ namespace prjMidtermTopic.FormMember
 			{
 				MemberID = vm.MemberID,
 				MemberName = vm.MemberName,
+				ForumAccountID = vm.ForumAccountID,
 				NickName = vm.NickName,
 				DateOfBirth = vm.DateOfBirth,
 				Gender = vm.Gender.Value,
@@ -256,7 +265,6 @@ namespace prjMidtermTopic.FormMember
 			try
 			{
 				int rows = service.Delete(_memberID);
-				//回到FormCategories
 				if (rows > 0)
 				{
 					MessageBox.Show("刪除成功");
@@ -287,8 +295,23 @@ namespace prjMidtermTopic.FormMember
 		private void btnDeleteAvatar_Click(object sender, EventArgs e)
 		{
 			DeleteFile(txtAvatar.Text);
-			txtAvatar.Text = string.Empty;
+			txtAvatar.Text = null;
 		}
+
+		private void btnApplyForumAccount_Click(object sender, EventArgs e)
+		{
+			var frm = new form_ApplyForumAccount(_memberID);
+			frm.ShowDialog();
+		}
+
+		private void btnEditForumName_Click(object sender, EventArgs e)
+		{
+			var frm = new form_EditForumName(int.Parse(txtForumAccountID.Text));
+			frm.ShowDialog();
+		}
+
 		#endregion
+
+
 	}
 }

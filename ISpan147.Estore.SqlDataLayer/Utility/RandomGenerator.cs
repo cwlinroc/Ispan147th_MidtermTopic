@@ -108,7 +108,7 @@ namespace ISpan147.Estore.SqlDataLayer.Utility
 				Price = _rand.Next(50, 3000),
 				Amount = _rand.Next(70),
 				Description = RandomChance(70) ? merchandiseName : null,
-				//ImageURL = RandomChance(60) ? RandomEnString() + ".jpg" : null,
+				ImageURL = RandomChance(60) ? RandomEnString() + ".jpg" : null,
 			};
 		}
 

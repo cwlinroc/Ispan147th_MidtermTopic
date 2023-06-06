@@ -22,6 +22,7 @@ namespace prjMidtermTopic.Form_Employee
 		private int _row = 0;
 		public form_Employee()
 		{
+
 			InitializeComponent();
 			Load += Form_Employee_Load;
 		}
@@ -43,10 +44,11 @@ namespace prjMidtermTopic.Form_Employee
 			frm.ShowDialog();
 		}
 
-		private void btn_ResetPassword_Click(object sender, EventArgs e)
+		private void btn_EdditData_Click(object sender, EventArgs e)
 		{
 			var dto = _data[_row];
-			var frm = new form_EmployeeResetPassword(dto);
+			var frm = new form_EmployeeEdit(dto);
+			frm.Owner = this;
 			frm.ShowDialog();
 		}
 
@@ -60,6 +62,9 @@ namespace prjMidtermTopic.Form_Employee
 
 		private void btn_RemoveEmployee_Click(object sender, EventArgs e)
 		{
+			DialogResult dialogResult = MessageBox.Show("確定篩除該項目？", "確認刪除", MessageBoxButtons.YesNo);
+			if (dialogResult == DialogResult.No) return;
+
 			try
 			{
 				var dto = _data[_row];

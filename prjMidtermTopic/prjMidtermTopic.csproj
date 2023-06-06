@@ -62,11 +62,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormMember\form_ApplyForumAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMember\form_ApplyForumAccount.Designer.cs">
+      <DependentUpon>form_ApplyForumAccount.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormMember\form_CreateMember.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormMember\form_CreateMember.Designer.cs">
       <DependentUpon>form_CreateMember.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormMember\form_EditForumName.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMember\form_EditForumName.Designer.cs">
+      <DependentUpon>form_EditForumName.cs</DependentUpon>
     </Compile>
     <Compile Include="FormMember\form_EditMember.cs">
       <SubType>Form</SubType>
@@ -95,17 +107,23 @@
     <Compile Include="form_Category\form_SearchCategory.Designer.cs">
       <DependentUpon>form_SearchCategory.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form_Employee\form_EmployeeForumAccountAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Employee\form_EmployeeForumAccountAdd.Designer.cs">
+      <DependentUpon>form_EmployeeForumAccountAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form_Employee\form_EmployeeChangePermission.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form_Employee\form_EmployeeChangePermission.Designer.cs">
       <DependentUpon>form_EmployeeChangePermission.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form_Employee\form_EmployeeResetPassword.cs">
+    <Compile Include="Form_Employee\form_EmployeeEdit.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form_Employee\form_EmployeeResetPassword.Designer.cs">
-      <DependentUpon>form_EmployeeResetPassword.cs</DependentUpon>
+    <Compile Include="Form_Employee\form_EmployeeEdit.Designer.cs">
+      <DependentUpon>form_EmployeeEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="Form_Employee\form_Employee.cs">
       <SubType>Form</SubType>
@@ -118,6 +136,12 @@
     </Compile>
     <Compile Include="Form_Employee\form_EmployeeAdd.Designer.cs">
       <DependentUpon>form_EmployeeAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_Employee\form_EmployeeForumAccountEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Employee\form_EmployeeForumAccountEdit.Designer.cs">
+      <DependentUpon>form_EmployeeForumAccountEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="form_LogIn.cs">
       <SubType>Form</SubType>
@@ -218,11 +242,23 @@
     <Compile Include="form_Main.Designer.cs">
       <DependentUpon>form_Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="form_QA\from_QACreate.cs">
+    <Compile Include="form_QA\Form_ThemeCommemt.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="form_QA\from_QACreate.Designer.cs">
-      <DependentUpon>from_QACreate.cs</DependentUpon>
+    <Compile Include="form_QA\Form_ThemeCommemt.Designer.cs">
+      <DependentUpon>Form_ThemeCommemt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form_QA\from_CommentCreate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form_QA\from_CommentCreate.Designer.cs">
+      <DependentUpon>from_CommentCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form_QA\from_ThemeCreate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form_QA\from_ThemeCreate.Designer.cs">
+      <DependentUpon>from_ThemeCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\IGrid.cs" />
     <Compile Include="MassInsert\form_MassInsert.cs">
@@ -231,18 +267,30 @@
     <Compile Include="MassInsert\form_MassInsert.Designer.cs">
       <DependentUpon>form_MassInsert.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\Modify.cs" />
+    <Compile Include="Model\NoEdgeRenderer.cs" />
+    <Compile Include="Model\RoundButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Model\DisplayGrid.cs" />
     <Compile Include="Model\MyValidator.cs" />
+    <Compile Include="Model\PermissionCheck.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utility\Utility.cs" />
     <Compile Include="ViewModels\CategoryCreateVM.cs" />
+    <Compile Include="ViewModels\ForumAccountVM.cs" />
     <Compile Include="ViewModels\MemberCreateVM.cs" />
     <Compile Include="ViewModels\MerchandiseCreateVM.cs" />
     <Compile Include="ViewModels\OrderListVM.cs" />
     <Compile Include="ViewModels\OrderVM.cs" />
+    <Compile Include="ViewModels\QAVM.cs" />
     <Compile Include="ViewModels\PetCreateVM.cs" />
     <EmbeddedResource Include="FormMember\form_CreateMember.resx">
       <DependentUpon>form_CreateMember.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMember\form_EditForumName.resx">
+      <DependentUpon>form_EditForumName.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormMember\form_EditMember.resx">
       <DependentUpon>form_EditMember.cs</DependentUpon>
@@ -256,17 +304,23 @@
     <EmbeddedResource Include="form_Category\form_SearchCategory.resx">
       <DependentUpon>form_SearchCategory.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form_Employee\form_EmployeeForumAccountAdd.resx">
+      <DependentUpon>form_EmployeeForumAccountAdd.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form_Employee\form_EmployeeChangePermission.resx">
       <DependentUpon>form_EmployeeChangePermission.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form_Employee\form_EmployeeResetPassword.resx">
-      <DependentUpon>form_EmployeeResetPassword.cs</DependentUpon>
+    <EmbeddedResource Include="Form_Employee\form_EmployeeEdit.resx">
+      <DependentUpon>form_EmployeeEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_Employee\form_Employee.resx">
       <DependentUpon>form_Employee.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_Employee\form_EmployeeAdd.resx">
       <DependentUpon>form_EmployeeAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Employee\form_EmployeeForumAccountEdit.resx">
+      <DependentUpon>form_EmployeeForumAccountEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="form_LogIn.resx">
       <DependentUpon>form_LogIn.cs</DependentUpon>
@@ -319,8 +373,14 @@
     <EmbeddedResource Include="form_QA\form_QAList.resx">
       <DependentUpon>form_QAList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="form_QA\from_QACreate.resx">
-      <DependentUpon>from_QACreate.cs</DependentUpon>
+    <EmbeddedResource Include="form_QA\Form_ThemeCommemt.resx">
+      <DependentUpon>Form_ThemeCommemt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form_QA\from_CommentCreate.resx">
+      <DependentUpon>from_CommentCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form_QA\from_ThemeCreate.resx">
+      <DependentUpon>from_ThemeCreate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -348,12 +408,72 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\貓頭.jpg" />
+     </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\images\MerchendisePicture\default.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ISpan147.Estore.SqlDataLayer\Ispan147.Estore.SqlDataLayer.csproj">
       <Project>{9ee28126-8c44-4f99-867d-e316d537541b}</Project>
       <Name>Ispan147.Estore.SqlDataLayer</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\remove.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\closeWin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\maxWin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\minWin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\暫定logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\black-cat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\favicon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Adopt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Category.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Member.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Merchandise.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Order.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Pet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Question.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\empty.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shutdown.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\images\MerchendisePicture\error.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -1,6 +1,7 @@
 ﻿using Ispan147.Estore.SqlDataLayer.Repositories;
 using ISpan147.Estore.SqlDataLayer.Dtos;
 using ISpan147.Estore.SqlDataLayer.EFModel;
+using ISpan147.Estore.SqlDataLayer.Repositories;
 using prjMidtermTopic.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -50,6 +51,11 @@ namespace Ispan147.Estore.SqlDataLayer.Services
 		public int Delete(int MemberID)
 		{
 			return _repo.Delete(MemberID);
+		}
+
+		public IEnumerable<MemberDto> Search(MemberSearchDto sDto)
+		{
+			return new MemberRepository().Search(sDto);
 		}
 	}
 }

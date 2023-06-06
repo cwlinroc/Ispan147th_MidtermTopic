@@ -15,6 +15,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using Image = System.Drawing.Image;
 
 namespace prjMidtermTopic.form_Merchandise
 {
@@ -27,6 +28,10 @@ namespace prjMidtermTopic.form_Merchandise
 		private string _newimagePath;
 		private string _iniImageURL;
 		private string _lasttargetFilePath;
+		//改使用內嵌影像
+		//string defaultImageURL = @"images/MerchendisePicture/default.png";
+		//string errorImageURL = @"images/MerchendisePicture/error.png";
+
 		public form_EditMerchandise(int merchandiseId)
 		{
 			_merchandiseId = merchandiseId;
@@ -98,21 +103,77 @@ namespace prjMidtermTopic.form_Merchandise
 				return;
 			}
 
+			#region 載入輸入欄資料
 			txt_MerchandiseId.Text = dto.MerchandiseID.ToString();
-			txt_MerchandiseName.Text = dto.MerchandiseName.ToString();
+			txt_MerchandiseName.Text = dto.MerchandiseName;
 			comboBox_CategoryId.SelectedItem = comboBox_CategoryId.Items.Cast<dynamic>()
 														.FirstOrDefault(x => x.Key == dto.CategoryID);
 			txt_Price.Text = dto.Price.ToString();
 			txt_Amount.Text = dto.Amount.ToString();
-			txt_Description.Text = dto.Description.ToString();
-			txt_ImageURL.Text = dto.ImageURL.ToString();
+			txt_Description.Text = dto.Description;
+			txt_ImageURL.Text = dto.ImageURL;
 
-			_iniImageURL = dto.ImageURL.ToString();
-			_lasttargetFilePath = @"images/MerchendisePicture/" + dto.ImageURL.ToString();
+			_iniImageURL = dto.ImageURL;
+			_lasttargetFilePath = @"images/MerchendisePicture/" + dto.ImageURL;
+			#endregion
 
-			btn_DeleteImage.Enabled = (txt_ImageURL.Text.Length > 0) ? true : false;
+			#region 載入預覽圖片
+			//使用Bitmap轉檔，並兩次使用以達到暫存效果(??)並降低系統負擔
+			try
+			{
+				if (string.IsNullOrEmpty(txt_ImageURL.Text))
+				{
+					//pictureBox_Image.Image = Image.FromFile(defaultImageURL);
+					//using (var bmpTemp = new Bitmap(defaultImageURL))
+					//{
+					//	pictureBox_Image.Image = new Bitmap(bmpTemp);
+					//}
+					pictureBox_Image.Image = Properties.Resources._default;
+				}
+				else
+				{
+					//pictureBox_Image.Image = Image.FromFile(_lasttargetFilePath);
+					using (var bmpTemp = new Bitmap(_lasttargetFilePath))
+					{
+						pictureBox_Image.Image = new Bitmap(bmpTemp);
+					}
+				}
+			}
+			catch
+			{
+				//pictureBox_Image.Image = Image.FromFile(errorImageURL);
+				//using (var bmpTemp = new Bitmap(errorImageURL))
+				//{
+				//	pictureBox_Image.Image = new Bitmap(bmpTemp);
+				//}
+				pictureBox_Image.Image = Properties.Resources._error;
+			}
+			#endregion
+
+			#region 限制按鈕使用權限
+			btn_DeleteImage.Enabled = (string.IsNullOrEmpty(txt_ImageURL.Text)) ? false : true;
+
+			//權限限制關閉按鈕
+			if (Authentication.Permission >= 5)
+			{
+				btn_SelectNewImage.Enabled = false;
+				btn_DeleteImage.Enabled = false;
+				btn_Update.Enabled = false;
+				txt_MerchandiseName.ReadOnly = true;
+				comboBox_CategoryId.Enabled = false;
+				txt_Price.ReadOnly = true;
+				txt_Amount.ReadOnly = true;
+				txt_Description.ReadOnly = true;
+				txt_ImageURL.ReadOnly = true;
+			}
+			if (Authentication.Permission >= 4)
+			{
+				btn_Delete.Enabled = false;
+			}
+			#endregion
 		}
 
+		#region 圖片上傳/移除
 		private void btn_SelectNewImage_Click(object sender, EventArgs e)
 		{
 			using (OpenFileDialog selectImage = new OpenFileDialog())
@@ -137,19 +198,25 @@ namespace prjMidtermTopic.form_Merchandise
 			try
 			{
 				// 使用時間戳系統性改名，避免資料庫內名稱重複
-				txt_ImageURL.Text = DateTime.Now.ToString("yyyyMMddhhmmssss") +
+				txt_ImageURL.Text = DateTime.Now.ToString("yyyyMMddhhmmssffff") +
 																Path.GetFileName(newimagePath);
 
 				MessageBox.Show($"圖片選擇成功,路徑:{newimagePath}");
 
 				btn_DeleteImage.Enabled = true;
+
+				//變更預覽圖片
+				using (var bmpTemp = new Bitmap(newimagePath))
+				{
+					pictureBox_Image.Image = new Bitmap(bmpTemp);
+				}
 			}
 			catch (Exception ex)
 			{
 				MessageBox.Show("選擇失敗，原因：" + ex.Message);
-
 			}
 		}
+
 		private void UploadToDb(string newimagePath)
 		{
 			DeleteFromDb();
@@ -172,16 +239,22 @@ namespace prjMidtermTopic.form_Merchandise
 
 		private void btn_DeleteImage_Click(object sender, EventArgs e)
 		{
-
 			if (File.Exists(_lasttargetFilePath))
 			{
 				try
 				{
-					txt_ImageURL.Text = string.Empty;
+					txt_ImageURL.Text = null;
 
 					MessageBox.Show("儲存後將刪除商品圖片");
 
 					btn_DeleteImage.Enabled = false;
+
+					//變更預覽圖片
+					//using (var bmpTemp = new Bitmap(defaultImageURL))
+					//{
+					//	pictureBox_Image.Image = new Bitmap(bmpTemp);
+					//}
+					pictureBox_Image.Image = Properties.Resources._default;
 				}
 				catch (Exception ex)
 				{
@@ -196,6 +269,7 @@ namespace prjMidtermTopic.form_Merchandise
 			}
 
 		}
+
 		private void DeleteFromDb()
 		{
 			if (File.Exists(_lasttargetFilePath))
@@ -216,8 +290,9 @@ namespace prjMidtermTopic.form_Merchandise
 				btn_DeleteImage.Enabled = false;
 			}
 		}
+		#endregion
 
-		private void btn_Updata_Click(object sender, EventArgs e)
+		private void btn_Update_Click(object sender, EventArgs e)
 		{
 			//收集表單欄位值到dto
 			bool PriceisInt = int.TryParse(txt_Price.Text, out int Price);
@@ -232,8 +307,8 @@ namespace prjMidtermTopic.form_Merchandise
 				CategoryID = (comboBox_CategoryId.SelectedItem as dynamic).Key,
 				Price = Price,
 				Amount = Amount,
-				Description = txt_Description.Text,
-				ImageURL = txt_ImageURL.Text
+				Description = (string.IsNullOrEmpty(txt_Description.Text)) ? null : txt_Description.Text,
+				ImageURL = (string.IsNullOrEmpty(txt_ImageURL.Text)) ? null : txt_ImageURL.Text
 			};
 
 			//驗證vm是否通過欄位驗證
@@ -264,11 +339,11 @@ namespace prjMidtermTopic.form_Merchandise
 				var service = new MerchandiseService(_repo);
 				int rows = service.Update(dto);
 
-				if (txt_ImageURL.Text != _iniImageURL && txt_ImageURL.Text.Length > 0)
+				if (txt_ImageURL.Text != _iniImageURL && !string.IsNullOrEmpty(txt_ImageURL.Text))
 				{
 					UploadToDb(_newimagePath);
 				}
-				if (txt_ImageURL.Text != _iniImageURL && txt_ImageURL.Text.Length == 0)
+				if (txt_ImageURL.Text != _iniImageURL && string.IsNullOrEmpty(txt_ImageURL.Text))
 				{
 					DeleteFromDb();
 				}
@@ -300,6 +375,7 @@ namespace prjMidtermTopic.form_Merchandise
 				MessageBox.Show("新增失敗，原因：" + ex.Message);
 			}
 		}
+
 		private void btn_Delete_Click(object sender, EventArgs e)
 		{
 			//var repo = new MerchandiseRepository();

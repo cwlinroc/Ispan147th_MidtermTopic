@@ -11,6 +11,8 @@ using prjMidtermTopic.Model;
 using System.IO;
 using ISpan147.Estore.SqlDataLayer.ExtMethods;
 using Ispan147.Estore.SqlDataLayer.Repositories;
+using ISpan147.Estore.SqlDataLayer.Utility;
+using ISpan147.Estore.SqlDataLayer.EFModel;
 
 namespace prjMidtermTopic.FormMember
 {
@@ -91,7 +93,7 @@ namespace prjMidtermTopic.FormMember
 			{
 				MessageBox.Show("選擇時間早於目前時間100年!", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 			}
-		}
+		}		
 
 		#region button
 		private void radbtnMale_CheckedChanged(object sender, EventArgs e)
@@ -133,7 +135,7 @@ namespace prjMidtermTopic.FormMember
 		}
 
 		private void btnAdd_Click(object sender, EventArgs e)
-		{
+		{			
 			string membername = txtMemberName.Text;
 			string nickname = txtNickName.Text;
 			DateTime dob = DateOfBirthPicker.Value;
@@ -147,6 +149,7 @@ namespace prjMidtermTopic.FormMember
 			var vm = new MemberCreateVM()
 			{
 				MemberName = membername,
+				//ForumAccountID = faccid,
 				NickName = nickname,
 				DateOfBirth = dob,
 				Gender = _gender,
@@ -166,6 +169,7 @@ namespace prjMidtermTopic.FormMember
 			{
 				MemberID = vm.MemberID,
 				MemberName = vm.MemberName,
+				ForumAccountID = vm.ForumAccountID,
 				NickName = vm.NickName,
 				DateOfBirth = vm.DateOfBirth,
 				Gender = vm.Gender.Value,
@@ -205,6 +209,7 @@ namespace prjMidtermTopic.FormMember
 		}
 
 		#endregion
+
 		
 	}
 

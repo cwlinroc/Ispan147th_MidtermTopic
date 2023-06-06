@@ -16,7 +16,7 @@ namespace ISpan147.Estore.SqlDataLayer.ExtMethods
 			return result;
 		}
 
-		public static int? GetNurableInt(this SqlDataReader reader, string columnName)
+		public static int? GetNullableInt(this SqlDataReader reader, string columnName)
 		{
 			int? result = null;
 			GetData(reader, columnName, (r, i) => { if (r[i] != null) result = r.GetInt32(i); });

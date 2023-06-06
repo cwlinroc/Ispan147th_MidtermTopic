@@ -10,16 +10,21 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
 	{
 		public class Theme
 		{
+
 			/// <summary>
 			/// 主題編號
 			/// </summary>
 			public int ThemeId { get; set; }
 
 			/// <summary>
-			/// 會員
+			/// 暱稱ID                   
 			/// </summary>
-			public int MemberId { get; set; }
-			public string MemberName { get; set; }
+			public int ForumAccountId { get; set; }    //EmployeeID or MemberId
+			
+			/// <summary>
+			/// 暱稱
+			/// </summary>
+			public string ForumAccountName { get; set; }
 
 			/// <summary>
 			/// 留言時間
@@ -32,34 +37,68 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
 			public string ThemeContext { get; set; }
 		}
 
-		public class Common
+		public class ThemeList
+		{
+			///// <summary>
+			///// 主題留言板內文
+			///// </summary>
+			//public string ThemeContext { get; set; }
+
+			///// <summary>
+			///// 留言時間
+			///// </summary>
+			//public DateTime ThemeDateTime { get; set; }
+
+			///// <summary>
+			///// 主題留言板內文
+			///// </summary>
+			//public string ThemeContext { get; set; }
+		}
+
+		public class Comment
 		{
 			/// <summary>
 			/// 主題編號
 			/// </summary>
-			public int CommonId { get; set; }
+			public int ThemeId { get; set; }
+			/// <summary>
+			/// 回覆留言編號
+			/// </summary>
+			public int CommentId { get; set; }
 
 			/// <summary>
-			/// 會員
+			/// 使用者
 			/// </summary>
-			public int MemberId { get; set; }
-			public string MemberName { get; set; }
+			public int ForumAccountId { get; set; }    //EmployeeID or MemberId
+			public string ForumAccountName { get; set; }
 
-			/// <summary>
-			/// 員工
-			/// </summary>
-			public int EmployeeId { get; set; }
-			public string EmployeeName { get; set; }
 
 			/// <summary>
 			/// 留言時間
 			/// </summary>
-			public DateTime ThemeDateTime { get; set; }
+			public DateTime CommentDateTime { get; set; }
 
 			/// <summary>
 			/// 留言板內文
 			/// </summary>
-			public string CommonContext { get; set; }
+			public string CommentContext { get; set; }
+		}
+		public class CommentList
+		{
+			///// <summary>
+			///// 回覆留言板內文
+			///// </summary>
+			//public string CommentContext { get; set; }
+
+			///// <summary>
+			///// 留言時間
+			///// </summary>
+			//public DateTime CommentTime { get; set; }
+
+			///// <summary>
+			///// 回覆留言板內文
+			///// </summary>
+			//public string CommentContext { get; set; }
 		}
 	}
 }

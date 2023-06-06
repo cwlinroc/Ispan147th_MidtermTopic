@@ -76,6 +76,11 @@ namespace prjMidtermTopic.form_Category
 
 			txt_CategoryId.Text = dto.CategoryId.ToString();
 			txt_CategoryName.Text = dto.CategoryName.ToString();
+
+			if (Authentication.Permission >= 3)
+			{
+				btn_Delete.Enabled = false;
+			}
 		}
 
 		private void btn_Updata_Click(object sender, EventArgs e)

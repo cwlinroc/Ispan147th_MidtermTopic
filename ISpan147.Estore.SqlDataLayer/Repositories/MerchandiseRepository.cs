@@ -45,6 +45,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 			return SqlDb.Get(connGetter, sql, assembler);
 		}
 
+		/* 使用三個參數搜尋
 		public List<MerchandiseSearchDto> Search(int? merchandiseId, string s_name, int? s_categoryid)
 		{
 			#region sql & SqlParameter[]
@@ -81,7 +82,8 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 			Func<SqlConnection> connGetter = SqlDb.GetConnection;
 
 			return SqlDb.Search(connGetter, sql, func, parameters.ToArray()).ToList();
-		}
+		}*/
+
 		public IEnumerable<MerchandiseSearchDto> Search(MerchandiseConditionSearchDto csDto)
 		{
 			if (csDto == null) { return null; }
@@ -96,7 +98,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 				top = string.Empty;
 			}
 
-			string orderBy = $" ORDER BY {csDto.OrderBy}";
+			string orderBy = $" ORDER BY m.{csDto.OrderBy}";
 			string decending = csDto.Descending ? " ASC" : " DESC";
 
 			string sql = $@"SELECT {top}MerchandiseID, MerchandiseName, CategoryName, Price, Amount, 
@@ -112,17 +114,14 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 			if (csDto.MerchandiseID.HasValue)
 			{
 				where += $" AND MerchandiseID = @MerchandiseID";
-				//builder.AddInt("@MerchandiseID", csDto.MerchandiseID.Value);
 			}
 			if (string.IsNullOrEmpty(csDto.MerchandiseName) == false)
 			{
 				where += $" AND MerchandiseName LIKE '%'+@MerchandiseName+'%'";
-				//builder.AddNVarchar("@MerchandiseName", 30, csDto.MerchandiseName);
 			}
 			if (csDto.CategoryID.HasValue)
 			{
 				where += $" AND m.CategoryID = @CategoryID";
-				//builder.AddInt("@CategoryID", csDto.CategoryID.Value);
 			}
 			if (csDto.MaxPrice.HasValue)
 			{
@@ -148,21 +147,41 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 
 		public int Update(MerchandiseDto dto)
 		{
-			string sql = @"UPDATE Merchandises 
-                            SET MerchandiseName = @MerchandiseName,
-							CategoryId = @CategoryId, Price = @Price, Amount = @Amount, 
-							Description = @Description, ImageURL = @ImageURL
-                            WHERE MerchandiseId = @MerchandiseId";
-
-			var parameters = new SqlParameterBuilder()
+			var builder = new SqlParameterBuilder()
 				.AddInt("@MerchandiseId", dto.MerchandiseID)
 				.AddNVarchar("@MerchandiseName", 30, dto.MerchandiseName)
 				.AddInt("@CategoryId", dto.CategoryID)
 				.AddInt("@Price", dto.Price)
-				.AddInt("@Amount", dto.Amount)
-				.AddNVarchar("@Description", 30, dto.Description)
-				.AddNVarchar("@ImageURL", 30, dto.ImageURL)
-				.Build();
+				.AddInt("@Amount", dto.Amount);
+			string description = "";
+			string imageurl = "";
+
+			if (dto.Description != null)
+			{
+				builder = builder.AddNVarchar("@Description", 30, dto.Description);
+				description = ", Description = @Description ";
+			}
+			else
+			{
+				description = ", Description = null ";
+			}
+
+			if (dto.ImageURL != null)
+			{
+				builder = builder.AddNVarchar("@ImageURL", 30, dto.ImageURL);
+				imageurl = ", ImageURL = @ImageURL ";
+			}
+			else
+			{
+				imageurl = ", ImageURL = null ";
+			}
+			var parameters = builder.Build();
+
+			string sql = $@"UPDATE Merchandises 
+                            SET MerchandiseName = @MerchandiseName,
+							CategoryId = @CategoryId, Price = @Price, Amount = @Amount 
+							{description} {imageurl}
+                            WHERE MerchandiseId = @MerchandiseId";
 
 			Func<SqlConnection> connGetter = SqlDb.GetConnection;
 
@@ -171,19 +190,35 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 
 		public int Create(MerchandiseDto dto)
 		{
-			string sql = @"INSERT INTO Merchandises       
-                            (MerchandiseName, CategoryId, Price, Amount, Description, ImageURL)
-                            Values
-                            (@MerchandiseName, @CategoryId, @Price, @Amount, @Description, @ImageURL)";
-
-			var parameters = new SqlParameterBuilder()
+			var builder = new SqlParameterBuilder()
+				.AddInt("@MerchandiseId", dto.MerchandiseID)
 				.AddNVarchar("@MerchandiseName", 30, dto.MerchandiseName)
 				.AddInt("@CategoryId", dto.CategoryID)
 				.AddInt("@Price", dto.Price)
-				.AddInt("@Amount", dto.Amount)
-				.AddNVarchar("@Description", 30, dto.Description)
-				.AddNVarchar("@ImageURL", 30, dto.ImageURL)
-				.Build();
+				.AddInt("@Amount", dto.Amount);
+			string _description = "";
+			string description = "";
+			string _imageurl = "";
+			string imageurl = "";
+
+			if (dto.Description != null)
+			{
+				builder = builder.AddNVarchar("@Description", 30, dto.Description);
+				_description = ", Description ";
+				description = ", @Description ";
+			}
+			if (dto.ImageURL != null)
+			{
+				builder = builder.AddNVarchar("@ImageURL", 30, dto.ImageURL);
+				_imageurl = ", ImageURL ";
+				imageurl = ", @ImageURL ";
+			}
+			var parameters = builder.Build();
+
+			string sql = $@"INSERT INTO Merchandises       
+                            (MerchandiseName, CategoryId, Price, Amount{_description}{_imageurl})
+                            Values
+                            (@MerchandiseName, @CategoryId, @Price, @Amount{description}{imageurl})";
 
 			Func<SqlConnection> connGetter = SqlDb.GetConnection;
 

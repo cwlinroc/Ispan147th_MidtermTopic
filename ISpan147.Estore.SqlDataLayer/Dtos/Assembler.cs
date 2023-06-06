@@ -20,7 +20,7 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
 				PaymentMethod = reader.GetInt("PaymentMethod"),
 				Payed = reader.GetBool("Payed"),
 				PurchaseTime = reader.GetDate("PurchaseTime"),
-				PaymentAmount = reader.GetNurableInt("PaymentAmount")
+				PaymentAmount = reader.GetNullableInt("PaymentAmount")
 			};
 		}
 
@@ -63,6 +63,7 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
 			{
 				MemberID = reader.GetInt("memberid"),
 				MemberName = reader.GetString("membername"),
+				ForumAccountID = reader.GetNullableInt("forumAccountid"),
 				NickName = reader.GetString("nickname"),
 				DateOfBirth = reader.GetDate("dateofbirth"),
 				Gender = reader.GetBool("gender"),
@@ -112,6 +113,35 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
 				CategoryName = reader.GetString("CategoryName")
 			};
 		}
+		public static Func<SqlDataReader, QADto.Theme> ThemeDtoAssembler
+		{
+			get => (reader) =>
+				new QADto.Theme
+				{
+					ThemeId = reader.GetInt("ThemeId"),
+					//UserId = reader.GetInt("UserId"),
+					//ForumAccountName = reader.GetString("ForumAccountName"),
+					ThemeDateTime = reader.GetDateTime(reader.GetOrdinal("ThemeDateTime")),
+					ThemeContext = reader.GetString("ThemeContext").Length > 50 ?
+										reader.GetString("ThemeContext").Substring(0, 50) + "..." : reader.GetString("ThemeContext")
+				};
+		}
+
+
+		public static Func<SqlDataReader, QADto.Comment> CommentDtoAssembler
+		{
+			get => (reader) => 
+				new QADto.Comment
+			{
+				//ThemeId = reader.GetInt("ThemeId"),
+				CommentId = reader.GetInt("CommentId"),
+				CommentDateTime = reader.GetDateTime(reader.GetOrdinal("CommentTime")),
+				CommentContext = reader.GetString("CommentContext").Length > 50 ?
+										reader.GetString("CommentContext").Substring(0, 50) + "..." : reader.GetString("CommentContext")
+			};
+
+		}
+
 
 		public static Func<SqlDataReader, PetDto> PetDtoAssembler
 		{

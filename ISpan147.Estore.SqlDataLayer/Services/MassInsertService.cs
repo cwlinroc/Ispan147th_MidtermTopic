@@ -94,7 +94,7 @@ namespace ISpan147.Estore.SqlDataLayer.Services
 
 			foreach (var dto in dtos)
 			{
-				if (dto.ForumAccount == null && rng.RandomChance(chance))
+				if (dto.ForumAccountID == null && rng.RandomChance(chance))
 				{
 					int forumID = repo.CreateForumAccount(new ForumAccountDto
 					{
@@ -119,7 +119,6 @@ namespace ISpan147.Estore.SqlDataLayer.Services
 					.AddMinutes(rng.RandomIntBetween(0, 1440));
 				int themeID = repo.CreateTheme(new ThemeDto
 				{
-					ThemeName = rng.RandomEnString(5, 11),
 					ThemeDateTime = dt,
 					ThemeContext = String.Concat(Enumerable
 						.Repeat(rng.RandomSentance(), rng.RandomIntBetween(1, 3))),

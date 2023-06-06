@@ -189,6 +189,11 @@ namespace prjMidtermTopic
 		#region 資料載入/排序相關功能
 		private void FormSearchMerchandise_Load(object sender, EventArgs e)
 		{
+			if (Authentication.Permission >= 5)
+			{
+				btn_Add.Enabled = false;
+			}
+
 			Display();
 		}
 

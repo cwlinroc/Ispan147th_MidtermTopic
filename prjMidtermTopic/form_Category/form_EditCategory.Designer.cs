@@ -65,7 +65,7 @@
 			this.txt_CategoryName.Location = new System.Drawing.Point(88, 34);
 			this.txt_CategoryName.Name = "txt_CategoryName";
 			this.txt_CategoryName.Size = new System.Drawing.Size(238, 22);
-			this.txt_CategoryName.TabIndex = 15;
+			this.txt_CategoryName.TabIndex = 0;
 			// 
 			// label2
 			// 
@@ -81,7 +81,7 @@
 			this.btn_Delete.Location = new System.Drawing.Point(251, 94);
 			this.btn_Delete.Name = "btn_Delete";
 			this.btn_Delete.Size = new System.Drawing.Size(75, 23);
-			this.btn_Delete.TabIndex = 17;
+			this.btn_Delete.TabIndex = 2;
 			this.btn_Delete.Text = "刪除類別";
 			this.btn_Delete.UseVisualStyleBackColor = true;
 			this.btn_Delete.Click += new System.EventHandler(this.btn_Delete_Click);
@@ -91,7 +91,7 @@
 			this.btn_Updata.Location = new System.Drawing.Point(251, 65);
 			this.btn_Updata.Name = "btn_Updata";
 			this.btn_Updata.Size = new System.Drawing.Size(75, 23);
-			this.btn_Updata.TabIndex = 16;
+			this.btn_Updata.TabIndex = 1;
 			this.btn_Updata.Text = "儲存更新";
 			this.btn_Updata.UseVisualStyleBackColor = true;
 			this.btn_Updata.Click += new System.EventHandler(this.btn_Updata_Click);

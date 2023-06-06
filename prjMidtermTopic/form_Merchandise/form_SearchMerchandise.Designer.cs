@@ -66,7 +66,7 @@
 			this.btn_Add.Location = new System.Drawing.Point(1154, 408);
 			this.btn_Add.Name = "btn_Add";
 			this.btn_Add.Size = new System.Drawing.Size(91, 30);
-			this.btn_Add.TabIndex = 4;
+			this.btn_Add.TabIndex = 11;
 			this.btn_Add.Text = "新增商品";
 			this.btn_Add.UseVisualStyleBackColor = true;
 			this.btn_Add.Click += new System.EventHandler(this.btn_Add_Click);
@@ -206,7 +206,7 @@
 			this.btn_Search.Location = new System.Drawing.Point(1154, 11);
 			this.btn_Search.Name = "btn_Search";
 			this.btn_Search.Size = new System.Drawing.Size(91, 30);
-			this.btn_Search.TabIndex = 3;
+			this.btn_Search.TabIndex = 9;
 			this.btn_Search.Text = "搜尋";
 			this.btn_Search.UseVisualStyleBackColor = true;
 			this.btn_Search.Click += new System.EventHandler(this.btn_Search_Click);
@@ -247,7 +247,7 @@
 			this.txt_MaxPrice.Location = new System.Drawing.Point(655, 12);
 			this.txt_MaxPrice.Name = "txt_MaxPrice";
 			this.txt_MaxPrice.Size = new System.Drawing.Size(100, 29);
-			this.txt_MaxPrice.TabIndex = 1;
+			this.txt_MaxPrice.TabIndex = 3;
 			// 
 			// label4
 			// 
@@ -266,7 +266,7 @@
 			this.txt_MinPrice.Location = new System.Drawing.Point(655, 47);
 			this.txt_MinPrice.Name = "txt_MinPrice";
 			this.txt_MinPrice.Size = new System.Drawing.Size(100, 29);
-			this.txt_MinPrice.TabIndex = 1;
+			this.txt_MinPrice.TabIndex = 4;
 			// 
 			// btn_DefaultSearch
 			// 
@@ -274,7 +274,7 @@
 			this.btn_DefaultSearch.Location = new System.Drawing.Point(1154, 47);
 			this.btn_DefaultSearch.Name = "btn_DefaultSearch";
 			this.btn_DefaultSearch.Size = new System.Drawing.Size(91, 30);
-			this.btn_DefaultSearch.TabIndex = 3;
+			this.btn_DefaultSearch.TabIndex = 10;
 			this.btn_DefaultSearch.Text = "清空條件";
 			this.btn_DefaultSearch.UseVisualStyleBackColor = true;
 			this.btn_DefaultSearch.Click += new System.EventHandler(this.btn_DefaultSearch_Click);
@@ -285,7 +285,7 @@
 			this.txt_MaxQuery.Location = new System.Drawing.Point(915, 11);
 			this.txt_MaxQuery.Name = "txt_MaxQuery";
 			this.txt_MaxQuery.Size = new System.Drawing.Size(67, 29);
-			this.txt_MaxQuery.TabIndex = 1;
+			this.txt_MaxQuery.TabIndex = 6;
 			this.txt_MaxQuery.Text = "100";
 			// 
 			// label6
@@ -305,7 +305,7 @@
 			this.comboBox_SortBy.Location = new System.Drawing.Point(915, 55);
 			this.comboBox_SortBy.Name = "comboBox_SortBy";
 			this.comboBox_SortBy.Size = new System.Drawing.Size(121, 20);
-			this.comboBox_SortBy.TabIndex = 2;
+			this.comboBox_SortBy.TabIndex = 7;
 			// 
 			// label7
 			// 
@@ -324,7 +324,7 @@
 			this.checkBox_desc.Location = new System.Drawing.Point(1042, 59);
 			this.checkBox_desc.Name = "checkBox_desc";
 			this.checkBox_desc.Size = new System.Drawing.Size(48, 16);
-			this.checkBox_desc.TabIndex = 16;
+			this.checkBox_desc.TabIndex = 8;
 			this.checkBox_desc.Text = "降冪";
 			this.checkBox_desc.UseVisualStyleBackColor = true;
 			// 
@@ -337,7 +337,7 @@
 			this.checkBox_MaxData.Location = new System.Drawing.Point(824, 14);
 			this.checkBox_MaxData.Name = "checkBox_MaxData";
 			this.checkBox_MaxData.Size = new System.Drawing.Size(92, 24);
-			this.checkBox_MaxData.TabIndex = 17;
+			this.checkBox_MaxData.TabIndex = 5;
 			this.checkBox_MaxData.Text = "最多顯示";
 			this.checkBox_MaxData.UseVisualStyleBackColor = true;
 			// 

@@ -14,7 +14,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using Image = System.Drawing.Image;
 
 namespace prjMidtermTopic.form_Merchandise
 {
@@ -25,6 +27,9 @@ namespace prjMidtermTopic.form_Merchandise
 		private Dictionary<int, string> map = new Dictionary<int, string>();
 		private int _categoryId;
 		private string _imagePath = string.Empty;
+		//改使用內嵌影像
+		//string defaultImageURL = @"images/MerchendisePicture/default.png";
+	
 		public form_CreateMerchandise()
 		{
 			InitializeComponent();
@@ -32,6 +37,18 @@ namespace prjMidtermTopic.form_Merchandise
 			_repo = new MerchandiseRepository();
 			_categoryRepository = new CategoryRepository();
 
+			//顯示預設圖片
+			#region 其他圖片載入方法
+			//pictureBox_Image.Image = Image.FromFile(defaultImageURL);
+
+			//using (var bmpTemp = new Bitmap(defaultImageURL))
+			//{
+			//	pictureBox_Image.Image = new Bitmap(bmpTemp);
+			//}
+			#endregion
+			//使用內嵌影像，不從資料夾讀取，適合於系統預設圖片
+			pictureBox_Image.Image = Properties.Resources._default;
+			
 			//動態生成商品類別資料 for 下拉選單
 			map.Add(0, "未選擇");
 			new CategoryService(_categoryRepository).Search().ForEach(c => map.Add(c.CategoryId, c.CategoryName));
@@ -99,8 +116,8 @@ namespace prjMidtermTopic.form_Merchandise
 			// ↓讀取下拉選單的欄位值
 			int categoryId = (comboBox_CategoryId.SelectedItem as dynamic).Key;
 			string marchandisename = txt_MerchandiseName.Text;
-			string Description = txt_Description.Text;
-			string ImageURL = txt_ImageURL.Text;
+			string Description = (string.IsNullOrEmpty(txt_Description.Text)) ? null : txt_Description.Text;
+			string ImageURL = (string.IsNullOrEmpty(txt_ImageURL.Text)) ? null : txt_ImageURL.Text;
 
 			var vm = new MerchandiseCreateVM()
 			{
@@ -165,6 +182,7 @@ namespace prjMidtermTopic.form_Merchandise
 			}
 		}
 
+		#region 圖片上傳
 		private void btn_SelectImage_Click(object sender, EventArgs e)
 		{
 			using (OpenFileDialog selectImage = new OpenFileDialog())
@@ -186,24 +204,27 @@ namespace prjMidtermTopic.form_Merchandise
 
 		private void UploadToForm(string imagePath)
 		{
-			//string targetFolderPath = @"images/MerchendisePicture/";
-			//string imageName = Path.GetFileName(imagePath);
-			//string targetFilePath = Path.Combine(targetFolderPath, imageName);
-
 			try
 			{
 				// 使用時間戳系統性改名，避免資料庫內名稱重複
-				txt_ImageURL.Text = DateTime.Now.ToString("yyyyMMddhhmmssss") + 
+				txt_ImageURL.Text = DateTime.Now.ToString("yyyyMMddhhmmssffff") + 
 																Path.GetFileName(imagePath);
 
 				MessageBox.Show($"圖片選擇成功,路徑:{imagePath}");
 
 				btn_CancelImage.Enabled = true;
+
+				//顯示預覽圖片
+				//pictureBox_Image.Image = Image.FromFile(imagePath);
+				//使用Bitmap轉檔，並兩次使用以達到暫存效果(??)並降低系統負擔
+				using (var bmpTemp = new Bitmap(imagePath))
+				{
+					pictureBox_Image.Image = new Bitmap(bmpTemp);
+				}
 			}
 			catch (Exception ex)
 			{
 				MessageBox.Show("選擇失敗，原因：" + ex.Message);
-
 			}
 		}
 
@@ -229,8 +250,11 @@ namespace prjMidtermTopic.form_Merchandise
 
 		private void btn_CancelImage_Click(object sender, EventArgs e)
 		{
-			txt_ImageURL.Text = string.Empty;
+			txt_ImageURL.Text = null;
 			btn_CancelImage.Enabled = false;
+						
+			pictureBox_Image.Image = Properties.Resources._default;
 		}
+		#endregion
 	}
 }

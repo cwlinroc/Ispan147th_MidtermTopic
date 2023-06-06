@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ISpan147.Estore.SqlDataLayer.Dtos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace prjMidtermTopic.Model
 {
-	//todo [君韋] 註解DisplayGrid ///
+
 	public class DisplayGrid
 	{
 		public static EventHandler Handler;
@@ -19,4 +20,6 @@ namespace prjMidtermTopic.Model
 	{
 		public string Message { get; set; }
 	}
+
+
 }
