@@ -26,6 +26,7 @@ namespace prjMidtermTopic.form_Pets
 		private readonly int _petID;
 		private bool _gender;
 		private string _originalFilePath;
+		private string _newImagePath;
 		private string _targetFolderPath = @"images/petavatar/";
 		private string _lasttargetFilePath;
 		private IPetRepo _petRepo;
@@ -87,7 +88,10 @@ namespace prjMidtermTopic.form_Pets
 			txtDescription.Text = dto.Description;
 			txtLocation.Text = dto.Location;
 			txtPetAvatar.Text = dto.PetAvatar;
+
+			_originalFilePath = dto.PetAvatar;
 			_lasttargetFilePath = @"images/petavatar/" + dto.PetAvatar;
+
 
 			if (dto.Gender)
 			{
@@ -180,7 +184,16 @@ namespace prjMidtermTopic.form_Pets
 				var service = new PetService(_petRepo);
 				int rows = service.Update(dto);
 
-				UploadFileToDb(_originalFilePath);
+				//UploadFileToDb(_originalFilePath);
+				
+				if(txtPetAvatar.Text != _originalFilePath && !string.IsNullOrEmpty(txtPetAvatar.Text))
+				{
+					UploadFileToDb(_newImagePath);
+				}
+				if(txtPetAvatar.Text != _originalFilePath && !string.IsNullOrEmpty(txtPetAvatar.Text))
+				{
+					DeleteFromDb();
+				}
 
 				if (rows > 0)
 				{
@@ -259,9 +272,9 @@ namespace prjMidtermTopic.form_Pets
 
 				if (openFileDialog.ShowDialog() == DialogResult.OK)
 				{
-					_originalFilePath = openFileDialog.FileName;
+					_newImagePath = openFileDialog.FileName;
 
-					SelectFileToForm(_originalFilePath);
+					SelectFileToForm(_newImagePath);
 				}
 			}
 		}
