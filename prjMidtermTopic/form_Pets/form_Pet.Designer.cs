@@ -34,21 +34,23 @@
 			this.txtPetName = new System.Windows.Forms.TextBox();
 			this.btnAdd = new System.Windows.Forms.Button();
 			this.dataGridView1 = new System.Windows.Forms.DataGridView();
-			this.PetID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.SpeciesID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.BreedID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.PetName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Gender = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Age = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Location = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.PetAvatar = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.btnReset = new System.Windows.Forms.Button();
 			this.btnSearch = new System.Windows.Forms.Button();
 			this.comboBoxSearchSpecies = new System.Windows.Forms.ComboBox();
 			this.label3 = new System.Windows.Forms.Label();
 			this.comboBoxSearchBreed = new System.Windows.Forms.ComboBox();
 			this.label4 = new System.Windows.Forms.Label();
+			this.PetID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.SpeciesID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.SpeciesName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.BreedID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.BreedName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.PetName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Gender = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Age = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Location = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.PetAvatar = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -96,11 +98,16 @@
 			// 
 			// dataGridView1
 			// 
+			this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.PetID,
             this.SpeciesID,
+            this.SpeciesName,
             this.BreedID,
+            this.BreedName,
             this.PetName,
             this.Gender,
             this.Age,
@@ -110,63 +117,9 @@
 			this.dataGridView1.Location = new System.Drawing.Point(61, 102);
 			this.dataGridView1.Name = "dataGridView1";
 			this.dataGridView1.RowTemplate.Height = 24;
-			this.dataGridView1.Size = new System.Drawing.Size(1062, 568);
+			this.dataGridView1.Size = new System.Drawing.Size(1147, 568);
 			this.dataGridView1.TabIndex = 3;
 			this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
-			// 
-			// PetID
-			// 
-			this.PetID.DataPropertyName = "PetID";
-			this.PetID.HeaderText = "寵物編號";
-			this.PetID.Name = "PetID";
-			// 
-			// SpeciesID
-			// 
-			this.SpeciesID.DataPropertyName = "SpeciesID";
-			this.SpeciesID.HeaderText = "物種編號";
-			this.SpeciesID.Name = "SpeciesID";
-			// 
-			// BreedID
-			// 
-			this.BreedID.DataPropertyName = "BreedID";
-			this.BreedID.HeaderText = "血統編號";
-			this.BreedID.Name = "BreedID";
-			// 
-			// PetName
-			// 
-			this.PetName.DataPropertyName = "PetName";
-			this.PetName.HeaderText = "寵物名稱";
-			this.PetName.Name = "PetName";
-			// 
-			// Gender
-			// 
-			this.Gender.DataPropertyName = "Gender";
-			this.Gender.HeaderText = "性別";
-			this.Gender.Name = "Gender";
-			// 
-			// Age
-			// 
-			this.Age.DataPropertyName = "Age";
-			this.Age.HeaderText = "年齡";
-			this.Age.Name = "Age";
-			// 
-			// Description
-			// 
-			this.Description.DataPropertyName = "Description";
-			this.Description.HeaderText = "寵物敘述";
-			this.Description.Name = "Description";
-			// 
-			// Location
-			// 
-			this.Location.DataPropertyName = "Location";
-			this.Location.HeaderText = "所在地";
-			this.Location.Name = "Location";
-			// 
-			// PetAvatar
-			// 
-			this.PetAvatar.DataPropertyName = "PetAvatar";
-			this.PetAvatar.HeaderText = "寵物照片";
-			this.PetAvatar.Name = "PetAvatar";
 			// 
 			// btnReset
 			// 
@@ -174,7 +127,7 @@
 			this.btnReset.Name = "btnReset";
 			this.btnReset.Size = new System.Drawing.Size(75, 23);
 			this.btnReset.TabIndex = 2;
-			this.btnReset.Text = "重置";
+			this.btnReset.Text = "輸入重置";
 			this.btnReset.UseVisualStyleBackColor = true;
 			this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
 			// 
@@ -222,11 +175,79 @@
 			this.label4.TabIndex = 6;
 			this.label4.Text = "按血統分類";
 			// 
+			// PetID
+			// 
+			this.PetID.DataPropertyName = "PetID";
+			this.PetID.HeaderText = "寵物編號";
+			this.PetID.Name = "PetID";
+			// 
+			// SpeciesID
+			// 
+			this.SpeciesID.DataPropertyName = "SpeciesID";
+			this.SpeciesID.HeaderText = "物種編號";
+			this.SpeciesID.Name = "SpeciesID";
+			this.SpeciesID.Visible = false;
+			// 
+			// SpeciesName
+			// 
+			this.SpeciesName.DataPropertyName = "SpeciesName";
+			this.SpeciesName.HeaderText = "物種名稱";
+			this.SpeciesName.Name = "SpeciesName";
+			// 
+			// BreedID
+			// 
+			this.BreedID.DataPropertyName = "BreedID";
+			this.BreedID.HeaderText = "血統編號";
+			this.BreedID.Name = "BreedID";
+			this.BreedID.Visible = false;
+			// 
+			// BreedName
+			// 
+			this.BreedName.DataPropertyName = "BreedName";
+			this.BreedName.HeaderText = "血統名稱";
+			this.BreedName.Name = "BreedName";
+			// 
+			// PetName
+			// 
+			this.PetName.DataPropertyName = "PetName";
+			this.PetName.HeaderText = "寵物名稱";
+			this.PetName.Name = "PetName";
+			// 
+			// Gender
+			// 
+			this.Gender.DataPropertyName = "Gender";
+			this.Gender.HeaderText = "性別";
+			this.Gender.Name = "Gender";
+			// 
+			// Age
+			// 
+			this.Age.DataPropertyName = "Age";
+			this.Age.HeaderText = "年齡";
+			this.Age.Name = "Age";
+			// 
+			// Description
+			// 
+			this.Description.DataPropertyName = "Description";
+			this.Description.HeaderText = "寵物敘述";
+			this.Description.Name = "Description";
+			// 
+			// Location
+			// 
+			this.Location.DataPropertyName = "Location";
+			this.Location.HeaderText = "所在地";
+			this.Location.Name = "Location";
+			// 
+			// PetAvatar
+			// 
+			this.PetAvatar.DataPropertyName = "PetAvatar";
+			this.PetAvatar.HeaderText = "寵物照片";
+			this.PetAvatar.Name = "PetAvatar";
+			// 
 			// form_Pet
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(1160, 721);
+			this.ClientSize = new System.Drawing.Size(1267, 721);
 			this.Controls.Add(this.label4);
 			this.Controls.Add(this.label3);
 			this.Controls.Add(this.comboBoxSearchBreed);
@@ -239,7 +260,7 @@
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.txtPetID);
 			this.Controls.Add(this.label1);
-			this.MinimumSize = new System.Drawing.Size(1176, 760);
+			this.MinimumSize = new System.Drawing.Size(1283, 760);
 			this.Name = "form_Pet";
 			this.Text = "PetMain";
 			this.Load += new System.EventHandler(this.form_Pet_Load);
@@ -259,18 +280,20 @@
 		private System.Windows.Forms.DataGridView dataGridView1;
 		private System.Windows.Forms.Button btnReset;
 		private System.Windows.Forms.Button btnSearch;
+		private System.Windows.Forms.ComboBox comboBoxSearchSpecies;
+		private System.Windows.Forms.Label label3;
+		private System.Windows.Forms.ComboBox comboBoxSearchBreed;
+		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.DataGridViewTextBoxColumn PetID;
 		private System.Windows.Forms.DataGridViewTextBoxColumn SpeciesID;
+		private System.Windows.Forms.DataGridViewTextBoxColumn SpeciesName;
 		private System.Windows.Forms.DataGridViewTextBoxColumn BreedID;
+		private System.Windows.Forms.DataGridViewTextBoxColumn BreedName;
 		private System.Windows.Forms.DataGridViewTextBoxColumn PetName;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Gender;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Age;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Description;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Location;
 		private System.Windows.Forms.DataGridViewTextBoxColumn PetAvatar;
-		private System.Windows.Forms.ComboBox comboBoxSearchSpecies;
-		private System.Windows.Forms.Label label3;
-		private System.Windows.Forms.ComboBox comboBoxSearchBreed;
-		private System.Windows.Forms.Label label4;
 	}
 }

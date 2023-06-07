@@ -9,27 +9,27 @@ using ISpan147.Estore.SqlDataLayer.Services;
 
 namespace prjMidtermTopic
 {
-    public partial class form_Pet : Form,IGrid
-    {
-        List<PetDto> data;
-        private Dictionary<int,string> mapSpecies = new Dictionary<int, string>();
-		private Dictionary<int,string> mapBreed = new Dictionary<int, string>();
+	public partial class form_Pet : Form, IGrid
+	{
+		List<PetGridDto> _data;
+		private Dictionary<int, string> mapSpecies = new Dictionary<int, string>();
+		private Dictionary<int, string> mapBreed = new Dictionary<int, string>();
 		private IPetRepo _repo;
-        public form_Pet()
-        {
-            InitializeComponent();
+		public form_Pet()
+		{
+			InitializeComponent();
 
-            _repo = new PetRepository();
+			_repo = new PetRepository();
 
-			mapSpecies.Add(0,"請選擇");
-			mapBreed.Add(0,"請選擇");
-            new PetService(_repo).SearchSpescies().ForEach(s => mapSpecies.Add(s.SpeciesID,s.SpeciesName));
+			mapSpecies.Add(0, "請選擇");
+			mapBreed.Add(0, "請選擇");
+			new PetService(_repo).SearchSpescies().ForEach(s => mapSpecies.Add(s.SpeciesID, s.SpeciesName));
 			new PetService(_repo).SearchBreed().ForEach(s => mapBreed.Add(s.BreedID, s.BreedName));
 
 			foreach (var species in mapSpecies)
-            {
-                comboBoxSearchSpecies.Items.Add(species);
-            }
+			{
+				comboBoxSearchSpecies.Items.Add(species);
+			}
 
 			foreach (var breed in mapBreed)
 			{
@@ -37,57 +37,83 @@ namespace prjMidtermTopic
 			}
 
 			comboBoxSearchSpecies.DisplayMember = "Value";
-            comboBoxSearchBreed.DisplayMember = "Value";
+			comboBoxSearchBreed.DisplayMember = "Value";
 
 			comboBoxSearchSpecies.SelectedIndex = 0;
 			comboBoxSearchBreed.SelectedIndex = 0;
 		}
 
-        public void Display()
-        {
-            bool isInt = int.TryParse(txtPetID.Text,out int PetID);
-            int? pID = isInt ? PetID : (int?)null;
-            string pName = txtPetName.Text;
+		public void Display()
+		{
+			try
+			{
+				var repo = new PetRepository();
+				PetSearchDto sDto = new PetSearchDto();
 
-            var repo = new PetRepository();
-            data = repo.Search(pID, pName);
-            dataGridView1.DataSource = data;
-        }
+				if(int.TryParse(txtPetID.Text, out int PetID))
+				{
+					sDto.PetID = PetID;
+				}
+				
+				if(txtPetName.Text != string.Empty)
+				{
+					sDto.PetName = txtPetName.Text;
+				}
+
+				if(comboBoxSearchSpecies.SelectedIndex != 0)
+				{
+					sDto.SpeciesID = (comboBoxSearchSpecies.SelectedItem as dynamic).Key;
+				}
+
+				if (comboBoxSearchBreed.SelectedIndex != 0)
+				{
+					sDto.BreedID = (comboBoxSearchBreed.SelectedItem as dynamic).Key;
+				}
+
+				_data = repo.Search(sDto);
+				dataGridView1.DataSource = _data;
+			}
+			catch(Exception ex) 
+			{
+				MessageBox.Show("讀取資料失敗，原因" + ex.Message);
+			}
+		}
 
 		private void form_Pet_Load(object sender, EventArgs e)
 		{
-            Display();
+			Display();
 		}
 
 		private void btnSearch_Click(object sender, EventArgs e)
 		{
-            Display();
-            txtPetID.Text = string.Empty;
-            txtPetName.Text = string.Empty;
-            txtPetID.Focus();
+			Display();
 		}
 
 		private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
 		{
-            if (e.RowIndex < 0) return;//按到header,不處理
+			if (e.RowIndex < 0) return;//按到header,不處理
 
-            int id = this.data[e.RowIndex].PetID;
+			int id = this._data[e.RowIndex].PetID;
 
-            var frm = new form_PetEdit(id);
-            frm.Owner = this;
-            frm.ShowDialog();
+			var frm = new form_PetEdit(id);
+			frm.Owner = this;
+			frm.ShowDialog();
 		}
 
 		private void btnAdd_Click(object sender, EventArgs e)
 		{
-            var frm = new form_PetCreate();
-            frm.Owner = this;
-            frm.ShowDialog();
+			var frm = new form_PetCreate();
+			frm.Owner = this;
+			frm.ShowDialog();
 		}
 
 		private void btnReset_Click(object sender, EventArgs e)
 		{
-            Display();
+			txtPetID.Text = string.Empty;
+			txtPetName.Text = string.Empty;
+			txtPetID.Focus();
+			comboBoxSearchSpecies.SelectedIndex = 0;
+			comboBoxSearchBreed.SelectedIndex = 0;
 		}
 	}
 }

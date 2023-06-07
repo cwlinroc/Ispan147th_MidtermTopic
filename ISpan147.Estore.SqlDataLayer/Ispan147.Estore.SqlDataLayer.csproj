@@ -67,6 +67,8 @@
     <Compile Include="Dtos\MerchandiseConditionSearchDto.cs" />
     <Compile Include="Dtos\MerchandiseSearchDto.cs" />
     <Compile Include="Dtos\MerchandiseDto.cs" />
+    <Compile Include="Dtos\PetGridDto.cs" />
+    <Compile Include="Dtos\PetSearchDto.cs" />
     <Compile Include="Dtos\QADto.cs" />
     <Compile Include="Dtos\OrderDto.cs" />
     <Compile Include="Dtos\OrderGridDto.cs" />

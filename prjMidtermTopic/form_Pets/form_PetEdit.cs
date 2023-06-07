@@ -97,7 +97,7 @@ namespace prjMidtermTopic.form_Pets
 			btnDeletePetAvatar.Enabled = !string.IsNullOrEmpty(txtPetAvatar.Text) ? true : false;
 		}
 
-		
+
 
 		private void radioButtonMale_CheckedChanged(object sender, EventArgs e)
 		{
@@ -174,13 +174,14 @@ namespace prjMidtermTopic.form_Pets
 				else
 				{
 					MessageBox.Show("更新失敗，無此紀錄");
+					return;
 				}
+				this.Close();
 			}
 			catch (Exception ex)
 			{
 				MessageBox.Show("更新失敗，原因:" + ex.Message);
 			}
-			this.Close();
 		}
 
 		private void btnDelete_Click(object sender, EventArgs e)
@@ -190,7 +191,6 @@ namespace prjMidtermTopic.form_Pets
 			{
 				if (MessageBox.Show("確定要刪除資料?", "確認", MessageBoxButtons.YesNo) == DialogResult.Yes)
 				{
-					this.Close();
 					int rows = servise.Delete(_petID);
 					//回到Form_Pet
 					if (rows > 0)
@@ -200,31 +200,25 @@ namespace prjMidtermTopic.form_Pets
 					else
 					{
 						MessageBox.Show("刪除失敗");
+						return;
 					}
-				}
-				else
-				{
+					IGrid parent = this.Owner as IGrid;
+					//將開啟我的視窗轉型為IGrid，若轉型失敗，不丟出例外而是傳回null
+					if (parent == null)
+					{
+						MessageBox.Show("開啟我的表單沒有實作IGrid，所以無法通知他");
+					}
+					else
+					{
+						parent.Display();//呼叫他的Display()重新顯示資料
+					}
 					this.Close();
-					return;
 				}
 			}
 			catch (Exception ex)
 			{
 				MessageBox.Show("刪除失敗，原因:" + ex.Message);
 			}
-
-			IGrid parent = this.Owner as IGrid;
-			//將開啟我的視窗轉型為IGrid，若轉型失敗，不丟出例外而是傳回null
-			if (parent == null)
-			{
-				MessageBox.Show("開啟我的表單沒有實作IGrid，所以無法通知他");
-			}
-			else
-			{
-				parent.Display();//呼叫他的Display()重新顯示資料
-			}
-
-			this.Close();
 		}
 		private void btnUpdatePetAvatar_Click(object sender, EventArgs e)
 		{
@@ -278,14 +272,14 @@ namespace prjMidtermTopic.form_Pets
 
 					MessageBox.Show($"圖片刪除成功");
 				}
-				catch(Exception ex)
+				catch (Exception ex)
 				{
-					MessageBox.Show("刪除失敗，原因：" + ex.Message );
+					MessageBox.Show("刪除失敗，原因：" + ex.Message);
 				}
 			}
 			else
 			{
-				btnDeletePetAvatar.Enabled=false;
+				btnDeletePetAvatar.Enabled = false;
 			}
 		}
 
@@ -293,7 +287,7 @@ namespace prjMidtermTopic.form_Pets
 		{
 			try
 			{
-				
+
 				//加上時間戳重新命名,避免檔名重複
 				txtPetAvatar.Text = DateTime.Now.ToString("yyyyMMddhhmmss_") + Path.GetFileName(filePath);
 

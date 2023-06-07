@@ -177,5 +177,23 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
 				SpeciesID = reader.GetInt("SpeciesID")
 			};
 		}
+
+		public static Func<SqlDataReader, PetGridDto> PetGridDtoAssembler
+		{
+			get => (reader) => new PetGridDto
+			{
+				PetID = reader.GetInt("PetID"),
+				SpeciesID = reader.GetInt("SpeciesID"),
+				BreedID = reader.GetInt("BreedID"),
+				PetName = reader.GetString("PetName"),
+				Gender = reader.GetBool("Gender"),
+				Age = reader.GetInt("Age"),
+				Description = reader.GetString("Description"),
+				Location = reader.GetString("Location"),
+				PetAvatar = reader.GetString("PetAvatar"),
+				SpeciesName = reader.GetString("SpeciesName"),
+				BreedName = reader.GetString("BreedName")
+			};
+		}
 	}
 }
