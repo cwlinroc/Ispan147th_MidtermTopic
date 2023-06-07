@@ -28,13 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.adopttime = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txt_MemberID = new System.Windows.Forms.TextBox();
             this.memberId = new System.Windows.Forms.Label();
             this.txt_petID = new System.Windows.Forms.TextBox();
             this.petId = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // adopttime
@@ -47,12 +50,12 @@
             this.adopttime.TabIndex = 19;
             this.adopttime.Text = "申請時間";
             // 
-            // textBox3
+            // txt_MemberID
             // 
-            this.textBox3.Location = new System.Drawing.Point(102, 100);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 22);
-            this.textBox3.TabIndex = 18;
+            this.txt_MemberID.Location = new System.Drawing.Point(102, 100);
+            this.txt_MemberID.Name = "txt_MemberID";
+            this.txt_MemberID.Size = new System.Drawing.Size(100, 22);
+            this.txt_MemberID.TabIndex = 18;
             // 
             // memberId
             // 
@@ -98,6 +101,10 @@
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 22);
             this.dateTimePicker1.TabIndex = 22;
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // form_AdoptListEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -106,13 +113,14 @@
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.adopttime);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.txt_MemberID);
             this.Controls.Add(this.memberId);
             this.Controls.Add(this.txt_petID);
             this.Controls.Add(this.petId);
             this.Name = "form_AdoptListEdit";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.form_AdoptListEdit_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -120,11 +128,12 @@
 
         #endregion
         private System.Windows.Forms.Label adopttime;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txt_MemberID;
         private System.Windows.Forms.Label memberId;
         private System.Windows.Forms.TextBox txt_petID;
         private System.Windows.Forms.Label petId;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

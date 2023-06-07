@@ -1,5 +1,6 @@
 ﻿using ISpan147.Estore.SqlDataLayer.Builders;
 using ISpan147.Estore.SqlDataLayer.Dtos;
+using ISpan147.Estore.SqlDataLayer.EFModel;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -34,6 +35,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
                                   ApplicationTime = @ApplicationTime
                                   WHERE AdoptID = @AdoptID";
             var parameters = new SqlParameterBuilder()
+                .AddInt("@AdoptID", dto.AdoptID)
                 .AddInt("@PetID", dto.PetID)
                 .AddInt("@MemberID", dto.MemberID)
                 .AddDateTime("@ApplicationTime", dto.ApplicationTime)
@@ -83,6 +85,14 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 
 
 
+        }
+        public AdoptDto GetById(int AdoptID)
+        {
+            string sql = $"SELECT * FROM Adopts WHERE AdoptID = {AdoptID}";
+            Func<SqlDataReader, AdoptDto>func = Assembler.AdoptDtoAssembler;
+            SqlParameter[] parameters = new SqlParameter[0];
+            Func<SqlConnection> connGetter = SqlDb.GetConnection;
+            return SqlDb.Get(connGetter, sql, func, parameters);
         }
     }
 }
