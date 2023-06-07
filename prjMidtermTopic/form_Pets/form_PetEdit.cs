@@ -44,6 +44,7 @@ namespace prjMidtermTopic.form_Pets
 				{"Location",txtLocation},
 				{"PetAvartar",txtPetAvatar }
 			};
+			_petRepo = new PetRepository();
 		}
 
 		private void form_PetEdit_Load(object sender, EventArgs e)
@@ -63,6 +64,7 @@ namespace prjMidtermTopic.form_Pets
 			txtDescription.Text = dto.Description;
 			txtLocation.Text = dto.Location;
 			txtPetAvatar.Text = dto.PetAvatar;
+			_lasttargetFilePath = @"images/petavatar/" + dto.PetAvatar;
 
 			if (dto.Gender)
 			{
@@ -73,64 +75,29 @@ namespace prjMidtermTopic.form_Pets
 				radioButtonFemale.Checked = true;
 			}
 
+			try
+			{
+				if (string.IsNullOrEmpty(txtPetAvatar.Text))
+				{
+					pbPet.Image = Properties.Resources.CryCat;
+				}
+				else
+				{
+					using (var bmpTemp = new Bitmap(_lasttargetFilePath))
+					{
+						pbPet.Image = new Bitmap(bmpTemp);
+					}
+				}
+			}
+			catch
+			{
+				pbPet.Image = Properties.Resources.CryCat;
+			}
+
 			btnDeletePetAvatar.Enabled = !string.IsNullOrEmpty(txtPetAvatar.Text) ? true : false;
 		}
 
-		private void SelectFileToForm(string filePath)
-		{
-			try
-			{
-				string fileName = Path.GetFileName(filePath);
-				//加上時間戳重新命名,避免檔名重複
-				txtPetAvatar.Text = DateTime.Now.ToString("yyyyMMddhhmmssss_") + fileName;
-
-				btnDeletePetAvatar.Enabled = true;
-				MessageBox.Show("選擇成功");
-			}
-			catch (Exception ex)
-			{
-				MessageBox.Show($"選擇失敗,原因:{ex.Message}");
-			}
-		}
-
-		private void UploadFileToDb(string filePath)
-		{
-			string renamedtargetFilePath = _targetFolderPath + txtPetAvatar.Text;
-
-			if (!string.IsNullOrEmpty(filePath))
-			{
-				File.Delete(renamedtargetFilePath);
-			}
-			else
-			{
-				return;
-			}
-			try
-			{
-				File.Copy(filePath, renamedtargetFilePath);
-
-				MessageBox.Show($"上傳成功,路徑:{renamedtargetFilePath}");
-			}
-			catch (Exception ex)
-			{
-				MessageBox.Show($"上傳失敗,{ex.Message}");
-			}
-		}
-
-		private void DeleteFile(string filePath)
-		{
-			string renamedtargetFilePath = _targetFolderPath + filePath;
-			try
-			{
-				if (File.Exists(renamedtargetFilePath))
-				{
-					File.Delete(renamedtargetFilePath);
-					MessageBox.Show("刪除成功");
-				}
-
-			}
-			catch (Exception ex) { MessageBox.Show($"刪除失敗,原因:{ex.Message}"); }
-		}
+		
 
 		private void radioButtonMale_CheckedChanged(object sender, EventArgs e)
 		{
@@ -192,6 +159,17 @@ namespace prjMidtermTopic.form_Pets
 				if (rows > 0)
 				{
 					MessageBox.Show("更新成功");
+
+					IGrid parent = this.Owner as IGrid;
+					//將開啟我的視窗轉型為IGrid，若轉型失敗，不丟出例外而是傳回null
+					if (parent == null)
+					{
+						MessageBox.Show("開啟我的表單沒有實作IGrid，所以無法通知他");
+					}
+					else
+					{
+						parent.Display();//呼叫他的Display()重新顯示資料
+					}
 				}
 				else
 				{
@@ -202,18 +180,6 @@ namespace prjMidtermTopic.form_Pets
 			{
 				MessageBox.Show("更新失敗，原因:" + ex.Message);
 			}
-
-			IGrid parent = this.Owner as IGrid;
-			//將開啟我的視窗轉型為IGrid，若轉型失敗，不丟出例外而是傳回null
-			if (parent == null)
-			{
-				MessageBox.Show("開啟我的表單沒有實作IGrid，所以無法通知他");
-			}
-			else
-			{
-				parent.Display();//呼叫他的Display()重新顯示資料
-			}
-
 			this.Close();
 		}
 
@@ -222,15 +188,24 @@ namespace prjMidtermTopic.form_Pets
 			var servise = new PetService(_petRepo);
 			try
 			{
-				int rows = servise.Delete(_petID);
-				//回到Form_Pet
-				if (rows > 0)
+				if (MessageBox.Show("確定要刪除資料?", "確認", MessageBoxButtons.YesNo) == DialogResult.Yes)
 				{
-					MessageBox.Show("刪除成功");
+					this.Close();
+					int rows = servise.Delete(_petID);
+					//回到Form_Pet
+					if (rows > 0)
+					{
+						MessageBox.Show("刪除成功");
+					}
+					else
+					{
+						MessageBox.Show("刪除失敗");
+					}
 				}
 				else
 				{
-					MessageBox.Show("刪除失敗");
+					this.Close();
+					return;
 				}
 			}
 			catch (Exception ex)
@@ -251,29 +226,6 @@ namespace prjMidtermTopic.form_Pets
 
 			this.Close();
 		}
-
-		private void btnDeletePetAvatar_Click(object sender, EventArgs e)
-		{
-			if (File.Exists(_lasttargetFilePath))
-			{
-				try
-				{
-					DeleteFile(txtPetAvatar.Text);
-					txtPetAvatar.Text = string.Empty;
-					btnDeletePetAvatar.Enabled = false;
-				}
-				catch(Exception ex)
-				{
-					MessageBox.Show("刪除失敗，原因：" + ex.Message);
-				}
-			}
-			else
-			{
-				MessageBox.Show("無寵物圖片檔案");
-				btnDeletePetAvatar.Enabled = false;
-			}
-		}
-
 		private void btnUpdatePetAvatar_Click(object sender, EventArgs e)
 		{
 			using (OpenFileDialog openFileDialog = new OpenFileDialog())
@@ -292,6 +244,113 @@ namespace prjMidtermTopic.form_Pets
 					SelectFileToForm(_originalFilePath);
 				}
 			}
+		}
+
+		private void btnDeletePetAvatar_Click(object sender, EventArgs e)
+		{
+			if (File.Exists(_lasttargetFilePath))
+			{
+				try
+				{
+					DeleteFile(txtPetAvatar.Text);
+					txtPetAvatar.Text = string.Empty;
+					btnDeletePetAvatar.Enabled = false;
+				}
+				catch (Exception ex)
+				{
+					MessageBox.Show("刪除失敗，原因：" + ex.Message);
+				}
+			}
+			else
+			{
+				MessageBox.Show("無寵物圖片檔案");
+				btnDeletePetAvatar.Enabled = false;
+			}
+		}
+
+		private void DeleteFromDb()
+		{
+			if (File.Exists(_lasttargetFilePath))
+			{
+				try
+				{
+					File.Delete(_lasttargetFilePath);
+
+					MessageBox.Show($"圖片刪除成功");
+				}
+				catch(Exception ex)
+				{
+					MessageBox.Show("刪除失敗，原因：" + ex.Message );
+				}
+			}
+			else
+			{
+				btnDeletePetAvatar.Enabled=false;
+			}
+		}
+
+		private void SelectFileToForm(string filePath)
+		{
+			try
+			{
+				
+				//加上時間戳重新命名,避免檔名重複
+				txtPetAvatar.Text = DateTime.Now.ToString("yyyyMMddhhmmss_") + Path.GetFileName(filePath);
+
+				MessageBox.Show("選擇成功");
+				btnDeletePetAvatar.Enabled = true;
+
+				using (var bmpTemp = new Bitmap(filePath))
+				{
+					pbPet.Image = new Bitmap(bmpTemp);
+				}
+
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show($"選擇失敗,原因:{ex.Message}");
+			}
+		}
+
+		private void UploadFileToDb(string filePath)
+		{
+			DeleteFromDb();
+
+			string renamedtargetFilePath = _targetFolderPath + txtPetAvatar.Text;
+
+			if (!string.IsNullOrEmpty(filePath))
+			{
+				File.Delete(renamedtargetFilePath);
+			}
+			else
+			{
+				return;
+			}
+			try
+			{
+				File.Copy(filePath, renamedtargetFilePath);
+
+				MessageBox.Show($"上傳成功,路徑:{renamedtargetFilePath}");
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show($"上傳失敗,{ex.Message}");
+			}
+		}
+
+		private void DeleteFile(string filePath)
+		{
+			string renamedtargetFilePath = _targetFolderPath + filePath;
+			try
+			{
+				if (File.Exists(renamedtargetFilePath))
+				{
+					File.Delete(renamedtargetFilePath);
+					MessageBox.Show("刪除成功");
+				}
+
+			}
+			catch (Exception ex) { MessageBox.Show($"刪除失敗,原因:{ex.Message}"); }
 		}
 	}
 }

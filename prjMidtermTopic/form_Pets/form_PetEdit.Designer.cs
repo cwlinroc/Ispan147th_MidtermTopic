@@ -43,6 +43,7 @@
 			this.radioButtonMale = new System.Windows.Forms.RadioButton();
 			this.radioButtonFemale = new System.Windows.Forms.RadioButton();
 			this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+			this.pbPet = new System.Windows.Forms.PictureBox();
 			this.label6 = new System.Windows.Forms.Label();
 			this.txtPetAvatar = new System.Windows.Forms.TextBox();
 			this.btnUpdatePetAvatar = new System.Windows.Forms.Button();
@@ -54,11 +55,10 @@
 			this.label7 = new System.Windows.Forms.Label();
 			this.label9 = new System.Windows.Forms.Label();
 			this.txtPetID = new System.Windows.Forms.TextBox();
-			this.pbPet = new System.Windows.Forms.PictureBox();
 			this.label10 = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
-			this.panel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pbPet)).BeginInit();
+			this.panel1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// label1
@@ -182,6 +182,18 @@
 			// 
 			this.errorProvider1.ContainerControl = this;
 			// 
+			// pbPet
+			// 
+			this.errorProvider1.SetIconAlignment(this.pbPet, System.Windows.Forms.ErrorIconAlignment.TopRight);
+			this.pbPet.Image = global::prjMidtermTopic.Properties.Resources.CryCat;
+			this.pbPet.Location = new System.Drawing.Point(755, 39);
+			this.pbPet.MaximumSize = new System.Drawing.Size(256, 256);
+			this.pbPet.Name = "pbPet";
+			this.pbPet.Size = new System.Drawing.Size(256, 256);
+			this.pbPet.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+			this.pbPet.TabIndex = 15;
+			this.pbPet.TabStop = false;
+			// 
 			// label6
 			// 
 			this.label6.AutoSize = true;
@@ -276,17 +288,6 @@
 			this.txtPetID.Size = new System.Drawing.Size(248, 22);
 			this.txtPetID.TabIndex = 0;
 			// 
-			// pbPet
-			// 
-			this.errorProvider1.SetIconAlignment(this.pbPet, System.Windows.Forms.ErrorIconAlignment.TopRight);
-			this.pbPet.Location = new System.Drawing.Point(755, 39);
-			this.pbPet.MaximumSize = new System.Drawing.Size(256, 256);
-			this.pbPet.Name = "pbPet";
-			this.pbPet.Size = new System.Drawing.Size(256, 256);
-			this.pbPet.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-			this.pbPet.TabIndex = 15;
-			this.pbPet.TabStop = false;
-			// 
 			// label10
 			// 
 			this.label10.AutoSize = true;
@@ -331,9 +332,9 @@
 			this.Text = "form_PetEdit";
 			this.Load += new System.EventHandler(this.form_PetEdit_Load);
 			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pbPet)).EndInit();
 			this.panel1.ResumeLayout(false);
 			this.panel1.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pbPet)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
