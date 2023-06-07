@@ -34,12 +34,6 @@
 			this.txtPetName = new System.Windows.Forms.TextBox();
 			this.btnAdd = new System.Windows.Forms.Button();
 			this.dataGridView1 = new System.Windows.Forms.DataGridView();
-			this.btnReset = new System.Windows.Forms.Button();
-			this.btnSearch = new System.Windows.Forms.Button();
-			this.comboBoxSearchSpecies = new System.Windows.Forms.ComboBox();
-			this.label3 = new System.Windows.Forms.Label();
-			this.comboBoxSearchBreed = new System.Windows.Forms.ComboBox();
-			this.label4 = new System.Windows.Forms.Label();
 			this.PetID = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.SpeciesID = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.SpeciesName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,6 +45,12 @@
 			this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Location = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.PetAvatar = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.btnReset = new System.Windows.Forms.Button();
+			this.btnSearch = new System.Windows.Forms.Button();
+			this.comboBoxSearchSpecies = new System.Windows.Forms.ComboBox();
+			this.label3 = new System.Windows.Forms.Label();
+			this.comboBoxSearchBreed = new System.Windows.Forms.ComboBox();
+			this.label4 = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -120,60 +120,7 @@
 			this.dataGridView1.Size = new System.Drawing.Size(1147, 568);
 			this.dataGridView1.TabIndex = 3;
 			this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
-			// 
-			// btnReset
-			// 
-			this.btnReset.Location = new System.Drawing.Point(700, 44);
-			this.btnReset.Name = "btnReset";
-			this.btnReset.Size = new System.Drawing.Size(75, 23);
-			this.btnReset.TabIndex = 2;
-			this.btnReset.Text = "輸入重置";
-			this.btnReset.UseVisualStyleBackColor = true;
-			this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
-			// 
-			// btnSearch
-			// 
-			this.btnSearch.Location = new System.Drawing.Point(1010, 45);
-			this.btnSearch.Name = "btnSearch";
-			this.btnSearch.Size = new System.Drawing.Size(75, 23);
-			this.btnSearch.TabIndex = 4;
-			this.btnSearch.Text = "搜尋";
-			this.btnSearch.UseVisualStyleBackColor = true;
-			this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
-			// 
-			// comboBoxSearchSpecies
-			// 
-			this.comboBoxSearchSpecies.FormattingEnabled = true;
-			this.comboBoxSearchSpecies.Location = new System.Drawing.Point(303, 27);
-			this.comboBoxSearchSpecies.Name = "comboBoxSearchSpecies";
-			this.comboBoxSearchSpecies.Size = new System.Drawing.Size(121, 20);
-			this.comboBoxSearchSpecies.TabIndex = 5;
-			// 
-			// label3
-			// 
-			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(232, 31);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(65, 12);
-			this.label3.TabIndex = 6;
-			this.label3.Text = "按物種分類";
-			// 
-			// comboBoxSearchBreed
-			// 
-			this.comboBoxSearchBreed.FormattingEnabled = true;
-			this.comboBoxSearchBreed.Location = new System.Drawing.Point(303, 62);
-			this.comboBoxSearchBreed.Name = "comboBoxSearchBreed";
-			this.comboBoxSearchBreed.Size = new System.Drawing.Size(121, 20);
-			this.comboBoxSearchBreed.TabIndex = 5;
-			// 
-			// label4
-			// 
-			this.label4.AutoSize = true;
-			this.label4.Location = new System.Drawing.Point(232, 62);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(65, 12);
-			this.label4.TabIndex = 6;
-			this.label4.Text = "按血統分類";
+			this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
 			// 
 			// PetID
 			// 
@@ -242,6 +189,60 @@
 			this.PetAvatar.DataPropertyName = "PetAvatar";
 			this.PetAvatar.HeaderText = "寵物照片";
 			this.PetAvatar.Name = "PetAvatar";
+			// 
+			// btnReset
+			// 
+			this.btnReset.Location = new System.Drawing.Point(700, 44);
+			this.btnReset.Name = "btnReset";
+			this.btnReset.Size = new System.Drawing.Size(75, 23);
+			this.btnReset.TabIndex = 2;
+			this.btnReset.Text = "輸入重置";
+			this.btnReset.UseVisualStyleBackColor = true;
+			this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+			// 
+			// btnSearch
+			// 
+			this.btnSearch.Location = new System.Drawing.Point(1010, 45);
+			this.btnSearch.Name = "btnSearch";
+			this.btnSearch.Size = new System.Drawing.Size(75, 23);
+			this.btnSearch.TabIndex = 4;
+			this.btnSearch.Text = "搜尋";
+			this.btnSearch.UseVisualStyleBackColor = true;
+			this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+			// 
+			// comboBoxSearchSpecies
+			// 
+			this.comboBoxSearchSpecies.FormattingEnabled = true;
+			this.comboBoxSearchSpecies.Location = new System.Drawing.Point(303, 27);
+			this.comboBoxSearchSpecies.Name = "comboBoxSearchSpecies";
+			this.comboBoxSearchSpecies.Size = new System.Drawing.Size(121, 20);
+			this.comboBoxSearchSpecies.TabIndex = 5;
+			// 
+			// label3
+			// 
+			this.label3.AutoSize = true;
+			this.label3.Location = new System.Drawing.Point(232, 31);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(65, 12);
+			this.label3.TabIndex = 6;
+			this.label3.Text = "按物種分類";
+			// 
+			// comboBoxSearchBreed
+			// 
+			this.comboBoxSearchBreed.FormattingEnabled = true;
+			this.comboBoxSearchBreed.Location = new System.Drawing.Point(303, 62);
+			this.comboBoxSearchBreed.Name = "comboBoxSearchBreed";
+			this.comboBoxSearchBreed.Size = new System.Drawing.Size(121, 20);
+			this.comboBoxSearchBreed.TabIndex = 5;
+			// 
+			// label4
+			// 
+			this.label4.AutoSize = true;
+			this.label4.Location = new System.Drawing.Point(232, 62);
+			this.label4.Name = "label4";
+			this.label4.Size = new System.Drawing.Size(65, 12);
+			this.label4.TabIndex = 6;
+			this.label4.Text = "按血統分類";
 			// 
 			// form_Pet
 			// 
