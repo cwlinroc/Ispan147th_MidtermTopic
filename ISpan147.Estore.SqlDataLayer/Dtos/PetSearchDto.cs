@@ -12,5 +12,8 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
 		public string PetName { get; set;}
 		public int? SpeciesID { get; set; }
 		public int? BreedID { get; set; }
+		public int? MaxQueryNumber { get; set; }
+		public string OrderBy { get; set; }
+		public bool Descending { get; set; }
 	}
 }

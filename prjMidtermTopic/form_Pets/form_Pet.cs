@@ -17,6 +17,15 @@ namespace prjMidtermTopic
 		private Dictionary<int, string> _mapBreed = new Dictionary<int, string>();
 		private readonly Dictionary<string, Func<PetGridDto, PetGridDto, int>> _sortMap;
 		private IPetRepo _repo;
+		private readonly string[] SortingOptionNames = new string[]
+		{
+			"寵物編號", "物種名稱","血統名稱", "性別", "年齡","所在地"
+		};
+		private readonly string[] SortingOptions = new string[]
+		{
+			"PetID","SpeciesID","BreedID","Gender","Age","Location"
+		};
+
 		public form_Pet()
 		{
 			InitializeComponent();
@@ -53,6 +62,9 @@ namespace prjMidtermTopic
 
 			comboBoxSearchSpecies.SelectedIndex = 0;
 			comboBoxSearchBreed.SelectedIndex = 0;
+
+			comboBoxSortBy.Items.AddRange(SortingOptionNames);
+			comboBoxSortBy.SelectedIndex = 0;
 		}
 
 		public void Display()
@@ -82,6 +94,16 @@ namespace prjMidtermTopic
 					sDto.BreedID = (comboBoxSearchBreed.SelectedItem as dynamic).Key;
 				}
 
+				if (checkBoxMax.Checked)
+				{
+					sDto.MaxQueryNumber = int.Parse(txtMax.Text.Trim());
+				}
+				sDto.Descending = true;
+				if (checkBoxDescending.Checked)
+				{
+					sDto.Descending = false;
+				}
+				sDto.OrderBy = SortingOptions[comboBoxSortBy.SelectedIndex];
 
 				_data = repo.Search(sDto);
 				dataGridView1.DataSource = _data;

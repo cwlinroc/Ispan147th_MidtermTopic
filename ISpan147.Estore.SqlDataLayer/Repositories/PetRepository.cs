@@ -47,7 +47,20 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 		#region 查資料
 		public List<PetGridDto> Search(PetSearchDto sDto)
 		{
-			string sql = $"SELECT * FROM Pets p JOIN Species s ON p.SpeciesID = s.SPeciesID " +
+			string top = string.Empty;
+			if (sDto.MaxQueryNumber.HasValue)
+			{
+				top = $"TOP (" + sDto.MaxQueryNumber + ") ";
+			}
+			else
+			{
+				top = string.Empty;
+			}
+
+			string orderBy = $" ORDER BY p.{sDto.OrderBy}";
+			string decending = sDto.Descending ? " ASC" : " DESC";
+
+			string sql = $"SELECT {top} * FROM Pets p JOIN Species s ON p.SpeciesID = s.SPeciesID " +
 				$"JOIN Breeds b ON p.BreedID = b.BreedID";
 
 			var builder = new SqlParameterBuilder();
@@ -69,7 +82,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 			if (sDto.SpeciesID.HasValue)
 			{
 				where += $" AND p.SpeciesID = @SpeciesID";
-				builder.AddInt("SpeciesID",sDto.SpeciesID.Value);
+				builder.AddInt("SpeciesID", sDto.SpeciesID.Value);
 			}
 
 			//public int? BreedId { get; set; }
@@ -85,127 +98,129 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 				sql += where;
 			}
 
-	var parameters = builder.Build().ToArray();
+			sql = sql + orderBy + decending;
 
-	Func<SqlConnection> connGetter = SqlDb.GetConnection;
-	Func<SqlDataReader, PetGridDto> func = Assembler.PetGridDtoAssembler;
+			var parameters = builder.Build().ToArray();
+
+			Func<SqlConnection> connGetter = SqlDb.GetConnection;
+			Func<SqlDataReader, PetGridDto> func = Assembler.PetGridDtoAssembler;
 
 			return SqlDb.Search(connGetter, sql, func, parameters).ToList();
-}
-#endregion
+		}
+		#endregion
 
-#region 用物種找資料
-public List<SpeciesDto> SearchSpecies(int? spceiesID)
-{
-	string sql = $"SELECT * FROM Species";
+		#region 用物種找資料
+		public List<SpeciesDto> SearchSpecies(int? spceiesID)
+		{
+			string sql = $"SELECT * FROM Species";
 
-	var builder = new SqlParameterBuilder();
+			var builder = new SqlParameterBuilder();
 
-	string where = string.Empty;
+			string where = string.Empty;
 
-	if (spceiesID.HasValue)
-	{
-		where += $" WHERE SpeciesID = @SpeciesID";
-		builder.AddInt("SpeciesID", spceiesID.Value);
-	}
+			if (spceiesID.HasValue)
+			{
+				where += $" WHERE SpeciesID = @SpeciesID";
+				builder.AddInt("SpeciesID", spceiesID.Value);
+			}
 
-	sql += where;
+			sql += where;
 
-	var parameters = builder.Build().ToArray();
+			var parameters = builder.Build().ToArray();
 
-	Func<SqlConnection> connGetter = SqlDb.GetConnection;
-	Func<SqlDataReader, SpeciesDto> func = Assembler.SpeciesDtoAssembler;
+			Func<SqlConnection> connGetter = SqlDb.GetConnection;
+			Func<SqlDataReader, SpeciesDto> func = Assembler.SpeciesDtoAssembler;
 
-	return SqlDb.Search(connGetter, sql, func, parameters).ToList();
-}
-#endregion
+			return SqlDb.Search(connGetter, sql, func, parameters).ToList();
+		}
+		#endregion
 
-#region 用血統找資料
-public List<BreedDto> SearchBreed(int? breedID)
-{
-	string sql = $"SELECT * FROM Breeds";
+		#region 用血統找資料
+		public List<BreedDto> SearchBreed(int? breedID)
+		{
+			string sql = $"SELECT * FROM Breeds";
 
-	var builder = new SqlParameterBuilder();
+			var builder = new SqlParameterBuilder();
 
-	string where = string.Empty;
-	if (breedID.HasValue)
-	{
-		where += $" WHERE BreedID = @BreedID";
-		builder.AddInt("BreedID", breedID.Value);
-	}
+			string where = string.Empty;
+			if (breedID.HasValue)
+			{
+				where += $" WHERE BreedID = @BreedID";
+				builder.AddInt("BreedID", breedID.Value);
+			}
 
-	sql += where;
+			sql += where;
 
-	var parameters = builder.Build().ToArray();
+			var parameters = builder.Build().ToArray();
 
-	Func<SqlConnection> connGetter = SqlDb.GetConnection;
-	Func<SqlDataReader, BreedDto> func = Assembler.BreedDtoAssembler;
+			Func<SqlConnection> connGetter = SqlDb.GetConnection;
+			Func<SqlDataReader, BreedDto> func = Assembler.BreedDtoAssembler;
 
-	return SqlDb.Search(connGetter, sql, func, parameters).ToList();
-}
-#endregion
+			return SqlDb.Search(connGetter, sql, func, parameters).ToList();
+		}
+		#endregion
 
-#region 建資料
-public int Create(PetDto dto)
-{
-	string sql = @"INSERT INTO Pets 
+		#region 建資料
+		public int Create(PetDto dto)
+		{
+			string sql = @"INSERT INTO Pets 
 (SpeciesID, BreedID, PetName, Gender, Age, Description, Location, PetAvatar)
 VALUES 
 (@SpeciesID, @BreedID, @PetName, @Gender, @Age, @Description, @Location, @PetAvatar)";
 
-	var parameters = new SqlParameterBuilder()
-		.AddInt("@SpeciesID", dto.SpeciesID)
-		.AddInt("@BreedID", dto.BreedID)
-		.AddNVarchar("@PetName", 15, dto.PetName)
-		.AddBit("@Gender", dto.Gender)
-		.AddInt("@Age", dto.Age)
-		.AddNVarchar("@Description", 500, dto.Description)
-		.AddNVarchar("@Location", 30, dto.Description)
-		.AddNVarchar("@PetAvatar", 50, dto.PetAvatar)
-		.Build();
+			var parameters = new SqlParameterBuilder()
+				.AddInt("@SpeciesID", dto.SpeciesID)
+				.AddInt("@BreedID", dto.BreedID)
+				.AddNVarchar("@PetName", 15, dto.PetName)
+				.AddBit("@Gender", dto.Gender)
+				.AddInt("@Age", dto.Age)
+				.AddNVarchar("@Description", 500, dto.Description)
+				.AddNVarchar("@Location", 30, dto.Description)
+				.AddNVarchar("@PetAvatar", 50, dto.PetAvatar)
+				.Build();
 
-	return SqlDb.Create(SqlDb.GetConnection, sql, parameters);
-}
-#endregion
+			return SqlDb.Create(SqlDb.GetConnection, sql, parameters);
+		}
+		#endregion
 
-#region 修資料
-public int Update(PetDto dto)
-{
-	string sql = "UPDATE Pets SET SpeciesID = @SpeciesID, BreedID = BreedID, PetName = @PetName, Gender = @Gender," +
-		"Age = @Age, Description = @Description, Location = @Location," +
-		"PetAvatar = @PetAvatar WHERE PetID = @PetID";
+		#region 修資料
+		public int Update(PetDto dto)
+		{
+			string sql = "UPDATE Pets SET SpeciesID = @SpeciesID, BreedID = BreedID, PetName = @PetName, Gender = @Gender," +
+				"Age = @Age, Description = @Description, Location = @Location," +
+				"PetAvatar = @PetAvatar WHERE PetID = @PetID";
 
-	var parameters = new SqlParameterBuilder()
-		.AddInt("PetID", dto.PetID)
-		.AddInt("@SpeciesID", dto.SpeciesID)
-		.AddInt("@BreedID", dto.BreedID)
-		.AddNVarchar("@PetName", 15, dto.PetName)
-		.AddBit("@Gender", dto.Gender)
-		.AddInt("@Age", dto.Age)
-		.AddNVarchar("@Description", 500, dto.Description)
-		.AddNVarchar("@Location", 30, dto.Description)
-		.AddNVarchar("@PetAvatar", 50, dto.PetAvatar)
-		.Build();
+			var parameters = new SqlParameterBuilder()
+				.AddInt("PetID", dto.PetID)
+				.AddInt("@SpeciesID", dto.SpeciesID)
+				.AddInt("@BreedID", dto.BreedID)
+				.AddNVarchar("@PetName", 15, dto.PetName)
+				.AddBit("@Gender", dto.Gender)
+				.AddInt("@Age", dto.Age)
+				.AddNVarchar("@Description", 500, dto.Description)
+				.AddNVarchar("@Location", 30, dto.Description)
+				.AddNVarchar("@PetAvatar", 50, dto.PetAvatar)
+				.Build();
 
-	Func<SqlConnection> connGetter = SqlDb.GetConnection;
+			Func<SqlConnection> connGetter = SqlDb.GetConnection;
 
-	return SqlDb.UpdateOrDelete(connGetter, sql, parameters);
-}
-#endregion
+			return SqlDb.UpdateOrDelete(connGetter, sql, parameters);
+		}
+		#endregion
 
-#region 刪資料
-public int Delete(int PetID)
-{
-	string sql = "DELETE FROM Pets WHERE PetID = @PetID";
+		#region 刪資料
+		public int Delete(int PetID)
+		{
+			string sql = "DELETE FROM Pets WHERE PetID = @PetID";
 
-	SqlParameter parameter = new SqlParameter("@PetID", SqlDbType.Int)
-	{
-		Value = PetID
-	};
-	Func<SqlConnection> connGetter = SqlDb.GetConnection;
+			SqlParameter parameter = new SqlParameter("@PetID", SqlDbType.Int)
+			{
+				Value = PetID
+			};
+			Func<SqlConnection> connGetter = SqlDb.GetConnection;
 
-	return SqlDb.UpdateOrDelete(connGetter, sql, parameter);
-}
+			return SqlDb.UpdateOrDelete(connGetter, sql, parameter);
+		}
 		#endregion
 	}
 }
