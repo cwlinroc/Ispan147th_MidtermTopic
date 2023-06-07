@@ -1,4 +1,5 @@
 ﻿using ISpan147.Estore.SqlDataLayer.Dtos;
+using ISpan147.Estore.SqlDataLayer.EFModel;
 using ISpan147.Estore.SqlDataLayer.Services;
 using prjMidtermTopic.Interfaces;
 using System;
@@ -41,9 +42,13 @@ namespace prjMidtermTopic.form_QA
 
 		private void from_ThemeCreate_Load(object sender, EventArgs e)
 		{
+			ForumAccountService forumAccountService = new ForumAccountService();
+			var forumAccountName = forumAccountService.GetForumAccountName((int)Authentication.ForumAccountID);
+
 			// 顯示要留言人資訊
-			labelThemeRole.Text = "留言者";
-			labelThemeRoleID.Text = "123";
+			labelThemeRoleID.Text = Authentication.ForumAccountID.ToString();
+			labelThemeRoleID.Visible = false;
+			labelThemeRole.Text = $"({Authentication.ForumAccountID.ToString()}) {forumAccountName}";
 		}
 	}
 }

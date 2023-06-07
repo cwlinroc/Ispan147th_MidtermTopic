@@ -70,6 +70,7 @@ namespace prjMidtermTopic.form_QA
 		private void buttonCreateCommon_Click(object sender, EventArgs e)
 		{
 			from_CommentCreate commentCreate = new from_CommentCreate(_themeId);
+			commentCreate.Owner = this;
 			commentCreate.ShowDialog();
 		}
 

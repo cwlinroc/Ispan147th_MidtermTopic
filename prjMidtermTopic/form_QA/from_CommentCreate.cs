@@ -47,8 +47,8 @@ namespace prjMidtermTopic.form_QA
 			var result = _service.CreateComment(commentDto);
 
 			MessageBox.Show(result);
-			//IGridComment parent = this.Owner as IGridComment;
-			//parent.CommentDisplay();
+			IGridComment parent = this.Owner as IGridComment;
+			parent.CommentDisplay();
 			this.Close();
 			
 			

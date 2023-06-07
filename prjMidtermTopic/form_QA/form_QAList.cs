@@ -37,7 +37,8 @@ namespace prjMidtermTopic
 		private void buttonSearch_Click(object sender, EventArgs e)
 		{
 			var data = _service.SearchTheme(this.textBoxSearch.Text);
-
+			
+			
 			// 繫結到DataGridView
 			DataGridViewThemeShow(data);
 		}
