@@ -19,7 +19,7 @@ namespace prjMidtermTopic.ViewModels
         public int PetID { get; set; }
         [Display(Name = "會員編號")]
         [Required(ErrorMessage = "{0}必填")]
-        public string MemberID { get; set; }
+        public int MemberID { get; set; }
 
         [Display(Name = "顧客姓名")]
         public string MemberName { get; set; }
@@ -36,7 +36,7 @@ namespace prjMidtermTopic.ViewModels
             {
                 AdoptID = vm.AdoptID,
                 PetID = vm.PetID,
-                MemberID = int.Parse(vm.MemberID),
+                MemberID = vm.MemberID,
                 ApplicationTime = vm.ApplicationTime.Value,
             };
 
@@ -50,7 +50,7 @@ namespace prjMidtermTopic.ViewModels
             {
                 AdoptID = dto.AdoptID,
                 PetID = dto.PetID,
-                MemberID = dto.MemberID.ToString(),
+                MemberID = dto.MemberID,
                 ApplicationTime = dto.ApplicationTime
 
             };

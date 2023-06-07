@@ -227,6 +227,9 @@
     <EmbeddedResource Include="Form_Adopt\form_AdoptAdd.resx">
       <DependentUpon>form_AdoptAdd.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form_Adopt\form_AdoptListEdit.resx">
+      <DependentUpon>form_AdoptListEdit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="form_Category\form_CreateCategory.resx">
       <DependentUpon>form_CreateCategory.cs</DependentUpon>
     </EmbeddedResource>

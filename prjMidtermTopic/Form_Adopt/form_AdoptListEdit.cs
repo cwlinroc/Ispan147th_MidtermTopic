@@ -12,9 +12,23 @@ namespace prjMidtermTopic.Form_Adopt
 {
     public partial class form_AdoptListEdit : Form
     {
-        public form_AdoptListEdit()
+        private int id;
+
+       
+        public form_AdoptListEdit(int id)
         {
+            this.id = id;
             InitializeComponent();
+        }
+
+        private void form_AdoptListEdit_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

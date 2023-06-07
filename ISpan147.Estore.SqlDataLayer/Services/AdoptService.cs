@@ -10,24 +10,24 @@ namespace ISpan147.Estore.SqlDataLayer.Services
 {
     public class AdoptService
     {
-        public int Create(OrderDto dto)
+        public int Create(AdoptDto dto)
         {
-            return new OrderRepository().Create(dto);
+            return new AdoptRepositories().Create(dto);
         }
        
-        public IEnumerable<OrderGridDto> Search(OrderSearchDto sDto)
+        public IEnumerable<AdoptDto> Search(int? AdoptID, int? PetID, DateTime? Application)
         {
-            return new OrderRepository().Search(sDto);
+            return new AdoptRepositories().Search(AdoptID,PetID,Application);
         }
 
-        public int Update(OrderDto dto)
+        public int Update(AdoptDto dto)
         {
-            return new OrderRepository().Update(dto);
+            return new AdoptRepositories().Update(dto);
         }
 
-        public int Delete(int orderID)
+        public int Delete(AdoptDto dto)
         {
-            return new OrderRepository().Delete(orderID);
+            return new AdoptRepositories().Delete(dto);
         }
 
     }

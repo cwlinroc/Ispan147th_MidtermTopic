@@ -1,10 +1,14 @@
-﻿using ISpan147.Estore.SqlDataLayer.Services;
+﻿using ISpan147.Estore.SqlDataLayer.Dtos;
+using ISpan147.Estore.SqlDataLayer.EFModel;
+using ISpan147.Estore.SqlDataLayer.Services;
+using prjMidtermTopic.Interfaces;
 using prjMidtermTopic.Model;
 using prjMidtermTopic.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -27,43 +31,50 @@ namespace prjMidtermTopic.Form_Adopt
 
         private void commit_button(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    var vm = new AdoptVM()
-            //    {
-            //        AdoptID
-            //        MemberID = txt_MemberID.Text.Trim(),
-            //        PaymentMethod = comboBox_PayMethod.SelectedItem?.ToString(),
-            //        Payed = comboBox_Payed.SelectedItem?.ToString(),
-            //        PurchaseTime = dateTimePicker_PurchaseTime.Value,
-            //        PaymentAmount = txt_PaymentAmount.Text.Trim(),
-            //    };
+            try {
+                var map = new Dictionary<string, Control>(StringComparer.CurrentCultureIgnoreCase) {
+                    { "PetID" , txt_petID },
+                    { "MemberID" , txt_memberID },
+                    { "ApplicationTime" , dateTimePicker1 },
 
-            //    var map = new Dictionary<string, Control>(StringComparer.CurrentCultureIgnoreCase) {
-            //        { "OrderID" , txt_OrderID },
-            //        { "MemberID" , txt_MemberID },
-            //        { "PaymentMethod" , comboBox_PayMethod },
-            //        { "Payed" , comboBox_Payed },
-            //        { "PurchaseTime", dateTimePicker_PurchaseTime },
-            //        { "PaymentAmount", txt_PaymentAmount }
-            //    };
+                };
 
-            //    bool hasError = MyValidator.ValidateAndDisplay(vm, errorProvider1, map);
 
-            //    if (hasError) return;
+                bool PetIDint = int.TryParse(txt_petID.Text, out int petId);
+                petId = PetIDint ? petId : 0;
+                bool MemberIDint = int.TryParse(txt_memberID.Text, out int MemberId);
+                MemberId = MemberIDint ? MemberId : 0;
 
-            //    int newId = new OrderService().Create(vm.ToDto());
+                var vm = new AdoptVM()
+                {
+                    PetID = petId,
+                    MemberID = MemberId,
+                    ApplicationTime = dateTimePicker1.Value
+                };
 
-            //    MessageBox.Show($"輸入成功，ID為{newId}");
-
-            //    DisplayGrid.DisplayAll(this, new MessageArgs { Message = "_Order_" });
-
-            //    this.Close();
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("新增失敗，可能原因：" + ex.Message);
-            //}
+                bool hasError = MyValidator.ValidateAndDisplay(vm, errorProvider1, map);
+                if (hasError)
+                {
+                    return;
+                }
+                AdoptDto adoptDto = new AdoptDto()
+                {
+                    PetID = vm.PetID,
+                    MemberID = vm.MemberID,
+                    ApplicationTime = vm.ApplicationTime.Value
+                };
+                AdoptService adoptService = new AdoptService();
+                int adoptId = adoptService.Create(adoptDto);
+                MessageBox.Show($"輸入成功,ID是{adoptId}");
+                IGrid parent = Owner as IGrid;
+                parent.Display();
+                Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"輸入失敗,原因是{ex.Message}");
+            }
+            
         }
     }
 }

@@ -33,8 +33,6 @@
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.adoptid = new System.Windows.Forms.Label();
             this.txt_adoptID = new System.Windows.Forms.TextBox();
             this.txt_petID = new System.Windows.Forms.TextBox();
@@ -62,9 +60,7 @@
             this.Column1,
             this.Column2,
             this.Column3,
-            this.Column4,
-            this.Column5,
-            this.Column6});
+            this.Column4});
             this.dataGridView1.Location = new System.Drawing.Point(40, 110);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 24;
@@ -75,33 +71,27 @@
             // 
             // Column1
             // 
+            this.Column1.DataPropertyName = "AdoptID";
             this.Column1.HeaderText = "編號";
             this.Column1.Name = "Column1";
             // 
             // Column2
             // 
+            this.Column2.DataPropertyName = "PetID";
             this.Column2.HeaderText = "寵物編號";
             this.Column2.Name = "Column2";
             // 
             // Column3
             // 
+            this.Column3.DataPropertyName = "MemberID";
             this.Column3.HeaderText = "會員編號";
             this.Column3.Name = "Column3";
             // 
             // Column4
             // 
+            this.Column4.DataPropertyName = "ApplicationTime";
             this.Column4.HeaderText = "領養申請時間";
             this.Column4.Name = "Column4";
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "會員名稱";
-            this.Column5.Name = "Column5";
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "寵物名稱";
-            this.Column6.Name = "Column6";
             // 
             // adoptid
             // 
@@ -215,6 +205,7 @@
             this.Add.TabIndex = 13;
             this.Add.Text = "新增領養";
             this.Add.UseVisualStyleBackColor = true;
+            this.Add.Click += new System.EventHandler(this.Add_Click);
             // 
             // search
             // 
@@ -248,6 +239,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Name = "form_Adopt";
             this.Text = "Form3";
+            this.Load += new System.EventHandler(this.form_Adopt_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -257,12 +249,6 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.Label adoptid;
         private System.Windows.Forms.TextBox txt_adoptID;
         private System.Windows.Forms.TextBox txt_petID;
@@ -277,5 +263,9 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button Add;
         private System.Windows.Forms.Button search;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
     }
 }

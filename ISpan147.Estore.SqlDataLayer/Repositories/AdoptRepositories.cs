@@ -57,22 +57,24 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
         {
             string sql = $"SELECT * FROM Adopts AS a JOIN Members AS m ON m.MemberID = a.MemberID  ";
             var parameter = new SqlParameterBuilder();
-            string where = "";
+            string where = " WHERE 1=1 ";
             if (AdoptID.HasValue)
             {
-                where += $"AND AdoptID = @AdoptID";
+                where += $" AND AdoptID = @AdoptID ";
                 parameter.AddInt("@AdoptID", AdoptID.Value);
             }
             if (PetID.HasValue)
             {
-                where += $" AND PetID = @PetID";
+                where += $" AND PetID = @PetID ";
                 parameter.AddInt("@PetID", PetID.Value);
             }
             if (Application.HasValue) 
             {
-                where += $"AND Application = @Application";
+                where += $" AND Application = @Application ";
                 parameter.AddDateTime("@Application",Application.Value);
             }
+            sql = sql + where;
+            //sql += where;
             SqlParameter[] parameters = parameter.Build();
             Func<SqlDataReader, AdoptDto> func = Assembler.AdoptDtoAssembler;
             Func<SqlConnection> connGetter = SqlDb.GetConnection;

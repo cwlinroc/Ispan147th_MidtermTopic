@@ -3,6 +3,7 @@ using ISpan147.Estore.SqlDataLayer.Repositories;
 using prjMidtermTopic.Form_Adopt;
 using prjMidtermTopic.form_Merchandise;
 using prjMidtermTopic.form_Order;
+using prjMidtermTopic.Interfaces;
 using prjMidtermTopic.Model;
 using prjMidtermTopic.ViewModels;
 using System;
@@ -19,11 +20,11 @@ using System.Xml.Linq;
 
 namespace prjMidtermTopic
 {
-    public partial class form_Adopt : Form
+    public partial class form_Adopt : Form,IGrid    
     {
         private List<AdoptDto> _data;
         private int _row = -1;
-
+        
         private int _sortedIndex = 0;
         private readonly Dictionary<string, Func<AdoptGridDto, AdoptGridDto, int>> _sortMap;
         public form_Adopt()
@@ -42,7 +43,7 @@ namespace prjMidtermTopic
 
             
         }
-        private void display()
+        public void Display()
         {
             try
             {
@@ -63,8 +64,9 @@ namespace prjMidtermTopic
                 _data = gridviewlist.ToList();
                 dataGridView1.DataSource = _data; 
             }
-            catch 
+            catch (Exception ex) 
             {
+                MessageBox.Show($"輸入失敗,原因是{ex.Message}");
             }
         }
        
@@ -76,14 +78,13 @@ namespace prjMidtermTopic
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            //if (e.RowIndex < 0)
-            //{
-            //    OrderByHeader(e.ColumnIndex);
-            //    return;
-            //}
-            //var frm = new form_OrderList(_data[_row].OrderID);
-            //frm.Owner = this;
-            //frm.ShowDialog();
+            if (e.RowIndex < 0) return;
+
+            int id = this._data[e.RowIndex].AdoptID;
+
+            var frm = new form_AdoptListEdit(id);
+            frm.Owner = this;
+            frm.ShowDialog();
         }
         private void OrderByHeader(int columnIndex)
         {
@@ -116,12 +117,24 @@ namespace prjMidtermTopic
 
         private void search_Click(object sender, EventArgs e)
         {
-            display();
+            Display();
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void form_Adopt_Load(object sender, EventArgs e)
+        {
+            Display();
+        }
+
+        private void Add_Click(object sender, EventArgs e)
+        {
+            var form = new form_AdoptAdd();
+            form.Owner = this;
+            form.ShowDialog();
         }
     }
 }
