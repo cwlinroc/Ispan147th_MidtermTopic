@@ -36,12 +36,12 @@
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.adoptid = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txt_adoptID = new System.Windows.Forms.TextBox();
+            this.txt_petID = new System.Windows.Forms.TextBox();
             this.petId = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.memberId = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txt_datetime = new System.Windows.Forms.TextBox();
             this.adopttime = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -54,8 +54,8 @@
             // 
             // dataGridView1
             // 
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -70,6 +70,7 @@
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(656, 355);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
             // Column1
@@ -113,19 +114,20 @@
             this.adoptid.Text = "領養編號";
             this.adoptid.Click += new System.EventHandler(this.label1_Click);
             // 
-            // textBox1
+            // txt_adoptID
             // 
-            this.textBox1.Location = new System.Drawing.Point(80, 11);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 22);
-            this.textBox1.TabIndex = 2;
+            this.txt_adoptID.Location = new System.Drawing.Point(80, 11);
+            this.txt_adoptID.Name = "txt_adoptID";
+            this.txt_adoptID.Size = new System.Drawing.Size(100, 22);
+            this.txt_adoptID.TabIndex = 2;
+            this.txt_adoptID.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
-            // textBox2
+            // txt_petID
             // 
-            this.textBox2.Location = new System.Drawing.Point(80, 43);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 22);
-            this.textBox2.TabIndex = 4;
+            this.txt_petID.Location = new System.Drawing.Point(80, 43);
+            this.txt_petID.Name = "txt_petID";
+            this.txt_petID.Size = new System.Drawing.Size(100, 22);
+            this.txt_petID.TabIndex = 4;
             // 
             // petId
             // 
@@ -154,12 +156,12 @@
             this.memberId.TabIndex = 5;
             this.memberId.Text = "會員編號";
             // 
-            // textBox4
+            // txt_datetime
             // 
-            this.textBox4.Location = new System.Drawing.Point(267, 43);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 22);
-            this.textBox4.TabIndex = 8;
+            this.txt_datetime.Location = new System.Drawing.Point(267, 43);
+            this.txt_datetime.Name = "txt_datetime";
+            this.txt_datetime.Size = new System.Drawing.Size(100, 22);
+            this.txt_datetime.TabIndex = 8;
             // 
             // adopttime
             // 
@@ -222,6 +224,7 @@
             this.search.TabIndex = 14;
             this.search.Text = "查詢";
             this.search.UseVisualStyleBackColor = true;
+            this.search.Click += new System.EventHandler(this.search_Click);
             // 
             // form_Adopt
             // 
@@ -234,13 +237,13 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.textBox5);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.txt_datetime);
             this.Controls.Add(this.adopttime);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.memberId);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txt_petID);
             this.Controls.Add(this.petId);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txt_adoptID);
             this.Controls.Add(this.adoptid);
             this.Controls.Add(this.dataGridView1);
             this.Name = "form_Adopt";
@@ -261,12 +264,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.Label adoptid;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txt_adoptID;
+        private System.Windows.Forms.TextBox txt_petID;
         private System.Windows.Forms.Label petId;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label memberId;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txt_datetime;
         private System.Windows.Forms.Label adopttime;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Label label5;

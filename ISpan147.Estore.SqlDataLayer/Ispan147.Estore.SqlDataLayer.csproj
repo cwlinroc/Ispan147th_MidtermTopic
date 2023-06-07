@@ -100,6 +100,7 @@
     <Compile Include="Repositories\OrderListRepositoryDapper.cs" />
     <Compile Include="Repositories\OrderListRepositoryLinq.cs" />
     <Compile Include="Repositories\OrderRepository.cs" />
+    <Compile Include="Services\AdoptService.cs" />
     <Compile Include="Services\CategoryService.cs" />
     <Compile Include="Services\MemberService.cs" />
     <Compile Include="Services\MerchandiseService.cs" />

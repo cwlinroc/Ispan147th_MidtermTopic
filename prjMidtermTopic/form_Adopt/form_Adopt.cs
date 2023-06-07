@@ -1,4 +1,7 @@
 ﻿using ISpan147.Estore.SqlDataLayer.Dtos;
+using ISpan147.Estore.SqlDataLayer.Repositories;
+using prjMidtermTopic.Form_Adopt;
+using prjMidtermTopic.form_Merchandise;
 using prjMidtermTopic.form_Order;
 using prjMidtermTopic.Model;
 using prjMidtermTopic.ViewModels;
@@ -18,7 +21,7 @@ namespace prjMidtermTopic
 {
     public partial class form_Adopt : Form
     {
-        private List<AdoptGridDto> _data;
+        private List<AdoptDto> _data;
         private int _row = -1;
 
         private int _sortedIndex = 0;
@@ -39,7 +42,31 @@ namespace prjMidtermTopic
 
             
         }
+        private void display()
+        {
+            try
+            {
+                string adoptIDstring = txt_adoptID.Text;
+                int? adoptID = null;
+                if(string.IsNullOrEmpty(txt_adoptID.Text) == false)
+                {
+                    adoptID = int.Parse(txt_adoptID.Text);
+                }
+                string petIDstring = txt_petID.Text;
+                int? petID = null;
+                if(string.IsNullOrEmpty (txt_petID.Text) == false )
+                {
+                    petID = int.Parse(txt_petID.Text);
+                }
 
+                List<AdoptDto> gridviewlist = new AdoptRepositories().Search(adoptID, petID, null);
+                _data = gridviewlist.ToList();
+                dataGridView1.DataSource = _data; 
+            }
+            catch 
+            {
+            }
+        }
        
 
         private void label1_Click(object sender, EventArgs e)
@@ -49,44 +76,52 @@ namespace prjMidtermTopic
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex < 0)
-            {
-                OrderByHeader(e.ColumnIndex);
-                return;
-            }
-            var frm = new form_OrderList(_data[_row].OrderID);
-            frm.Owner = this;
-            frm.ShowDialog();
+            //if (e.RowIndex < 0)
+            //{
+            //    OrderByHeader(e.ColumnIndex);
+            //    return;
+            //}
+            //var frm = new form_OrderList(_data[_row].OrderID);
+            //frm.Owner = this;
+            //frm.ShowDialog();
         }
         private void OrderByHeader(int columnIndex)
         {
-            if (columnIndex < 0) return;
+            //if (columnIndex < 0) return;
 
-            string colProp = dataGridView_Main.Columns[columnIndex].DataPropertyName;
+            //string colProp = dataGridView1.Columns[columnIndex].DataPropertyName;
 
-            if (_sortMap.TryGetValue(colProp, out Func<OrderGridDto, OrderGridDto, int> func))
-            {
-                if (_sortedIndex == columnIndex)
-                {
-                    _data.Sort((x, y) => func(y, x));
-                    _sortedIndex = -1;
-                }
-                else
-                {
-                    _data.Sort((x, y) => func(x, y));
-                    _sortedIndex = columnIndex;
-                }
+            //if (_sortMap.TryGetValue(colProp, out Func<OrderGridDto, OrderGridDto, int> func))
+            //{
+            //    if (_sortedIndex == columnIndex)
+            //    {
+            //        _data.Sort((x, y) => func(y, x));
+            //        _sortedIndex = -1;
+            //    }
+            //    else
+            //    {
+            //        _data.Sort((x, y) => func(x, y));
+            //        _sortedIndex = columnIndex;
+            //    }
 
-                dataGridView_Main.DataSource = _data.Select(dto => dto.ToVM()).ToArray();
-            }
+            //    dataGridView1.DataSource = _data.Select(dto => dto.ToVM()).ToArray();
+            //}
 
         }
-        //private void AutoDisplay(object sender, EventArgs e)
-        //{
-        //    string message = (e as MessageArgs).Message;
-        //    if (!string.IsNullOrEmpty(message) && !message.Contains("_Order_")) return;
 
-        //    Display();
-        //}
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void search_Click(object sender, EventArgs e)
+        {
+            display();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -69,6 +69,12 @@
     <Compile Include="FormMember\form_EditMember.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Form_Adopt\form_AdoptAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Adopt\form_AdoptAdd.Designer.cs">
+      <DependentUpon>form_AdoptAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form_Adopt\form_AdoptListEdit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -203,6 +209,7 @@
     <Compile Include="Model\MyValidator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\AdoptVM.cs" />
     <Compile Include="ViewModels\CategoryCreateVM.cs" />
     <Compile Include="ViewModels\MemberCreateVM.cs" />
     <Compile Include="ViewModels\MerchandiseCreateVM.cs" />
@@ -216,6 +223,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form_Adopt\form_Adopt.resx">
       <DependentUpon>form_Adopt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Adopt\form_AdoptAdd.resx">
+      <DependentUpon>form_AdoptAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="form_Category\form_CreateCategory.resx">
       <DependentUpon>form_CreateCategory.cs</DependentUpon>

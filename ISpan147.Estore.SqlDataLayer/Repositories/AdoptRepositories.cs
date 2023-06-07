@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ISpan147.Estore.SqlDataLayer.Repositories
 {
-    internal class AdoptRepositories
+    public class AdoptRepositories
     {
         public int Create(AdoptDto dto)
         {
