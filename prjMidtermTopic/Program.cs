@@ -17,7 +17,7 @@ namespace prjMidtermTopic
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new form_LogIn());
+			Application.Run(new form_Member());
 		}
 	}
 }
