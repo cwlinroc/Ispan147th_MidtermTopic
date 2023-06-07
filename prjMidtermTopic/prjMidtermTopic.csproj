@@ -407,6 +407,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\貓頭.jpg" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="bin\Debug\images\MerchendisePicture\default.png" />
   </ItemGroup>
   <ItemGroup>
@@ -477,6 +480,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\error_icon.png" />
+    </ItemGroup>
+    <ItemGroup>
+    <None Include="bin\Debug\images\petavatar\CryCat.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

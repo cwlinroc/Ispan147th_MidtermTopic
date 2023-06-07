@@ -18,10 +18,12 @@ using System.Windows.Forms;
 
 namespace prjMidtermTopic.form_Pets
 {
-	public partial class form_PetCreate : Form
+	public partial class form_PetCreate : Form 
 	{
 		private bool _gender;
 		private Dictionary<string, Control> _map;
+		private Dictionary<int, string> _mapSpecies = new Dictionary<int, string>();
+		private Dictionary<int, string> _mapBreed = new Dictionary<int, string>();
 		private string _originalFilePath;
 		private string _targetFolderPath = @"images/petavatar/";
 		private IPetRepo _petRepo;
@@ -30,8 +32,8 @@ namespace prjMidtermTopic.form_Pets
 			InitializeComponent();
 			_map = new Dictionary<string, Control>(StringComparer.CurrentCultureIgnoreCase)
 			{
-				{"SpeciesID",txtSpeciesID },
-				{"BreedID",txtBreedID },
+				{"SpeciesID",comboBoxSpeciesID },
+				{"BreedID",comboBoxBreedID },
 				{"PetName",txtPetName},
 				{"Gender",radioButtonFemale },
 				{"Age",txtAge },
@@ -39,10 +41,32 @@ namespace prjMidtermTopic.form_Pets
 				{"Location",txtLocation },
 				{"PetAvatar",txtPetAvatar }
 			};
-
 			_petRepo = new PetRepository();
 
+			pbPet.Image = Properties.Resources.CryCat;
+
+			_mapSpecies.Add(0, "請選擇");
+			_mapBreed.Add(0, "請選擇");
+			new PetService(_petRepo).SearchSpescies().ForEach(s => _mapSpecies.Add(s.SpeciesID, s.SpeciesName));
+			new PetService(_petRepo).SearchBreed().ForEach(s => _mapBreed.Add(s.BreedID, s.BreedName));
+
+			foreach (var species in _mapSpecies)
+			{
+				comboBoxSpeciesID.Items.Add(species);
+			}
+
+			foreach (var breed in _mapBreed)
+			{
+				comboBoxBreedID.Items.Add(breed);
+			}
+
+			comboBoxSpeciesID.DisplayMember = "Value";
+			comboBoxBreedID.DisplayMember = "Value";
+
+			comboBoxSpeciesID.SelectedIndex = 0;
+			comboBoxBreedID.SelectedIndex = 0;
 		}
+
 		private void SelectFileToForm(string filePath)
 		{
 			try
@@ -52,15 +76,22 @@ namespace prjMidtermTopic.form_Pets
 				txtPetAvatar.Text = DateTime.Now.ToString("yyyyMMddhhmmssss_") + fileName;
 
 				MessageBox.Show("選擇成功");
+
+				using (var bmpTemp = new Bitmap(filePath))
+				{
+					pbPet.Image = new Bitmap(bmpTemp);
+				}
 			}
 			catch (Exception ex)
 			{
 				MessageBox.Show($"選擇失敗,原因:{ex.Message}");
 			}
 		}
+
 		private void UploadFileToDb(string filePath)
 		{
 			string renamedtargetFilePath = _targetFolderPath + txtPetAvatar.Text;
+
 
 			if (!string.IsNullOrEmpty(filePath))
 			{
@@ -78,38 +109,19 @@ namespace prjMidtermTopic.form_Pets
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show($"上傳失敗,{ex.Message}");
-			}
-		}
-
-		
-
-		private void btnPetAvatar_Click(object sender, EventArgs e)
-		{
-			using (OpenFileDialog openFileDialog = new OpenFileDialog())
-			{
-				openFileDialog.InitialDirectory =
-					Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
-				openFileDialog.Title = "選擇檔案";
-				openFileDialog.Filter =
-					"Image files(*.png;*.jpg;*.jpeg;*.gif)|*.png;*.jpg;*.jpeg;*.gif";
-				openFileDialog.Multiselect = false;
-
-				if (openFileDialog.ShowDialog() == DialogResult.OK)
-				{
-					_originalFilePath = openFileDialog.FileName;
-
-					SelectFileToForm(_originalFilePath);
-				}
+				MessageBox.Show($"上傳失敗,原因：{ex.Message}");
 			}
 		}
 
 		private void btnCreate_Click(object sender, EventArgs e)
 		{
+			int speciesID = (comboBoxSpeciesID.SelectedItem as dynamic).Key;
+			int breedID = (comboBoxBreedID.SelectedItem as dynamic).Key;
+
 			var vm = new PetCreateVM()
 			{
-				SpeciesID = txtSpeciesID.Text,
-				BreedID = txtBreedID.Text,
+				SpeciesID = speciesID.ToString(),
+				BreedID = breedID.ToString(),
 				PetName = txtPetName.Text,
 				Gender = _gender,
 				Age = txtAge.Text,
@@ -122,7 +134,7 @@ namespace prjMidtermTopic.form_Pets
 			bool hasError = MyValidator.ValidateAndDisplay(vm, errorProvider1, _map);
 			if (hasError) return;
 
-			
+
 
 			try
 			{
@@ -147,7 +159,7 @@ namespace prjMidtermTopic.form_Pets
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show("新增失敗，原因:" + ex.Message );
+				MessageBox.Show("新增失敗，原因:" + ex.Message);
 			}
 
 			IGrid parent = this.Owner as IGrid;
@@ -179,6 +191,34 @@ namespace prjMidtermTopic.form_Pets
 				_gender = false;
 				radioButtonMale.Checked = false;
 			}
+		}
+
+		private void btnPetAvatar_Click(object sender, EventArgs e)
+		{
+			using (OpenFileDialog selectImage = new OpenFileDialog())
+			{
+				selectImage.InitialDirectory =
+					Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
+				selectImage.Title = "選擇檔案";
+				selectImage.Filter =
+					"Image files(*.png;*.jpg;*.jpeg;*.gif)|*.png;*.jpg;*.jpeg;*.gif";
+				selectImage.Multiselect = false;
+
+				if (selectImage.ShowDialog() == DialogResult.OK)
+				{
+					_originalFilePath = selectImage.FileName;
+
+					SelectFileToForm(_originalFilePath);
+				}
+			}
+		}
+
+		private void btnCancelPicture_Click(object sender, EventArgs e)
+		{
+			txtPetAvatar.Text = null;
+			btnCancelPicture.Enabled = false;
+
+			pbPet.Image = Properties.Resources.CryCat;
 		}
 	}
 }
