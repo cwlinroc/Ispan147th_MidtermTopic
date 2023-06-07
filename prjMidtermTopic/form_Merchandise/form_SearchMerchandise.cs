@@ -228,6 +228,7 @@ namespace prjMidtermTopic
 
 			var frm = new form_EditMerchandise(id);
 			frm.Owner = this;
+			Modifier.ModForm(frm);
 			frm.ShowDialog();
 		}
 
@@ -235,6 +236,7 @@ namespace prjMidtermTopic
 		{
 			var frm = new form_CreateMerchandise();
 			frm.Owner = this;
+			Modifier.ModForm(frm);
 			frm.ShowDialog();
 		}
 		#endregion

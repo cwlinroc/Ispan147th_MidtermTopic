@@ -33,7 +33,6 @@ namespace prjMidtermTopic
 			MaximizeWindow();
 		}
 
-
 		//closed
 		private void form_Main_FormClosed(object sender, FormClosedEventArgs e)
 		{
@@ -144,7 +143,6 @@ namespace prjMidtermTopic
 		}
 
 		#endregion
-
 
 
 		//menuStripButtons
@@ -312,8 +310,6 @@ namespace prjMidtermTopic
 		#endregion
 
 
-
-
 		//methods
 		private void showForm(Form frm)
 		{
@@ -351,6 +347,5 @@ namespace prjMidtermTopic
 			this.FormBorderStyle = FormBorderStyle.SizableToolWindow;
 			this.Size = new Size(this.Width * 8 / 10, this.Height * 8 / 10);
 		}
-		
 	}
 }
