@@ -45,6 +45,10 @@
 			this.PetAvatar = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.btnReset = new System.Windows.Forms.Button();
 			this.btnSearch = new System.Windows.Forms.Button();
+			this.comboBoxSearchSpecies = new System.Windows.Forms.ComboBox();
+			this.label3 = new System.Windows.Forms.Label();
+			this.comboBoxSearchBreed = new System.Windows.Forms.ComboBox();
+			this.label4 = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -184,11 +188,49 @@
 			this.btnSearch.UseVisualStyleBackColor = true;
 			this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
 			// 
+			// comboBoxSearchSpecies
+			// 
+			this.comboBoxSearchSpecies.FormattingEnabled = true;
+			this.comboBoxSearchSpecies.Location = new System.Drawing.Point(303, 27);
+			this.comboBoxSearchSpecies.Name = "comboBoxSearchSpecies";
+			this.comboBoxSearchSpecies.Size = new System.Drawing.Size(121, 20);
+			this.comboBoxSearchSpecies.TabIndex = 5;
+			// 
+			// label3
+			// 
+			this.label3.AutoSize = true;
+			this.label3.Location = new System.Drawing.Point(232, 31);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(65, 12);
+			this.label3.TabIndex = 6;
+			this.label3.Text = "按物種分類";
+			// 
+			// comboBoxSearchBreed
+			// 
+			this.comboBoxSearchBreed.FormattingEnabled = true;
+			this.comboBoxSearchBreed.Location = new System.Drawing.Point(303, 62);
+			this.comboBoxSearchBreed.Name = "comboBoxSearchBreed";
+			this.comboBoxSearchBreed.Size = new System.Drawing.Size(121, 20);
+			this.comboBoxSearchBreed.TabIndex = 5;
+			// 
+			// label4
+			// 
+			this.label4.AutoSize = true;
+			this.label4.Location = new System.Drawing.Point(232, 62);
+			this.label4.Name = "label4";
+			this.label4.Size = new System.Drawing.Size(65, 12);
+			this.label4.TabIndex = 6;
+			this.label4.Text = "按血統分類";
+			// 
 			// form_Pet
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(1160, 721);
+			this.Controls.Add(this.label4);
+			this.Controls.Add(this.label3);
+			this.Controls.Add(this.comboBoxSearchBreed);
+			this.Controls.Add(this.comboBoxSearchSpecies);
 			this.Controls.Add(this.dataGridView1);
 			this.Controls.Add(this.btnSearch);
 			this.Controls.Add(this.btnReset);
@@ -197,10 +239,9 @@
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.txtPetID);
 			this.Controls.Add(this.label1);
-			this.MaximumSize = new System.Drawing.Size(1176, 760);
 			this.MinimumSize = new System.Drawing.Size(1176, 760);
 			this.Name = "form_Pet";
-			this.Text = "Form2";
+			this.Text = "PetMain";
 			this.Load += new System.EventHandler(this.form_Pet_Load);
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
 			this.ResumeLayout(false);
@@ -227,5 +268,9 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn Description;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Location;
 		private System.Windows.Forms.DataGridViewTextBoxColumn PetAvatar;
+		private System.Windows.Forms.ComboBox comboBoxSearchSpecies;
+		private System.Windows.Forms.Label label3;
+		private System.Windows.Forms.ComboBox comboBoxSearchBreed;
+		private System.Windows.Forms.Label label4;
 	}
 }

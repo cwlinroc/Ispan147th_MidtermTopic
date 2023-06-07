@@ -57,6 +57,7 @@
     <Compile Include="Builders\SqlParameterBuilder.cs" />
     <Compile Include="Dtos\AdoptDto.cs" />
     <Compile Include="Dtos\Assembler.cs" />
+    <Compile Include="Dtos\BreedDto.cs" />
     <Compile Include="Dtos\CategoryDto.cs" />
     <Compile Include="Dtos\CommentDto.cs" />
     <Compile Include="Dtos\EmployeeDto.cs" />
@@ -73,6 +74,7 @@
     <Compile Include="Dtos\OrderListGridDto.cs" />
     <Compile Include="Dtos\OrderSearchDto.cs" />
     <Compile Include="Dtos\PetDto.cs" />
+    <Compile Include="Dtos\SpeciesDto.cs" />
     <Compile Include="Dtos\ThemeDto.cs" />
     <Compile Include="EFModel\Adopt.cs" />
     <Compile Include="EFModel\AppDbContext.cs" />

@@ -87,7 +87,7 @@
 			this.txtDescription.Name = "txtDescription";
 			this.txtDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
 			this.txtDescription.Size = new System.Drawing.Size(292, 282);
-			this.txtDescription.TabIndex = 6;
+			this.txtDescription.TabIndex = 10;
 			// 
 			// btnPetAvatar
 			// 
@@ -115,7 +115,7 @@
 			this.txtPetAvatar.Name = "txtPetAvatar";
 			this.txtPetAvatar.ReadOnly = true;
 			this.txtPetAvatar.Size = new System.Drawing.Size(184, 22);
-			this.txtPetAvatar.TabIndex = 5;
+			this.txtPetAvatar.TabIndex = 6;
 			// 
 			// label6
 			// 
@@ -131,7 +131,7 @@
 			this.txtLocation.Location = new System.Drawing.Point(91, 218);
 			this.txtLocation.Name = "txtLocation";
 			this.txtLocation.Size = new System.Drawing.Size(184, 22);
-			this.txtLocation.TabIndex = 4;
+			this.txtLocation.TabIndex = 5;
 			// 
 			// label5
 			// 
@@ -156,7 +156,7 @@
 			this.txtAge.Location = new System.Drawing.Point(91, 180);
 			this.txtAge.Name = "txtAge";
 			this.txtAge.Size = new System.Drawing.Size(184, 22);
-			this.txtAge.TabIndex = 3;
+			this.txtAge.TabIndex = 4;
 			// 
 			// label3
 			// 
@@ -203,7 +203,7 @@
 			this.panel1.Location = new System.Drawing.Point(91, 142);
 			this.panel1.Name = "panel1";
 			this.panel1.Size = new System.Drawing.Size(129, 22);
-			this.panel1.TabIndex = 22;
+			this.panel1.TabIndex = 3;
 			// 
 			// label7
 			// 
@@ -228,14 +228,14 @@
 			this.txtSpeciesID.Location = new System.Drawing.Point(91, 28);
 			this.txtSpeciesID.Name = "txtSpeciesID";
 			this.txtSpeciesID.Size = new System.Drawing.Size(184, 22);
-			this.txtSpeciesID.TabIndex = 2;
+			this.txtSpeciesID.TabIndex = 0;
 			// 
 			// txtBreedID
 			// 
 			this.txtBreedID.Location = new System.Drawing.Point(91, 66);
 			this.txtBreedID.Name = "txtBreedID";
 			this.txtBreedID.Size = new System.Drawing.Size(184, 22);
-			this.txtBreedID.TabIndex = 2;
+			this.txtBreedID.TabIndex = 1;
 			// 
 			// btnCancelPicture
 			// 
@@ -243,7 +243,7 @@
 			this.btnCancelPicture.Location = new System.Drawing.Point(200, 287);
 			this.btnCancelPicture.Name = "btnCancelPicture";
 			this.btnCancelPicture.Size = new System.Drawing.Size(75, 23);
-			this.btnCancelPicture.TabIndex = 8;
+			this.btnCancelPicture.TabIndex = 9;
 			this.btnCancelPicture.Text = "取消照片";
 			this.btnCancelPicture.UseVisualStyleBackColor = true;
 			this.btnCancelPicture.Click += new System.EventHandler(this.btnCancelPicture_Click);

@@ -8,11 +8,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using prjMidtermTopic.Interfaces;
+using System.Runtime.InteropServices;
 
 namespace ISpan147.Estore.SqlDataLayer.Repositories
 {
 	public class PetRepository : IPetRepo
 	{
+
+		#region 用編號查資料
 		public PetDto GetByID(int PetID)
 		{
 			string sql = $"SELECT * FROM Pets WHERE PetID = {PetID}";
@@ -22,7 +25,9 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 
 			return SqlDb.Get(connGetter, sql, func, parameters);
 		}
+		#endregion
 
+		#region 用名字找資料
 		public PetDto GetByName(string name)
 		{
 			string sql = $"SELECT * FROM Pets WHERE PetName = @PetName";
@@ -37,7 +42,9 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 
 			return SqlDb.Get(connGetter, sql, func, parameter);
 		}
+		#endregion
 
+		#region 查資料
 		public List<PetDto> Search(int? PetID, String s_name)
 		{
 			string sql = $"SELECT * FROM Pets";
@@ -47,7 +54,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 			string where = string.Empty;
 			if (PetID.HasValue)
 			{
-				where += $" And PetID = @PetID";
+				where += $" AND PetID = @PetID";
 				builder.AddInt("PetID", PetID.Value);
 			}
 
@@ -70,7 +77,60 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 
 			return SqlDb.Search(connGetter, sql, func, parameters).ToList();
 		}
+		#endregion
 
+		#region 用物種找資料
+		public List<SpeciesDto> SearchSpecies(int? spceiesID)
+		{
+			string sql = $"SELECT * FROM Species";
+
+			var builder = new SqlParameterBuilder();
+
+			string where = string.Empty;
+
+			if (spceiesID.HasValue)
+			{
+				where += $" WHERE SpeciesID = @SpeciesID";
+				builder.AddInt("SpeciesID", spceiesID.Value);
+			}
+
+			sql += where;
+
+			var parameters = builder.Build().ToArray();
+
+			Func<SqlConnection> connGetter = SqlDb.GetConnection;
+			Func<SqlDataReader, SpeciesDto> func = Assembler.SpeciesDtoAssembler;
+
+			return SqlDb.Search(connGetter, sql, func, parameters).ToList();
+		}
+		#endregion
+
+		#region 用血統找資料
+		public List<BreedDto> SearchBreed(int? breedID)
+		{
+			string sql = $"SELECT * FROM Breeds";
+
+			var builder = new SqlParameterBuilder();
+
+			string where = string.Empty;
+			if (breedID.HasValue)
+			{
+				where += $" WHERE BreedID = @BreedID";
+				builder.AddInt("BreedID", breedID.Value);
+			}
+
+			sql += where;
+
+			var parameters = builder.Build().ToArray();
+
+			Func<SqlConnection> connGetter = SqlDb.GetConnection;
+			Func<SqlDataReader, BreedDto> func = Assembler.BreedDtoAssembler;
+
+			return SqlDb.Search(connGetter, sql, func, parameters).ToList();
+		}
+		#endregion
+
+		#region 建資料
 		public int Create(PetDto dto)
 		{
 			string sql = @"INSERT INTO Pets 
@@ -91,7 +151,9 @@ VALUES
 
 			return SqlDb.Create(SqlDb.GetConnection, sql, parameters);
 		}
+		#endregion
 
+		#region 修資料
 		public int Update(PetDto dto)
 		{
 			string sql = "UPDATE Pets SET SpeciesID = @SpeciesID, BreedID = BreedID, PetName = @PetName, Gender = @Gender," +
@@ -114,7 +176,9 @@ VALUES
 
 			return SqlDb.UpdateOrDelete(connGetter, sql, parameters);
 		}
+		#endregion
 
+		#region 刪資料
 		public int Delete(int PetID)
 		{
 			string sql = "DELETE FROM Pets WHERE PetID = @PetID";
@@ -127,5 +191,6 @@ VALUES
 
 			return SqlDb.UpdateOrDelete(connGetter, sql, parameter);
 		}
+		#endregion
 	}
 }

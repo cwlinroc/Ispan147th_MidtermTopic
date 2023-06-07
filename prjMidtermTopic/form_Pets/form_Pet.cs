@@ -5,16 +5,43 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using ISpan147.Estore.SqlDataLayer.Repositories;
 using prjMidtermTopic.form_Pets;
+using ISpan147.Estore.SqlDataLayer.Services;
 
 namespace prjMidtermTopic
 {
     public partial class form_Pet : Form,IGrid
     {
         List<PetDto> data;
+        private Dictionary<int,string> mapSpecies = new Dictionary<int, string>();
+		private Dictionary<int,string> mapBreed = new Dictionary<int, string>();
+		private IPetRepo _repo;
         public form_Pet()
         {
             InitializeComponent();
-        }
+
+            _repo = new PetRepository();
+
+			mapSpecies.Add(0,"請選擇");
+			mapBreed.Add(0,"請選擇");
+            new PetService(_repo).SearchSpescies().ForEach(s => mapSpecies.Add(s.SpeciesID,s.SpeciesName));
+			new PetService(_repo).SearchBreed().ForEach(s => mapBreed.Add(s.BreedID, s.BreedName));
+
+			foreach (var species in mapSpecies)
+            {
+                comboBoxSearchSpecies.Items.Add(species);
+            }
+
+			foreach (var breed in mapBreed)
+			{
+				comboBoxSearchBreed.Items.Add(breed);
+			}
+
+			comboBoxSearchSpecies.DisplayMember = "Value";
+            comboBoxSearchBreed.DisplayMember = "Value";
+
+			comboBoxSearchSpecies.SelectedIndex = 0;
+			comboBoxSearchBreed.SelectedIndex = 0;
+		}
 
         public void Display()
         {

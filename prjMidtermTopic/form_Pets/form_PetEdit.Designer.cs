@@ -75,7 +75,7 @@
 			this.txtPetName.Location = new System.Drawing.Point(109, 135);
 			this.txtPetName.Name = "txtPetName";
 			this.txtPetName.Size = new System.Drawing.Size(248, 22);
-			this.txtPetName.TabIndex = 2;
+			this.txtPetName.TabIndex = 3;
 			// 
 			// label2
 			// 
@@ -100,7 +100,7 @@
 			this.txtAge.Location = new System.Drawing.Point(109, 201);
 			this.txtAge.Name = "txtAge";
 			this.txtAge.Size = new System.Drawing.Size(248, 22);
-			this.txtAge.TabIndex = 3;
+			this.txtAge.TabIndex = 5;
 			// 
 			// label4
 			// 
@@ -125,14 +125,14 @@
 			this.txtLocation.Location = new System.Drawing.Point(109, 234);
 			this.txtLocation.Name = "txtLocation";
 			this.txtLocation.Size = new System.Drawing.Size(248, 22);
-			this.txtLocation.TabIndex = 4;
+			this.txtLocation.TabIndex = 6;
 			// 
 			// btnUpdate
 			// 
 			this.btnUpdate.Location = new System.Drawing.Point(50, 308);
 			this.btnUpdate.Name = "btnUpdate";
 			this.btnUpdate.Size = new System.Drawing.Size(75, 23);
-			this.btnUpdate.TabIndex = 7;
+			this.btnUpdate.TabIndex = 9;
 			this.btnUpdate.Text = "修改資料";
 			this.btnUpdate.UseVisualStyleBackColor = true;
 			this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
@@ -142,7 +142,7 @@
 			this.btnDelete.Location = new System.Drawing.Point(134, 308);
 			this.btnDelete.Name = "btnDelete";
 			this.btnDelete.Size = new System.Drawing.Size(75, 23);
-			this.btnDelete.TabIndex = 9;
+			this.btnDelete.TabIndex = 10;
 			this.btnDelete.Text = "刪除資料";
 			this.btnDelete.UseVisualStyleBackColor = true;
 			this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
@@ -154,7 +154,7 @@
 			this.txtDescription.Name = "txtDescription";
 			this.txtDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
 			this.txtDescription.Size = new System.Drawing.Size(277, 256);
-			this.txtDescription.TabIndex = 6;
+			this.txtDescription.TabIndex = 8;
 			// 
 			// radioButtonMale
 			// 
@@ -207,15 +207,16 @@
 			// 
 			this.txtPetAvatar.Location = new System.Drawing.Point(109, 267);
 			this.txtPetAvatar.Name = "txtPetAvatar";
+			this.txtPetAvatar.ReadOnly = true;
 			this.txtPetAvatar.Size = new System.Drawing.Size(248, 22);
-			this.txtPetAvatar.TabIndex = 5;
+			this.txtPetAvatar.TabIndex = 7;
 			// 
 			// btnUpdatePetAvatar
 			// 
 			this.btnUpdatePetAvatar.Location = new System.Drawing.Point(434, 308);
 			this.btnUpdatePetAvatar.Name = "btnUpdatePetAvatar";
 			this.btnUpdatePetAvatar.Size = new System.Drawing.Size(88, 23);
-			this.btnUpdatePetAvatar.TabIndex = 8;
+			this.btnUpdatePetAvatar.TabIndex = 11;
 			this.btnUpdatePetAvatar.Text = "修改照片";
 			this.btnUpdatePetAvatar.UseVisualStyleBackColor = true;
 			this.btnUpdatePetAvatar.Click += new System.EventHandler(this.btnUpdatePetAvatar_Click);
@@ -225,7 +226,7 @@
 			this.btnDeletePetAvatar.Location = new System.Drawing.Point(619, 308);
 			this.btnDeletePetAvatar.Name = "btnDeletePetAvatar";
 			this.btnDeletePetAvatar.Size = new System.Drawing.Size(92, 23);
-			this.btnDeletePetAvatar.TabIndex = 10;
+			this.btnDeletePetAvatar.TabIndex = 12;
 			this.btnDeletePetAvatar.Text = "刪除照片";
 			this.btnDeletePetAvatar.UseVisualStyleBackColor = true;
 			this.btnDeletePetAvatar.Click += new System.EventHandler(this.btnDeletePetAvatar_Click);
@@ -237,14 +238,14 @@
 			this.panel1.Location = new System.Drawing.Point(109, 168);
 			this.panel1.Name = "panel1";
 			this.panel1.Size = new System.Drawing.Size(116, 22);
-			this.panel1.TabIndex = 5;
+			this.panel1.TabIndex = 4;
 			// 
 			// txtSpeciesID
 			// 
 			this.txtSpeciesID.Location = new System.Drawing.Point(109, 69);
 			this.txtSpeciesID.Name = "txtSpeciesID";
 			this.txtSpeciesID.Size = new System.Drawing.Size(248, 22);
-			this.txtSpeciesID.TabIndex = 0;
+			this.txtSpeciesID.TabIndex = 1;
 			// 
 			// label8
 			// 
@@ -260,7 +261,7 @@
 			this.txtBreedID.Location = new System.Drawing.Point(109, 102);
 			this.txtBreedID.Name = "txtBreedID";
 			this.txtBreedID.Size = new System.Drawing.Size(248, 22);
-			this.txtBreedID.TabIndex = 1;
+			this.txtBreedID.TabIndex = 2;
 			// 
 			// label7
 			// 
@@ -326,8 +327,7 @@
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.txtPetName);
 			this.Controls.Add(this.label1);
-			this.MaximumSize = new System.Drawing.Size(1076, 415);
-			this.MinimumSize = new System.Drawing.Size(1076, 378);
+			this.MinimumSize = new System.Drawing.Size(1076, 415);
 			this.Name = "form_PetEdit";
 			this.Text = "form_PetEdit";
 			this.Load += new System.EventHandler(this.form_PetEdit_Load);
