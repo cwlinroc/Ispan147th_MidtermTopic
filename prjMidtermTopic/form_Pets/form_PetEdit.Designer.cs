@@ -49,13 +49,13 @@
 			this.btnUpdatePetAvatar = new System.Windows.Forms.Button();
 			this.btnDeletePetAvatar = new System.Windows.Forms.Button();
 			this.panel1 = new System.Windows.Forms.Panel();
-			this.txtSpeciesID = new System.Windows.Forms.TextBox();
 			this.label8 = new System.Windows.Forms.Label();
-			this.txtBreedID = new System.Windows.Forms.TextBox();
 			this.label7 = new System.Windows.Forms.Label();
 			this.label9 = new System.Windows.Forms.Label();
 			this.txtPetID = new System.Windows.Forms.TextBox();
 			this.label10 = new System.Windows.Forms.Label();
+			this.comboBoxSpeciesID = new System.Windows.Forms.ComboBox();
+			this.comboBoxBreedID = new System.Windows.Forms.ComboBox();
 			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pbPet)).BeginInit();
 			this.panel1.SuspendLayout();
@@ -72,7 +72,7 @@
 			// 
 			// txtPetName
 			// 
-			this.txtPetName.Location = new System.Drawing.Point(109, 135);
+			this.txtPetName.Location = new System.Drawing.Point(109, 134);
 			this.txtPetName.Name = "txtPetName";
 			this.txtPetName.Size = new System.Drawing.Size(248, 22);
 			this.txtPetName.TabIndex = 3;
@@ -97,7 +97,7 @@
 			// 
 			// txtAge
 			// 
-			this.txtAge.Location = new System.Drawing.Point(109, 201);
+			this.txtAge.Location = new System.Drawing.Point(109, 202);
 			this.txtAge.Name = "txtAge";
 			this.txtAge.Size = new System.Drawing.Size(248, 22);
 			this.txtAge.TabIndex = 5;
@@ -122,7 +122,7 @@
 			// 
 			// txtLocation
 			// 
-			this.txtLocation.Location = new System.Drawing.Point(109, 234);
+			this.txtLocation.Location = new System.Drawing.Point(109, 236);
 			this.txtLocation.Name = "txtLocation";
 			this.txtLocation.Size = new System.Drawing.Size(248, 22);
 			this.txtLocation.TabIndex = 6;
@@ -205,7 +205,7 @@
 			// 
 			// txtPetAvatar
 			// 
-			this.txtPetAvatar.Location = new System.Drawing.Point(109, 267);
+			this.txtPetAvatar.Location = new System.Drawing.Point(109, 270);
 			this.txtPetAvatar.Name = "txtPetAvatar";
 			this.txtPetAvatar.ReadOnly = true;
 			this.txtPetAvatar.Size = new System.Drawing.Size(248, 22);
@@ -237,15 +237,8 @@
 			this.panel1.Controls.Add(this.radioButtonFemale);
 			this.panel1.Location = new System.Drawing.Point(109, 168);
 			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(116, 22);
+			this.panel1.Size = new System.Drawing.Size(248, 22);
 			this.panel1.TabIndex = 4;
-			// 
-			// txtSpeciesID
-			// 
-			this.txtSpeciesID.Location = new System.Drawing.Point(109, 69);
-			this.txtSpeciesID.Name = "txtSpeciesID";
-			this.txtSpeciesID.Size = new System.Drawing.Size(248, 22);
-			this.txtSpeciesID.TabIndex = 1;
 			// 
 			// label8
 			// 
@@ -255,13 +248,6 @@
 			this.label8.Size = new System.Drawing.Size(53, 12);
 			this.label8.TabIndex = 13;
 			this.label8.Text = "物種編號";
-			// 
-			// txtBreedID
-			// 
-			this.txtBreedID.Location = new System.Drawing.Point(109, 102);
-			this.txtBreedID.Name = "txtBreedID";
-			this.txtBreedID.Size = new System.Drawing.Size(248, 22);
-			this.txtBreedID.TabIndex = 2;
 			// 
 			// label7
 			// 
@@ -298,18 +284,34 @@
 			this.label10.TabIndex = 16;
 			this.label10.Text = "圖片建議大小 256 * 256";
 			// 
+			// comboBoxSpeciesID
+			// 
+			this.comboBoxSpeciesID.FormattingEnabled = true;
+			this.comboBoxSpeciesID.Location = new System.Drawing.Point(109, 70);
+			this.comboBoxSpeciesID.Name = "comboBoxSpeciesID";
+			this.comboBoxSpeciesID.Size = new System.Drawing.Size(248, 20);
+			this.comboBoxSpeciesID.TabIndex = 17;
+			// 
+			// comboBoxBreedID
+			// 
+			this.comboBoxBreedID.FormattingEnabled = true;
+			this.comboBoxBreedID.Location = new System.Drawing.Point(109, 104);
+			this.comboBoxBreedID.Name = "comboBoxBreedID";
+			this.comboBoxBreedID.Size = new System.Drawing.Size(248, 20);
+			this.comboBoxBreedID.TabIndex = 17;
+			// 
 			// form_PetEdit
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(1060, 376);
+			this.Controls.Add(this.comboBoxBreedID);
+			this.Controls.Add(this.comboBoxSpeciesID);
 			this.Controls.Add(this.label10);
 			this.Controls.Add(this.pbPet);
 			this.Controls.Add(this.txtPetID);
 			this.Controls.Add(this.label9);
-			this.Controls.Add(this.txtSpeciesID);
 			this.Controls.Add(this.label8);
-			this.Controls.Add(this.txtBreedID);
 			this.Controls.Add(this.label7);
 			this.Controls.Add(this.panel1);
 			this.Controls.Add(this.txtDescription);
@@ -361,13 +363,13 @@
 		private System.Windows.Forms.TextBox txtPetAvatar;
 		private System.Windows.Forms.Label label6;
 		private System.Windows.Forms.Panel panel1;
-		private System.Windows.Forms.TextBox txtSpeciesID;
 		private System.Windows.Forms.Label label8;
-		private System.Windows.Forms.TextBox txtBreedID;
 		private System.Windows.Forms.Label label7;
 		private System.Windows.Forms.TextBox txtPetID;
 		private System.Windows.Forms.Label label9;
 		private System.Windows.Forms.PictureBox pbPet;
 		private System.Windows.Forms.Label label10;
+		private System.Windows.Forms.ComboBox comboBoxBreedID;
+		private System.Windows.Forms.ComboBox comboBoxSpeciesID;
 	}
 }

@@ -48,11 +48,11 @@
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.label7 = new System.Windows.Forms.Label();
 			this.label8 = new System.Windows.Forms.Label();
-			this.txtSpeciesID = new System.Windows.Forms.TextBox();
-			this.txtBreedID = new System.Windows.Forms.TextBox();
 			this.btnCancelPicture = new System.Windows.Forms.Button();
 			this.pbPet = new System.Windows.Forms.PictureBox();
 			this.label9 = new System.Windows.Forms.Label();
+			this.comboBoxSpeciesID = new System.Windows.Forms.ComboBox();
+			this.comboBoxBreedID = new System.Windows.Forms.ComboBox();
 			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
 			this.panel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pbPet)).BeginInit();
@@ -111,7 +111,7 @@
 			// 
 			// txtPetAvatar
 			// 
-			this.txtPetAvatar.Location = new System.Drawing.Point(91, 256);
+			this.txtPetAvatar.Location = new System.Drawing.Point(91, 252);
 			this.txtPetAvatar.Name = "txtPetAvatar";
 			this.txtPetAvatar.ReadOnly = true;
 			this.txtPetAvatar.Size = new System.Drawing.Size(184, 22);
@@ -120,7 +120,7 @@
 			// label6
 			// 
 			this.label6.AutoSize = true;
-			this.label6.Location = new System.Drawing.Point(30, 265);
+			this.label6.Location = new System.Drawing.Point(30, 253);
 			this.label6.Name = "label6";
 			this.label6.Size = new System.Drawing.Size(53, 12);
 			this.label6.TabIndex = 5;
@@ -128,7 +128,7 @@
 			// 
 			// txtLocation
 			// 
-			this.txtLocation.Location = new System.Drawing.Point(91, 218);
+			this.txtLocation.Location = new System.Drawing.Point(91, 214);
 			this.txtLocation.Name = "txtLocation";
 			this.txtLocation.Size = new System.Drawing.Size(184, 22);
 			this.txtLocation.TabIndex = 5;
@@ -136,7 +136,7 @@
 			// label5
 			// 
 			this.label5.AutoSize = true;
-			this.label5.Location = new System.Drawing.Point(30, 226);
+			this.label5.Location = new System.Drawing.Point(42, 217);
 			this.label5.Name = "label5";
 			this.label5.Size = new System.Drawing.Size(41, 12);
 			this.label5.TabIndex = 9;
@@ -145,7 +145,7 @@
 			// label4
 			// 
 			this.label4.AutoSize = true;
-			this.label4.Location = new System.Drawing.Point(285, 120);
+			this.label4.Location = new System.Drawing.Point(285, 31);
 			this.label4.Name = "label4";
 			this.label4.Size = new System.Drawing.Size(53, 12);
 			this.label4.TabIndex = 8;
@@ -153,7 +153,7 @@
 			// 
 			// txtAge
 			// 
-			this.txtAge.Location = new System.Drawing.Point(91, 180);
+			this.txtAge.Location = new System.Drawing.Point(91, 176);
 			this.txtAge.Name = "txtAge";
 			this.txtAge.Size = new System.Drawing.Size(184, 22);
 			this.txtAge.TabIndex = 4;
@@ -161,7 +161,7 @@
 			// label3
 			// 
 			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(30, 187);
+			this.label3.Location = new System.Drawing.Point(54, 179);
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(29, 12);
 			this.label3.TabIndex = 7;
@@ -170,7 +170,7 @@
 			// label2
 			// 
 			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(30, 148);
+			this.label2.Location = new System.Drawing.Point(54, 145);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(29, 12);
 			this.label2.TabIndex = 6;
@@ -178,7 +178,7 @@
 			// 
 			// txtPetName
 			// 
-			this.txtPetName.Location = new System.Drawing.Point(91, 104);
+			this.txtPetName.Location = new System.Drawing.Point(91, 100);
 			this.txtPetName.Name = "txtPetName";
 			this.txtPetName.Size = new System.Drawing.Size(184, 22);
 			this.txtPetName.TabIndex = 2;
@@ -186,7 +186,7 @@
 			// label1
 			// 
 			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(30, 109);
+			this.label1.Location = new System.Drawing.Point(30, 105);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(53, 12);
 			this.label1.TabIndex = 10;
@@ -200,7 +200,7 @@
 			// 
 			this.panel1.Controls.Add(this.radioButtonFemale);
 			this.panel1.Controls.Add(this.radioButtonMale);
-			this.panel1.Location = new System.Drawing.Point(91, 142);
+			this.panel1.Location = new System.Drawing.Point(91, 138);
 			this.panel1.Name = "panel1";
 			this.panel1.Size = new System.Drawing.Size(129, 22);
 			this.panel1.TabIndex = 3;
@@ -208,7 +208,7 @@
 			// label7
 			// 
 			this.label7.AutoSize = true;
-			this.label7.Location = new System.Drawing.Point(30, 70);
+			this.label7.Location = new System.Drawing.Point(30, 68);
 			this.label7.Name = "label7";
 			this.label7.Size = new System.Drawing.Size(53, 12);
 			this.label7.TabIndex = 10;
@@ -222,20 +222,6 @@
 			this.label8.Size = new System.Drawing.Size(53, 12);
 			this.label8.TabIndex = 10;
 			this.label8.Text = "物種編號";
-			// 
-			// txtSpeciesID
-			// 
-			this.txtSpeciesID.Location = new System.Drawing.Point(91, 28);
-			this.txtSpeciesID.Name = "txtSpeciesID";
-			this.txtSpeciesID.Size = new System.Drawing.Size(184, 22);
-			this.txtSpeciesID.TabIndex = 0;
-			// 
-			// txtBreedID
-			// 
-			this.txtBreedID.Location = new System.Drawing.Point(91, 66);
-			this.txtBreedID.Name = "txtBreedID";
-			this.txtBreedID.Size = new System.Drawing.Size(184, 22);
-			this.txtBreedID.TabIndex = 1;
 			// 
 			// btnCancelPicture
 			// 
@@ -266,11 +252,29 @@
 			this.label9.TabIndex = 24;
 			this.label9.Text = "圖片建議大小 256 * 256";
 			// 
+			// comboBoxSpeciesID
+			// 
+			this.comboBoxSpeciesID.FormattingEnabled = true;
+			this.comboBoxSpeciesID.Location = new System.Drawing.Point(91, 28);
+			this.comboBoxSpeciesID.Name = "comboBoxSpeciesID";
+			this.comboBoxSpeciesID.Size = new System.Drawing.Size(184, 20);
+			this.comboBoxSpeciesID.TabIndex = 25;
+			// 
+			// comboBoxBreedID
+			// 
+			this.comboBoxBreedID.FormattingEnabled = true;
+			this.comboBoxBreedID.Location = new System.Drawing.Point(91, 64);
+			this.comboBoxBreedID.Name = "comboBoxBreedID";
+			this.comboBoxBreedID.Size = new System.Drawing.Size(184, 20);
+			this.comboBoxBreedID.TabIndex = 25;
+			// 
 			// form_PetCreate
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(988, 350);
+			this.Controls.Add(this.comboBoxBreedID);
+			this.Controls.Add(this.comboBoxSpeciesID);
 			this.Controls.Add(this.label9);
 			this.Controls.Add(this.pbPet);
 			this.Controls.Add(this.panel1);
@@ -288,8 +292,6 @@
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.label8);
 			this.Controls.Add(this.label7);
-			this.Controls.Add(this.txtSpeciesID);
-			this.Controls.Add(this.txtBreedID);
 			this.Controls.Add(this.txtPetName);
 			this.Controls.Add(this.label1);
 			this.MinimumSize = new System.Drawing.Size(1004, 389);
@@ -325,10 +327,10 @@
 		private System.Windows.Forms.Panel panel1;
 		private System.Windows.Forms.Label label8;
 		private System.Windows.Forms.Label label7;
-		private System.Windows.Forms.TextBox txtSpeciesID;
-		private System.Windows.Forms.TextBox txtBreedID;
 		private System.Windows.Forms.Button btnCancelPicture;
 		private System.Windows.Forms.Label label9;
 		private System.Windows.Forms.PictureBox pbPet;
+		private System.Windows.Forms.ComboBox comboBoxBreedID;
+		private System.Windows.Forms.ComboBox comboBoxSpeciesID;
 	}
 }

@@ -21,6 +21,8 @@ namespace prjMidtermTopic.form_Pets
 	public partial class form_PetEdit : Form
 	{
 		private Dictionary<string, Control> _map;
+		private Dictionary<int, string> _mapSpecies = new Dictionary<int, string>();
+		private Dictionary<int, string> _mapBreed = new Dictionary<int, string>();
 		private readonly int _petID;
 		private bool _gender;
 		private string _originalFilePath;
@@ -35,8 +37,8 @@ namespace prjMidtermTopic.form_Pets
 			_map = new Dictionary<string, Control>(StringComparer.CurrentCultureIgnoreCase)
 			{
 				{"PetID",txtPetID },
-				{"SpeciesID",txtSpeciesID },
-				{"BreedID",txtBreedID },
+				{"SpeciesID",comboBoxSpeciesID },
+				{"BreedID",comboBoxBreedID },
 				{"PetName",txtPetName},
 				{"Gender",radioButtonMale},
 				{"Age",txtAge},
@@ -45,6 +47,27 @@ namespace prjMidtermTopic.form_Pets
 				{"PetAvartar",txtPetAvatar }
 			};
 			_petRepo = new PetRepository();
+
+			_mapSpecies.Add(0, "請選擇");
+			_mapBreed.Add(0, "請選擇");
+			new PetService(_petRepo).SearchSpescies().ForEach(s => _mapSpecies.Add(s.SpeciesID, s.SpeciesName));
+			new PetService(_petRepo).SearchBreed().ForEach(s => _mapBreed.Add(s.BreedID, s.BreedName));
+
+			foreach (var species in _mapSpecies)
+			{
+				comboBoxSpeciesID.Items.Add(species);
+			}
+
+			foreach (var breed in _mapBreed)
+			{
+				comboBoxBreedID.Items.Add(breed);
+			}
+
+			comboBoxSpeciesID.DisplayMember = "Value";
+			comboBoxBreedID.DisplayMember = "Value";
+
+			comboBoxSpeciesID.SelectedIndex = 0;
+			comboBoxBreedID.SelectedIndex = 0;
 		}
 
 		private void form_PetEdit_Load(object sender, EventArgs e)
@@ -57,8 +80,8 @@ namespace prjMidtermTopic.form_Pets
 				return;
 			}
 			txtPetID.Text = dto.PetID.ToString();
-			txtSpeciesID.Text = dto.SpeciesID.ToString();
-			txtBreedID.Text = dto.BreedID.ToString();
+			comboBoxSpeciesID.SelectedItem = comboBoxSpeciesID.Items.Cast<dynamic>().FirstOrDefault(x =>x.Key ==dto.SpeciesID);
+			comboBoxBreedID.SelectedItem = comboBoxBreedID.Items.Cast<dynamic>().FirstOrDefault(x => x.Key == dto.BreedID);
 			txtPetName.Text = dto.PetName;
 			txtAge.Text = dto.Age.ToString();
 			txtDescription.Text = dto.Description;
@@ -119,11 +142,14 @@ namespace prjMidtermTopic.form_Pets
 
 		private void btnUpdate_Click(object sender, EventArgs e)
 		{
+			int speciesID = (comboBoxSpeciesID.SelectedItem as dynamic).Key;
+			int breedID = (comboBoxBreedID.SelectedItem as dynamic).Key;
+
 			var vm = new PetCreateVM()
 			{
 				PetID = int.Parse(txtPetID.Text),
-				SpeciesID = txtSpeciesID.Text,
-				BreedID = txtBreedID.Text,
+				SpeciesID = speciesID.ToString(),
+				BreedID = breedID.ToString(),
 				PetName = txtPetName.Text,
 				Gender = _gender,
 				Age = txtAge.Text,

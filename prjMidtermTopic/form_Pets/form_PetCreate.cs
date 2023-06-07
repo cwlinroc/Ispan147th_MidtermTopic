@@ -18,10 +18,12 @@ using System.Windows.Forms;
 
 namespace prjMidtermTopic.form_Pets
 {
-	public partial class form_PetCreate : Form
+	public partial class form_PetCreate : Form 
 	{
 		private bool _gender;
 		private Dictionary<string, Control> _map;
+		private Dictionary<int, string> _mapSpecies = new Dictionary<int, string>();
+		private Dictionary<int, string> _mapBreed = new Dictionary<int, string>();
 		private string _originalFilePath;
 		private string _targetFolderPath = @"images/petavatar/";
 		private IPetRepo _petRepo;
@@ -30,8 +32,8 @@ namespace prjMidtermTopic.form_Pets
 			InitializeComponent();
 			_map = new Dictionary<string, Control>(StringComparer.CurrentCultureIgnoreCase)
 			{
-				{"SpeciesID",txtSpeciesID },
-				{"BreedID",txtBreedID },
+				{"SpeciesID",comboBoxSpeciesID },
+				{"BreedID",comboBoxBreedID },
 				{"PetName",txtPetName},
 				{"Gender",radioButtonFemale },
 				{"Age",txtAge },
@@ -42,6 +44,27 @@ namespace prjMidtermTopic.form_Pets
 			_petRepo = new PetRepository();
 
 			pbPet.Image = Properties.Resources.CryCat;
+
+			_mapSpecies.Add(0, "請選擇");
+			_mapBreed.Add(0, "請選擇");
+			new PetService(_petRepo).SearchSpescies().ForEach(s => _mapSpecies.Add(s.SpeciesID, s.SpeciesName));
+			new PetService(_petRepo).SearchBreed().ForEach(s => _mapBreed.Add(s.BreedID, s.BreedName));
+
+			foreach (var species in _mapSpecies)
+			{
+				comboBoxSpeciesID.Items.Add(species);
+			}
+
+			foreach (var breed in _mapBreed)
+			{
+				comboBoxBreedID.Items.Add(breed);
+			}
+
+			comboBoxSpeciesID.DisplayMember = "Value";
+			comboBoxBreedID.DisplayMember = "Value";
+
+			comboBoxSpeciesID.SelectedIndex = 0;
+			comboBoxBreedID.SelectedIndex = 0;
 		}
 
 		private void SelectFileToForm(string filePath)
@@ -92,10 +115,13 @@ namespace prjMidtermTopic.form_Pets
 
 		private void btnCreate_Click(object sender, EventArgs e)
 		{
+			int speciesID = (comboBoxSpeciesID.SelectedItem as dynamic).Key;
+			int breedID = (comboBoxBreedID.SelectedItem as dynamic).Key;
+
 			var vm = new PetCreateVM()
 			{
-				SpeciesID = txtSpeciesID.Text,
-				BreedID = txtBreedID.Text,
+				SpeciesID = speciesID.ToString(),
+				BreedID = breedID.ToString(),
 				PetName = txtPetName.Text,
 				Gender = _gender,
 				Age = txtAge.Text,

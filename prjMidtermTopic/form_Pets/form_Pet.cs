@@ -12,8 +12,8 @@ namespace prjMidtermTopic
 	public partial class form_Pet : Form, IGrid
 	{
 		List<PetGridDto> _data;
-		private Dictionary<int, string> mapSpecies = new Dictionary<int, string>();
-		private Dictionary<int, string> mapBreed = new Dictionary<int, string>();
+		private Dictionary<int, string> _mapSpecies = new Dictionary<int, string>();
+		private Dictionary<int, string> _mapBreed = new Dictionary<int, string>();
 		private IPetRepo _repo;
 		public form_Pet()
 		{
@@ -21,17 +21,17 @@ namespace prjMidtermTopic
 
 			_repo = new PetRepository();
 
-			mapSpecies.Add(0, "請選擇");
-			mapBreed.Add(0, "請選擇");
-			new PetService(_repo).SearchSpescies().ForEach(s => mapSpecies.Add(s.SpeciesID, s.SpeciesName));
-			new PetService(_repo).SearchBreed().ForEach(s => mapBreed.Add(s.BreedID, s.BreedName));
+			_mapSpecies.Add(0, "請選擇");
+			_mapBreed.Add(0, "請選擇");
+			new PetService(_repo).SearchSpescies().ForEach(s => _mapSpecies.Add(s.SpeciesID, s.SpeciesName));
+			new PetService(_repo).SearchBreed().ForEach(s => _mapBreed.Add(s.BreedID, s.BreedName));
 
-			foreach (var species in mapSpecies)
+			foreach (var species in _mapSpecies)
 			{
 				comboBoxSearchSpecies.Items.Add(species);
 			}
 
-			foreach (var breed in mapBreed)
+			foreach (var breed in _mapBreed)
 			{
 				comboBoxSearchBreed.Items.Add(breed);
 			}
