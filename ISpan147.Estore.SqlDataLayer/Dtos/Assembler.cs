@@ -120,7 +120,7 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
 				{
 					ThemeId = reader.GetInt("ThemeId"),
 					//ForumAccountId = reader.GetInt("ForumAccountId"),
-					//ForumAccountName = reader.GetString("ForumAccountName"),
+					ForumAccountName = reader.GetString("ForumAccountName"),
 					ThemeDateTime = reader.GetDateTime(reader.GetOrdinal("ThemeDateTime")),
 					ThemeContext = reader.GetString("ThemeContext")//.Length > 50 ?	reader.GetString("ThemeContext").Substring(0, 50) + "..." : reader.GetString("ThemeContext")
 				};

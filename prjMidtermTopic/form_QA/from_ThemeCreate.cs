@@ -26,6 +26,15 @@ namespace prjMidtermTopic.form_QA
 		}
 		private void buttonConfirmTheme_Click(object sender, EventArgs e)
 		{
+			string themeContext = richTextBoxTheme.Text;
+
+			if (string.IsNullOrWhiteSpace(themeContext))
+			{
+				MessageBox.Show("您輸入的留言為空，請調整!!", "警告", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return;
+			}
+
+
 			QADto.Theme themeDto = new QADto.Theme();
 			themeDto.ForumAccountId = Convert.ToInt32(labelThemeRoleID.Text);
 			themeDto.ForumAccountName = labelThemeRole.Text;
@@ -47,7 +56,7 @@ namespace prjMidtermTopic.form_QA
 
 			// 顯示要留言人資訊
 			labelThemeRoleID.Text = Authentication.ForumAccountID.ToString();
-			labelThemeRoleID.Visible = false;
+			labelThemeRoleID.Visible = false; //介面不顯示編號
 			labelThemeRole.Text = $"({Authentication.ForumAccountID.ToString()}) {forumAccountName}";
 		}
 	}

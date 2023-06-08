@@ -35,11 +35,13 @@ namespace prjMidtermTopic.form_QA
 		private void Form_ThemeCommemt_Load(object sender, EventArgs e)
 		{
 			CommentDisplay();
-			string sql = $"SELECT * FROM COMMENTS WHERE THEMEID={_themeId}";
+			//string sql = $"SELECT * FROM COMMENTS WHERE THEMEID={_themeId}";
+			//ForumAccountService forumAccountService = new ForumAccountService();
+			//var forumAccountName = forumAccountService.GetForumAccountName((int)Authentication.ForumAccountID);
 			Func<SqlDataReader, QADto.Theme> func = (reader) =>
 			new QADto.Theme
 			{
-				ForumAccountName = "留言測試者",
+				ForumAccountName = reader.GetString(reader.GetOrdinal("ForumAccountName")),
 				ThemeDateTime = reader.GetDateTime(reader.GetOrdinal("ThemeDateTime")),
 				ThemeContext = reader.GetString(reader.GetOrdinal("ThemeContext"))
 			};
@@ -52,6 +54,7 @@ namespace prjMidtermTopic.form_QA
 				labelThemeDatetime.Text = theme.ThemeDateTime.ToString();
 				richTextBoxTheme.Text = theme.ThemeContext;
 			}
+			//labelThemeRole.Text = $"({Authentication.ForumAccountID.ToString()}) {forumAccountName}";
 		}
 
 		private void buttonDeleteTheme_Click(object sender, EventArgs e)

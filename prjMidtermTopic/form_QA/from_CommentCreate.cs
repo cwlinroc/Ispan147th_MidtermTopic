@@ -37,6 +37,14 @@ namespace prjMidtermTopic.form_QA
 
 		private void buttonConfirmComment_Click(object sender, EventArgs e)
 		{
+			string commentContext = richTextBoxComment.Text;
+
+			if (string.IsNullOrWhiteSpace(commentContext))
+			{
+				MessageBox.Show("您輸入的留言為空，請調整!!", "警告", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return;
+			}
+
 			QADto.Comment commentDto = new QADto.Comment();
 			commentDto.ForumAccountId = Convert.ToInt32(labelCommentRoleID.Text);
 			commentDto.ForumAccountName = labelCommentRole.Text;
@@ -56,9 +64,14 @@ namespace prjMidtermTopic.form_QA
 
 		private void from_CommentCreate_Load(object sender, EventArgs e)
 		{
+			ForumAccountService forumAccountService = new ForumAccountService();
+			var forumAccountName = forumAccountService.GetForumAccountName((int)Authentication.ForumAccountID);
+
+			
 			// 顯示要留言人資訊
-			labelCommentRole.Text = "留言者";
-			labelCommentRoleID.Text = "123";
+			labelCommentRoleID.Text = Authentication.ForumAccountID.ToString();
+			labelCommentRoleID.Visible = false; //介面不顯示編號
+			labelCommentRole.Text = $"({Authentication.ForumAccountID.ToString()}) {forumAccountName}";
 		}
 	}
 }
