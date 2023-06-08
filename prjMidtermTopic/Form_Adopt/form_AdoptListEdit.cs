@@ -82,7 +82,7 @@ namespace prjMidtermTopic.Form_Adopt
                 };
                 AdoptService adoptService = new AdoptService();
                 int adoptId = adoptService.Update(dto);
-                MessageBox.Show($"輸入成功,ID是{adoptId}");
+                MessageBox.Show($"輸入成功");
                 IGrid parent = Owner as IGrid;
                 parent.Display();
                 Close();
@@ -90,7 +90,7 @@ namespace prjMidtermTopic.Form_Adopt
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"輸入失敗,原因是{ex.Message}");
+                MessageBox.Show($"輸入失敗,原因是輸入的格式不正確");
             }
             
         }
