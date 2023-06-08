@@ -127,5 +127,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 			}
 		}
 
+		
+
 	}
 }

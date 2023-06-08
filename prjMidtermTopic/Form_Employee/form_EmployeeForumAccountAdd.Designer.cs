@@ -35,14 +35,14 @@
 			// 
 			// txt_ForumName
 			// 
-			this.txt_ForumName.Location = new System.Drawing.Point(37, 58);
+			this.txt_ForumName.Location = new System.Drawing.Point(58, 65);
 			this.txt_ForumName.Name = "txt_ForumName";
 			this.txt_ForumName.Size = new System.Drawing.Size(146, 22);
 			this.txt_ForumName.TabIndex = 0;
 			// 
 			// btn_Confirm
 			// 
-			this.btn_Confirm.Location = new System.Drawing.Point(67, 103);
+			this.btn_Confirm.Location = new System.Drawing.Point(88, 110);
 			this.btn_Confirm.Name = "btn_Confirm";
 			this.btn_Confirm.Size = new System.Drawing.Size(75, 23);
 			this.btn_Confirm.TabIndex = 1;
@@ -53,7 +53,7 @@
 			// label1
 			// 
 			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(35, 29);
+			this.label1.Location = new System.Drawing.Point(56, 36);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(53, 12);
 			this.label1.TabIndex = 5;
@@ -63,7 +63,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(224, 149);
+			this.ClientSize = new System.Drawing.Size(264, 163);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.btn_Confirm);
 			this.Controls.Add(this.txt_ForumName);

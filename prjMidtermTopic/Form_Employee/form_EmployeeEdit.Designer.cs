@@ -39,12 +39,13 @@
 			this.label1 = new System.Windows.Forms.Label();
 			this.label5 = new System.Windows.Forms.Label();
 			this.txt_ConfirmPassword = new System.Windows.Forms.TextBox();
-			this.checkBox_ChangePassWord = new System.Windows.Forms.CheckBox();
+			this.checkBox_ChangepassWord = new System.Windows.Forms.CheckBox();
+			this.checkBox_ShowPassword = new System.Windows.Forms.CheckBox();
 			this.SuspendLayout();
 			// 
 			// btn_ChangePassword
 			// 
-			this.btn_ChangePassword.Location = new System.Drawing.Point(66, 286);
+			this.btn_ChangePassword.Location = new System.Drawing.Point(66, 318);
 			this.btn_ChangePassword.Name = "btn_ChangePassword";
 			this.btn_ChangePassword.Size = new System.Drawing.Size(124, 23);
 			this.btn_ChangePassword.TabIndex = 11;
@@ -54,6 +55,7 @@
 			// 
 			// txt_OldPassword
 			// 
+			this.txt_OldPassword.Enabled = false;
 			this.txt_OldPassword.Location = new System.Drawing.Point(90, 165);
 			this.txt_OldPassword.Name = "txt_OldPassword";
 			this.txt_OldPassword.PasswordChar = '*';
@@ -71,6 +73,7 @@
 			// 
 			// txt_EmployeePassword
 			// 
+			this.txt_EmployeePassword.Enabled = false;
 			this.txt_EmployeePassword.Location = new System.Drawing.Point(90, 193);
 			this.txt_EmployeePassword.Name = "txt_EmployeePassword";
 			this.txt_EmployeePassword.PasswordChar = '*';
@@ -129,28 +132,42 @@
 			// 
 			// txt_ConfirmPassword
 			// 
+			this.txt_ConfirmPassword.Enabled = false;
 			this.txt_ConfirmPassword.Location = new System.Drawing.Point(90, 221);
 			this.txt_ConfirmPassword.Name = "txt_ConfirmPassword";
 			this.txt_ConfirmPassword.PasswordChar = '*';
 			this.txt_ConfirmPassword.Size = new System.Drawing.Size(100, 22);
 			this.txt_ConfirmPassword.TabIndex = 8;
 			// 
-			// checkBox_ChangePassWord
+			// checkBox_ChangepassWord
 			// 
-			this.checkBox_ChangePassWord.AutoSize = true;
-			this.checkBox_ChangePassWord.Location = new System.Drawing.Point(31, 137);
-			this.checkBox_ChangePassWord.Name = "checkBox_ChangePassWord";
-			this.checkBox_ChangePassWord.Size = new System.Drawing.Size(72, 16);
-			this.checkBox_ChangePassWord.TabIndex = 12;
-			this.checkBox_ChangePassWord.Text = "修改密碼";
-			this.checkBox_ChangePassWord.UseVisualStyleBackColor = true;
+			this.checkBox_ChangepassWord.AutoSize = true;
+			this.checkBox_ChangepassWord.Location = new System.Drawing.Point(31, 137);
+			this.checkBox_ChangepassWord.Name = "checkBox_ChangepassWord";
+			this.checkBox_ChangepassWord.Size = new System.Drawing.Size(72, 16);
+			this.checkBox_ChangepassWord.TabIndex = 12;
+			this.checkBox_ChangepassWord.Text = "修改密碼";
+			this.checkBox_ChangepassWord.UseVisualStyleBackColor = true;
+			this.checkBox_ChangepassWord.CheckedChanged += new System.EventHandler(this.checkBox_ChangepassWord_CheckedChanged);
+			// 
+			// checkBox_ShowPassword
+			// 
+			this.checkBox_ShowPassword.AutoSize = true;
+			this.checkBox_ShowPassword.Location = new System.Drawing.Point(118, 260);
+			this.checkBox_ShowPassword.Name = "checkBox_ShowPassword";
+			this.checkBox_ShowPassword.Size = new System.Drawing.Size(72, 16);
+			this.checkBox_ShowPassword.TabIndex = 12;
+			this.checkBox_ShowPassword.Text = "顯示密碼";
+			this.checkBox_ShowPassword.UseVisualStyleBackColor = true;
+			this.checkBox_ShowPassword.CheckedChanged += new System.EventHandler(this.checkBox_ShowPassword_CheckedChanged);
 			// 
 			// form_EmployeeEdit
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(247, 343);
-			this.Controls.Add(this.checkBox_ChangePassWord);
+			this.ClientSize = new System.Drawing.Size(252, 381);
+			this.Controls.Add(this.checkBox_ShowPassword);
+			this.Controls.Add(this.checkBox_ChangepassWord);
 			this.Controls.Add(this.btn_ChangePassword);
 			this.Controls.Add(this.txt_OldPassword);
 			this.Controls.Add(this.label4);
@@ -183,6 +200,7 @@
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Label label5;
 		private System.Windows.Forms.TextBox txt_ConfirmPassword;
-		private System.Windows.Forms.CheckBox checkBox_ChangePassWord;
+		private System.Windows.Forms.CheckBox checkBox_ChangepassWord;
+		private System.Windows.Forms.CheckBox checkBox_ShowPassword;
 	}
 }

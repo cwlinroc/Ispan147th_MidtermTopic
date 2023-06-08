@@ -42,10 +42,9 @@ namespace prjMidtermTopic.Form_Order
 				{ "PurchaseTime", (prev, next) => prev.PurchaseTime.GetValueOrDefault().CompareTo(next.PurchaseTime.GetValueOrDefault()) },
 				{ "PaymentAmount", (prev, next) => prev.PaymentAmount.GetValueOrDefault().CompareTo(next.PaymentAmount.GetValueOrDefault()) }
 			};
-
+			
 			comboBox_PaymentMethod.Items.AddRange(Orders.paymentOptions);
 			comboBox_SortBy.Items.AddRange(_orderByColumnName);
-
 			Modifier.ModGridView(dataGridView_Main);
 		}
 
@@ -114,6 +113,11 @@ namespace prjMidtermTopic.Form_Order
 		{
 			try
 			{
+				if (InputInvalid())
+				{
+					return;
+				}
+
 				var sDto = GetSearchDto();
 
 				var gridDtoList = new OrderService().Search(sDto);
@@ -134,6 +138,7 @@ namespace prjMidtermTopic.Form_Order
 			var sDto = new OrderSearchDto();
 
 			#region --條件判別--
+
 
 			if (int.TryParse(txt_OrderID.Text.Trim(), out int _orderID))
 			{
@@ -251,6 +256,30 @@ namespace prjMidtermTopic.Form_Order
 			Display();
 		}
 
+		private bool InputInvalid()
+		{
+			if (txt_OrderID.Text != string.Empty && !int.TryParse(txt_OrderID.Text.Trim(), out int _orderID))
+			{
+				MessageBox.Show("訂單編號請輸入數字");
+				return true;
+			}
+			if (txt_MemberID.Text != string.Empty && !int.TryParse(txt_MemberID.Text.Trim(), out int _memberID))
+			{
+				MessageBox.Show("顧客ID請輸入數字");
+				return true;
+			}
+			if (txt_MinPaymentAmount.Text != string.Empty && !int.TryParse(txt_MinPaymentAmount.Text.Trim(), out int minAmount))
+			{
+				MessageBox.Show("最小金額請輸入數字");
+				return true;
+			}
+			if (txt_MaxPaymentAmount.Text != string.Empty && !int.TryParse(txt_MaxPaymentAmount.Text.Trim(), out int maxAmount))
+			{
+				MessageBox.Show("最大金額請輸入數字");
+				return true;
+			}
+			return false;
+		}
 
 	}
 }
