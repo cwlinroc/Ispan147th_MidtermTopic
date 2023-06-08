@@ -153,10 +153,10 @@
 			// checkBox_ChangepassWord
 			// 
 			this.checkBox_ChangepassWord.AutoSize = true;
-			this.checkBox_ChangePassWord.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.checkBox_ChangePassWord.Location = new System.Drawing.Point(22, 128);
+			this.checkBox_ChangepassWord.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.checkBox_ChangepassWord.Location = new System.Drawing.Point(22, 128);
 			this.checkBox_ChangepassWord.Name = "checkBox_ChangepassWord";
-			this.checkBox_ChangePassWord.Size = new System.Drawing.Size(74, 20);
+			this.checkBox_ChangepassWord.Size = new System.Drawing.Size(74, 20);
 			this.checkBox_ChangepassWord.TabIndex = 12;
 			this.checkBox_ChangepassWord.Text = "修改密碼";
 			this.checkBox_ChangepassWord.UseVisualStyleBackColor = true;

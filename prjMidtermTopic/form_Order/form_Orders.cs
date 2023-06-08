@@ -90,12 +90,18 @@ namespace prjMidtermTopic.Form_Order
 		{
 			if (_row < 0) return;
 			if (!PermissionCheck.Enable(3)) return;
-			new form_OrdersEdit(_data[_row]).ShowDialog();
+
+			var frm = new form_OrdersEdit(_data[_row]);
+			Modifier.ModForm(frm);
+			frm.ShowDialog();
 		}
 		private void btn_Add_Click(object sender, EventArgs e)
 		{
 			if (!PermissionCheck.Enable(3)) return;
-			new form_OrdersAdd().ShowDialog();
+
+			var frm = new form_OrdersAdd();
+			Modifier.ModForm(frm);
+			frm.ShowDialog();
 		}
 
 		//double click
@@ -108,6 +114,7 @@ namespace prjMidtermTopic.Form_Order
 			}
 			var frm = new form_OrderList(_data[_row].OrderID);
 			frm.Owner = this;
+			Modifier.ModForm(frm);
 			frm.ShowDialog();
 		}
 
@@ -285,5 +292,6 @@ namespace prjMidtermTopic.Form_Order
 			return false;
 		}
 
+		
 	}
 }

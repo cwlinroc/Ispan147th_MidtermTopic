@@ -73,6 +73,7 @@ namespace prjMidtermTopic.Form_Order
 
 			var frm = new Form_OrderListEdit(_data[_row]);
 			frm.Owner = this;
+			Modifier.ModForm(frm);
 			frm.ShowDialog();
 		}
 		private void btn_AddListItem_Click(object sender, EventArgs e)
@@ -81,6 +82,7 @@ namespace prjMidtermTopic.Form_Order
 
 			var frm = new form_OrderListAdd(_orderID);
 			frm.Owner = this;
+			Modifier.ModForm(frm);
 			frm.ShowDialog();
 		}
 		private void btn_DelteListItem_Click(object sender, EventArgs e)

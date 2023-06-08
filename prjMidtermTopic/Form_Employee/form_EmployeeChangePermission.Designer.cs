@@ -44,14 +44,6 @@
 			this.btn_Change.UseVisualStyleBackColor = true;
 			this.btn_Change.Click += new System.EventHandler(this.btn_Change_Click);
 			// 
-			// txt_Permission
-			// 
-			this.txt_Permission.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.txt_Permission.Location = new System.Drawing.Point(89, 26);
-			this.txt_Permission.Name = "txt_Permission";
-			this.txt_Permission.Size = new System.Drawing.Size(100, 29);
-			this.txt_Permission.TabIndex = 1;
-			// 
 			// label1
 			// 
 			this.label1.AutoSize = true;
@@ -64,17 +56,18 @@
 			// 
 			// comboBox_Permission
 			// 
+			this.comboBox_Permission.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.comboBox_Permission.FormattingEnabled = true;
-			this.comboBox_Permission.Location = new System.Drawing.Point(77, 40);
+			this.comboBox_Permission.Location = new System.Drawing.Point(87, 26);
 			this.comboBox_Permission.Name = "comboBox_Permission";
-			this.comboBox_Permission.Size = new System.Drawing.Size(121, 20);
+			this.comboBox_Permission.Size = new System.Drawing.Size(121, 29);
 			this.comboBox_Permission.TabIndex = 3;
 			// 
 			// form_EmployeeChangePermission
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(220, 128);
+			this.ClientSize = new System.Drawing.Size(229, 128);
 			this.Controls.Add(this.comboBox_Permission);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.btn_Change);

@@ -50,9 +50,9 @@
 			// 
 			this.btn_commit.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.btn_commit.Location = new System.Drawing.Point(123, 233);
-			this.btn_commit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.btn_commit.Margin = new System.Windows.Forms.Padding(2);
 			this.btn_commit.Name = "btn_commit";
-			this.btn_commit.Size = new System.Drawing.Size(123, 28);
+			this.btn_commit.Size = new System.Drawing.Size(100, 30);
 			this.btn_commit.TabIndex = 0;
 			this.btn_commit.Text = "確認新增";
 			this.btn_commit.UseVisualStyleBackColor = true;
@@ -74,7 +74,7 @@
 			this.txt_OrderID.Enabled = false;
 			this.txt_OrderID.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.txt_OrderID.Location = new System.Drawing.Point(123, 24);
-			this.txt_OrderID.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.txt_OrderID.Margin = new System.Windows.Forms.Padding(2);
 			this.txt_OrderID.Name = "txt_OrderID";
 			this.txt_OrderID.Size = new System.Drawing.Size(177, 29);
 			this.txt_OrderID.TabIndex = 2;
@@ -94,7 +94,7 @@
 			// 
 			this.txt_MemberID.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.txt_MemberID.Location = new System.Drawing.Point(123, 57);
-			this.txt_MemberID.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.txt_MemberID.Margin = new System.Windows.Forms.Padding(2);
 			this.txt_MemberID.Name = "txt_MemberID";
 			this.txt_MemberID.Size = new System.Drawing.Size(177, 29);
 			this.txt_MemberID.TabIndex = 2;
@@ -126,7 +126,7 @@
 			this.comboBox_PayMethod.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.comboBox_PayMethod.FormattingEnabled = true;
 			this.comboBox_PayMethod.Location = new System.Drawing.Point(123, 90);
-			this.comboBox_PayMethod.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.comboBox_PayMethod.Margin = new System.Windows.Forms.Padding(2);
 			this.comboBox_PayMethod.Name = "comboBox_PayMethod";
 			this.comboBox_PayMethod.Size = new System.Drawing.Size(177, 28);
 			this.comboBox_PayMethod.TabIndex = 3;
@@ -136,7 +136,7 @@
 			this.comboBox_Payed.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.comboBox_Payed.FormattingEnabled = true;
 			this.comboBox_Payed.Location = new System.Drawing.Point(123, 122);
-			this.comboBox_Payed.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.comboBox_Payed.Margin = new System.Windows.Forms.Padding(2);
 			this.comboBox_Payed.Name = "comboBox_Payed";
 			this.comboBox_Payed.Size = new System.Drawing.Size(177, 28);
 			this.comboBox_Payed.TabIndex = 4;
@@ -171,7 +171,7 @@
 			// 
 			this.txt_PaymentAmount.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.txt_PaymentAmount.Location = new System.Drawing.Point(123, 187);
-			this.txt_PaymentAmount.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.txt_PaymentAmount.Margin = new System.Windows.Forms.Padding(2);
 			this.txt_PaymentAmount.Name = "txt_PaymentAmount";
 			this.txt_PaymentAmount.Size = new System.Drawing.Size(177, 29);
 			this.txt_PaymentAmount.TabIndex = 2;
@@ -181,7 +181,7 @@
 			this.dateTimePicker_PurchaseTime.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.dateTimePicker_PurchaseTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
 			this.dateTimePicker_PurchaseTime.Location = new System.Drawing.Point(123, 154);
-			this.dateTimePicker_PurchaseTime.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.dateTimePicker_PurchaseTime.Margin = new System.Windows.Forms.Padding(2);
 			this.dateTimePicker_PurchaseTime.Name = "dateTimePicker_PurchaseTime";
 			this.dateTimePicker_PurchaseTime.Size = new System.Drawing.Size(177, 29);
 			this.dateTimePicker_PurchaseTime.TabIndex = 5;
@@ -204,7 +204,7 @@
 			this.Controls.Add(this.txt_OrderID);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.btn_commit);
-			this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.Margin = new System.Windows.Forms.Padding(2);
 			this.Name = "form_OrdersAdd";
 			this.Text = "新增訂單";
 			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();

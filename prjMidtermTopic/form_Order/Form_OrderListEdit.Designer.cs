@@ -43,10 +43,10 @@
 			// btn_commit
 			// 
 			this.btn_commit.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.btn_commit.Location = new System.Drawing.Point(101, 146);
+			this.btn_commit.Location = new System.Drawing.Point(122, 138);
 			this.btn_commit.Margin = new System.Windows.Forms.Padding(2);
 			this.btn_commit.Name = "btn_commit";
-			this.btn_commit.Size = new System.Drawing.Size(123, 28);
+			this.btn_commit.Size = new System.Drawing.Size(100, 30);
 			this.btn_commit.TabIndex = 5;
 			this.btn_commit.Text = "確認修改";
 			this.btn_commit.UseVisualStyleBackColor = true;
