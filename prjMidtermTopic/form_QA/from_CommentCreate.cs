@@ -1,5 +1,6 @@
 ﻿using ISpan147.Estore.SqlDataLayer.Dtos;
 using ISpan147.Estore.SqlDataLayer.Services;
+using prjMidtermTopic.Interfaces;
 using prjMidtermTopic.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -40,13 +41,16 @@ namespace prjMidtermTopic.form_QA
 			commentDto.ForumAccountId = Convert.ToInt32(labelCommentRoleID.Text);
 			commentDto.ForumAccountName = labelCommentRole.Text;
 			commentDto.CommentContext = richTextBoxComment.Text;
-			commentDto.CommentDateTime = DateTime.Now;
+			commentDto.CommentTime = DateTime.Now;
 			commentDto.ThemeId = this._themeId;
 					
 			var result = _service.CreateComment(commentDto);
 
 			MessageBox.Show(result);
+			IGridComment parent = this.Owner as IGridComment;
+			parent.CommentDisplay();
 			this.Close();
+			
 			
 		}
 

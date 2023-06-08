@@ -14,10 +14,12 @@ namespace prjMidtermTopic.ViewModels
 	{
 		[Display(Name = "訂單編號")]
 		[Required(ErrorMessage = "{0}必填")]
+		[RegularExpression(@"^\d*$", ErrorMessage = "{0}請輸入正整數")]
 		public int OrderID { get; set; }
 
 		[Display(Name = "顧客編號")]
 		[Required(ErrorMessage = "{0}必填")]
+		[RegularExpression(@"^\d*$", ErrorMessage = "{0}請輸入正整數")]
 		public string MemberID { get; set; }
 
 		[Display(Name = "顧客姓名")]

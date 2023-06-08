@@ -45,7 +45,7 @@ namespace Ispan147.Estore.SqlDataLayer.Repositories
 			string top = string.Empty;
 			if (sDto.MaxQueryNumber.HasValue)
 			{
-				top = "TOP (" + sDto.MaxQueryNumber + ") ";
+				top = $"TOP ({sDto.MaxQueryNumber}) ";
 			}
 			else
 			{
