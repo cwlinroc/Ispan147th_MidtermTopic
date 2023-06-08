@@ -240,6 +240,7 @@
 			this.pbPet.Location = new System.Drawing.Point(674, 28);
 			this.pbPet.Name = "pbPet";
 			this.pbPet.Size = new System.Drawing.Size(256, 256);
+			this.pbPet.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
 			this.pbPet.TabIndex = 23;
 			this.pbPet.TabStop = false;
 			// 
