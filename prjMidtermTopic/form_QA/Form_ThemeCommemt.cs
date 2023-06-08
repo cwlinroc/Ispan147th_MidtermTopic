@@ -4,6 +4,7 @@ using ISpan147.Estore.SqlDataLayer.ExtMethods;
 using ISpan147.Estore.SqlDataLayer.Repositories;
 using ISpan147.Estore.SqlDataLayer.Services;
 using prjMidtermTopic.Interfaces;
+using prjMidtermTopic.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -31,6 +32,8 @@ namespace prjMidtermTopic.form_QA
 			InitializeComponent();
 			_themeId = themeId;
 			_service = new QAService();
+
+			Modifier.ModGridView(dataGridViewComment);
 		}
 		private void Form_ThemeCommemt_Load(object sender, EventArgs e)
 		{

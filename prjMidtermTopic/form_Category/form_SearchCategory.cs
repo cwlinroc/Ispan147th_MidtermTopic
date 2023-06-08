@@ -78,6 +78,7 @@ namespace prjMidtermTopic.form_Category
 
 			var frm = new form_EditCategory(id);
 			frm.Owner = this;
+			Modifier.ModForm(frm);
 			frm.ShowDialog();
 		}
 
@@ -85,6 +86,7 @@ namespace prjMidtermTopic.form_Category
 		{
 			var frm = new form_CreateCategory();
 			frm.Owner = this;
+			Modifier.ModForm(frm);
 			frm.ShowDialog();
 		}
 
