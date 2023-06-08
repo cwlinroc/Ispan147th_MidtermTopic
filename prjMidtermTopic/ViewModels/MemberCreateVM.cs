@@ -21,10 +21,10 @@ namespace prjMidtermTopic.ViewModels
 		[Display(Name = "暱稱")]
 		[MaxLength(30, ErrorMessage = "{0}長度不可多於{1}")]
 		public string NickName { get; set; }
-				
+
 		[Display(Name = "生日")]
 		[Required(ErrorMessage = "{0}必填")]
-		[DateTimeRange(-100, ErrorMessage = "生日不可早於100年前!")]
+		[DateTimeRange(-100, -18, ErrorMessage = "生日不可早於100年,晚於18年!")]
 		public DateTime DateOfBirth { get; set; }
 
 		[Display(Name = "性別")]
@@ -62,10 +62,12 @@ namespace prjMidtermTopic.ViewModels
 	public class DateTimeRangeAttribute : ValidationAttribute
 	{
 		private readonly DateTime _minDate;
+		private readonly DateTime _maxDate;
 
-		public DateTimeRangeAttribute(int years)
+		public DateTimeRangeAttribute(int initialyear, int finalyear)
 		{
-			_minDate = DateTime.Now.AddYears(years);
+			_minDate = DateTime.Now.AddYears(initialyear);
+			_maxDate = DateTime.Now.AddYears(finalyear);
 		}
 
 		protected override ValidationResult IsValid(object value, ValidationContext validationContext)
@@ -74,8 +76,13 @@ namespace prjMidtermTopic.ViewModels
 			{
 				if (dateValue < _minDate)
 				{
-					return new ValidationResult($"生日不可早於 {_minDate:yyyy-MM-dd}", 
-						new[] {validationContext.MemberName});
+					return new ValidationResult($"生日不可早於 {_minDate:yyyy-MM-dd}",
+						new[] { validationContext.MemberName });
+				}
+				else if (dateValue > _maxDate)
+				{
+					return new ValidationResult($"生日不可晚於 {_maxDate:yyyy-MM-dd}",
+						new[] { validationContext.MemberName });
 				}
 			}
 			return ValidationResult.Success;

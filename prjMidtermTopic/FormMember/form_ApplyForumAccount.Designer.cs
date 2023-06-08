@@ -44,8 +44,8 @@
 			this.txtNickName.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.txtNickName.Location = new System.Drawing.Point(83, 72);
 			this.txtNickName.Name = "txtNickName";
-			this.txtNickName.Size = new System.Drawing.Size(170, 29);
-			this.txtNickName.TabIndex = 23;
+			this.txtNickName.Size = new System.Drawing.Size(183, 29);
+			this.txtNickName.TabIndex = 1;
 			// 
 			// label9
 			// 
@@ -62,8 +62,8 @@
 			this.txtMemberName.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.txtMemberName.Location = new System.Drawing.Point(83, 23);
 			this.txtMemberName.Name = "txtMemberName";
-			this.txtMemberName.Size = new System.Drawing.Size(170, 29);
-			this.txtMemberName.TabIndex = 22;
+			this.txtMemberName.Size = new System.Drawing.Size(183, 29);
+			this.txtMemberName.TabIndex = 0;
 			// 
 			// labName
 			// 
@@ -83,7 +83,7 @@
 			this.btnApply.Location = new System.Drawing.Point(173, 130);
 			this.btnApply.Name = "btnApply";
 			this.btnApply.Size = new System.Drawing.Size(80, 30);
-			this.btnApply.TabIndex = 26;
+			this.btnApply.TabIndex = 2;
 			this.btnApply.Text = "申請";
 			this.btnApply.UseVisualStyleBackColor = true;
 			this.btnApply.Click += new System.EventHandler(this.btnApply_Click);
@@ -112,7 +112,7 @@
 			this.Controls.Add(this.txtMemberName);
 			this.Controls.Add(this.labName);
 			this.Name = "form_ApplyForumAccount";
-			this.Text = "申請論壇帳號";
+			this.Text = "申請論壇帳戶";
 			this.Load += new System.EventHandler(this.form_ApplyForumAccount_Load);
 			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
 			this.ResumeLayout(false);
