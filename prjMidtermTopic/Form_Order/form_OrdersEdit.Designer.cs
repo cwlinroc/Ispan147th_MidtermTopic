@@ -53,7 +53,7 @@
 			this.btn_commit.Margin = new System.Windows.Forms.Padding(2);
 			this.btn_commit.Name = "btn_commit";
 			this.btn_commit.Size = new System.Drawing.Size(100, 30);
-			this.btn_commit.TabIndex = 0;
+			this.btn_commit.TabIndex = 6;
 			this.btn_commit.Text = "確認修改";
 			this.btn_commit.UseVisualStyleBackColor = true;
 			this.btn_commit.Click += new System.EventHandler(this.btn_commit_Click);
@@ -77,7 +77,7 @@
 			this.txt_OrderID.Margin = new System.Windows.Forms.Padding(2);
 			this.txt_OrderID.Name = "txt_OrderID";
 			this.txt_OrderID.Size = new System.Drawing.Size(177, 29);
-			this.txt_OrderID.TabIndex = 2;
+			this.txt_OrderID.TabIndex = 0;
 			// 
 			// label2
 			// 
@@ -97,7 +97,7 @@
 			this.txt_MemberID.Margin = new System.Windows.Forms.Padding(2);
 			this.txt_MemberID.Name = "txt_MemberID";
 			this.txt_MemberID.Size = new System.Drawing.Size(177, 29);
-			this.txt_MemberID.TabIndex = 2;
+			this.txt_MemberID.TabIndex = 1;
 			// 
 			// label3
 			// 
@@ -129,7 +129,7 @@
 			this.comboBox_PayMethod.Margin = new System.Windows.Forms.Padding(2);
 			this.comboBox_PayMethod.Name = "comboBox_PayMethod";
 			this.comboBox_PayMethod.Size = new System.Drawing.Size(177, 28);
-			this.comboBox_PayMethod.TabIndex = 3;
+			this.comboBox_PayMethod.TabIndex = 2;
 			// 
 			// comboBox_Payed
 			// 
@@ -139,7 +139,7 @@
 			this.comboBox_Payed.Margin = new System.Windows.Forms.Padding(2);
 			this.comboBox_Payed.Name = "comboBox_Payed";
 			this.comboBox_Payed.Size = new System.Drawing.Size(177, 28);
-			this.comboBox_Payed.TabIndex = 4;
+			this.comboBox_Payed.TabIndex = 3;
 			// 
 			// errorProvider1
 			// 
@@ -153,7 +153,7 @@
 			this.dateTimePicker_PurchaseTime.Margin = new System.Windows.Forms.Padding(2);
 			this.dateTimePicker_PurchaseTime.Name = "dateTimePicker_PurchaseTime";
 			this.dateTimePicker_PurchaseTime.Size = new System.Drawing.Size(177, 29);
-			this.dateTimePicker_PurchaseTime.TabIndex = 9;
+			this.dateTimePicker_PurchaseTime.TabIndex = 4;
 			// 
 			// txt_PaymentAmount
 			// 
@@ -162,7 +162,7 @@
 			this.txt_PaymentAmount.Margin = new System.Windows.Forms.Padding(2);
 			this.txt_PaymentAmount.Name = "txt_PaymentAmount";
 			this.txt_PaymentAmount.Size = new System.Drawing.Size(177, 29);
-			this.txt_PaymentAmount.TabIndex = 8;
+			this.txt_PaymentAmount.TabIndex = 5;
 			// 
 			// label6
 			// 

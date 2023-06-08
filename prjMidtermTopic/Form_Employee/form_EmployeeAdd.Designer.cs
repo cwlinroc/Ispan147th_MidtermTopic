@@ -73,7 +73,7 @@
 			this.txt_EmployeeName.Location = new System.Drawing.Point(96, 24);
 			this.txt_EmployeeName.Name = "txt_EmployeeName";
 			this.txt_EmployeeName.Size = new System.Drawing.Size(100, 29);
-			this.txt_EmployeeName.TabIndex = 1;
+			this.txt_EmployeeName.TabIndex = 0;
 			// 
 			// label3
 			// 
@@ -91,7 +91,7 @@
 			this.txt_EmployeePassword.Location = new System.Drawing.Point(96, 94);
 			this.txt_EmployeePassword.Name = "txt_EmployeePassword";
 			this.txt_EmployeePassword.Size = new System.Drawing.Size(100, 29);
-			this.txt_EmployeePassword.TabIndex = 1;
+			this.txt_EmployeePassword.TabIndex = 2;
 			// 
 			// label4
 			// 
@@ -109,7 +109,7 @@
 			this.txt_Permission.Location = new System.Drawing.Point(96, 129);
 			this.txt_Permission.Name = "txt_Permission";
 			this.txt_Permission.Size = new System.Drawing.Size(100, 29);
-			this.txt_Permission.TabIndex = 1;
+			this.txt_Permission.TabIndex = 3;
 			// 
 			// btn_Add
 			// 
@@ -117,7 +117,7 @@
 			this.btn_Add.Location = new System.Drawing.Point(59, 171);
 			this.btn_Add.Name = "btn_Add";
 			this.btn_Add.Size = new System.Drawing.Size(124, 32);
-			this.btn_Add.TabIndex = 2;
+			this.btn_Add.TabIndex = 4;
 			this.btn_Add.Text = "新增員工帳號";
 			this.btn_Add.UseVisualStyleBackColor = true;
 			this.btn_Add.Click += new System.EventHandler(this.btn_Add_Click);

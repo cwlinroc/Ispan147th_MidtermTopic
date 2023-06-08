@@ -39,7 +39,7 @@
 			this.btn_Confirm.Location = new System.Drawing.Point(66, 106);
 			this.btn_Confirm.Name = "btn_Confirm";
 			this.btn_Confirm.Size = new System.Drawing.Size(89, 33);
-			this.btn_Confirm.TabIndex = 3;
+			this.btn_Confirm.TabIndex = 1;
 			this.btn_Confirm.Text = "確認修改";
 			this.btn_Confirm.UseVisualStyleBackColor = true;
 			this.btn_Confirm.Click += new System.EventHandler(this.btn_Confirm_Click);
@@ -50,7 +50,7 @@
 			this.txt_ForumName.Location = new System.Drawing.Point(36, 56);
 			this.txt_ForumName.Name = "txt_ForumName";
 			this.txt_ForumName.Size = new System.Drawing.Size(157, 29);
-			this.txt_ForumName.TabIndex = 2;
+			this.txt_ForumName.TabIndex = 0;
 			// 
 			// label1
 			// 

@@ -56,7 +56,7 @@
 			this.txt_MemberID.Location = new System.Drawing.Point(121, 67);
 			this.txt_MemberID.Name = "txt_MemberID";
 			this.txt_MemberID.Size = new System.Drawing.Size(100, 29);
-			this.txt_MemberID.TabIndex = 18;
+			this.txt_MemberID.TabIndex = 1;
 			// 
 			// memberId
 			// 
@@ -74,7 +74,7 @@
 			this.txt_petID.Location = new System.Drawing.Point(121, 32);
 			this.txt_petID.Name = "txt_petID";
 			this.txt_petID.Size = new System.Drawing.Size(100, 29);
-			this.txt_petID.TabIndex = 16;
+			this.txt_petID.TabIndex = 0;
 			// 
 			// petId
 			// 
@@ -92,7 +92,7 @@
 			this.button1.Location = new System.Drawing.Point(221, 150);
 			this.button1.Name = "button1";
 			this.button1.Size = new System.Drawing.Size(100, 40);
-			this.button1.TabIndex = 21;
+			this.button1.TabIndex = 3;
 			this.button1.Text = "儲存更新";
 			this.button1.UseVisualStyleBackColor = true;
 			this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -103,7 +103,7 @@
 			this.dateTimePicker1.Location = new System.Drawing.Point(121, 105);
 			this.dateTimePicker1.Name = "dateTimePicker1";
 			this.dateTimePicker1.Size = new System.Drawing.Size(200, 22);
-			this.dateTimePicker1.TabIndex = 22;
+			this.dateTimePicker1.TabIndex = 2;
 			// 
 			// errorProvider1
 			// 

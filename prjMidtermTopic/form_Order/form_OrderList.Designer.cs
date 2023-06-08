@@ -119,7 +119,7 @@
 			this.btn_EditListItem.Margin = new System.Windows.Forms.Padding(2);
 			this.btn_EditListItem.Name = "btn_EditListItem";
 			this.btn_EditListItem.Size = new System.Drawing.Size(100, 30);
-			this.btn_EditListItem.TabIndex = 1;
+			this.btn_EditListItem.TabIndex = 0;
 			this.btn_EditListItem.Text = "修改項目";
 			this.btn_EditListItem.UseVisualStyleBackColor = true;
 			this.btn_EditListItem.Click += new System.EventHandler(this.btn_EditListItem_Click);
@@ -145,7 +145,7 @@
 			this.btn_DelteListItem.Margin = new System.Windows.Forms.Padding(2);
 			this.btn_DelteListItem.Name = "btn_DelteListItem";
 			this.btn_DelteListItem.Size = new System.Drawing.Size(100, 30);
-			this.btn_DelteListItem.TabIndex = 1;
+			this.btn_DelteListItem.TabIndex = 2;
 			this.btn_DelteListItem.Text = "刪除項目";
 			this.btn_DelteListItem.UseVisualStyleBackColor = true;
 			this.btn_DelteListItem.Click += new System.EventHandler(this.btn_DelteListItem_Click);
@@ -158,7 +158,7 @@
 			this.btn_DeleteOrder.Margin = new System.Windows.Forms.Padding(2);
 			this.btn_DeleteOrder.Name = "btn_DeleteOrder";
 			this.btn_DeleteOrder.Size = new System.Drawing.Size(100, 30);
-			this.btn_DeleteOrder.TabIndex = 1;
+			this.btn_DeleteOrder.TabIndex = 3;
 			this.btn_DeleteOrder.Text = "刪除此清單";
 			this.btn_DeleteOrder.UseVisualStyleBackColor = true;
 			this.btn_DeleteOrder.Click += new System.EventHandler(this.btn_DeleteOrder_Click);

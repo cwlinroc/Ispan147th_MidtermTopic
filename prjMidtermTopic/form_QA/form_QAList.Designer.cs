@@ -45,7 +45,7 @@
 			this.buttonSearch.Margin = new System.Windows.Forms.Padding(2);
 			this.buttonSearch.Name = "buttonSearch";
 			this.buttonSearch.Size = new System.Drawing.Size(71, 29);
-			this.buttonSearch.TabIndex = 12;
+			this.buttonSearch.TabIndex = 1;
 			this.buttonSearch.Text = "搜尋";
 			this.buttonSearch.UseVisualStyleBackColor = true;
 			this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
@@ -57,7 +57,7 @@
 			this.textBoxSearch.Margin = new System.Windows.Forms.Padding(2);
 			this.textBoxSearch.Name = "textBoxSearch";
 			this.textBoxSearch.Size = new System.Drawing.Size(164, 29);
-			this.textBoxSearch.TabIndex = 11;
+			this.textBoxSearch.TabIndex = 0;
 			// 
 			// buttonCreateTheme
 			// 
@@ -66,8 +66,8 @@
 			this.buttonCreateTheme.Location = new System.Drawing.Point(510, 353);
 			this.buttonCreateTheme.Margin = new System.Windows.Forms.Padding(2);
 			this.buttonCreateTheme.Name = "buttonCreateTheme";
-			this.buttonCreateTheme.Size = new System.Drawing.Size(94, 26);
-			this.buttonCreateTheme.TabIndex = 10;
+			this.buttonCreateTheme.Size = new System.Drawing.Size(94, 38);
+			this.buttonCreateTheme.TabIndex = 2;
 			this.buttonCreateTheme.Text = "新增主題";
 			this.buttonCreateTheme.UseVisualStyleBackColor = true;
 			this.buttonCreateTheme.Click += new System.EventHandler(this.buttonCreateTheme_Click_1);

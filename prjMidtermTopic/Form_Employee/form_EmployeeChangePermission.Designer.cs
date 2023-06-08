@@ -39,7 +39,7 @@
 			this.btn_Change.Location = new System.Drawing.Point(62, 74);
 			this.btn_Change.Name = "btn_Change";
 			this.btn_Change.Size = new System.Drawing.Size(97, 33);
-			this.btn_Change.TabIndex = 0;
+			this.btn_Change.TabIndex = 1;
 			this.btn_Change.Text = "更改";
 			this.btn_Change.UseVisualStyleBackColor = true;
 			this.btn_Change.Click += new System.EventHandler(this.btn_Change_Click);
@@ -61,7 +61,7 @@
 			this.comboBox_Permission.Location = new System.Drawing.Point(87, 26);
 			this.comboBox_Permission.Name = "comboBox_Permission";
 			this.comboBox_Permission.Size = new System.Drawing.Size(121, 29);
-			this.comboBox_Permission.TabIndex = 3;
+			this.comboBox_Permission.TabIndex = 0;
 			// 
 			// form_EmployeeChangePermission
 			// 

@@ -116,7 +116,7 @@
 			this.btn_AddEmployee.Location = new System.Drawing.Point(534, 45);
 			this.btn_AddEmployee.Name = "btn_AddEmployee";
 			this.btn_AddEmployee.Size = new System.Drawing.Size(100, 34);
-			this.btn_AddEmployee.TabIndex = 1;
+			this.btn_AddEmployee.TabIndex = 0;
 			this.btn_AddEmployee.Text = "新增帳號";
 			this.btn_AddEmployee.UseVisualStyleBackColor = true;
 			this.btn_AddEmployee.Click += new System.EventHandler(this.btn_AddEmployee_Click);
@@ -140,7 +140,7 @@
 			this.btn_RemoveEmployee.Location = new System.Drawing.Point(534, 381);
 			this.btn_RemoveEmployee.Name = "btn_RemoveEmployee";
 			this.btn_RemoveEmployee.Size = new System.Drawing.Size(100, 34);
-			this.btn_RemoveEmployee.TabIndex = 1;
+			this.btn_RemoveEmployee.TabIndex = 3;
 			this.btn_RemoveEmployee.Text = "刪除帳號";
 			this.btn_RemoveEmployee.UseVisualStyleBackColor = true;
 			this.btn_RemoveEmployee.Click += new System.EventHandler(this.btn_RemoveEmployee_Click);
@@ -152,7 +152,7 @@
 			this.btn_ChangePermission.Location = new System.Drawing.Point(534, 303);
 			this.btn_ChangePermission.Name = "btn_ChangePermission";
 			this.btn_ChangePermission.Size = new System.Drawing.Size(100, 34);
-			this.btn_ChangePermission.TabIndex = 1;
+			this.btn_ChangePermission.TabIndex = 2;
 			this.btn_ChangePermission.Text = "調整權限";
 			this.btn_ChangePermission.UseVisualStyleBackColor = true;
 			this.btn_ChangePermission.Click += new System.EventHandler(this.btn_ChangePermission_Click);
