@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using ISpan147.Estore.SqlDataLayer.Repositories;
 using prjMidtermTopic.form_Pets;
 using ISpan147.Estore.SqlDataLayer.Services;
+using System.Linq;
 
 namespace prjMidtermTopic
 {
@@ -106,7 +107,20 @@ namespace prjMidtermTopic
 				sDto.OrderBy = SortingOptions[comboBoxSortBy.SelectedIndex];
 
 				_data = repo.Search(sDto);
-				dataGridView1.DataSource = _data;
+				dataGridView1.DataSource = _data.Select(o => new
+				{
+					PetID = o.PetID,
+					SpeciesID = o.SpeciesID,
+					BreedID = o.BreedID,
+					PetName = o.PetName,
+					Gender = (o.Gender ? "公" : "母"),
+					Age = o.Age,
+					Description = o.Description,
+					Location = o.Location,
+					PetAvatar = o.PetAvatar,
+					SpeciesName = o.SpeciesName,
+					BreedName = o.BreedName,
+				}).ToList();
 			}
 			catch (Exception ex)
 			{
@@ -169,7 +183,20 @@ namespace prjMidtermTopic
 				}
 			}
 
-			dataGridView1.DataSource = _data.ToArray();
+			dataGridView1.DataSource = _data.Select(o => new
+			{
+				PetID = o.PetID,
+				SpeciesID = o.SpeciesID,
+				BreedID = o.BreedID,
+				PetName = o.PetName,
+				Gender = (o.Gender ? "公" : "母"),
+				Age = o.Age,
+				Description = o.Description,
+				Location = o.Location,
+				PetAvatar = o.PetAvatar,
+				SpeciesName = o.SpeciesName,
+				BreedName = o.BreedName,
+			}).ToList();
 		}
 
 		private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
