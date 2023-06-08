@@ -30,14 +30,6 @@
         {
 			this.btn_Add = new System.Windows.Forms.Button();
 			this.dataGridView1 = new System.Windows.Forms.DataGridView();
-			this.MerchandiseId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.MerchandiseName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.CategoryName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.ImageURL = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.CategoryId = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.txt_MerchandiseName = new System.Windows.Forms.TextBox();
 			this.label2 = new System.Windows.Forms.Label();
 			this.txt_MerchandiseId = new System.Windows.Forms.TextBox();
@@ -56,6 +48,14 @@
 			this.label7 = new System.Windows.Forms.Label();
 			this.checkBox_desc = new System.Windows.Forms.CheckBox();
 			this.checkBox_MaxData = new System.Windows.Forms.CheckBox();
+			this.MerchandiseId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.MerchandiseName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.CategoryName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ImageURL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.CategoryId = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -97,71 +97,6 @@
 			this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
 			this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
 			// 
-			// MerchandiseId
-			// 
-			this.MerchandiseId.DataPropertyName = "MerchandiseID";
-			this.MerchandiseId.Frozen = true;
-			this.MerchandiseId.HeaderText = "商品編號";
-			this.MerchandiseId.Name = "MerchandiseId";
-			this.MerchandiseId.ReadOnly = true;
-			this.MerchandiseId.Width = 80;
-			// 
-			// MerchandiseName
-			// 
-			this.MerchandiseName.DataPropertyName = "MerchandiseName";
-			this.MerchandiseName.Frozen = true;
-			this.MerchandiseName.HeaderText = "商品名稱";
-			this.MerchandiseName.Name = "MerchandiseName";
-			this.MerchandiseName.ReadOnly = true;
-			this.MerchandiseName.Width = 180;
-			// 
-			// CategoryName
-			// 
-			this.CategoryName.DataPropertyName = "CategoryName";
-			this.CategoryName.HeaderText = "商品類別";
-			this.CategoryName.Name = "CategoryName";
-			this.CategoryName.ReadOnly = true;
-			// 
-			// Price
-			// 
-			this.Price.DataPropertyName = "Price";
-			this.Price.HeaderText = "價格";
-			this.Price.Name = "Price";
-			this.Price.ReadOnly = true;
-			this.Price.Width = 80;
-			// 
-			// Column2
-			// 
-			this.Column2.DataPropertyName = "Amount";
-			this.Column2.HeaderText = "庫存數量";
-			this.Column2.Name = "Column2";
-			this.Column2.ReadOnly = true;
-			this.Column2.Width = 80;
-			// 
-			// Description
-			// 
-			this.Description.DataPropertyName = "Description";
-			this.Description.HeaderText = "商品描述";
-			this.Description.Name = "Description";
-			this.Description.ReadOnly = true;
-			this.Description.Width = 250;
-			// 
-			// ImageURL
-			// 
-			this.ImageURL.DataPropertyName = "ImageURL";
-			this.ImageURL.HeaderText = "商品圖片";
-			this.ImageURL.Name = "ImageURL";
-			this.ImageURL.ReadOnly = true;
-			this.ImageURL.Width = 150;
-			// 
-			// CategoryId
-			// 
-			this.CategoryId.DataPropertyName = "CategoryId";
-			this.CategoryId.HeaderText = "類別編號";
-			this.CategoryId.Name = "CategoryId";
-			this.CategoryId.ReadOnly = true;
-			this.CategoryId.Visible = false;
-			// 
 			// txt_MerchandiseName
 			// 
 			this.txt_MerchandiseName.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
@@ -173,10 +108,10 @@
 			// label2
 			// 
 			this.label2.AutoSize = true;
-			this.label2.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.label2.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.label2.Location = new System.Drawing.Point(21, 52);
 			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(89, 20);
+			this.label2.Size = new System.Drawing.Size(90, 21);
 			this.label2.TabIndex = 7;
 			this.label2.Text = "商品名稱：";
 			this.label2.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -192,10 +127,10 @@
 			// label1
 			// 
 			this.label1.AutoSize = true;
-			this.label1.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.label1.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.label1.Location = new System.Drawing.Point(21, 16);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(89, 20);
+			this.label1.Size = new System.Drawing.Size(90, 21);
 			this.label1.TabIndex = 8;
 			this.label1.Text = "商品編號：";
 			this.label1.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -214,10 +149,10 @@
 			// labCategoryName
 			// 
 			this.labCategoryName.AutoSize = true;
-			this.labCategoryName.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.labCategoryName.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.labCategoryName.Location = new System.Drawing.Point(275, 34);
 			this.labCategoryName.Name = "labCategoryName";
-			this.labCategoryName.Size = new System.Drawing.Size(89, 20);
+			this.labCategoryName.Size = new System.Drawing.Size(90, 21);
 			this.labCategoryName.TabIndex = 12;
 			this.labCategoryName.Text = "商品類別：";
 			this.labCategoryName.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -233,10 +168,10 @@
 			// label3
 			// 
 			this.label3.AutoSize = true;
-			this.label3.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.label3.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.label3.Location = new System.Drawing.Point(566, 15);
 			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(89, 20);
+			this.label3.Size = new System.Drawing.Size(90, 21);
 			this.label3.TabIndex = 7;
 			this.label3.Text = "最高價格：";
 			this.label3.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -252,10 +187,10 @@
 			// label4
 			// 
 			this.label4.AutoSize = true;
-			this.label4.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.label4.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.label4.Location = new System.Drawing.Point(566, 50);
 			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(89, 20);
+			this.label4.Size = new System.Drawing.Size(90, 21);
 			this.label4.TabIndex = 7;
 			this.label4.Text = "最低價格：";
 			this.label4.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -291,10 +226,10 @@
 			// label6
 			// 
 			this.label6.AutoSize = true;
-			this.label6.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.label6.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.label6.Location = new System.Drawing.Point(820, 55);
 			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(89, 20);
+			this.label6.Size = new System.Drawing.Size(90, 21);
 			this.label6.TabIndex = 12;
 			this.label6.Text = "排序依據：";
 			this.label6.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -310,10 +245,10 @@
 			// label7
 			// 
 			this.label7.AutoSize = true;
-			this.label7.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.label7.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.label7.Location = new System.Drawing.Point(988, 16);
 			this.label7.Name = "label7";
-			this.label7.Size = new System.Drawing.Size(57, 20);
+			this.label7.Size = new System.Drawing.Size(58, 21);
 			this.label7.TabIndex = 13;
 			this.label7.Text = "筆資料";
 			this.label7.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -333,13 +268,76 @@
 			this.checkBox_MaxData.AutoSize = true;
 			this.checkBox_MaxData.Checked = true;
 			this.checkBox_MaxData.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.checkBox_MaxData.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.checkBox_MaxData.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.checkBox_MaxData.Location = new System.Drawing.Point(824, 14);
 			this.checkBox_MaxData.Name = "checkBox_MaxData";
-			this.checkBox_MaxData.Size = new System.Drawing.Size(92, 24);
+			this.checkBox_MaxData.Size = new System.Drawing.Size(93, 25);
 			this.checkBox_MaxData.TabIndex = 5;
 			this.checkBox_MaxData.Text = "最多顯示";
 			this.checkBox_MaxData.UseVisualStyleBackColor = true;
+			// 
+			// MerchandiseId
+			// 
+			this.MerchandiseId.DataPropertyName = "MerchandiseID";
+			this.MerchandiseId.Frozen = true;
+			this.MerchandiseId.HeaderText = "商品編號";
+			this.MerchandiseId.Name = "MerchandiseId";
+			this.MerchandiseId.ReadOnly = true;
+			// 
+			// MerchandiseName
+			// 
+			this.MerchandiseName.DataPropertyName = "MerchandiseName";
+			this.MerchandiseName.Frozen = true;
+			this.MerchandiseName.HeaderText = "商品名稱";
+			this.MerchandiseName.Name = "MerchandiseName";
+			this.MerchandiseName.ReadOnly = true;
+			this.MerchandiseName.Width = 180;
+			// 
+			// CategoryName
+			// 
+			this.CategoryName.DataPropertyName = "CategoryName";
+			this.CategoryName.HeaderText = "商品類別";
+			this.CategoryName.Name = "CategoryName";
+			this.CategoryName.ReadOnly = true;
+			// 
+			// Price
+			// 
+			this.Price.DataPropertyName = "Price";
+			this.Price.HeaderText = "價格";
+			this.Price.Name = "Price";
+			this.Price.ReadOnly = true;
+			this.Price.Width = 80;
+			// 
+			// Column2
+			// 
+			this.Column2.DataPropertyName = "Amount";
+			this.Column2.HeaderText = "庫存數量";
+			this.Column2.Name = "Column2";
+			this.Column2.ReadOnly = true;
+			// 
+			// Description
+			// 
+			this.Description.DataPropertyName = "Description";
+			this.Description.HeaderText = "商品描述";
+			this.Description.Name = "Description";
+			this.Description.ReadOnly = true;
+			this.Description.Width = 250;
+			// 
+			// ImageURL
+			// 
+			this.ImageURL.DataPropertyName = "ImageURL";
+			this.ImageURL.HeaderText = "商品圖片";
+			this.ImageURL.Name = "ImageURL";
+			this.ImageURL.ReadOnly = true;
+			this.ImageURL.Width = 150;
+			// 
+			// CategoryId
+			// 
+			this.CategoryId.DataPropertyName = "CategoryId";
+			this.CategoryId.HeaderText = "類別編號";
+			this.CategoryId.Name = "CategoryId";
+			this.CategoryId.ReadOnly = true;
+			this.CategoryId.Visible = false;
 			// 
 			// form_SearchMerchandise
 			// 

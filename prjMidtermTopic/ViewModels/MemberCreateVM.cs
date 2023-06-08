@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ISpan147.Estore.SqlDataLayer.Dtos;
+using ISpan147.Estore.SqlDataLayer.EFModel;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace prjMidtermTopic.ViewModels
@@ -77,6 +79,28 @@ namespace prjMidtermTopic.ViewModels
 				}
 			}
 			return ValidationResult.Success;
+		}
+	}
+
+	public static class Members
+	{
+		public static MemberCreateVM ToVM(this MemberDto dto)
+		{
+			return new MemberCreateVM
+			{
+				MemberID = dto.MemberID,
+				MemberName = dto.MemberName,
+				ForumAccountID = dto.ForumAccountID,
+				NickName = dto.NickName,
+				DateOfBirth = dto.DateOfBirth,
+				Gender = dto.Gender,
+				Account = dto.Account,
+				Password = dto.Password,
+				Phone = dto.Phone,
+				Address = dto.Address,
+				Email = dto.Email,
+				Avatar = dto.Avatar,
+			};
 		}
 	}
 

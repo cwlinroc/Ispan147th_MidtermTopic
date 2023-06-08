@@ -75,7 +75,17 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
 				Avatar = reader.GetString("avatar"),
 			};
 		}
+		public static Func<SqlDataReader, AdoptDto> AdoptDtoAssembler
+		{
+			get => (reader) => new AdoptDto
+			{
+				AdoptID = reader.GetInt("AdoptID"),
+				PetID = reader.GetInt("PetID"),
+				MemberID = reader.GetInt("MemberID"),
+				ApplicationTime = reader.GetDate("ApplicationTime")
 
+			};
+		}
 		public static Func<SqlDataReader, MerchandiseDto> MerchandiseDtoAssembler
 		{
 			get => (reader) => new MerchandiseDto
@@ -119,11 +129,10 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
 				new QADto.Theme
 				{
 					ThemeId = reader.GetInt("ThemeId"),
-					//UserId = reader.GetInt("UserId"),
+					//ForumAccountId = reader.GetInt("ForumAccountId"),
 					//ForumAccountName = reader.GetString("ForumAccountName"),
 					ThemeDateTime = reader.GetDateTime(reader.GetOrdinal("ThemeDateTime")),
-					ThemeContext = reader.GetString("ThemeContext").Length > 50 ?
-										reader.GetString("ThemeContext").Substring(0, 50) + "..." : reader.GetString("ThemeContext")
+					ThemeContext = reader.GetString("ThemeContext")//.Length > 50 ?	reader.GetString("ThemeContext").Substring(0, 50) + "..." : reader.GetString("ThemeContext")
 				};
 		}
 
@@ -135,7 +144,7 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
 			{
 				//ThemeId = reader.GetInt("ThemeId"),
 				CommentId = reader.GetInt("CommentId"),
-				CommentDateTime = reader.GetDateTime(reader.GetOrdinal("CommentTime")),
+				CommentTime = reader.GetDateTime(reader.GetOrdinal("CommentTime")),
 				CommentContext = reader.GetString("CommentContext").Length > 50 ?
 										reader.GetString("CommentContext").Substring(0, 50) + "..." : reader.GetString("CommentContext")
 			};

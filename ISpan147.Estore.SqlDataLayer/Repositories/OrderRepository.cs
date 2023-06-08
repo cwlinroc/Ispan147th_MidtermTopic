@@ -38,7 +38,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 
 			string orderBy = (sDto.Descending) ? $" ORDER BY {sDto.OrderBy} DESC " : $" ORDER BY {sDto.OrderBy} ";
 
-			string sql = $" SELECT {top} OrderID ,o.MemberID , MemberName "
+			string sql = $" SELECT {top} OrderID , o.MemberID , MemberName "
 					+ " , PaymentMethod ,Payed ,PurchaseTime , PaymentAmount "
 					+ " FROM Orders o "
 					+ " JOIN Members m ON m.MemberID = o.MemberID "
@@ -52,7 +52,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 			}
 			if (sDto.MemberID != null)
 			{
-				sql += " AND MemberID = @MemberID ";
+				sql += " AND o.MemberID = @MemberID ";
 			}
 			if (sDto.MemberName != null)
 			{
@@ -123,7 +123,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 
 			using (var conn = SqlDb.GetConnection())
 			{
-				return conn.QuerySingle<int>(strSql, OrderID);
+				return conn.QuerySingle<int>(strSql, new { OrderID = OrderID });
 			}
 		}
 

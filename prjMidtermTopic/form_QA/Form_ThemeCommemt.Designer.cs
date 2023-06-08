@@ -30,14 +30,14 @@
 		{
 			this.label1 = new System.Windows.Forms.Label();
 			this.dataGridViewComment = new System.Windows.Forms.DataGridView();
-			this.ThemeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.ThemeContext = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.ThemeDateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.buttonDeleteTheme = new System.Windows.Forms.Button();
 			this.buttonCreateCommon = new System.Windows.Forms.Button();
 			this.richTextBoxTheme = new System.Windows.Forms.RichTextBox();
 			this.labelThemeDatetime = new System.Windows.Forms.Label();
 			this.labelThemeRole = new System.Windows.Forms.Label();
+			this.ThemeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ThemeContext = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ThemeTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridViewComment)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -61,7 +61,7 @@
 			this.dataGridViewComment.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ThemeId,
             this.ThemeContext,
-            this.ThemeDateTime});
+            this.ThemeTime});
 			this.dataGridViewComment.Location = new System.Drawing.Point(34, 206);
 			this.dataGridViewComment.Margin = new System.Windows.Forms.Padding(2);
 			this.dataGridViewComment.MultiSelect = false;
@@ -71,34 +71,6 @@
 			this.dataGridViewComment.RowTemplate.Height = 27;
 			this.dataGridViewComment.Size = new System.Drawing.Size(549, 166);
 			this.dataGridViewComment.TabIndex = 30;
-			this.dataGridViewComment.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewComment_CellClick);
-			// 
-			// ThemeId
-			// 
-			this.ThemeId.DataPropertyName = "ThemeId";
-			this.ThemeId.HeaderText = "編號";
-			this.ThemeId.MinimumWidth = 6;
-			this.ThemeId.Name = "ThemeId";
-			this.ThemeId.ReadOnly = true;
-			this.ThemeId.Width = 125;
-			// 
-			// ThemeContext
-			// 
-			this.ThemeContext.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-			this.ThemeContext.DataPropertyName = "ThemeContext";
-			this.ThemeContext.HeaderText = "主題";
-			this.ThemeContext.MinimumWidth = 6;
-			this.ThemeContext.Name = "ThemeContext";
-			this.ThemeContext.ReadOnly = true;
-			// 
-			// ThemeDateTime
-			// 
-			this.ThemeDateTime.DataPropertyName = "ThemeDateTime";
-			this.ThemeDateTime.HeaderText = "發佈時間";
-			this.ThemeDateTime.MinimumWidth = 6;
-			this.ThemeDateTime.Name = "ThemeDateTime";
-			this.ThemeDateTime.ReadOnly = true;
-			this.ThemeDateTime.Width = 125;
 			// 
 			// buttonDeleteTheme
 			// 
@@ -156,6 +128,33 @@
 			this.labelThemeRole.TabIndex = 25;
 			this.labelThemeRole.Text = "label主題建立者";
 			// 
+			// ThemeId
+			// 
+			this.ThemeId.DataPropertyName = "CommentId";
+			this.ThemeId.HeaderText = "編號";
+			this.ThemeId.MinimumWidth = 6;
+			this.ThemeId.Name = "ThemeId";
+			this.ThemeId.ReadOnly = true;
+			this.ThemeId.Width = 125;
+			// 
+			// ThemeContext
+			// 
+			this.ThemeContext.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+			this.ThemeContext.DataPropertyName = "CommentContext";
+			this.ThemeContext.HeaderText = "主題";
+			this.ThemeContext.MinimumWidth = 6;
+			this.ThemeContext.Name = "ThemeContext";
+			this.ThemeContext.ReadOnly = true;
+			// 
+			// ThemeTime
+			// 
+			this.ThemeTime.DataPropertyName = "CommentTime";
+			this.ThemeTime.HeaderText = "發佈時間";
+			this.ThemeTime.MinimumWidth = 6;
+			this.ThemeTime.Name = "ThemeTime";
+			this.ThemeTime.ReadOnly = true;
+			this.ThemeTime.Width = 125;
+			// 
 			// Form_ThemeCommemt
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -181,13 +180,13 @@
 
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.DataGridView dataGridViewComment;
-		private System.Windows.Forms.DataGridViewTextBoxColumn ThemeId;
-		private System.Windows.Forms.DataGridViewTextBoxColumn ThemeContext;
-		private System.Windows.Forms.DataGridViewTextBoxColumn ThemeDateTime;
 		private System.Windows.Forms.Button buttonDeleteTheme;
 		private System.Windows.Forms.Button buttonCreateCommon;
 		private System.Windows.Forms.RichTextBox richTextBoxTheme;
 		private System.Windows.Forms.Label labelThemeDatetime;
 		private System.Windows.Forms.Label labelThemeRole;
+		private System.Windows.Forms.DataGridViewTextBoxColumn ThemeId;
+		private System.Windows.Forms.DataGridViewTextBoxColumn ThemeContext;
+		private System.Windows.Forms.DataGridViewTextBoxColumn ThemeTime;
 	}
 }

@@ -33,7 +33,6 @@ namespace prjMidtermTopic
 			MaximizeWindow();
 		}
 
-
 		//closed
 		private void form_Main_FormClosed(object sender, FormClosedEventArgs e)
 		{
@@ -144,7 +143,6 @@ namespace prjMidtermTopic
 		}
 
 		#endregion
-
 
 
 		//menuStripButtons
@@ -304,14 +302,13 @@ namespace prjMidtermTopic
 			}
 			else
 			{
+				//todo 論壇帳號ID
 				new form_EmployeeForumAccountEdit(Authentication.EmployeeAccount,
 					Authentication.ForumAccountID.Value).ShowDialog();
 			}
 		}
 
 		#endregion
-
-
 
 
 		//methods
@@ -351,6 +348,5 @@ namespace prjMidtermTopic
 			this.FormBorderStyle = FormBorderStyle.SizableToolWindow;
 			this.Size = new Size(this.Width * 8 / 10, this.Height * 8 / 10);
 		}
-		
 	}
 }

@@ -83,10 +83,22 @@
     <Compile Include="FormMember\form_EditMember.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="form_Adopt\form_Adopt.cs">
+    <Compile Include="Form_Adopt\form_AdoptAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="form_Adopt\form_Adopt.Designer.cs">
+    <Compile Include="Form_Adopt\form_AdoptAdd.Designer.cs">
+      <DependentUpon>form_AdoptAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_Adopt\form_AdoptListEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Adopt\form_AdoptListEdit.Designer.cs">
+      <DependentUpon>form_AdoptListEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_Adopt\form_Adopt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Adopt\form_Adopt.Designer.cs">
       <DependentUpon>form_Adopt.cs</DependentUpon>
     </Compile>
     <Compile Include="form_Category\form_CreateCategory.cs">
@@ -261,6 +273,7 @@
       <DependentUpon>from_ThemeCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\IGrid.cs" />
+    <Compile Include="Interfaces\IGridComment.cs" />
     <Compile Include="MassInsert\form_MassInsert.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -278,6 +291,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility\Utility.cs" />
+    <Compile Include="ViewModels\AdoptVM.cs" />
     <Compile Include="ViewModels\CategoryCreateVM.cs" />
     <Compile Include="ViewModels\ForumAccountVM.cs" />
     <Compile Include="ViewModels\MemberCreateVM.cs" />
@@ -294,6 +308,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormMember\form_EditMember.resx">
       <DependentUpon>form_EditMember.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Adopt\form_Adopt.resx">
+      <DependentUpon>form_Adopt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Adopt\form_AdoptAdd.resx">
+      <DependentUpon>form_AdoptAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Adopt\form_AdoptListEdit.resx">
+      <DependentUpon>form_AdoptListEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="form_Category\form_CreateCategory.resx">
       <DependentUpon>form_CreateCategory.cs</DependentUpon>
@@ -476,6 +499,12 @@
     <None Include="bin\Debug\images\MerchendisePicture\error.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Properties\default_avatar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\error_icon.png" />
+    </ItemGroup>
+    <ItemGroup>
     <None Include="bin\Debug\images\petavatar\CryCat.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

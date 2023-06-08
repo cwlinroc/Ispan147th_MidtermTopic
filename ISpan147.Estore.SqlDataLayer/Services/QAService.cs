@@ -16,11 +16,12 @@ namespace ISpan147.Estore.SqlDataLayer.Services
 		/// </summary>
 		/// <param name="themeId">主題ID</param>
 		/// <returns></returns>
+		
 		public List<QADto.Theme> GetThemeList(int? themeId = null)
 		{
 			return new QARepository().GetTheme(themeId);
 		}
-
+		
 		public List<QADto.Theme> SearchTheme(string keyword)
 		{ 
 			return new QARepository().SearchTheme(keyword);
