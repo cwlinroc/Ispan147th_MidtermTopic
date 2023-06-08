@@ -34,11 +34,6 @@
 			this.txtMemberName = new System.Windows.Forms.TextBox();
 			this.btnSearch = new System.Windows.Forms.Button();
 			this.dataGridView1 = new System.Windows.Forms.DataGridView();
-			this.btnAdd = new System.Windows.Forms.Button();
-			this.btnReset = new System.Windows.Forms.Button();
-			this.txtMaxQuery = new System.Windows.Forms.TextBox();
-			this.checkBoxMaxQuery = new System.Windows.Forms.CheckBox();
-			this.label3 = new System.Windows.Forms.Label();
 			this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,6 +44,11 @@
 			this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.btnAdd = new System.Windows.Forms.Button();
+			this.btnReset = new System.Windows.Forms.Button();
+			this.txtMaxQuery = new System.Windows.Forms.TextBox();
+			this.checkBoxMaxQuery = new System.Windows.Forms.CheckBox();
+			this.label3 = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -90,10 +90,9 @@
 			// 
 			// btnSearch
 			// 
-			this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnSearch.AutoSize = true;
 			this.btnSearch.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.btnSearch.Location = new System.Drawing.Point(707, 33);
+			this.btnSearch.Location = new System.Drawing.Point(812, 32);
 			this.btnSearch.Name = "btnSearch";
 			this.btnSearch.Size = new System.Drawing.Size(109, 36);
 			this.btnSearch.TabIndex = 4;
@@ -124,69 +123,11 @@
 			this.dataGridView1.Name = "dataGridView1";
 			this.dataGridView1.ReadOnly = true;
 			this.dataGridView1.RowTemplate.Height = 24;
-			this.dataGridView1.Size = new System.Drawing.Size(970, 334);
+			this.dataGridView1.Size = new System.Drawing.Size(1122, 334);
 			this.dataGridView1.TabIndex = 3;
 			this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
 			this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
 			this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
-			// 
-			// btnAdd
-			// 
-			this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnAdd.AutoSize = true;
-			this.btnAdd.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.btnAdd.Location = new System.Drawing.Point(1067, 459);
-			this.btnAdd.Name = "btnAdd";
-			this.btnAdd.Size = new System.Drawing.Size(109, 36);
-			this.btnAdd.TabIndex = 3;
-			this.btnAdd.Text = "新增會員";
-			this.btnAdd.UseVisualStyleBackColor = true;
-			this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-			// 
-			// btnReset
-			// 
-			this.btnReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnReset.AutoSize = true;
-			this.btnReset.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.btnReset.Location = new System.Drawing.Point(1041, 33);
-			this.btnReset.Name = "btnReset";
-			this.btnReset.Size = new System.Drawing.Size(109, 36);
-			this.btnReset.TabIndex = 4;
-			this.btnReset.Text = "重設";
-			this.btnReset.UseVisualStyleBackColor = true;
-			this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
-			// 
-			// txtMaxQuery
-			// 
-			this.txtMaxQuery.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.txtMaxQuery.Location = new System.Drawing.Point(583, 38);
-			this.txtMaxQuery.Name = "txtMaxQuery";
-			this.txtMaxQuery.Size = new System.Drawing.Size(100, 29);
-			this.txtMaxQuery.TabIndex = 5;
-			this.txtMaxQuery.Text = "100";
-			// 
-			// checkBoxMaxQuery
-			// 
-			this.checkBoxMaxQuery.AutoSize = true;
-			this.checkBoxMaxQuery.Checked = true;
-			this.checkBoxMaxQuery.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.checkBoxMaxQuery.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.checkBoxMaxQuery.Location = new System.Drawing.Point(484, 40);
-			this.checkBoxMaxQuery.Name = "checkBoxMaxQuery";
-			this.checkBoxMaxQuery.Size = new System.Drawing.Size(93, 25);
-			this.checkBoxMaxQuery.TabIndex = 6;
-			this.checkBoxMaxQuery.Text = "最多顯示";
-			this.checkBoxMaxQuery.UseVisualStyleBackColor = true;
-			// 
-			// label3
-			// 
-			this.label3.AutoSize = true;
-			this.label3.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.label3.Location = new System.Drawing.Point(689, 41);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(58, 21);
-			this.label3.TabIndex = 7;
-			this.label3.Text = "筆資料";
 			// 
 			// Column1
 			// 
@@ -265,7 +206,7 @@
 			this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnAdd.AutoSize = true;
 			this.btnAdd.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.btnAdd.Location = new System.Drawing.Point(873, 459);
+			this.btnAdd.Location = new System.Drawing.Point(1025, 459);
 			this.btnAdd.Name = "btnAdd";
 			this.btnAdd.Size = new System.Drawing.Size(109, 36);
 			this.btnAdd.TabIndex = 6;
@@ -275,10 +216,9 @@
 			// 
 			// btnReset
 			// 
-			this.btnReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnReset.AutoSize = true;
 			this.btnReset.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.btnReset.Location = new System.Drawing.Point(847, 33);
+			this.btnReset.Location = new System.Drawing.Point(952, 32);
 			this.btnReset.Name = "btnReset";
 			this.btnReset.Size = new System.Drawing.Size(109, 36);
 			this.btnReset.TabIndex = 5;
@@ -289,7 +229,7 @@
 			// txtMaxQuery
 			// 
 			this.txtMaxQuery.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.txtMaxQuery.Location = new System.Drawing.Point(506, 39);
+			this.txtMaxQuery.Location = new System.Drawing.Point(578, 37);
 			this.txtMaxQuery.Name = "txtMaxQuery";
 			this.txtMaxQuery.Size = new System.Drawing.Size(100, 29);
 			this.txtMaxQuery.TabIndex = 3;
@@ -301,7 +241,7 @@
 			this.checkBoxMaxQuery.Checked = true;
 			this.checkBoxMaxQuery.CheckState = System.Windows.Forms.CheckState.Checked;
 			this.checkBoxMaxQuery.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.checkBoxMaxQuery.Location = new System.Drawing.Point(408, 41);
+			this.checkBoxMaxQuery.Location = new System.Drawing.Point(480, 39);
 			this.checkBoxMaxQuery.Name = "checkBoxMaxQuery";
 			this.checkBoxMaxQuery.Size = new System.Drawing.Size(92, 24);
 			this.checkBoxMaxQuery.TabIndex = 2;
@@ -312,7 +252,7 @@
 			// 
 			this.label3.AutoSize = true;
 			this.label3.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.label3.Location = new System.Drawing.Point(612, 42);
+			this.label3.Location = new System.Drawing.Point(684, 40);
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(57, 20);
 			this.label3.TabIndex = 4;
@@ -322,7 +262,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(994, 520);
+			this.ClientSize = new System.Drawing.Size(1146, 520);
 			this.Controls.Add(this.label3);
 			this.Controls.Add(this.checkBoxMaxQuery);
 			this.Controls.Add(this.txtMaxQuery);
