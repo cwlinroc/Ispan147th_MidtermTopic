@@ -68,7 +68,7 @@ namespace prjMidtermTopic.Form_Adopt
                 MessageBox.Show($"輸入成功,ID是{adoptId}");
                 IGrid parent = Owner as IGrid;
                 parent.Display();
-                Close();
+                this.Close();
             }
             catch (Exception ex)
             {

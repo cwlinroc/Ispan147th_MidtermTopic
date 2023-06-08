@@ -12,13 +12,15 @@ namespace prjMidtermTopic.ViewModels
     public class AdoptVM
     {
         [Display(Name = "領養編號")]
-        [Required(ErrorMessage = "{0}必填")]
+        [Required(ErrorMessage = "{0}必填")]        
         public int AdoptID { get; set; }
         [Display(Name = "寵物編號")]
         [Required(ErrorMessage = "{0}必填")]
+        [Range(1, int.MaxValue, ErrorMessage = "{0}必須為大於0的數字")]
         public int PetID { get; set; }
         [Display(Name = "會員編號")]
         [Required(ErrorMessage = "{0}必填")]
+        [Range(1, int.MaxValue, ErrorMessage = "{0}必須為大於0的數字")]
         public int MemberID { get; set; }
 
         [Display(Name = "顧客姓名")]
