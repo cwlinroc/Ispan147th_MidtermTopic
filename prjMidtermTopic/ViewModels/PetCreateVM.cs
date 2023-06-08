@@ -32,6 +32,7 @@ namespace prjMidtermTopic.ViewModels
 		public bool Gender { get; set;}
 
 		[Display(Name = "年齡")]
+		[Range(0,50,ErrorMessage = "請確認動物年齡是否超現實，已經活超過半世紀")]
 		public string Age {get; set;}
 
 		[Display(Name = "寵物介紹")]

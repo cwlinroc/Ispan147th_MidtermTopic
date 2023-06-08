@@ -18,7 +18,7 @@ using System.Windows.Forms;
 
 namespace prjMidtermTopic.form_Pets
 {
-	public partial class form_PetCreate : Form 
+	public partial class form_PetCreate : Form
 	{
 		private bool _gender;
 		private Dictionary<string, Control> _map;
@@ -118,6 +118,33 @@ namespace prjMidtermTopic.form_Pets
 			int speciesID = (comboBoxSpeciesID.SelectedItem as dynamic).Key;
 			int breedID = (comboBoxBreedID.SelectedItem as dynamic).Key;
 
+			if (speciesID == 1 && (breedID != 5 || breedID != 6 || breedID != 7 || breedID != 8))
+			{
+				MessageBox.Show("物種不相符，請更改");
+				return;
+			}
+
+			if (speciesID == 2 && (breedID != 9 || breedID != 10
+				|| breedID != 11 || breedID != 12 || breedID != 13))
+			{
+				MessageBox.Show("物種不相符，請更改");
+				return;
+			}
+
+			if (speciesID == 3 && (breedID != 15 || breedID != 16 
+				|| breedID != 17 || breedID != 18 || breedID != 19))
+			{
+				MessageBox.Show("物種不相符，請更改");
+				return;
+			}
+
+			if (speciesID == 4 && (breedID != 20 || breedID != 21 
+				|| breedID != 22 || breedID != 23 || breedID != 24))
+			{
+				MessageBox.Show("物種不相符，請更改");
+				return;
+			}
+
 			var vm = new PetCreateVM()
 			{
 				SpeciesID = speciesID.ToString(),
@@ -133,8 +160,6 @@ namespace prjMidtermTopic.form_Pets
 			//驗證vm是否通過欄位驗證
 			bool hasError = MyValidator.ValidateAndDisplay(vm, errorProvider1, _map);
 			if (hasError) return;
-
-
 
 			try
 			{
@@ -172,7 +197,6 @@ namespace prjMidtermTopic.form_Pets
 			{
 				parent.Display(); // 呼叫它的 Display() 重新顯示資料
 			}
-			this.Close();
 		}
 
 		private void radioButtonMale_CheckedChanged(object sender, EventArgs e)

@@ -190,7 +190,7 @@
 			this.pbPet.MaximumSize = new System.Drawing.Size(256, 256);
 			this.pbPet.Name = "pbPet";
 			this.pbPet.Size = new System.Drawing.Size(256, 256);
-			this.pbPet.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+			this.pbPet.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
 			this.pbPet.TabIndex = 15;
 			this.pbPet.TabStop = false;
 			// 
