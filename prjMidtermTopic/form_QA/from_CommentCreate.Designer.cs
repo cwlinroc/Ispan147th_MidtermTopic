@@ -42,10 +42,10 @@
 			this.buttonConfirmComment.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.buttonConfirmComment.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.buttonConfirmComment.Location = new System.Drawing.Point(300, 289);
-			this.buttonConfirmComment.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.buttonConfirmComment.Margin = new System.Windows.Forms.Padding(2);
 			this.buttonConfirmComment.Name = "buttonConfirmComment";
 			this.buttonConfirmComment.Size = new System.Drawing.Size(96, 35);
-			this.buttonConfirmComment.TabIndex = 24;
+			this.buttonConfirmComment.TabIndex = 1;
 			this.buttonConfirmComment.Text = "確認送出";
 			this.buttonConfirmComment.UseVisualStyleBackColor = true;
 			this.buttonConfirmComment.Click += new System.EventHandler(this.buttonConfirmComment_Click);
@@ -57,10 +57,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.richTextBoxComment.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.richTextBoxComment.Location = new System.Drawing.Point(34, 72);
-			this.richTextBoxComment.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.richTextBoxComment.Margin = new System.Windows.Forms.Padding(2);
 			this.richTextBoxComment.Name = "richTextBoxComment";
 			this.richTextBoxComment.Size = new System.Drawing.Size(362, 202);
-			this.richTextBoxComment.TabIndex = 23;
+			this.richTextBoxComment.TabIndex = 0;
 			this.richTextBoxComment.Text = "";
 			// 
 			// labelCommentRole

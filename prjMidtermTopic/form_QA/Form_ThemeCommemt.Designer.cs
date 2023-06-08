@@ -108,7 +108,7 @@
 			this.buttonDeleteTheme.Margin = new System.Windows.Forms.Padding(2);
 			this.buttonDeleteTheme.Name = "buttonDeleteTheme";
 			this.buttonDeleteTheme.Size = new System.Drawing.Size(101, 36);
-			this.buttonDeleteTheme.TabIndex = 29;
+			this.buttonDeleteTheme.TabIndex = 0;
 			this.buttonDeleteTheme.Text = "刪除此筆";
 			this.buttonDeleteTheme.UseVisualStyleBackColor = true;
 			this.buttonDeleteTheme.Click += new System.EventHandler(this.buttonDeleteTheme_Click);
@@ -121,7 +121,7 @@
 			this.buttonCreateCommon.Margin = new System.Windows.Forms.Padding(2);
 			this.buttonCreateCommon.Name = "buttonCreateCommon";
 			this.buttonCreateCommon.Size = new System.Drawing.Size(101, 33);
-			this.buttonCreateCommon.TabIndex = 28;
+			this.buttonCreateCommon.TabIndex = 1;
 			this.buttonCreateCommon.Text = "回覆留言";
 			this.buttonCreateCommon.UseVisualStyleBackColor = true;
 			this.buttonCreateCommon.Click += new System.EventHandler(this.buttonCreateCommon_Click);

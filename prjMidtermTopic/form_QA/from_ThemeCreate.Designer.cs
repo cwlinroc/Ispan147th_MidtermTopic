@@ -42,10 +42,10 @@
 			this.buttonConfirmTheme.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.buttonConfirmTheme.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.buttonConfirmTheme.Location = new System.Drawing.Point(380, 361);
-			this.buttonConfirmTheme.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.buttonConfirmTheme.Margin = new System.Windows.Forms.Padding(2);
 			this.buttonConfirmTheme.Name = "buttonConfirmTheme";
 			this.buttonConfirmTheme.Size = new System.Drawing.Size(99, 38);
-			this.buttonConfirmTheme.TabIndex = 21;
+			this.buttonConfirmTheme.TabIndex = 1;
 			this.buttonConfirmTheme.Text = "確認送出";
 			this.buttonConfirmTheme.UseVisualStyleBackColor = true;
 			this.buttonConfirmTheme.Click += new System.EventHandler(this.buttonConfirmTheme_Click);
@@ -57,10 +57,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.richTextBoxTheme.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.richTextBoxTheme.Location = new System.Drawing.Point(30, 85);
-			this.richTextBoxTheme.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.richTextBoxTheme.Margin = new System.Windows.Forms.Padding(2);
 			this.richTextBoxTheme.Name = "richTextBoxTheme";
 			this.richTextBoxTheme.Size = new System.Drawing.Size(450, 272);
-			this.richTextBoxTheme.TabIndex = 20;
+			this.richTextBoxTheme.TabIndex = 0;
 			this.richTextBoxTheme.Text = "";
 			// 
 			// labelThemeRole
@@ -98,7 +98,7 @@
 			this.Controls.Add(this.buttonConfirmTheme);
 			this.Controls.Add(this.richTextBoxTheme);
 			this.Controls.Add(this.labelThemeRole);
-			this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.Margin = new System.Windows.Forms.Padding(2);
 			this.Name = "from_ThemeCreate";
 			this.Text = "新增主題";
 			this.Load += new System.EventHandler(this.from_ThemeCreate_Load);

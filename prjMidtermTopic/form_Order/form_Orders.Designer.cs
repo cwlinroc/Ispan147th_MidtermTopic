@@ -72,7 +72,7 @@
 			this.btn_Search.Margin = new System.Windows.Forms.Padding(2);
 			this.btn_Search.Name = "btn_Search";
 			this.btn_Search.Size = new System.Drawing.Size(100, 30);
-			this.btn_Search.TabIndex = 8;
+			this.btn_Search.TabIndex = 12;
 			this.btn_Search.Text = "搜尋";
 			this.btn_Search.UseVisualStyleBackColor = true;
 			this.btn_Search.Click += new System.EventHandler(this.btn_Search_Click);
@@ -85,7 +85,7 @@
 			this.btn_Add.Margin = new System.Windows.Forms.Padding(2);
 			this.btn_Add.Name = "btn_Add";
 			this.btn_Add.Size = new System.Drawing.Size(100, 30);
-			this.btn_Add.TabIndex = 10;
+			this.btn_Add.TabIndex = 15;
 			this.btn_Add.Text = "新增訂單";
 			this.btn_Add.UseVisualStyleBackColor = true;
 			this.btn_Add.Click += new System.EventHandler(this.btn_Add_Click);
@@ -106,7 +106,7 @@
 			this.txt_MemberID.Margin = new System.Windows.Forms.Padding(2);
 			this.txt_MemberID.Name = "txt_MemberID";
 			this.txt_MemberID.Size = new System.Drawing.Size(82, 29);
-			this.txt_MemberID.TabIndex = 1;
+			this.txt_MemberID.TabIndex = 2;
 			// 
 			// label1
 			// 
@@ -228,7 +228,7 @@
 			this.btn_Edit.Margin = new System.Windows.Forms.Padding(2);
 			this.btn_Edit.Name = "btn_Edit";
 			this.btn_Edit.Size = new System.Drawing.Size(100, 30);
-			this.btn_Edit.TabIndex = 9;
+			this.btn_Edit.TabIndex = 14;
 			this.btn_Edit.Text = "修改訂單";
 			this.btn_Edit.UseVisualStyleBackColor = true;
 			this.btn_Edit.Click += new System.EventHandler(this.btn_Edit_Click);
@@ -240,7 +240,7 @@
 			this.txt_MemberName.Margin = new System.Windows.Forms.Padding(2);
 			this.txt_MemberName.Name = "txt_MemberName";
 			this.txt_MemberName.Size = new System.Drawing.Size(82, 29);
-			this.txt_MemberName.TabIndex = 2;
+			this.txt_MemberName.TabIndex = 3;
 			// 
 			// label3
 			// 
@@ -278,7 +278,7 @@
 			this.comboBox_PurchaseTime.Margin = new System.Windows.Forms.Padding(2);
 			this.comboBox_PurchaseTime.Name = "comboBox_PurchaseTime";
 			this.comboBox_PurchaseTime.Size = new System.Drawing.Size(100, 28);
-			this.comboBox_PurchaseTime.TabIndex = 3;
+			this.comboBox_PurchaseTime.TabIndex = 1;
 			// 
 			// label5
 			// 
@@ -372,7 +372,7 @@
 			this.btn_ClearSearch.Margin = new System.Windows.Forms.Padding(2);
 			this.btn_ClearSearch.Name = "btn_ClearSearch";
 			this.btn_ClearSearch.Size = new System.Drawing.Size(100, 30);
-			this.btn_ClearSearch.TabIndex = 8;
+			this.btn_ClearSearch.TabIndex = 13;
 			this.btn_ClearSearch.Text = "條件清空";
 			this.btn_ClearSearch.UseVisualStyleBackColor = true;
 			this.btn_ClearSearch.Click += new System.EventHandler(this.btn_ClearSearch_Click);
@@ -386,7 +386,7 @@
 			this.checkBox_MaxData.Location = new System.Drawing.Point(840, 24);
 			this.checkBox_MaxData.Name = "checkBox_MaxData";
 			this.checkBox_MaxData.Size = new System.Drawing.Size(93, 25);
-			this.checkBox_MaxData.TabIndex = 11;
+			this.checkBox_MaxData.TabIndex = 8;
 			this.checkBox_MaxData.Text = "最多顯示";
 			this.checkBox_MaxData.UseVisualStyleBackColor = true;
 			// 
@@ -397,7 +397,7 @@
 			this.comboBox_SortBy.Location = new System.Drawing.Point(935, 68);
 			this.comboBox_SortBy.Name = "comboBox_SortBy";
 			this.comboBox_SortBy.Size = new System.Drawing.Size(68, 28);
-			this.comboBox_SortBy.TabIndex = 12;
+			this.comboBox_SortBy.TabIndex = 10;
 			// 
 			// label9
 			// 
@@ -415,7 +415,7 @@
 			this.txt_MaxQuery.Location = new System.Drawing.Point(935, 22);
 			this.txt_MaxQuery.Name = "txt_MaxQuery";
 			this.txt_MaxQuery.Size = new System.Drawing.Size(68, 29);
-			this.txt_MaxQuery.TabIndex = 14;
+			this.txt_MaxQuery.TabIndex = 9;
 			this.txt_MaxQuery.Text = "500";
 			// 
 			// label10

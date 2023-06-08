@@ -56,7 +56,7 @@
 			this.txt_memberID.Location = new System.Drawing.Point(125, 64);
 			this.txt_memberID.Name = "txt_memberID";
 			this.txt_memberID.Size = new System.Drawing.Size(100, 29);
-			this.txt_memberID.TabIndex = 18;
+			this.txt_memberID.TabIndex = 1;
 			// 
 			// memberId
 			// 
@@ -74,7 +74,7 @@
 			this.txt_petID.Location = new System.Drawing.Point(125, 26);
 			this.txt_petID.Name = "txt_petID";
 			this.txt_petID.Size = new System.Drawing.Size(100, 29);
-			this.txt_petID.TabIndex = 16;
+			this.txt_petID.TabIndex = 0;
 			// 
 			// petId
 			// 
@@ -92,7 +92,7 @@
 			this.button1.Location = new System.Drawing.Point(225, 153);
 			this.button1.Name = "button1";
 			this.button1.Size = new System.Drawing.Size(100, 39);
-			this.button1.TabIndex = 25;
+			this.button1.TabIndex = 3;
 			this.button1.Text = "申請領養";
 			this.button1.UseVisualStyleBackColor = true;
 			this.button1.Click += new System.EventHandler(this.commit_button);
@@ -103,7 +103,7 @@
 			this.dateTimePicker1.Location = new System.Drawing.Point(125, 99);
 			this.dateTimePicker1.Name = "dateTimePicker1";
 			this.dateTimePicker1.Size = new System.Drawing.Size(200, 29);
-			this.dateTimePicker1.TabIndex = 26;
+			this.dateTimePicker1.TabIndex = 2;
 			// 
 			// errorProvider1
 			// 

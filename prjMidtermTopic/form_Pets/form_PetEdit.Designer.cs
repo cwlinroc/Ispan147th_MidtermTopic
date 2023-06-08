@@ -105,7 +105,7 @@
 			this.txtAge.Location = new System.Drawing.Point(144, 213);
 			this.txtAge.Name = "txtAge";
 			this.txtAge.Size = new System.Drawing.Size(248, 29);
-			this.txtAge.TabIndex = 5;
+			this.txtAge.TabIndex = 4;
 			// 
 			// label4
 			// 
@@ -133,7 +133,7 @@
 			this.txtLocation.Location = new System.Drawing.Point(144, 247);
 			this.txtLocation.Name = "txtLocation";
 			this.txtLocation.Size = new System.Drawing.Size(248, 29);
-			this.txtLocation.TabIndex = 6;
+			this.txtLocation.TabIndex = 5;
 			// 
 			// btnUpdate
 			// 
@@ -165,7 +165,7 @@
 			this.txtDescription.Name = "txtDescription";
 			this.txtDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
 			this.txtDescription.Size = new System.Drawing.Size(277, 270);
-			this.txtDescription.TabIndex = 8;
+			this.txtDescription.TabIndex = 6;
 			// 
 			// radioButtonMale
 			// 
@@ -173,7 +173,7 @@
 			this.radioButtonMale.Location = new System.Drawing.Point(3, 6);
 			this.radioButtonMale.Name = "radioButtonMale";
 			this.radioButtonMale.Size = new System.Drawing.Size(43, 24);
-			this.radioButtonMale.TabIndex = 4;
+			this.radioButtonMale.TabIndex = 0;
 			this.radioButtonMale.Text = "公";
 			this.radioButtonMale.UseVisualStyleBackColor = true;
 			this.radioButtonMale.CheckedChanged += new System.EventHandler(this.radioButtonMale_CheckedChanged);
@@ -184,7 +184,7 @@
 			this.radioButtonFemale.Location = new System.Drawing.Point(78, 6);
 			this.radioButtonFemale.Name = "radioButtonFemale";
 			this.radioButtonFemale.Size = new System.Drawing.Size(43, 24);
-			this.radioButtonFemale.TabIndex = 4;
+			this.radioButtonFemale.TabIndex = 1;
 			this.radioButtonFemale.Text = "母";
 			this.radioButtonFemale.UseVisualStyleBackColor = true;
 			this.radioButtonFemale.CheckedChanged += new System.EventHandler(this.radioButtonFemale_CheckedChanged);
@@ -222,7 +222,7 @@
 			this.txtPetAvatar.Name = "txtPetAvatar";
 			this.txtPetAvatar.ReadOnly = true;
 			this.txtPetAvatar.Size = new System.Drawing.Size(248, 29);
-			this.txtPetAvatar.TabIndex = 7;
+			this.txtPetAvatar.TabIndex = 6;
 			// 
 			// btnUpdatePetAvatar
 			// 
@@ -230,7 +230,7 @@
 			this.btnUpdatePetAvatar.Location = new System.Drawing.Point(506, 315);
 			this.btnUpdatePetAvatar.Name = "btnUpdatePetAvatar";
 			this.btnUpdatePetAvatar.Size = new System.Drawing.Size(88, 39);
-			this.btnUpdatePetAvatar.TabIndex = 11;
+			this.btnUpdatePetAvatar.TabIndex = 7;
 			this.btnUpdatePetAvatar.Text = "修改照片";
 			this.btnUpdatePetAvatar.UseVisualStyleBackColor = true;
 			this.btnUpdatePetAvatar.Click += new System.EventHandler(this.btnUpdatePetAvatar_Click);
@@ -241,7 +241,7 @@
 			this.btnDeletePetAvatar.Location = new System.Drawing.Point(600, 315);
 			this.btnDeletePetAvatar.Name = "btnDeletePetAvatar";
 			this.btnDeletePetAvatar.Size = new System.Drawing.Size(92, 39);
-			this.btnDeletePetAvatar.TabIndex = 12;
+			this.btnDeletePetAvatar.TabIndex = 8;
 			this.btnDeletePetAvatar.Text = "刪除照片";
 			this.btnDeletePetAvatar.UseVisualStyleBackColor = true;
 			this.btnDeletePetAvatar.Click += new System.EventHandler(this.btnDeletePetAvatar_Click);
@@ -312,7 +312,7 @@
 			this.comboBoxSpeciesID.Location = new System.Drawing.Point(144, 70);
 			this.comboBoxSpeciesID.Name = "comboBoxSpeciesID";
 			this.comboBoxSpeciesID.Size = new System.Drawing.Size(248, 28);
-			this.comboBoxSpeciesID.TabIndex = 17;
+			this.comboBoxSpeciesID.TabIndex = 1;
 			// 
 			// comboBoxBreedID
 			// 
@@ -321,7 +321,7 @@
 			this.comboBoxBreedID.Location = new System.Drawing.Point(144, 104);
 			this.comboBoxBreedID.Name = "comboBoxBreedID";
 			this.comboBoxBreedID.Size = new System.Drawing.Size(248, 28);
-			this.comboBoxBreedID.TabIndex = 17;
+			this.comboBoxBreedID.TabIndex = 2;
 			// 
 			// form_PetEdit
 			// 

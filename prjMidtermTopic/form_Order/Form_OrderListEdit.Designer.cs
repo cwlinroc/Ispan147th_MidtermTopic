@@ -47,7 +47,7 @@
 			this.btn_commit.Margin = new System.Windows.Forms.Padding(2);
 			this.btn_commit.Name = "btn_commit";
 			this.btn_commit.Size = new System.Drawing.Size(100, 30);
-			this.btn_commit.TabIndex = 5;
+			this.btn_commit.TabIndex = 3;
 			this.btn_commit.Text = "確認修改";
 			this.btn_commit.UseVisualStyleBackColor = true;
 			this.btn_commit.Click += new System.EventHandler(this.btn_commit_Click);
@@ -59,7 +59,7 @@
 			this.txt_Quantity.Margin = new System.Windows.Forms.Padding(2);
 			this.txt_Quantity.Name = "txt_Quantity";
 			this.txt_Quantity.Size = new System.Drawing.Size(177, 29);
-			this.txt_Quantity.TabIndex = 15;
+			this.txt_Quantity.TabIndex = 2;
 			// 
 			// label3
 			// 
@@ -79,7 +79,7 @@
 			this.txt_MerchandiseID.Margin = new System.Windows.Forms.Padding(2);
 			this.txt_MerchandiseID.Name = "txt_MerchandiseID";
 			this.txt_MerchandiseID.Size = new System.Drawing.Size(177, 29);
-			this.txt_MerchandiseID.TabIndex = 16;
+			this.txt_MerchandiseID.TabIndex = 1;
 			// 
 			// label2
 			// 
@@ -100,7 +100,7 @@
 			this.txt_OrderID.Margin = new System.Windows.Forms.Padding(2);
 			this.txt_OrderID.Name = "txt_OrderID";
 			this.txt_OrderID.Size = new System.Drawing.Size(177, 29);
-			this.txt_OrderID.TabIndex = 17;
+			this.txt_OrderID.TabIndex = 0;
 			// 
 			// label1
 			// 

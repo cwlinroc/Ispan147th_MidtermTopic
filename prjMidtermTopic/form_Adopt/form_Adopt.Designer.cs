@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
 			this.dataGridView1 = new System.Windows.Forms.DataGridView();
+			this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.adoptid = new System.Windows.Forms.Label();
 			this.txt_adoptID = new System.Windows.Forms.TextBox();
 			this.txt_petID = new System.Windows.Forms.TextBox();
@@ -43,10 +47,6 @@
 			this.label6 = new System.Windows.Forms.Label();
 			this.Add = new System.Windows.Forms.Button();
 			this.search = new System.Windows.Forms.Button();
-			this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -68,133 +68,6 @@
 			this.dataGridView1.TabIndex = 0;
 			this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
 			this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
-			// 
-			// adoptid
-			// 
-			this.adoptid.AutoSize = true;
-			this.adoptid.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.adoptid.Location = new System.Drawing.Point(3, 17);
-			this.adoptid.Name = "adoptid";
-			this.adoptid.Size = new System.Drawing.Size(90, 21);
-			this.adoptid.TabIndex = 1;
-			this.adoptid.Text = "領養編號：";
-			this.adoptid.Click += new System.EventHandler(this.label1_Click);
-			// 
-			// txt_adoptID
-			// 
-			this.txt_adoptID.Location = new System.Drawing.Point(89, 17);
-			this.txt_adoptID.Name = "txt_adoptID";
-			this.txt_adoptID.Size = new System.Drawing.Size(100, 22);
-			this.txt_adoptID.TabIndex = 2;
-			this.txt_adoptID.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-			// 
-			// txt_petID
-			// 
-			this.txt_petID.Location = new System.Drawing.Point(89, 49);
-			this.txt_petID.Name = "txt_petID";
-			this.txt_petID.Size = new System.Drawing.Size(100, 22);
-			this.txt_petID.TabIndex = 4;
-			// 
-			// petId
-			// 
-			this.petId.AutoSize = true;
-			this.petId.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.petId.Location = new System.Drawing.Point(3, 49);
-			this.petId.Name = "petId";
-			this.petId.Size = new System.Drawing.Size(90, 21);
-			this.petId.TabIndex = 3;
-			this.petId.Text = "寵物編號：";
-			// 
-			// textBox3
-			// 
-			this.textBox3.Location = new System.Drawing.Point(292, 16);
-			this.textBox3.Name = "textBox3";
-			this.textBox3.Size = new System.Drawing.Size(100, 22);
-			this.textBox3.TabIndex = 6;
-			// 
-			// memberId
-			// 
-			this.memberId.AutoSize = true;
-			this.memberId.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.memberId.Location = new System.Drawing.Point(205, 18);
-			this.memberId.Name = "memberId";
-			this.memberId.Size = new System.Drawing.Size(90, 21);
-			this.memberId.TabIndex = 5;
-			this.memberId.Text = "會員編號：";
-			// 
-			// txt_datetime
-			// 
-			this.txt_datetime.Location = new System.Drawing.Point(292, 48);
-			this.txt_datetime.Name = "txt_datetime";
-			this.txt_datetime.Size = new System.Drawing.Size(100, 22);
-			this.txt_datetime.TabIndex = 8;
-			// 
-			// adopttime
-			// 
-			this.adopttime.AutoSize = true;
-			this.adopttime.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.adopttime.Location = new System.Drawing.Point(205, 50);
-			this.adopttime.Name = "adopttime";
-			this.adopttime.Size = new System.Drawing.Size(90, 21);
-			this.adopttime.TabIndex = 7;
-			this.adopttime.Text = "申請時間：";
-			// 
-			// textBox5
-			// 
-			this.textBox5.Location = new System.Drawing.Point(496, 16);
-			this.textBox5.Name = "textBox5";
-			this.textBox5.Size = new System.Drawing.Size(100, 22);
-			this.textBox5.TabIndex = 10;
-			// 
-			// label5
-			// 
-			this.label5.AutoSize = true;
-			this.label5.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.label5.Location = new System.Drawing.Point(409, 17);
-			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(90, 21);
-			this.label5.TabIndex = 9;
-			this.label5.Text = "會員名稱：";
-			// 
-			// textBox6
-			// 
-			this.textBox6.Location = new System.Drawing.Point(496, 48);
-			this.textBox6.Name = "textBox6";
-			this.textBox6.Size = new System.Drawing.Size(100, 22);
-			this.textBox6.TabIndex = 12;
-			// 
-			// label6
-			// 
-			this.label6.AutoSize = true;
-			this.label6.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.label6.Location = new System.Drawing.Point(409, 49);
-			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(90, 21);
-			this.label6.TabIndex = 11;
-			this.label6.Text = "寵物名稱：";
-			// 
-			// Add
-			// 
-			this.Add.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.Add.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.Add.Location = new System.Drawing.Point(595, 487);
-			this.Add.Name = "Add";
-			this.Add.Size = new System.Drawing.Size(101, 33);
-			this.Add.TabIndex = 13;
-			this.Add.Text = "新增領養";
-			this.Add.UseVisualStyleBackColor = true;
-			this.Add.Click += new System.EventHandler(this.Add_Click);
-			// 
-			// search
-			// 
-			this.search.Font = new System.Drawing.Font("微軟正黑體", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.search.Location = new System.Drawing.Point(626, 40);
-			this.search.Name = "search";
-			this.search.Size = new System.Drawing.Size(79, 32);
-			this.search.TabIndex = 14;
-			this.search.Text = "查詢";
-			this.search.UseVisualStyleBackColor = true;
-			this.search.Click += new System.EventHandler(this.search_Click);
 			// 
 			// Column1
 			// 
@@ -220,6 +93,133 @@
 			this.Column4.HeaderText = "領養申請時間";
 			this.Column4.Name = "Column4";
 			this.Column4.Width = 150;
+			// 
+			// adoptid
+			// 
+			this.adoptid.AutoSize = true;
+			this.adoptid.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.adoptid.Location = new System.Drawing.Point(3, 17);
+			this.adoptid.Name = "adoptid";
+			this.adoptid.Size = new System.Drawing.Size(90, 21);
+			this.adoptid.TabIndex = 1;
+			this.adoptid.Text = "領養編號：";
+			this.adoptid.Click += new System.EventHandler(this.label1_Click);
+			// 
+			// txt_adoptID
+			// 
+			this.txt_adoptID.Location = new System.Drawing.Point(89, 17);
+			this.txt_adoptID.Name = "txt_adoptID";
+			this.txt_adoptID.Size = new System.Drawing.Size(100, 22);
+			this.txt_adoptID.TabIndex = 0;
+			this.txt_adoptID.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+			// 
+			// txt_petID
+			// 
+			this.txt_petID.Location = new System.Drawing.Point(89, 49);
+			this.txt_petID.Name = "txt_petID";
+			this.txt_petID.Size = new System.Drawing.Size(100, 22);
+			this.txt_petID.TabIndex = 1;
+			// 
+			// petId
+			// 
+			this.petId.AutoSize = true;
+			this.petId.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.petId.Location = new System.Drawing.Point(3, 49);
+			this.petId.Name = "petId";
+			this.petId.Size = new System.Drawing.Size(90, 21);
+			this.petId.TabIndex = 3;
+			this.petId.Text = "寵物編號：";
+			// 
+			// textBox3
+			// 
+			this.textBox3.Location = new System.Drawing.Point(292, 16);
+			this.textBox3.Name = "textBox3";
+			this.textBox3.Size = new System.Drawing.Size(100, 22);
+			this.textBox3.TabIndex = 2;
+			// 
+			// memberId
+			// 
+			this.memberId.AutoSize = true;
+			this.memberId.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.memberId.Location = new System.Drawing.Point(205, 18);
+			this.memberId.Name = "memberId";
+			this.memberId.Size = new System.Drawing.Size(90, 21);
+			this.memberId.TabIndex = 5;
+			this.memberId.Text = "會員編號：";
+			// 
+			// txt_datetime
+			// 
+			this.txt_datetime.Location = new System.Drawing.Point(292, 48);
+			this.txt_datetime.Name = "txt_datetime";
+			this.txt_datetime.Size = new System.Drawing.Size(100, 22);
+			this.txt_datetime.TabIndex = 3;
+			// 
+			// adopttime
+			// 
+			this.adopttime.AutoSize = true;
+			this.adopttime.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.adopttime.Location = new System.Drawing.Point(205, 50);
+			this.adopttime.Name = "adopttime";
+			this.adopttime.Size = new System.Drawing.Size(90, 21);
+			this.adopttime.TabIndex = 7;
+			this.adopttime.Text = "申請時間：";
+			// 
+			// textBox5
+			// 
+			this.textBox5.Location = new System.Drawing.Point(496, 16);
+			this.textBox5.Name = "textBox5";
+			this.textBox5.Size = new System.Drawing.Size(100, 22);
+			this.textBox5.TabIndex = 4;
+			// 
+			// label5
+			// 
+			this.label5.AutoSize = true;
+			this.label5.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.label5.Location = new System.Drawing.Point(409, 17);
+			this.label5.Name = "label5";
+			this.label5.Size = new System.Drawing.Size(90, 21);
+			this.label5.TabIndex = 9;
+			this.label5.Text = "會員名稱：";
+			// 
+			// textBox6
+			// 
+			this.textBox6.Location = new System.Drawing.Point(496, 48);
+			this.textBox6.Name = "textBox6";
+			this.textBox6.Size = new System.Drawing.Size(100, 22);
+			this.textBox6.TabIndex = 5;
+			// 
+			// label6
+			// 
+			this.label6.AutoSize = true;
+			this.label6.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.label6.Location = new System.Drawing.Point(409, 49);
+			this.label6.Name = "label6";
+			this.label6.Size = new System.Drawing.Size(90, 21);
+			this.label6.TabIndex = 11;
+			this.label6.Text = "寵物名稱：";
+			// 
+			// Add
+			// 
+			this.Add.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.Add.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.Add.Location = new System.Drawing.Point(595, 487);
+			this.Add.Name = "Add";
+			this.Add.Size = new System.Drawing.Size(101, 33);
+			this.Add.TabIndex = 7;
+			this.Add.Text = "新增領養";
+			this.Add.UseVisualStyleBackColor = true;
+			this.Add.Click += new System.EventHandler(this.Add_Click);
+			// 
+			// search
+			// 
+			this.search.Font = new System.Drawing.Font("微軟正黑體", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.search.Location = new System.Drawing.Point(626, 40);
+			this.search.Name = "search";
+			this.search.Size = new System.Drawing.Size(79, 32);
+			this.search.TabIndex = 6;
+			this.search.Text = "查詢";
+			this.search.UseVisualStyleBackColor = true;
+			this.search.Click += new System.EventHandler(this.search_Click);
 			// 
 			// form_Adopt
 			// 

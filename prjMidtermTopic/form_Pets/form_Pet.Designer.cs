@@ -102,7 +102,7 @@
 			this.btnAdd.Location = new System.Drawing.Point(1149, 61);
 			this.btnAdd.Name = "btnAdd";
 			this.btnAdd.Size = new System.Drawing.Size(91, 29);
-			this.btnAdd.TabIndex = 3;
+			this.btnAdd.TabIndex = 10;
 			this.btnAdd.Text = "新增資料";
 			this.btnAdd.UseVisualStyleBackColor = true;
 			this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
@@ -230,7 +230,7 @@
 			this.btnReset.Location = new System.Drawing.Point(928, 59);
 			this.btnReset.Name = "btnReset";
 			this.btnReset.Size = new System.Drawing.Size(91, 29);
-			this.btnReset.TabIndex = 2;
+			this.btnReset.TabIndex = 9;
 			this.btnReset.Text = "輸入重置";
 			this.btnReset.UseVisualStyleBackColor = true;
 			this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
@@ -241,7 +241,7 @@
 			this.btnSearch.Location = new System.Drawing.Point(928, 25);
 			this.btnSearch.Name = "btnSearch";
 			this.btnSearch.Size = new System.Drawing.Size(75, 29);
-			this.btnSearch.TabIndex = 4;
+			this.btnSearch.TabIndex = 8;
 			this.btnSearch.Text = "搜尋";
 			this.btnSearch.UseVisualStyleBackColor = true;
 			this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
@@ -253,7 +253,7 @@
 			this.comboBoxSearchSpecies.Location = new System.Drawing.Point(405, 24);
 			this.comboBoxSearchSpecies.Name = "comboBoxSearchSpecies";
 			this.comboBoxSearchSpecies.Size = new System.Drawing.Size(121, 28);
-			this.comboBoxSearchSpecies.TabIndex = 5;
+			this.comboBoxSearchSpecies.TabIndex = 2;
 			// 
 			// label3
 			// 
@@ -272,7 +272,7 @@
 			this.comboBoxSearchBreed.Location = new System.Drawing.Point(405, 57);
 			this.comboBoxSearchBreed.Name = "comboBoxSearchBreed";
 			this.comboBoxSearchBreed.Size = new System.Drawing.Size(121, 28);
-			this.comboBoxSearchBreed.TabIndex = 5;
+			this.comboBoxSearchBreed.TabIndex = 3;
 			// 
 			// label4
 			// 
@@ -290,7 +290,7 @@
 			this.txtMax.Location = new System.Drawing.Point(699, 25);
 			this.txtMax.Name = "txtMax";
 			this.txtMax.Size = new System.Drawing.Size(100, 29);
-			this.txtMax.TabIndex = 0;
+			this.txtMax.TabIndex = 5;
 			// 
 			// label6
 			// 
@@ -309,7 +309,7 @@
 			this.checkBoxMax.Location = new System.Drawing.Point(610, 27);
 			this.checkBoxMax.Name = "checkBoxMax";
 			this.checkBoxMax.Size = new System.Drawing.Size(93, 25);
-			this.checkBoxMax.TabIndex = 7;
+			this.checkBoxMax.TabIndex = 4;
 			this.checkBoxMax.Text = "最多顯示";
 			this.checkBoxMax.UseVisualStyleBackColor = true;
 			// 
@@ -330,7 +330,7 @@
 			this.comboBoxSortBy.Location = new System.Drawing.Point(699, 58);
 			this.comboBoxSortBy.Name = "comboBoxSortBy";
 			this.comboBoxSortBy.Size = new System.Drawing.Size(121, 28);
-			this.comboBoxSortBy.TabIndex = 5;
+			this.comboBoxSortBy.TabIndex = 6;
 			// 
 			// checkBoxDescending
 			// 
@@ -339,7 +339,7 @@
 			this.checkBoxDescending.Location = new System.Drawing.Point(826, 62);
 			this.checkBoxDescending.Name = "checkBoxDescending";
 			this.checkBoxDescending.Size = new System.Drawing.Size(50, 20);
-			this.checkBoxDescending.TabIndex = 9;
+			this.checkBoxDescending.TabIndex = 7;
 			this.checkBoxDescending.Text = "降冪";
 			this.checkBoxDescending.UseVisualStyleBackColor = true;
 			// 

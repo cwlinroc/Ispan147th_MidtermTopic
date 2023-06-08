@@ -50,7 +50,7 @@
 			this.txt_CategoryId.Name = "txt_CategoryId";
 			this.txt_CategoryId.ReadOnly = true;
 			this.txt_CategoryId.Size = new System.Drawing.Size(238, 29);
-			this.txt_CategoryId.TabIndex = 14;
+			this.txt_CategoryId.TabIndex = 3;
 			// 
 			// label7
 			// 

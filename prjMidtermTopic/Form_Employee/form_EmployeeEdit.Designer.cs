@@ -49,7 +49,7 @@
 			this.btn_ChangePassword.Location = new System.Drawing.Point(59, 286);
 			this.btn_ChangePassword.Name = "btn_ChangePassword";
 			this.btn_ChangePassword.Size = new System.Drawing.Size(131, 33);
-			this.btn_ChangePassword.TabIndex = 11;
+			this.btn_ChangePassword.TabIndex = 7;
 			this.btn_ChangePassword.Text = "確認更改資料";
 			this.btn_ChangePassword.UseVisualStyleBackColor = true;
 			this.btn_ChangePassword.Click += new System.EventHandler(this.btn_ChangePassword_Click);
@@ -62,7 +62,7 @@
 			this.txt_OldPassword.Name = "txt_OldPassword";
 			this.txt_OldPassword.PasswordChar = '*';
 			this.txt_OldPassword.Size = new System.Drawing.Size(100, 29);
-			this.txt_OldPassword.TabIndex = 7;
+			this.txt_OldPassword.TabIndex = 3;
 			// 
 			// label4
 			// 
@@ -82,7 +82,7 @@
 			this.txt_EmployeePassword.Name = "txt_EmployeePassword";
 			this.txt_EmployeePassword.PasswordChar = '*';
 			this.txt_EmployeePassword.Size = new System.Drawing.Size(100, 29);
-			this.txt_EmployeePassword.TabIndex = 8;
+			this.txt_EmployeePassword.TabIndex = 4;
 			// 
 			// label3
 			// 
@@ -100,7 +100,7 @@
 			this.txt_EmployeeName.Location = new System.Drawing.Point(82, 29);
 			this.txt_EmployeeName.Name = "txt_EmployeeName";
 			this.txt_EmployeeName.Size = new System.Drawing.Size(133, 29);
-			this.txt_EmployeeName.TabIndex = 9;
+			this.txt_EmployeeName.TabIndex = 0;
 			// 
 			// label2
 			// 
@@ -118,7 +118,7 @@
 			this.txt_EmployeeAccount.Location = new System.Drawing.Point(82, 64);
 			this.txt_EmployeeAccount.Name = "txt_EmployeeAccount";
 			this.txt_EmployeeAccount.Size = new System.Drawing.Size(133, 29);
-			this.txt_EmployeeAccount.TabIndex = 10;
+			this.txt_EmployeeAccount.TabIndex = 1;
 			// 
 			// label1
 			// 
@@ -148,7 +148,7 @@
 			this.txt_ConfirmPassword.Name = "txt_ConfirmPassword";
 			this.txt_ConfirmPassword.PasswordChar = '*';
 			this.txt_ConfirmPassword.Size = new System.Drawing.Size(100, 29);
-			this.txt_ConfirmPassword.TabIndex = 8;
+			this.txt_ConfirmPassword.TabIndex = 5;
 			// 
 			// checkBox_ChangepassWord
 			// 
@@ -157,7 +157,7 @@
 			this.checkBox_ChangepassWord.Location = new System.Drawing.Point(22, 128);
 			this.checkBox_ChangepassWord.Name = "checkBox_ChangepassWord";
 			this.checkBox_ChangepassWord.Size = new System.Drawing.Size(74, 20);
-			this.checkBox_ChangepassWord.TabIndex = 12;
+			this.checkBox_ChangepassWord.TabIndex = 2;
 			this.checkBox_ChangepassWord.Text = "修改密碼";
 			this.checkBox_ChangepassWord.UseVisualStyleBackColor = true;
 			this.checkBox_ChangepassWord.CheckedChanged += new System.EventHandler(this.checkBox_ChangepassWord_CheckedChanged);
@@ -168,7 +168,7 @@
 			this.checkBox_ShowPassword.Location = new System.Drawing.Point(118, 260);
 			this.checkBox_ShowPassword.Name = "checkBox_ShowPassword";
 			this.checkBox_ShowPassword.Size = new System.Drawing.Size(72, 16);
-			this.checkBox_ShowPassword.TabIndex = 12;
+			this.checkBox_ShowPassword.TabIndex = 6;
 			this.checkBox_ShowPassword.Text = "顯示密碼";
 			this.checkBox_ShowPassword.UseVisualStyleBackColor = true;
 			this.checkBox_ShowPassword.CheckedChanged += new System.EventHandler(this.checkBox_ShowPassword_CheckedChanged);
