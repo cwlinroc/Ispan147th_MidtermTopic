@@ -40,7 +40,12 @@ namespace prjMidtermTopic.Form_Adopt
             txt_MemberID.Text = dto.MemberID.ToString();
             txt_petID.Text = dto.PetID.ToString();
             dateTimePicker1.Value = dto.ApplicationTime;
-        }
+
+			if (Authentication.Permission > 4)
+			{
+				button1.Enabled = false;
+			}
+		}
 
         private void button1_Click(object sender, EventArgs e)
         {

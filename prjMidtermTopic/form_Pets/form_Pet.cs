@@ -117,6 +117,10 @@ namespace prjMidtermTopic
 		private void form_Pet_Load(object sender, EventArgs e)
 		{
 			Display();
+			if (Authentication.Permission > 4)
+			{
+				btnAdd.Enabled = false;
+			}
 		}
 
 		private void btnSearch_Click(object sender, EventArgs e)

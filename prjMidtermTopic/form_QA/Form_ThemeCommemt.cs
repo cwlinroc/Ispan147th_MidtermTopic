@@ -55,6 +55,11 @@ namespace prjMidtermTopic.form_QA
 				richTextBoxTheme.Text = theme.ThemeContext;
 			}
 			//labelThemeRole.Text = $"({Authentication.ForumAccountID.ToString()}) {forumAccountName}";
+
+			if (Authentication.Permission > 3)
+			{
+				buttonDeleteTheme.Enabled = false;
+			}
 		}
 
 		private void buttonDeleteTheme_Click(object sender, EventArgs e)

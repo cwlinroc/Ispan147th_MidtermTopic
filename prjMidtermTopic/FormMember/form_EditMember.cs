@@ -1,6 +1,7 @@
 ﻿using Ispan147.Estore.SqlDataLayer.Repositories;
 using Ispan147.Estore.SqlDataLayer.Services;
 using ISpan147.Estore.SqlDataLayer.Dtos;
+using ISpan147.Estore.SqlDataLayer.Services;
 using ISpan147.Estore.SqlDataLayer.Utility;
 using prjMidtermTopic.Interfaces;
 using prjMidtermTopic.Model;
@@ -98,6 +99,19 @@ namespace prjMidtermTopic.FormMember
 				pictureBoxAvatar.Image = Properties.Resources.error_icon;
 			}
 			#endregion
+
+			if (Authentication.Permission > 4)
+			{
+				btnUploadAvatar.Enabled = false;
+				btnDeleteAvatar.Enabled = false;
+				btnApplyForumAccount.Enabled = false;
+				btnEditForumName.Enabled = false;
+				btnUpdate.Enabled = false;
+			}
+			if (Authentication.Permission > 2)
+			{
+				btnDelete.Enabled = false;
+			}
 		}
 
 		private void SelectFileToForm(string filePath)

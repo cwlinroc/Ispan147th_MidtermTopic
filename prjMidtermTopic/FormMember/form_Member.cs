@@ -11,6 +11,7 @@ using System.Linq;
 using prjMidtermTopic.Model;
 using prjMidtermTopic.ViewModels;
 using System.Security.Principal;
+using ISpan147.Estore.SqlDataLayer.Services;
 
 namespace prjMidtermTopic
 {
@@ -45,6 +46,7 @@ namespace prjMidtermTopic
 		private void form_Member_Load(object sender, EventArgs e)
 		{
 			Display();
+			if (Authentication.Permission > 4) btnAdd.Enabled = false;
 		}
 
 		private void btnSearch_Click(object sender, EventArgs e)

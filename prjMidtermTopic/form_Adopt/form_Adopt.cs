@@ -1,5 +1,6 @@
 ﻿using ISpan147.Estore.SqlDataLayer.Dtos;
 using ISpan147.Estore.SqlDataLayer.Repositories;
+using ISpan147.Estore.SqlDataLayer.Services;
 using prjMidtermTopic.Form_Adopt;
 using prjMidtermTopic.form_Merchandise;
 using prjMidtermTopic.Interfaces;
@@ -127,7 +128,12 @@ namespace prjMidtermTopic
         private void form_Adopt_Load(object sender, EventArgs e)
         {
             Display();
-        }
+
+			if (Authentication.Permission > 4)
+			{
+				Add.Enabled = false;
+			}
+		}
 
         private void Add_Click(object sender, EventArgs e)
         {
