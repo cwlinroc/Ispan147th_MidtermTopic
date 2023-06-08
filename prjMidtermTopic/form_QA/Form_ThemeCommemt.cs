@@ -25,7 +25,7 @@ namespace prjMidtermTopic.form_QA
 {
 	public partial class Form_ThemeCommemt : Form, IGridComment
 	{
-		private  int _themeId;
+		private int _themeId;
 		private int _commentId;
 		QAService _service;
 		public Form_ThemeCommemt(int themeId)
@@ -34,7 +34,7 @@ namespace prjMidtermTopic.form_QA
 			_themeId = themeId;
 			_service = new QAService();
 
-			Modifier.ModGridView(dataGridViewComment);
+			//Modifier.ModGridView(dataGridViewComment);
 		}
 		private void Form_ThemeCommemt_Load(object sender, EventArgs e)
 		{
@@ -46,7 +46,7 @@ namespace prjMidtermTopic.form_QA
 				ThemeDateTime = reader.GetDateTime(reader.GetOrdinal("ThemeDateTime")),
 				ThemeContext = reader.GetString(reader.GetOrdinal("ThemeContext"))
 			};
-			
+
 			List<QADto.Theme> themes = _service.GetThemeList(_themeId);
 			if (themes.Count > 0)
 			{
@@ -91,7 +91,7 @@ namespace prjMidtermTopic.form_QA
 		}
 
 		private void DataGridViewCommentShow(List<Comment> data)
-		{			
+		{
 			this.dataGridViewComment.DataSource = data;
 			this.dataGridViewComment.Columns["ThemeId"].Visible = false;
 			this.dataGridViewComment.Columns["ForumAccountId"].Visible = false;
@@ -110,10 +110,8 @@ namespace prjMidtermTopic.form_QA
 				if (checkBoxCell.Value == null || (bool)checkBoxCell.Value == false)
 				{
 					checkBoxCell.Value = true;
-					
-					
+
 					// 获取选中行的数据
-					//Comment selectedComment = data[e.RowIndex];
 					Comment selectedComment = dataGridViewComment.Rows[e.RowIndex].DataBoundItem as Comment;
 					selectedComments.Add(selectedComment);
 				}
@@ -124,19 +122,38 @@ namespace prjMidtermTopic.form_QA
 					selectedComments.Remove(deselectedComment);
 				}
 			}
-
-
 		}
 
 		private void buttonDeleteComment_Click(object sender, EventArgs e)
 		{
-			var repo = new QARepository();
-			repo.DeleteComment(_commentId);
+			//List<int> comments = new List<int> { 0 };
+			//for (int i = 0; i < dataGridViewComment.Rows.Count; i++)
+			//{
+			//	var checkBox = dataGridViewComment.Rows[i].Cells["selectComment"];
+			//	//var isCheck = checkBox.Value == null ? false : true;
+			//	if (Convert.ToBoolean(checkBox.Value))
+			//	{
+			//		var commentId = Convert.ToInt32(dataGridViewComment.Rows[i].Cells["CommentId"]);
+			//		comments.Add(commentId);
+			//	}
+			//}
 
+			//if (comments.Count > 0)
+			if (selectedComments.Count > 0)
+			{
+				//var commentIds = selectedComments.Select(a => a.CommentId).ToArray();
+				//var strCommentIds = $"{string.Join(", ", commentIds)}";
 
-			IGridComment parent = this as IGridComment;
-			parent.CommentDisplay();
-			MessageBox.Show("刪除成功");
+				foreach (var comment in selectedComments)
+				{
+					var repo = new QARepository();
+					repo.DeleteComment(comment.CommentId);
+				}
+				
+				IGridComment parent = this as IGridComment;
+				parent.CommentDisplay();
+				MessageBox.Show("刪除成功");
+			}
 		}
 	}
 }
