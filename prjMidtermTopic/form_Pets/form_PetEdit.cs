@@ -81,7 +81,7 @@ namespace prjMidtermTopic.form_Pets
 				return;
 			}
 			txtPetID.Text = dto.PetID.ToString();
-			comboBoxSpeciesID.SelectedItem = comboBoxSpeciesID.Items.Cast<dynamic>().FirstOrDefault(x =>x.Key ==dto.SpeciesID);
+			comboBoxSpeciesID.SelectedItem = comboBoxSpeciesID.Items.Cast<dynamic>().FirstOrDefault(x => x.Key == dto.SpeciesID);
 			comboBoxBreedID.SelectedItem = comboBoxBreedID.Items.Cast<dynamic>().FirstOrDefault(x => x.Key == dto.BreedID);
 			txtPetName.Text = dto.PetName;
 			txtAge.Text = dto.Age.ToString();
@@ -149,28 +149,28 @@ namespace prjMidtermTopic.form_Pets
 			int speciesID = (comboBoxSpeciesID.SelectedItem as dynamic).Key;
 			int breedID = (comboBoxBreedID.SelectedItem as dynamic).Key;
 
-			if (speciesID == 1 && (breedID != 5 || breedID != 6 || breedID != 7 || breedID != 8))
+			if (speciesID == 1 && !(breedID == 5 || breedID == 6 || breedID == 7 || breedID == 8))
 			{
 				MessageBox.Show("物種不相符，請更改");
 				return;
 			}
 
-			if (speciesID == 2 && (breedID != 9 || breedID != 10
-				|| breedID != 11 || breedID != 12 || breedID != 13))
+			if (speciesID == 2 && !(breedID == 9 || breedID == 10
+				|| breedID == 11 || breedID == 12 || breedID == 13 || breedID == 14))
 			{
 				MessageBox.Show("物種不相符，請更改");
 				return;
 			}
 
-			if (speciesID == 3 && (breedID != 15 || breedID != 16
-				|| breedID != 17 || breedID != 18 || breedID != 19))
+			if (speciesID == 3 && !(breedID == 15 || breedID == 16
+				|| breedID == 17 || breedID == 18 || breedID == 19))
 			{
 				MessageBox.Show("物種不相符，請更改");
 				return;
 			}
 
-			if (speciesID == 4 && (breedID != 20 || breedID != 21
-				|| breedID != 22 || breedID != 23 || breedID != 24))
+			if (speciesID == 4 && !(breedID == 20 || breedID == 21
+				|| breedID == 22 || breedID == 23 || breedID == 24))
 			{
 				MessageBox.Show("物種不相符，請更改");
 				return;
@@ -212,12 +212,12 @@ namespace prjMidtermTopic.form_Pets
 				int rows = service.Update(dto);
 
 				//UploadFileToDb(_originalFilePath);
-				
-				if(txtPetAvatar.Text != _originalFilePath && !string.IsNullOrEmpty(txtPetAvatar.Text))
+
+				if (txtPetAvatar.Text != _originalFilePath && !string.IsNullOrEmpty(txtPetAvatar.Text))
 				{
 					UploadFileToDb(_newImagePath);
 				}
-				if(txtPetAvatar.Text != _originalFilePath && !string.IsNullOrEmpty(txtPetAvatar.Text))
+				if (txtPetAvatar.Text != _originalFilePath && !string.IsNullOrEmpty(txtPetAvatar.Text))
 				{
 					DeleteFromDb();
 				}
