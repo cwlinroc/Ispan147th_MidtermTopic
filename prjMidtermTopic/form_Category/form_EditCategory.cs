@@ -166,7 +166,6 @@ namespace prjMidtermTopic.form_Category
 				else
 				{
 					MessageBox.Show("取消刪除");
-					this.Close();
 					return;
 				}
 

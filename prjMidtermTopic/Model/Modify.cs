@@ -13,7 +13,7 @@ namespace prjMidtermTopic.Model
 	{
 		static public void ModForm(Form frm)
 		{
-			frm.BackColor = Color.AliceBlue;
+			frm.BackColor = Color.FromArgb(200,240,250);
 			frm.ShowIcon = false;
 			frm.FormBorderStyle = FormBorderStyle.Sizable;
 			frm.AutoScroll = true;
@@ -22,7 +22,6 @@ namespace prjMidtermTopic.Model
 
 		static public void ModGridView(DataGridView grid)
 		{
-
 			//grid.ColumnHeadersDefaultCellStyle.BackColor = Color.AliceBlue;
 			//grid.ColumnHeadersDefaultCellStyle.ForeColor = Color.AliceBlue;
 

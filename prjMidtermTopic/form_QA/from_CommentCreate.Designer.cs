@@ -40,11 +40,12 @@
 			// buttonConfirmComment
 			// 
 			this.buttonConfirmComment.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.buttonConfirmComment.Location = new System.Drawing.Point(363, 225);
-			this.buttonConfirmComment.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+			this.buttonConfirmComment.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.buttonConfirmComment.Location = new System.Drawing.Point(300, 289);
+			this.buttonConfirmComment.Margin = new System.Windows.Forms.Padding(2);
 			this.buttonConfirmComment.Name = "buttonConfirmComment";
-			this.buttonConfirmComment.Size = new System.Drawing.Size(112, 32);
-			this.buttonConfirmComment.TabIndex = 24;
+			this.buttonConfirmComment.Size = new System.Drawing.Size(96, 35);
+			this.buttonConfirmComment.TabIndex = 1;
 			this.buttonConfirmComment.Text = "確認送出";
 			this.buttonConfirmComment.UseVisualStyleBackColor = true;
 			this.buttonConfirmComment.Click += new System.EventHandler(this.buttonConfirmComment_Click);
@@ -54,19 +55,22 @@
 			this.richTextBoxComment.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.richTextBoxComment.Location = new System.Drawing.Point(45, 65);
-			this.richTextBoxComment.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+			this.richTextBoxComment.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.richTextBoxComment.Location = new System.Drawing.Point(34, 72);
+			this.richTextBoxComment.Margin = new System.Windows.Forms.Padding(2);
 			this.richTextBoxComment.Name = "richTextBoxComment";
-			this.richTextBoxComment.Size = new System.Drawing.Size(428, 140);
-			this.richTextBoxComment.TabIndex = 23;
+			this.richTextBoxComment.Size = new System.Drawing.Size(362, 202);
+			this.richTextBoxComment.TabIndex = 0;
 			this.richTextBoxComment.Text = "";
 			// 
 			// labelCommentRole
 			// 
 			this.labelCommentRole.AutoSize = true;
-			this.labelCommentRole.Location = new System.Drawing.Point(42, 32);
+			this.labelCommentRole.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.labelCommentRole.Location = new System.Drawing.Point(30, 45);
+			this.labelCommentRole.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.labelCommentRole.Name = "labelCommentRole";
-			this.labelCommentRole.Size = new System.Drawing.Size(109, 15);
+			this.labelCommentRole.Size = new System.Drawing.Size(126, 21);
 			this.labelCommentRole.TabIndex = 22;
 			this.labelCommentRole.Text = "label留言建立者";
 			// 
@@ -77,24 +81,25 @@
 			// labelCommentRoleID
 			// 
 			this.labelCommentRoleID.AutoSize = true;
-			this.labelCommentRoleID.Location = new System.Drawing.Point(42, 9);
+			this.labelCommentRoleID.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.labelCommentRoleID.Location = new System.Drawing.Point(30, 14);
+			this.labelCommentRoleID.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.labelCommentRoleID.Name = "labelCommentRoleID";
-			this.labelCommentRoleID.Size = new System.Drawing.Size(124, 15);
+			this.labelCommentRoleID.Size = new System.Drawing.Size(143, 21);
 			this.labelCommentRoleID.TabIndex = 25;
 			this.labelCommentRoleID.Text = "label留言建立者ID";
 			// 
 			// from_CommentCreate
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(517, 282);
+			this.ClientSize = new System.Drawing.Size(428, 335);
 			this.Controls.Add(this.labelCommentRoleID);
 			this.Controls.Add(this.buttonConfirmComment);
 			this.Controls.Add(this.richTextBoxComment);
 			this.Controls.Add(this.labelCommentRole);
-			this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.Name = "from_CommentCreate";
-			this.Text = "from_CommentCreate";
+			this.Text = "新增留言";
 			this.Load += new System.EventHandler(this.from_CommentCreate_Load);
 			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
 			this.ResumeLayout(false);

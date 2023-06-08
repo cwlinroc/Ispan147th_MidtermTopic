@@ -56,7 +56,7 @@
             this.Column5,
             this.Column4});
 			this.dataGridView_Main.Location = new System.Drawing.Point(43, 76);
-			this.dataGridView_Main.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.dataGridView_Main.Margin = new System.Windows.Forms.Padding(2);
 			this.dataGridView_Main.Name = "dataGridView_Main";
 			this.dataGridView_Main.ReadOnly = true;
 			this.dataGridView_Main.RowHeadersWidth = 51;
@@ -114,11 +114,12 @@
 			// btn_EditListItem
 			// 
 			this.btn_EditListItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btn_EditListItem.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.btn_EditListItem.Location = new System.Drawing.Point(605, 24);
-			this.btn_EditListItem.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.btn_EditListItem.Margin = new System.Windows.Forms.Padding(2);
 			this.btn_EditListItem.Name = "btn_EditListItem";
-			this.btn_EditListItem.Size = new System.Drawing.Size(106, 30);
-			this.btn_EditListItem.TabIndex = 1;
+			this.btn_EditListItem.Size = new System.Drawing.Size(100, 30);
+			this.btn_EditListItem.TabIndex = 0;
 			this.btn_EditListItem.Text = "修改項目";
 			this.btn_EditListItem.UseVisualStyleBackColor = true;
 			this.btn_EditListItem.Click += new System.EventHandler(this.btn_EditListItem_Click);
@@ -126,10 +127,11 @@
 			// btn_AddListItem
 			// 
 			this.btn_AddListItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btn_AddListItem.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.btn_AddListItem.Location = new System.Drawing.Point(736, 24);
-			this.btn_AddListItem.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.btn_AddListItem.Margin = new System.Windows.Forms.Padding(2);
 			this.btn_AddListItem.Name = "btn_AddListItem";
-			this.btn_AddListItem.Size = new System.Drawing.Size(106, 30);
+			this.btn_AddListItem.Size = new System.Drawing.Size(100, 30);
 			this.btn_AddListItem.TabIndex = 1;
 			this.btn_AddListItem.Text = "新增項目";
 			this.btn_AddListItem.UseVisualStyleBackColor = true;
@@ -138,11 +140,12 @@
 			// btn_DelteListItem
 			// 
 			this.btn_DelteListItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.btn_DelteListItem.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.btn_DelteListItem.Location = new System.Drawing.Point(605, 389);
-			this.btn_DelteListItem.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.btn_DelteListItem.Margin = new System.Windows.Forms.Padding(2);
 			this.btn_DelteListItem.Name = "btn_DelteListItem";
-			this.btn_DelteListItem.Size = new System.Drawing.Size(106, 30);
-			this.btn_DelteListItem.TabIndex = 1;
+			this.btn_DelteListItem.Size = new System.Drawing.Size(100, 30);
+			this.btn_DelteListItem.TabIndex = 2;
 			this.btn_DelteListItem.Text = "刪除項目";
 			this.btn_DelteListItem.UseVisualStyleBackColor = true;
 			this.btn_DelteListItem.Click += new System.EventHandler(this.btn_DelteListItem_Click);
@@ -150,11 +153,12 @@
 			// btn_DeleteOrder
 			// 
 			this.btn_DeleteOrder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.btn_DeleteOrder.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.btn_DeleteOrder.Location = new System.Drawing.Point(736, 389);
-			this.btn_DeleteOrder.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.btn_DeleteOrder.Margin = new System.Windows.Forms.Padding(2);
 			this.btn_DeleteOrder.Name = "btn_DeleteOrder";
-			this.btn_DeleteOrder.Size = new System.Drawing.Size(106, 30);
-			this.btn_DeleteOrder.TabIndex = 1;
+			this.btn_DeleteOrder.Size = new System.Drawing.Size(100, 30);
+			this.btn_DeleteOrder.TabIndex = 3;
 			this.btn_DeleteOrder.Text = "刪除此清單";
 			this.btn_DeleteOrder.UseVisualStyleBackColor = true;
 			this.btn_DeleteOrder.Click += new System.EventHandler(this.btn_DeleteOrder_Click);
@@ -169,7 +173,7 @@
 			this.Controls.Add(this.btn_AddListItem);
 			this.Controls.Add(this.btn_EditListItem);
 			this.Controls.Add(this.dataGridView_Main);
-			this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.Margin = new System.Windows.Forms.Padding(2);
 			this.Name = "form_OrderList";
 			this.Text = "訂單細項";
 			this.Load += new System.EventHandler(this.form_OrderList_Load);

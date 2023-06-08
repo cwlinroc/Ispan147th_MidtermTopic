@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -31,8 +32,20 @@ namespace prjMidtermTopic
 			menuStrip_Main.Renderer = new ColoredRenderer();
 
 			MaximizeWindow();
-		}
 
+			if (!Directory.Exists(@"images/MerchandisePicture/"))
+			{
+				Directory.CreateDirectory(@"images/MerchandisePicture/");
+			}
+			if (!Directory.Exists(@"images/avatar/"))
+			{
+				Directory.CreateDirectory(@"images/avatar/");
+			}
+			if (!Directory.Exists(@"images/petavatar/"))
+			{
+				Directory.CreateDirectory(@"images/petavatar/");
+			}
+		}
 
 		//closed
 		private void form_Main_FormClosed(object sender, FormClosedEventArgs e)
@@ -71,7 +84,7 @@ namespace prjMidtermTopic
 				MaximizeWindow();
 				_maxed = true;
 			}
-		}		
+		}
 
 		private void toolStripButton_Close_Click(object sender, EventArgs e)
 		{
@@ -144,7 +157,6 @@ namespace prjMidtermTopic
 		}
 
 		#endregion
-
 
 
 		//menuStripButtons
@@ -256,7 +268,9 @@ namespace prjMidtermTopic
 		{
 			if (!PermissionCheck.Enable(2)) return;
 
-			new MassInsert.form_MassInsert().ShowDialog();
+			var frm = new MassInsert.form_MassInsert();
+			Modifier.ModForm(frm);
+			frm.ShowDialog();
 		}
 
 		private void 整理訂單金額ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -282,7 +296,9 @@ namespace prjMidtermTopic
 		{
 			if (!PermissionCheck.Enable(1)) return;
 
-			new form_Employee().ShowDialog();
+			var frm = new form_Employee();
+			Modifier.ModForm(frm);
+			frm.ShowDialog();
 		}
 		private void 修改個人資料ToolStripMenuItem_Click(object sender, EventArgs e)
 		{
@@ -291,6 +307,7 @@ namespace prjMidtermTopic
 			var dto = new EmployeeServices().Get(Authentication.EmployeeAccount);
 			var frm = new form_EmployeeEdit(dto);
 
+			Modifier.ModForm(frm);
 			frm.ShowDialog();
 		}
 
@@ -299,20 +316,21 @@ namespace prjMidtermTopic
 			if (Authentication.EmployeeID < 0) return;
 			if (Authentication.ForumAccountID == null)
 			{
-				new form_EmployeeForumAccountAdd(Authentication.EmployeeAccount)
-					.ShowDialog();
+				var frm = new form_EmployeeForumAccountAdd(Authentication.EmployeeAccount);
+				Modifier.ModForm(frm);
+				frm.ShowDialog();
 			}
 			else
 			{
 				//todo 論壇帳號ID
-				new form_EmployeeForumAccountEdit(Authentication.EmployeeAccount,
-					Authentication.ForumAccountID.Value).ShowDialog();
+				var frm = new form_EmployeeForumAccountEdit(Authentication.EmployeeAccount,
+					Authentication.ForumAccountID.Value);
+				Modifier.ModForm(frm);
+				frm.ShowDialog();
 			}
 		}
 
 		#endregion
-
-
 
 
 		//methods
@@ -328,11 +346,11 @@ namespace prjMidtermTopic
 			Modifier.ModForm(frm);
 			frm.Show();
 
-			if(_multiMdiChild)
+			if (_multiMdiChild)
 			{
 				LayoutMdi(_mdiLayout);
 			}
-		}		
+		}
 
 		private void MaximizeWindow()
 		{
@@ -352,6 +370,5 @@ namespace prjMidtermTopic
 			this.FormBorderStyle = FormBorderStyle.SizableToolWindow;
 			this.Size = new Size(this.Width * 8 / 10, this.Height * 8 / 10);
 		}
-		
 	}
 }

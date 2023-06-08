@@ -63,19 +63,29 @@ namespace prjMidtermTopic.Properties {
         /// <summary>
         ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
         /// </summary>
-        internal static System.Drawing.Bitmap Adopt {
-            get {
-                object obj = ResourceManager.GetObject("Adopt", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-
-        /// <summary>
-        ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
-        /// </summary>
         internal static System.Drawing.Bitmap _default {
             get {
                 object obj = ResourceManager.GetObject("_default", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+        /// </summary>
+        internal static System.Drawing.Bitmap _error {
+            get {
+                object obj = ResourceManager.GetObject("_error", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+        /// </summary>
+        internal static System.Drawing.Bitmap Adopt {
+            get {
+                object obj = ResourceManager.GetObject("Adopt", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -106,6 +116,25 @@ namespace prjMidtermTopic.Properties {
         internal static System.Drawing.Bitmap closeWin {
             get {
                 object obj = ResourceManager.GetObject("closeWin", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+        /// </summary>
+        internal static System.Drawing.Bitmap CryCat {
+            get {
+                object obj = ResourceManager.GetObject("CryCat", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        /// <summary>
+        ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+        /// </summary>
+        internal static System.Drawing.Bitmap default_avatar {
+            get {
+                object obj = ResourceManager.GetObject("default_avatar", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -240,13 +269,14 @@ namespace prjMidtermTopic.Properties {
             }
         }
 
-
+        
+        
         /// <summary>
         ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
         /// </summary>
-        internal static System.Drawing.Bitmap _error {
+        internal static System.Drawing.Bitmap error_icon {
             get {
-                object obj = ResourceManager.GetObject("_error", resourceCulture);
+                object obj = ResourceManager.GetObject("error_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

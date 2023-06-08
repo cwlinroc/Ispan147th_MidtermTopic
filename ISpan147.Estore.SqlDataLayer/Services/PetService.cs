@@ -2,6 +2,7 @@
 using ISpan147.Estore.SqlDataLayer.Repositories;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -45,9 +46,19 @@ namespace ISpan147.Estore.SqlDataLayer.Services
 			return rows;
 		}
 
-		public int Delete(int PetID)
+		public int Delete(int petID)
 		{
-			return _repo.Delete(PetID);
+			return _repo.Delete(petID);
+		}
+
+		public List<SpeciesDto> SearchSpescies(int? speciesID = null)
+		{
+			return _repo.SearchSpecies(speciesID);
+		}
+
+		public List<BreedDto> SearchBreed(int? breedID = null)
+		{
+			return _repo.SearchBreed(breedID);
 		}
 	}
 }

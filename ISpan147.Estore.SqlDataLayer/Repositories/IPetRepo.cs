@@ -13,6 +13,8 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 		PetDto GetByName(string name);
 		int Create(PetDto dto);
 		int Update(PetDto dto);
-		int Delete(int PetID);
+		int Delete(int petID);
+		List<SpeciesDto> SearchSpecies(int? speciesID);
+		List<BreedDto> SearchBreed(int? breedID);
 	}
 }

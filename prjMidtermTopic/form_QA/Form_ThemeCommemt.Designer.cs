@@ -46,9 +46,10 @@
 			// label1
 			// 
 			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(32, 182);
+			this.label1.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.label1.Location = new System.Drawing.Point(33, 198);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(65, 12);
+			this.label1.Size = new System.Drawing.Size(90, 21);
 			this.label1.TabIndex = 31;
 			this.label1.Text = "留言回覆列";
 			// 
@@ -65,25 +66,26 @@
             this.CommentId,
             this.ThemeContext,
             this.ThemeTime});
-			this.dataGridViewComment.Location = new System.Drawing.Point(34, 206);
+			this.dataGridViewComment.Location = new System.Drawing.Point(34, 229);
 			this.dataGridViewComment.Margin = new System.Windows.Forms.Padding(2);
 			this.dataGridViewComment.MultiSelect = false;
 			this.dataGridViewComment.Name = "dataGridViewComment";
 			this.dataGridViewComment.ReadOnly = true;
 			this.dataGridViewComment.RowHeadersWidth = 51;
 			this.dataGridViewComment.RowTemplate.Height = 27;
-			this.dataGridViewComment.Size = new System.Drawing.Size(676, 254);
+			this.dataGridViewComment.Size = new System.Drawing.Size(610, 217);
 			this.dataGridViewComment.TabIndex = 30;
 			this.dataGridViewComment.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewComment_CellContentClick);
 			// 
 			// buttonDeleteTheme
 			// 
 			this.buttonDeleteTheme.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.buttonDeleteTheme.Location = new System.Drawing.Point(641, 71);
+			this.buttonDeleteTheme.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.buttonDeleteTheme.Location = new System.Drawing.Point(565, 71);
 			this.buttonDeleteTheme.Margin = new System.Windows.Forms.Padding(2);
 			this.buttonDeleteTheme.Name = "buttonDeleteTheme";
-			this.buttonDeleteTheme.Size = new System.Drawing.Size(70, 28);
-			this.buttonDeleteTheme.TabIndex = 29;
+			this.buttonDeleteTheme.Size = new System.Drawing.Size(101, 36);
+			this.buttonDeleteTheme.TabIndex = 0;
 			this.buttonDeleteTheme.Text = "刪除此筆";
 			this.buttonDeleteTheme.UseVisualStyleBackColor = true;
 			this.buttonDeleteTheme.Click += new System.EventHandler(this.buttonDeleteTheme_Click);
@@ -91,11 +93,12 @@
 			// buttonCreateCommon
 			// 
 			this.buttonCreateCommon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.buttonCreateCommon.Location = new System.Drawing.Point(641, 112);
+			this.buttonCreateCommon.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.buttonCreateCommon.Location = new System.Drawing.Point(565, 112);
 			this.buttonCreateCommon.Margin = new System.Windows.Forms.Padding(2);
 			this.buttonCreateCommon.Name = "buttonCreateCommon";
-			this.buttonCreateCommon.Size = new System.Drawing.Size(70, 25);
-			this.buttonCreateCommon.TabIndex = 28;
+			this.buttonCreateCommon.Size = new System.Drawing.Size(101, 33);
+			this.buttonCreateCommon.TabIndex = 1;
 			this.buttonCreateCommon.Text = "回覆留言";
 			this.buttonCreateCommon.UseVisualStyleBackColor = true;
 			this.buttonCreateCommon.Click += new System.EventHandler(this.buttonCreateCommon_Click);
@@ -104,31 +107,34 @@
 			// 
 			this.richTextBoxTheme.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+			this.richTextBoxTheme.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.richTextBoxTheme.Location = new System.Drawing.Point(34, 71);
 			this.richTextBoxTheme.Margin = new System.Windows.Forms.Padding(2);
 			this.richTextBoxTheme.Name = "richTextBoxTheme";
 			this.richTextBoxTheme.ReadOnly = true;
-			this.richTextBoxTheme.Size = new System.Drawing.Size(591, 78);
+			this.richTextBoxTheme.Size = new System.Drawing.Size(519, 114);
 			this.richTextBoxTheme.TabIndex = 27;
 			this.richTextBoxTheme.Text = "";
 			// 
 			// labelThemeDatetime
 			// 
 			this.labelThemeDatetime.AutoSize = true;
-			this.labelThemeDatetime.Location = new System.Drawing.Point(33, 47);
+			this.labelThemeDatetime.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.labelThemeDatetime.Location = new System.Drawing.Point(33, 43);
 			this.labelThemeDatetime.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.labelThemeDatetime.Name = "labelThemeDatetime";
-			this.labelThemeDatetime.Size = new System.Drawing.Size(111, 12);
+			this.labelThemeDatetime.Size = new System.Drawing.Size(158, 21);
 			this.labelThemeDatetime.TabIndex = 26;
 			this.labelThemeDatetime.Text = "label主題建立日期間";
 			// 
 			// labelThemeRole
 			// 
 			this.labelThemeRole.AutoSize = true;
-			this.labelThemeRole.Location = new System.Drawing.Point(33, 28);
+			this.labelThemeRole.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.labelThemeRole.Location = new System.Drawing.Point(33, 14);
 			this.labelThemeRole.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.labelThemeRole.Name = "labelThemeRole";
-			this.labelThemeRole.Size = new System.Drawing.Size(87, 12);
+			this.labelThemeRole.Size = new System.Drawing.Size(126, 21);
 			this.labelThemeRole.TabIndex = 25;
 			this.labelThemeRole.Text = "label主題建立者";
 			// 
@@ -182,8 +188,8 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(743, 517);
 			this.Controls.Add(this.buttonDeleteComment);
+			this.ClientSize = new System.Drawing.Size(677, 457);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.dataGridViewComment);
 			this.Controls.Add(this.buttonDeleteTheme);
@@ -192,7 +198,7 @@
 			this.Controls.Add(this.labelThemeDatetime);
 			this.Controls.Add(this.labelThemeRole);
 			this.Name = "Form_ThemeCommemt";
-			this.Text = "Form_ThemeCommemt";
+			this.Text = "留言管理";
 			this.Load += new System.EventHandler(this.Form_ThemeCommemt_Load);
 			((System.ComponentModel.ISupportInitialize)(this.dataGridViewComment)).EndInit();
 			this.ResumeLayout(false);
