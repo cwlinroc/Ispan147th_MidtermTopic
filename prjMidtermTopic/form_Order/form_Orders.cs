@@ -42,9 +42,13 @@ namespace prjMidtermTopic.Form_Order
 				{ "PurchaseTime", (prev, next) => prev.PurchaseTime.GetValueOrDefault().CompareTo(next.PurchaseTime.GetValueOrDefault()) },
 				{ "PaymentAmount", (prev, next) => prev.PaymentAmount.GetValueOrDefault().CompareTo(next.PaymentAmount.GetValueOrDefault()) }
 			};
-			
+
 			comboBox_PaymentMethod.Items.AddRange(Orders.paymentOptions);
+			comboBox_PaymentMethod.Items.Insert(0, "--未選擇--");
+			comboBox_PaymentMethod.SelectedIndex = 0;
 			comboBox_SortBy.Items.AddRange(_orderByColumnName);
+			comboBox_Payed.Items.Insert(0, "--未選擇--");
+			comboBox_Payed.SelectedIndex = 0;
 			Modifier.ModGridView(dataGridView_Main);
 		}
 
@@ -170,14 +174,14 @@ namespace prjMidtermTopic.Form_Order
 						break;
 				}
 			}
-			if (comboBox_PaymentMethod.SelectedIndex != -1)
+			if (comboBox_PaymentMethod.SelectedIndex > 0)
 			{
-				sDto.PaymentMethod = comboBox_PaymentMethod.SelectedIndex;
+				sDto.PaymentMethod = comboBox_PaymentMethod.SelectedIndex - 1;
 			}
-			if (comboBox_Payed.SelectedIndex != -1)
+			if (comboBox_Payed.SelectedIndex > 0)
 			{
-				if (comboBox_Payed.SelectedIndex == 0) sDto.Payed = true;
-				if (comboBox_Payed.SelectedIndex == 1) sDto.Payed = false;
+				if (comboBox_Payed.SelectedIndex == 1) sDto.Payed = true;
+				if (comboBox_Payed.SelectedIndex == 2) sDto.Payed = false;
 			}
 			if (int.TryParse(txt_MinPaymentAmount.Text.Trim(), out int minAmount))
 			{

@@ -29,8 +29,8 @@
 		private void InitializeComponent()
 		{
 			this.btn_Change = new System.Windows.Forms.Button();
-			this.txt_Permission = new System.Windows.Forms.TextBox();
 			this.label1 = new System.Windows.Forms.Label();
+			this.comboBox_Permission = new System.Windows.Forms.ComboBox();
 			this.SuspendLayout();
 			// 
 			// btn_Change
@@ -43,13 +43,6 @@
 			this.btn_Change.UseVisualStyleBackColor = true;
 			this.btn_Change.Click += new System.EventHandler(this.btn_Change_Click);
 			// 
-			// txt_Permission
-			// 
-			this.txt_Permission.Location = new System.Drawing.Point(89, 40);
-			this.txt_Permission.Name = "txt_Permission";
-			this.txt_Permission.Size = new System.Drawing.Size(100, 22);
-			this.txt_Permission.TabIndex = 1;
-			// 
 			// label1
 			// 
 			this.label1.AutoSize = true;
@@ -59,15 +52,24 @@
 			this.label1.TabIndex = 2;
 			this.label1.Text = "權限：";
 			// 
+			// comboBox_Permission
+			// 
+			this.comboBox_Permission.FormattingEnabled = true;
+			this.comboBox_Permission.Location = new System.Drawing.Point(77, 40);
+			this.comboBox_Permission.Name = "comboBox_Permission";
+			this.comboBox_Permission.Size = new System.Drawing.Size(121, 20);
+			this.comboBox_Permission.TabIndex = 3;
+			// 
 			// form_EmployeeChangePermission
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(220, 128);
+			this.Controls.Add(this.comboBox_Permission);
 			this.Controls.Add(this.label1);
-			this.Controls.Add(this.txt_Permission);
 			this.Controls.Add(this.btn_Change);
 			this.Name = "form_EmployeeChangePermission";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "修改權限";
 			this.ResumeLayout(false);
 			this.PerformLayout();
@@ -77,7 +79,7 @@
 		#endregion
 
 		private System.Windows.Forms.Button btn_Change;
-		private System.Windows.Forms.TextBox txt_Permission;
 		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.ComboBox comboBox_Permission;
 	}
 }
