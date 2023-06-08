@@ -3,6 +3,7 @@ using ISpan147.Estore.SqlDataLayer.Repositories;
 using ISpan147.Estore.SqlDataLayer.Services;
 using prjMidtermTopic.form_Merchandise;
 using prjMidtermTopic.Interfaces;
+using prjMidtermTopic.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,6 +24,8 @@ namespace prjMidtermTopic.form_Category
 			InitializeComponent();
 
 			_repo = new CategoryRepository();
+
+			Modifier.ModGridView(dataGridView1);
 		}
 
 		List<CategoryDto> data;
@@ -75,6 +78,7 @@ namespace prjMidtermTopic.form_Category
 
 			var frm = new form_EditCategory(id);
 			frm.Owner = this;
+			Modifier.ModForm(frm);
 			frm.ShowDialog();
 		}
 
@@ -82,6 +86,7 @@ namespace prjMidtermTopic.form_Category
 		{
 			var frm = new form_CreateCategory();
 			frm.Owner = this;
+			Modifier.ModForm(frm);
 			frm.ShowDialog();
 		}
 

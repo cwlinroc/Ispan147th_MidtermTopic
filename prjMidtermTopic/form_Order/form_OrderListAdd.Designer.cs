@@ -42,48 +42,53 @@
 			// 
 			// txt_MerchandiseID
 			// 
-			this.txt_MerchandiseID.Location = new System.Drawing.Point(103, 90);
-			this.txt_MerchandiseID.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.txt_MerchandiseID.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.txt_MerchandiseID.Location = new System.Drawing.Point(123, 62);
+			this.txt_MerchandiseID.Margin = new System.Windows.Forms.Padding(2);
 			this.txt_MerchandiseID.Name = "txt_MerchandiseID";
-			this.txt_MerchandiseID.Size = new System.Drawing.Size(177, 22);
-			this.txt_MerchandiseID.TabIndex = 10;
+			this.txt_MerchandiseID.Size = new System.Drawing.Size(177, 29);
+			this.txt_MerchandiseID.TabIndex = 1;
 			// 
 			// label2
 			// 
 			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(45, 91);
+			this.label2.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.label2.Location = new System.Drawing.Point(29, 64);
 			this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(41, 12);
+			this.label2.Size = new System.Drawing.Size(75, 21);
 			this.label2.TabIndex = 8;
-			this.label2.Text = "商品ID";
+			this.label2.Text = "商品ID：";
 			// 
 			// txt_OrderID
 			// 
 			this.txt_OrderID.Enabled = false;
-			this.txt_OrderID.Location = new System.Drawing.Point(103, 64);
-			this.txt_OrderID.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.txt_OrderID.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.txt_OrderID.Location = new System.Drawing.Point(123, 29);
+			this.txt_OrderID.Margin = new System.Windows.Forms.Padding(2);
 			this.txt_OrderID.Name = "txt_OrderID";
-			this.txt_OrderID.Size = new System.Drawing.Size(177, 22);
-			this.txt_OrderID.TabIndex = 11;
+			this.txt_OrderID.Size = new System.Drawing.Size(177, 29);
+			this.txt_OrderID.TabIndex = 0;
 			// 
 			// label1
 			// 
 			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(45, 66);
+			this.label1.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.label1.Location = new System.Drawing.Point(29, 32);
 			this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(53, 12);
+			this.label1.Size = new System.Drawing.Size(90, 21);
 			this.label1.TabIndex = 9;
-			this.label1.Text = "訂單編號";
+			this.label1.Text = "訂單編號：";
 			// 
 			// btn_commit
 			// 
-			this.btn_commit.Location = new System.Drawing.Point(103, 166);
-			this.btn_commit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.btn_commit.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.btn_commit.Location = new System.Drawing.Point(123, 141);
+			this.btn_commit.Margin = new System.Windows.Forms.Padding(2);
 			this.btn_commit.Name = "btn_commit";
-			this.btn_commit.Size = new System.Drawing.Size(123, 28);
-			this.btn_commit.TabIndex = 5;
+			this.btn_commit.Size = new System.Drawing.Size(100, 30);
+			this.btn_commit.TabIndex = 3;
 			this.btn_commit.Text = "確認新增";
 			this.btn_commit.UseVisualStyleBackColor = true;
 			this.btn_commit.Click += new System.EventHandler(this.btn_commit_Click);
@@ -91,20 +96,22 @@
 			// label3
 			// 
 			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(45, 114);
+			this.label3.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.label3.Location = new System.Drawing.Point(29, 97);
 			this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(29, 12);
+			this.label3.Size = new System.Drawing.Size(58, 21);
 			this.label3.TabIndex = 8;
-			this.label3.Text = "數量";
+			this.label3.Text = "數量：";
 			// 
 			// txt_Quantity
 			// 
-			this.txt_Quantity.Location = new System.Drawing.Point(103, 113);
-			this.txt_Quantity.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.txt_Quantity.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.txt_Quantity.Location = new System.Drawing.Point(123, 95);
+			this.txt_Quantity.Margin = new System.Windows.Forms.Padding(2);
 			this.txt_Quantity.Name = "txt_Quantity";
-			this.txt_Quantity.Size = new System.Drawing.Size(177, 22);
-			this.txt_Quantity.TabIndex = 10;
+			this.txt_Quantity.Size = new System.Drawing.Size(177, 29);
+			this.txt_Quantity.TabIndex = 2;
 			// 
 			// errorProvider1
 			// 
@@ -114,7 +121,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(330, 249);
+			this.ClientSize = new System.Drawing.Size(330, 197);
 			this.Controls.Add(this.txt_Quantity);
 			this.Controls.Add(this.label3);
 			this.Controls.Add(this.txt_MerchandiseID);
@@ -122,7 +129,7 @@
 			this.Controls.Add(this.txt_OrderID);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.btn_commit);
-			this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.Margin = new System.Windows.Forms.Padding(2);
 			this.Name = "form_OrderListAdd";
 			this.Text = "新增細項";
 			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();

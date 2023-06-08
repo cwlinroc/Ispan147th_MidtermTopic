@@ -29,8 +29,8 @@ namespace prjMidtermTopic.form_Merchandise
 		private string _iniImageURL;
 		private string _lasttargetFilePath;
 		//改使用內嵌影像
-		//string defaultImageURL = @"images/MerchendisePicture/default.png";
-		//string errorImageURL = @"images/MerchendisePicture/error.png";
+		//string defaultImageURL = @"images/MerchandisePicture/default.png";
+		//string errorImageURL = @"images/MerchandisePicture/error.png";
 
 		public form_EditMerchandise(int merchandiseId)
 		{
@@ -115,7 +115,7 @@ namespace prjMidtermTopic.form_Merchandise
 			txt_ImageURL.Text = dto.ImageURL;
 
 			_iniImageURL = dto.ImageURL;
-			_lasttargetFilePath = @"images/MerchendisePicture/" + dto.ImageURL;
+			_lasttargetFilePath = @"images/MerchandisePicture/" + dto.ImageURL;
 			#endregion
 
 			#region 載入預覽圖片
@@ -182,7 +182,7 @@ namespace prjMidtermTopic.form_Merchandise
 				selectImage.InitialDirectory =
 					Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
 				selectImage.Title = "選擇檔案";
-				selectImage.Filter = "(*.png)|*.png|(*.jpg)|*.jpg|(*.jpeg)|*.jpeg|(*.gif)|*.gif";
+				selectImage.Filter = "Image files(*.png;*.jpg;*.jpeg;*.gif)|*.png;*.jpg;*.jpeg;*.gif";
 				selectImage.Multiselect = false;
 
 				if (selectImage.ShowDialog() == DialogResult.OK)
@@ -222,7 +222,7 @@ namespace prjMidtermTopic.form_Merchandise
 		{
 			DeleteFromDb();
 
-			string targetFolderPath = @"images/MerchendisePicture/";
+			string targetFolderPath = @"images/MerchandisePicture/";
 			string newimageName = Path.GetFileName(newimagePath);
 			string renamedtargetFilePath = targetFolderPath + txt_ImageURL.Text;
 
@@ -299,7 +299,7 @@ namespace prjMidtermTopic.form_Merchandise
 			bool PriceisInt = int.TryParse(txt_Price.Text, out int Price);
 			Price = PriceisInt ? Price : 0;
 			bool AmountisInt = int.TryParse(txt_Amount.Text, out int Amount);
-			Amount = AmountisInt ? Amount : 0;
+			Amount = AmountisInt ? Amount : -1;
 
 			var vm = new MerchandiseCreateVM()
 			{
@@ -403,7 +403,6 @@ namespace prjMidtermTopic.form_Merchandise
 				else
 				{
 					MessageBox.Show("取消刪除");
-					this.Close();
 					return;
 				}
 
@@ -423,6 +422,46 @@ namespace prjMidtermTopic.form_Merchandise
 			{
 				MessageBox.Show("刪除失敗，失敗原因：" + ex.Message);
 			}
+		}
+
+		private void label1_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void label4_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void label3_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void label7_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void label2_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void label5_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void label8_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void label6_Click(object sender, EventArgs e)
+		{
+
 		}
 	}
 }

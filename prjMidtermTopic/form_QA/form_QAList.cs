@@ -2,6 +2,8 @@
 using ISpan147.Estore.SqlDataLayer.Repositories;
 using ISpan147.Estore.SqlDataLayer.Services;
 using prjMidtermTopic.form_QA;
+using prjMidtermTopic.Interfaces;
+using prjMidtermTopic.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,14 +20,16 @@ using static ISpan147.Estore.SqlDataLayer.Dtos.QADto;
 
 namespace prjMidtermTopic
 {
-    public partial class form_QAList : Form
-    {
+    public partial class form_QAList : Form , IGrid
+	{
 		QAService _service;
 		
 		public form_QAList()
 		{
             InitializeComponent();
 			_service = new QAService();
+
+			Modifier.ModGridView(dataGridViewTheme);
 		}
 
 		private void form_QAList_Load(object sender, EventArgs e)
@@ -36,13 +40,13 @@ namespace prjMidtermTopic
 		private void buttonSearch_Click(object sender, EventArgs e)
 		{
 			var data = _service.SearchTheme(this.textBoxSearch.Text);
-
+			
 			// 繫結到DataGridView
 			DataGridViewThemeShow(data);
 		}
 
 
-		private void Display()
+		public void Display()
 		{
 			// 叫用Search(),取得符合的記錄
 			var data = _service.GetThemeList(null);
@@ -57,10 +61,7 @@ namespace prjMidtermTopic
 			this.dataGridViewTheme.Columns["ForumAccountName"].Visible = false;
 		}
 
-
-
 		//methods
-
 		public void dataGridViewTheme_CellClick(object sender, DataGridViewCellEventArgs e)
 		{
 			if (e.RowIndex < 0) return;
@@ -69,9 +70,9 @@ namespace prjMidtermTopic
 			//var themeId = this._data[e.RowIndex].ThemeId;
 			var selectedThemeId = Convert.ToInt32(dataGridViewTheme.Rows[e.RowIndex].Cells["themeId"].Value);
 
-
 			var frm = new Form_ThemeCommemt(themeId);
 			frm.Owner = this;
+			Modifier.ModForm(frm);
 			frm.ShowDialog();
 		}
 
@@ -79,6 +80,7 @@ namespace prjMidtermTopic
 		{
 			from_ThemeCreate qaCreate = new from_ThemeCreate();
 			qaCreate.Owner = this;
+			Modifier.ModForm(qaCreate);
 			qaCreate.ShowDialog();
 		}
 

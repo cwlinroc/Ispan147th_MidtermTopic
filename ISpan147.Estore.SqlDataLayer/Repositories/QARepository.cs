@@ -7,6 +7,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Reflection.Emit;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,7 +25,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 		public List<QADto.Theme> GetTheme(int? themeId = null)
 		{
 			StringBuilder sql = new StringBuilder();
-			sql.AppendLine("SELECT ThemeID, ThemeContext, ThemeDateTime ");
+			sql.AppendLine("SELECT ThemeID, ThemeContext, ThemeDateTime, ForumAccountName ");
 			sql.AppendLine("FROM Themes AS T ");
 			sql.AppendLine("JOIN ForumAccounts AS F ON T.ForumAccountID = F.ForumAccountID ");
 			sql.AppendLine("WHERE 1 = 1 ");
@@ -47,8 +48,8 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 		public List<QADto.Theme> SearchTheme(string themeContext = null)
 		{
 			StringBuilder sql = new StringBuilder();
-			sql.AppendLine("SELECT ThemeID, ThemeContext, ThemeDateTime ");
-			sql.AppendLine("FROM THEMES AS T ");
+			sql.AppendLine("SELECT ThemeID, ThemeContext, ThemeDateTime, ForumAccountName  ");
+			sql.AppendLine("FROM Themes AS T ");
 			sql.AppendLine("JOIN ForumAccounts AS F ON T.ForumAccountID = F.ForumAccountID ");
 			sql.AppendLine("WHERE 1 = 1 ");
 	
@@ -96,7 +97,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 		}
 
 
-		public List<QADto.Comment> GetComment(int? themeId = null)     //顯示ThemeID = dataGridViewTheme_CellClick的
+		public List<QADto.Comment> GetComment(int? themeId = null)     
 		{
 			StringBuilder sql = new StringBuilder();
 			sql.AppendLine("SELECT CommentID, CommentContext, CommentTime ");
@@ -149,7 +150,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 			
 			var parameters = new SqlParameterBuilder()
 				.AddInt("ForumAccountID", commentDto.ForumAccountId)
-				.AddDateTime("CommentTime", commentDto.CommentDateTime)
+				.AddDateTime("CommentTime", commentDto.CommentTime)
 				.AddNVarchar("CommentContext", 500, commentDto.CommentContext)
 				.AddInt("ThemeID", commentDto.ThemeId)
 				.Build();

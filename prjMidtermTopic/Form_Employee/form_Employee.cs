@@ -2,6 +2,7 @@
 using ISpan147.Estore.SqlDataLayer.Repositories;
 using ISpan147.Estore.SqlDataLayer.Services;
 using prjMidtermTopic.Interfaces;
+using prjMidtermTopic.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,6 +26,8 @@ namespace prjMidtermTopic.Form_Employee
 
 			InitializeComponent();
 			Load += Form_Employee_Load;
+
+			Modifier.ModGridView(dataGridView_Main);
 		}
 
 		private void Form_Employee_Load(object sender, EventArgs e)
@@ -41,6 +44,7 @@ namespace prjMidtermTopic.Form_Employee
 		{
 			var frm = new form_EmployeeAdd();
 			frm.Owner = this;
+			Modifier.ModForm(frm);
 			frm.ShowDialog();
 		}
 
@@ -49,6 +53,7 @@ namespace prjMidtermTopic.Form_Employee
 			var dto = _data[_row];
 			var frm = new form_EmployeeEdit(dto);
 			frm.Owner = this;
+			Modifier.ModForm(frm);
 			frm.ShowDialog();
 		}
 
@@ -57,6 +62,7 @@ namespace prjMidtermTopic.Form_Employee
 			var dto = _data[_row];
 			var frm = new form_EmployeeChangePermission(dto);
 			frm.Owner = this;
+			Modifier.ModForm(frm);
 			frm.ShowDialog();
 		}
 

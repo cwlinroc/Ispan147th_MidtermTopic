@@ -28,7 +28,7 @@ namespace prjMidtermTopic.form_Merchandise
 		private int _categoryId;
 		private string _imagePath = string.Empty;
 		//改使用內嵌影像
-		//string defaultImageURL = @"images/MerchendisePicture/default.png";
+		//string defaultImageURL = @"images/MerchandisePicture/default.png";
 	
 		public form_CreateMerchandise()
 		{
@@ -112,7 +112,7 @@ namespace prjMidtermTopic.form_Merchandise
 			bool PriceisInt = int.TryParse(txt_Price.Text, out int Price);
 			Price = PriceisInt ? Price : 0;
 			bool AmountisInt = int.TryParse(txt_Amount.Text, out int Amount);
-			Amount = AmountisInt ? Amount : 0;
+			Amount = AmountisInt ? Amount : -1;
 			// ↓讀取下拉選單的欄位值
 			int categoryId = (comboBox_CategoryId.SelectedItem as dynamic).Key;
 			string marchandisename = txt_MerchandiseName.Text;
@@ -190,7 +190,7 @@ namespace prjMidtermTopic.form_Merchandise
 				selectImage.InitialDirectory =
 					Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
 				selectImage.Title = "選擇檔案";
-				selectImage.Filter = "(*.png)|*.png|(*.jpg)|*.jpg|(*.jpeg)|*.jpeg|(*.gif)|*.gif";
+				selectImage.Filter = "Image files(*.png;*.jpg;*.jpeg;*.gif)|*.png;*.jpg;*.jpeg;*.gif";
 				selectImage.Multiselect = false;
 
 				if (selectImage.ShowDialog() == DialogResult.OK)
@@ -230,7 +230,7 @@ namespace prjMidtermTopic.form_Merchandise
 
 		private void UploadToDb(string imagePath)
 		{
-			string targetFolderPath = @"images/MerchendisePicture/";
+			string targetFolderPath = @"images/MerchandisePicture/";
 			string imageName = Path.GetFileName(imagePath);
 			// 使用時間戳系統性改名，避免資料庫內名稱重複
 			string renamedtargetFilePath = targetFolderPath + txt_ImageURL.Text;

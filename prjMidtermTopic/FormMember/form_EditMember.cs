@@ -341,17 +341,18 @@ namespace prjMidtermTopic.FormMember
 		private void btnApplyForumAccount_Click(object sender, EventArgs e)
 		{
 			var frm = new form_ApplyForumAccount(_memberID);
+			Modifier.ModForm(frm);
 			frm.ShowDialog();
 		}
 
 		private void btnEditForumName_Click(object sender, EventArgs e)
 		{
 			var frm = new form_EditForumName(int.Parse(_forumAccountID));
+			Modifier.ModForm(frm);
 			frm.ShowDialog();
 		}
 
 		#endregion
-
 
 	}
 }

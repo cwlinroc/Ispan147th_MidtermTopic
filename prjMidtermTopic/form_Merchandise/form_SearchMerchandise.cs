@@ -3,6 +3,7 @@ using ISpan147.Estore.SqlDataLayer.Repositories;
 using ISpan147.Estore.SqlDataLayer.Services;
 using prjMidtermTopic.form_Merchandise;
 using prjMidtermTopic.Interfaces;
+using prjMidtermTopic.Model;
 using prjMidtermTopic.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,6 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace prjMidtermTopic
 {
-	// todo 進階排序功能
 	public partial class form_SearchMerchandise : Form, IGrid
 	{
 		private IMerchandiseRepository _repo;
@@ -70,6 +70,8 @@ namespace prjMidtermTopic
 			comboBox_SortBy.SelectedIndex = 0;
 
 			#endregion
+
+			Modifier.ModGridView(dataGridView1);
 		}
 
 		#region 功能/方法
@@ -225,6 +227,7 @@ namespace prjMidtermTopic
 
 			var frm = new form_EditMerchandise(id);
 			frm.Owner = this;
+			Modifier.ModForm(frm);
 			frm.ShowDialog();
 		}
 
@@ -232,6 +235,7 @@ namespace prjMidtermTopic
 		{
 			var frm = new form_CreateMerchandise();
 			frm.Owner = this;
+			Modifier.ModForm(frm);
 			frm.ShowDialog();
 		}
 		#endregion

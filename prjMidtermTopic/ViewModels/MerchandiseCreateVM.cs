@@ -37,7 +37,7 @@ namespace prjMidtermTopic.ViewModels
 
 		[Display(Name = "庫存數量")]
 		[Required(ErrorMessage = "{0}為必填")]
-		[Range(1, int.MaxValue, ErrorMessage = "{0}必須為大於0的數字")]
+		[Range(0, int.MaxValue, ErrorMessage = "{0}必須是至少為0的數字")]
 		public int Amount { get; set; }
 
 		[Display(Name = "商品描述")]

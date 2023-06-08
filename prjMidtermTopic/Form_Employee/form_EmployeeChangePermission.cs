@@ -17,11 +17,13 @@ namespace prjMidtermTopic.Form_Employee
 	{
 		private EmployeeDto _dto;
 
+		private readonly string[] _permissions = new string[] { "1", "2", "3", "4", "5" };
 		public form_EmployeeChangePermission(EmployeeDto dto)
 		{
 			InitializeComponent();
 
-			txt_Permission.Text = dto.Permission.ToString();
+			comboBox_Permission.Items.AddRange(_permissions);
+			comboBox_Permission.SelectedIndex = dto.Permission - 1;
 			_dto = dto;
 		}
 
@@ -29,7 +31,7 @@ namespace prjMidtermTopic.Form_Employee
 		{
 			try
 			{
-				var permission = int.Parse(txt_Permission.Text);
+				var permission = comboBox_Permission.SelectedIndex + 1;
 
 				DialogResult dialogResult = MessageBox.Show($"確定更改{_dto.EmployeeName}的權限為{permission}？",
 					"確認更改權限", MessageBoxButtons.YesNo);
@@ -54,6 +56,6 @@ namespace prjMidtermTopic.Form_Employee
 
 		}
 
-		
+
 	}
 }

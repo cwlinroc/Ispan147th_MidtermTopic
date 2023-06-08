@@ -26,10 +26,40 @@ namespace prjMidtermTopic.Form_Employee
 			_dto = dto;
 		}
 
+		private void checkBox_ChangepassWord_CheckedChanged(object sender, EventArgs e)
+		{
+			if (checkBox_ChangepassWord.Checked)
+			{
+				txt_OldPassword.Enabled = true;
+				txt_EmployeePassword.Enabled = true;
+				txt_ConfirmPassword.Enabled = true;
+			}
+			else
+			{
+				txt_OldPassword.Enabled = false;
+				txt_EmployeePassword.Enabled = false;
+				txt_ConfirmPassword.Enabled = false;
+			}
+		}
+		private void checkBox_ShowPassword_CheckedChanged(object sender, EventArgs e)
+		{
+			if (checkBox_ShowPassword.Checked)
+			{
+				txt_OldPassword.PasswordChar = (char)0;
+				txt_EmployeePassword.PasswordChar = (char)0;
+				txt_ConfirmPassword.PasswordChar = (char)0;
+			}
+			else
+			{
+				txt_OldPassword.PasswordChar = '*';
+				txt_EmployeePassword.PasswordChar = '*';
+				txt_ConfirmPassword.PasswordChar = '*';
+			}
+		}
 
 		private void btn_ChangePassword_Click(object sender, EventArgs e)
 		{
-			if(string.IsNullOrEmpty(txt_EmployeeName.Text) || string.IsNullOrEmpty(txt_EmployeeAccount.Text) )
+			if (string.IsNullOrEmpty(txt_EmployeeName.Text) || string.IsNullOrEmpty(txt_EmployeeAccount.Text))
 			{
 				MessageBox.Show("姓名和帳號欄位不可為空");
 				return;
@@ -39,7 +69,7 @@ namespace prjMidtermTopic.Form_Employee
 
 			_dto.EmployeeAccount = txt_EmployeeAccount.Text;
 
-			if (checkBox_ChangePassWord.Checked)
+			if (checkBox_ChangepassWord.Checked)
 			{
 				if (txt_ConfirmPassword.Text != txt_EmployeePassword.Text)
 				{
@@ -56,7 +86,7 @@ namespace prjMidtermTopic.Form_Employee
 				}
 
 				_dto.EmployeePassword = txt_EmployeePassword.Text.GetSaltedSha256();
-			}			
+			}
 
 			new EmployeeRepositoy().Update(_dto);
 
@@ -68,5 +98,7 @@ namespace prjMidtermTopic.Form_Employee
 
 			this.Close();
 		}
+
+
 	}
 }

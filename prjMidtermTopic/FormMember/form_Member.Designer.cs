@@ -55,45 +55,44 @@
 			// label1
 			// 
 			this.label1.AutoSize = true;
-			this.label1.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.label1.Location = new System.Drawing.Point(8, 39);
+			this.label1.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.label1.Location = new System.Drawing.Point(12, 41);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(90, 24);
+			this.label1.Size = new System.Drawing.Size(90, 21);
 			this.label1.TabIndex = 0;
-			this.label1.Text = "會員編號:";
+			this.label1.Text = "會員編號：";
 			// 
 			// txtMemberID
 			// 
-			this.txtMemberID.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.txtMemberID.Location = new System.Drawing.Point(104, 36);
+			this.txtMemberID.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.txtMemberID.Location = new System.Drawing.Point(108, 37);
 			this.txtMemberID.Name = "txtMemberID";
-			this.txtMemberID.Size = new System.Drawing.Size(100, 33);
+			this.txtMemberID.Size = new System.Drawing.Size(100, 29);
 			this.txtMemberID.TabIndex = 0;
 			// 
 			// label2
 			// 
 			this.label2.AutoSize = true;
-			this.label2.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.label2.Location = new System.Drawing.Point(212, 39);
+			this.label2.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.label2.Location = new System.Drawing.Point(259, 41);
 			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(52, 24);
+			this.label2.Size = new System.Drawing.Size(58, 21);
 			this.label2.TabIndex = 0;
-			this.label2.Text = "姓名:";
+			this.label2.Text = "姓名：";
 			// 
 			// txtMemberName
 			// 
-			this.txtMemberName.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.txtMemberName.Location = new System.Drawing.Point(270, 36);
+			this.txtMemberName.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.txtMemberName.Location = new System.Drawing.Point(323, 38);
 			this.txtMemberName.Name = "txtMemberName";
-			this.txtMemberName.Size = new System.Drawing.Size(100, 33);
+			this.txtMemberName.Size = new System.Drawing.Size(100, 29);
 			this.txtMemberName.TabIndex = 1;
 			// 
 			// btnSearch
 			// 
-			this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnSearch.AutoSize = true;
 			this.btnSearch.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.btnSearch.Location = new System.Drawing.Point(707, 33);
+			this.btnSearch.Location = new System.Drawing.Point(812, 32);
 			this.btnSearch.Name = "btnSearch";
 			this.btnSearch.Size = new System.Drawing.Size(109, 36);
 			this.btnSearch.TabIndex = 4;
@@ -124,7 +123,7 @@
 			this.dataGridView1.Name = "dataGridView1";
 			this.dataGridView1.ReadOnly = true;
 			this.dataGridView1.RowTemplate.Height = 24;
-			this.dataGridView1.Size = new System.Drawing.Size(970, 334);
+			this.dataGridView1.Size = new System.Drawing.Size(1122, 334);
 			this.dataGridView1.TabIndex = 3;
 			this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
 			this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
@@ -136,7 +135,7 @@
 			this.Column1.HeaderText = "編號";
 			this.Column1.Name = "Column1";
 			this.Column1.ReadOnly = true;
-			this.Column1.Width = 60;
+			this.Column1.Width = 70;
 			// 
 			// Column2
 			// 
@@ -165,7 +164,7 @@
 			this.Column4.HeaderText = "性別";
 			this.Column4.Name = "Column4";
 			this.Column4.ReadOnly = true;
-			this.Column4.Width = 60;
+			this.Column4.Width = 70;
 			// 
 			// Column5
 			// 
@@ -207,7 +206,7 @@
 			this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnAdd.AutoSize = true;
 			this.btnAdd.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.btnAdd.Location = new System.Drawing.Point(873, 459);
+			this.btnAdd.Location = new System.Drawing.Point(1025, 459);
 			this.btnAdd.Name = "btnAdd";
 			this.btnAdd.Size = new System.Drawing.Size(109, 36);
 			this.btnAdd.TabIndex = 6;
@@ -217,10 +216,9 @@
 			// 
 			// btnReset
 			// 
-			this.btnReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnReset.AutoSize = true;
 			this.btnReset.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.btnReset.Location = new System.Drawing.Point(847, 33);
+			this.btnReset.Location = new System.Drawing.Point(952, 32);
 			this.btnReset.Name = "btnReset";
 			this.btnReset.Size = new System.Drawing.Size(109, 36);
 			this.btnReset.TabIndex = 5;
@@ -231,7 +229,7 @@
 			// txtMaxQuery
 			// 
 			this.txtMaxQuery.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.txtMaxQuery.Location = new System.Drawing.Point(506, 39);
+			this.txtMaxQuery.Location = new System.Drawing.Point(578, 37);
 			this.txtMaxQuery.Name = "txtMaxQuery";
 			this.txtMaxQuery.Size = new System.Drawing.Size(100, 29);
 			this.txtMaxQuery.TabIndex = 3;
@@ -243,7 +241,7 @@
 			this.checkBoxMaxQuery.Checked = true;
 			this.checkBoxMaxQuery.CheckState = System.Windows.Forms.CheckState.Checked;
 			this.checkBoxMaxQuery.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.checkBoxMaxQuery.Location = new System.Drawing.Point(408, 41);
+			this.checkBoxMaxQuery.Location = new System.Drawing.Point(480, 39);
 			this.checkBoxMaxQuery.Name = "checkBoxMaxQuery";
 			this.checkBoxMaxQuery.Size = new System.Drawing.Size(92, 24);
 			this.checkBoxMaxQuery.TabIndex = 2;
@@ -254,7 +252,7 @@
 			// 
 			this.label3.AutoSize = true;
 			this.label3.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.label3.Location = new System.Drawing.Point(612, 42);
+			this.label3.Location = new System.Drawing.Point(684, 40);
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(57, 20);
 			this.label3.TabIndex = 4;
@@ -264,7 +262,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(994, 520);
+			this.ClientSize = new System.Drawing.Size(1146, 520);
 			this.Controls.Add(this.label3);
 			this.Controls.Add(this.checkBoxMaxQuery);
 			this.Controls.Add(this.txtMaxQuery);
