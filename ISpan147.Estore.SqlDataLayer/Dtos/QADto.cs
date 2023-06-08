@@ -19,7 +19,7 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
 			/// <summary>
 			/// 暱稱ID                   
 			/// </summary>
-			public int ForumAccountId { get; set; }    //EmployeeID or MemberId
+			public int ForumAccountId { get; set; }    
 			
 			/// <summary>
 			/// 暱稱

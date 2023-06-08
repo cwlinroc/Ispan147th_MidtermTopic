@@ -25,7 +25,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 		public List<QADto.Theme> GetTheme(int? themeId = null)
 		{
 			StringBuilder sql = new StringBuilder();
-			sql.AppendLine("SELECT ThemeID, ThemeContext, ThemeDateTime ");
+			sql.AppendLine("SELECT ThemeID, ThemeContext, ThemeDateTime, ForumAccountName ");
 			sql.AppendLine("FROM Themes AS T ");
 			sql.AppendLine("JOIN ForumAccounts AS F ON T.ForumAccountID = F.ForumAccountID ");
 			sql.AppendLine("WHERE 1 = 1 ");
@@ -48,8 +48,8 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 		public List<QADto.Theme> SearchTheme(string themeContext = null)
 		{
 			StringBuilder sql = new StringBuilder();
-			sql.AppendLine("SELECT ThemeID, ThemeContext, ThemeDateTime ");
-			sql.AppendLine("FROM THEMES AS T ");
+			sql.AppendLine("SELECT ThemeID, ThemeContext, ThemeDateTime, ForumAccountName  ");
+			sql.AppendLine("FROM Themes AS T ");
 			sql.AppendLine("JOIN ForumAccounts AS F ON T.ForumAccountID = F.ForumAccountID ");
 			sql.AppendLine("WHERE 1 = 1 ");
 	
