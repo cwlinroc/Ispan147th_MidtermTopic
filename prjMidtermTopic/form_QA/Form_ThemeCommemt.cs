@@ -25,6 +25,7 @@ namespace prjMidtermTopic.form_QA
 	public partial class Form_ThemeCommemt : Form, IGridComment
 	{
 		private  int _themeId;
+		private int _commentId;
 		QAService _service;
 		public Form_ThemeCommemt(int themeId)
 		{
@@ -35,9 +36,6 @@ namespace prjMidtermTopic.form_QA
 		private void Form_ThemeCommemt_Load(object sender, EventArgs e)
 		{
 			CommentDisplay();
-			//string sql = $"SELECT * FROM COMMENTS WHERE THEMEID={_themeId}";
-			//ForumAccountService forumAccountService = new ForumAccountService();
-			//var forumAccountName = forumAccountService.GetForumAccountName((int)Authentication.ForumAccountID);
 			Func<SqlDataReader, QADto.Theme> func = (reader) =>
 			new QADto.Theme
 			{
@@ -54,7 +52,6 @@ namespace prjMidtermTopic.form_QA
 				labelThemeDatetime.Text = theme.ThemeDateTime.ToString();
 				richTextBoxTheme.Text = theme.ThemeContext;
 			}
-			//labelThemeRole.Text = $"({Authentication.ForumAccountID.ToString()}) {forumAccountName}";
 		}
 
 		private void buttonDeleteTheme_Click(object sender, EventArgs e)
@@ -69,7 +66,6 @@ namespace prjMidtermTopic.form_QA
 			parent.Display();
 			this.Close();
 		}
-
 		private void buttonCreateCommon_Click(object sender, EventArgs e)
 		{
 			from_CommentCreate commentCreate = new from_CommentCreate(_themeId);
@@ -91,6 +87,47 @@ namespace prjMidtermTopic.form_QA
 			this.dataGridViewComment.Columns["ThemeId"].Visible = false;
 			this.dataGridViewComment.Columns["ForumAccountId"].Visible = false;
 			this.dataGridViewComment.Columns["ForumAccountName"].Visible = false;
+		}
+
+		private List<Comment> selectedComments = new List<Comment>();
+		private void dataGridViewComment_CellContentClick(object sender, DataGridViewCellEventArgs e)
+		{
+			if (dataGridViewComment.Columns[e.ColumnIndex] is DataGridViewCheckBoxColumn && e.RowIndex >= 0)
+			{
+				DataGridViewCheckBoxCell checkBoxCell = (DataGridViewCheckBoxCell)dataGridViewComment.Rows[e.RowIndex].Cells[e.ColumnIndex];
+
+				var data = _service.GetCommentList(_commentId);
+				// 判斷 CheckBox 狀態
+				if (checkBoxCell.Value == null || (bool)checkBoxCell.Value == false)
+				{
+					checkBoxCell.Value = true;
+					
+					
+					// 获取选中行的数据
+					//Comment selectedComment = data[e.RowIndex];
+					Comment selectedComment = dataGridViewComment.Rows[e.RowIndex].DataBoundItem as Comment;
+					selectedComments.Add(selectedComment);
+				}
+				else
+				{
+					checkBoxCell.Value = false;
+					Comment deselectedComment = dataGridViewComment.Rows[e.RowIndex].DataBoundItem as Comment;
+					selectedComments.Remove(deselectedComment);
+				}
+			}
+
+
+		}
+
+		private void buttonDeleteComment_Click(object sender, EventArgs e)
+		{
+			var repo = new QARepository();
+			repo.DeleteComment(_commentId);
+
+
+			IGridComment parent = this as IGridComment;
+			parent.CommentDisplay();
+			MessageBox.Show("刪除成功");
 		}
 	}
 }
