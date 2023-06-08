@@ -149,6 +149,33 @@ namespace prjMidtermTopic.form_Pets
 			int speciesID = (comboBoxSpeciesID.SelectedItem as dynamic).Key;
 			int breedID = (comboBoxBreedID.SelectedItem as dynamic).Key;
 
+			if (speciesID == 1 && (breedID != 5 || breedID != 6 || breedID != 7 || breedID != 8))
+			{
+				MessageBox.Show("物種不相符，請更改");
+				return;
+			}
+
+			if (speciesID == 2 && (breedID != 9 || breedID != 10
+				|| breedID != 11 || breedID != 12 || breedID != 13))
+			{
+				MessageBox.Show("物種不相符，請更改");
+				return;
+			}
+
+			if (speciesID == 3 && (breedID != 15 || breedID != 16
+				|| breedID != 17 || breedID != 18 || breedID != 19))
+			{
+				MessageBox.Show("物種不相符，請更改");
+				return;
+			}
+
+			if (speciesID == 4 && (breedID != 20 || breedID != 21
+				|| breedID != 22 || breedID != 23 || breedID != 24))
+			{
+				MessageBox.Show("物種不相符，請更改");
+				return;
+			}
+
 			var vm = new PetCreateVM()
 			{
 				PetID = int.Parse(txtPetID.Text),
