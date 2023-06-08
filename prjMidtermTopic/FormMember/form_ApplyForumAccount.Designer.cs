@@ -45,7 +45,7 @@
 			this.txtNickName.Location = new System.Drawing.Point(70, 72);
 			this.txtNickName.Name = "txtNickName";
 			this.txtNickName.Size = new System.Drawing.Size(183, 29);
-			this.txtNickName.TabIndex = 23;
+			this.txtNickName.TabIndex = 1;
 			// 
 			// label9
 			// 
@@ -63,7 +63,7 @@
 			this.txtMemberName.Location = new System.Drawing.Point(70, 23);
 			this.txtMemberName.Name = "txtMemberName";
 			this.txtMemberName.Size = new System.Drawing.Size(183, 29);
-			this.txtMemberName.TabIndex = 22;
+			this.txtMemberName.TabIndex = 0;
 			// 
 			// labName
 			// 
@@ -83,7 +83,7 @@
 			this.btnApply.Location = new System.Drawing.Point(173, 152);
 			this.btnApply.Name = "btnApply";
 			this.btnApply.Size = new System.Drawing.Size(80, 30);
-			this.btnApply.TabIndex = 26;
+			this.btnApply.TabIndex = 2;
 			this.btnApply.Text = "申請";
 			this.btnApply.UseVisualStyleBackColor = true;
 			this.btnApply.Click += new System.EventHandler(this.btnApply_Click);
@@ -100,7 +100,7 @@
 			this.txtForumAccountId.Size = new System.Drawing.Size(183, 29);
 			this.txtForumAccountId.TabIndex = 28;
 			// 
-			// form_ApplyForumMember
+			// form_ApplyForumAccount
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -111,8 +111,8 @@
 			this.Controls.Add(this.label9);
 			this.Controls.Add(this.txtMemberName);
 			this.Controls.Add(this.labName);
-			this.Name = "form_ApplyForumMember";
-			this.Text = "form_ApplyForumMember";
+			this.Name = "form_ApplyForumAccount";
+			this.Text = "申請論壇帳戶";
 			this.Load += new System.EventHandler(this.form_ApplyForumAccount_Load);
 			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
 			this.ResumeLayout(false);

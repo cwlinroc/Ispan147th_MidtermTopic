@@ -286,6 +286,9 @@
     <Compile Include="ViewModels\OrderVM.cs" />
     <Compile Include="ViewModels\QAVM.cs" />
     <Compile Include="ViewModels\PetCreateVM.cs" />
+    <EmbeddedResource Include="FormMember\form_ApplyForumAccount.resx">
+      <DependentUpon>form_ApplyForumAccount.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormMember\form_CreateMember.resx">
       <DependentUpon>form_CreateMember.cs</DependentUpon>
     </EmbeddedResource>

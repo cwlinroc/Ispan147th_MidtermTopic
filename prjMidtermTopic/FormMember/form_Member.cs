@@ -1,16 +1,18 @@
 ﻿using ISpan147.Estore.SqlDataLayer.Dtos;
-using Ispan147.Estore.SqlDataLayer.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using prjMidtermTopic.Interfaces;
 using prjMidtermTopic.FormMember;
 using Ispan147.Estore.SqlDataLayer.Services;
-using ISpan147.Estore.SqlDataLayer.Repositories;
 using System.Linq;
 using prjMidtermTopic.Model;
 using prjMidtermTopic.ViewModels;
+using ISpan147.Estore.SqlDataLayer.EFModel;
 using System.Security.Principal;
+using System.Net;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using ISpan147.Estore.SqlDataLayer.Services;
 
 namespace prjMidtermTopic
 {
@@ -44,6 +46,11 @@ namespace prjMidtermTopic
 
 		private void form_Member_Load(object sender, EventArgs e)
 		{
+			if (Authentication.Permission >= 5)
+			{
+				btnAdd.Enabled = false;
+			}
+
 			Display();
 		}
 
@@ -96,7 +103,19 @@ namespace prjMidtermTopic
 				_data = DtoList.Search(sDto).ToList();
 
 				//匯入DataGridView
-				dataGridView1.DataSource = _data;
+				dataGridView1.DataSource = _data.Select(o => new
+				{
+					MemberID = o.MemberID,
+					MemberName = o.MemberName,
+					NickName = o.NickName,
+					DateOfBirth = o.DateOfBirth,
+					Gender = (o.Gender) ? "男" : "女",
+					Account = o.Account,
+					Phone = o.Phone,
+					Address = o.Address,
+					Email = o.Email,
+					Avatar = o.Avatar
+				}).ToList();
 			}
 			catch (Exception ex)
 			{
@@ -122,6 +141,7 @@ namespace prjMidtermTopic
 			{
 				sDto.MaxQueryNumber = int.Parse(txtMaxQuery.Text.Trim());
 			}
+
 			#endregion
 
 			return sDto;
@@ -159,7 +179,19 @@ namespace prjMidtermTopic
 					_sortedIndex = e.ColumnIndex;
 				}
 				//將整理好的_data丟到dataGridView裡面
-				dataGridView1.DataSource = _data.Select(dto => dto.ToVM()).ToArray();
+				dataGridView1.DataSource = _data.Select(o => new
+				{
+					MemberID = o.MemberID,
+					MemberName = o.MemberName,
+					NickName = o.NickName,
+					DateOfBirth = o.DateOfBirth,
+					Gender = (o.Gender) ? "男" : "女",
+					Account = o.Account,
+					Phone = o.Phone,
+					Address = o.Address,
+					Email = o.Email,
+					Avatar = o.Avatar
+				}).ToList();
 			}
 		}
 	}
