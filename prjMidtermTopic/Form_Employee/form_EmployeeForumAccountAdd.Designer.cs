@@ -35,16 +35,18 @@
 			// 
 			// txt_ForumName
 			// 
-			this.txt_ForumName.Location = new System.Drawing.Point(58, 65);
+			this.txt_ForumName.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.txt_ForumName.Location = new System.Drawing.Point(37, 58);
 			this.txt_ForumName.Name = "txt_ForumName";
-			this.txt_ForumName.Size = new System.Drawing.Size(146, 22);
+			this.txt_ForumName.Size = new System.Drawing.Size(146, 29);
 			this.txt_ForumName.TabIndex = 0;
 			// 
 			// btn_Confirm
 			// 
-			this.btn_Confirm.Location = new System.Drawing.Point(88, 110);
+			this.btn_Confirm.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.btn_Confirm.Location = new System.Drawing.Point(73, 103);
 			this.btn_Confirm.Name = "btn_Confirm";
-			this.btn_Confirm.Size = new System.Drawing.Size(75, 23);
+			this.btn_Confirm.Size = new System.Drawing.Size(88, 34);
 			this.btn_Confirm.TabIndex = 1;
 			this.btn_Confirm.Text = "確認新增";
 			this.btn_Confirm.UseVisualStyleBackColor = true;
@@ -53,11 +55,12 @@
 			// label1
 			// 
 			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(56, 36);
+			this.label1.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.label1.Location = new System.Drawing.Point(33, 22);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(53, 12);
+			this.label1.Size = new System.Drawing.Size(90, 21);
 			this.label1.TabIndex = 5;
-			this.label1.Text = "帳號名稱";
+			this.label1.Text = "帳號名稱：";
 			// 
 			// form_EmployeeForumAccountAdd
 			// 

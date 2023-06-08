@@ -114,6 +114,7 @@
 			// btn_EditListItem
 			// 
 			this.btn_EditListItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btn_EditListItem.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.btn_EditListItem.Location = new System.Drawing.Point(605, 24);
 			this.btn_EditListItem.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
 			this.btn_EditListItem.Name = "btn_EditListItem";
@@ -126,6 +127,7 @@
 			// btn_AddListItem
 			// 
 			this.btn_AddListItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btn_AddListItem.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.btn_AddListItem.Location = new System.Drawing.Point(736, 24);
 			this.btn_AddListItem.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
 			this.btn_AddListItem.Name = "btn_AddListItem";
@@ -138,6 +140,7 @@
 			// btn_DelteListItem
 			// 
 			this.btn_DelteListItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.btn_DelteListItem.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.btn_DelteListItem.Location = new System.Drawing.Point(605, 389);
 			this.btn_DelteListItem.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
 			this.btn_DelteListItem.Name = "btn_DelteListItem";
@@ -150,6 +153,7 @@
 			// btn_DeleteOrder
 			// 
 			this.btn_DeleteOrder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.btn_DeleteOrder.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.btn_DeleteOrder.Location = new System.Drawing.Point(736, 389);
 			this.btn_DeleteOrder.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
 			this.btn_DeleteOrder.Name = "btn_DeleteOrder";

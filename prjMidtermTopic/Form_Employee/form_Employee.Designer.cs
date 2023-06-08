@@ -29,16 +29,16 @@
 		private void InitializeComponent()
 		{
 			this.dataGridView_Main = new System.Windows.Forms.DataGridView();
-			this.btn_AddEmployee = new System.Windows.Forms.Button();
-			this.btn_EditData = new System.Windows.Forms.Button();
-			this.btn_RemoveEmployee = new System.Windows.Forms.Button();
-			this.btn_ChangePermission = new System.Windows.Forms.Button();
 			this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.btn_AddEmployee = new System.Windows.Forms.Button();
+			this.btn_EditData = new System.Windows.Forms.Button();
+			this.btn_RemoveEmployee = new System.Windows.Forms.Button();
+			this.btn_ChangePermission = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView_Main)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -64,50 +64,6 @@
 			this.dataGridView_Main.Size = new System.Drawing.Size(445, 373);
 			this.dataGridView_Main.TabIndex = 0;
 			this.dataGridView_Main.SelectionChanged += new System.EventHandler(this.dataGridView_Main_SelectionChanged);
-			// 
-			// btn_AddEmployee
-			// 
-			this.btn_AddEmployee.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btn_AddEmployee.Location = new System.Drawing.Point(534, 45);
-			this.btn_AddEmployee.Name = "btn_AddEmployee";
-			this.btn_AddEmployee.Size = new System.Drawing.Size(100, 34);
-			this.btn_AddEmployee.TabIndex = 1;
-			this.btn_AddEmployee.Text = "新增帳號";
-			this.btn_AddEmployee.UseVisualStyleBackColor = true;
-			this.btn_AddEmployee.Click += new System.EventHandler(this.btn_AddEmployee_Click);
-			// 
-			// btn_EditData
-			// 
-			this.btn_EditData.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btn_EditData.Location = new System.Drawing.Point(534, 136);
-			this.btn_EditData.Name = "btn_EditData";
-			this.btn_EditData.Size = new System.Drawing.Size(100, 34);
-			this.btn_EditData.TabIndex = 1;
-			this.btn_EditData.Text = "修改資料";
-			this.btn_EditData.UseVisualStyleBackColor = true;
-			this.btn_EditData.Click += new System.EventHandler(this.btn_EdditData_Click);
-			// 
-			// btn_RemoveEmployee
-			// 
-			this.btn_RemoveEmployee.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btn_RemoveEmployee.Location = new System.Drawing.Point(534, 381);
-			this.btn_RemoveEmployee.Name = "btn_RemoveEmployee";
-			this.btn_RemoveEmployee.Size = new System.Drawing.Size(100, 34);
-			this.btn_RemoveEmployee.TabIndex = 1;
-			this.btn_RemoveEmployee.Text = "刪除帳號";
-			this.btn_RemoveEmployee.UseVisualStyleBackColor = true;
-			this.btn_RemoveEmployee.Click += new System.EventHandler(this.btn_RemoveEmployee_Click);
-			// 
-			// btn_ChangePermission
-			// 
-			this.btn_ChangePermission.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.btn_ChangePermission.Location = new System.Drawing.Point(534, 303);
-			this.btn_ChangePermission.Name = "btn_ChangePermission";
-			this.btn_ChangePermission.Size = new System.Drawing.Size(100, 34);
-			this.btn_ChangePermission.TabIndex = 1;
-			this.btn_ChangePermission.Text = "調整權限";
-			this.btn_ChangePermission.UseVisualStyleBackColor = true;
-			this.btn_ChangePermission.Click += new System.EventHandler(this.btn_ChangePermission_Click);
 			// 
 			// Column1
 			// 
@@ -152,6 +108,54 @@
 			this.Column6.Name = "Column6";
 			this.Column6.ReadOnly = true;
 			this.Column6.Visible = false;
+			// 
+			// btn_AddEmployee
+			// 
+			this.btn_AddEmployee.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btn_AddEmployee.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.btn_AddEmployee.Location = new System.Drawing.Point(534, 45);
+			this.btn_AddEmployee.Name = "btn_AddEmployee";
+			this.btn_AddEmployee.Size = new System.Drawing.Size(100, 34);
+			this.btn_AddEmployee.TabIndex = 1;
+			this.btn_AddEmployee.Text = "新增帳號";
+			this.btn_AddEmployee.UseVisualStyleBackColor = true;
+			this.btn_AddEmployee.Click += new System.EventHandler(this.btn_AddEmployee_Click);
+			// 
+			// btn_EditData
+			// 
+			this.btn_EditData.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btn_EditData.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.btn_EditData.Location = new System.Drawing.Point(534, 136);
+			this.btn_EditData.Name = "btn_EditData";
+			this.btn_EditData.Size = new System.Drawing.Size(100, 34);
+			this.btn_EditData.TabIndex = 1;
+			this.btn_EditData.Text = "修改資料";
+			this.btn_EditData.UseVisualStyleBackColor = true;
+			this.btn_EditData.Click += new System.EventHandler(this.btn_EdditData_Click);
+			// 
+			// btn_RemoveEmployee
+			// 
+			this.btn_RemoveEmployee.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btn_RemoveEmployee.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.btn_RemoveEmployee.Location = new System.Drawing.Point(534, 381);
+			this.btn_RemoveEmployee.Name = "btn_RemoveEmployee";
+			this.btn_RemoveEmployee.Size = new System.Drawing.Size(100, 34);
+			this.btn_RemoveEmployee.TabIndex = 1;
+			this.btn_RemoveEmployee.Text = "刪除帳號";
+			this.btn_RemoveEmployee.UseVisualStyleBackColor = true;
+			this.btn_RemoveEmployee.Click += new System.EventHandler(this.btn_RemoveEmployee_Click);
+			// 
+			// btn_ChangePermission
+			// 
+			this.btn_ChangePermission.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.btn_ChangePermission.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.btn_ChangePermission.Location = new System.Drawing.Point(534, 303);
+			this.btn_ChangePermission.Name = "btn_ChangePermission";
+			this.btn_ChangePermission.Size = new System.Drawing.Size(100, 34);
+			this.btn_ChangePermission.TabIndex = 1;
+			this.btn_ChangePermission.Text = "調整權限";
+			this.btn_ChangePermission.UseVisualStyleBackColor = true;
+			this.btn_ChangePermission.Click += new System.EventHandler(this.btn_ChangePermission_Click);
 			// 
 			// form_Employee
 			// 

@@ -40,10 +40,11 @@
 			// 
 			// buttonSearch
 			// 
-			this.buttonSearch.Location = new System.Drawing.Point(148, 23);
+			this.buttonSearch.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.buttonSearch.Location = new System.Drawing.Point(223, 23);
 			this.buttonSearch.Margin = new System.Windows.Forms.Padding(2);
 			this.buttonSearch.Name = "buttonSearch";
-			this.buttonSearch.Size = new System.Drawing.Size(61, 23);
+			this.buttonSearch.Size = new System.Drawing.Size(71, 29);
 			this.buttonSearch.TabIndex = 12;
 			this.buttonSearch.Text = "搜尋";
 			this.buttonSearch.UseVisualStyleBackColor = true;
@@ -51,19 +52,21 @@
 			// 
 			// textBoxSearch
 			// 
+			this.textBoxSearch.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.textBoxSearch.Location = new System.Drawing.Point(55, 23);
 			this.textBoxSearch.Margin = new System.Windows.Forms.Padding(2);
 			this.textBoxSearch.Name = "textBoxSearch";
-			this.textBoxSearch.Size = new System.Drawing.Size(76, 22);
+			this.textBoxSearch.Size = new System.Drawing.Size(164, 29);
 			this.textBoxSearch.TabIndex = 11;
 			// 
 			// buttonCreateTheme
 			// 
 			this.buttonCreateTheme.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.buttonCreateTheme.Location = new System.Drawing.Point(526, 353);
+			this.buttonCreateTheme.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.buttonCreateTheme.Location = new System.Drawing.Point(510, 353);
 			this.buttonCreateTheme.Margin = new System.Windows.Forms.Padding(2);
 			this.buttonCreateTheme.Name = "buttonCreateTheme";
-			this.buttonCreateTheme.Size = new System.Drawing.Size(78, 26);
+			this.buttonCreateTheme.Size = new System.Drawing.Size(94, 26);
 			this.buttonCreateTheme.TabIndex = 10;
 			this.buttonCreateTheme.Text = "新增主題";
 			this.buttonCreateTheme.UseVisualStyleBackColor = true;
