@@ -65,13 +65,22 @@ namespace prjMidtermTopic.form_QA
 		private void from_CommentCreate_Load(object sender, EventArgs e)
 		{
 			ForumAccountService forumAccountService = new ForumAccountService();
-			var forumAccountName = forumAccountService.GetForumAccountName((int)Authentication.ForumAccountID);
-
 			
-			// 顯示要留言人資訊
-			labelCommentRoleID.Text = Authentication.ForumAccountID.ToString();
-			labelCommentRoleID.Visible = false; //介面不顯示編號
-			labelCommentRole.Text = $"({Authentication.ForumAccountID.ToString()}) {forumAccountName}";
+			if (Authentication.ForumAccountID.HasValue)
+			{
+				var forumAccountName = forumAccountService.GetForumAccountName((int)Authentication.ForumAccountID);
+				// 顯示要留言人資訊
+				labelCommentRoleID.Text = Authentication.ForumAccountID.ToString();
+				labelCommentRoleID.Visible = false; //介面不顯示編號
+				labelCommentRole.Text = $"({Authentication.ForumAccountID.ToString()}) {forumAccountName}";
+			}
+			else
+			{
+				MessageBox.Show("請先申請論壇帳號~");
+				this.Close();
+			}
+			
+			
 		}
 	}
 }

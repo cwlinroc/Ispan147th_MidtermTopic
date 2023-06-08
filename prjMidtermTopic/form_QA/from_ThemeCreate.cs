@@ -52,12 +52,21 @@ namespace prjMidtermTopic.form_QA
 		private void from_ThemeCreate_Load(object sender, EventArgs e)
 		{
 			ForumAccountService forumAccountService = new ForumAccountService();
-			var forumAccountName = forumAccountService.GetForumAccountName((int)Authentication.ForumAccountID);
-
-			// 顯示要留言人資訊
-			labelThemeRoleID.Text = Authentication.ForumAccountID.ToString();
-			labelThemeRoleID.Visible = false; //介面不顯示編號
-			labelThemeRole.Text = $"({Authentication.ForumAccountID.ToString()}) {forumAccountName}";
+			
+			if (Authentication.ForumAccountID.HasValue)
+			{
+				var forumAccountName = forumAccountService.GetForumAccountName((int)Authentication.ForumAccountID);
+				// 顯示要留言人資訊
+				labelThemeRoleID.Text = Authentication.ForumAccountID.ToString();
+				labelThemeRoleID.Visible = false; //介面不顯示編號
+				labelThemeRole.Text = $"({Authentication.ForumAccountID.ToString()}) {forumAccountName}";
+			}
+			else
+			{
+				MessageBox.Show("請先申請論壇帳號~");
+				this.Close();
+			}
+		
 		}
 	}
 }
