@@ -175,7 +175,7 @@ VALUES
 				.AddBit("@Gender", dto.Gender)
 				.AddInt("@Age", dto.Age)
 				.AddNVarchar("@Description", 500, dto.Description)
-				.AddNVarchar("@Location", 30, dto.Description)
+				.AddNVarchar("@Location", 30, dto.Location)
 				.AddNVarchar("@PetAvatar", 50, dto.PetAvatar)
 				.Build();
 
@@ -198,7 +198,7 @@ VALUES
 				.AddBit("@Gender", dto.Gender)
 				.AddInt("@Age", dto.Age)
 				.AddNVarchar("@Description", 500, dto.Description)
-				.AddNVarchar("@Location", 30, dto.Description)
+				.AddNVarchar("@Location", 30, dto.Location)
 				.AddNVarchar("@PetAvatar", 50, dto.PetAvatar)
 				.Build();
 
