@@ -35,9 +35,10 @@
 			// 
 			// btn_Change
 			// 
-			this.btn_Change.Location = new System.Drawing.Point(52, 83);
+			this.btn_Change.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.btn_Change.Location = new System.Drawing.Point(62, 74);
 			this.btn_Change.Name = "btn_Change";
-			this.btn_Change.Size = new System.Drawing.Size(99, 23);
+			this.btn_Change.Size = new System.Drawing.Size(97, 33);
 			this.btn_Change.TabIndex = 0;
 			this.btn_Change.Text = "更改";
 			this.btn_Change.UseVisualStyleBackColor = true;
@@ -45,17 +46,19 @@
 			// 
 			// txt_Permission
 			// 
-			this.txt_Permission.Location = new System.Drawing.Point(89, 40);
+			this.txt_Permission.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.txt_Permission.Location = new System.Drawing.Point(89, 26);
 			this.txt_Permission.Name = "txt_Permission";
-			this.txt_Permission.Size = new System.Drawing.Size(100, 22);
+			this.txt_Permission.Size = new System.Drawing.Size(100, 29);
 			this.txt_Permission.TabIndex = 1;
 			// 
 			// label1
 			// 
 			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(30, 43);
+			this.label1.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.label1.Location = new System.Drawing.Point(25, 29);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(41, 12);
+			this.label1.Size = new System.Drawing.Size(58, 21);
 			this.label1.TabIndex = 2;
 			this.label1.Text = "權限：";
 			// 

@@ -56,8 +56,8 @@
 			// 
 			// btn_Update
 			// 
-			this.btn_Update.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.btn_Update.Location = new System.Drawing.Point(671, 310);
+			this.btn_Update.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.btn_Update.Location = new System.Drawing.Point(714, 328);
 			this.btn_Update.Name = "btn_Update";
 			this.btn_Update.Size = new System.Drawing.Size(95, 34);
 			this.btn_Update.TabIndex = 7;
@@ -68,72 +68,86 @@
 			// label3
 			// 
 			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(40, 75);
+			this.label3.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.label3.Location = new System.Drawing.Point(40, 88);
 			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(65, 12);
+			this.label3.Size = new System.Drawing.Size(90, 21);
 			this.label3.TabIndex = 9;
 			this.label3.Text = "商品類別：";
+			this.label3.Click += new System.EventHandler(this.label3_Click);
 			// 
 			// txt_MerchandiseName
 			// 
-			this.txt_MerchandiseName.Location = new System.Drawing.Point(116, 44);
+			this.txt_MerchandiseName.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.txt_MerchandiseName.Location = new System.Drawing.Point(135, 51);
 			this.txt_MerchandiseName.Name = "txt_MerchandiseName";
-			this.txt_MerchandiseName.Size = new System.Drawing.Size(266, 22);
+			this.txt_MerchandiseName.Size = new System.Drawing.Size(266, 29);
 			this.txt_MerchandiseName.TabIndex = 0;
 			// 
 			// label2
 			// 
 			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(40, 47);
+			this.label2.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.label2.Location = new System.Drawing.Point(40, 54);
 			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(65, 12);
+			this.label2.Size = new System.Drawing.Size(90, 21);
 			this.label2.TabIndex = 10;
 			this.label2.Text = "商品名稱：";
+			this.label2.Click += new System.EventHandler(this.label2_Click);
 			// 
 			// label1
 			// 
 			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(40, 103);
+			this.label1.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.label1.Location = new System.Drawing.Point(40, 123);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(41, 12);
+			this.label1.Size = new System.Drawing.Size(58, 21);
 			this.label1.TabIndex = 9;
 			this.label1.Text = "價格：";
+			this.label1.Click += new System.EventHandler(this.label1_Click);
 			// 
 			// txt_Price
 			// 
-			this.txt_Price.Location = new System.Drawing.Point(116, 100);
+			this.txt_Price.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.txt_Price.Location = new System.Drawing.Point(135, 120);
 			this.txt_Price.Name = "txt_Price";
-			this.txt_Price.Size = new System.Drawing.Size(266, 22);
+			this.txt_Price.Size = new System.Drawing.Size(266, 29);
 			this.txt_Price.TabIndex = 2;
 			// 
 			// label4
 			// 
 			this.label4.AutoSize = true;
-			this.label4.Location = new System.Drawing.Point(40, 131);
+			this.label4.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.label4.Location = new System.Drawing.Point(40, 158);
 			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(65, 12);
+			this.label4.Size = new System.Drawing.Size(90, 21);
 			this.label4.TabIndex = 9;
 			this.label4.Text = "庫存數量：";
+			this.label4.Click += new System.EventHandler(this.label4_Click);
 			// 
 			// txt_Amount
 			// 
-			this.txt_Amount.Location = new System.Drawing.Point(116, 128);
+			this.txt_Amount.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.txt_Amount.Location = new System.Drawing.Point(135, 155);
 			this.txt_Amount.Name = "txt_Amount";
-			this.txt_Amount.Size = new System.Drawing.Size(266, 22);
+			this.txt_Amount.Size = new System.Drawing.Size(266, 29);
 			this.txt_Amount.TabIndex = 3;
 			// 
 			// label5
 			// 
 			this.label5.AutoSize = true;
-			this.label5.Location = new System.Drawing.Point(40, 159);
+			this.label5.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.label5.Location = new System.Drawing.Point(40, 193);
 			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(65, 12);
+			this.label5.Size = new System.Drawing.Size(90, 21);
 			this.label5.TabIndex = 9;
 			this.label5.Text = "商品描述：";
+			this.label5.Click += new System.EventHandler(this.label5_Click);
 			// 
 			// txt_Description
 			// 
-			this.txt_Description.Location = new System.Drawing.Point(116, 156);
+			this.txt_Description.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.txt_Description.Location = new System.Drawing.Point(135, 190);
 			this.txt_Description.Multiline = true;
 			this.txt_Description.Name = "txt_Description";
 			this.txt_Description.Size = new System.Drawing.Size(266, 172);
@@ -142,26 +156,30 @@
 			// label6
 			// 
 			this.label6.AutoSize = true;
-			this.label6.Location = new System.Drawing.Point(405, 233);
+			this.label6.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.label6.Location = new System.Drawing.Point(448, 236);
 			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(65, 12);
+			this.label6.Size = new System.Drawing.Size(90, 21);
 			this.label6.TabIndex = 9;
 			this.label6.Text = "匯入圖片：";
+			this.label6.Click += new System.EventHandler(this.label6_Click);
 			// 
 			// txt_ImageURL
 			// 
-			this.txt_ImageURL.Location = new System.Drawing.Point(481, 230);
+			this.txt_ImageURL.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.txt_ImageURL.Location = new System.Drawing.Point(543, 233);
 			this.txt_ImageURL.Name = "txt_ImageURL";
 			this.txt_ImageURL.ReadOnly = true;
-			this.txt_ImageURL.Size = new System.Drawing.Size(266, 22);
+			this.txt_ImageURL.Size = new System.Drawing.Size(266, 29);
 			this.txt_ImageURL.TabIndex = 12;
 			// 
 			// comboBox_CategoryId
 			// 
+			this.comboBox_CategoryId.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.comboBox_CategoryId.FormattingEnabled = true;
-			this.comboBox_CategoryId.Location = new System.Drawing.Point(116, 73);
+			this.comboBox_CategoryId.Location = new System.Drawing.Point(135, 86);
 			this.comboBox_CategoryId.Name = "comboBox_CategoryId";
-			this.comboBox_CategoryId.Size = new System.Drawing.Size(266, 20);
+			this.comboBox_CategoryId.Size = new System.Drawing.Size(266, 28);
 			this.comboBox_CategoryId.TabIndex = 1;
 			// 
 			// errorProvider1
@@ -171,24 +189,27 @@
 			// label7
 			// 
 			this.label7.AutoSize = true;
+			this.label7.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.label7.Location = new System.Drawing.Point(40, 19);
 			this.label7.Name = "label7";
-			this.label7.Size = new System.Drawing.Size(65, 12);
+			this.label7.Size = new System.Drawing.Size(90, 21);
 			this.label7.TabIndex = 10;
 			this.label7.Text = "商品編號：";
+			this.label7.Click += new System.EventHandler(this.label7_Click);
 			// 
 			// txt_MerchandiseId
 			// 
-			this.txt_MerchandiseId.Location = new System.Drawing.Point(116, 16);
+			this.txt_MerchandiseId.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.txt_MerchandiseId.Location = new System.Drawing.Point(135, 16);
 			this.txt_MerchandiseId.Name = "txt_MerchandiseId";
 			this.txt_MerchandiseId.ReadOnly = true;
-			this.txt_MerchandiseId.Size = new System.Drawing.Size(266, 22);
+			this.txt_MerchandiseId.Size = new System.Drawing.Size(266, 29);
 			this.txt_MerchandiseId.TabIndex = 11;
 			// 
 			// btn_Delete
 			// 
-			this.btn_Delete.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.btn_Delete.Location = new System.Drawing.Point(570, 310);
+			this.btn_Delete.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.btn_Delete.Location = new System.Drawing.Point(613, 328);
 			this.btn_Delete.Name = "btn_Delete";
 			this.btn_Delete.Size = new System.Drawing.Size(95, 34);
 			this.btn_Delete.TabIndex = 8;
@@ -198,7 +219,8 @@
 			// 
 			// btn_SelectNewImage
 			// 
-			this.btn_SelectNewImage.Location = new System.Drawing.Point(598, 258);
+			this.btn_SelectNewImage.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.btn_SelectNewImage.Location = new System.Drawing.Point(660, 268);
 			this.btn_SelectNewImage.Name = "btn_SelectNewImage";
 			this.btn_SelectNewImage.Size = new System.Drawing.Size(74, 23);
 			this.btn_SelectNewImage.TabIndex = 5;
@@ -209,7 +231,8 @@
 			// btn_DeleteImage
 			// 
 			this.btn_DeleteImage.Enabled = false;
-			this.btn_DeleteImage.Location = new System.Drawing.Point(678, 258);
+			this.btn_DeleteImage.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.btn_DeleteImage.Location = new System.Drawing.Point(740, 268);
 			this.btn_DeleteImage.Name = "btn_DeleteImage";
 			this.btn_DeleteImage.Size = new System.Drawing.Size(69, 23);
 			this.btn_DeleteImage.TabIndex = 6;
@@ -219,7 +242,7 @@
 			// 
 			// pictureBox_Image
 			// 
-			this.pictureBox_Image.Location = new System.Drawing.Point(481, 16);
+			this.pictureBox_Image.Location = new System.Drawing.Point(543, 16);
 			this.pictureBox_Image.Name = "pictureBox_Image";
 			this.pictureBox_Image.Size = new System.Drawing.Size(266, 205);
 			this.pictureBox_Image.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -229,17 +252,19 @@
 			// label8
 			// 
 			this.label8.AutoSize = true;
-			this.label8.Location = new System.Drawing.Point(405, 19);
+			this.label8.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.label8.Location = new System.Drawing.Point(448, 16);
 			this.label8.Name = "label8";
-			this.label8.Size = new System.Drawing.Size(65, 12);
+			this.label8.Size = new System.Drawing.Size(90, 21);
 			this.label8.TabIndex = 15;
 			this.label8.Text = "商品圖片：";
+			this.label8.Click += new System.EventHandler(this.label8_Click);
 			// 
 			// form_EditMerchandise
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(778, 356);
+			this.ClientSize = new System.Drawing.Size(851, 382);
 			this.Controls.Add(this.pictureBox_Image);
 			this.Controls.Add(this.label8);
 			this.Controls.Add(this.btn_DeleteImage);

@@ -38,7 +38,7 @@
 			this.btnConfirm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnConfirm.AutoSize = true;
 			this.btnConfirm.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.btnConfirm.Location = new System.Drawing.Point(213, 143);
+			this.btnConfirm.Location = new System.Drawing.Point(213, 87);
 			this.btnConfirm.Name = "btnConfirm";
 			this.btnConfirm.Size = new System.Drawing.Size(83, 30);
 			this.btnConfirm.TabIndex = 29;
@@ -49,7 +49,7 @@
 			// txtForumName
 			// 
 			this.txtForumName.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.txtForumName.Location = new System.Drawing.Point(100, 28);
+			this.txtForumName.Location = new System.Drawing.Point(113, 28);
 			this.txtForumName.Name = "txtForumName";
 			this.txtForumName.Size = new System.Drawing.Size(183, 29);
 			this.txtForumName.TabIndex = 27;
@@ -57,23 +57,23 @@
 			// label9
 			// 
 			this.label9.AutoSize = true;
-			this.label9.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.label9.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.label9.Location = new System.Drawing.Point(17, 31);
 			this.label9.Name = "label9";
-			this.label9.Size = new System.Drawing.Size(77, 20);
+			this.label9.Size = new System.Drawing.Size(90, 21);
 			this.label9.TabIndex = 28;
-			this.label9.Text = "論壇稱呼:";
+			this.label9.Text = "論壇暱稱：";
 			// 
 			// form_EditForumName
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(308, 185);
+			this.ClientSize = new System.Drawing.Size(316, 151);
 			this.Controls.Add(this.btnConfirm);
 			this.Controls.Add(this.txtForumName);
 			this.Controls.Add(this.label9);
 			this.Name = "form_EditForumName";
-			this.Text = "form_EditForumName";
+			this.Text = "修改論壇暱稱";
 			this.Load += new System.EventHandler(this.form_EditForumName_Load);
 			this.ResumeLayout(false);
 			this.PerformLayout();
