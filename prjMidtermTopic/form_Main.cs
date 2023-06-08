@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -31,6 +32,19 @@ namespace prjMidtermTopic
 			menuStrip_Main.Renderer = new ColoredRenderer();
 
 			MaximizeWindow();
+
+			if (!Directory.Exists(@"images/MerchandisePicture/"))
+			{
+				Directory.CreateDirectory(@"images/MerchandisePicture/");
+			}
+			if (!Directory.Exists(@"images/avatar/"))
+			{
+				Directory.CreateDirectory(@"images/avatar/");
+			}
+			if (!Directory.Exists(@"images/petavatar/"))
+			{
+				Directory.CreateDirectory(@"images/petavatar/");
+			}
 		}
 
 		//closed
