@@ -40,8 +40,8 @@ namespace prjMidtermTopic
 
             };
 
-            
-        }
+			Modifier.ModGridView(dataGridView1);
+		}
         public void Display()
         {
             try
@@ -83,7 +83,8 @@ namespace prjMidtermTopic
 
             var frm = new form_AdoptListEdit(id);
             frm.Owner = this;
-            frm.ShowDialog();
+			Modifier.ModForm(frm);
+			frm.ShowDialog();
         }
         private void OrderByHeader(int columnIndex)
         {
@@ -133,7 +134,8 @@ namespace prjMidtermTopic
         {
             var form = new form_AdoptAdd();
             form.Owner = this;
-            form.ShowDialog();
+			Modifier.ModForm(form);
+			form.ShowDialog();
         }
     }
 }

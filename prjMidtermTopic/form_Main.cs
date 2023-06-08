@@ -303,6 +303,7 @@ namespace prjMidtermTopic
 			var dto = new EmployeeServices().Get(Authentication.EmployeeAccount);
 			var frm = new form_EmployeeEdit(dto);
 
+			Modifier.ModForm(frm);
 			frm.ShowDialog();
 		}
 

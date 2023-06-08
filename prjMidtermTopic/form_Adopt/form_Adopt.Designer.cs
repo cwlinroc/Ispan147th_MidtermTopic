@@ -29,10 +29,6 @@
         private void InitializeComponent()
         {
 			this.dataGridView1 = new System.Windows.Forms.DataGridView();
-			this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.adoptid = new System.Windows.Forms.Label();
 			this.txt_adoptID = new System.Windows.Forms.TextBox();
 			this.txt_petID = new System.Windows.Forms.TextBox();
@@ -47,6 +43,10 @@
 			this.label6 = new System.Windows.Forms.Label();
 			this.Add = new System.Windows.Forms.Button();
 			this.search = new System.Windows.Forms.Button();
+			this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -68,30 +68,6 @@
 			this.dataGridView1.TabIndex = 0;
 			this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
 			this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
-			// 
-			// Column1
-			// 
-			this.Column1.DataPropertyName = "AdoptID";
-			this.Column1.HeaderText = "編號";
-			this.Column1.Name = "Column1";
-			// 
-			// Column2
-			// 
-			this.Column2.DataPropertyName = "PetID";
-			this.Column2.HeaderText = "寵物編號";
-			this.Column2.Name = "Column2";
-			// 
-			// Column3
-			// 
-			this.Column3.DataPropertyName = "MemberID";
-			this.Column3.HeaderText = "會員編號";
-			this.Column3.Name = "Column3";
-			// 
-			// Column4
-			// 
-			this.Column4.DataPropertyName = "ApplicationTime";
-			this.Column4.HeaderText = "領養申請時間";
-			this.Column4.Name = "Column4";
 			// 
 			// adoptid
 			// 
@@ -199,6 +175,7 @@
 			// 
 			// Add
 			// 
+			this.Add.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.Add.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.Add.Location = new System.Drawing.Point(595, 487);
 			this.Add.Name = "Add";
@@ -218,6 +195,31 @@
 			this.search.Text = "查詢";
 			this.search.UseVisualStyleBackColor = true;
 			this.search.Click += new System.EventHandler(this.search_Click);
+			// 
+			// Column1
+			// 
+			this.Column1.DataPropertyName = "AdoptID";
+			this.Column1.HeaderText = "編號";
+			this.Column1.Name = "Column1";
+			// 
+			// Column2
+			// 
+			this.Column2.DataPropertyName = "PetID";
+			this.Column2.HeaderText = "寵物編號";
+			this.Column2.Name = "Column2";
+			// 
+			// Column3
+			// 
+			this.Column3.DataPropertyName = "MemberID";
+			this.Column3.HeaderText = "會員編號";
+			this.Column3.Name = "Column3";
+			// 
+			// Column4
+			// 
+			this.Column4.DataPropertyName = "ApplicationTime";
+			this.Column4.HeaderText = "領養申請時間";
+			this.Column4.Name = "Column4";
+			this.Column4.Width = 150;
 			// 
 			// form_Adopt
 			// 
@@ -265,9 +267,9 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button Add;
         private System.Windows.Forms.Button search;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-    }
+		private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+	}
 }

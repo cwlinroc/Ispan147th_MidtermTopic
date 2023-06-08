@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using ISpan147.Estore.SqlDataLayer.Repositories;
 using prjMidtermTopic.form_Pets;
 using ISpan147.Estore.SqlDataLayer.Services;
+using prjMidtermTopic.Model;
 
 namespace prjMidtermTopic
 {
@@ -65,6 +66,8 @@ namespace prjMidtermTopic
 
 			comboBoxSortBy.Items.AddRange(SortingOptionNames);
 			comboBoxSortBy.SelectedIndex = 0;
+
+			Modifier.ModGridView(dataGridView1);
 		}
 
 		public void Display()
@@ -132,6 +135,7 @@ namespace prjMidtermTopic
 
 			var frm = new form_PetEdit(id);
 			frm.Owner = this;
+			Modifier.ModForm(frm);
 			frm.ShowDialog();
 		}
 
@@ -139,6 +143,7 @@ namespace prjMidtermTopic
 		{
 			var frm = new form_PetCreate();
 			frm.Owner = this;
+			Modifier.ModForm(frm);
 			frm.ShowDialog();
 		}
 

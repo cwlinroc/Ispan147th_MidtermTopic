@@ -34,6 +34,11 @@
 			this.txtMemberName = new System.Windows.Forms.TextBox();
 			this.btnSearch = new System.Windows.Forms.Button();
 			this.dataGridView1 = new System.Windows.Forms.DataGridView();
+			this.btnAdd = new System.Windows.Forms.Button();
+			this.btnReset = new System.Windows.Forms.Button();
+			this.txtMaxQuery = new System.Windows.Forms.TextBox();
+			this.checkBoxMaxQuery = new System.Windows.Forms.CheckBox();
+			this.label3 = new System.Windows.Forms.Label();
 			this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,11 +51,6 @@
 			this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.btnAdd = new System.Windows.Forms.Button();
-			this.btnReset = new System.Windows.Forms.Button();
-			this.txtMaxQuery = new System.Windows.Forms.TextBox();
-			this.checkBoxMaxQuery = new System.Windows.Forms.CheckBox();
-			this.label3 = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -134,92 +134,6 @@
 			this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
 			this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
 			// 
-			// Column1
-			// 
-			this.Column1.DataPropertyName = "MemberID";
-			this.Column1.HeaderText = "編號";
-			this.Column1.Name = "Column1";
-			this.Column1.ReadOnly = true;
-			this.Column1.Width = 60;
-			// 
-			// Column2
-			// 
-			this.Column2.DataPropertyName = "MemberName";
-			this.Column2.HeaderText = "姓名";
-			this.Column2.Name = "Column2";
-			this.Column2.ReadOnly = true;
-			// 
-			// Column12
-			// 
-			this.Column12.DataPropertyName = "ForumAccountID";
-			this.Column12.HeaderText = "論壇帳戶編號";
-			this.Column12.Name = "Column12";
-			this.Column12.ReadOnly = true;
-			// 
-			// Column11
-			// 
-			this.Column11.DataPropertyName = "NickName";
-			this.Column11.HeaderText = "暱稱";
-			this.Column11.Name = "Column11";
-			this.Column11.ReadOnly = true;
-			// 
-			// Column3
-			// 
-			this.Column3.DataPropertyName = "DateOfBirth";
-			this.Column3.HeaderText = "生日";
-			this.Column3.Name = "Column3";
-			this.Column3.ReadOnly = true;
-			// 
-			// Column4
-			// 
-			this.Column4.DataPropertyName = "Gender";
-			this.Column4.HeaderText = "性別";
-			this.Column4.Name = "Column4";
-			this.Column4.ReadOnly = true;
-			this.Column4.Width = 60;
-			// 
-			// Column5
-			// 
-			this.Column5.DataPropertyName = "Account";
-			this.Column5.HeaderText = "帳號";
-			this.Column5.Name = "Column5";
-			this.Column5.ReadOnly = true;
-			// 
-			// Column6
-			// 
-			this.Column6.DataPropertyName = "Password";
-			this.Column6.HeaderText = "密碼";
-			this.Column6.Name = "Column6";
-			this.Column6.ReadOnly = true;
-			// 
-			// Column7
-			// 
-			this.Column7.DataPropertyName = "Phone";
-			this.Column7.HeaderText = "電話";
-			this.Column7.Name = "Column7";
-			this.Column7.ReadOnly = true;
-			// 
-			// Column8
-			// 
-			this.Column8.DataPropertyName = "Address";
-			this.Column8.HeaderText = "地址";
-			this.Column8.Name = "Column8";
-			this.Column8.ReadOnly = true;
-			// 
-			// Column9
-			// 
-			this.Column9.DataPropertyName = "Email";
-			this.Column9.HeaderText = "Email";
-			this.Column9.Name = "Column9";
-			this.Column9.ReadOnly = true;
-			// 
-			// Column10
-			// 
-			this.Column10.DataPropertyName = "Avatar";
-			this.Column10.HeaderText = "頭像";
-			this.Column10.Name = "Column10";
-			this.Column10.ReadOnly = true;
-			// 
 			// btnAdd
 			// 
 			this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -278,6 +192,93 @@
 			this.label3.TabIndex = 7;
 			this.label3.Text = "筆資料";
 			// 
+			// Column1
+			// 
+			this.Column1.DataPropertyName = "MemberID";
+			this.Column1.HeaderText = "編號";
+			this.Column1.Name = "Column1";
+			this.Column1.ReadOnly = true;
+			this.Column1.Width = 70;
+			// 
+			// Column2
+			// 
+			this.Column2.DataPropertyName = "MemberName";
+			this.Column2.HeaderText = "姓名";
+			this.Column2.Name = "Column2";
+			this.Column2.ReadOnly = true;
+			// 
+			// Column12
+			// 
+			this.Column12.DataPropertyName = "ForumAccountID";
+			this.Column12.HeaderText = "論壇帳戶編號";
+			this.Column12.Name = "Column12";
+			this.Column12.ReadOnly = true;
+			this.Column12.Width = 120;
+			// 
+			// Column11
+			// 
+			this.Column11.DataPropertyName = "NickName";
+			this.Column11.HeaderText = "暱稱";
+			this.Column11.Name = "Column11";
+			this.Column11.ReadOnly = true;
+			// 
+			// Column3
+			// 
+			this.Column3.DataPropertyName = "DateOfBirth";
+			this.Column3.HeaderText = "生日";
+			this.Column3.Name = "Column3";
+			this.Column3.ReadOnly = true;
+			// 
+			// Column4
+			// 
+			this.Column4.DataPropertyName = "Gender";
+			this.Column4.HeaderText = "性別";
+			this.Column4.Name = "Column4";
+			this.Column4.ReadOnly = true;
+			this.Column4.Width = 70;
+			// 
+			// Column5
+			// 
+			this.Column5.DataPropertyName = "Account";
+			this.Column5.HeaderText = "帳號";
+			this.Column5.Name = "Column5";
+			this.Column5.ReadOnly = true;
+			// 
+			// Column6
+			// 
+			this.Column6.DataPropertyName = "Password";
+			this.Column6.HeaderText = "密碼";
+			this.Column6.Name = "Column6";
+			this.Column6.ReadOnly = true;
+			// 
+			// Column7
+			// 
+			this.Column7.DataPropertyName = "Phone";
+			this.Column7.HeaderText = "電話";
+			this.Column7.Name = "Column7";
+			this.Column7.ReadOnly = true;
+			// 
+			// Column8
+			// 
+			this.Column8.DataPropertyName = "Address";
+			this.Column8.HeaderText = "地址";
+			this.Column8.Name = "Column8";
+			this.Column8.ReadOnly = true;
+			// 
+			// Column9
+			// 
+			this.Column9.DataPropertyName = "Email";
+			this.Column9.HeaderText = "Email";
+			this.Column9.Name = "Column9";
+			this.Column9.ReadOnly = true;
+			// 
+			// Column10
+			// 
+			this.Column10.DataPropertyName = "Avatar";
+			this.Column10.HeaderText = "頭像";
+			this.Column10.Name = "Column10";
+			this.Column10.ReadOnly = true;
+			// 
 			// form_Member
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -313,6 +314,9 @@
 		private System.Windows.Forms.DataGridView dataGridView1;
 		private System.Windows.Forms.Button btnAdd;
 		private System.Windows.Forms.Button btnReset;
+		private System.Windows.Forms.TextBox txtMaxQuery;
+		private System.Windows.Forms.CheckBox checkBoxMaxQuery;
+		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
@@ -325,8 +329,5 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
-		private System.Windows.Forms.TextBox txtMaxQuery;
-		private System.Windows.Forms.CheckBox checkBoxMaxQuery;
-		private System.Windows.Forms.Label label3;
 	}
 }

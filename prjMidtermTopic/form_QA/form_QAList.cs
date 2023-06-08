@@ -3,6 +3,7 @@ using ISpan147.Estore.SqlDataLayer.Repositories;
 using ISpan147.Estore.SqlDataLayer.Services;
 using prjMidtermTopic.form_QA;
 using prjMidtermTopic.Interfaces;
+using prjMidtermTopic.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,6 +28,8 @@ namespace prjMidtermTopic
 		{
             InitializeComponent();
 			_service = new QAService();
+
+			Modifier.ModGridView(dataGridViewTheme);
 		}
 
 		private void form_QAList_Load(object sender, EventArgs e)
@@ -37,7 +40,6 @@ namespace prjMidtermTopic
 		private void buttonSearch_Click(object sender, EventArgs e)
 		{
 			var data = _service.SearchTheme(this.textBoxSearch.Text);
-			
 			
 			// 繫結到DataGridView
 			DataGridViewThemeShow(data);
@@ -70,6 +72,7 @@ namespace prjMidtermTopic
 
 			var frm = new Form_ThemeCommemt(themeId);
 			frm.Owner = this;
+			Modifier.ModForm(frm);
 			frm.ShowDialog();
 		}
 
@@ -77,6 +80,7 @@ namespace prjMidtermTopic
 		{
 			from_ThemeCreate qaCreate = new from_ThemeCreate();
 			qaCreate.Owner = this;
+			Modifier.ModForm(qaCreate);
 			qaCreate.ShowDialog();
 		}
 

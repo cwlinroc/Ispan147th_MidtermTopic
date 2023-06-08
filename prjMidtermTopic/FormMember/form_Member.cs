@@ -40,6 +40,8 @@ namespace prjMidtermTopic
 				//	return prevStr.CompareTo(nextStr); } }
 				{ "Address", (prev, next) => (prev.Address??"").CompareTo(next.Address??"")}
 			};
+
+			Modifier.ModGridView(dataGridView1);
 		}
 
 		private void form_Member_Load(object sender, EventArgs e)
@@ -72,8 +74,8 @@ namespace prjMidtermTopic
 			int id = this._data[e.RowIndex].MemberID;
 
 			var frm = new form_EditMember(id);
-			Modifier.ModForm(frm);
 			frm.Owner = this;
+			Modifier.ModForm(frm);
 			frm.ShowDialog();
 		}
 

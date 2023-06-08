@@ -41,6 +41,8 @@ namespace prjMidtermTopic.Form_Order
 				{ "OrderID", (prev, next) => prev.OrderID.CompareTo(next.OrderID) },
 				{ "Quantity", (prev, next) => prev.Quantity.CompareTo(next.Quantity) }
 			};
+
+			Modifier.ModGridView(dataGridView_Main);
 		}
 
 		//load
