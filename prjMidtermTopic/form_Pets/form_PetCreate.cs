@@ -172,7 +172,6 @@ namespace prjMidtermTopic.form_Pets
 			{
 				parent.Display(); // 呼叫它的 Display() 重新顯示資料
 			}
-			this.Close();
 		}
 
 		private void radioButtonMale_CheckedChanged(object sender, EventArgs e)
