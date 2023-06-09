@@ -74,7 +74,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 
 			if (string.IsNullOrEmpty(sDto.PetName) == false)
 			{
-				where = $" AND PetName LIKE '%' + @PetName + '%'";
+				where += $" AND PetName LIKE '%' + @PetName + '%'";
 				builder.AddNVarchar("PetName", 15, sDto.PetName);
 			}
 
