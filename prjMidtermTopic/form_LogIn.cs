@@ -28,20 +28,29 @@ namespace prjMidtermTopic
 
 		private void btn_LogIn_Click(object sender, EventArgs e)
 		{
-			var repo = new EmployeeRepositoy();
-			var dto = repo.Get(txt_Account.Text);
-
-			if (dto == null || txt_Password.Text.GetSaltedSha256() != dto.EmployeePassword)
+			try
 			{
-				MessageBox.Show("帳號密碼錯誤");
-				return;
-			}
+				var repo = new EmployeeRepositoy();
+				var dto = repo.Get(txt_Account.Text);
 
-			Authentication.LogIn(dto);
-			var frm = new form_Main();
-			frm.Owner = this;
-			this.Hide();
-			frm.Show();
+				if (dto == null || txt_Password.Text.GetSaltedSha256() != dto.EmployeePassword)
+				{
+					MessageBox.Show("帳號密碼錯誤");
+					return;
+				}
+
+				Authentication.LogIn(dto);
+				var frm = new form_Main();
+				frm.Owner = this;
+				this.Hide();
+				frm.Show();
+			}
+			catch(Exception ex)
+			{
+				MessageBox.Show($"登入失敗，原因：{ex.Message}");
+			}
+			
+			
 		}		
 
 		private void btn_Close_Click(object sender, EventArgs e)

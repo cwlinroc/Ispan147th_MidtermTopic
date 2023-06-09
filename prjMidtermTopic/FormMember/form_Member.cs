@@ -47,12 +47,7 @@ namespace prjMidtermTopic
 		}
 
 		private void form_Member_Load(object sender, EventArgs e)
-		{
-			if (Authentication.Permission >= 5)
-			{
-				btnAdd.Enabled = false;
-			}
-
+		{			
 			Display();
 			if (Authentication.Permission > 4) btnAdd.Enabled = false;
 		}

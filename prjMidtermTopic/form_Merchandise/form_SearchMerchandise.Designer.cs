@@ -222,10 +222,12 @@
 			// 
 			// comboBox_CategoryId
 			// 
+			this.comboBox_CategoryId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.comboBox_CategoryId.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.comboBox_CategoryId.FormattingEnabled = true;
-			this.comboBox_CategoryId.Location = new System.Drawing.Point(370, 34);
+			this.comboBox_CategoryId.Location = new System.Drawing.Point(371, 31);
 			this.comboBox_CategoryId.Name = "comboBox_CategoryId";
-			this.comboBox_CategoryId.Size = new System.Drawing.Size(121, 20);
+			this.comboBox_CategoryId.Size = new System.Drawing.Size(121, 28);
 			this.comboBox_CategoryId.TabIndex = 2;
 			// 
 			// label3
@@ -299,10 +301,12 @@
 			// 
 			// comboBox_SortBy
 			// 
+			this.comboBox_SortBy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.comboBox_SortBy.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.comboBox_SortBy.FormattingEnabled = true;
-			this.comboBox_SortBy.Location = new System.Drawing.Point(915, 55);
+			this.comboBox_SortBy.Location = new System.Drawing.Point(915, 51);
 			this.comboBox_SortBy.Name = "comboBox_SortBy";
-			this.comboBox_SortBy.Size = new System.Drawing.Size(121, 20);
+			this.comboBox_SortBy.Size = new System.Drawing.Size(121, 28);
 			this.comboBox_SortBy.TabIndex = 7;
 			// 
 			// label7
@@ -319,7 +323,7 @@
 			// checkBox_desc
 			// 
 			this.checkBox_desc.AutoSize = true;
-			this.checkBox_desc.Location = new System.Drawing.Point(1042, 59);
+			this.checkBox_desc.Location = new System.Drawing.Point(1042, 57);
 			this.checkBox_desc.Name = "checkBox_desc";
 			this.checkBox_desc.Size = new System.Drawing.Size(48, 16);
 			this.checkBox_desc.TabIndex = 8;

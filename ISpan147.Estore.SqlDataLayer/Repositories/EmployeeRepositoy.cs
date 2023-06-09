@@ -17,7 +17,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 			if (string.IsNullOrEmpty(account)) return null;
 			var db = new AppDbContext();
 			var obj = db.Employees.Where(o => o.EmployeeAccount == account).FirstOrDefault();
-			if (db == null) return null;
+			if (obj == null) return null;
 			return obj.ToDto();
 		}
 
