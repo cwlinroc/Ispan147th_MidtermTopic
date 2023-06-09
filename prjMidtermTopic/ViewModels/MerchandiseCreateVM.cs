@@ -45,7 +45,7 @@ namespace prjMidtermTopic.ViewModels
 		public string Description { get; set; }
 
 		[Display(Name = "商品圖片")]
-		[MaxLength(50, ErrorMessage = "{0}長度不可超過{1}字")]
+		[MaxLength(100, ErrorMessage = "{0}長度不可超過{1}字")]
 		public string ImageURL { get; set; }
 	}
 

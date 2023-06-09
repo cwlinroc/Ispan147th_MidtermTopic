@@ -95,7 +95,7 @@ namespace prjMidtermTopic.form_Merchandise
 
 		private void form_EditMerchandise_Load(object sender, EventArgs e)
 		{
-			
+
 			//var repo = new MerchandiseRepository();
 			MerchandiseDto dto = _repo.GetByMerchandiseID(_merchandiseId);
 			if (dto == null)
@@ -240,31 +240,24 @@ namespace prjMidtermTopic.form_Merchandise
 
 		private void btn_DeleteImage_Click(object sender, EventArgs e)
 		{
-			if (File.Exists(_lasttargetFilePath))
+			if (!string.IsNullOrEmpty(txt_ImageURL.Text))
 			{
-				try
-				{
-					txt_ImageURL.Text = null;
+				txt_ImageURL.Text = null;
 
-					MessageBox.Show("儲存後將刪除商品圖片");
+				MessageBox.Show("儲存後將刪除商品圖片");
 
-					btn_DeleteImage.Enabled = false;
+				btn_DeleteImage.Enabled = false;
 
-					//變更預覽圖片
-					//using (var bmpTemp = new Bitmap(defaultImageURL))
-					//{
-					//	pictureBox_Image.Image = new Bitmap(bmpTemp);
-					//}
-					pictureBox_Image.Image = Properties.Resources._default;
-				}
-				catch (Exception ex)
-				{
-					MessageBox.Show("刪除失敗，原因：" + ex.Message);
-				}
+				//變更預覽圖片
+				//using (var bmpTemp = new Bitmap(defaultImageURL))
+				//{
+				//	pictureBox_Image.Image = new Bitmap(bmpTemp);
+				//}
+				pictureBox_Image.Image = Properties.Resources._default;
 			}
 			else
 			{
-				MessageBox.Show("本商品無圖片檔");
+				MessageBox.Show("目前已設定無圖片");
 
 				btn_DeleteImage.Enabled = false;
 			}
