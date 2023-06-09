@@ -1,5 +1,6 @@
 ﻿using ISpan147.Estore.SqlDataLayer.Dtos;
 using ISpan147.Estore.SqlDataLayer.Repositories;
+using ISpan147.Estore.SqlDataLayer.Services;
 using prjMidtermTopic.Form_Adopt;
 using prjMidtermTopic.form_Merchandise;
 using prjMidtermTopic.Interfaces;
@@ -40,8 +41,8 @@ namespace prjMidtermTopic
 
             };
 
-            
-        }
+			Modifier.ModGridView(dataGridView1);
+		}
         public void Display()
         {
             try
@@ -83,7 +84,8 @@ namespace prjMidtermTopic
 
             var frm = new form_AdoptListEdit(id);
             frm.Owner = this;
-            frm.ShowDialog();
+			Modifier.ModForm(frm);
+			frm.ShowDialog();
         }
         private void OrderByHeader(int columnIndex)
         {
@@ -127,13 +129,19 @@ namespace prjMidtermTopic
         private void form_Adopt_Load(object sender, EventArgs e)
         {
             Display();
-        }
+
+			if (Authentication.Permission > 4)
+			{
+				Add.Enabled = false;
+			}
+		}
 
         private void Add_Click(object sender, EventArgs e)
         {
             var form = new form_AdoptAdd();
             form.Owner = this;
-            form.ShowDialog();
+			Modifier.ModForm(form);
+			form.ShowDialog();
         }
     }
 }

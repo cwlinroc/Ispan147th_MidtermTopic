@@ -39,118 +39,147 @@
 			this.label1 = new System.Windows.Forms.Label();
 			this.label5 = new System.Windows.Forms.Label();
 			this.txt_ConfirmPassword = new System.Windows.Forms.TextBox();
-			this.checkBox_ChangePassWord = new System.Windows.Forms.CheckBox();
+			this.checkBox_ChangepassWord = new System.Windows.Forms.CheckBox();
+			this.checkBox_ShowPassword = new System.Windows.Forms.CheckBox();
 			this.SuspendLayout();
 			// 
 			// btn_ChangePassword
 			// 
-			this.btn_ChangePassword.Location = new System.Drawing.Point(66, 286);
+			this.btn_ChangePassword.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.btn_ChangePassword.Location = new System.Drawing.Point(59, 286);
 			this.btn_ChangePassword.Name = "btn_ChangePassword";
-			this.btn_ChangePassword.Size = new System.Drawing.Size(124, 23);
-			this.btn_ChangePassword.TabIndex = 11;
+			this.btn_ChangePassword.Size = new System.Drawing.Size(131, 33);
+			this.btn_ChangePassword.TabIndex = 7;
 			this.btn_ChangePassword.Text = "確認更改資料";
 			this.btn_ChangePassword.UseVisualStyleBackColor = true;
 			this.btn_ChangePassword.Click += new System.EventHandler(this.btn_ChangePassword_Click);
 			// 
 			// txt_OldPassword
 			// 
-			this.txt_OldPassword.Location = new System.Drawing.Point(90, 165);
+			this.txt_OldPassword.Enabled = false;
+			this.txt_OldPassword.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.txt_OldPassword.Location = new System.Drawing.Point(115, 158);
 			this.txt_OldPassword.Name = "txt_OldPassword";
 			this.txt_OldPassword.PasswordChar = '*';
-			this.txt_OldPassword.Size = new System.Drawing.Size(100, 22);
-			this.txt_OldPassword.TabIndex = 7;
+			this.txt_OldPassword.Size = new System.Drawing.Size(100, 29);
+			this.txt_OldPassword.TabIndex = 3;
 			// 
 			// label4
 			// 
 			this.label4.AutoSize = true;
-			this.label4.Location = new System.Drawing.Point(29, 168);
+			this.label4.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.label4.Location = new System.Drawing.Point(18, 161);
 			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(41, 12);
+			this.label4.Size = new System.Drawing.Size(74, 21);
 			this.label4.TabIndex = 3;
-			this.label4.Text = "舊密碼";
+			this.label4.Text = "舊密碼：";
 			// 
 			// txt_EmployeePassword
 			// 
-			this.txt_EmployeePassword.Location = new System.Drawing.Point(90, 193);
+			this.txt_EmployeePassword.Enabled = false;
+			this.txt_EmployeePassword.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.txt_EmployeePassword.Location = new System.Drawing.Point(115, 193);
 			this.txt_EmployeePassword.Name = "txt_EmployeePassword";
 			this.txt_EmployeePassword.PasswordChar = '*';
-			this.txt_EmployeePassword.Size = new System.Drawing.Size(100, 22);
-			this.txt_EmployeePassword.TabIndex = 8;
+			this.txt_EmployeePassword.Size = new System.Drawing.Size(100, 29);
+			this.txt_EmployeePassword.TabIndex = 4;
 			// 
 			// label3
 			// 
 			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(29, 196);
+			this.label3.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.label3.Location = new System.Drawing.Point(18, 197);
 			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(41, 12);
+			this.label3.Size = new System.Drawing.Size(74, 21);
 			this.label3.TabIndex = 4;
-			this.label3.Text = "新密碼";
+			this.label3.Text = "新密碼：";
 			// 
 			// txt_EmployeeName
 			// 
-			this.txt_EmployeeName.Location = new System.Drawing.Point(90, 36);
+			this.txt_EmployeeName.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.txt_EmployeeName.Location = new System.Drawing.Point(82, 29);
 			this.txt_EmployeeName.Name = "txt_EmployeeName";
-			this.txt_EmployeeName.Size = new System.Drawing.Size(100, 22);
-			this.txt_EmployeeName.TabIndex = 9;
+			this.txt_EmployeeName.Size = new System.Drawing.Size(133, 29);
+			this.txt_EmployeeName.TabIndex = 0;
 			// 
 			// label2
 			// 
 			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(29, 39);
+			this.label2.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.label2.Location = new System.Drawing.Point(18, 32);
 			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(29, 12);
+			this.label2.Size = new System.Drawing.Size(58, 21);
 			this.label2.TabIndex = 5;
-			this.label2.Text = "姓名";
+			this.label2.Text = "姓名：";
 			// 
 			// txt_EmployeeAccount
 			// 
-			this.txt_EmployeeAccount.Location = new System.Drawing.Point(90, 64);
+			this.txt_EmployeeAccount.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.txt_EmployeeAccount.Location = new System.Drawing.Point(82, 64);
 			this.txt_EmployeeAccount.Name = "txt_EmployeeAccount";
-			this.txt_EmployeeAccount.Size = new System.Drawing.Size(100, 22);
-			this.txt_EmployeeAccount.TabIndex = 10;
+			this.txt_EmployeeAccount.Size = new System.Drawing.Size(133, 29);
+			this.txt_EmployeeAccount.TabIndex = 1;
 			// 
 			// label1
 			// 
 			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(29, 67);
+			this.label1.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.label1.Location = new System.Drawing.Point(18, 67);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(29, 12);
+			this.label1.Size = new System.Drawing.Size(58, 21);
 			this.label1.TabIndex = 6;
-			this.label1.Text = "帳號";
+			this.label1.Text = "帳號：";
 			// 
 			// label5
 			// 
 			this.label5.AutoSize = true;
-			this.label5.Location = new System.Drawing.Point(29, 224);
+			this.label5.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.label5.Location = new System.Drawing.Point(19, 231);
 			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(53, 12);
+			this.label5.Size = new System.Drawing.Size(90, 21);
 			this.label5.TabIndex = 4;
-			this.label5.Text = "確認密碼";
+			this.label5.Text = "確認密碼：";
 			// 
 			// txt_ConfirmPassword
 			// 
-			this.txt_ConfirmPassword.Location = new System.Drawing.Point(90, 221);
+			this.txt_ConfirmPassword.Enabled = false;
+			this.txt_ConfirmPassword.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.txt_ConfirmPassword.Location = new System.Drawing.Point(115, 228);
 			this.txt_ConfirmPassword.Name = "txt_ConfirmPassword";
 			this.txt_ConfirmPassword.PasswordChar = '*';
-			this.txt_ConfirmPassword.Size = new System.Drawing.Size(100, 22);
-			this.txt_ConfirmPassword.TabIndex = 8;
+			this.txt_ConfirmPassword.Size = new System.Drawing.Size(100, 29);
+			this.txt_ConfirmPassword.TabIndex = 5;
 			// 
-			// checkBox_ChangePassWord
+			// checkBox_ChangepassWord
 			// 
-			this.checkBox_ChangePassWord.AutoSize = true;
-			this.checkBox_ChangePassWord.Location = new System.Drawing.Point(31, 137);
-			this.checkBox_ChangePassWord.Name = "checkBox_ChangePassWord";
-			this.checkBox_ChangePassWord.Size = new System.Drawing.Size(72, 16);
-			this.checkBox_ChangePassWord.TabIndex = 12;
-			this.checkBox_ChangePassWord.Text = "修改密碼";
-			this.checkBox_ChangePassWord.UseVisualStyleBackColor = true;
+			this.checkBox_ChangepassWord.AutoSize = true;
+			this.checkBox_ChangepassWord.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.checkBox_ChangepassWord.Location = new System.Drawing.Point(22, 128);
+			this.checkBox_ChangepassWord.Name = "checkBox_ChangepassWord";
+			this.checkBox_ChangepassWord.Size = new System.Drawing.Size(74, 20);
+			this.checkBox_ChangepassWord.TabIndex = 2;
+			this.checkBox_ChangepassWord.Text = "修改密碼";
+			this.checkBox_ChangepassWord.UseVisualStyleBackColor = true;
+			this.checkBox_ChangepassWord.CheckedChanged += new System.EventHandler(this.checkBox_ChangepassWord_CheckedChanged);
+			// 
+			// checkBox_ShowPassword
+			// 
+			this.checkBox_ShowPassword.AutoSize = true;
+			this.checkBox_ShowPassword.Location = new System.Drawing.Point(118, 260);
+			this.checkBox_ShowPassword.Name = "checkBox_ShowPassword";
+			this.checkBox_ShowPassword.Size = new System.Drawing.Size(72, 16);
+			this.checkBox_ShowPassword.TabIndex = 6;
+			this.checkBox_ShowPassword.Text = "顯示密碼";
+			this.checkBox_ShowPassword.UseVisualStyleBackColor = true;
+			this.checkBox_ShowPassword.CheckedChanged += new System.EventHandler(this.checkBox_ShowPassword_CheckedChanged);
 			// 
 			// form_EmployeeEdit
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(247, 343);
-			this.Controls.Add(this.checkBox_ChangePassWord);
+			this.ClientSize = new System.Drawing.Size(252, 381);
+			this.Controls.Add(this.checkBox_ShowPassword);
+			this.Controls.Add(this.checkBox_ChangepassWord);
 			this.Controls.Add(this.btn_ChangePassword);
 			this.Controls.Add(this.txt_OldPassword);
 			this.Controls.Add(this.label4);
@@ -183,6 +212,7 @@
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Label label5;
 		private System.Windows.Forms.TextBox txt_ConfirmPassword;
-		private System.Windows.Forms.CheckBox checkBox_ChangePassWord;
+		private System.Windows.Forms.CheckBox checkBox_ChangepassWord;
+		private System.Windows.Forms.CheckBox checkBox_ShowPassword;
 	}
 }

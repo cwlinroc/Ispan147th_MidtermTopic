@@ -122,6 +122,18 @@ namespace prjMidtermTopic.form_Pets
 			}
 
 			btnDeletePetAvatar.Enabled = !string.IsNullOrEmpty(txtPetAvatar.Text) ? true : false;
+
+
+			if (Authentication.Permission > 4)
+			{
+				btnUpdate.Enabled = false;
+				btnUpdatePetAvatar.Enabled = false;
+				btnDeletePetAvatar.Enabled = false;
+			}
+			if (Authentication.Permission > 2)
+			{
+				btnDelete.Enabled = false;
+			}
 		}
 
 

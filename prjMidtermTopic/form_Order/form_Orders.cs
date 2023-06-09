@@ -44,8 +44,11 @@ namespace prjMidtermTopic.Form_Order
 			};
 
 			comboBox_PaymentMethod.Items.AddRange(Orders.paymentOptions);
+			comboBox_PaymentMethod.Items.Insert(0, "--未選擇--");
+			comboBox_PaymentMethod.SelectedIndex = 0;
 			comboBox_SortBy.Items.AddRange(_orderByColumnName);
-
+			comboBox_Payed.Items.Insert(0, "--未選擇--");
+			comboBox_Payed.SelectedIndex = 0;
 			Modifier.ModGridView(dataGridView_Main);
 		}
 
@@ -87,12 +90,18 @@ namespace prjMidtermTopic.Form_Order
 		{
 			if (_row < 0) return;
 			if (!PermissionCheck.Enable(3)) return;
-			new form_OrdersEdit(_data[_row]).ShowDialog();
+
+			var frm = new form_OrdersEdit(_data[_row]);
+			Modifier.ModForm(frm);
+			frm.ShowDialog();
 		}
 		private void btn_Add_Click(object sender, EventArgs e)
 		{
 			if (!PermissionCheck.Enable(3)) return;
-			new form_OrdersAdd().ShowDialog();
+
+			var frm = new form_OrdersAdd();
+			Modifier.ModForm(frm);
+			frm.ShowDialog();
 		}
 
 		//double click
@@ -105,6 +114,7 @@ namespace prjMidtermTopic.Form_Order
 			}
 			var frm = new form_OrderList(_data[_row].OrderID);
 			frm.Owner = this;
+			Modifier.ModForm(frm);
 			frm.ShowDialog();
 		}
 
@@ -114,6 +124,11 @@ namespace prjMidtermTopic.Form_Order
 		{
 			try
 			{
+				if (InputInvalid())
+				{
+					return;
+				}
+
 				var sDto = GetSearchDto();
 
 				var gridDtoList = new OrderService().Search(sDto);
@@ -134,6 +149,7 @@ namespace prjMidtermTopic.Form_Order
 			var sDto = new OrderSearchDto();
 
 			#region --條件判別--
+
 
 			if (int.TryParse(txt_OrderID.Text.Trim(), out int _orderID))
 			{
@@ -165,14 +181,14 @@ namespace prjMidtermTopic.Form_Order
 						break;
 				}
 			}
-			if (comboBox_PaymentMethod.SelectedIndex != -1)
+			if (comboBox_PaymentMethod.SelectedIndex > 0)
 			{
-				sDto.PaymentMethod = comboBox_PaymentMethod.SelectedIndex;
+				sDto.PaymentMethod = comboBox_PaymentMethod.SelectedIndex - 1;
 			}
-			if (comboBox_Payed.SelectedIndex != -1)
+			if (comboBox_Payed.SelectedIndex > 0)
 			{
-				if (comboBox_Payed.SelectedIndex == 0) sDto.Payed = true;
-				if (comboBox_Payed.SelectedIndex == 1) sDto.Payed = false;
+				if (comboBox_Payed.SelectedIndex == 1) sDto.Payed = true;
+				if (comboBox_Payed.SelectedIndex == 2) sDto.Payed = false;
 			}
 			if (int.TryParse(txt_MinPaymentAmount.Text.Trim(), out int minAmount))
 			{
@@ -251,6 +267,31 @@ namespace prjMidtermTopic.Form_Order
 			Display();
 		}
 
+		private bool InputInvalid()
+		{
+			if (txt_OrderID.Text != string.Empty && !int.TryParse(txt_OrderID.Text.Trim(), out int _orderID))
+			{
+				MessageBox.Show("訂單編號請輸入數字");
+				return true;
+			}
+			if (txt_MemberID.Text != string.Empty && !int.TryParse(txt_MemberID.Text.Trim(), out int _memberID))
+			{
+				MessageBox.Show("顧客ID請輸入數字");
+				return true;
+			}
+			if (txt_MinPaymentAmount.Text != string.Empty && !int.TryParse(txt_MinPaymentAmount.Text.Trim(), out int minAmount))
+			{
+				MessageBox.Show("最小金額請輸入數字");
+				return true;
+			}
+			if (txt_MaxPaymentAmount.Text != string.Empty && !int.TryParse(txt_MaxPaymentAmount.Text.Trim(), out int maxAmount))
+			{
+				MessageBox.Show("最大金額請輸入數字");
+				return true;
+			}
+			return false;
+		}
 
+		
 	}
 }

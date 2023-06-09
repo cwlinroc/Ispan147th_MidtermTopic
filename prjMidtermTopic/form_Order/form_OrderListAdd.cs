@@ -68,7 +68,15 @@ namespace prjMidtermTopic.Form_Order
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show("新增失敗，可能原因：" + ex.Message);
+				//todo 改為尋找對應ID存不存在
+				if (ex.Message.Contains("FK"))
+				{
+					MessageBox.Show("輸入ID不存在，請再進行確認。");
+				}
+				else
+				{
+					MessageBox.Show("新增失敗，可能原因：" + ex.Message);
+				}
 			}
 
 		}

@@ -25,7 +25,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 		public List<QADto.Theme> GetTheme(int? themeId = null)
 		{
 			StringBuilder sql = new StringBuilder();
-			sql.AppendLine("SELECT ThemeID, ThemeContext, ThemeDateTime ");
+			sql.AppendLine("SELECT ThemeID, ThemeContext, ThemeDateTime, ForumAccountName ");
 			sql.AppendLine("FROM Themes AS T ");
 			sql.AppendLine("JOIN ForumAccounts AS F ON T.ForumAccountID = F.ForumAccountID ");
 			sql.AppendLine("WHERE 1 = 1 ");
@@ -48,8 +48,8 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 		public List<QADto.Theme> SearchTheme(string themeContext = null)
 		{
 			StringBuilder sql = new StringBuilder();
-			sql.AppendLine("SELECT ThemeID, ThemeContext, ThemeDateTime ");
-			sql.AppendLine("FROM THEMES AS T ");
+			sql.AppendLine("SELECT ThemeID, ThemeContext, ThemeDateTime, ForumAccountName  ");
+			sql.AppendLine("FROM Themes AS T ");
 			sql.AppendLine("JOIN ForumAccounts AS F ON T.ForumAccountID = F.ForumAccountID ");
 			sql.AppendLine("WHERE 1 = 1 ");
 	
@@ -158,11 +158,11 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 			return SqlDb.Create(SqlDb.GetConnection, sql.ToString(), parameters);
 		}
 
-		public int DeleteComment(int themeId)
+		public int DeleteComment(int commentId)
 		{
-			string sql = " DELETE FROM Comments WHERE THEMEID = @THEMEID ";
+			string sql = " DELETE FROM Comments WHERE COMMENTID = @COMMENTID ";
 
-			SqlParameter parameter = new SqlParameter("@themeId", SqlDbType.Int) { Value = themeId };
+			SqlParameter parameter = new SqlParameter("@commentId", SqlDbType.Int) { Value = commentId };
 			Func<SqlConnection> connGetter = SqlDb.GetConnection;
 			return SqlDb.UpdateOrDelete(connGetter, sql, parameter);
 		}

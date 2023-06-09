@@ -13,6 +13,7 @@ using ISpan147.Estore.SqlDataLayer.ExtMethods;
 using Ispan147.Estore.SqlDataLayer.Repositories;
 using ISpan147.Estore.SqlDataLayer.Utility;
 using ISpan147.Estore.SqlDataLayer.EFModel;
+using System.Drawing;
 
 namespace prjMidtermTopic.FormMember
 {
@@ -41,6 +42,31 @@ namespace prjMidtermTopic.FormMember
 			};
 
 			_memberRepo = new MemberRepository();
+			Load += Form_CreateMember_Load;
+		}
+
+		private void Form_CreateMember_Load(object sender, EventArgs e)
+		{	
+			#region 載入預覽圖片
+			try
+			{
+				if (string.IsNullOrEmpty(txtAvatar.Text))
+				{
+					pictureBoxAvatar.Image = Properties.Resources.default_avatar;
+				}
+				else
+				{
+					using (var bmpTemp = new Bitmap("images/avatar/" + txtAvatar.Text))
+					{
+						pictureBoxAvatar.Image = new Bitmap(bmpTemp);
+					}
+				}
+			}
+			catch
+			{
+				pictureBoxAvatar.Image = Properties.Resources._error;
+			}
+			#endregion
 		}
 
 		private void SelectFileToForm(string filePath)
@@ -50,7 +76,13 @@ namespace prjMidtermTopic.FormMember
 				string fileName = Path.GetFileName(filePath);
 				//加上時間戳重新命名,避免檔名重複
 				txtAvatar.Text = DateTime.Now.ToString("yyyyMMddhhmmssss_") + fileName;
-				
+
+				//變更預覽圖片
+				using (var bmpTemp = new Bitmap(filePath))
+				{
+					pictureBoxAvatar.Image = new Bitmap(bmpTemp);
+				}
+
 				MessageBox.Show("選擇成功");
 			}
 			catch (Exception ex)
@@ -62,11 +94,11 @@ namespace prjMidtermTopic.FormMember
 
 		private void UploadFileToDb(string filePath)
 		{
-			string renamedtargetFilePath = _targetFolderPath + txtAvatar.Text;
+			string targetFilePath = _targetFolderPath + txtAvatar.Text;
 
 			if (!string.IsNullOrEmpty(filePath))
 			{
-				File.Delete(renamedtargetFilePath);
+				File.Delete(targetFilePath);
 			}
 			else
 			{
@@ -74,9 +106,9 @@ namespace prjMidtermTopic.FormMember
 			}
 			try
 			{
-				File.Copy(filePath, renamedtargetFilePath);
+				File.Copy(filePath, targetFilePath);
 
-				MessageBox.Show($"上傳成功,路徑:{renamedtargetFilePath}");
+				MessageBox.Show($"上傳成功,路徑:{targetFilePath}");
 			}
 			catch (Exception ex)
 			{
@@ -84,18 +116,7 @@ namespace prjMidtermTopic.FormMember
 			}
 		}
 
-		private void DateOfBirthPicker_ValueChanged(object sender, EventArgs e)
-		{
-			DateTime selectedDate = DateOfBirthPicker.Value;
-			DateTime currentDate = DateTime.Now;
-
-			if (selectedDate < currentDate.AddYears(-100))
-			{
-				MessageBox.Show("選擇時間早於目前時間100年!", "警告", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-			}
-		}		
-
-		#region button
+		#region 事件
 		private void radbtnMale_CheckedChanged(object sender, EventArgs e)
 		{
 			if (radbtnMale.Checked)
@@ -112,6 +133,11 @@ namespace prjMidtermTopic.FormMember
 				_gender = false;
 				radbtnMale.Checked = false;
 			}
+		}
+
+		private void checkBoxPasswordUncovered_CheckedChanged(object sender, EventArgs e)
+		{
+			txtPassword.PasswordChar = checkBoxPasswordUncovered.Checked ? '\0' : '●';
 		}
 
 		private void btnSelectAvatar_Click(object sender, EventArgs e)
@@ -132,6 +158,14 @@ namespace prjMidtermTopic.FormMember
 					SelectFileToForm(_originalFilePath);
 				}
 			}
+			btnDeleteAvatar.Enabled = true;
+		}
+
+		private void btnDeleteAvatar_Click(object sender, EventArgs e)
+		{
+			pictureBoxAvatar.Image = Properties.Resources.default_avatar;
+			txtAvatar.Text = null;
+			btnDeleteAvatar.Enabled = false;
 		}
 
 		private void btnAdd_Click(object sender, EventArgs e)
@@ -148,8 +182,7 @@ namespace prjMidtermTopic.FormMember
 
 			var vm = new MemberCreateVM()
 			{
-				MemberName = membername,
-				//ForumAccountID = faccid,
+				MemberName = membername,				
 				NickName = nickname,
 				DateOfBirth = dob,
 				Gender = _gender,
@@ -208,8 +241,8 @@ namespace prjMidtermTopic.FormMember
 			this.Close();
 		}
 
-		#endregion
 
+		#endregion
 		
 	}
 

@@ -19,7 +19,6 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace prjMidtermTopic
 {
-	// todo 進階排序功能
 	public partial class form_SearchMerchandise : Form, IGrid
 	{
 		private IMerchandiseRepository _repo;
