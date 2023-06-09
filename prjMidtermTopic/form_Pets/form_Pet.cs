@@ -28,6 +28,7 @@ namespace prjMidtermTopic
 			"PetID","SpeciesID","BreedID","Gender","Age","Location"
 		};
 
+		#region form
 		public form_Pet()
 		{
 			InitializeComponent();
@@ -70,7 +71,9 @@ namespace prjMidtermTopic
 
 			Modifier.ModGridView(dataGridView1);
 		}
+		#endregion
 
+		#region Display
 		public void Display()
 		{
 			try
@@ -130,6 +133,7 @@ namespace prjMidtermTopic
 				MessageBox.Show("讀取資料失敗，原因" + ex.Message);
 			}
 		}
+		#endregion
 
 		private void form_Pet_Load(object sender, EventArgs e)
 		{
@@ -145,6 +149,7 @@ namespace prjMidtermTopic
 			Display();
 		}
 
+		#region dataGridView點擊事件
 		private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
 		{
 			if (e.RowIndex < 0) return;//按到header,不處理
@@ -156,7 +161,9 @@ namespace prjMidtermTopic
 			Modifier.ModForm(frm);
 			frm.ShowDialog();
 		}
+		#endregion
 
+		#region 新增按鈕
 		private void btnAdd_Click(object sender, EventArgs e)
 		{
 			var frm = new form_PetCreate();
@@ -164,7 +171,9 @@ namespace prjMidtermTopic
 			Modifier.ModForm(frm);
 			frm.ShowDialog();
 		}
+		#endregion
 
+		#region 輸入重置btn
 		private void btnReset_Click(object sender, EventArgs e)
 		{
 			txtPetID.Text = string.Empty;
@@ -173,7 +182,9 @@ namespace prjMidtermTopic
 			comboBoxSearchSpecies.SelectedIndex = 0;
 			comboBoxSearchBreed.SelectedIndex = 0;
 		}
+		#endregion
 
+		#region 排序方法
 		public void OrderByHeader(int columnIndex)
 		{
 			string colProp = dataGridView1.Columns[columnIndex].DataPropertyName;
@@ -207,12 +218,15 @@ namespace prjMidtermTopic
 				BreedName = o.BreedName,
 			}).ToList();
 		}
+		#endregion
 
+		#region dataGridView雙擊事件
 		private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
 		{
 			if (e.RowIndex >= 0) return;
 
 			OrderByHeader(e.ColumnIndex);
 		}
+		#endregion
 	}
 }

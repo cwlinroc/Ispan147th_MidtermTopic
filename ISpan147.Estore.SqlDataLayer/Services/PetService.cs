@@ -18,6 +18,7 @@ namespace ISpan147.Estore.SqlDataLayer.Services
 			_repo = repo;
 		}
 
+		#region 新增
 		public int Create(PetDto dto)
 		{
 			var dtoInDb = _repo.GetByName(dto.PetName);
@@ -31,7 +32,9 @@ namespace ISpan147.Estore.SqlDataLayer.Services
 
 			return newID;
 		}
+		#endregion
 
+		#region 修改
 		public int Update(PetDto dto)
 		{
 			//var dtoInDb = _repo.GetByName(dto.PetName);
@@ -45,6 +48,7 @@ namespace ISpan147.Estore.SqlDataLayer.Services
 
 			return rows;
 		}
+		#endregion
 
 		public int Delete(int petID)
 		{

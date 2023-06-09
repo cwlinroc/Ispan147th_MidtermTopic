@@ -27,6 +27,8 @@ namespace prjMidtermTopic.form_Pets
 		private string _originalFilePath;
 		private string _targetFolderPath = @"images/petavatar/";
 		private IPetRepo _petRepo;
+
+		#region form
 		public form_PetCreate()
 		{
 			InitializeComponent();
@@ -66,7 +68,9 @@ namespace prjMidtermTopic.form_Pets
 			comboBoxSpeciesID.SelectedIndex = 0;
 			comboBoxBreedID.SelectedIndex = 0;
 		}
+		#endregion
 
+		#region 新增圖片
 		private void SelectFileToForm(string filePath)
 		{
 			try
@@ -87,7 +91,9 @@ namespace prjMidtermTopic.form_Pets
 				MessageBox.Show($"選擇失敗,原因:{ex.Message}");
 			}
 		}
+		#endregion
 
+		#region 上傳圖片至資料庫
 		private void UploadFileToDb(string filePath)
 		{
 			string renamedtargetFilePath = _targetFolderPath + txtPetAvatar.Text;
@@ -112,6 +118,7 @@ namespace prjMidtermTopic.form_Pets
 				MessageBox.Show($"上傳失敗,原因：{ex.Message}");
 			}
 		}
+		#endregion
 
 		private void btnCreate_Click(object sender, EventArgs e)
 		{
@@ -144,6 +151,7 @@ namespace prjMidtermTopic.form_Pets
 				MessageBox.Show("物種不相符，請更改");
 				return;
 			}
+
 
 			var vm = new PetCreateVM()
 			{

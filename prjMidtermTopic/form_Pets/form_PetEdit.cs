@@ -30,6 +30,8 @@ namespace prjMidtermTopic.form_Pets
 		private string _targetFolderPath = @"images/petavatar/";
 		private string _lasttargetFilePath;
 		private IPetRepo _petRepo;
+
+		#region form啟動
 		public form_PetEdit(int PetID)
 		{
 			InitializeComponent();
@@ -70,7 +72,9 @@ namespace prjMidtermTopic.form_Pets
 			comboBoxSpeciesID.SelectedIndex = 0;
 			comboBoxBreedID.SelectedIndex = 0;
 		}
+		#endregion
 
+		#region form.load
 		private void form_PetEdit_Load(object sender, EventArgs e)
 		{
 			_petRepo = new PetRepository();
@@ -135,9 +139,9 @@ namespace prjMidtermTopic.form_Pets
 				btnDelete.Enabled = false;
 			}
 		}
+		#endregion
 
-
-
+		#region 性別按鈕
 		private void radioButtonMale_CheckedChanged(object sender, EventArgs e)
 		{
 			if (radioButtonMale.Checked)
@@ -155,7 +159,9 @@ namespace prjMidtermTopic.form_Pets
 				radioButtonMale.Checked = false;
 			}
 		}
+		#endregion
 
+		#region 修改資料btn
 		private void btnUpdate_Click(object sender, EventArgs e)
 		{
 			int speciesID = (comboBoxSpeciesID.SelectedItem as dynamic).Key;
@@ -261,7 +267,9 @@ namespace prjMidtermTopic.form_Pets
 				MessageBox.Show("更新失敗，原因:" + ex.Message);
 			}
 		}
+		#endregion
 
+		#region 刪除資料btn
 		private void btnDelete_Click(object sender, EventArgs e)
 		{
 			var servise = new PetService(_petRepo);
@@ -298,6 +306,9 @@ namespace prjMidtermTopic.form_Pets
 				MessageBox.Show("刪除失敗，原因:" + ex.Message);
 			}
 		}
+		#endregion
+
+		#region 修改圖片btn
 		private void btnUpdatePetAvatar_Click(object sender, EventArgs e)
 		{
 			using (OpenFileDialog openFileDialog = new OpenFileDialog())
@@ -317,7 +328,9 @@ namespace prjMidtermTopic.form_Pets
 				}
 			}
 		}
+		#endregion
 
+		#region 刪除圖片btn
 		private void btnDeletePetAvatar_Click(object sender, EventArgs e)
 		{
 			if (File.Exists(_lasttargetFilePath))
@@ -339,28 +352,9 @@ namespace prjMidtermTopic.form_Pets
 				btnDeletePetAvatar.Enabled = false;
 			}
 		}
+		#endregion
 
-		private void DeleteFromDb()
-		{
-			if (File.Exists(_lasttargetFilePath))
-			{
-				try
-				{
-					File.Delete(_lasttargetFilePath);
-
-					MessageBox.Show($"圖片刪除成功");
-				}
-				catch (Exception ex)
-				{
-					MessageBox.Show("刪除失敗，原因：" + ex.Message);
-				}
-			}
-			else
-			{
-				btnDeletePetAvatar.Enabled = false;
-			}
-		}
-
+		#region 選擇照片
 		private void SelectFileToForm(string filePath)
 		{
 			try
@@ -383,7 +377,9 @@ namespace prjMidtermTopic.form_Pets
 				MessageBox.Show($"選擇失敗,原因:{ex.Message}");
 			}
 		}
+		#endregion
 
+		#region 上傳圖片至資料庫
 		private void UploadFileToDb(string filePath)
 		{
 			DeleteFromDb();
@@ -409,7 +405,9 @@ namespace prjMidtermTopic.form_Pets
 				MessageBox.Show($"上傳失敗,{ex.Message}");
 			}
 		}
+		#endregion
 
+		#region 刪除
 		private void DeleteFile(string filePath)
 		{
 			string renamedtargetFilePath = _targetFolderPath + filePath;
@@ -424,5 +422,29 @@ namespace prjMidtermTopic.form_Pets
 			}
 			catch (Exception ex) { MessageBox.Show($"刪除失敗,原因:{ex.Message}"); }
 		}
+		#endregion
+
+		#region 從資料庫移除圖片
+		private void DeleteFromDb()
+		{
+			if (File.Exists(_lasttargetFilePath))
+			{
+				try
+				{
+					File.Delete(_lasttargetFilePath);
+
+					MessageBox.Show($"圖片刪除成功");
+				}
+				catch (Exception ex)
+				{
+					MessageBox.Show("刪除失敗，原因：" + ex.Message);
+				}
+			}
+			else
+			{
+				btnDeletePetAvatar.Enabled = false;
+			}
+		}
+		#endregion
 	}
 }
