@@ -207,6 +207,15 @@ namespace prjMidtermTopic.FormMember
 					SelectFileToForm(_originalFilePath);
 				}
 			}
+			btnDeleteAvatar.Enabled = true;
+		}
+
+		private void btnDeleteAvatar_Click(object sender, EventArgs e)
+		{
+			DeleteFileFromDb();
+			pictureBoxAvatar.Image = Properties.Resources.default_avatar;
+			txtAvatar.Text = null;
+			btnDeleteAvatar.Enabled = false;
 		}
 
 		private void btnUpdate_Click(object sender, EventArgs e)
@@ -328,15 +337,7 @@ namespace prjMidtermTopic.FormMember
 			}
 
 			
-		}
-
-		private void btnDeleteAvatar_Click(object sender, EventArgs e)
-		{
-			DeleteFileFromDb();
-			txtAvatar.Text = null;
-			pictureBoxAvatar.Image = Properties.Resources.default_avatar;
-			btnDeleteAvatar.Enabled = false;
-		}
+		}		
 
 		private void btnApplyForumAccount_Click(object sender, EventArgs e)
 		{
