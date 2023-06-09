@@ -1,4 +1,5 @@
 ﻿using ISpan147.Estore.SqlDataLayer.Dtos;
+using ISpan147.Estore.SqlDataLayer.EFModel;
 using ISpan147.Estore.SqlDataLayer.Repositories;
 using ISpan147.Estore.SqlDataLayer.Services;
 using prjMidtermTopic.form_Merchandise;
@@ -6,6 +7,7 @@ using prjMidtermTopic.Interfaces;
 using prjMidtermTopic.Model;
 using prjMidtermTopic.ViewModels;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -81,6 +83,15 @@ namespace prjMidtermTopic
 		{
 			try
 			{
+				//驗證價格區間
+				int? maxprice = int.TryParse(this.txt_MaxPrice.Text, out int maprice) ? maprice : (int?)null;
+				int? minprice = int.TryParse(this.txt_MinPrice.Text, out int miprice) ? miprice : (int?)null;
+				if (maxprice < minprice)
+				{
+					MessageBox.Show("請輸入正確的價格區間");
+					return;
+				}
+
 				//讀取篩選條件
 				/*	第一版條件搜尋
 				bool isInt = int.TryParse(this.txt_MerchandiseId.Text, out int merchandiseId);
