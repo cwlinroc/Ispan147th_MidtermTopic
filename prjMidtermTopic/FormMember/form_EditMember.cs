@@ -99,16 +99,7 @@ namespace prjMidtermTopic.FormMember
 				pictureBoxAvatar.Image = Properties.Resources._error;
 			}
 			#endregion
-
-			//權限限制關閉按鈕
-			if (Authentication.Permission >= 5)
-			{				
-				btnUpdate.Enabled = false;				
-			}
-			if (Authentication.Permission >= 4)
-			{
-				btnDelete.Enabled = false;
-			}
+						
 		}
 
 		private void SelectFileToForm(string filePath)
