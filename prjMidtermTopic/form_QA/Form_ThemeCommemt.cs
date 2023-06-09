@@ -51,7 +51,7 @@ namespace prjMidtermTopic.form_QA
 			if (themes.Count > 0)
 			{
 				QADto.Theme theme = themes[0];
-				labelThemeRole.Text = theme.ForumAccountName;
+				labelThemeRole.Text = $"發言者：{theme.ForumAccountName}";
 				labelThemeDatetime.Text = theme.ThemeDateTime.ToString();
 				richTextBoxTheme.Text = theme.ThemeContext;
 			}
@@ -112,7 +112,7 @@ namespace prjMidtermTopic.form_QA
 					checkBoxCell.Value = true;
 					
 					
-					// 获取选中行的数据
+					// 獲取勾選資料
 					//Comment selectedComment = data[e.RowIndex];
 					Comment selectedComment = dataGridViewComment.Rows[e.RowIndex].DataBoundItem as Comment;
 					selectedComments.Add(selectedComment);
@@ -130,8 +130,9 @@ namespace prjMidtermTopic.form_QA
 
 		private void buttonDeleteComment_Click(object sender, EventArgs e)
 		{
-			var repo = new QARepository();
-			repo.DeleteComment(_commentId);
+			//var commentId = selectComments.SelectedValue;
+			//var repo = new QARepository();
+			//repo.DeleteComment(selectComment);
 
 
 			IGridComment parent = this as IGridComment;

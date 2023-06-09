@@ -164,7 +164,7 @@
 			this.CommentId.MinimumWidth = 6;
 			this.CommentId.Name = "CommentId";
 			this.CommentId.ReadOnly = true;
-			this.CommentId.Width = 55;
+			this.CommentId.Width = 65;
 			// 
 			// ThemeContext
 			// 
@@ -188,8 +188,8 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.Controls.Add(this.buttonDeleteComment);
 			this.ClientSize = new System.Drawing.Size(677, 457);
+			this.Controls.Add(this.buttonDeleteComment);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.dataGridViewComment);
 			this.Controls.Add(this.buttonDeleteTheme);
