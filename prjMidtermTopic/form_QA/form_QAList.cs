@@ -82,5 +82,37 @@ namespace prjMidtermTopic
 			Modifier.ModForm(qaCreate);
 			qaCreate.ShowDialog();
 		}
+		
+		//分頁功能
+		public int pageSize = 10;      //顯示頁數
+		public int recordCount = 0;    //总记录数
+		public int pageCount = 0;      //全部分頁數
+		public int currentPage = 0;    //目前頁
+		DataTable dtSource = new DataTable();
+		/// <summary>
+		/// 分頁
+		/// </summary>
+		private void LoadPage()
+		{
+			if (currentPage < 1) currentPage = 1;
+			if (currentPage > pageCount) currentPage = pageCount;
+
+			int beginRecord;
+			int endRecord;
+			DataTable dtTemp;
+			dtTemp = dtSource.Clone();
+
+			beginRecord = pageSize * (currentPage - 1);
+			if (currentPage == 1) beginRecord = 0;
+			endRecord = pageSize * currentPage;
+
+			if (currentPage == pageCount) endRecord = recordCount;
+			for (int i = beginRecord; i < endRecord; i++)
+			{
+				dtTemp.ImportRow(dtSource.Rows[i]);
+			}
+			dataGridViewTheme.DataSource = dtTemp;  
+		}
+
 	}
 }
