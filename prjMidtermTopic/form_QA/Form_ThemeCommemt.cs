@@ -64,15 +64,30 @@ namespace prjMidtermTopic.form_QA
 		}
 		private void buttonDeleteTheme_Click(object sender, EventArgs e)
 		{
-			var repo = new QARepository();
-			repo.DeleteTheme(_themeId);
+			const string message ="請問要刪除此筆留言即全部回覆嗎?";
+			const string caption = "Form Closing";
+			var result = MessageBox.Show(message, caption,
+										 MessageBoxButtons.YesNo,
+										 MessageBoxIcon.Question);
 
-			richTextBoxTheme.Clear();
-			MessageBox.Show("刪除成功");
+			if (result == DialogResult.Yes)
+			{
+				var repo = new QARepository();
+				repo.DeleteTheme(_themeId);
 
-			IGrid parent = this.Owner as IGrid;
-			parent.Display();
-			this.Close();
+				richTextBoxTheme.Clear();
+				MessageBox.Show("刪除成功");
+
+				IGrid parent = this.Owner as IGrid;
+				parent.Display();
+				this.Close();
+			}
+			else
+			{ 
+				this.Close();
+			}
+
+			
 		}
 		private void buttonCreateCommon_Click(object sender, EventArgs e)
 		{
