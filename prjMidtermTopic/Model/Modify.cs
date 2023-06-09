@@ -25,9 +25,9 @@ namespace prjMidtermTopic.Model
 			//grid.ColumnHeadersDefaultCellStyle.BackColor = Color.AliceBlue;
 			//grid.ColumnHeadersDefaultCellStyle.ForeColor = Color.AliceBlue;
 
-			foreach (DataGridViewTextBoxColumn col in grid.Columns)
+			foreach (var col in grid.Columns)				
 			{
-				col.HeaderCell.Style.Font = new Font("細明體", 9.75F, FontStyle.Bold);
+				(col as DataGridViewColumn).HeaderCell.Style.Font = new Font("細明體", 9.75F, FontStyle.Bold);
 			}
 
 			//grid.DefaultCellStyle.BackColor = Color.WhiteSmoke;

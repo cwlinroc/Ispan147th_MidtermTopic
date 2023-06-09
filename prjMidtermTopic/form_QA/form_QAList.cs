@@ -45,7 +45,6 @@ namespace prjMidtermTopic
 			DataGridViewThemeShow(data);
 		}
 
-
 		public void Display()
 		{
 			// 叫用Search(),取得符合的記錄
@@ -83,15 +82,5 @@ namespace prjMidtermTopic
 			Modifier.ModForm(qaCreate);
 			qaCreate.ShowDialog();
 		}
-
-
-
-
-
-
-
-
-
-
 	}
 }
