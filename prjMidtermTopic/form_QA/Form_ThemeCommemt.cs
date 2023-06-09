@@ -34,7 +34,7 @@ namespace prjMidtermTopic.form_QA
 			_themeId = themeId;
 			_service = new QAService();
 
-			//Modifier.ModGridView(dataGridViewComment);
+			Modifier.ModGridView(dataGridViewComment);
 		}
 		private void Form_ThemeCommemt_Load(object sender, EventArgs e)
 		{
@@ -62,7 +62,6 @@ namespace prjMidtermTopic.form_QA
 				buttonDeleteTheme.Enabled = false;
 			}
 		}
-
 		private void buttonDeleteTheme_Click(object sender, EventArgs e)
 		{
 			var repo = new QARepository();
