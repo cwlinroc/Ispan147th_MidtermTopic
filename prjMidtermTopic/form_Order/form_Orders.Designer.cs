@@ -293,6 +293,7 @@
 			// 
 			// comboBox_Payed
 			// 
+			this.comboBox_Payed.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.comboBox_Payed.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.comboBox_Payed.FormattingEnabled = true;
 			this.comboBox_Payed.Items.AddRange(new object[] {
@@ -357,6 +358,7 @@
 			// 
 			// comboBox_PaymentMethod
 			// 
+			this.comboBox_PaymentMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.comboBox_PaymentMethod.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.comboBox_PaymentMethod.FormattingEnabled = true;
 			this.comboBox_PaymentMethod.Location = new System.Drawing.Point(523, 22);

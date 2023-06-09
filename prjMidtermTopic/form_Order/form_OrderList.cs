@@ -91,7 +91,7 @@ namespace prjMidtermTopic.Form_Order
 		{
 			if (!PermissionCheck.Enable(3)) return;
 
-			DialogResult dialogResult = MessageBox.Show("確定篩除該項目？", "確認刪除", MessageBoxButtons.YesNo);
+			DialogResult dialogResult = MessageBox.Show("確定刪除該項目？", "確認刪除", MessageBoxButtons.YesNo);
 			if (dialogResult == DialogResult.No) return;
 
 			try
@@ -111,7 +111,7 @@ namespace prjMidtermTopic.Form_Order
 		{
 			if (!PermissionCheck.Enable(3)) return;
 
-			DialogResult dialogResult = MessageBox.Show("確定篩除該訂單？", "確認刪除", MessageBoxButtons.YesNo);
+			DialogResult dialogResult = MessageBox.Show("確定刪除該訂單？", "確認刪除", MessageBoxButtons.YesNo);
 			if (dialogResult == DialogResult.No) return;
 
 			try

@@ -74,7 +74,6 @@
 			this.label3.Size = new System.Drawing.Size(90, 21);
 			this.label3.TabIndex = 9;
 			this.label3.Text = "商品類別：";
-			this.label3.Click += new System.EventHandler(this.label3_Click);
 			// 
 			// txt_MerchandiseName
 			// 
@@ -93,7 +92,6 @@
 			this.label2.Size = new System.Drawing.Size(90, 21);
 			this.label2.TabIndex = 10;
 			this.label2.Text = "商品名稱：";
-			this.label2.Click += new System.EventHandler(this.label2_Click);
 			// 
 			// label1
 			// 
@@ -104,7 +102,6 @@
 			this.label1.Size = new System.Drawing.Size(58, 21);
 			this.label1.TabIndex = 9;
 			this.label1.Text = "價格：";
-			this.label1.Click += new System.EventHandler(this.label1_Click);
 			// 
 			// txt_Price
 			// 
@@ -123,7 +120,6 @@
 			this.label4.Size = new System.Drawing.Size(90, 21);
 			this.label4.TabIndex = 9;
 			this.label4.Text = "庫存數量：";
-			this.label4.Click += new System.EventHandler(this.label4_Click);
 			// 
 			// txt_Amount
 			// 
@@ -142,7 +138,6 @@
 			this.label5.Size = new System.Drawing.Size(90, 21);
 			this.label5.TabIndex = 9;
 			this.label5.Text = "商品描述：";
-			this.label5.Click += new System.EventHandler(this.label5_Click);
 			// 
 			// txt_Description
 			// 
@@ -162,7 +157,6 @@
 			this.label6.Size = new System.Drawing.Size(90, 21);
 			this.label6.TabIndex = 9;
 			this.label6.Text = "匯入圖片：";
-			this.label6.Click += new System.EventHandler(this.label6_Click);
 			// 
 			// txt_ImageURL
 			// 
@@ -195,7 +189,6 @@
 			this.label7.Size = new System.Drawing.Size(90, 21);
 			this.label7.TabIndex = 10;
 			this.label7.Text = "商品編號：";
-			this.label7.Click += new System.EventHandler(this.label7_Click);
 			// 
 			// txt_MerchandiseId
 			// 
@@ -258,7 +251,6 @@
 			this.label8.Size = new System.Drawing.Size(90, 21);
 			this.label8.TabIndex = 15;
 			this.label8.Text = "商品圖片：";
-			this.label8.Click += new System.EventHandler(this.label8_Click);
 			// 
 			// form_EditMerchandise
 			// 
