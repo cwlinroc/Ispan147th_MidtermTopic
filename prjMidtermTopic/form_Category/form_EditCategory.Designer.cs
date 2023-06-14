@@ -35,7 +35,7 @@
 			this.txt_CategoryName = new System.Windows.Forms.TextBox();
 			this.label2 = new System.Windows.Forms.Label();
 			this.btn_Delete = new System.Windows.Forms.Button();
-			this.btn_Updata = new System.Windows.Forms.Button();
+			this.btn_Update = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -91,16 +91,16 @@
 			this.btn_Delete.UseVisualStyleBackColor = true;
 			this.btn_Delete.Click += new System.EventHandler(this.btn_Delete_Click);
 			// 
-			// btn_Updata
+			// btn_Update
 			// 
-			this.btn_Updata.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.btn_Updata.Location = new System.Drawing.Point(256, 101);
-			this.btn_Updata.Name = "btn_Updata";
-			this.btn_Updata.Size = new System.Drawing.Size(94, 38);
-			this.btn_Updata.TabIndex = 1;
-			this.btn_Updata.Text = "儲存更新";
-			this.btn_Updata.UseVisualStyleBackColor = true;
-			this.btn_Updata.Click += new System.EventHandler(this.btn_Updata_Click);
+			this.btn_Update.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.btn_Update.Location = new System.Drawing.Point(256, 101);
+			this.btn_Update.Name = "btn_Update";
+			this.btn_Update.Size = new System.Drawing.Size(94, 38);
+			this.btn_Update.TabIndex = 1;
+			this.btn_Update.Text = "儲存更新";
+			this.btn_Update.UseVisualStyleBackColor = true;
+			this.btn_Update.Click += new System.EventHandler(this.btn_Update_Click);
 			// 
 			// form_EditCategory
 			// 
@@ -108,13 +108,13 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(375, 199);
 			this.Controls.Add(this.btn_Delete);
-			this.Controls.Add(this.btn_Updata);
+			this.Controls.Add(this.btn_Update);
 			this.Controls.Add(this.txt_CategoryId);
 			this.Controls.Add(this.label7);
 			this.Controls.Add(this.txt_CategoryName);
 			this.Controls.Add(this.label2);
 			this.Name = "form_EditCategory";
-			this.Text = "類別管理：編輯類別名稱";
+			this.Text = "商品管理：編輯類別名稱";
 			this.Load += new System.EventHandler(this.form_EditCategory_Load);
 			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
 			this.ResumeLayout(false);
@@ -130,6 +130,6 @@
 		private System.Windows.Forms.TextBox txt_CategoryName;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Button btn_Delete;
-		private System.Windows.Forms.Button btn_Updata;
+		private System.Windows.Forms.Button btn_Update;
 	}
 }

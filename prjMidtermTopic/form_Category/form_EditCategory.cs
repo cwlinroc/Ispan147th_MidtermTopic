@@ -83,7 +83,7 @@ namespace prjMidtermTopic.form_Category
 			}
 		}
 
-		private void btn_Updata_Click(object sender, EventArgs e)
+		private void btn_Update_Click(object sender, EventArgs e)
 		{
 			//收集表單欄位值到dto
 			var vm = new CategoryCreateVM()

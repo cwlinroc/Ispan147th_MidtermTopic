@@ -101,6 +101,24 @@
     <Compile Include="Form_Adopt\form_Adopt.Designer.cs">
       <DependentUpon>form_Adopt.cs</DependentUpon>
     </Compile>
+    <Compile Include="form_Brand\form_CreateBrand.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form_Brand\form_CreateBrand.Designer.cs">
+      <DependentUpon>form_CreateBrand.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form_Brand\form_EditBrand.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form_Brand\form_EditBrand.Designer.cs">
+      <DependentUpon>form_EditBrand.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form_Brand\form_SearchBrand.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form_Brand\form_SearchBrand.Designer.cs">
+      <DependentUpon>form_SearchBrand.cs</DependentUpon>
+    </Compile>
     <Compile Include="form_Category\form_CreateCategory.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -320,6 +338,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form_Adopt\form_AdoptListEdit.resx">
       <DependentUpon>form_AdoptListEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form_Brand\form_CreateBrand.resx">
+      <DependentUpon>form_CreateBrand.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form_Brand\form_EditBrand.resx">
+      <DependentUpon>form_EditBrand.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form_Brand\form_SearchBrand.resx">
+      <DependentUpon>form_SearchBrand.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="form_Category\form_CreateCategory.resx">
       <DependentUpon>form_CreateCategory.cs</DependentUpon>
