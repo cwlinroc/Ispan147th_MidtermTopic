@@ -30,14 +30,14 @@
 		{
 			this.btn_Add = new System.Windows.Forms.Button();
 			this.dataGridView1 = new System.Windows.Forms.DataGridView();
+			this.BrandId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.BrandName = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.btn_DefaultSearch = new System.Windows.Forms.Button();
 			this.txt_BrandName = new System.Windows.Forms.TextBox();
 			this.label2 = new System.Windows.Forms.Label();
 			this.txt_BrandId = new System.Windows.Forms.TextBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.btn_Search = new System.Windows.Forms.Button();
-			this.BrandId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.BrandName = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -51,6 +51,7 @@
 			this.btn_Add.TabIndex = 25;
 			this.btn_Add.Text = "新增品牌";
 			this.btn_Add.UseVisualStyleBackColor = true;
+			this.btn_Add.Click += new System.EventHandler(this.btn_Add_Click);
 			// 
 			// dataGridView1
 			// 
@@ -69,6 +70,22 @@
 			this.dataGridView1.RowTemplate.Height = 24;
 			this.dataGridView1.Size = new System.Drawing.Size(318, 403);
 			this.dataGridView1.TabIndex = 28;
+			this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+			// 
+			// BrandId
+			// 
+			this.BrandId.DataPropertyName = "BrandID";
+			this.BrandId.HeaderText = "品牌編號";
+			this.BrandId.Name = "BrandId";
+			this.BrandId.ReadOnly = true;
+			// 
+			// BrandName
+			// 
+			this.BrandName.DataPropertyName = "BrandName";
+			this.BrandName.HeaderText = "品牌名稱";
+			this.BrandName.Name = "BrandName";
+			this.BrandName.ReadOnly = true;
+			this.BrandName.Width = 170;
 			// 
 			// btn_DefaultSearch
 			// 
@@ -79,6 +96,7 @@
 			this.btn_DefaultSearch.TabIndex = 24;
 			this.btn_DefaultSearch.Text = "清空條件";
 			this.btn_DefaultSearch.UseVisualStyleBackColor = true;
+			this.btn_DefaultSearch.Click += new System.EventHandler(this.btn_DefaultSearch_Click);
 			// 
 			// txt_BrandName
 			// 
@@ -127,21 +145,7 @@
 			this.btn_Search.TabIndex = 23;
 			this.btn_Search.Text = "搜尋";
 			this.btn_Search.UseVisualStyleBackColor = true;
-			// 
-			// BrandId
-			// 
-			this.BrandId.DataPropertyName = "BrandID";
-			this.BrandId.HeaderText = "品牌編號";
-			this.BrandId.Name = "BrandId";
-			this.BrandId.ReadOnly = true;
-			// 
-			// BrandName
-			// 
-			this.BrandName.DataPropertyName = "BrandName";
-			this.BrandName.HeaderText = "品牌名稱";
-			this.BrandName.Name = "BrandName";
-			this.BrandName.ReadOnly = true;
-			this.BrandName.Width = 170;
+			this.btn_Search.Click += new System.EventHandler(this.btn_Search_Click);
 			// 
 			// form_SearchBrand
 			// 
@@ -158,6 +162,7 @@
 			this.Controls.Add(this.btn_Search);
 			this.Name = "form_SearchBrand";
 			this.Text = "商品品牌：檢視、搜尋";
+			this.Load += new System.EventHandler(this.form_SearchBrand_Load);
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();

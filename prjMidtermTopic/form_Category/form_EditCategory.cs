@@ -96,7 +96,7 @@ namespace prjMidtermTopic.form_Category
 			(bool isValid, List<ValidationResult> errors) validationResult = Validate(vm);
 
 			//若有錯則顯示
-			if (validationResult.isValid == false)
+			if (!validationResult.isValid)
 			{
 				this.errorProvider1.Clear();
 				DisplayErrors(validationResult.errors);

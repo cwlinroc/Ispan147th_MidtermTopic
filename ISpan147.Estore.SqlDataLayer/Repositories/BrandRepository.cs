@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ISpan147.Estore.SqlDataLayer.Repositories
 {
-	public class BrandRepository // todo : IBrandRepository
+	public class BrandRepository : IBrandRepository
 	{
 		public BrandDto GetByBrandID(int brandId)
 		{

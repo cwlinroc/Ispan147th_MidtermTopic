@@ -28,12 +28,15 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			this.btn_Delete = new System.Windows.Forms.Button();
 			this.btn_Update = new System.Windows.Forms.Button();
 			this.txt_BrandId = new System.Windows.Forms.TextBox();
 			this.label7 = new System.Windows.Forms.Label();
 			this.txt_BrandName = new System.Windows.Forms.TextBox();
 			this.label2 = new System.Windows.Forms.Label();
+			this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// btn_Delete
@@ -45,6 +48,7 @@
 			this.btn_Delete.TabIndex = 16;
 			this.btn_Delete.Text = "刪除品牌";
 			this.btn_Delete.UseVisualStyleBackColor = true;
+			this.btn_Delete.Click += new System.EventHandler(this.btn_Delete_Click);
 			// 
 			// btn_Update
 			// 
@@ -55,6 +59,7 @@
 			this.btn_Update.TabIndex = 15;
 			this.btn_Update.Text = "儲存更新";
 			this.btn_Update.UseVisualStyleBackColor = true;
+			this.btn_Update.Click += new System.EventHandler(this.btn_Update_Click);
 			// 
 			// txt_BrandId
 			// 
@@ -93,6 +98,10 @@
 			this.label2.TabIndex = 19;
 			this.label2.Text = "品牌名稱：";
 			// 
+			// errorProvider1
+			// 
+			this.errorProvider1.ContainerControl = this;
+			// 
 			// form_EditBrand
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -106,6 +115,8 @@
 			this.Controls.Add(this.label2);
 			this.Name = "form_EditBrand";
 			this.Text = "商品管理：編輯品牌名稱";
+			this.Load += new System.EventHandler(this.form_EditBrand_Load);
+			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -119,5 +130,6 @@
 		private System.Windows.Forms.Label label7;
 		private System.Windows.Forms.TextBox txt_BrandName;
 		private System.Windows.Forms.Label label2;
+		private System.Windows.Forms.ErrorProvider errorProvider1;
 	}
 }
