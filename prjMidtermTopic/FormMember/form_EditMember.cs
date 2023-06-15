@@ -20,7 +20,7 @@ namespace prjMidtermTopic.FormMember
 		private bool _gender;
 		private readonly int _memberID;
 		private string _originalFilePath;
-		private string _targetFilePath;		
+		private string _targetFilePath;
 		private IMemberRepo _repo;
 		private string _forumAccountID;//txtForumAccountID
 		private string _password;//txtPassword
@@ -31,13 +31,13 @@ namespace prjMidtermTopic.FormMember
 
 			_map = new Dictionary<string, Control>(StringComparer.CurrentCultureIgnoreCase)
 			{
-				{ "MemberName", txtMemberName},				
+				{ "MemberName", txtMemberName},
 				{ "NickName", txtNickName},
 				{ "DateOfBirth", DateOfBirthPicker},
 				{ "Gender", radbtnFemale},
 				{ "Account", txtAccount},
 				{ "Phone", txtPhone},
-				{ "Address", txtAddress},				
+				{ "Address", txtAddress},
 				{ "Email", txtEmail},
 				{ "Avatar", txtAvatar}
 			};
@@ -53,10 +53,10 @@ namespace prjMidtermTopic.FormMember
 				MessageBox.Show("找不到紀錄");
 				return;
 			}
-			txtMemberName.Text = dto.MemberName;			
+			txtMemberName.Text = dto.MemberName;
 			txtNickName.Text = dto.NickName;
 			DateOfBirthPicker.Value = dto.DateOfBirth;
-			txtAccount.Text = dto.Account;			
+			txtAccount.Text = dto.Account;
 			txtPhone.Text = dto.Phone;
 			txtAddress.Text = dto.Address;
 			txtEmail.Text = dto.Email;
@@ -99,7 +99,7 @@ namespace prjMidtermTopic.FormMember
 				pictureBoxAvatar.Image = Properties.Resources._error;
 			}
 			#endregion
-						
+
 		}
 
 		private void SelectFileToForm(string filePath)
@@ -150,7 +150,7 @@ namespace prjMidtermTopic.FormMember
 		}
 
 		private void DeleteFileFromDb()
-		{	
+		{
 			if (File.Exists(_targetFilePath))
 			{
 				try
@@ -161,13 +161,13 @@ namespace prjMidtermTopic.FormMember
 				catch (Exception ex)
 				{
 					MessageBox.Show($"頭像刪除失敗,原因:{ex.Message}");
-				}				
+				}
 			}
 			else
 			{
-				btnDeleteAvatar.Enabled= false;
+				btnDeleteAvatar.Enabled = false;
 			}
-			
+
 		}
 
 		#region 事件
@@ -238,7 +238,11 @@ namespace prjMidtermTopic.FormMember
 
 			//驗證vm是否通過欄位驗證
 			bool hasError = MyValidator.ValidateAndDisplay(vm, errorProvider1, _map);
-			if (hasError) return;
+			if (hasError)
+			{
+				MessageBox.Show("VM驗證未通過!");
+				return;
+			}
 
 			MemberDto dto = new MemberDto
 			{
@@ -293,7 +297,7 @@ namespace prjMidtermTopic.FormMember
 
 		private void btnDelete_Click(object sender, EventArgs e)
 		{
-			var service = new MemberService(_repo);			
+			var service = new MemberService(_repo);
 			try
 			{
 				if (MessageBox.Show("確定要刪除資料嗎?", "確認", MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -313,11 +317,11 @@ namespace prjMidtermTopic.FormMember
 				}
 				else
 				{
-					MessageBox.Show("取消刪除");					
+					MessageBox.Show("取消刪除");
 					return;
 				}
-					
-				
+
+
 
 				IGrid parent = this.Owner as IGrid;
 				//將開啟我的視窗轉型成IGrid,若轉型失敗,不丟出例外而是傳回null
@@ -336,8 +340,8 @@ namespace prjMidtermTopic.FormMember
 				MessageBox.Show("刪除失敗,原因:" + ex.Message);
 			}
 
-			
-		}		
+
+		}
 
 		private void btnApplyForumAccount_Click(object sender, EventArgs e)
 		{
