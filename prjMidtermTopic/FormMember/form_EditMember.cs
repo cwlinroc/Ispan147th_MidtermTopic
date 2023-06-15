@@ -1,7 +1,6 @@
 ﻿using Ispan147.Estore.SqlDataLayer.Repositories;
 using Ispan147.Estore.SqlDataLayer.Services;
 using ISpan147.Estore.SqlDataLayer.Dtos;
-using ISpan147.Estore.SqlDataLayer.Services;
 using ISpan147.Estore.SqlDataLayer.Utility;
 using prjMidtermTopic.Interfaces;
 using prjMidtermTopic.Model;
@@ -42,6 +41,7 @@ namespace prjMidtermTopic.FormMember
 				{ "Avatar", txtAvatar}
 			};
 
+			Load += form_EditMember_Load;
 		}
 
 		private void form_EditMember_Load(object sender, EventArgs e)
@@ -173,20 +173,12 @@ namespace prjMidtermTopic.FormMember
 		#region 事件
 		private void radbtnMale_CheckedChanged(object sender, EventArgs e)
 		{
-			if (radbtnMale.Checked)
-			{
-				_gender = true;
-				radbtnFemale.Checked = false;
-			}
+			if (radbtnMale.Checked) _gender = true;			
 		}
 
 		private void radbtnFemale_CheckedChanged(object sender, EventArgs e)
 		{
-			if (radbtnFemale.Checked)
-			{
-				_gender = false;
-				radbtnMale.Checked = false;
-			}
+			if (radbtnFemale.Checked) _gender = false;			
 		}
 
 		private void btnSelectAvatar_Click(object sender, EventArgs e)
@@ -220,16 +212,14 @@ namespace prjMidtermTopic.FormMember
 
 		private void btnUpdate_Click(object sender, EventArgs e)
 		{
-			var vm = new MemberCreateVM()
+			var vm = new MemberEditVM()
 			{
 				MemberID = this._memberID,
-				MemberName = txtMemberName.Text,
-				ForumAccountID = Utility.ToNullableInt(_forumAccountID),
+				MemberName = txtMemberName.Text,				
 				NickName = txtNickName.Text,
 				DateOfBirth = DateOfBirthPicker.Value,
 				Gender = _gender,
-				Account = txtAccount.Text,
-				Password = _password,
+				Account = txtAccount.Text,				
 				Phone = txtPhone.Text,
 				Address = txtAddress.Text,
 				Email = txtEmail.Text,
@@ -247,13 +237,11 @@ namespace prjMidtermTopic.FormMember
 			MemberDto dto = new MemberDto
 			{
 				MemberID = vm.MemberID,
-				MemberName = vm.MemberName,
-				ForumAccountID = vm.ForumAccountID,
+				MemberName = vm.MemberName,				
 				NickName = vm.NickName,
 				DateOfBirth = vm.DateOfBirth,
 				Gender = vm.Gender.Value,
-				Account = vm.Account,
-				Password = vm.Password,
+				Account = vm.Account,				
 				Phone = vm.Phone,
 				Address = vm.Address,
 				Email = vm.Email,
@@ -320,8 +308,6 @@ namespace prjMidtermTopic.FormMember
 					MessageBox.Show("取消刪除");
 					return;
 				}
-
-
 
 				IGrid parent = this.Owner as IGrid;
 				//將開啟我的視窗轉型成IGrid,若轉型失敗,不丟出例外而是傳回null

@@ -3,16 +3,12 @@ using Ispan147.Estore.SqlDataLayer.Services;
 using prjMidtermTopic.ViewModels;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
 using System.Windows.Forms;
 using prjMidtermTopic.Interfaces;
 using prjMidtermTopic.Model;
 using System.IO;
 using ISpan147.Estore.SqlDataLayer.ExtMethods;
 using Ispan147.Estore.SqlDataLayer.Repositories;
-using ISpan147.Estore.SqlDataLayer.Utility;
-using ISpan147.Estore.SqlDataLayer.EFModel;
 using System.Drawing;
 
 namespace prjMidtermTopic.FormMember
@@ -23,7 +19,7 @@ namespace prjMidtermTopic.FormMember
 		private Dictionary<string, Control> _map;
 		private string _originalFilePath;
 		private string _targetFolderPath = @"images/avatar/";
-		private IMemberRepo _memberRepo;
+		private IMemberRepo _repo;
 		public form_CreateMember()
 		{
 			InitializeComponent();
@@ -41,7 +37,7 @@ namespace prjMidtermTopic.FormMember
 				{ "Avatar", txtAvatar}
 			};
 
-			_memberRepo = new MemberRepository();
+			_repo = new MemberRepository();
 			Load += Form_CreateMember_Load;
 		}
 
@@ -216,7 +212,7 @@ namespace prjMidtermTopic.FormMember
 
 			try
 			{
-				var service = new MemberService(_memberRepo);
+				var service = new MemberService(_repo);
 				int newID = service.Create(dto);
 
 				UploadFileToDb(_originalFilePath);
@@ -240,7 +236,6 @@ namespace prjMidtermTopic.FormMember
 			}
 			this.Close();
 		}
-
 
 		#endregion
 		

@@ -7,11 +7,6 @@ using prjMidtermTopic.FormMember;
 using Ispan147.Estore.SqlDataLayer.Services;
 using System.Linq;
 using prjMidtermTopic.Model;
-using prjMidtermTopic.ViewModels;
-using ISpan147.Estore.SqlDataLayer.EFModel;
-using System.Security.Principal;
-using System.Net;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 using ISpan147.Estore.SqlDataLayer.Services;
 
 namespace prjMidtermTopic
@@ -105,6 +100,7 @@ namespace prjMidtermTopic
 				{
 					MemberID = o.MemberID,
 					MemberName = o.MemberName,
+					ForumAccountID = o.ForumAccountID,
 					NickName = o.NickName,
 					DateOfBirth = o.DateOfBirth,
 					Gender = (o.Gender) ? "男" : "女",
@@ -181,6 +177,7 @@ namespace prjMidtermTopic
 				{
 					MemberID = o.MemberID,
 					MemberName = o.MemberName,
+					ForumAccountID = o.ForumAccountID,
 					NickName = o.NickName,
 					DateOfBirth = o.DateOfBirth,
 					Gender = (o.Gender) ? "男" : "女",

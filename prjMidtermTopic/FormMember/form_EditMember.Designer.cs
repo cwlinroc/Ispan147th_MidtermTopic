@@ -135,7 +135,7 @@
 			this.label8.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.label8.Location = new System.Drawing.Point(11, 303);
 			this.label8.Name = "label8";
-			this.label8.Size = new System.Drawing.Size(58, 21);
+			this.label8.Size = new System.Drawing.Size(57, 20);
 			this.label8.TabIndex = 32;
 			this.label8.Text = "頭像：";
 			// 
@@ -347,7 +347,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(666, 535);
+			this.ClientSize = new System.Drawing.Size(623, 535);
 			this.Controls.Add(this.pictureBoxAvatar);
 			this.Controls.Add(this.btnEditForumName);
 			this.Controls.Add(this.btnApplyForumAccount);

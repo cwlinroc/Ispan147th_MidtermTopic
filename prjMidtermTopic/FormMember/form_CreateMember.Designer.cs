@@ -389,6 +389,7 @@
 			this.Controls.Add(this.labName);
 			this.Name = "form_CreateMember";
 			this.Text = "新增會員";
+			this.Load += new System.EventHandler(this.Form_CreateMember_Load);
 			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
 			this.panel1.ResumeLayout(false);
 			this.panel1.PerformLayout();

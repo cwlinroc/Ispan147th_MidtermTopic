@@ -14,7 +14,7 @@ namespace prjMidtermTopic.FormMember
 	public partial class form_ApplyForumAccount : Form
 	{
 		private readonly Dictionary<string, Control> _map;
-		private ForumAccountRepository _forumAccountrepo;
+		//private ForumAccountRepository _forumAccountrepo;
 		private IMemberRepo _memberrepo;
 		private readonly int _memberId;
 
@@ -22,7 +22,7 @@ namespace prjMidtermTopic.FormMember
 		{
 			InitializeComponent();
 			_memberId = memberId;
-			_forumAccountrepo = new ForumAccountRepository();
+			//_forumAccountrepo = new ForumAccountRepository();
 			_memberrepo = new MemberRepository();
 
 			_map = new Dictionary<string, Control>(StringComparer.CurrentCultureIgnoreCase)
