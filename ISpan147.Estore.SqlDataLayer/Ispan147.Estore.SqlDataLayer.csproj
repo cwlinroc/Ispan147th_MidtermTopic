@@ -103,6 +103,7 @@
     <Compile Include="Repositories\CategoryRepository.cs" />
     <Compile Include="Repositories\EmployeeRepositoy.cs" />
     <Compile Include="Repositories\ForumAccountRepository.cs" />
+    <Compile Include="Repositories\IBrandRepository.cs" />
     <Compile Include="Repositories\ICategoryRepository.cs" />
     <Compile Include="Repositories\IMerchandiseRepository.cs" />
     <Compile Include="Repositories\IOrderListRepositoy.cs" />
@@ -119,6 +120,7 @@
     <Compile Include="Services\Authentication.cs" />
     <Compile Include="Repositories\PetRepository.cs" />
     <Compile Include="Services\AdoptService.cs" />
+    <Compile Include="Services\BrandService.cs" />
     <Compile Include="Services\CategoryService.cs" />
     <Compile Include="Services\ForumAccountService.cs" />
     <Compile Include="Services\EmployeeServices.cs" />

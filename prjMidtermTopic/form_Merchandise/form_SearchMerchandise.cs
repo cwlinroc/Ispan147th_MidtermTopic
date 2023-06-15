@@ -179,6 +179,7 @@ namespace prjMidtermTopic
 						_sortIndex = columnIndex;
 					}
 				}
+
 				dataGridView1.DataSource = _data.ToArray();
 			}
 		}

@@ -47,12 +47,12 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 				where += $" AND CategoryID = @CategoryID";
 				builder.AddInt("@CategoryID", categoryId.Value);
 			}
-			if (string.IsNullOrEmpty(s_name) == false)
+			if (!string.IsNullOrEmpty(s_name))
 			{
 				where += $" AND CategoryName LIKE '%' + @CategoryName + '%'";
 				builder.AddNVarchar("@CategoryName", 30, s_name);
 			}
-			if (string.IsNullOrEmpty(where) == false)
+			if (!string.IsNullOrEmpty(where))
 			{
 				where = " WHERE " + where.Substring(5);
 				sql += where;

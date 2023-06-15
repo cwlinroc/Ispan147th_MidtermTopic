@@ -123,6 +123,16 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
 				CategoryName = reader.GetString("CategoryName")
 			};
 		}
+
+		public static Func<SqlDataReader, BrandDto> BrandDtoAssembler
+		{
+			get => (reader) => new BrandDto
+			{
+				BrandId = reader.GetInt("BrandId"),
+				BrandName = reader.GetString("BrandName")
+			};
+		}
+
 		public static Func<SqlDataReader, QADto.Theme> ThemeDtoAssembler
 		{
 			get => (reader) =>
