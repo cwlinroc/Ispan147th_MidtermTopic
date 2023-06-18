@@ -62,25 +62,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormMember\form_ApplyForumAccount.cs">
+    <Compile Include="Form_Member\form_ApplyForumAccount.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormMember\form_ApplyForumAccount.Designer.cs">
+    <Compile Include="Form_Member\form_ApplyForumAccount.Designer.cs">
       <DependentUpon>form_ApplyForumAccount.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormMember\form_CreateMember.cs">
+    <Compile Include="Form_Member\form_CreateMember.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormMember\form_CreateMember.Designer.cs">
+    <Compile Include="Form_Member\form_CreateMember.Designer.cs">
       <DependentUpon>form_CreateMember.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormMember\form_EditForumName.cs">
+    <Compile Include="Form_Member\form_EditForumName.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormMember\form_EditForumName.Designer.cs">
+    <Compile Include="Form_Member\form_EditForumName.Designer.cs">
       <DependentUpon>form_EditForumName.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormMember\form_EditMember.cs">
+    <Compile Include="Form_Member\form_EditMember.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form_Adopt\form_AdoptAdd.cs">
@@ -197,13 +197,13 @@
     <Compile Include="form_Merchandise\form_SearchMerchandise.Designer.cs">
       <DependentUpon>form_SearchMerchandise.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormMember\form_EditMember.Designer.cs">
+    <Compile Include="Form_Member\form_EditMember.Designer.cs">
       <DependentUpon>form_EditMember.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormMember\form_Member.cs">
+    <Compile Include="Form_Member\form_Member.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormMember\form_Member.Designer.cs">
+    <Compile Include="Form_Member\form_Member.Designer.cs">
       <DependentUpon>form_Member.cs</DependentUpon>
     </Compile>
     <Compile Include="Form_Order\form_OrderList.cs">
@@ -290,6 +290,18 @@
     <Compile Include="form_QA\from_ThemeCreate.Designer.cs">
       <DependentUpon>from_ThemeCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="form_Spec\form_CreateSpec.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form_Spec\form_CreateSpec.Designer.cs">
+      <DependentUpon>form_CreateSpec.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form_Spec\form_EditSpec.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form_Spec\form_EditSpec.Designer.cs">
+      <DependentUpon>form_EditSpec.cs</DependentUpon>
+    </Compile>
     <Compile Include="Interfaces\IGrid.cs" />
     <Compile Include="Interfaces\IGridComment.cs" />
     <Compile Include="MassInsert\form_MassInsert.cs">
@@ -319,16 +331,17 @@
     <Compile Include="ViewModels\OrderVM.cs" />
     <Compile Include="ViewModels\QAVM.cs" />
     <Compile Include="ViewModels\PetCreateVM.cs" />
-    <EmbeddedResource Include="FormMember\form_ApplyForumAccount.resx">
+    <Compile Include="ViewModels\SpecCreateVM.cs" />
+    <EmbeddedResource Include="Form_Member\form_ApplyForumAccount.resx">
       <DependentUpon>form_ApplyForumAccount.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormMember\form_CreateMember.resx">
+    <EmbeddedResource Include="Form_Member\form_CreateMember.resx">
       <DependentUpon>form_CreateMember.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormMember\form_EditForumName.resx">
+    <EmbeddedResource Include="Form_Member\form_EditForumName.resx">
       <DependentUpon>form_EditForumName.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormMember\form_EditMember.resx">
+    <EmbeddedResource Include="Form_Member\form_EditMember.resx">
       <DependentUpon>form_EditMember.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_Adopt\form_Adopt.resx">
@@ -382,7 +395,7 @@
     <EmbeddedResource Include="form_Main.resx">
       <DependentUpon>form_Main.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormMember\form_Member.resx">
+    <EmbeddedResource Include="Form_Member\form_Member.resx">
       <DependentUpon>form_Member.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="form_Merchandise\form_CreateMerchandise.resx">
@@ -420,6 +433,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="form_Pets\form_PetEdit.resx">
       <DependentUpon>form_PetEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form_Spec\form_CreateSpec.resx">
+      <DependentUpon>form_CreateSpec.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form_Spec\form_EditSpec.resx">
+      <DependentUpon>form_EditSpec.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MassInsert\form_MassInsert.resx">
       <DependentUpon>form_MassInsert.cs</DependentUpon>
@@ -538,6 +557,7 @@
   <ItemGroup>
     <None Include="bin\Debug\images\petavatar\CryCat.jpg" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

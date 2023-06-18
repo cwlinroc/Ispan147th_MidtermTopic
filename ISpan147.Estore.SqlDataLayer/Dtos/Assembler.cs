@@ -93,6 +93,7 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
 				MerchandiseID = reader.GetInt("MerchandiseId"),
 				MerchandiseName = reader.GetString("MerchandiseName"),
 				CategoryID = reader.GetInt("CategoryId"),
+				// todo 是否在商品總覽顯示價格?
 				Price = reader.GetInt("Price"),
 				Amount = reader.GetInt("Amount"),
 				Description = reader.GetString("Description"),
@@ -108,6 +109,7 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
 				MerchandiseName = reader.GetString("MerchandiseName"),
 				CategoryID = reader.GetInt("CategoryId"),
 				CategoryName = reader.GetString("CategoryName"),
+				// todo 是否在商品總覽顯示價格?
 				Price = reader.GetInt("Price"),
 				Amount = reader.GetInt("Amount"),
 				Description = reader.GetString("Description"),
@@ -130,6 +132,18 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
 			{
 				BrandId = reader.GetInt("BrandId"),
 				BrandName = reader.GetString("BrandName")
+			};
+		}
+
+		public static Func<SqlDataReader, SpecDto> SpecDtoAssembler
+		{
+			get => (reader) => new SpecDto
+			{
+				MerchandiseName = reader.GetString("MerchandiseName"),
+				SpecId = reader.GetInt("SpecId"),
+				SpecName = reader.GetString("SpecName"),
+				Price = reader.GetInt("Price"),
+				Amount = reader.GetInt("Amount")
 			};
 		}
 

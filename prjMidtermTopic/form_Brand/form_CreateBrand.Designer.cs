@@ -45,6 +45,7 @@
 			this.btn_Add.TabIndex = 19;
 			this.btn_Add.Text = "新增品牌";
 			this.btn_Add.UseVisualStyleBackColor = true;
+			this.btn_Add.Click += new System.EventHandler(this.btn_Add_Click);
 			// 
 			// txt_BrandName
 			// 
