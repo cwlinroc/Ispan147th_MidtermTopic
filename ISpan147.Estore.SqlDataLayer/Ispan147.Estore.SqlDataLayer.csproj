@@ -111,6 +111,7 @@
     <Compile Include="Repositories\IOrderRepository.cs" />
     <Compile Include="Repositories\IMemberRepo.cs" />
     <Compile Include="Repositories\IPetRepo.cs" />
+    <Compile Include="Repositories\ISpecRepository.cs" />
     <Compile Include="Repositories\MassInsertRepository.cs" />
     <Compile Include="Repositories\MemberRepository.cs" />
     <Compile Include="Repositories\MerchandiseRepository.cs" />
@@ -118,6 +119,7 @@
     <Compile Include="Repositories\OrderListRepositoryDapper.cs" />
     <Compile Include="Repositories\OrderListRepositoryLinq.cs" />
     <Compile Include="Repositories\OrderRepository.cs" />
+    <Compile Include="Repositories\SpecRepository.cs" />
     <Compile Include="Services\Authentication.cs" />
     <Compile Include="Repositories\PetRepository.cs" />
     <Compile Include="Services\AdoptService.cs" />

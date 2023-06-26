@@ -30,15 +30,16 @@ namespace prjMidtermTopic.ViewModels
 		[Required(ErrorMessage = "{0}為必選")]
 		public int CategoryID { get; set; }
 
-		[Display(Name = "價格")]
-		[Required(ErrorMessage = "{0}為必填")]
-		[Range(1, int.MaxValue, ErrorMessage = "{0}必須為大於0的數字")]
-		public int Price { get; set; }
+		// todo 修改商品資料欄
+		//[Display(Name = "價格")]
+		//[Required(ErrorMessage = "{0}為必填")]
+		//[Range(1, int.MaxValue, ErrorMessage = "{0}必須為大於0的數字")]
+		//public int Price { get; set; }
 
-		[Display(Name = "庫存數量")]
-		[Required(ErrorMessage = "{0}為必填")]
-		[Range(0, int.MaxValue, ErrorMessage = "{0}必須是至少為0的數字")]
-		public int Amount { get; set; }
+		//[Display(Name = "庫存數量")]
+		//[Required(ErrorMessage = "{0}為必填")]
+		//[Range(0, int.MaxValue, ErrorMessage = "{0}必須是至少為0的數字")]
+		//public int Amount { get; set; }
 
 		[Display(Name = "商品描述")]
 		[MaxLength(500, ErrorMessage = "{0}長度不可超過{1}字")]
