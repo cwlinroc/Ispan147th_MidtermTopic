@@ -101,7 +101,8 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 			string orderBy = $" ORDER BY m.{csDto.OrderBy}";
 			string decending = csDto.Descending ? " ASC" : " DESC";
 
-			string sql = $@"SELECT {top}MerchandiseID, MerchandiseName, CategoryName, Price, Amount, 
+			//todo 不抓價格、庫存，改抓品牌
+			string sql = $@"SELECT {top}MerchandiseID, MerchandiseName, CategoryName, Price, Amount,  
 										Description, ImageURL 
 							FROM Merchandises AS m 
 							JOIN Categories AS c 

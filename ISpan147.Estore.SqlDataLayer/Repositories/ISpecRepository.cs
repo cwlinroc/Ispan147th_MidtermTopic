@@ -11,7 +11,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 	{
 		SpecDto GetBySpecID(int specId);
 		SpecDto GetBySpecName(string specname);
-		List<SpecDto> Search(int? specId, string s_name);
+		List<SpecDto> Search(int merchandiseId, int? specId, string s_name);
 		int Update(SpecDto dto);
 		int Create(SpecDto dto);
 		int Delete(int specId);

@@ -32,30 +32,36 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 			return SqlDb.Get(connGetter, sql, assembler, parameters);
 		}
 
-		public List<SpecDto> Search(int? specId, string s_name)
+		// todo 在商品檢視頁用規格ID和名稱查詢
+		public List<SpecDto> Search(int merchandiseId, int? specId, string s_name)
 		{
 			#region sql & SqlParameter[]
-			string sql = $"SELECT * FROM Specs ";
+			string sql = $@"SELECT MerchandiseID, MerchandiseName, CategoryName, BrandName, SpecName, Price, Amount, Description, ImageURL 
+							FROM Merchandises AS m
+							JOIN Categories AS c
+							ON m.CategoryID = c.CategoryID
+							JOIN Brands AS b
+							ON m.BrandID = b.BrandID
+							JOIN Specs AS s
+							ON m.SpecID = s.SpecID ";
 
 			var builder = new SqlParameterBuilder();
 
-			string where = "";
+			string where = " WHERE m.MerchandiseID = @MerchandiseID";
+			builder.AddInt("@MerchandiseID", merchandiseId);
+
 			if (specId.HasValue)
 			{
-				where += $" AND SpecID = @SpecID";
+				where += $" AND s.SpecID = @SpecID";
 				builder.AddInt("@SpecID", specId.Value);
 			}
 			if (!string.IsNullOrEmpty(s_name))
 			{
-				where += $" AND SpecName LIKE '%' + @SpecName + '%'";
+				where += $" AND s.SpecName LIKE '%' + @SpecName + '%'";
 				builder.AddNVarchar("@SpecName", 30, s_name);
 			}
-			// todo 其他搜尋條件(參考Merchandise)
-			if (!string.IsNullOrEmpty(where))
-			{
-				where = " WHERE " + where.Substring(5);
-				sql += where;
-			}
+
+			sql += where;
 
 			SqlParameter[] parameters = builder.Build();
 			#endregion
@@ -67,15 +73,16 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 
 		public int Update(SpecDto dto)
 		{
-			// todo 其他條件(參考Merchandise)
-			string sql = @"UPDATE Specs
-							SET SpecName = @SpecName
-							WHERE SpecId = @SpecId";
-
 			var parameters = new SqlParameterBuilder()
 				.AddInt("@SpecId", dto.SpecId)
 				.AddNVarchar(@"SpecName", 30, dto.SpecName)
+				.AddInt("@Price", dto.Price)
+				.AddInt("@Amount", dto.Amount)
 				.Build();
+
+			string sql = @"UPDATE Specs
+							SET SpecName = @SpecName, Price = @Price, Amount = @Amount 
+							WHERE SpecId = @SpecId";
 
 			Func<SqlConnection> connGetter = SqlDb.GetConnection;
 
@@ -84,15 +91,16 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 
 		public int Create(SpecDto dto)
 		{
-			// todo 其他條件(參考Merchandise)
-			string sql = @"INSERT INTO Specs
-							(SpecName)
-							VALUES
-							(@SpecName)";
-
 			var parameters = new SqlParameterBuilder()
 				.AddNVarchar(@"SpecName", 30, dto.SpecName)
+				.AddInt("@Price", dto.Price)
+				.AddInt("@Amount", dto.Amount)
 				.Build();
+
+			string sql = @"INSERT INTO Specs
+							(SpecName, Price, Amount)
+							VALUES
+							(@SpecName, @Price, @Amount)";
 
 			Func<SqlConnection> connGetter = SqlDb.GetConnection;
 
