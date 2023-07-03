@@ -37,7 +37,7 @@ namespace prjMidtermTopic.ViewModels
 		public string Account { get; set; }
 
 		[Display(Name = "密碼")]
-		//[Required(ErrorMessage = "{0}必填")]
+		[Required(ErrorMessage = "{0}必填")]
 		[MaxLength(65, ErrorMessage = "{0}長度不可多於{1}")]
 		public string Password { get; set; }
 
