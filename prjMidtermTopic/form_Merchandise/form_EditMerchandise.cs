@@ -105,10 +105,10 @@ namespace prjMidtermTopic.form_Merchandise
 			}
 
 			#region 載入輸入欄資料
-			txt_MerchandiseId.Text = dto.MerchandiseID.ToString();
+			txt_MerchandiseId.Text = dto.MerchandiseId.ToString();
 			txt_MerchandiseName.Text = dto.MerchandiseName;
 			comboBox_CategoryId.SelectedItem = comboBox_CategoryId.Items.Cast<dynamic>()
-														.FirstOrDefault(x => x.Key == dto.CategoryID);
+														.FirstOrDefault(x => x.Key == dto.CategoryId);
 			txt_Price.Text = dto.Price.ToString();
 			txt_Amount.Text = dto.Amount.ToString();
 			txt_Description.Text = dto.Description;
@@ -319,9 +319,9 @@ namespace prjMidtermTopic.form_Merchandise
 			//通過驗證則將vm轉型為MerchandiseDto
 			MerchandiseDto dto = new MerchandiseDto
 			{
-				MerchandiseID = vm.MerchandiseId,
+				MerchandiseId = vm.MerchandiseId,
 				MerchandiseName = vm.MerchandiseName,
-				CategoryID = vm.CategoryID,
+				CategoryId = vm.CategoryID,
 				Price = vm.Price,
 				Amount = vm.Amount,
 				Description = vm.Description,

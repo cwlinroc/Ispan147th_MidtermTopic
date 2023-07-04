@@ -64,9 +64,9 @@ namespace prjMidtermTopic.ViewModels
 
 			return new MerchandiseDto
 			{
-				MerchandiseID = vm.MerchandiseId,
+				MerchandiseId = vm.MerchandiseId,
 				MerchandiseName = vm.MerchandiseName,
-				CategoryID = vm.CategoryID,
+				CategoryId = vm.CategoryID,
 				Price = vm.Price,
 				Amount = vm.Amount,
 				Description = vm.Description,
@@ -76,13 +76,13 @@ namespace prjMidtermTopic.ViewModels
 
 		static public MerchandiseCreateVM ToVM(this MerchandiseDto dto, Dictionary<int, string> map)
 		{
-			map.TryGetValue(dto.CategoryID, out var categoryId);
+			map.TryGetValue(dto.CategoryId, out var categoryId);
 
 			return new MerchandiseCreateVM
 			{
-				MerchandiseId = dto.MerchandiseID,
+				MerchandiseId = dto.MerchandiseId,
 				MerchandiseName = dto.MerchandiseName.ToString(),
-				CategoryID = dto.CategoryID,
+				CategoryID = dto.CategoryId,
 				Price = dto.Price,
 				Amount = dto.Amount,
 				Description = dto.Description.ToString(),
@@ -93,9 +93,9 @@ namespace prjMidtermTopic.ViewModels
 		{
 			return new MerchandiseCreateVM
 			{
-				MerchandiseId = dto.MerchandiseID,
+				MerchandiseId = dto.MerchandiseId,
 				MerchandiseName = dto.MerchandiseName.ToString(),
-				CategoryID = dto.CategoryID,
+				CategoryID = dto.CategoryId,
 				Price = dto.Price,
 				Amount = dto.Amount,
 				Description = dto.Description.ToString(),

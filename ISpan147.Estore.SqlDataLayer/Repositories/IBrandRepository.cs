@@ -9,7 +9,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 {
 	public interface IBrandRepository
 	{
-		BrandDto GetByBrandID(int brandId);
+		BrandDto GetByBrandId(int brandId);
 		BrandDto GetByBrandName(string brandname);
 		List<BrandDto> Search(int? brandId, string s_name);
 		int Update(BrandDto dto);

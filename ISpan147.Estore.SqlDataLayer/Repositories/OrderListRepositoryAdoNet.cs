@@ -16,12 +16,12 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 
 		public int Create(OrderListDto dto)
 		{
-			string sql = "INSERT INTO OrderLists (OrderID, MerchandiseID, Quantity)"
-				+ " VALUES (@OrderID, @MerchandiseID, @Quantity) ";
+			string sql = "INSERT INTO OrderLists (OrderID, MerchandiseId, Quantity)"
+				+ " VALUES (@OrderID, @MerchandiseId, @Quantity) ";
 
 			var parameters = new SqlParameterBuilder()
 				.AddInt("OrderID", dto.OrderID)
-				.AddInt("MerchandiseID", dto.MerchandiseID)
+				.AddInt("MerchandiseId", dto.MerchandiseID)
 				.AddInt("Quantity", dto.Quantity)
 				.Build();
 
@@ -59,9 +59,9 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 			int? merchandiseID = null,
 			int? quantity = null)
 		{
-			string sql = $"SELECT OrderListID, OrderID, o.MerchandiseID, MerchandiseName, Quantity "
+			string sql = $"SELECT OrderListID, OrderID, o.MerchandiseId, MerchandiseName, Quantity "
 				+ " FROM OrderLists o "
-				+ " JOIN Merchandises m ON o.MerchandiseID = m.MerchandiseID ";
+				+ " JOIN Merchandises m ON o.MerchandiseId = m.MerchandiseId ";
 			var parameterBuilder = new SqlParameterBuilder();
 
 			string where = "";
@@ -78,8 +78,8 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 			}
 			if (merchandiseID.HasValue)
 			{
-				where += " AND o.MerchandiseID = @MerchandiseID ";
-				parameterBuilder.AddInt("MerchandiseID", merchandiseID.Value);
+				where += " AND o.MerchandiseId = @MerchandiseId ";
+				parameterBuilder.AddInt("MerchandiseId", merchandiseID.Value);
 			}
 			if (quantity.HasValue)
 			{
@@ -105,13 +105,13 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 			if (dto == null) return 0;
 
 			string sql = "UPDATE OrderLists SET OrderID = @OrderID"
-				+ ", MerchandiseID = @MerchandiseID "
+				+ ", MerchandiseId = @MerchandiseId "
 				+ ", Quantity = @Quantity "
 				+ " WHERE OrderListID = @OrderListID ";
 
 			var parameters = new SqlParameterBuilder()
 				.AddInt("OrderID", dto.OrderID)
-				.AddInt("MerchandiseID", dto.MerchandiseID)
+				.AddInt("MerchandiseId", dto.MerchandiseID)
 				.AddInt("Quantity", dto.Quantity)
 				.AddInt("OrderListID", dto.OrderListID)
 				.Build();

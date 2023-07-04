@@ -104,7 +104,7 @@ namespace ISpan147.Estore.SqlDataLayer.Utility
 			return new MerchandiseDto
 			{
 				MerchandiseName = merchandiseName,
-				CategoryID = categoryIndex + 1,
+				CategoryId = categoryIndex + 1,
 				Price = _rand.Next(50, 3000),
 				Amount = _rand.Next(70),
 				Description = RandomChance(70) ? merchandiseName : null,

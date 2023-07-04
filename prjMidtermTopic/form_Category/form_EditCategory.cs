@@ -67,7 +67,7 @@ namespace prjMidtermTopic.form_Category
 		private void form_EditCategory_Load(object sender, EventArgs e)
 		{
 			//var repo = new CategoryRepository();
-			CategoryDto dto = _repo.GetByCategoryID(_categoryId);
+			CategoryDto dto = _repo.GetByCategoryId(_categoryId);
 			if (dto == null)
 			{
 				MessageBox.Show("找不到符合紀錄");

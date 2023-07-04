@@ -16,5 +16,6 @@ namespace prjMidtermTopic.form_Spec
 		{
 			InitializeComponent();
 		}
+		// todo
 	}
 }

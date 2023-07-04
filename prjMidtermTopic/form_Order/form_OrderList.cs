@@ -36,7 +36,7 @@ namespace prjMidtermTopic.Form_Order
 			_sortMap = new Dictionary<string, Func<OrderListGridDto, OrderListGridDto, int>>
 			{
 				{ "OrderListID", (prev, next) => prev.OrderListID.CompareTo(next.OrderListID) },
-				{ "MerchandiseID", (prev, next) => prev.MerchandiseID.CompareTo(next.MerchandiseID) },
+				{ "MerchandiseId", (prev, next) => prev.MerchandiseID.CompareTo(next.MerchandiseID) },
 				{ "MerchandiseName", (prev, next) => prev.MerchandiseName.Length.CompareTo(next.MerchandiseName.Length) },
 				{ "OrderID", (prev, next) => prev.OrderID.CompareTo(next.OrderID) },
 				{ "Quantity", (prev, next) => prev.Quantity.CompareTo(next.Quantity) }

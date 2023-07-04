@@ -15,9 +15,9 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 		{
 			if (dto == null) return 0;
 
-			string sql = "INSERT INTO OrderLists (OrderID, MerchandiseID, Quantity)"
+			string sql = "INSERT INTO OrderLists (OrderID, MerchandiseId, Quantity)"
 				+ " OUTPUT INSERTED.OrderListID"
-				+ " VALUES (@OrderID, @MerchandiseID, @Quantity) ";
+				+ " VALUES (@OrderID, @MerchandiseId, @Quantity) ";
 
 			using (var conn = SqlDb.GetConnection())
 			{
@@ -52,9 +52,9 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 			int? merchandiseID = null,
 			int? quantity = null)
 		{
-			string sql = $"SELECT OrderListID, OrderID, o.MerchandiseID, MerchandiseName, Quantity "
+			string sql = $"SELECT OrderListID, OrderID, o.MerchandiseId, MerchandiseName, Quantity "
 				+ " FROM OrderLists o "
-				+ " JOIN Merchandises m ON o.MerchandiseID = m.MerchandiseID "
+				+ " JOIN Merchandises m ON o.MerchandiseId = m.MerchandiseId "
 				+ " Where 1 = 1 ";
 
 			if (id != null)
@@ -67,7 +67,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 			}
 			if (merchandiseID != null)
 			{
-				sql += " AND o.MerchandiseID = @MerchandiseID ";
+				sql += " AND o.MerchandiseId = @MerchandiseId ";
 			}
 			if (quantity != null)
 			{
@@ -91,7 +91,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 			if (dto == null) return 0;
 
 			string sql = "UPDATE OrderLists SET OrderID = @OrderID"
-				+ ", MerchandiseID = @MerchandiseID "
+				+ ", MerchandiseId = @MerchandiseId "
 				+ ", Quantity = @Quantity "
 				+ " OUTPUT INSERTED.OrderlistID "
 				+ " WHERE OrderListID = @OrderListID ";

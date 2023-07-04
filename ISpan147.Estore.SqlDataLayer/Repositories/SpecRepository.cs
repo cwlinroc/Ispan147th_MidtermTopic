@@ -36,19 +36,19 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 		public List<SpecDto> Search(int merchandiseId, int? specId, string s_name)
 		{
 			#region sql & SqlParameter[]
-			string sql = $@"SELECT MerchandiseID, MerchandiseName, CategoryName, BrandName, SpecName, Price, Amount, Description, ImageURL 
+			string sql = $@"SELECT MerchandiseId, MerchandiseName, CategoryName, BrandName, SpecName, Price, Amount, Description, ImageURL 
 							FROM Merchandises AS m
 							JOIN Categories AS c
-							ON m.CategoryID = c.CategoryID
+							ON m.CategoryId = c.CategoryId
 							JOIN Brands AS b
-							ON m.BrandID = b.BrandID
+							ON m.BrandId = b.BrandId
 							JOIN Specs AS s
 							ON m.SpecID = s.SpecID ";
 
 			var builder = new SqlParameterBuilder();
 
-			string where = " WHERE m.MerchandiseID = @MerchandiseID";
-			builder.AddInt("@MerchandiseID", merchandiseId);
+			string where = " WHERE m.MerchandiseId = @MerchandiseId";
+			builder.AddInt("@MerchandiseId", merchandiseId);
 
 			if (specId.HasValue)
 			{

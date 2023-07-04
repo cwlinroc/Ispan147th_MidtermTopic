@@ -50,15 +50,15 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 		{
 			#region sql & SqlParameter[]
 
-			string sql = $"SELECT * FROM Merchandises AS m JOIN Categories AS c ON m.CategoryID = c.CategoryID ";
+			string sql = $"SELECT * FROM Merchandises AS m JOIN Categories AS c ON m.CategoryId = c.CategoryId ";
 
 			var builder = new SqlParameterBuilder();
 
 			string where = "";
 			if (merchandiseId.HasValue)
 			{
-				where += $" AND MerchandiseID = @MerchandiseID";
-				builder.AddInt("@MerchandiseID", merchandiseId.Value);
+				where += $" AND MerchandiseId = @MerchandiseId";
+				builder.AddInt("@MerchandiseId", merchandiseId.Value);
 			}
 			if (string.IsNullOrEmpty(s_name) == false)
 			{
@@ -67,8 +67,8 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 			}
 			if (s_categoryid > 0)
 			{
-				where += $" AND m.CategoryID = @CategoryID";
-				builder.AddInt("@CategoryID", s_categoryid.Value);
+				where += $" AND m.CategoryId = @CategoryId";
+				builder.AddInt("@CategoryId", s_categoryid.Value);
 			}
 			if (string.IsNullOrEmpty(where) == false)
 			{
@@ -102,27 +102,27 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 			string decending = csDto.Descending ? " ASC" : " DESC";
 
 			//todo 不抓價格、庫存，改抓品牌
-			string sql = $@"SELECT {top}MerchandiseID, MerchandiseName, CategoryName, Price, Amount,  
+			string sql = $@"SELECT {top}MerchandiseId, MerchandiseName, CategoryName, Price, Amount,  
 										Description, ImageURL 
 							FROM Merchandises AS m 
 							JOIN Categories AS c 
-							ON m.CategoryID = c.CategoryID ";
+							ON m.CategoryId = c.CategoryId ";
 
 			//var builder = new SqlParameterBuilder();
 
 			string where = string.Empty;
 			#region 串接搜尋條件
-			if (csDto.MerchandiseID.HasValue)
+			if (csDto.MerchandiseId.HasValue)
 			{
-				where += $" AND MerchandiseID = @MerchandiseID";
+				where += $" AND MerchandiseId = @MerchandiseId";
 			}
 			if (string.IsNullOrEmpty(csDto.MerchandiseName) == false)
 			{
 				where += $" AND MerchandiseName LIKE '%'+@MerchandiseName+'%'";
 			}
-			if (csDto.CategoryID.HasValue)
+			if (csDto.CategoryId.HasValue)
 			{
-				where += $" AND m.CategoryID = @CategoryID";
+				where += $" AND m.CategoryId = @CategoryId";
 			}
 			if (csDto.MaxPrice.HasValue)
 			{
@@ -149,9 +149,9 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 		public int Update(MerchandiseDto dto)
 		{
 			var builder = new SqlParameterBuilder()
-				.AddInt("@MerchandiseId", dto.MerchandiseID)
+				.AddInt("@MerchandiseId", dto.MerchandiseId)
 				.AddNVarchar("@MerchandiseName", 30, dto.MerchandiseName)
-				.AddInt("@CategoryId", dto.CategoryID)
+				.AddInt("@CategoryId", dto.CategoryId)
 				.AddInt("@Price", dto.Price)
 				.AddInt("@Amount", dto.Amount);
 			string description = "";
@@ -192,9 +192,9 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 		public int Create(MerchandiseDto dto)
 		{
 			var builder = new SqlParameterBuilder()
-				.AddInt("@MerchandiseId", dto.MerchandiseID)
+				.AddInt("@MerchandiseId", dto.MerchandiseId)
 				.AddNVarchar("@MerchandiseName", 30, dto.MerchandiseName)
-				.AddInt("@CategoryId", dto.CategoryID)
+				.AddInt("@CategoryId", dto.CategoryId)
 				.AddInt("@Price", dto.Price)
 				.AddInt("@Amount", dto.Amount);
 			string _description = "";

@@ -62,7 +62,7 @@ namespace prjMidtermTopic.form_Brand
 
 		private void form_EditBrand_Load(object sender, EventArgs e)
 		{
-			BrandDto dto = _repo.GetByBrandID(_brandId);
+			BrandDto dto = _repo.GetByBrandId(_brandId);
 			if (dto == null)
 			{
 				MessageBox.Show("找不到符合紀錄");

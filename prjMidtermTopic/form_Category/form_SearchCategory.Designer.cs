@@ -74,7 +74,7 @@
 			// 
 			// CategoryId
 			// 
-			this.CategoryId.DataPropertyName = "CategoryID";
+			this.CategoryId.DataPropertyName = "CategoryId";
 			this.CategoryId.HeaderText = "類別編號";
 			this.CategoryId.Name = "CategoryId";
 			this.CategoryId.ReadOnly = true;

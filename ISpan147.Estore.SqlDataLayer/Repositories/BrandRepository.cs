@@ -12,7 +12,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 {
 	public class BrandRepository : IBrandRepository
 	{
-		public BrandDto GetByBrandID(int brandId)
+		public BrandDto GetByBrandId(int brandId)
 		{
 			Func<SqlConnection> connGetter = SqlDb.GetConnection;
 			string sql = $"SELECT * FROM Brands WHERE BrandId = {brandId}";
@@ -42,8 +42,8 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 			string where = "";
 			if (brandId.HasValue)
 			{
-				where += $" AND BrandID = @BrandID";
-				builder.AddInt("@BrandID", brandId.Value);
+				where += $" AND BrandId = @BrandId";
+				builder.AddInt("@BrandId", brandId.Value);
 			}
 			if(!string.IsNullOrEmpty(s_name))
 			{

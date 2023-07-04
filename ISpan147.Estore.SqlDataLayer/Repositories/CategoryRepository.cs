@@ -13,7 +13,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 {
 	public class CategoryRepository : ICategoryRepository
 	{
-		public CategoryDto GetByCategoryID(int categoryId)
+		public CategoryDto GetByCategoryId(int categoryId)
 		{
 			Func<SqlConnection> connGetter = SqlDb.GetConnection;
 			string sql = $"SELECT * FROM Categories WHERE CategoryId = {categoryId}";
@@ -44,8 +44,8 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 			string where = "";
 			if (categoryId.HasValue)
 			{
-				where += $" AND CategoryID = @CategoryID";
-				builder.AddInt("@CategoryID", categoryId.Value);
+				where += $" AND CategoryId = @CategoryId";
+				builder.AddInt("@CategoryId", categoryId.Value);
 			}
 			if (!string.IsNullOrEmpty(s_name))
 			{

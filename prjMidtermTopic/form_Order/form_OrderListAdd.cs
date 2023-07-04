@@ -32,7 +32,7 @@ namespace prjMidtermTopic.Form_Order
 
 			_validateMap = new Dictionary<string, Control>(StringComparer.CurrentCultureIgnoreCase) {
 					{ "OrderID" , txt_OrderID },
-					{ "MerchandiseID" , txt_MerchandiseID },
+					{ "MerchandiseId" , txt_MerchandiseID },
 					{ "Quantity" , txt_Quantity }
 				};
 		}

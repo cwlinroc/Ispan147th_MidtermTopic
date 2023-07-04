@@ -25,11 +25,12 @@ namespace prjMidtermTopic
 	{
 		private IMerchandiseRepository _repo;
 		private ICategoryRepository _categoryRepository;
+		private IBrandRepository _brandRepository;
 		private Dictionary<int, string> map = new Dictionary<int, string>();
 		private readonly string[] SortingOptionNames = new string[] {"商品編號", "商品名稱",
-													"商品類別", "價格", "庫存數量" };
-		private readonly string[] SortingOptions = new string[] {"MerchandiseID", "MerchandiseName",
-													"CategoryID", "Price", "Amount" };
+													"商品類別", "品牌名稱" };
+		private readonly string[] SortingOptions = new string[] {"MerchandiseId", "MerchandiseName",
+													"CategoryId", "BrandId" };
 		private int _sortIndex;
 		private readonly Dictionary<string, Func<MerchandiseSearchDto, MerchandiseSearchDto, int>> _sortMap;
 		List<MerchandiseSearchDto> _data;
@@ -42,12 +43,14 @@ namespace prjMidtermTopic
 
 			_sortMap = new Dictionary<string, Func<MerchandiseSearchDto, MerchandiseSearchDto, int>>
 			{
-				{"MerchandiseID", (prev, next) =>prev.MerchandiseID.CompareTo(next.MerchandiseID)},
+				{"MerchandiseId", (prev, next) =>prev.MerchandiseId.CompareTo(next.MerchandiseId)},
 				{"MerchandiseName", (prev, next) =>prev.MerchandiseName.CompareTo(next.MerchandiseName)},
-				{"CategoryID", (prev, next) =>prev.CategoryID.CompareTo(next.CategoryID)},
+				{"CategoryId", (prev, next) =>prev.CategoryId.CompareTo(next.CategoryId)},
 				{"CategoryName", (prev, next) =>prev.CategoryName.CompareTo(next.CategoryName)},
-				{"Price", (prev, next) =>prev.Price.CompareTo(next.Price)},
-				{"Amount", (prev, next) =>prev.Amount.CompareTo(next.Amount)},
+				{"BrandId", (prev, next) =>prev.BrandId.CompareTo(next.BrandId)},
+				{"BrandName", (prev, next) =>prev.BrandName.CompareTo(next.BrandName)},
+				//{"Price", (prev, next) =>prev.Price.CompareTo(next.Price)},
+				//{"Amount", (prev, next) =>prev.Amount.CompareTo(next.Amount)},
 				//{"Description", (prev, next) =>prev.Description.CompareTo(next.Description)},
 				//{"ImageURL", (prev, next) =>prev.ImageURL.CompareTo(next.ImageURL)},
 			};
@@ -61,7 +64,6 @@ namespace prjMidtermTopic
 				comboBox_CategoryId.Items.Add(item);
 			}
 			comboBox_CategoryId.DisplayMember = "Value";
-
 			comboBox_CategoryId.SelectedIndex = 0;
 
 			#endregion
@@ -83,14 +85,14 @@ namespace prjMidtermTopic
 		{
 			try
 			{
-				//驗證價格區間
-				int? maxprice = int.TryParse(this.txt_MaxPrice.Text, out int maprice) ? maprice : (int?)null;
+				//todo 刪除驗證價格區間
+				/*int? maxprice = int.TryParse(this.txt_MaxPrice.Text, out int maprice) ? maprice : (int?)null;
 				int? minprice = int.TryParse(this.txt_MinPrice.Text, out int miprice) ? miprice : (int?)null;
 				if (maxprice < minprice)
 				{
 					MessageBox.Show("請輸入正確的價格區間");
 					return;
-				}
+				}*/
 
 				//讀取篩選條件
 				/*	第一版條件搜尋
@@ -127,7 +129,7 @@ namespace prjMidtermTopic
 			#region 讀取篩選條件
 			if (int.TryParse(txt_MerchandiseId.Text.Trim(), out int _merchandiseId))
 			{
-				csDto.MerchandiseID = _merchandiseId;
+				csDto.MerchandiseId = _merchandiseId;
 			}
 			if (txt_MerchandiseName.Text.Trim().Length > 0)
 			{
@@ -135,16 +137,21 @@ namespace prjMidtermTopic
 			}
 			if (comboBox_CategoryId.SelectedIndex != 0)
 			{
-				csDto.CategoryID = (comboBox_CategoryId.SelectedItem as dynamic).Key;
+				csDto.CategoryId = (comboBox_CategoryId.SelectedItem as dynamic).Key;
 			}
-			if (int.TryParse(txt_MaxPrice.Text.Trim(), out int _maxprice))
+			if (txt_BrandName.Text.Trim().Length > 0)
+			{
+				csDto.BrandName = txt_BrandName.Text.Trim();
+			}
+			//todo 刪除價格區間條件
+			/*if (int.TryParse(txt_MaxPrice.Text.Trim(), out int _maxprice))
 			{
 				csDto.MaxPrice = _maxprice;
 			}
 			if (int.TryParse(txt_MinPrice.Text.Trim(), out int _minprice))
 			{
 				csDto.MinPrice = _minprice;
-			}
+			}*/
 			if (checkBox_MaxData.Checked)
 			{
 				csDto.MaxQueryNumber = int.Parse(txt_MaxQuery.Text.Trim());
@@ -189,8 +196,9 @@ namespace prjMidtermTopic
 			txt_MerchandiseId.Text = string.Empty;
 			txt_MerchandiseName.Text = string.Empty;
 			comboBox_CategoryId.SelectedIndex = 0;
-			txt_MaxPrice.Text = string.Empty;
-			txt_MinPrice.Text = string.Empty;
+			txt_BrandName.Text = string.Empty;
+			//txt_MaxPrice.Text = string.Empty;
+			//txt_MinPrice.Text = string.Empty;
 			txt_MaxQuery.Text = "100";
 			comboBox_SortBy.SelectedIndex = 0;
 			checkBox_MaxData.Checked = true;
@@ -235,7 +243,7 @@ namespace prjMidtermTopic
 		{
 			if (e.RowIndex < 0) return;
 
-			int id = this._data[e.RowIndex].MerchandiseID;
+			int id = this._data[e.RowIndex].MerchandiseId;
 
 			var frm = new form_EditMerchandise(id);
 			frm.Owner = this;

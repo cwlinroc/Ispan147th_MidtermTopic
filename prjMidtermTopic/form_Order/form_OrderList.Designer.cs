@@ -86,7 +86,7 @@
 			// 
 			// Column3
 			// 
-			this.Column3.DataPropertyName = "MerchandiseID";
+			this.Column3.DataPropertyName = "MerchandiseId";
 			this.Column3.HeaderText = "商品編號";
 			this.Column3.MinimumWidth = 40;
 			this.Column3.Name = "Column3";

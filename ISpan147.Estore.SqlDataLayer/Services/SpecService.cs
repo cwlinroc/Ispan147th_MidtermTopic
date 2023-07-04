@@ -38,14 +38,14 @@ namespace ISpan147.Estore.SqlDataLayer.Services
 			return rows;
 		}
 
-		public List<SpecDto> Search(
-			// todo 確認搜尋條件
-			int? specid = null,
-		string specname = null
-			)
-		{
-			return _repo.Search(specid, specname);
-		}
+			// todo 是否需要搜尋條件?
+		//public List<SpecDto> Search(
+		//	int? specid = null,
+		//string specname = null
+		//	)
+		//{
+		//	return _repo.Search(specid, specname);
+		//}
 
 		public int Delete(int specId)
 		{

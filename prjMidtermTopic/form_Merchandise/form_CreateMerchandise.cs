@@ -60,6 +60,8 @@ namespace prjMidtermTopic.form_Merchandise
 
 			//設定預設值
 			comboBox_CategoryId.SelectedIndex = 0;
+
+			// todo品牌選單
 		}
 
 		private (bool isValid, List<ValidationResult> errors) Validate(MerchandiseCreateVM vm)
@@ -143,9 +145,9 @@ namespace prjMidtermTopic.form_Merchandise
 			//通過驗證則將vm轉型為MerchandiseDto
 			MerchandiseDto dto = new MerchandiseDto
 			{
-				MerchandiseID = vm.MerchandiseId,
+				MerchandiseId = vm.MerchandiseId,
 				MerchandiseName = vm.MerchandiseName,
-				CategoryID = vm.CategoryID,
+				CategoryId = vm.CategoryID,
 				Price = vm.Price,
 				Amount = vm.Amount,
 				Description = vm.Description,

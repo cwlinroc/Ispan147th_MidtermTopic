@@ -37,8 +37,12 @@ namespace ISpan147.Estore.SqlDataLayer.Services
 			if (dtoInDb != null) { throw new Exception("此分類名稱已存在，請重新命名"); }
 			//驗證是否選擇商品類別
 			var repoC = new CategoryRepository();
-			var dtoInDb2 = repoC.GetByCategoryID(dto.CategoryID);
+			var dtoInDb2 = repoC.GetByCategoryId(dto.CategoryId);
 			if (dtoInDb2 == null) { throw new Exception("未選擇商品類別"); }
+			//驗證是否選擇商品品牌
+			var repoB = new BrandRepository();
+			var dtoInDb3 = repoB.GetByBrandId(dto.BrandId);
+			if (dtoInDb3 == null) { throw new Exception("未選擇商品品牌"); }
 
 			int newId = _repo.Create(dto);
 
@@ -49,10 +53,10 @@ namespace ISpan147.Estore.SqlDataLayer.Services
 			//var repo = new MerchandiseRepository();
 			//驗證分類名稱是否重複
 			var dtoInDb = _repo.GetByMerchandiseName(dto.MerchandiseName);
-			if (dtoInDb != null && dtoInDb.MerchandiseID != dto.MerchandiseID) { throw new Exception("此商品名稱已存在，請重新命名"); }
+			if (dtoInDb != null && dtoInDb.MerchandiseId != dto.MerchandiseId) { throw new Exception("此商品名稱已存在，請重新命名"); }
 			//驗證是否選到預設值(預設值不存在於資料庫)
 			var repoC = new CategoryRepository();
-			var dtoInDb2 = repoC.GetByCategoryID(dto.CategoryID);
+			var dtoInDb2 = repoC.GetByCategoryId(dto.CategoryId);
 			if (dtoInDb2 == null) { throw new Exception("未選擇商品類別"); }
 
 			int rows = _repo.Update(dto);

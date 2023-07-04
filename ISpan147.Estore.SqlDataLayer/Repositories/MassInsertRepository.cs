@@ -57,8 +57,8 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 		{
 			using (var conn = SqlDb.GetConnection())
 			{
-				string strSql = "INSERT INTO OrderLists (OrderID, MerchandiseID, Quantity)"
-				+ " VALUES (@OrderID, @MerchandiseID, @Quantity) ";
+				string strSql = "INSERT INTO OrderLists (OrderID, MerchandiseId, Quantity)"
+				+ " VALUES (@OrderID, @MerchandiseId, @Quantity) ";
 
 				conn.Execute(strSql, dto);
 			}
@@ -69,9 +69,9 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 			using (var conn = SqlDb.GetConnection())
 			{
 				string strSql = "INSERT INTO Merchandises"
-					+ " ( MerchandiseName, CategoryID, Price,"
+					+ " ( MerchandiseName, CategoryId, Price,"
 					+ " Amount, Description, ImageURL )"
-					+ " VALUES ( @MerchandiseName, @CategoryID, @Price,"
+					+ " VALUES ( @MerchandiseName, @CategoryId, @Price,"
 					+ " @Amount, @Description, @ImageURL )";
 
 				conn.Execute(strSql, dto);
@@ -189,7 +189,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 		{
 			using (var conn = SqlDb.GetConnection())
 			{
-				string strSql = $"SELECT MerchandiseID FROM Merchandises ";
+				string strSql = $"SELECT MerchandiseId FROM Merchandises ";
 
 				var result = conn.Query<int>(strSql);
 
@@ -237,7 +237,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 			string sql = "SELECT SUM(Quantity * Price)"
 				+ " From Orders t1 "
 				+ " JOIN OrderLists t2 ON t1.OrderID = t2.OrderID "
-				+ " JOIN Merchandises t3 ON t2.MerchandiseID = t3.MerchandiseID "
+				+ " JOIN Merchandises t3 ON t2.MerchandiseId = t3.MerchandiseId "
 				+ $" WHERE t1.OrderID = {orderID} "
 				+ " GROUP BY t1.OrderID";
 

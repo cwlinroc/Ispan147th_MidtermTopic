@@ -30,7 +30,7 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
 			{
 				OrderListID = reader.GetInt("OrderListID"),
 				OrderID = reader.GetInt("OrderID"),
-				MerchandiseID = reader.GetInt("MerchandiseID"),
+				MerchandiseID = reader.GetInt("MerchandiseId"),
 				Quantity = reader.GetInt("Quantity")
 			};
 		}
@@ -41,7 +41,7 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
 			{
 				OrderListID = reader.GetInt("OrderListID"),
 				OrderID = reader.GetInt("OrderID"),
-				MerchandiseID = reader.GetInt("MerchandiseID"),
+				MerchandiseID = reader.GetInt("MerchandiseId"),
 				MerchandiseName = reader.GetString("MerchandiseName"),
 				Quantity = reader.GetInt("Quantity")
 			};
@@ -90,9 +90,9 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
 		{
 			get => (reader) => new MerchandiseDto
 			{
-				MerchandiseID = reader.GetInt("MerchandiseId"),
+				MerchandiseId = reader.GetInt("MerchandiseId"),
 				MerchandiseName = reader.GetString("MerchandiseName"),
-				CategoryID = reader.GetInt("CategoryId"),
+				CategoryId = reader.GetInt("CategoryId"),
 				// todo 是否在商品總覽顯示價格?
 				Price = reader.GetInt("Price"),
 				Amount = reader.GetInt("Amount"),
@@ -105,9 +105,9 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
 		{
 			get => (reader) => new MerchandiseSearchDto
 			{
-				MerchandiseID = reader.GetInt("MerchandiseId"),
+				MerchandiseId = reader.GetInt("MerchandiseId"),
 				MerchandiseName = reader.GetString("MerchandiseName"),
-				CategoryID = reader.GetInt("CategoryId"),
+				CategoryId = reader.GetInt("CategoryId"),
 				CategoryName = reader.GetString("CategoryName"),
 				// todo 是否在商品總覽顯示價格?
 				Price = reader.GetInt("Price"),

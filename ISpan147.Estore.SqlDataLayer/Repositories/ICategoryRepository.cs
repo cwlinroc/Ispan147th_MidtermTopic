@@ -9,7 +9,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 {
 	public interface ICategoryRepository
 	{
-		CategoryDto GetByCategoryID(int categoryId);
+		CategoryDto GetByCategoryId(int categoryId);
 		CategoryDto GetByCategoryName(string categoryname);
 		List<CategoryDto> Search(int? categoryId, string s_name);
 		int Update(CategoryDto dto);

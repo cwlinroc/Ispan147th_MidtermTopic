@@ -30,14 +30,6 @@
         {
 			this.btn_Add = new System.Windows.Forms.Button();
 			this.dataGridView1 = new System.Windows.Forms.DataGridView();
-			this.MerchandiseId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.MerchandiseName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.CategoryName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.ImageURL = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.CategoryId = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.txt_MerchandiseName = new System.Windows.Forms.TextBox();
 			this.label2 = new System.Windows.Forms.Label();
 			this.txt_MerchandiseId = new System.Windows.Forms.TextBox();
@@ -56,6 +48,18 @@
 			this.label7 = new System.Windows.Forms.Label();
 			this.checkBox_desc = new System.Windows.Forms.CheckBox();
 			this.checkBox_MaxData = new System.Windows.Forms.CheckBox();
+			this.label5 = new System.Windows.Forms.Label();
+			this.textBox1 = new System.Windows.Forms.TextBox();
+			this.label8 = new System.Windows.Forms.Label();
+			this.txt_BrandName = new System.Windows.Forms.TextBox();
+			this.MerchandiseId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.BrandName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.CategoryName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.MerchandiseName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ImageURL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.CategoryId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.BrandId = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -81,13 +85,13 @@
 			this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MerchandiseId,
-            this.MerchandiseName,
+            this.BrandName,
             this.CategoryName,
-            this.Price,
-            this.Column2,
+            this.MerchandiseName,
             this.Description,
             this.ImageURL,
-            this.CategoryId});
+            this.CategoryId,
+            this.BrandId});
 			this.dataGridView1.Location = new System.Drawing.Point(23, 87);
 			this.dataGridView1.Name = "dataGridView1";
 			this.dataGridView1.ReadOnly = true;
@@ -96,69 +100,6 @@
 			this.dataGridView1.TabIndex = 10;
 			this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
 			this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
-			// 
-			// MerchandiseId
-			// 
-			this.MerchandiseId.DataPropertyName = "MerchandiseID";
-			this.MerchandiseId.Frozen = true;
-			this.MerchandiseId.HeaderText = "商品編號";
-			this.MerchandiseId.Name = "MerchandiseId";
-			this.MerchandiseId.ReadOnly = true;
-			// 
-			// MerchandiseName
-			// 
-			this.MerchandiseName.DataPropertyName = "MerchandiseName";
-			this.MerchandiseName.Frozen = true;
-			this.MerchandiseName.HeaderText = "商品名稱";
-			this.MerchandiseName.Name = "MerchandiseName";
-			this.MerchandiseName.ReadOnly = true;
-			this.MerchandiseName.Width = 180;
-			// 
-			// CategoryName
-			// 
-			this.CategoryName.DataPropertyName = "CategoryName";
-			this.CategoryName.HeaderText = "商品類別";
-			this.CategoryName.Name = "CategoryName";
-			this.CategoryName.ReadOnly = true;
-			// 
-			// Price
-			// 
-			this.Price.DataPropertyName = "Price";
-			this.Price.HeaderText = "價格";
-			this.Price.Name = "Price";
-			this.Price.ReadOnly = true;
-			this.Price.Width = 80;
-			// 
-			// Column2
-			// 
-			this.Column2.DataPropertyName = "Amount";
-			this.Column2.HeaderText = "庫存數量";
-			this.Column2.Name = "Column2";
-			this.Column2.ReadOnly = true;
-			// 
-			// Description
-			// 
-			this.Description.DataPropertyName = "Description";
-			this.Description.HeaderText = "商品描述";
-			this.Description.Name = "Description";
-			this.Description.ReadOnly = true;
-			this.Description.Width = 250;
-			// 
-			// ImageURL
-			// 
-			this.ImageURL.DataPropertyName = "ImageURL";
-			this.ImageURL.HeaderText = "商品圖片";
-			this.ImageURL.Name = "ImageURL";
-			this.ImageURL.ReadOnly = true;
-			this.ImageURL.Width = 150;
-			// 
-			// CategoryId
-			// 
-			this.CategoryId.DataPropertyName = "CategoryId";
-			this.CategoryId.HeaderText = "類別編號";
-			this.CategoryId.Name = "CategoryId";
-			this.CategoryId.ReadOnly = true;
-			this.CategoryId.Visible = false;
 			// 
 			// txt_MerchandiseName
 			// 
@@ -213,7 +154,7 @@
 			// 
 			this.labCategoryName.AutoSize = true;
 			this.labCategoryName.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.labCategoryName.Location = new System.Drawing.Point(275, 34);
+			this.labCategoryName.Location = new System.Drawing.Point(286, 52);
 			this.labCategoryName.Name = "labCategoryName";
 			this.labCategoryName.Size = new System.Drawing.Size(90, 21);
 			this.labCategoryName.TabIndex = 12;
@@ -225,7 +166,7 @@
 			this.comboBox_CategoryId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.comboBox_CategoryId.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.comboBox_CategoryId.FormattingEnabled = true;
-			this.comboBox_CategoryId.Location = new System.Drawing.Point(371, 31);
+			this.comboBox_CategoryId.Location = new System.Drawing.Point(375, 49);
 			this.comboBox_CategoryId.Name = "comboBox_CategoryId";
 			this.comboBox_CategoryId.Size = new System.Drawing.Size(121, 28);
 			this.comboBox_CategoryId.TabIndex = 2;
@@ -233,7 +174,7 @@
 			// label3
 			// 
 			this.label3.AutoSize = true;
-			this.label3.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.label3.Font = new System.Drawing.Font("微軟正黑體", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Strikeout))), System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.label3.Location = new System.Drawing.Point(566, 15);
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(90, 21);
@@ -252,7 +193,7 @@
 			// label4
 			// 
 			this.label4.AutoSize = true;
-			this.label4.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.label4.Font = new System.Drawing.Font("微軟正黑體", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Strikeout))), System.Drawing.GraphicsUnit.Point, ((byte)(136)));
 			this.label4.Location = new System.Drawing.Point(566, 50);
 			this.label4.Name = "label4";
 			this.label4.Size = new System.Drawing.Size(90, 21);
@@ -343,6 +284,115 @@
 			this.checkBox_MaxData.Text = "最多顯示";
 			this.checkBox_MaxData.UseVisualStyleBackColor = true;
 			// 
+			// label5
+			// 
+			this.label5.AutoSize = true;
+			this.label5.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.label5.Location = new System.Drawing.Point(286, 16);
+			this.label5.Name = "label5";
+			this.label5.Size = new System.Drawing.Size(90, 21);
+			this.label5.TabIndex = 7;
+			this.label5.Text = "最高價格：";
+			this.label5.TextAlign = System.Drawing.ContentAlignment.TopRight;
+			// 
+			// textBox1
+			// 
+			this.textBox1.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.textBox1.Location = new System.Drawing.Point(375, 13);
+			this.textBox1.Name = "textBox1";
+			this.textBox1.Size = new System.Drawing.Size(100, 29);
+			this.textBox1.TabIndex = 3;
+			// 
+			// label8
+			// 
+			this.label8.AutoSize = true;
+			this.label8.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.label8.Location = new System.Drawing.Point(286, 16);
+			this.label8.Name = "label8";
+			this.label8.Size = new System.Drawing.Size(90, 21);
+			this.label8.TabIndex = 7;
+			this.label8.Text = "品牌名稱：";
+			this.label8.TextAlign = System.Drawing.ContentAlignment.TopRight;
+			// 
+			// txt_BrandName
+			// 
+			this.txt_BrandName.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.txt_BrandName.Location = new System.Drawing.Point(375, 13);
+			this.txt_BrandName.Name = "txt_BrandName";
+			this.txt_BrandName.Size = new System.Drawing.Size(121, 29);
+			this.txt_BrandName.TabIndex = 3;
+			// 
+			// MerchandiseId
+			// 
+			this.MerchandiseId.DataPropertyName = "MerchandiseId";
+			this.MerchandiseId.Frozen = true;
+			this.MerchandiseId.HeaderText = "商品編號";
+			this.MerchandiseId.Name = "MerchandiseId";
+			this.MerchandiseId.ReadOnly = true;
+			// 
+			// BrandName
+			// 
+			this.BrandName.DataPropertyName = "BrandName";
+			this.BrandName.Frozen = true;
+			this.BrandName.HeaderText = "品牌名稱";
+			this.BrandName.Name = "BrandName";
+			this.BrandName.ReadOnly = true;
+			this.BrandName.Width = 120;
+			// 
+			// CategoryName
+			// 
+			this.CategoryName.DataPropertyName = "CategoryName";
+			this.CategoryName.Frozen = true;
+			this.CategoryName.HeaderText = "商品類別";
+			this.CategoryName.Name = "CategoryName";
+			this.CategoryName.ReadOnly = true;
+			this.CategoryName.Width = 120;
+			// 
+			// MerchandiseName
+			// 
+			this.MerchandiseName.DataPropertyName = "MerchandiseName";
+			this.MerchandiseName.Frozen = true;
+			this.MerchandiseName.HeaderText = "商品名稱";
+			this.MerchandiseName.Name = "MerchandiseName";
+			this.MerchandiseName.ReadOnly = true;
+			this.MerchandiseName.Width = 200;
+			// 
+			// Description
+			// 
+			this.Description.DataPropertyName = "Description";
+			this.Description.Frozen = true;
+			this.Description.HeaderText = "商品描述";
+			this.Description.Name = "Description";
+			this.Description.ReadOnly = true;
+			this.Description.Width = 250;
+			// 
+			// ImageURL
+			// 
+			this.ImageURL.DataPropertyName = "ImageURL";
+			this.ImageURL.Frozen = true;
+			this.ImageURL.HeaderText = "商品圖片";
+			this.ImageURL.Name = "ImageURL";
+			this.ImageURL.ReadOnly = true;
+			this.ImageURL.Width = 150;
+			// 
+			// CategoryId
+			// 
+			this.CategoryId.DataPropertyName = "CategoryId";
+			this.CategoryId.Frozen = true;
+			this.CategoryId.HeaderText = "類別編號";
+			this.CategoryId.Name = "CategoryId";
+			this.CategoryId.ReadOnly = true;
+			this.CategoryId.Visible = false;
+			// 
+			// BrandId
+			// 
+			this.BrandId.DataPropertyName = "BrandId";
+			this.BrandId.Frozen = true;
+			this.BrandId.HeaderText = "品牌編號";
+			this.BrandId.Name = "BrandId";
+			this.BrandId.ReadOnly = true;
+			this.BrandId.Visible = false;
+			// 
 			// form_SearchMerchandise
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -360,6 +410,10 @@
 			this.Controls.Add(this.dataGridView1);
 			this.Controls.Add(this.txt_MinPrice);
 			this.Controls.Add(this.label4);
+			this.Controls.Add(this.txt_BrandName);
+			this.Controls.Add(this.label8);
+			this.Controls.Add(this.textBox1);
+			this.Controls.Add(this.label5);
 			this.Controls.Add(this.txt_MaxPrice);
 			this.Controls.Add(this.label3);
 			this.Controls.Add(this.txt_MerchandiseName);
@@ -399,13 +453,17 @@
 		private System.Windows.Forms.Label label7;
 		private System.Windows.Forms.CheckBox checkBox_desc;
 		private System.Windows.Forms.CheckBox checkBox_MaxData;
+		private System.Windows.Forms.Label label5;
+		private System.Windows.Forms.TextBox textBox1;
+		private System.Windows.Forms.Label label8;
+		private System.Windows.Forms.TextBox txt_BrandName;
 		private System.Windows.Forms.DataGridViewTextBoxColumn MerchandiseId;
-		private System.Windows.Forms.DataGridViewTextBoxColumn MerchandiseName;
+		private System.Windows.Forms.DataGridViewTextBoxColumn BrandName;
 		private System.Windows.Forms.DataGridViewTextBoxColumn CategoryName;
-		private System.Windows.Forms.DataGridViewTextBoxColumn Price;
-		private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+		private System.Windows.Forms.DataGridViewTextBoxColumn MerchandiseName;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Description;
 		private System.Windows.Forms.DataGridViewTextBoxColumn ImageURL;
 		private System.Windows.Forms.DataGridViewTextBoxColumn CategoryId;
+		private System.Windows.Forms.DataGridViewTextBoxColumn BrandId;
 	}
 }

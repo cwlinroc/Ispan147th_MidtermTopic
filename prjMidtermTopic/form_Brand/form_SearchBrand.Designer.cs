@@ -74,7 +74,7 @@
 			// 
 			// BrandId
 			// 
-			this.BrandId.DataPropertyName = "BrandID";
+			this.BrandId.DataPropertyName = "BrandId";
 			this.BrandId.HeaderText = "品牌編號";
 			this.BrandId.Name = "BrandId";
 			this.BrandId.ReadOnly = true;
