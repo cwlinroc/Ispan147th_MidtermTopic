@@ -48,11 +48,7 @@ namespace prjMidtermTopic
 				{"CategoryId", (prev, next) =>prev.CategoryId.CompareTo(next.CategoryId)},
 				{"CategoryName", (prev, next) =>prev.CategoryName.CompareTo(next.CategoryName)},
 				{"BrandId", (prev, next) =>prev.BrandId.CompareTo(next.BrandId)},
-				{"BrandName", (prev, next) =>prev.BrandName.CompareTo(next.BrandName)},
-				//{"Price", (prev, next) =>prev.Price.CompareTo(next.Price)},
-				//{"Amount", (prev, next) =>prev.Amount.CompareTo(next.Amount)},
-				//{"Description", (prev, next) =>prev.Description.CompareTo(next.Description)},
-				//{"ImageURL", (prev, next) =>prev.ImageURL.CompareTo(next.ImageURL)},
+				{"BrandName", (prev, next) =>prev.BrandName.CompareTo(next.BrandName)}
 			};
 
 			#region 產生商品類別選單選項

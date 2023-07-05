@@ -10,9 +10,9 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 	//使用反轉注入
 	public interface IMerchandiseRepository
 	{
-		MerchandiseDto GetByMerchandiseID(int merchandiseId);
+		MerchandiseDto GetByMerchandiseId(int merchandiseId);
 		MerchandiseDto GetByMerchandiseName(string merchandisename);
-		MerchandiseDto GetByCategoryID(int? categoryId);
+		MerchandiseDto GetByCategoryId(int? categoryId);
 		IEnumerable<MerchandiseSearchDto> Search(MerchandiseConditionSearchDto csDto);
 		int Update(MerchandiseDto dto);
 		int Create(MerchandiseDto dto);

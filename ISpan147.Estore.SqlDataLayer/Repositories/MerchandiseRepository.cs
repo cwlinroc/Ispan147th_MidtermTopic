@@ -15,7 +15,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 	public class MerchandiseRepository : IMerchandiseRepository
 	{
 		/// 透過字串組成SQL語法，取得商品分類記錄
-		public MerchandiseDto GetByMerchandiseID(int merchandiseId)
+		public MerchandiseDto GetByMerchandiseId(int merchandiseId)
 		{
 			Func<SqlConnection> connGetter = SqlDb.GetConnection;
 			string sql = $"SELECT * FROM Merchandises WHERE MerchandiseId = {merchandiseId}";
@@ -33,58 +33,29 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 			SqlParameter parameters = new SqlParameter("@MerchandiseName", SqlDbType.NVarChar, 30) { Value = merchandisename };
 
 			return SqlDb.Get(connGetter, sql, assembler, parameters);
-		}
+        }
 
-		public MerchandiseDto GetByCategoryID(int? categoryId)
-		{
-			Func<SqlConnection> connGetter = SqlDb.GetConnection;
-			string sql = $"SELECT * FROM Merchandises WHERE CategoryId = {categoryId}";
-			Func<SqlDataReader, MerchandiseDto> assembler = Assembler.MerchandiseDtoAssembler;
-			SqlParameter[] parameters = new SqlParameter[0];
+        public MerchandiseDto GetByCategoryId(int? categoryId)
+        {
+            Func<SqlConnection> connGetter = SqlDb.GetConnection;
+            string sql = $"SELECT * FROM Merchandises WHERE CategoryId = {categoryId}";
+            Func<SqlDataReader, MerchandiseDto> assembler = Assembler.MerchandiseDtoAssembler;
+            SqlParameter[] parameters = new SqlParameter[0];
 
-			return SqlDb.Get(connGetter, sql, assembler);
-		}
+            return SqlDb.Get(connGetter, sql, assembler);
+        }
 
-		/* 使用三個參數搜尋
-		public List<MerchandiseSearchDto> Search(int? merchandiseId, string s_name, int? s_categoryid)
-		{
-			#region sql & SqlParameter[]
+        public MerchandiseDto GetByBrandName(string brandname)
+        {
+            Func<SqlConnection> connGetter = SqlDb.GetConnection;
+            string sql = $"SELECT * FROM Merchandises WHERE BrandName = @BrandName";
+            Func<SqlDataReader, MerchandiseDto> assembler = Assembler.MerchandiseDtoAssembler;
+            SqlParameter parameters = new SqlParameter("@BrandName", SqlDbType.NVarChar, 30) { Value = brandname };
 
-			string sql = $"SELECT * FROM Merchandises AS m JOIN Categories AS c ON m.CategoryId = c.CategoryId ";
+            return SqlDb.Get(connGetter, sql, assembler, parameters);
+        }
 
-			var builder = new SqlParameterBuilder();
-
-			string where = "";
-			if (merchandiseId.HasValue)
-			{
-				where += $" AND MerchandiseId = @MerchandiseId";
-				builder.AddInt("@MerchandiseId", merchandiseId.Value);
-			}
-			if (string.IsNullOrEmpty(s_name) == false)
-			{
-				where += $" AND MerchandiseName LIKE '%' + @MerchandiseName + '%'";
-				builder.AddNVarchar("@MerchandiseName", 30, s_name);
-			}
-			if (s_categoryid > 0)
-			{
-				where += $" AND m.CategoryId = @CategoryId";
-				builder.AddInt("@CategoryId", s_categoryid.Value);
-			}
-			if (string.IsNullOrEmpty(where) == false)
-			{
-				where = " WHERE " + where.Substring(5);
-				sql += where;
-			}
-
-			SqlParameter[] parameters = builder.Build();
-			#endregion
-			Func<SqlDataReader, MerchandiseSearchDto> func = Assembler.MerchandiseSearchDtoAssembler;
-			Func<SqlConnection> connGetter = SqlDb.GetConnection;
-
-			return SqlDb.Search(connGetter, sql, func, parameters.ToArray()).ToList();
-		}*/
-
-		public IEnumerable<MerchandiseSearchDto> Search(MerchandiseConditionSearchDto csDto)
+        public IEnumerable<MerchandiseSearchDto> Search(MerchandiseConditionSearchDto csDto)
 		{
 			if (csDto == null) { return null; }
 
@@ -101,12 +72,13 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 			string orderBy = $" ORDER BY m.{csDto.OrderBy}";
 			string decending = csDto.Descending ? " ASC" : " DESC";
 
-			//todo 不抓價格、庫存，改抓品牌
-			string sql = $@"SELECT {top}MerchandiseId, MerchandiseName, CategoryName, Price, Amount,  
+			string sql = $@"SELECT {top}MerchandiseId, MerchandiseName, CategoryName, BrandName, 
 										Description, ImageURL 
 							FROM Merchandises AS m 
 							JOIN Categories AS c 
-							ON m.CategoryId = c.CategoryId ";
+							ON m.CategoryId = c.CategoryId 
+							JOIN Brands AS b 
+							ON m.BrandId = b.BrandId ";
 
 			//var builder = new SqlParameterBuilder();
 
@@ -116,23 +88,27 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 			{
 				where += $" AND MerchandiseId = @MerchandiseId";
 			}
-			if (string.IsNullOrEmpty(csDto.MerchandiseName) == false)
+			if (!string.IsNullOrEmpty(csDto.MerchandiseName))
 			{
 				where += $" AND MerchandiseName LIKE '%'+@MerchandiseName+'%'";
-			}
-			if (csDto.CategoryId.HasValue)
-			{
-				where += $" AND m.CategoryId = @CategoryId";
-			}
-			if (csDto.MaxPrice.HasValue)
-			{
-				where += $" AND Price <= @MaxPrice";
-			}
-			if (csDto.MinPrice.HasValue)
-			{
-				where += $" AND Price >= @MinPrice";
-			}
-			if (string.IsNullOrEmpty(where) == false)
+            }
+            if (csDto.CategoryId.HasValue)
+            {
+                where += $" AND m.CategoryId = @CategoryId";
+            }
+            if (!string.IsNullOrEmpty(csDto.BrandName))
+            {
+                where += $" AND b.BrandName LIKE '%'+@BrandName+'%'";
+            }
+            //if (csDto.MaxPrice.HasValue)
+            //{
+            //	where += $" AND Price <= @MaxPrice";
+            //}
+            //if (csDto.MinPrice.HasValue)
+            //{
+            //	where += $" AND Price >= @MinPrice";
+            //}
+            if (string.IsNullOrEmpty(where) == false)
 			{
 				where = " WHERE " + where.Substring(5);
 			}
@@ -152,8 +128,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 				.AddInt("@MerchandiseId", dto.MerchandiseId)
 				.AddNVarchar("@MerchandiseName", 30, dto.MerchandiseName)
 				.AddInt("@CategoryId", dto.CategoryId)
-				.AddInt("@Price", dto.Price)
-				.AddInt("@Amount", dto.Amount);
+				.AddInt("@BrandId", dto.BrandId);
 			string description = "";
 			string imageurl = "";
 
@@ -180,7 +155,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 
 			string sql = $@"UPDATE Merchandises 
                             SET MerchandiseName = @MerchandiseName,
-							CategoryId = @CategoryId, Price = @Price, Amount = @Amount 
+							CategoryId = @CategoryId, BrandId = @BrandId 
 							{description} {imageurl}
                             WHERE MerchandiseId = @MerchandiseId";
 
@@ -195,8 +170,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 				.AddInt("@MerchandiseId", dto.MerchandiseId)
 				.AddNVarchar("@MerchandiseName", 30, dto.MerchandiseName)
 				.AddInt("@CategoryId", dto.CategoryId)
-				.AddInt("@Price", dto.Price)
-				.AddInt("@Amount", dto.Amount);
+                .AddInt("@BrandId", dto.BrandId);
 			string _description = "";
 			string description = "";
 			string _imageurl = "";
@@ -217,9 +191,9 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 			var parameters = builder.Build();
 
 			string sql = $@"INSERT INTO Merchandises       
-                            (MerchandiseName, CategoryId, Price, Amount{_description}{_imageurl})
+                            (MerchandiseName, CategoryId, BrandId{_description}{_imageurl})
                             Values
-                            (@MerchandiseName, @CategoryId, @Price, @Amount{description}{imageurl})";
+                            (@MerchandiseName, @CategoryId, @BrandId{description}{imageurl})";
 
 			Func<SqlConnection> connGetter = SqlDb.GetConnection;
 

@@ -93,10 +93,11 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
 				MerchandiseId = reader.GetInt("MerchandiseId"),
 				MerchandiseName = reader.GetString("MerchandiseName"),
 				CategoryId = reader.GetInt("CategoryId"),
-				// todo 是否在商品總覽顯示價格?
-				Price = reader.GetInt("Price"),
-				Amount = reader.GetInt("Amount"),
-				Description = reader.GetString("Description"),
+                BrandId = reader.GetInt("BrandId"),
+                // todo 是否在商品總覽顯示價格?
+                //Price = reader.GetInt("Price"),
+                //Amount = reader.GetInt("Amount"),
+                Description = reader.GetString("Description"),
 				ImageURL = reader.GetString("ImageURL")
 			};
 		}
@@ -109,10 +110,12 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
 				MerchandiseName = reader.GetString("MerchandiseName"),
 				CategoryId = reader.GetInt("CategoryId"),
 				CategoryName = reader.GetString("CategoryName"),
-				// todo 是否在商品總覽顯示價格?
-				Price = reader.GetInt("Price"),
-				Amount = reader.GetInt("Amount"),
-				Description = reader.GetString("Description"),
+                BrandId = reader.GetInt("BrandId"),
+                BrandName = reader.GetString("BrandName"),
+                // todo 是否在商品總覽顯示價格?
+                //Price = reader.GetInt("Price"),
+                //Amount = reader.GetInt("Amount"),
+                Description = reader.GetString("Description"),
 				ImageURL = reader.GetString("ImageURL")
 			};
 		}
