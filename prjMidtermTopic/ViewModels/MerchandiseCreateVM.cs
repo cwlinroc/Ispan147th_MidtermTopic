@@ -54,10 +54,10 @@ namespace prjMidtermTopic.ViewModels
 	static public class ChooseCategory
 	{
 		//手動輸入選項(現已改由Category資料庫讀取選項)
-		static public readonly int[] categoryIdOptions = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-		static public readonly string[] categoryNameOptions = new string[] {"未選擇", "貓狗>食品保健", "貓狗>清潔耗材",
-												"貓狗>器材工具", "貓狗>飾品玩具", "貓狗>房屋器皿", "鼠兔>食品保健",
-												"鼠兔>清潔耗材", "鼠兔>器材工具", "鼠兔>飾品玩具", "鼠兔>各類容器" };
+		//static public readonly int[] categoryIdOptions = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+		//static public readonly string[] categoryNameOptions = new string[] {"未選擇", "貓狗>食品保健", "貓狗>清潔耗材",
+		//										"貓狗>器材工具", "貓狗>飾品玩具", "貓狗>房屋器皿", "鼠兔>食品保健",
+		//										"鼠兔>清潔耗材", "鼠兔>器材工具", "鼠兔>飾品玩具", "鼠兔>各類容器" };
 
 		static public MerchandiseDto ToDto(this MerchandiseCreateVM vm)
 		{
@@ -67,8 +67,8 @@ namespace prjMidtermTopic.ViewModels
 				MerchandiseId = vm.MerchandiseId,
 				MerchandiseName = vm.MerchandiseName,
 				CategoryId = vm.CategoryID,
-				Price = vm.Price,
-				Amount = vm.Amount,
+				//Price = vm.Price,
+				//Amount = vm.Amount,
 				Description = vm.Description,
 				ImageURL = vm.ImageURL
 			};
@@ -83,8 +83,8 @@ namespace prjMidtermTopic.ViewModels
 				MerchandiseId = dto.MerchandiseId,
 				MerchandiseName = dto.MerchandiseName.ToString(),
 				CategoryID = dto.CategoryId,
-				Price = dto.Price,
-				Amount = dto.Amount,
+				//Price = dto.Price,
+				//Amount = dto.Amount,
 				Description = dto.Description.ToString(),
 				ImageURL = dto.ImageURL.ToString()
 			};
@@ -96,8 +96,8 @@ namespace prjMidtermTopic.ViewModels
 				MerchandiseId = dto.MerchandiseId,
 				MerchandiseName = dto.MerchandiseName.ToString(),
 				CategoryID = dto.CategoryId,
-				Price = dto.Price,
-				Amount = dto.Amount,
+				//Price = dto.Price,
+				//Amount = dto.Amount,
 				Description = dto.Description.ToString(),
 				ImageURL = dto.ImageURL.ToString()
 			};
