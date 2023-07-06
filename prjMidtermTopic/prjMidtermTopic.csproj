@@ -206,6 +206,12 @@
     <Compile Include="Form_Member\form_Member.Designer.cs">
       <DependentUpon>form_Member.cs</DependentUpon>
     </Compile>
+    <Compile Include="form_Merchandise\form_ViewMerchandise.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form_Merchandise\form_ViewMerchandise.Designer.cs">
+      <DependentUpon>form_ViewMerchandise.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form_Order\form_OrderList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -406,6 +412,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="form_Merchandise\form_SearchMerchandise.resx">
       <DependentUpon>form_SearchMerchandise.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form_Merchandise\form_ViewMerchandise.resx">
+      <DependentUpon>form_ViewMerchandise.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_Order\form_OrderList.resx">
       <DependentUpon>form_OrderList.cs</DependentUpon>

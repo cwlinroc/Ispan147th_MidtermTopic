@@ -23,7 +23,9 @@ namespace prjMidtermTopic.form_Merchandise
 	{
 		private IMerchandiseRepository _repo;
 		private ICategoryRepository _categoryRepository;
-		private Dictionary<int, string> map = new Dictionary<int, string>();
+		private IBrandRepository _brandRepository;
+		private Dictionary<int, string> categorymap = new Dictionary<int, string>();
+		private Dictionary<int, string> brandmap = new Dictionary<int, string>();
 		private readonly int _merchandiseId;
 		private string _newimagePath;
 		private string _iniImageURL;
@@ -40,18 +42,29 @@ namespace prjMidtermTopic.form_Merchandise
 
 			_repo = new MerchandiseRepository();
 			_categoryRepository = new CategoryRepository();
+			_brandRepository = new BrandRepository();
 
 			//動態生成類別資料 for 下拉選單
-			map.Add(0, "未選擇");
-			new CategoryService(_categoryRepository).Search().ForEach(c => map.Add(c.CategoryId, c.CategoryName));
-			foreach (var item in map)
+			categorymap.Add(0, "未選擇");
+			new CategoryService(_categoryRepository).Search().ForEach(c => categorymap.Add(c.CategoryId, c.CategoryName));
+			foreach (var item in categorymap)
 			{
 				comboBox_CategoryId.Items.Add(item);
 			}
 			comboBox_CategoryId.DisplayMember = "Value";
-
 			//設定類別選單資料來源&預設值
 			comboBox_CategoryId.SelectedIndex = 0;
+
+			//動態生成品牌資料 for 下拉選單
+			brandmap.Add(0, "未選擇");
+			new BrandService(_brandRepository).Search().ForEach(b => brandmap.Add(b.BrandId, b.BrandName));
+			foreach (var item in brandmap)
+			{
+				comboBox_BrandId.Items.Add(item);
+			}
+			comboBox_BrandId.DisplayMember = "Value";
+			//設定預設值
+			comboBox_BrandId.SelectedIndex = 0;
 		}
 
 		private (bool isValid, List<ValidationResult> errors) Validate(MerchandiseCreateVM vm)
@@ -75,8 +88,7 @@ namespace prjMidtermTopic.form_Merchandise
 			{
 				{"MerchandiseName", txt_MerchandiseName},
 				{"CategoryId ", comboBox_CategoryId},
-				{"Price", txt_Price},
-				{"Amount", txt_Amount},
+				{"BrandId ", comboBox_BrandId},
 				{"Description", txt_Description},
 				{"ImageURL", txt_ImageURL}
 			};
@@ -95,9 +107,8 @@ namespace prjMidtermTopic.form_Merchandise
 
 		private void form_EditMerchandise_Load(object sender, EventArgs e)
 		{
-
 			//var repo = new MerchandiseRepository();
-			MerchandiseDto dto = _repo.GetByMerchandiseID(_merchandiseId);
+			MerchandiseDto dto = _repo.GetByMerchandiseId(_merchandiseId);
 			if (dto == null)
 			{
 				MessageBox.Show("找不到符合紀錄");
@@ -109,8 +120,8 @@ namespace prjMidtermTopic.form_Merchandise
 			txt_MerchandiseName.Text = dto.MerchandiseName;
 			comboBox_CategoryId.SelectedItem = comboBox_CategoryId.Items.Cast<dynamic>()
 														.FirstOrDefault(x => x.Key == dto.CategoryId);
-			txt_Price.Text = dto.Price.ToString();
-			txt_Amount.Text = dto.Amount.ToString();
+			comboBox_BrandId.SelectedItem = comboBox_BrandId.Items.Cast<dynamic>()
+														.FirstOrDefault(x => x.Key == dto.BrandId);
 			txt_Description.Text = dto.Description;
 			txt_ImageURL.Text = dto.ImageURL;
 
@@ -162,8 +173,7 @@ namespace prjMidtermTopic.form_Merchandise
 				btn_Update.Enabled = false;
 				txt_MerchandiseName.ReadOnly = true;
 				comboBox_CategoryId.Enabled = false;
-				txt_Price.ReadOnly = true;
-				txt_Amount.ReadOnly = true;
+				comboBox_BrandId.Enabled = false;
 				txt_Description.ReadOnly = true;
 				txt_ImageURL.ReadOnly = true;
 			}
@@ -288,19 +298,18 @@ namespace prjMidtermTopic.form_Merchandise
 
 		private void btn_Update_Click(object sender, EventArgs e)
 		{
-			//收集表單欄位值到dto
-			bool PriceisInt = int.TryParse(txt_Price.Text, out int Price);
-			Price = PriceisInt ? Price : 0;
-			bool AmountisInt = int.TryParse(txt_Amount.Text, out int Amount);
-			Amount = AmountisInt ? Amount : -1;
+			//收集表單欄位值到dto //todo 回收價格與庫存曾山茶改方法
+			//bool PriceisInt = int.TryParse(txt_Price.Text, out int Price);
+			//Price = PriceisInt ? Price : 0;
+			//bool AmountisInt = int.TryParse(txt_Amount.Text, out int Amount);
+			//Amount = AmountisInt ? Amount : -1;
 
 			var vm = new MerchandiseCreateVM()
 			{
 				MerchandiseId = this._merchandiseId,
 				MerchandiseName = txt_MerchandiseName.Text,
-				CategoryID = (comboBox_CategoryId.SelectedItem as dynamic).Key,
-				Price = Price,
-				Amount = Amount,
+				CategoryId = (comboBox_CategoryId.SelectedItem as dynamic).Key,
+				BrandId = (comboBox_BrandId.SelectedItem as dynamic).Key,
 				Description = (string.IsNullOrEmpty(txt_Description.Text)) ? null : txt_Description.Text,
 				ImageURL = (string.IsNullOrEmpty(txt_ImageURL.Text)) ? null : txt_ImageURL.Text
 			};
@@ -321,9 +330,8 @@ namespace prjMidtermTopic.form_Merchandise
 			{
 				MerchandiseId = vm.MerchandiseId,
 				MerchandiseName = vm.MerchandiseName,
-				CategoryId = vm.CategoryID,
-				Price = vm.Price,
-				Amount = vm.Amount,
+				CategoryId = vm.CategoryId,
+				BrandId = vm.BrandId,
 				Description = vm.Description,
 				ImageURL = vm.ImageURL
 			};

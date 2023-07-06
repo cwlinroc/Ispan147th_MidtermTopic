@@ -26,7 +26,7 @@ namespace prjMidtermTopic
 		private IMerchandiseRepository _repo;
 		private ICategoryRepository _categoryRepository;
 		private IBrandRepository _brandRepository;
-		private Dictionary<int, string> map = new Dictionary<int, string>();
+		private Dictionary<int, string> categorymap = new Dictionary<int, string>();
 		private readonly string[] SortingOptionNames = new string[] {"商品編號", "商品名稱",
 													"商品類別", "品牌名稱" };
 		private readonly string[] SortingOptions = new string[] {"MerchandiseId", "MerchandiseName",
@@ -53,9 +53,9 @@ namespace prjMidtermTopic
 
 			#region 產生商品類別選單選項
 
-			map.Add(0, "未選擇");
-			new CategoryService(_categoryRepository).Search().ForEach(c => map.Add(c.CategoryId, c.CategoryName));
-			foreach (var item in map)
+			categorymap.Add(0, "未選擇");
+			new CategoryService(_categoryRepository).Search().ForEach(c => categorymap.Add(c.CategoryId, c.CategoryName));
+			foreach (var item in categorymap)
 			{
 				comboBox_CategoryId.Items.Add(item);
 			}
@@ -241,7 +241,7 @@ namespace prjMidtermTopic
 
 			int id = this._data[e.RowIndex].MerchandiseId;
 
-			var frm = new form_EditMerchandise(id);
+			var frm = new form_ViewMerchandise(id);
 			frm.Owner = this;
 			Modifier.ModForm(frm);
 			frm.ShowDialog();

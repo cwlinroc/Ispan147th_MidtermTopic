@@ -28,7 +28,11 @@ namespace prjMidtermTopic.ViewModels
 
 		[Display(Name = "商品類別編號")]
 		[Required(ErrorMessage = "{0}為必選")]
-		public int CategoryID { get; set; }
+		public int CategoryId { get; set; }
+
+		[Display(Name = "商品品牌編號")]
+		[Required(ErrorMessage = "{0}為必選")]
+		public int BrandId { get; set; }
 
 		// todo 修改商品資料欄
 		//[Display(Name = "價格")]
@@ -50,59 +54,59 @@ namespace prjMidtermTopic.ViewModels
 		public string ImageURL { get; set; }
 	}
 
-	#region 手動輸入下拉選單選項 (已改用動態生成選項)
-	static public class ChooseCategory
-	{
-		//手動輸入選項(現已改由Category資料庫讀取選項)
-		//static public readonly int[] categoryIdOptions = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-		//static public readonly string[] categoryNameOptions = new string[] {"未選擇", "貓狗>食品保健", "貓狗>清潔耗材",
-		//										"貓狗>器材工具", "貓狗>飾品玩具", "貓狗>房屋器皿", "鼠兔>食品保健",
-		//										"鼠兔>清潔耗材", "鼠兔>器材工具", "鼠兔>飾品玩具", "鼠兔>各類容器" };
+	//#region 手動輸入下拉選單選項 (已改用動態生成選項)
+	//static public class ChooseCategory
+	//{
+	//	//手動輸入選項(現已改由Category資料庫讀取選項)
+	//	//static public readonly int[] categoryIdOptions = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+	//	//static public readonly string[] categoryNameOptions = new string[] {"未選擇", "貓狗>食品保健", "貓狗>清潔耗材",
+	//	//										"貓狗>器材工具", "貓狗>飾品玩具", "貓狗>房屋器皿", "鼠兔>食品保健",
+	//	//										"鼠兔>清潔耗材", "鼠兔>器材工具", "鼠兔>飾品玩具", "鼠兔>各類容器" };
 
-		static public MerchandiseDto ToDto(this MerchandiseCreateVM vm)
-		{
+	//	static public MerchandiseDto ToDto(this MerchandiseCreateVM vm)
+	//	{
 
-			return new MerchandiseDto
-			{
-				MerchandiseId = vm.MerchandiseId,
-				MerchandiseName = vm.MerchandiseName,
-				CategoryId = vm.CategoryID,
-				//Price = vm.Price,
-				//Amount = vm.Amount,
-				Description = vm.Description,
-				ImageURL = vm.ImageURL
-			};
-		}
+	//		return new MerchandiseDto
+	//		{
+	//			MerchandiseId = vm.MerchandiseId,
+	//			MerchandiseName = vm.MerchandiseName,
+	//			CategoryId = vm.CategoryId,
+	//			//Price = vm.Price,
+	//			//Amount = vm.Amount,
+	//			Description = vm.Description,
+	//			ImageURL = vm.ImageURL
+	//		};
+	//	}
 
-		static public MerchandiseCreateVM ToVM(this MerchandiseDto dto, Dictionary<int, string> map)
-		{
-			map.TryGetValue(dto.CategoryId, out var categoryId);
+	//	static public MerchandiseCreateVM ToVM(this MerchandiseDto dto, Dictionary<int, string> map)
+	//	{
+	//		map.TryGetValue(dto.CategoryId, out var categoryId);
 
-			return new MerchandiseCreateVM
-			{
-				MerchandiseId = dto.MerchandiseId,
-				MerchandiseName = dto.MerchandiseName.ToString(),
-				CategoryID = dto.CategoryId,
-				//Price = dto.Price,
-				//Amount = dto.Amount,
-				Description = dto.Description.ToString(),
-				ImageURL = dto.ImageURL.ToString()
-			};
-		}
-		static public MerchandiseCreateVM ToVM(this MerchandiseSearchDto dto)
-		{
-			return new MerchandiseCreateVM
-			{
-				MerchandiseId = dto.MerchandiseId,
-				MerchandiseName = dto.MerchandiseName.ToString(),
-				CategoryID = dto.CategoryId,
-				//Price = dto.Price,
-				//Amount = dto.Amount,
-				Description = dto.Description.ToString(),
-				ImageURL = dto.ImageURL.ToString()
-			};
-		}
-	}
+	//		return new MerchandiseCreateVM
+	//		{
+	//			MerchandiseId = dto.MerchandiseId,
+	//			MerchandiseName = dto.MerchandiseName.ToString(),
+	//			CategoryId = dto.CategoryId,
+	//			//Price = dto.Price,
+	//			//Amount = dto.Amount,
+	//			Description = dto.Description.ToString(),
+	//			ImageURL = dto.ImageURL.ToString()
+	//		};
+	//	}
+	//	static public MerchandiseCreateVM ToVM(this MerchandiseSearchDto dto)
+	//	{
+	//		return new MerchandiseCreateVM
+	//		{
+	//			MerchandiseId = dto.MerchandiseId,
+	//			MerchandiseName = dto.MerchandiseName.ToString(),
+	//			CategoryId = dto.CategoryId,
+	//			//Price = dto.Price,
+	//			//Amount = dto.Amount,
+	//			Description = dto.Description.ToString(),
+	//			ImageURL = dto.ImageURL.ToString()
+	//		};
+	//	}
+	//}
 
-	#endregion
+	//#endregion
 }

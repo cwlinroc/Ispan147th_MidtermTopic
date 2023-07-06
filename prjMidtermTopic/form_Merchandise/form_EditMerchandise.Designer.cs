@@ -33,10 +33,6 @@
 			this.label3 = new System.Windows.Forms.Label();
 			this.txt_MerchandiseName = new System.Windows.Forms.TextBox();
 			this.label2 = new System.Windows.Forms.Label();
-			this.label1 = new System.Windows.Forms.Label();
-			this.txt_Price = new System.Windows.Forms.TextBox();
-			this.label4 = new System.Windows.Forms.Label();
-			this.txt_Amount = new System.Windows.Forms.TextBox();
 			this.label5 = new System.Windows.Forms.Label();
 			this.txt_Description = new System.Windows.Forms.TextBox();
 			this.label6 = new System.Windows.Forms.Label();
@@ -50,6 +46,8 @@
 			this.btn_DeleteImage = new System.Windows.Forms.Button();
 			this.pictureBox_Image = new System.Windows.Forms.PictureBox();
 			this.label8 = new System.Windows.Forms.Label();
+			this.label1 = new System.Windows.Forms.Label();
+			this.comboBox_BrandId = new System.Windows.Forms.ComboBox();
 			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox_Image)).BeginInit();
 			this.SuspendLayout();
@@ -93,47 +91,11 @@
 			this.label2.TabIndex = 10;
 			this.label2.Text = "商品名稱：";
 			// 
-			// label1
-			// 
-			this.label1.AutoSize = true;
-			this.label1.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.label1.Location = new System.Drawing.Point(40, 123);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(58, 21);
-			this.label1.TabIndex = 9;
-			this.label1.Text = "價格：";
-			// 
-			// txt_Price
-			// 
-			this.txt_Price.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.txt_Price.Location = new System.Drawing.Point(135, 120);
-			this.txt_Price.Name = "txt_Price";
-			this.txt_Price.Size = new System.Drawing.Size(266, 29);
-			this.txt_Price.TabIndex = 2;
-			// 
-			// label4
-			// 
-			this.label4.AutoSize = true;
-			this.label4.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.label4.Location = new System.Drawing.Point(40, 158);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(90, 21);
-			this.label4.TabIndex = 9;
-			this.label4.Text = "庫存數量：";
-			// 
-			// txt_Amount
-			// 
-			this.txt_Amount.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.txt_Amount.Location = new System.Drawing.Point(135, 155);
-			this.txt_Amount.Name = "txt_Amount";
-			this.txt_Amount.Size = new System.Drawing.Size(266, 29);
-			this.txt_Amount.TabIndex = 3;
-			// 
 			// label5
 			// 
 			this.label5.AutoSize = true;
 			this.label5.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.label5.Location = new System.Drawing.Point(40, 193);
+			this.label5.Location = new System.Drawing.Point(40, 157);
 			this.label5.Name = "label5";
 			this.label5.Size = new System.Drawing.Size(90, 21);
 			this.label5.TabIndex = 9;
@@ -142,7 +104,7 @@
 			// txt_Description
 			// 
 			this.txt_Description.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.txt_Description.Location = new System.Drawing.Point(135, 190);
+			this.txt_Description.Location = new System.Drawing.Point(135, 154);
 			this.txt_Description.Multiline = true;
 			this.txt_Description.Name = "txt_Description";
 			this.txt_Description.Size = new System.Drawing.Size(266, 172);
@@ -252,6 +214,25 @@
 			this.label8.TabIndex = 15;
 			this.label8.Text = "商品圖片：";
 			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.label1.Location = new System.Drawing.Point(40, 122);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(90, 21);
+			this.label1.TabIndex = 9;
+			this.label1.Text = "商品品牌：";
+			// 
+			// comboBox_BrandId
+			// 
+			this.comboBox_BrandId.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.comboBox_BrandId.FormattingEnabled = true;
+			this.comboBox_BrandId.Location = new System.Drawing.Point(135, 120);
+			this.comboBox_BrandId.Name = "comboBox_BrandId";
+			this.comboBox_BrandId.Size = new System.Drawing.Size(266, 28);
+			this.comboBox_BrandId.TabIndex = 1;
+			// 
 			// form_EditMerchandise
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -262,16 +243,14 @@
 			this.Controls.Add(this.btn_DeleteImage);
 			this.Controls.Add(this.btn_SelectNewImage);
 			this.Controls.Add(this.btn_Delete);
+			this.Controls.Add(this.comboBox_BrandId);
 			this.Controls.Add(this.comboBox_CategoryId);
 			this.Controls.Add(this.btn_Update);
 			this.Controls.Add(this.txt_ImageURL);
 			this.Controls.Add(this.label6);
 			this.Controls.Add(this.txt_Description);
-			this.Controls.Add(this.label5);
-			this.Controls.Add(this.txt_Amount);
-			this.Controls.Add(this.label4);
-			this.Controls.Add(this.txt_Price);
 			this.Controls.Add(this.label1);
+			this.Controls.Add(this.label5);
 			this.Controls.Add(this.label3);
 			this.Controls.Add(this.txt_MerchandiseId);
 			this.Controls.Add(this.label7);
@@ -293,10 +272,6 @@
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.TextBox txt_MerchandiseName;
 		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.TextBox txt_Price;
-		private System.Windows.Forms.Label label4;
-		private System.Windows.Forms.TextBox txt_Amount;
 		private System.Windows.Forms.Label label5;
 		private System.Windows.Forms.TextBox txt_Description;
 		private System.Windows.Forms.Label label6;
@@ -310,5 +285,7 @@
 		private System.Windows.Forms.Button btn_DeleteImage;
 		private System.Windows.Forms.PictureBox pictureBox_Image;
 		private System.Windows.Forms.Label label8;
+		private System.Windows.Forms.ComboBox comboBox_BrandId;
+		private System.Windows.Forms.Label label1;
 	}
 }

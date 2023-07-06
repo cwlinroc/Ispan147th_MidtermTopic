@@ -24,8 +24,11 @@ namespace prjMidtermTopic.form_Merchandise
 	{
 		private IMerchandiseRepository _repo;
 		private ICategoryRepository _categoryRepository;
-		private Dictionary<int, string> map = new Dictionary<int, string>();
+		private IBrandRepository _brandRepository;
+		private Dictionary<int, string> categorymap = new Dictionary<int, string>();
 		private int _categoryId;
+		private Dictionary<int, string> brandmap = new Dictionary<int, string>();
+		private int _brandId;
 		private string _imagePath = string.Empty;
 		//改使用內嵌影像
 		//string defaultImageURL = @"images/MerchandisePicture/default.png";
@@ -36,6 +39,7 @@ namespace prjMidtermTopic.form_Merchandise
 
 			_repo = new MerchandiseRepository();
 			_categoryRepository = new CategoryRepository();
+			_brandRepository = new BrandRepository();
 
 			//顯示預設圖片
 			#region 其他圖片載入方法
@@ -50,18 +54,27 @@ namespace prjMidtermTopic.form_Merchandise
 			pictureBox_Image.Image = Properties.Resources._default;
 			
 			//動態生成商品類別資料 for 下拉選單
-			map.Add(0, "未選擇");
-			new CategoryService(_categoryRepository).Search().ForEach(c => map.Add(c.CategoryId, c.CategoryName));
-			foreach (var item in map)
+			categorymap.Add(0, "未選擇");
+			new CategoryService(_categoryRepository).Search().ForEach(c => categorymap.Add(c.CategoryId, c.CategoryName));
+			foreach (var item in categorymap)
 			{
 				comboBox_CategoryId.Items.Add(item);
 			}
 			comboBox_CategoryId.DisplayMember = "Value";
-
 			//設定預設值
 			comboBox_CategoryId.SelectedIndex = 0;
 
-			// todo品牌選單
+			//動態生成商品品牌資料 for 下拉選單
+			brandmap.Add(0, "未選擇");
+			new BrandService(_brandRepository).Search().ForEach(b => brandmap.Add(b.BrandId, b.BrandName));
+			foreach (var item in brandmap)
+			{
+				comboBox_BrandId.Items.Add(item);
+			}
+			comboBox_BrandId.DisplayMember = "Value";
+			//設定預設值
+			comboBox_BrandId.SelectedIndex = 0;
+
 		}
 
 		private (bool isValid, List<ValidationResult> errors) Validate(MerchandiseCreateVM vm)
@@ -85,8 +98,7 @@ namespace prjMidtermTopic.form_Merchandise
 			{
 				{"MerchandiseName", txt_MerchandiseName},
 				{"CategoryId ", comboBox_CategoryId},
-				{"Price", txt_Price},
-				{"Amount", txt_Amount},
+				{"BrandId ", comboBox_BrandId},
 				{"Description", txt_Description},
 				{"ImageURL", txt_ImageURL}
 			};
@@ -108,25 +120,30 @@ namespace prjMidtermTopic.form_Merchandise
 			_categoryId = (comboBox_CategoryId.SelectedItem as dynamic).Key;
 		}
 
+		private void comboBox_BrandId_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			_brandId = (comboBox_BrandId.SelectedItem as dynamic).Key;
+		}
+
 		private void btnCreate_Click(object sender, EventArgs e)
 		{
 			//收集表單欄位值建立MerchandiseCreateVM物件
-			bool PriceisInt = int.TryParse(txt_Price.Text, out int Price);
-			Price = PriceisInt ? Price : 0;
-			bool AmountisInt = int.TryParse(txt_Amount.Text, out int Amount);
-			Amount = AmountisInt ? Amount : -1;
+			//bool PriceisInt = int.TryParse(txt_Price.Text, out int Price);
+			//Price = PriceisInt ? Price : 0;
+			//bool AmountisInt = int.TryParse(txt_Amount.Text, out int Amount);
+			//Amount = AmountisInt ? Amount : -1;
 			// ↓讀取下拉選單的欄位值
-			int categoryId = (comboBox_CategoryId.SelectedItem as dynamic).Key;
 			string marchandisename = txt_MerchandiseName.Text;
+			int categoryId = (comboBox_CategoryId.SelectedItem as dynamic).Key;
+			int brandId = (comboBox_BrandId.SelectedItem as dynamic).Key;
 			string Description = (string.IsNullOrEmpty(txt_Description.Text)) ? null : txt_Description.Text;
 			string ImageURL = (string.IsNullOrEmpty(txt_ImageURL.Text)) ? null : txt_ImageURL.Text;
 
 			var vm = new MerchandiseCreateVM()
 			{
 				MerchandiseName = marchandisename,
-				CategoryID = categoryId,
-				Price = Price,
-				Amount = Amount,
+				CategoryId = categoryId,
+				BrandId = brandId,
 				Description = Description,
 				ImageURL = ImageURL
 			};
@@ -147,9 +164,8 @@ namespace prjMidtermTopic.form_Merchandise
 			{
 				MerchandiseId = vm.MerchandiseId,
 				MerchandiseName = vm.MerchandiseName,
-				CategoryId = vm.CategoryID,
-				Price = vm.Price,
-				Amount = vm.Amount,
+				CategoryId = vm.CategoryId,
+				BrandId = vm.BrandId,
 				Description = vm.Description,
 				ImageURL = vm.ImageURL
 			};
