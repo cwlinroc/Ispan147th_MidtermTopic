@@ -34,7 +34,6 @@ namespace prjMidtermTopic.ViewModels
 		[Required(ErrorMessage = "{0}為必選")]
 		public int BrandId { get; set; }
 
-		// todo 修改商品資料欄
 		//[Display(Name = "價格")]
 		//[Required(ErrorMessage = "{0}為必填")]
 		//[Range(1, int.MaxValue, ErrorMessage = "{0}必須為大於0的數字")]

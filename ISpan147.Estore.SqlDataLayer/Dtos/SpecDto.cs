@@ -9,6 +9,7 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
 	public class SpecDto
 	{
 		public string MerchandiseName { get; set; }
+		public int MerchandiseId { get; set; }
 		public int SpecId { get; set; }
 		public string SpecName { get; set; }
 		public int Price { get; set; }

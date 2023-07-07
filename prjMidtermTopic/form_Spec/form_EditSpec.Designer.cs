@@ -28,7 +28,8 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.btn_Add = new System.Windows.Forms.Button();
+			this.components = new System.ComponentModel.Container();
+			this.btn_Update = new System.Windows.Forms.Button();
 			this.txt_Amount = new System.Windows.Forms.TextBox();
 			this.label4 = new System.Windows.Forms.Label();
 			this.txt_Price = new System.Windows.Forms.TextBox();
@@ -39,17 +40,21 @@
 			this.label2 = new System.Windows.Forms.Label();
 			this.label5 = new System.Windows.Forms.Label();
 			this.txt_SpecName = new System.Windows.Forms.TextBox();
+			this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+			this.btn_Delete = new System.Windows.Forms.Button();
+			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
 			this.SuspendLayout();
 			// 
-			// btn_Add
+			// btn_Update
 			// 
-			this.btn_Add.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-			this.btn_Add.Location = new System.Drawing.Point(401, 215);
-			this.btn_Add.Name = "btn_Add";
-			this.btn_Add.Size = new System.Drawing.Size(85, 37);
-			this.btn_Add.TabIndex = 28;
-			this.btn_Add.Text = "儲存變更";
-			this.btn_Add.UseVisualStyleBackColor = true;
+			this.btn_Update.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.btn_Update.Location = new System.Drawing.Point(401, 215);
+			this.btn_Update.Name = "btn_Update";
+			this.btn_Update.Size = new System.Drawing.Size(85, 37);
+			this.btn_Update.TabIndex = 28;
+			this.btn_Update.Text = "儲存變更";
+			this.btn_Update.UseVisualStyleBackColor = true;
+			this.btn_Update.Click += new System.EventHandler(this.btn_Update_Click);
 			// 
 			// txt_Amount
 			// 
@@ -143,12 +148,28 @@
 			this.txt_SpecName.Size = new System.Drawing.Size(362, 29);
 			this.txt_SpecName.TabIndex = 26;
 			// 
+			// errorProvider1
+			// 
+			this.errorProvider1.ContainerControl = this;
+			// 
+			// btn_Delete
+			// 
+			this.btn_Delete.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+			this.btn_Delete.Location = new System.Drawing.Point(401, 258);
+			this.btn_Delete.Name = "btn_Delete";
+			this.btn_Delete.Size = new System.Drawing.Size(85, 37);
+			this.btn_Delete.TabIndex = 33;
+			this.btn_Delete.Text = "刪除規格";
+			this.btn_Delete.UseVisualStyleBackColor = true;
+			this.btn_Delete.Click += new System.EventHandler(this.btn_Delete_Click);
+			// 
 			// form_EditSpec
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(523, 281);
-			this.Controls.Add(this.btn_Add);
+			this.ClientSize = new System.Drawing.Size(523, 314);
+			this.Controls.Add(this.btn_Delete);
+			this.Controls.Add(this.btn_Update);
 			this.Controls.Add(this.txt_Amount);
 			this.Controls.Add(this.label4);
 			this.Controls.Add(this.txt_Price);
@@ -161,6 +182,8 @@
 			this.Controls.Add(this.label2);
 			this.Name = "form_EditSpec";
 			this.Text = "商品管理：編輯商品規格";
+			this.Load += new System.EventHandler(this.form_EditSpec_Load);
+			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -168,7 +191,7 @@
 
 		#endregion
 
-		private System.Windows.Forms.Button btn_Add;
+		private System.Windows.Forms.Button btn_Update;
 		private System.Windows.Forms.TextBox txt_Amount;
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.TextBox txt_Price;
@@ -179,5 +202,7 @@
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Label label5;
 		private System.Windows.Forms.TextBox txt_SpecName;
+		private System.Windows.Forms.ErrorProvider errorProvider1;
+		private System.Windows.Forms.Button btn_Delete;
 	}
 }

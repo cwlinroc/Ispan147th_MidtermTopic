@@ -38,7 +38,7 @@ namespace ISpan147.Estore.SqlDataLayer.Services
 			return rows;
 		}
 
-			// todo 是否需要搜尋條件?
+		// todo 規格是否需要搜尋?
 		//public List<SpecDto> Search(
 		//	int? specid = null,
 		//string specname = null

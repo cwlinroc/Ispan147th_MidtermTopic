@@ -48,9 +48,10 @@
 			this.btn_Add.Location = new System.Drawing.Point(371, 178);
 			this.btn_Add.Name = "btn_Add";
 			this.btn_Add.Size = new System.Drawing.Size(115, 37);
-			this.btn_Add.TabIndex = 22;
+			this.btn_Add.TabIndex = 3;
 			this.btn_Add.Text = "新增商品規格";
 			this.btn_Add.UseVisualStyleBackColor = true;
+			this.btn_Add.Click += new System.EventHandler(this.btn_Add_Click);
 			// 
 			// txt_MerchandiseName
 			// 
@@ -87,7 +88,7 @@
 			this.txt_SpecName.Location = new System.Drawing.Point(124, 57);
 			this.txt_SpecName.Name = "txt_SpecName";
 			this.txt_SpecName.Size = new System.Drawing.Size(362, 29);
-			this.txt_SpecName.TabIndex = 21;
+			this.txt_SpecName.TabIndex = 0;
 			// 
 			// label3
 			// 
@@ -105,7 +106,7 @@
 			this.txt_Price.Location = new System.Drawing.Point(124, 92);
 			this.txt_Price.Name = "txt_Price";
 			this.txt_Price.Size = new System.Drawing.Size(362, 29);
-			this.txt_Price.TabIndex = 21;
+			this.txt_Price.TabIndex = 1;
 			// 
 			// label4
 			// 
@@ -123,7 +124,7 @@
 			this.txt_Amount.Location = new System.Drawing.Point(124, 127);
 			this.txt_Amount.Name = "txt_Amount";
 			this.txt_Amount.Size = new System.Drawing.Size(362, 29);
-			this.txt_Amount.TabIndex = 21;
+			this.txt_Amount.TabIndex = 2;
 			// 
 			// errorProvider1
 			// 
@@ -145,6 +146,7 @@
 			this.Controls.Add(this.label2);
 			this.Name = "form_CreateSpec";
 			this.Text = "商品管理：新增商品規格";
+			this.Load += new System.EventHandler(this.form_CreateSpec_Load);
 			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();

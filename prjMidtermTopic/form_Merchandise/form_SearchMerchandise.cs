@@ -81,7 +81,7 @@ namespace prjMidtermTopic
 		{
 			try
 			{
-				//todo 刪除驗證價格區間
+				//驗證價格區間(刪除)
 				/*int? maxprice = int.TryParse(this.txt_MaxPrice.Text, out int maprice) ? maprice : (int?)null;
 				int? minprice = int.TryParse(this.txt_MinPrice.Text, out int miprice) ? miprice : (int?)null;
 				if (maxprice < minprice)
@@ -103,9 +103,9 @@ namespace prjMidtermTopic
 				var repo = new MerchandiseRepository();
 				data = repo.Search(sId, sName, sCategoryId);
 				 */
-				//使用商業邏輯檢查
+				/*使用商業邏輯檢查
 				//var service = new MerchandiseService(_repo);
-				//_data = service.Search(sId, sName, sCategoryId);
+				_data = service.Search(sId, sName, sCategoryId);*/
 				var conditionDtoList = new MerchandiseService(_repo);
 				_data = conditionDtoList.Search(csDto).ToList();	//使用ToList()從IEnumerable< >轉型為List< >
 
@@ -139,8 +139,8 @@ namespace prjMidtermTopic
 			{
 				csDto.BrandName = txt_BrandName.Text.Trim();
 			}
-			//todo 刪除價格區間條件
-			/*if (int.TryParse(txt_MaxPrice.Text.Trim(), out int _maxprice))
+			/*刪除價格區間條件
+			if (int.TryParse(txt_MaxPrice.Text.Trim(), out int _maxprice))
 			{
 				csDto.MaxPrice = _maxprice;
 			}
@@ -177,10 +177,8 @@ namespace prjMidtermTopic
 				}
 				else
 				{
-					{
-						_data.Sort((x, y) => func(x, y));
-						_sortIndex = columnIndex;
-					}
+					_data.Sort((x, y) => func(x, y));
+					_sortIndex = columnIndex;
 				}
 
 				dataGridView1.DataSource = _data.ToArray();

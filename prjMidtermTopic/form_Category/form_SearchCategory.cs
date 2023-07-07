@@ -59,8 +59,6 @@ namespace prjMidtermTopic.form_Category
 			//取得符合紀錄
 			//var repo = new CategoryRepository();
 			data = _repo.Search(sId, sName);
-
-			//匯入DataGridView
 			this.dataGridView1.DataSource = data;
 		}
 

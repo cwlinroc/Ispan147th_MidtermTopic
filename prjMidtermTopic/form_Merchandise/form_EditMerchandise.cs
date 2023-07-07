@@ -354,15 +354,15 @@ namespace prjMidtermTopic.form_Merchandise
 				if (rows > 0)
 				{
 					MessageBox.Show("更新成功");
-
-					IGrid parent = this.Owner as IGrid; //將開啟視窗轉型為IGrid，若轉型失敗不會丟出例外，而是回傳NULL
-					if (parent == null)
+					
+					IGrid grandparent = this.Owner as IGrid; //更新對象為上兩層的檢視頁
+					if (grandparent == null)
 					{
 						MessageBox.Show("開啟用的表單沒有實作IGrid，因此無法回送通知");
 					}
 					else
 					{
-						parent.Display();
+						grandparent.Display();
 					}
 
 					this.Close();

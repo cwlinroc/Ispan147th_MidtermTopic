@@ -11,6 +11,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 	public interface IMerchandiseRepository
 	{
 		MerchandiseDto GetByMerchandiseId(int merchandiseId);
+		MerchandiseSearchDto GetCategoryAndBrandByMerchandiseId(int merchandiseId);
 		MerchandiseDto GetByMerchandiseName(string merchandisename);
 		MerchandiseDto GetByCategoryId(int? categoryId);
 		IEnumerable<MerchandiseSearchDto> Search(MerchandiseConditionSearchDto csDto);

@@ -24,6 +24,20 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 
 			return SqlDb.Get(connGetter, sql, assembler);
 		}
+		public MerchandiseSearchDto GetCategoryAndBrandByMerchandiseId(int merchandiseId)
+		{
+			Func<SqlConnection> connGetter = SqlDb.GetConnection;
+			string sql = $@"SELECT * FROM Merchandises AS m 
+							JOIN Categories AS c 
+							ON m.CategoryId = c.CategoryId 
+							JOIN Brands AS b 
+							ON m.BrandId = b.BrandId 
+							WHERE MerchandiseId = {merchandiseId}";
+			Func<SqlDataReader, MerchandiseSearchDto> assembler = Assembler.MerchandiseSearchDtoAssembler;
+			SqlParameter[] parameters = new SqlParameter[0];
+
+			return SqlDb.Get(connGetter, sql, assembler);
+		}
 
 		public MerchandiseDto GetByMerchandiseName(string merchandisename)
 		{
@@ -72,7 +86,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 			string orderBy = $" ORDER BY m.{csDto.OrderBy}";
 			string decending = csDto.Descending ? " ASC" : " DESC";
 
-			string sql = $@"SELECT {top}MerchandiseId, MerchandiseName, CategoryName, BrandName, 
+			string sql = $@"SELECT {top}m.MerchandiseId, MerchandiseName, CategoryName, BrandName, 
 										Description, ImageURL 
 							FROM Merchandises AS m 
 							JOIN Categories AS c 

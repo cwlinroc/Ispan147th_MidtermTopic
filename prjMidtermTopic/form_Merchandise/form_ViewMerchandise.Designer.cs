@@ -40,14 +40,16 @@
 			this.txt_MerchandiseName = new System.Windows.Forms.TextBox();
 			this.label2 = new System.Windows.Forms.Label();
 			this.dataGridView_Spec = new System.Windows.Forms.DataGridView();
-			this.SpecName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.SpecId = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.label4 = new System.Windows.Forms.Label();
 			this.btn_AddSpec = new System.Windows.Forms.Button();
 			this.txt_CategoryName = new System.Windows.Forms.TextBox();
 			this.txt_BrandName = new System.Windows.Forms.TextBox();
+			this.SpecName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.SpecId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.MerchandiseId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.MerchandiseName = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox_Image)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView_Spec)).BeginInit();
 			this.SuspendLayout();
@@ -167,39 +169,16 @@
             this.SpecName,
             this.Price,
             this.Amount,
-            this.SpecId});
+            this.SpecId,
+            this.MerchandiseId,
+            this.MerchandiseName});
 			this.dataGridView_Spec.Location = new System.Drawing.Point(136, 157);
 			this.dataGridView_Spec.Name = "dataGridView_Spec";
 			this.dataGridView_Spec.RowTemplate.Height = 24;
 			this.dataGridView_Spec.Size = new System.Drawing.Size(266, 245);
 			this.dataGridView_Spec.TabIndex = 35;
-			// 
-			// SpecName
-			// 
-			this.SpecName.DataPropertyName = "SpecName";
-			this.SpecName.HeaderText = "規格名稱";
-			this.SpecName.Name = "SpecName";
-			// 
-			// Price
-			// 
-			this.Price.DataPropertyName = "Price";
-			this.Price.HeaderText = "價格";
-			this.Price.Name = "Price";
-			this.Price.Width = 60;
-			// 
-			// Amount
-			// 
-			this.Amount.DataPropertyName = "Amount";
-			this.Amount.HeaderText = "庫存";
-			this.Amount.Name = "Amount";
-			this.Amount.Width = 60;
-			// 
-			// SpecId
-			// 
-			this.SpecId.DataPropertyName = "SpecId";
-			this.SpecId.HeaderText = "規格編號";
-			this.SpecId.Name = "SpecId";
-			this.SpecId.Visible = false;
+			this.dataGridView_Spec.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_Spec_CellClick);
+			this.dataGridView_Spec.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_Spec_CellDoubleClick);
 			// 
 			// label4
 			// 
@@ -239,6 +218,46 @@
 			this.txt_BrandName.ReadOnly = true;
 			this.txt_BrandName.Size = new System.Drawing.Size(266, 29);
 			this.txt_BrandName.TabIndex = 17;
+			// 
+			// SpecName
+			// 
+			this.SpecName.DataPropertyName = "SpecName";
+			this.SpecName.HeaderText = "規格名稱";
+			this.SpecName.Name = "SpecName";
+			// 
+			// Price
+			// 
+			this.Price.DataPropertyName = "Price";
+			this.Price.HeaderText = "價格";
+			this.Price.Name = "Price";
+			this.Price.Width = 60;
+			// 
+			// Amount
+			// 
+			this.Amount.DataPropertyName = "Amount";
+			this.Amount.HeaderText = "庫存";
+			this.Amount.Name = "Amount";
+			this.Amount.Width = 60;
+			// 
+			// SpecId
+			// 
+			this.SpecId.DataPropertyName = "SpecId";
+			this.SpecId.HeaderText = "規格編號";
+			this.SpecId.Name = "SpecId";
+			this.SpecId.Visible = false;
+			// 
+			// MerchandiseId
+			// 
+			this.MerchandiseId.DataPropertyName = "MerchandiseId";
+			this.MerchandiseId.HeaderText = "商品規格";
+			this.MerchandiseId.Name = "MerchandiseId";
+			this.MerchandiseId.Visible = false;
+			// 
+			// MerchandiseName
+			// 
+			this.MerchandiseName.HeaderText = "商品名稱";
+			this.MerchandiseName.Name = "MerchandiseName";
+			this.MerchandiseName.Visible = false;
 			// 
 			// form_ViewMerchandise
 			// 
@@ -286,12 +305,14 @@
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.DataGridView dataGridView_Spec;
 		private System.Windows.Forms.Label label4;
+		private System.Windows.Forms.Button btn_AddSpec;
+		private System.Windows.Forms.TextBox txt_CategoryName;
+		private System.Windows.Forms.TextBox txt_BrandName;
 		private System.Windows.Forms.DataGridViewTextBoxColumn SpecName;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Price;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Amount;
 		private System.Windows.Forms.DataGridViewTextBoxColumn SpecId;
-		private System.Windows.Forms.Button btn_AddSpec;
-		private System.Windows.Forms.TextBox txt_CategoryName;
-		private System.Windows.Forms.TextBox txt_BrandName;
+		private System.Windows.Forms.DataGridViewTextBoxColumn MerchandiseId;
+		private System.Windows.Forms.DataGridViewTextBoxColumn MerchandiseName;
 	}
 }

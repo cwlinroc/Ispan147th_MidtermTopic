@@ -32,7 +32,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 			return SqlDb.Get(connGetter, sql, assembler, parameters);
 		}
 
-		// todo 在商品檢視頁用規格ID和名稱查詢
+		// todo 規格是否需要搜尋?
 		public List<SpecDto> Search(int merchandiseId, int? specId, string s_name)
 		{
 			#region sql & SqlParameter[]
@@ -43,8 +43,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 							JOIN Brands AS b
 							ON m.BrandId = b.BrandId
 							JOIN Specs AS s
-							ON m.SpecID = s.SpecID ";
-
+							ON m.SpecId = s.SpecId ";
 			var builder = new SqlParameterBuilder();
 
 			string where = " WHERE m.MerchandiseId = @MerchandiseId";
@@ -52,14 +51,36 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 
 			if (specId.HasValue)
 			{
-				where += $" AND s.SpecID = @SpecID";
-				builder.AddInt("@SpecID", specId.Value);
+				where += $" AND s.SpecId = @SpecId";
+				builder.AddInt("@SpecId", specId.Value);
 			}
 			if (!string.IsNullOrEmpty(s_name))
 			{
 				where += $" AND s.SpecName LIKE '%' + @SpecName + '%'";
 				builder.AddNVarchar("@SpecName", 30, s_name);
 			}
+
+			sql += where;
+
+			SqlParameter[] parameters = builder.Build();
+			#endregion
+			Func<SqlDataReader, SpecDto> func = Assembler.SpecDtoAssembler;
+			Func<SqlConnection> connGetter = SqlDb.GetConnection;
+
+			return SqlDb.Search(connGetter, sql, func, parameters.ToArray()).ToList();
+		}
+		public List<SpecDto> ShowSpecs(int merchandiseId)
+		{
+			#region sql & SqlParameter[]
+			string sql = $@"SELECT m.MerchandiseId, MerchandiseName, SpecId, SpecName, Price, Amount 
+							FROM Merchandises AS m							
+							JOIN Specs AS s
+							ON m.SpecId = s.SpecId";
+			
+			var builder = new SqlParameterBuilder();
+
+			string where = " WHERE m.MerchandiseId = @MerchandiseId";
+			builder.AddInt("@MerchandiseId", merchandiseId);
 
 			sql += where;
 
@@ -93,14 +114,15 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 		{
 			var parameters = new SqlParameterBuilder()
 				.AddNVarchar(@"SpecName", 30, dto.SpecName)
+				.AddInt(@"MerchandiseId", dto.MerchandiseId)
 				.AddInt("@Price", dto.Price)
 				.AddInt("@Amount", dto.Amount)
 				.Build();
 
 			string sql = @"INSERT INTO Specs
-							(SpecName, Price, Amount)
+							(SpecName, MerchandiseId, Price, Amount)
 							VALUES
-							(@SpecName, @Price, @Amount)";
+							(@SpecName, @MerchandiseId, @Price, @Amount)";
 
 			Func<SqlConnection> connGetter = SqlDb.GetConnection;
 

@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ISpan147.Estore.SqlDataLayer.Services;
+using prjMidtermTopic.form_Brand;
 using prjMidtermTopic.form_Category;
 using prjMidtermTopic.Form_Employee;
 using prjMidtermTopic.Form_Order;
@@ -117,6 +118,11 @@ namespace prjMidtermTopic
 		private void toolStripButton_Category_Click(object sender, EventArgs e)
 		{
 			showForm(new form_SearchCategory());
+		}
+
+		private void toolStripButton_Brand_Click(object sender, EventArgs e)
+		{
+			showForm(new form_SearchBrand());
 		}
 
 		private void toolStripButton_OrderForm_Click(object sender, EventArgs e)

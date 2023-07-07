@@ -15,6 +15,8 @@ namespace prjMidtermTopic.ViewModels
 		[MaxLength(30, ErrorMessage = "{0}長度不可超過{1}字")]
 		public string SpecName { get; set; }
 
+		public int MerchandiseId { get; set; }
+
 		[Display(Name = "價格")]
 		[Required(ErrorMessage = "{0}為必填")]
 		[Range(1, int.MaxValue, ErrorMessage = "{0}必須為大於0的數字")]

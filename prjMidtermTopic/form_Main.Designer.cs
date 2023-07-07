@@ -78,6 +78,7 @@
 			this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
 			this.statusStrip1 = new System.Windows.Forms.StatusStrip();
 			this.process1 = new System.Diagnostics.Process();
+			this.toolStripButton_Brand = new System.Windows.Forms.ToolStripButton();
 			this.menuStrip_Main.SuspendLayout();
 			this.toolStrip_Main.SuspendLayout();
 			this.toolStrip_Title.SuspendLayout();
@@ -121,61 +122,61 @@
 			// 會員管理ToolStripMenuItem
 			// 
 			this.會員管理ToolStripMenuItem.Name = "會員管理ToolStripMenuItem";
-			this.會員管理ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.會員管理ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
 			this.會員管理ToolStripMenuItem.Text = "會員管理";
 			this.會員管理ToolStripMenuItem.Click += new System.EventHandler(this.會員管理ToolStripMenuItem_Click);
 			// 
 			// 寵物列表ToolStripMenuItem
 			// 
 			this.寵物列表ToolStripMenuItem.Name = "寵物列表ToolStripMenuItem";
-			this.寵物列表ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.寵物列表ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
 			this.寵物列表ToolStripMenuItem.Text = "寵物列表管理";
 			this.寵物列表ToolStripMenuItem.Click += new System.EventHandler(this.寵物列表ToolStripMenuItem_Click);
 			// 
 			// 領養清單ToolStripMenuItem
 			// 
 			this.領養清單ToolStripMenuItem.Name = "領養清單ToolStripMenuItem";
-			this.領養清單ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.領養清單ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
 			this.領養清單ToolStripMenuItem.Text = "領養清單管理";
 			this.領養清單ToolStripMenuItem.Click += new System.EventHandler(this.領養清單ToolStripMenuItem_Click);
 			// 
 			// 商品ToolStripMenuItem
 			// 
 			this.商品ToolStripMenuItem.Name = "商品ToolStripMenuItem";
-			this.商品ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.商品ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
 			this.商品ToolStripMenuItem.Text = "商品管理";
 			this.商品ToolStripMenuItem.Click += new System.EventHandler(this.商品ToolStripMenuItem_Click);
 			// 
 			// 訂單ToolStripMenuItem
 			// 
 			this.訂單ToolStripMenuItem.Name = "訂單ToolStripMenuItem";
-			this.訂單ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.訂單ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
 			this.訂單ToolStripMenuItem.Text = "訂單管理";
 			this.訂單ToolStripMenuItem.Click += new System.EventHandler(this.訂單ToolStripMenuItem_Click);
 			// 
 			// 留言QAToolStripMenuItem
 			// 
 			this.留言QAToolStripMenuItem.Name = "留言QAToolStripMenuItem";
-			this.留言QAToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.留言QAToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
 			this.留言QAToolStripMenuItem.Text = "留言QA管理";
 			this.留言QAToolStripMenuItem.Click += new System.EventHandler(this.留言QAToolStripMenuItem_Click);
 			// 
 			// toolStripMenuItem1
 			// 
 			this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-			this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
+			this.toolStripMenuItem1.Size = new System.Drawing.Size(143, 6);
 			// 
 			// 登出ToolStripMenuItem
 			// 
 			this.登出ToolStripMenuItem.Name = "登出ToolStripMenuItem";
-			this.登出ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.登出ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
 			this.登出ToolStripMenuItem.Text = "登出";
 			this.登出ToolStripMenuItem.Click += new System.EventHandler(this.登出ToolStripMenuItem_Click);
 			// 
 			// 關閉ToolStripMenuItem
 			// 
 			this.關閉ToolStripMenuItem.Name = "關閉ToolStripMenuItem";
-			this.關閉ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.關閉ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
 			this.關閉ToolStripMenuItem.Text = "關閉";
 			this.關閉ToolStripMenuItem.Click += new System.EventHandler(this.關閉ToolStripMenuItem_Click);
 			// 
@@ -279,14 +280,14 @@
 			// 大量輸入ToolStripMenuItem
 			// 
 			this.大量輸入ToolStripMenuItem.Name = "大量輸入ToolStripMenuItem";
-			this.大量輸入ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+			this.大量輸入ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.大量輸入ToolStripMenuItem.Text = "大量輸入";
 			this.大量輸入ToolStripMenuItem.Click += new System.EventHandler(this.大量輸入ToolStripMenuItem_Click);
 			// 
 			// 整理訂單金額ToolStripMenuItem
 			// 
 			this.整理訂單金額ToolStripMenuItem.Name = "整理訂單金額ToolStripMenuItem";
-			this.整理訂單金額ToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+			this.整理訂單金額ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
 			this.整理訂單金額ToolStripMenuItem.Text = "整理訂單金額";
 			this.整理訂單金額ToolStripMenuItem.Click += new System.EventHandler(this.整理訂單金額ToolStripMenuItem_Click);
 			// 
@@ -345,6 +346,7 @@
             this.toolStripButton_AdoptForm,
             this.toolStripButton_MerchandiseForm,
             this.toolStripButton_Category,
+            this.toolStripButton_Brand,
             this.toolStripButton_OrderForm,
             this.toolStripButton_QAForm,
             this.toolStripButton_SingleForm,
@@ -597,6 +599,18 @@
 			this.process1.StartInfo.UserName = "";
 			this.process1.SynchronizingObject = this;
 			// 
+			// toolStripButton_Brand
+			// 
+			this.toolStripButton_Brand.ForeColor = System.Drawing.Color.LightGoldenrodYellow;
+			this.toolStripButton_Brand.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton_Brand.Image")));
+			this.toolStripButton_Brand.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.toolStripButton_Brand.Margin = new System.Windows.Forms.Padding(15, 20, 0, 2);
+			this.toolStripButton_Brand.Name = "toolStripButton_Brand";
+			this.toolStripButton_Brand.Size = new System.Drawing.Size(160, 36);
+			this.toolStripButton_Brand.Text = "商品品牌";
+			this.toolStripButton_Brand.ToolTipText = "商品品牌";
+			this.toolStripButton_Brand.Click += new System.EventHandler(this.toolStripButton_Brand_Click);
+			// 
 			// form_Main
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -676,6 +690,7 @@
 		private System.Windows.Forms.ToolStripButton toolStripButton_MultiForm;
 		private System.Windows.Forms.ToolStripButton toolStrip_CloseAllForm;
 		private System.Diagnostics.Process process1;
+		private System.Windows.Forms.ToolStripButton toolStripButton_Brand;
 	}
 }
 
