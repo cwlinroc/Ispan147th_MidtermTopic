@@ -75,7 +75,7 @@ namespace ISpan147.Estore.SqlDataLayer.Repositories
 			string sql = $@"SELECT m.MerchandiseId, MerchandiseName, SpecId, SpecName, Price, Amount 
 							FROM Merchandises AS m							
 							JOIN Specs AS s
-							ON m.SpecId = s.SpecId";
+							ON m.MerchandiseId = s.MerchandiseId";
 			
 			var builder = new SqlParameterBuilder();
 

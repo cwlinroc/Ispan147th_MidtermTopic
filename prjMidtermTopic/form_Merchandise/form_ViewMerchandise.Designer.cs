@@ -255,6 +255,7 @@
 			// 
 			// MerchandiseName
 			// 
+			this.MerchandiseName.DataPropertyName = "MerchandiseName";
 			this.MerchandiseName.HeaderText = "商品名稱";
 			this.MerchandiseName.Name = "MerchandiseName";
 			this.MerchandiseName.Visible = false;

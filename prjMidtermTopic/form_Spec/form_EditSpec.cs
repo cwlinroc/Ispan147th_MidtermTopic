@@ -21,14 +21,15 @@ namespace prjMidtermTopic.form_Spec
 		private ISpecRepository _repo;
 		private readonly int _specId;
 		private readonly string _merchandiseName;
-		public form_EditSpec(int specId, string merchandiseName)
+		public form_EditSpec(int specId, string merchandisenName)
 		{
 			_specId = specId;
-			_merchandiseName = merchandiseName;
+			_merchandiseName = merchandisenName;
 
 			InitializeComponent();
 
 			_repo = new SpecRepository();
+			_merchandiseName = merchandisenName;
 		}
 
 		private (bool isValid, List<ValidationResult> errors) Validate(SpecCreateVM vm)
@@ -111,6 +112,7 @@ namespace prjMidtermTopic.form_Spec
 			//通過驗證則將vm轉型為dto
 			SpecDto dto = new SpecDto
 			{				
+				SpecId= _specId,
 				SpecName = vm.SpecName,
 				Price = vm.Price,
 				Amount = vm.Amount

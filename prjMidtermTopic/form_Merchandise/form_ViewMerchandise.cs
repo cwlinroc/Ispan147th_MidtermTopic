@@ -2,6 +2,7 @@
 using ISpan147.Estore.SqlDataLayer.Repositories;
 using ISpan147.Estore.SqlDataLayer.Services;
 using prjMidtermTopic.form_Spec;
+using prjMidtermTopic.Interfaces;
 using prjMidtermTopic.Model;
 using System;
 using System.Collections.Generic;
@@ -16,7 +17,7 @@ using System.Xml.Linq;
 
 namespace prjMidtermTopic.form_Merchandise
 {
-	public partial class form_ViewMerchandise : Form
+	public partial class form_ViewMerchandise : Form, IGrid
 	{
 		private IMerchandiseRepository _repo;
 		private ICategoryRepository _categoryRepository;

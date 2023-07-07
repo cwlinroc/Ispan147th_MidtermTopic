@@ -137,7 +137,6 @@ namespace ISpan147.Estore.SqlDataLayer.Dtos
 			get => (reader) => new SpecDto
 			{
 				MerchandiseId = reader.GetInt("MerchandiseId"),
-				MerchandiseName = reader.GetString("MerchandiseName"),
 				SpecId = reader.GetInt("SpecId"),
 				SpecName = reader.GetString("SpecName"),
 				Price = reader.GetInt("Price"),
